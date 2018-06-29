@@ -1,0 +1,1086 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A4CDFC40197246CAF599F86 /* Pods_OneginiExampleAppSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE94269EA06349E45897491 /* Pods_OneginiExampleAppSwiftTests.framework */; };
+		298537DF146913D00628861A /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BF6E3CE59F5CAFFB9AFA69 /* Pods_OneginiExampleAppSwiftUITests.framework */; };
+		3213DF0B772ABE30D86E2470 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */; };
+		4B038EA6C6F9875A3175E9E3 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */; };
+		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
+		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
+		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
+		7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */; };
+		7E300A8920D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */; };
+		7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AB820D7E60700EF1A79 /* SecurityController.m */; };
+		7E300ABF20D7E84300EF1A79 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E300ABE20D7E84300EF1A79 /* README.md */; };
+		7E300AC220D7E8C800EF1A79 /* tokenserver-demo-test.onegini.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AC120D7E8C700EF1A79 /* tokenserver-demo-test.onegini.com.cer */; };
+		7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AC920D8F8D400EF1A79 /* StartupPresenter.swift */; };
+		7E300ACE20DA498600EF1A79 /* StartupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */; };
+		7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300ACF20DA684700EF1A79 /* InteractorAssembly.swift */; };
+		7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AD120DA7C7700EF1A79 /* AppAssembly.swift */; };
+		7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AD320DA888100EF1A79 /* ErrorPresenter.swift */; };
+		7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */; };
+		7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AE820DBE17600EF1A79 /* WelcomeViewController.swift */; };
+		7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */; };
+		7E300AEF20DBE31F00EF1A79 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */; };
+		7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */; };
+		7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */; };
+		7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
+		7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
+		7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45477120DD422600FB620F /* ButtonTableViewCell.xib */; };
+		7E45477520E0BB5B00FB620F /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477420E0BB5B00FB620F /* WelcomePresenter.swift */; };
+		7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */; };
+		7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */; };
+		7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477C20E117FD00FB620F /* PresenterAssembly.swift */; };
+		7E45477F20E2184A00FB620F /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477E20E2184A00FB620F /* AppNavigationController.swift */; };
+		7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478120E21E4D00FB620F /* BrowserViewController.swift */; };
+		7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478B20E2329600FB620F /* OneginiConfigModel.m */; };
+		7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
+		7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45478E20E24DEE00FB620F /* PinViewController.xib */; };
+		7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */; };
+		7E4547A020E5198C00FB620F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479E20E5198C00FB620F /* DashboardViewController.swift */; };
+		7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45479F20E5198C00FB620F /* DashboardViewController.xib */; };
+		7E4547A320E51A2200FB620F /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A220E51A2200FB620F /* DashboardPresenter.swift */; };
+		7E4547A520E5220600FB620F /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A420E5220600FB620F /* DashboardInteractor.swift */; };
+		7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
+		7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
+		7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
+		7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C420DD102E00B86628 /* LoginViewController.xib */; };
+		7E5684CA20DD10BA00B86628 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C820DD10BA00B86628 /* ProfileTableViewCell.swift */; };
+		7E5684CB20DD10BA00B86628 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C920DD10BA00B86628 /* ProfileTableViewCell.xib */; };
+		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
+		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
+		AE46A8D74BA2B0DEBCE5468F /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7E300A7A20D7B8E300EF1A79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E300A6420D7B8E100EF1A79;
+			remoteInfo = OneginiExampleAppSwift;
+		};
+		7E300A8520D7B8E300EF1A79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E300A6420D7B8E100EF1A79;
+			remoteInfo = OneginiExampleAppSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05BF6E3CE59F5CAFFB9AFA69 /* Pods_OneginiExampleAppSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC55E15AB19DFC62B90E1ED /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2AE94269EA06349E45897491 /* Pods_OneginiExampleAppSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneginiExampleAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7E300A7220D7B8E200EF1A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7E300A7420D7B8E200EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneginiExampleAppSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiExampleAppSwiftTests.swift; sourceTree = "<group>"; };
+		7E300A7F20D7B8E300EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneginiExampleAppSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiExampleAppSwiftUITests.swift; sourceTree = "<group>"; };
+		7E300A8A20D7B8E300EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E300A9D20D7DFB500EF1A79 /* OneginiExampleAppSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneginiExampleAppSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		7E300AB820D7E60700EF1A79 /* SecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityController.m; path = Configuration/SecurityController.m; sourceTree = "<group>"; };
+		7E300ABA20D7E60800EF1A79 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityController.h; path = Configuration/SecurityController.h; sourceTree = "<group>"; };
+		7E300ABE20D7E84300EF1A79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7E300AC120D7E8C700EF1A79 /* tokenserver-demo-test.onegini.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "tokenserver-demo-test.onegini.com.cer"; sourceTree = "<group>"; };
+		7E300AC920D8F8D400EF1A79 /* StartupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPresenter.swift; sourceTree = "<group>"; };
+		7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupInteractor.swift; sourceTree = "<group>"; };
+		7E300ACF20DA684700EF1A79 /* InteractorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorAssembly.swift; sourceTree = "<group>"; };
+		7E300AD120DA7C7700EF1A79 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
+		7E300AD320DA888100EF1A79 /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
+		7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		7E300AE820DBE17600EF1A79 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
+		7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
+		7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterUserViewController.xib; sourceTree = "<group>"; };
+		7E45477020DD422500FB620F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		7E45477120DD422600FB620F /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
+		7E45477420E0BB5B00FB620F /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
+		7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
+		7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserPresenter.swift; sourceTree = "<group>"; };
+		7E45477C20E117FD00FB620F /* PresenterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAssembly.swift; sourceTree = "<group>"; };
+		7E45477E20E2184A00FB620F /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		7E45478120E21E4D00FB620F /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		7E45478A20E2329600FB620F /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
+		7E45478B20E2329600FB620F /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
+		7E45478D20E24DEE00FB620F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		7E45478E20E24DEE00FB620F /* PinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PinViewController.xib; sourceTree = "<group>"; };
+		7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserEntity.swift; sourceTree = "<group>"; };
+		7E45479E20E5198C00FB620F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		7E45479F20E5198C00FB620F /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		7E4547A220E51A2200FB620F /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
+		7E4547A420E5220600FB620F /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
+		7E4547A820E62D8B00FB620F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		7E5684C320DD102E00B86628 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7E5684C420DD102E00B86628 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		7E5684C820DD10BA00B86628 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../../../../../../.Trash/Login/ProfileCell/ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		7E5684C920DD10BA00B86628 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = ../../../../../../.Trash/Login/ProfileCell/ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
+		8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AFC62865DF977C72E094FEB1 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.release.xcconfig"; sourceTree = "<group>"; };
+		D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF148FB71FF74047CA88053D /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7E300A6220D7B8E100EF1A79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE46A8D74BA2B0DEBCE5468F /* Pods_OneginiExampleAppSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E300A7620D7B8E300EF1A79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3213DF0B772ABE30D86E2470 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a in Frameworks */,
+				1A4CDFC40197246CAF599F86 /* Pods_OneginiExampleAppSwiftTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E300A8120D7B8E300EF1A79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B038EA6C6F9875A3175E9E3 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a in Frameworks */,
+				298537DF146913D00628861A /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B391B3D82E18E544B473331 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */,
+				6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */,
+				5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */,
+				2AE94269EA06349E45897491 /* Pods_OneginiExampleAppSwiftTests.framework */,
+				05BF6E3CE59F5CAFFB9AFA69 /* Pods_OneginiExampleAppSwiftUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E300A5C20D7B8E100EF1A79 = {
+			isa = PBXGroup;
+			children = (
+				7E300ABE20D7E84300EF1A79 /* README.md */,
+				7E300AC020D7E89200EF1A79 /* Resources */,
+				7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */,
+				7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */,
+				7E300A8720D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */,
+				7E300AB720D7E5F800EF1A79 /* Configuration */,
+				7E300A6620D7B8E100EF1A79 /* Products */,
+				91DE3EFAA921704936F26C6A /* Pods */,
+				2B391B3D82E18E544B473331 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7E300A6620D7B8E100EF1A79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */,
+				7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */,
+				7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */ = {
+			isa = PBXGroup;
+			children = (
+				7E45479A20E4FEFB00FB620F /* Entity */,
+				7E300AD520DA8FF200EF1A79 /* Assembly */,
+				7E300AC820D8F86100EF1A79 /* Interactors */,
+				7E300AC620D8F53B00EF1A79 /* Presenters */,
+				7E300A9E20D7E00000EF1A79 /* ViewControllers */,
+				7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */,
+				7E7BA3E220E65338005F1FD1 /* AppRouter.swift */,
+				7E45477E20E2184A00FB620F /* AppNavigationController.swift */,
+				7E300AC320D7E8FE00EF1A79 /* SupportingFiles */,
+				7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */,
+			);
+			path = OneginiExampleAppSwift;
+			sourceTree = "<group>";
+		};
+		7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */,
+				7E300A7F20D7B8E300EF1A79 /* Info.plist */,
+			);
+			path = OneginiExampleAppSwiftTests;
+			sourceTree = "<group>";
+		};
+		7E300A8720D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */,
+				7E300A8A20D7B8E300EF1A79 /* Info.plist */,
+			);
+			path = OneginiExampleAppSwiftUITests;
+			sourceTree = "<group>";
+		};
+		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E45479D20E5192400FB620F /* Dashboard */,
+				7E45479120E24DF200FB620F /* Pin */,
+				7E45476F20DD420400FB620F /* ButtonCell */,
+				7E45476A20DD199E00FB620F /* RegisterUser */,
+				7E5684C220DD101F00B86628 /* Login */,
+				7E300AEC20DBE30E00EF1A79 /* Startup */,
+				7E300AE720DBE15E00EF1A79 /* Welcome */,
+				7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7E300AB720D7E5F800EF1A79 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				7E45478A20E2329600FB620F /* OneginiConfigModel.h */,
+				7E45478B20E2329600FB620F /* OneginiConfigModel.m */,
+				7E300ABA20D7E60800EF1A79 /* SecurityController.h */,
+				7E300AB820D7E60700EF1A79 /* SecurityController.m */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		7E300AC020D7E89200EF1A79 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7E300AC120D7E8C700EF1A79 /* tokenserver-demo-test.onegini.com.cer */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7E300AC320D7E8FE00EF1A79 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				7E300A7420D7B8E200EF1A79 /* Info.plist */,
+				7E300A9D20D7DFB500EF1A79 /* OneginiExampleAppSwift-Bridging-Header.h */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		7E300AC620D8F53B00EF1A79 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				7E300AD320DA888100EF1A79 /* ErrorPresenter.swift */,
+				7E300AC920D8F8D400EF1A79 /* StartupPresenter.swift */,
+				7E45477420E0BB5B00FB620F /* WelcomePresenter.swift */,
+				7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */,
+				7E4547A220E51A2200FB620F /* DashboardPresenter.swift */,
+				7E4547A820E62D8B00FB620F /* LoginPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		7E300AC820D8F86100EF1A79 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */,
+				7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */,
+				7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */,
+				7E4547A420E5220600FB620F /* DashboardInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		7E300AD520DA8FF200EF1A79 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				7E300AD120DA7C7700EF1A79 /* AppAssembly.swift */,
+				7E300ACF20DA684700EF1A79 /* InteractorAssembly.swift */,
+				7E45477C20E117FD00FB620F /* PresenterAssembly.swift */,
+				7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */,
+				7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		7E300AE720DBE15E00EF1A79 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				7E300AE820DBE17600EF1A79 /* WelcomeViewController.swift */,
+				7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		7E300AEC20DBE30E00EF1A79 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */,
+				7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		7E45476A20DD199E00FB620F /* RegisterUser */ = {
+			isa = PBXGroup;
+			children = (
+				7E45478020E21DFE00FB620F /* Browser */,
+				7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */,
+				7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */,
+			);
+			path = RegisterUser;
+			sourceTree = "<group>";
+		};
+		7E45476F20DD420400FB620F /* ButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E45477020DD422500FB620F /* ButtonTableViewCell.swift */,
+				7E45477120DD422600FB620F /* ButtonTableViewCell.xib */,
+			);
+			path = ButtonCell;
+			sourceTree = "<group>";
+		};
+		7E45478020E21DFE00FB620F /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				7E45478120E21E4D00FB620F /* BrowserViewController.swift */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
+		7E45479120E24DF200FB620F /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				7E45478D20E24DEE00FB620F /* PinViewController.swift */,
+				7E45478E20E24DEE00FB620F /* PinViewController.xib */,
+			);
+			path = Pin;
+			sourceTree = "<group>";
+		};
+		7E45479A20E4FEFB00FB620F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		7E45479D20E5192400FB620F /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				7E45479E20E5198C00FB620F /* DashboardViewController.swift */,
+				7E45479F20E5198C00FB620F /* DashboardViewController.xib */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		7E5684C220DD101F00B86628 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7E5684C720DD10A700B86628 /* ProfileCell */,
+				7E5684C320DD102E00B86628 /* LoginViewController.swift */,
+				7E5684C420DD102E00B86628 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7E5684C720DD10A700B86628 /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E5684C820DD10BA00B86628 /* ProfileTableViewCell.swift */,
+				7E5684C920DD10BA00B86628 /* ProfileTableViewCell.xib */,
+			);
+			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		91DE3EFAA921704936F26C6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */,
+				C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */,
+				D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */,
+				98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */,
+				DF148FB71FF74047CA88053D /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */,
+				99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */,
+				905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */,
+				AFC62865DF977C72E094FEB1 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig */,
+				1DC55E15AB19DFC62B90E1ED /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig */,
+				8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E300A8D20D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwift" */;
+			buildPhases = (
+				5C02B746B36629490CAF97F1 /* [CP] Check Pods Manifest.lock */,
+				7E300A6120D7B8E100EF1A79 /* Sources */,
+				7E300A6220D7B8E100EF1A79 /* Frameworks */,
+				7E300A6320D7B8E100EF1A79 /* Resources */,
+				1804AAB91AFE036B66455B9F /* [CP] Embed Pods Frameworks */,
+				BD29E773996B091DE4A574B9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneginiExampleAppSwift;
+			productName = OneginiExampleAppSwift;
+			productReference = 7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7E300A7820D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E300A9020D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftTests" */;
+			buildPhases = (
+				6B8B31C0DEFA823B2E9419B9 /* [CP] Check Pods Manifest.lock */,
+				7E300A7520D7B8E300EF1A79 /* Sources */,
+				7E300A7620D7B8E300EF1A79 /* Frameworks */,
+				7E300A7720D7B8E300EF1A79 /* Resources */,
+				69C7F559936F893DCAD290B8 /* [CP] Embed Pods Frameworks */,
+				A13F66E18CAD18D90684346F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E300A7B20D7B8E300EF1A79 /* PBXTargetDependency */,
+			);
+			name = OneginiExampleAppSwiftTests;
+			productName = OneginiExampleAppSwiftTests;
+			productReference = 7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7E300A8320D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E300A9320D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftUITests" */;
+			buildPhases = (
+				E02042D4FD43A55BD3AD0636 /* [CP] Check Pods Manifest.lock */,
+				7E300A8020D7B8E300EF1A79 /* Sources */,
+				7E300A8120D7B8E300EF1A79 /* Frameworks */,
+				7E300A8220D7B8E300EF1A79 /* Resources */,
+				65AF06DCE5D807714EB9A38F /* [CP] Embed Pods Frameworks */,
+				52AC178FEA79F4FD449E386B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E300A8620D7B8E300EF1A79 /* PBXTargetDependency */,
+			);
+			name = OneginiExampleAppSwiftUITests;
+			productName = OneginiExampleAppSwiftUITests;
+			productReference = 7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7E300A5D20D7B8E100EF1A79 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Onegini;
+				TargetAttributes = {
+					7E300A6420D7B8E100EF1A79 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					7E300A7820D7B8E300EF1A79 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 7E300A6420D7B8E100EF1A79;
+					};
+					7E300A8320D7B8E300EF1A79 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 7E300A6420D7B8E100EF1A79;
+					};
+				};
+			};
+			buildConfigurationList = 7E300A6020D7B8E100EF1A79 /* Build configuration list for PBXProject "OneginiExampleAppSwift" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7E300A5C20D7B8E100EF1A79;
+			productRefGroup = 7E300A6620D7B8E100EF1A79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */,
+				7E300A7820D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */,
+				7E300A8320D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E300A6320D7B8E100EF1A79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
+				7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */,
+				7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */,
+				7E300AC220D7E8C800EF1A79 /* tokenserver-demo-test.onegini.com.cer in Resources */,
+				7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */,
+				7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */,
+				7E5684CB20DD10BA00B86628 /* ProfileTableViewCell.xib in Resources */,
+				7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */,
+				7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */,
+				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
+				7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */,
+				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E300A7720D7B8E300EF1A79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E300A8220D7B8E300EF1A79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1804AAB91AFE036B66455B9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52AC178FEA79F4FD449E386B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C02B746B36629490CAF97F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		65AF06DCE5D807714EB9A38F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69C7F559936F893DCAD290B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B8B31C0DEFA823B2E9419B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A13F66E18CAD18D90684346F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD29E773996B091DE4A574B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E02042D4FD43A55BD3AD0636 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E300A6120D7B8E100EF1A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
+				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
+				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
+				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
+				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
+				7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */,
+				7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */,
+				7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */,
+				7E4547A020E5198C00FB620F /* DashboardViewController.swift in Sources */,
+				7E300ACE20DA498600EF1A79 /* StartupInteractor.swift in Sources */,
+				7E300AEF20DBE31F00EF1A79 /* StartupViewController.swift in Sources */,
+				7E45477520E0BB5B00FB620F /* WelcomePresenter.swift in Sources */,
+				7E4547A320E51A2200FB620F /* DashboardPresenter.swift in Sources */,
+				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
+				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
+				7E45477F20E2184A00FB620F /* AppNavigationController.swift in Sources */,
+				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
+				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
+				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
+				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
+				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
+				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
+				7E5684CA20DD10BA00B86628 /* ProfileTableViewCell.swift in Sources */,
+				7E4547A520E5220600FB620F /* DashboardInteractor.swift in Sources */,
+				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
+				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
+				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
+				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
+				7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */,
+				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E300A7520D7B8E300EF1A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E300A8020D7B8E300EF1A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E300A8920D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7E300A7B20D7B8E300EF1A79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */;
+			targetProxy = 7E300A7A20D7B8E300EF1A79 /* PBXContainerItemProxy */;
+		};
+		7E300A8620D7B8E300EF1A79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */;
+			targetProxy = 7E300A8520D7B8E300EF1A79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E300A7220D7B8E200EF1A79 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7E300A8B20D7B8E300EF1A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7E300A8C20D7B8E300EF1A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7E300A8E20D7B8E300EF1A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47G5S528XM;
+				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7E300A8F20D7B8E300EF1A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47G5S528XM;
+				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7E300A9120D7B8E300EF1A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47G5S528XM;
+				INFOPLIST_FILE = OneginiExampleAppSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneginiExampleAppSwift.app/OneginiExampleAppSwift";
+			};
+			name = Debug;
+		};
+		7E300A9220D7B8E300EF1A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47G5S528XM;
+				INFOPLIST_FILE = OneginiExampleAppSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneginiExampleAppSwift.app/OneginiExampleAppSwift";
+			};
+			name = Release;
+		};
+		7E300A9420D7B8E300EF1A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF148FB71FF74047CA88053D /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47G5S528XM;
+				INFOPLIST_FILE = OneginiExampleAppSwiftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OneginiExampleAppSwift;
+			};
+			name = Debug;
+		};
+		7E300A9520D7B8E300EF1A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47G5S528XM;
+				INFOPLIST_FILE = OneginiExampleAppSwiftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OneginiExampleAppSwift;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7E300A6020D7B8E100EF1A79 /* Build configuration list for PBXProject "OneginiExampleAppSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E300A8B20D7B8E300EF1A79 /* Debug */,
+				7E300A8C20D7B8E300EF1A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E300A8D20D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E300A8E20D7B8E300EF1A79 /* Debug */,
+				7E300A8F20D7B8E300EF1A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E300A9020D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E300A9120D7B8E300EF1A79 /* Debug */,
+				7E300A9220D7B8E300EF1A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E300A9320D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E300A9420D7B8E300EF1A79 /* Debug */,
+				7E300A9520D7B8E300EF1A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7E300A5D20D7B8E100EF1A79 /* Project object */;
+}
