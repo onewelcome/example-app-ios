@@ -1,4 +1,4 @@
-//  Copyright (c) 2016 Onegini. All rights reserved.
+//  Copyright (c) 2018 Onegini. All rights reserved.
 
 #import <Foundation/Foundation.h>
 

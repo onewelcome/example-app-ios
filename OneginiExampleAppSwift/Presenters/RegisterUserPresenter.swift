@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2016 Onegini. All rights reserved.
+// Copyright (c) 2018 Onegini. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,16 +34,16 @@ protocol RegisterUserViewToPresenterProtocol {
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 
     var registerUserInteractor: RegisterUserInteractorProtocol?
-    let navigationContorller = AppNavigationController.shared
+    let navigationController = AppNavigationController.shared
     
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity) {
         let browserViewController = BrowserViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol:self)
-        navigationContorller.present(browserViewController, animated: true, completion: nil)
+        navigationController.present(browserViewController, animated: true, completion: nil)
     }
 
     func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
         let pinViewController = PinViewController(mode: .registration, registerUserEntity: registerUserEntity, registerUserViewToPresenterProtocol: self)
-        navigationContorller.present(pinViewController, animated: true, completion: nil)
+        navigationController.present(pinViewController, animated: true, completion: nil)
     }
     
     func presentDashboardView() {
@@ -74,15 +74,15 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     }
     
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
-        if navigationContorller.presentedViewController is BrowserViewController {
-            navigationContorller.dismiss(animated: true, completion: nil)
+        if navigationController.presentedViewController is BrowserViewController {
+            navigationController.dismiss(animated: true, completion: nil)
         }
         registerUserInteractor?.handleRedirectURL(registerUserEntity: registerUserEntity)
     }
     
     func handleCreatePinRegistrationChallenge(registerUserEntity: PinViewControllerEntityProtocol) {
-        if navigationContorller.presentedViewController is PinViewController {
-            navigationContorller.dismiss(animated: true, completion: nil)
+        if navigationController.presentedViewController is PinViewController {
+            navigationController.dismiss(animated: true, completion: nil)
         }
         registerUserInteractor?.handleCreatedPin(registerUserEntity: registerUserEntity)
     }
