@@ -51,10 +51,10 @@
 		7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
 		7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
 		7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C420DD102E00B86628 /* LoginViewController.xib */; };
-		7E5684CA20DD10BA00B86628 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C820DD10BA00B86628 /* ProfileTableViewCell.swift */; };
-		7E5684CB20DD10BA00B86628 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C920DD10BA00B86628 /* ProfileTableViewCell.xib */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
+		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
+		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		AE46A8D74BA2B0DEBCE5468F /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,10 +131,10 @@
 		7E4547A820E62D8B00FB620F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		7E5684C320DD102E00B86628 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7E5684C420DD102E00B86628 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		7E5684C820DD10BA00B86628 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../../../../../../.Trash/Login/ProfileCell/ProfileTableViewCell.swift; sourceTree = "<group>"; };
-		7E5684C920DD10BA00B86628 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = ../../../../../../.Trash/Login/ProfileCell/ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
+		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -411,8 +411,8 @@
 		7E5684C720DD10A700B86628 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
-				7E5684C820DD10BA00B86628 /* ProfileTableViewCell.swift */,
-				7E5684C920DD10BA00B86628 /* ProfileTableViewCell.xib */,
+				7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */,
+				7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */,
 			);
 			path = ProfileCell;
 			sourceTree = "<group>";
@@ -552,8 +552,8 @@
 				7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */,
 				7E300AC220D7E8C800EF1A79 /* tokenserver-demo-test.onegini.com.cer in Resources */,
 				7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */,
+				7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */,
 				7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */,
-				7E5684CB20DD10BA00B86628 /* ProfileTableViewCell.xib in Resources */,
 				7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */,
 				7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */,
 				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
@@ -724,6 +724,7 @@
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
 				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
+				7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */,
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */,
@@ -743,7 +744,6 @@
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
-				7E5684CA20DD10BA00B86628 /* ProfileTableViewCell.swift in Sources */,
 				7E4547A520E5220600FB620F /* DashboardInteractor.swift in Sources */,
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
