@@ -15,13 +15,13 @@
 
 import UIKit
 
-protocol DashboardInteractorProtocol {
+protocol LogoutInteractorProtocol {
     
     func logout()
     
 }
 
-class DashboardInteractor: DashboardInteractorProtocol {
+class LogoutInteractor: LogoutInteractorProtocol {
 
     weak var dashboardPresenter: DashboardInteractorToPresenterProtocol?
     

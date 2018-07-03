@@ -25,10 +25,10 @@ class InteractorAssembly: Assembly {
                 let registerUserInteractor = c as! RegisterUserInteractor
                 registerUserInteractor.registerUserPresenter = r.resolve(RegisterUserPresenterProtocol.self)
         }
-        container.register(DashboardInteractorProtocol.self) { _ in DashboardInteractor() }
+        container.register(LogoutInteractorProtocol.self) { _ in LogoutInteractor() }
             .initCompleted { (r, c) in
-                let dashboardInteractor = c as! DashboardInteractor
-                dashboardInteractor.dashboardPresenter = r.resolve(DashboardPresenterProtocol.self)
+                let logoutInteractor = c as! LogoutInteractor
+                logoutInteractor.dashboardPresenter = r.resolve(DashboardPresenterProtocol.self)
         }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
     }

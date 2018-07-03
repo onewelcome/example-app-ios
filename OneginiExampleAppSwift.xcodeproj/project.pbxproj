@@ -46,7 +46,7 @@
 		7E4547A020E5198C00FB620F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479E20E5198C00FB620F /* DashboardViewController.swift */; };
 		7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45479F20E5198C00FB620F /* DashboardViewController.xib */; };
 		7E4547A320E51A2200FB620F /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A220E51A2200FB620F /* DashboardPresenter.swift */; };
-		7E4547A520E5220600FB620F /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A420E5220600FB620F /* DashboardInteractor.swift */; };
+		7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A420E5220600FB620F /* LogoutInteractor.swift */; };
 		7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
 		7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
 		7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
@@ -126,7 +126,7 @@
 		7E45479E20E5198C00FB620F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7E45479F20E5198C00FB620F /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		7E4547A220E51A2200FB620F /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
-		7E4547A420E5220600FB620F /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		7E4547A420E5220600FB620F /* LogoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
 		7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
 		7E4547A820E62D8B00FB620F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		7E5684C320DD102E00B86628 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 				7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */,
 				7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */,
 				7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */,
-				7E4547A420E5220600FB620F /* DashboardInteractor.swift */,
+				7E4547A420E5220600FB620F /* LogoutInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -744,7 +744,7 @@
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
-				7E4547A520E5220600FB620F /* DashboardInteractor.swift in Sources */,
+				7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */,
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,

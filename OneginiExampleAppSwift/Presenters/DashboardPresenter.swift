@@ -31,7 +31,7 @@ protocol DashboardViewToPresenterProtocol {
 class DashboardPresenter: DashboardInteractorToPresenterProtocol {
 
     let navigationContorller = AppNavigationController.shared
-    var dashboardInteractor: DashboardInteractorProtocol?
+    var logoutInteractor: LogoutInteractorProtocol?
 
     func presentDashboardView() {
         let dashboardViewController = DashboardViewController(self)
@@ -48,8 +48,8 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
 extension DashboardPresenter: DashboardViewToPresenterProtocol {
     
     func logout() {
-        guard let dashboardInteractor = dashboardInteractor else { fatalError() }
-        dashboardInteractor.logout()
+        guard let logoutInteractor = logoutInteractor else { fatalError() }
+        logoutInteractor.logout()
     }
     
 }

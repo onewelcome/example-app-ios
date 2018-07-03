@@ -41,7 +41,7 @@ class PresenterAssembly: Assembly {
         
         container.register(DashboardPresenterProtocol.self) { r in
             let dashboardPresenter = DashboardPresenter()
-            dashboardPresenter.dashboardInteractor = r.resolve(DashboardInteractorProtocol.self)!
+            dashboardPresenter.logoutInteractor = r.resolve(LogoutInteractorProtocol.self)!
             return dashboardPresenter
         }
     }

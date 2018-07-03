@@ -27,4 +27,11 @@ class ErrorPresenter {
         navigationController.present(alert, animated: true, completion: nil)
     }
     
+    func showErrorAlertWithRetryAction(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void)) {
+        let errorMessage = "\(error.localizedDescription)"
+        let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
+        let retryAction = UIAlertAction(title: "Retry", style: .cancel, handler: retryHandler)
+        alert.addAction(retryAction)
+        navigationController.present(alert, animated: true, completion: nil)
+    }
 }
