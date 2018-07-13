@@ -16,20 +16,18 @@
 import Swinject
 
 class AppAssembly {
-
     static let shared = AppAssembly()
-    
+
     let resolver: Resolver
-    
+
     private let assembler = Assembler([
         ViewControllerAssembly(),
         InteractorAssembly(),
         PresenterAssembly(),
-        RouterAssembly()
-        ])
-    
+        RouterAssembly(),
+    ])
+
     private init() {
-        self.resolver = assembler.resolver
+        resolver = assembler.resolver
     }
-    
 }

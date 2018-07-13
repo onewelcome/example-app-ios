@@ -23,18 +23,17 @@ protocol RegisterUserInteractorProtocol {
 }
 
 class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
-    
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
-    
+
     func identityProviders() -> Set<ONGIdentityProvider> {
         return ONGUserClient.sharedInstance().identityProviders()
     }
-    
+
     func startUserRegistration() {
         ONGUserClient.sharedInstance().registerUser(with: nil, scopes: ["read"], delegate: self)
     }
-    
+
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
         guard let browserRegistrationChallenge = registerUserEntity.browserRegistrationChallenge else { return }
         if let url = registerUserEntity.redirectURL {
@@ -43,7 +42,7 @@ class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
             browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
         }
     }
-    
+
     func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol) {
         guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
@@ -55,24 +54,22 @@ class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
 }
 
 extension RegisterUserInteractor: ONGRegistrationDelegate {
-    
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGBrowserRegistrationChallenge) {
+    func userClient(_: ONGUserClient, didReceive challenge: ONGBrowserRegistrationChallenge) {
         registerUserEntity.browserRegistrationChallenge = challenge
         registerUserEntity.registrationUserURL = challenge.url
         registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
+
+    func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
         registerUserEntity.createPinChallenge = challenge
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didRegisterUser userProfile: ONGUserProfile, info: ONGCustomInfo?) {
+
+    func userClient(_: ONGUserClient, didRegisterUser _: ONGUserProfile, info _: ONGCustomInfo?) {
         registerUserPresenter?.presentDashboardView()
     }
-    
-    func userClient(_ userClient: ONGUserClient, didFailToRegisterWithError error: Error) {
+
+    func userClient(_: ONGUserClient, didFailToRegisterWithError error: Error) {
         registerUserPresenter?.presentError(error)
     }
-    
 }

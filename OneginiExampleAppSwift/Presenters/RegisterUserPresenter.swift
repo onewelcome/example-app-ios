@@ -32,12 +32,16 @@ protocol RegisterUserViewToPresenterProtocol {
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
+    var registerUserInteractor: RegisterUserInteractorProtocol
+    let navigationController: UINavigationController
 
-    var registerUserInteractor: RegisterUserInteractorProtocol?
-    let navigationController = AppNavigationController.shared
-    
+    init(registerUserInteractor: RegisterUserInteractorProtocol, navigationController: UINavigationController) {
+        self.registerUserInteractor = registerUserInteractor
+        self.navigationController = navigationController
+    }
+
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity) {
-        let browserViewController = BrowserViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol:self)
+        let browserViewController = BrowserViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
         navigationController.present(browserViewController, animated: true, completion: nil)
     }
 
@@ -45,45 +49,42 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         let pinViewController = PinViewController(mode: .registration, registerUserEntity: registerUserEntity, registerUserViewToPresenterProtocol: self)
         navigationController.present(pinViewController, animated: true, completion: nil)
     }
-    
+
     func presentDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupDashboardPresenter()
     }
-    
+
     func presentError(_ error: Error) {
-        ErrorPresenter().showErrorAlert(error: error, title: "")
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error, title: "")
     }
 }
 
 extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
-    
     func setupRegisterUserView() -> RegisterUserViewController {
-        guard let registerUserInteractor = registerUserInteractor,
-            let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self)
-            else { fatalError() }
-        
         let identityProviders = registerUserInteractor.identityProviders()
-        registerUserViewController.identityProviders = Array(identityProviders)
+        guard let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self, argument: Array(identityProviders))
+        else { fatalError() }
+
         return registerUserViewController
     }
-    
+
     func signUp() {
-        guard let registerUserInteractor = registerUserInteractor else { fatalError() }
         registerUserInteractor.startUserRegistration()
     }
-    
+
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
         if navigationController.presentedViewController is BrowserViewController {
             navigationController.dismiss(animated: true, completion: nil)
         }
-        registerUserInteractor?.handleRedirectURL(registerUserEntity: registerUserEntity)
+        registerUserInteractor.handleRedirectURL(registerUserEntity: registerUserEntity)
     }
-    
+
     func handleCreatePinRegistrationChallenge(registerUserEntity: PinViewControllerEntityProtocol) {
         if navigationController.presentedViewController is PinViewController {
             navigationController.dismiss(animated: true, completion: nil)
         }
-        registerUserInteractor?.handleCreatedPin(registerUserEntity: registerUserEntity)
+        registerUserInteractor.handleCreatedPin(registerUserEntity: registerUserEntity)
     }
 }

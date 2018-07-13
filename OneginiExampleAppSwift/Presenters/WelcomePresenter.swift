@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 protocol WelcomePresenterProtocol {
     func setupSegmentView(welcomeViewController: WelcomeViewController)
@@ -24,33 +24,34 @@ protocol WelcomePresenterProtocol {
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
+    let navigationController: UINavigationController
+    var loginPresenter: LoginPresenterProtocol
+    var registerUserPresenter: RegisterUserPresenterProtocol
 
-    fileprivate let navigationContorller = AppNavigationController.shared
-    var loginPresenter: LoginPresenterProtocol?
-    var registerUserPresenter: RegisterUserPresenterProtocol?
-    
+    init(loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
+        self.loginPresenter = loginPresenter
+        self.registerUserPresenter = registerUserPresenter
+        self.navigationController = navigationController
+    }
+
     func presentWelcomeView() {
         guard let welcomeViewController = AppAssembly.shared.resolver.resolve(WelcomeViewController.self, argument: self) else { fatalError() }
-        navigationContorller.pushViewController(welcomeViewController, animated: false)
+        navigationController.pushViewController(welcomeViewController, animated: false)
     }
-    
+
     func setupLoginView() -> LoginViewController {
-        guard let loginPresenter = loginPresenter else { fatalError() }
         return loginPresenter.setupLoginView()
     }
-    
+
     func setupRegisterUserView() -> RegisterUserViewController {
-        guard let registerUserPresenter = registerUserPresenter else { fatalError() }
         return registerUserPresenter.setupRegisterUserView()
     }
-    
+
     func setupSegmentView(welcomeViewController: WelcomeViewController) {
-        guard let loginPresenter = loginPresenter else { fatalError() }
         if loginPresenter.profiles.count > 0 {
             welcomeViewController.setupViewWithProfiles()
         } else {
             welcomeViewController.setupViewWithoutProfiles()
         }
     }
-    
 }

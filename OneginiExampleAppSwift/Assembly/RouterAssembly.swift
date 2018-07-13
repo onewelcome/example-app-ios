@@ -13,13 +13,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 class RouterAssembly: Assembly {
-    
     func assemble(container: Container) {
-        container.register(AppRouterProtocol.self) { _ in AppRouter() }.inObjectScope(.container)
+        container.register(AppRouterProtocol.self) { r in
+            AppRouter(startupPresenter: r.resolve(StartupPresenterProtocol.self)!,
+                      welcomePresenter: r.resolve(WelcomePresenterProtocol.self)!,
+                      dashboardPresenter: r.resolve(DashboardPresenterProtocol.self)!, errorPresenter: r.resolve(ErrorPresenterProtocol.self)!)
+        }.inObjectScope(.container)
     }
-
 }

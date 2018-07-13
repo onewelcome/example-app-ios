@@ -16,21 +16,18 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
-
     let dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol
 
     init(_ dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol) {
         self.dashboardViewToPresenterProtocol = dashboardViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @IBAction func logoutPressed(_ sender: Any) {
+
+    @IBAction func logoutPressed(_: Any) {
         dashboardViewToPresenterProtocol.logout()
     }
-    
-
 }

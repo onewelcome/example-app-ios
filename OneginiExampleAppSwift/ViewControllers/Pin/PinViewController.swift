@@ -28,42 +28,41 @@ enum PINEntryMode {
 }
 
 class PinViewController: UIViewController {
-    
-    @IBOutlet weak var pinSlotsView: UIView!
-    @IBOutlet weak var backKey: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var errorLabel: UILabel!
-    
+    @IBOutlet var pinSlotsView: UIView!
+    @IBOutlet var backKey: UIButton!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var errorLabel: UILabel!
+
     let pinDot = #imageLiteral(resourceName: "pinDot")
     let pinDotSelected = #imageLiteral(resourceName: "pinDotSelected")
-    
+
     var mode: PINEntryMode
-    
+
     var registerUserEntity: PinViewControllerEntityProtocol
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
-    
+
     var pinSlots = Array<UIView>()
     var pinEntry = Array<String>()
     var pinEntryToVerify = Array<String>()
-    
+
     init(mode: PINEntryMode, registerUserEntity: PinViewControllerEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
         self.mode = mode
         self.registerUserEntity = registerUserEntity
         self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         backKey.isHidden = true
         setupTitleLabel()
         buildPinSlots()
     }
-    
+
     @IBAction func keyPressed(_ key: UIButton) {
         if pinEntry.count >= pinSlots.count {
             return
@@ -71,25 +70,25 @@ class PinViewController: UIViewController {
         pinEntry.append("\(key.tag)")
         evaluatePinState()
     }
-    
-    @IBAction func cancelButtonPressed(_ sender: Any) {
+
+    @IBAction func cancelButtonPressed(_: Any) {
         registerUserEntity.pin = nil
         registerUserViewToPresenterProtocol.handleCreatePinRegistrationChallenge(registerUserEntity: registerUserEntity)
     }
-    
-    @IBAction func backKeyPressed(_ sender: Any) {
+
+    @IBAction func backKeyPressed(_: Any) {
         pinEntry.removeLast()
         updatePinStateRepresentation()
     }
-    
+
     func buildPinSlots() {
         guard let challenge = registerUserEntity.createPinChallenge else { return }
         let pinLength = Int(challenge.pinLength)
         let pinSlotMargin = CGFloat(integerLiteral: 40)
         let pinSlotWidth = CGFloat(integerLiteral: 15)
-        let offsetX = (pinSlotsView.frame.width - ((CGFloat(integerLiteral:pinLength) * pinSlotWidth) + (CGFloat(integerLiteral:pinLength - 1) * pinSlotMargin))) / CGFloat(integerLiteral:2)
+        let offsetX = (pinSlotsView.frame.width - ((CGFloat(integerLiteral: pinLength) * pinSlotWidth) + (CGFloat(integerLiteral: pinLength - 1) * pinSlotMargin))) / CGFloat(integerLiteral: 2)
         var pinSlotsArray = Array<UIView>()
-        for index in 0...(pinLength - 1) {
+        for index in 0 ... (pinLength - 1) {
             let indexFloat = CGFloat(integerLiteral: index)
             let pinSlotFrame = CGRect(x: offsetX + indexFloat * (pinSlotWidth + pinSlotMargin), y: 0, width: pinSlotWidth, height: CGFloat(integerLiteral: 15))
             let pinSlotView = pinSlotWithFrame(pinSlotFrame)
@@ -98,45 +97,45 @@ class PinViewController: UIViewController {
         }
         pinSlots.append(contentsOf: pinSlotsArray)
     }
-    
+
     func pinSlotWithFrame(_ frame: CGRect) -> UIView {
         let imageView = UIImageView(frame: frame)
         imageView.image = pinDot
         return imageView
     }
-    
+
     func updatePinStateRepresentation() {
         for pinSlot in pinSlots {
             pinSlot.subviews.forEach { $0.removeFromSuperview() }
         }
-        
-        for index in 0...pinEntry.count {
+
+        for index in 0 ... pinEntry.count {
             if index < pinEntry.count {
                 let slot = pinSlots[index]
                 let selectedDot = UIImageView(image: pinDotSelected)
                 slot.addSubview(selectedDot)
             }
         }
-        
+
         if pinEntry.count == 0 {
             backKey.isHidden = true
         } else {
             backKey.isHidden = false
         }
     }
-    
+
     func reset() {
-        for index in 0...(pinEntry.count - 1) {
+        for index in 0 ... (pinEntry.count - 1) {
             pinEntry[index] = "#"
         }
         pinEntry = Array<String>()
         setupTitleLabel()
         updatePinStateRepresentation()
     }
-    
+
     func evaluatePinState() {
         updatePinStateRepresentation()
-        
+
         if pinEntry.count == pinSlots.count {
             let pincode = pinEntry.joined()
             switch mode {
@@ -153,7 +152,7 @@ class PinViewController: UIViewController {
                 } else {
                     mode = .registration
                     reset()
-                    setupErrorLabel(errorDescription:"The confirmation PIN does not match.")
+                    setupErrorLabel(errorDescription: "The confirmation PIN does not match.")
                 }
                 break
             case .login:
@@ -161,7 +160,7 @@ class PinViewController: UIViewController {
             }
         }
     }
-    
+
     func setupTitleLabel() {
         switch mode {
         case .login:
@@ -173,7 +172,7 @@ class PinViewController: UIViewController {
         }
         setupErrorLabel(errorDescription: "")
     }
-    
+
     func setupErrorLabel(errorDescription: String) {
         errorLabel.text = errorDescription
     }

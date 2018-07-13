@@ -15,10 +15,18 @@
 
 import UIKit
 
-class ErrorPresenter {
+protocol ErrorPresenterProtocol {
+    func showErrorAlert(error: Error, title: String)
+    func showErrorAlertWithRetryAction(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void))
+}
 
-    let navigationController = AppNavigationController.shared
-    
+class ErrorPresenter: ErrorPresenterProtocol {
+    let navigationController: UINavigationController
+
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+
     func showErrorAlert(error: Error, title: String) {
         let errorMessage = "\(error.localizedDescription)"
         let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
@@ -26,7 +34,7 @@ class ErrorPresenter {
         alert.addAction(okAction)
         navigationController.present(alert, animated: true, completion: nil)
     }
-    
+
     func showErrorAlertWithRetryAction(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void)) {
         let errorMessage = "\(error.localizedDescription)"
         let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)

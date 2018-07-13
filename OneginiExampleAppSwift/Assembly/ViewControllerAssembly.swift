@@ -13,26 +13,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 class ViewControllerAssembly: Assembly {
-    
     func assemble(container: Container) {
         container.register(StartupViewController.self) { _ in StartupViewController() }
-        container.register(LoginViewController.self) { _ in LoginViewController() }
-        container.register(RegisterUserViewController.self) { r in
-            let registerUserViewController = RegisterUserViewController()
-            registerUserViewController.registerUserViewToPresenterProtocol = r.resolve(RegisterUserPresenterProtocol.self)
-            return registerUserViewController
+        container.register(LoginViewController.self) { _, profiles, authenticators in
+            LoginViewController(profiles: profiles, authenticators: authenticators)
         }
-        
-        container.register(WelcomeViewController.self) { (r: Resolver, welcomePresenterProtocol: WelcomePresenter) in
-            let welcomeViewController = WelcomeViewController()
-            welcomeViewController.welcomePresenterProtocol = welcomePresenterProtocol
-            
-            return welcomeViewController
+        container.register(RegisterUserViewController.self) { r, identityProviders in
+            RegisterUserViewController(registerUserViewToPresenterProtocol: r.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
+        }
+
+        container.register(WelcomeViewController.self) { (_: Resolver, welcomePresenterProtocol: WelcomePresenter) in
+            WelcomeViewController(welcomePresenterProtocol: welcomePresenterProtocol)
         }
     }
-
 }

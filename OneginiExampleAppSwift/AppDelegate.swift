@@ -16,33 +16,28 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var navigationController = AppNavigationController.shared
+    var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
         oneginiSDKStartup()
-        
+
         return true
     }
-    
+
     func setupWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
-        navigationController.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "background"), for: .default)
+        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "background"), for: .default)
         window?.rootViewController = navigationController
-        navigationController.delegate = self
     }
-    
+
     func oneginiSDKStartup() {
         guard let appRouter = appRouter else { fatalError() }
         appRouter.setupStartupPresenter()
     }
-
 }
-

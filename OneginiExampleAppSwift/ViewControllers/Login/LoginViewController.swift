@@ -16,10 +16,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    @IBOutlet var profilesTableView: UITableView?
+    @IBOutlet var authenticatorsTableView: UITableView?
 
-    @IBOutlet weak var profilesTableView: UITableView?
-    @IBOutlet weak var authenticatorsTableView: UITableView?
-    
     var profiles = [ONGUserProfile]() {
         didSet {
             if let tableView = profilesTableView {
@@ -27,6 +26,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
+
     var authenticators = [ONGAuthenticator]() {
         didSet {
             if let tableView = authenticatorsTableView {
@@ -34,7 +34,17 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
+    init(profiles: [ONGUserProfile], authenticators: [ONGAuthenticator]) {
+        self.profiles = profiles
+        self.authenticators = authenticators
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -43,12 +53,10 @@ class LoginViewController: UIViewController {
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
     }
-    
 }
 
 extension LoginViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         if tableView == profilesTableView {
             return profiles.count
         } else if tableView == authenticatorsTableView {
@@ -57,7 +65,7 @@ extension LoginViewController: UITableViewDataSource {
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == profilesTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileIdCell", for: indexPath) as! ProfileTableViewCell
@@ -74,14 +82,13 @@ extension LoginViewController: UITableViewDataSource {
 }
 
 extension LoginViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell

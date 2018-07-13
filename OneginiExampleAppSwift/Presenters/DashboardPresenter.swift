@@ -18,38 +18,36 @@ import UIKit
 typealias DashboardPresenterProtocol = DashboardInteractorToPresenterProtocol & DashboardViewToPresenterProtocol
 
 protocol DashboardInteractorToPresenterProtocol: class {
-    
     func presentDashboardView()
     func presentWelcomeView()
 }
 
 protocol DashboardViewToPresenterProtocol {
-    
     func logout()
 }
 
 class DashboardPresenter: DashboardInteractorToPresenterProtocol {
+    let navigationController: UINavigationController
+    var logoutInteractor: LogoutInteractorProtocol
 
-    let navigationContorller = AppNavigationController.shared
-    var logoutInteractor: LogoutInteractorProtocol?
+    init(logoutInteractor: LogoutInteractorProtocol, navigationController: UINavigationController) {
+        self.logoutInteractor = logoutInteractor
+        self.navigationController = navigationController
+    }
 
     func presentDashboardView() {
         let dashboardViewController = DashboardViewController(self)
-        navigationContorller.pushViewController(dashboardViewController, animated: true)
+        navigationController.pushViewController(dashboardViewController, animated: true)
     }
-    
+
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupWelcomePresenter()
     }
-    
 }
 
 extension DashboardPresenter: DashboardViewToPresenterProtocol {
-    
     func logout() {
-        guard let logoutInteractor = logoutInteractor else { fatalError() }
         logoutInteractor.logout()
     }
-    
 }

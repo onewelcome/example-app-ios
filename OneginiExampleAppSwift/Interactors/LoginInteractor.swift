@@ -21,13 +21,11 @@ public protocol LoginInteractorProtocol {
 }
 
 class LoginInteractor: LoginInteractorProtocol {
-
     func userProfiles() -> Set<ONGUserProfile> {
         return ONGUserClient.sharedInstance().userProfiles()
     }
-    
+
     func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator> {
         return ONGUserClient.sharedInstance().allAuthenticators(forUser: profile)
     }
-    
 }

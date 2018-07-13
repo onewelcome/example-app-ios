@@ -21,9 +21,8 @@ enum State {
 }
 
 class StartupViewController: UIViewController {
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
- 
     var state: State = .loading {
         didSet {
             if state == .loaded {
@@ -31,7 +30,7 @@ class StartupViewController: UIViewController {
             }
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
@@ -40,11 +39,11 @@ class StartupViewController: UIViewController {
             showActivityIndicator()
         }
     }
-    
+
     func showActivityIndicator() {
         activityIndicator.startAnimating()
     }
-    
+
     func hideActivityIndicator() {
         activityIndicator.stopAnimating()
     }

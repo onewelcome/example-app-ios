@@ -24,43 +24,42 @@ protocol BrowserViewControllerEntityProtocol {
 }
 
 class BrowserViewController: UIViewController, WKUIDelegate {
-    
     var webView: WKWebView!
     var cancelButton: UIButton!
-    
+
     var registerUserEntity: BrowserViewControllerEntityProtocol
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
-    
+
     init(registerUserEntity: BrowserViewControllerEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
         self.registerUserEntity = registerUserEntity
         self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func loadView() {
         super.loadView()
         configureCancelButton()
         configureWebView()
     }
-    
+
     func configureWebView() {
         let webConfiguration = WKWebViewConfiguration()
-        let webViewFrame = CGRect(x: 0, y: 55  , width: view.frame.width , height: view.frame.height - 55)
+        let webViewFrame = CGRect(x: 0, y: 55, width: view.frame.width, height: view.frame.height - 55)
         webView = WKWebView(frame: webViewFrame, configuration: webConfiguration)
-        self.webView.navigationDelegate = self
+        webView.navigationDelegate = self
         view.addSubview(webView)
     }
-    
+
     func configureCancelButton() {
         let cancelButtonFrame = CGRect(x: view.frame.width - 70, y: 30, width: 70, height: 25)
         cancelButton = UIButton(frame: cancelButtonFrame)
         let cancelButtonStringAttributes: [NSAttributedStringKey: Any] = [
-            .font : UIFont(name: "Helvetica Neue", size: 17)!,
-            .foregroundColor : UIColor(red: 0/255, green: 113/255, blue: 155/255, alpha: 1)
+            .font: UIFont(name: "Helvetica Neue", size: 17)!,
+            .foregroundColor: UIColor(red: 0 / 255, green: 113 / 255, blue: 155 / 255, alpha: 1),
         ]
         let cancelButtonString = NSAttributedString(string: "Cancel", attributes: cancelButtonStringAttributes)
         cancelButton.setTitleColor(UIColor.black, for: .normal)
@@ -68,29 +67,27 @@ class BrowserViewController: UIViewController, WKUIDelegate {
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         view.addSubview(cancelButton)
     }
-    
+
     @objc func cancelButtonPressed() {
         registerUserEntity.redirectURL = nil
         registerUserViewToPresenterProtocol.handleRedirectURL(registerUserEntity: registerUserEntity)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let registrationUserURL = registerUserEntity.registrationUserURL else { return }
         let urlRequest = URLRequest(url: registrationUserURL)
         webView.load(urlRequest)
     }
-    
 }
 
 extension BrowserViewController: WKNavigationDelegate {
-    
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url,
-            let oneginiConfig = OneginiConfigModel.configuration() as? [String : String],
+            let oneginiConfig = OneginiConfigModel.configuration() as? [String: String],
             let redirectUrl = oneginiConfig["ONGRedirectURL"] else {
-                decisionHandler(.allow)
-                return
+            decisionHandler(.allow)
+            return
         }
         if url.absoluteString.hasPrefix(redirectUrl) {
             registerUserEntity.redirectURL = url

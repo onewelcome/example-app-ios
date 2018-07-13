@@ -13,36 +13,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 class PresenterAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(RegisterUserPresenterProtocol.self) { r in
-            let registerUserPresenter = RegisterUserPresenter()
-            registerUserPresenter.registerUserInteractor = r.resolve(RegisterUserInteractorProtocol.self)!
-            return registerUserPresenter
+        container.register(StartupPresenterProtocol.self) { r in
+            StartupPresenter(startupInteractor: r.resolve(StartupInteractorProtocol.self)!, navigationController: r.resolve(UINavigationController.self)!)
         }
-        container.register(StartupPresenterProtocol.self) { _ in StartupPresenter() }
+
         container.register(WelcomePresenterProtocol.self) { r in
-            let welcomePresenter = WelcomePresenter()
-            welcomePresenter.loginPresenter = r.resolve(LoginPresenterProtocol.self)!
-            welcomePresenter.registerUserPresenter = r.resolve(RegisterUserPresenterProtocol.self)!
-            return welcomePresenter
+            WelcomePresenter(loginPresenter: r.resolve(LoginPresenterProtocol.self)!,
+                             registerUserPresenter: r.resolve(RegisterUserPresenterProtocol.self)!,
+                             navigationController: r.resolve(UINavigationController.self)!)
         }
-        
-        
-        container.register(RegisterUserViewToPresenterProtocol.self) { _ in RegisterUserPresenter() }
+
+        container.register(RegisterUserPresenterProtocol.self) { r in
+            RegisterUserPresenter(registerUserInteractor: r.resolve(RegisterUserInteractorProtocol.self)!,
+                                  navigationController: r.resolve(UINavigationController.self)!)
+        }
+
         container.register(LoginPresenterProtocol.self) { r in
-            let loginPresenter = LoginPresenter()
-            loginPresenter.loginInteractor = r.resolve(LoginInteractorProtocol.self)!
-            return loginPresenter
+            LoginPresenter(loginInteractor: r.resolve(LoginInteractorProtocol.self)!)
         }
-        
+
         container.register(DashboardPresenterProtocol.self) { r in
-            let dashboardPresenter = DashboardPresenter()
-            dashboardPresenter.logoutInteractor = r.resolve(LogoutInteractorProtocol.self)!
-            return dashboardPresenter
+            DashboardPresenter(logoutInteractor: r.resolve(LogoutInteractorProtocol.self)!, navigationController: r.resolve(UINavigationController.self)!)
         }
+
+        container.register(ErrorPresenterProtocol.self) { r in
+            ErrorPresenter(navigationController: r.resolve(UINavigationController.self)!)
+        }
+
+        container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
     }
 }

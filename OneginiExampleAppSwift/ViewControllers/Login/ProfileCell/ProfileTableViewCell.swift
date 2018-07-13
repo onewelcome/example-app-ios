@@ -16,8 +16,6 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var profileIdLabel: UILabel!
-    @IBOutlet weak var tickImage: UIImageView!
-    var lala:String? 
+    @IBOutlet var profileIdLabel: UILabel!
+    @IBOutlet var tickImage: UIImageView!
 }

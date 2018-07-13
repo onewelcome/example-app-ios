@@ -15,8 +15,7 @@
 
 import UIKit
 
-class RegisterUserEntity : BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol {
-
+class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol {
     var registrationUserURL: URL?
     var browserRegistrationChallenge: ONGBrowserRegistrationChallenge?
     var customRegistrationChallenge: ONGCustomRegistrationChallenge?
@@ -24,5 +23,4 @@ class RegisterUserEntity : BrowserViewControllerEntityProtocol, PinViewControlle
     var pin: String?
     var createPinError: Error?
     var redirectURL: URL?
-    
 }

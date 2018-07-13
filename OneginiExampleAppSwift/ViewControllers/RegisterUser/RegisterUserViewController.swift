@@ -15,22 +15,29 @@
 
 import UIKit
 
-
-
 class RegisterUserViewController: UIViewController {
+    @IBOutlet var identityProvidersTableView: UITableView?
 
-    @IBOutlet weak var identityProvidersTableView: UITableView?
-    
-    var registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol? = nil
-    
+    let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
+
     var identityProviders = [ONGIdentityProvider]() {
-        didSet  {
+        didSet {
             if let identityProvidersTableView = identityProvidersTableView {
                 identityProvidersTableView.reloadData()
             }
         }
     }
-    
+
+    init(registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol, identityProviders: [ONGIdentityProvider]) {
+        self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
+        self.identityProviders = identityProviders
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -38,19 +45,17 @@ class RegisterUserViewController: UIViewController {
             identityProvidersTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         }
     }
-    
-    @IBAction func signUp(_ sender: Any) {
-        registerUserViewToPresenterProtocol?.signUp()
+
+    @IBAction func signUp(_: Any) {
+        registerUserViewToPresenterProtocol.signUp()
     }
-    
 }
 
 extension RegisterUserViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return identityProviders.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath) as! ButtonTableViewCell
         let identityProviderName = identityProviders[indexPath.row].name

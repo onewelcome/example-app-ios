@@ -13,27 +13,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import BetterSegmentedControl
+import UIKit
 
 class WelcomeViewController: UIViewController {
+    @IBOutlet var segmentView: BetterSegmentedControl!
+    @IBOutlet var tabView: UIView!
 
-    @IBOutlet weak var segmentView: BetterSegmentedControl!
-    @IBOutlet weak var tabView: UIView!
-    
-    var welcomePresenterProtocol: WelcomePresenterProtocol?
-    
-    var loginViewController: LoginViewController?
-    var registerUserViewController: RegisterUserViewController?
-    
+    var loginViewController: LoginViewController
+    var registerUserViewController: RegisterUserViewController
+    var welcomePresenterProtocol: WelcomePresenterProtocol
+
+    init(welcomePresenterProtocol: WelcomePresenterProtocol) {
+        self.welcomePresenterProtocol = welcomePresenterProtocol
+        loginViewController = welcomePresenterProtocol.setupLoginView()
+        registerUserViewController = welcomePresenterProtocol.setupRegisterUserView()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginViewController = welcomePresenterProtocol?.setupLoginView()
-        registerUserViewController = welcomePresenterProtocol?.setupRegisterUserView()
-        welcomePresenterProtocol?.setupSegmentView(welcomeViewController: self)
+        welcomePresenterProtocol.setupSegmentView(welcomeViewController: self)
         navigationController?.navigationBar.isHidden = true
     }
-    
+
     func setupViewWithProfiles() {
         segmentView.isHidden = false
         segmentView.titles = ["Log in", "Sign Up"]
@@ -44,34 +51,29 @@ class WelcomeViewController: UIViewController {
         segmentView.addSubviewToIndicator(customSubview)
         displayLognViewController()
     }
-    
+
     func setupViewWithoutProfiles() {
         segmentView.isHidden = true
         displayRegisterUserViewController()
     }
-    
+
     func displayLognViewController() {
-        guard let loginViewController = loginViewController else { return }
         addChildViewController(loginViewController)
         tabView.addSubview(loginViewController.view)
         loginViewController.view.frame = tabView.bounds
     }
-    
+
     func displayRegisterUserViewController() {
-        guard let registerUserViewController = registerUserViewController else { return }
         addChildViewController(registerUserViewController)
         tabView.addSubview(registerUserViewController.view)
         registerUserViewController.view.frame = tabView.bounds
     }
-    
+
     @IBAction func segmentValueChanged(_ sender: BetterSegmentedControl) {
         if sender.index == 0 {
             displayLognViewController()
         } else {
             displayRegisterUserViewController()
         }
-        
     }
-    
-    
 }

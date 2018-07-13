@@ -18,32 +18,28 @@ import UIKit
 typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol
 
 protocol LoginInteractorToPresenterProtocol {
-    
 }
 
 protocol LoginViewToPresenterProtocol {
     var profiles: Array<ONGUserProfile> { get set }
-    
+
     func setupLoginView() -> LoginViewController
 }
 
-class LoginPresenter : LoginInteractorToPresenterProtocol {
-
-    var loginInteractor: LoginInteractorProtocol?
+class LoginPresenter: LoginInteractorToPresenterProtocol {
+    var loginInteractor: LoginInteractorProtocol
     var profiles = Array<ONGUserProfile>()
-    
+
+    init(loginInteractor: LoginInteractorProtocol) {
+        self.loginInteractor = loginInteractor
+    }
 }
 
-extension LoginPresenter : LoginViewToPresenterProtocol {
-    
+extension LoginPresenter: LoginViewToPresenterProtocol {
     func setupLoginView() -> LoginViewController {
-        guard let loginInteractor = loginInteractor,
-            let loginViewController = AppAssembly.shared.resolver.resolve(LoginViewController.self)
-            else { fatalError() }
-        
         profiles = Array(loginInteractor.userProfiles())
-        loginViewController.profiles = profiles
+        let authenticators = loginInteractor.authenticators(profile: profiles[0])
+        guard let loginViewController = AppAssembly.shared.resolver.resolve(LoginViewController.self, arguments: profiles, Array(authenticators)) else { fatalError() }
         return loginViewController
     }
-    
 }

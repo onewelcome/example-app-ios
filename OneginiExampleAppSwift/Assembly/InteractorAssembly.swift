@@ -16,20 +16,19 @@
 import Swinject
 
 class InteractorAssembly: Assembly {
-        
     func assemble(container: Container) {
         container.register(StartupInteractorProtocol.self) { _ in StartupInteractor() }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
-            .initCompleted { (r, c) in
+            .initCompleted { r, c in
                 let registerUserInteractor = c as! RegisterUserInteractor
                 registerUserInteractor.registerUserPresenter = r.resolve(RegisterUserPresenterProtocol.self)
-        }
+            }
         container.register(LogoutInteractorProtocol.self) { _ in LogoutInteractor() }
-            .initCompleted { (r, c) in
+            .initCompleted { r, c in
                 let logoutInteractor = c as! LogoutInteractor
                 logoutInteractor.dashboardPresenter = r.resolve(DashboardPresenterProtocol.self)
-        }
+            }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
     }
 }

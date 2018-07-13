@@ -16,17 +16,14 @@
 import UIKit
 
 protocol LogoutInteractorProtocol {
-    
     func logout()
-    
 }
 
 class LogoutInteractor: LogoutInteractorProtocol {
-
     weak var dashboardPresenter: DashboardInteractorToPresenterProtocol?
-    
+
     func logout() {
-        ONGUserClient.sharedInstance().logoutUser { (userProfile, error) in
+        ONGUserClient.sharedInstance().logoutUser { _, error in
             if let error = error {
                 print(error)
             } else {
@@ -34,5 +31,4 @@ class LogoutInteractor: LogoutInteractorProtocol {
             }
         }
     }
-    
 }

@@ -15,37 +15,52 @@
 
 import UIKit
 
-protocol AppRouterProtocol {
-    var startupPresenter: StartupPresenterProtocol? { get set }
-    var welcomePresenter: WelcomePresenterProtocol? { get set }
-    var dashboardPresenter: DashboardPresenterProtocol? { get set }
-    
+protocol AppRouterProtocol: class {
+    var startupPresenter: StartupPresenterProtocol { get }
+    var welcomePresenter: WelcomePresenterProtocol { get }
+    var dashboardPresenter: DashboardPresenterProtocol { get }
+    var errorPresenter: ErrorPresenterProtocol { get }
+
     func setupStartupPresenter()
     func setupWelcomePresenter()
     func setupDashboardPresenter()
+    func setupErrorAlert(error: Error, title: String)
+    func setupErrorAlertWithRetry(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void))
 }
 
 class AppRouter: AppRouterProtocol {
-    
-    var startupPresenter: StartupPresenterProtocol?
-    var welcomePresenter: WelcomePresenterProtocol?
-    var dashboardPresenter: DashboardPresenterProtocol?
-    
-    func setupStartupPresenter() {
-        guard let startupPresenter = AppAssembly.shared.resolver.resolve(StartupPresenterProtocol.self) else { fatalError() }
+    var startupPresenter: StartupPresenterProtocol
+    var welcomePresenter: WelcomePresenterProtocol
+    var dashboardPresenter: DashboardPresenterProtocol
+    var errorPresenter: ErrorPresenterProtocol
+
+    init(startupPresenter: StartupPresenterProtocol,
+         welcomePresenter: WelcomePresenterProtocol,
+         dashboardPresenter: DashboardPresenterProtocol,
+         errorPresenter: ErrorPresenterProtocol) {
         self.startupPresenter = startupPresenter
+        self.welcomePresenter = welcomePresenter
+        self.dashboardPresenter = dashboardPresenter
+        self.errorPresenter = errorPresenter
+    }
+
+    func setupStartupPresenter() {
         startupPresenter.oneigniSDKStartup()
     }
-    
+
     func setupWelcomePresenter() {
-        guard let welcomePresenter = AppAssembly.shared.resolver.resolve(WelcomePresenterProtocol.self) else { fatalError() }
-        self.welcomePresenter = welcomePresenter
         welcomePresenter.presentWelcomeView()
     }
-    
+
     func setupDashboardPresenter() {
-        guard let dashboardPresenter = AppAssembly.shared.resolver.resolve(DashboardPresenterProtocol.self) else { fatalError() }
-        self.dashboardPresenter = dashboardPresenter
         dashboardPresenter.presentDashboardView()
+    }
+
+    func setupErrorAlert(error: Error, title: String) {
+        errorPresenter.showErrorAlert(error: error, title: title)
+    }
+
+    func setupErrorAlertWithRetry(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void)) {
+        errorPresenter.showErrorAlertWithRetryAction(error: error, title: title, retryHandler: retryHandler)
     }
 }

@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 typealias StartupPresenterProtocol = StartupInteractorToPresenterProtocol
 
@@ -22,21 +22,25 @@ protocol StartupInteractorToPresenterProtocol {
     func oneigniSDKStartup()
 }
 
-class StartupPresenter : StartupInteractorToPresenterProtocol {
-    
-    let navigationController = AppNavigationController.shared
-    var startUpInteractor: StartupInteractorProtocol?
-    
+class StartupPresenter: StartupInteractorToPresenterProtocol {
+    let navigationController: UINavigationController
+    var startupInteractor: StartupInteractorProtocol
+
+    init(startupInteractor: StartupInteractorProtocol, navigationController: UINavigationController) {
+        self.startupInteractor = startupInteractor
+        self.navigationController = navigationController
+    }
+
     func oneigniSDKStartup() {
         guard let startupViewController = AppAssembly.shared.resolver.resolve(StartupViewController.self) else { fatalError() }
         navigationController.pushViewController(startupViewController, animated: false)
+
         startupViewController.state = .loading
-        
-        guard let startupInteractor = AppAssembly.shared.resolver.resolve(StartupInteractorProtocol.self) else { fatalError() }
-        startupInteractor.oneginiSDKStartup { (result, error) in
+        startupInteractor.oneginiSDKStartup { _, error in
             startupViewController.state = .loaded
             if let error = error {
-                ErrorPresenter().showErrorAlertWithRetryAction(error: error, title: "", retryHandler: { _ in
+                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+                appRouter.setupErrorAlertWithRetry(error: error, title: "", retryHandler: { _ in
                     self.navigationController.viewControllers.removeLast()
                     self.oneigniSDKStartup()
                 })
@@ -45,10 +49,9 @@ class StartupPresenter : StartupInteractorToPresenterProtocol {
             }
         }
     }
-    
+
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupWelcomePresenter()
     }
-    
 }

@@ -20,13 +20,10 @@ public protocol StartupInteractorProtocol {
 }
 
 class StartupInteractor: StartupInteractorProtocol {
-    
     func oneginiSDKStartup(completion: @escaping (Bool, Error?) -> Void) {
         ONGClientBuilder().build()
-        ONGClient.sharedInstance().start { (result, error) in
+        ONGClient.sharedInstance().start { result, error in
             completion(result, error)
         }
-        
     }
-    
 }
