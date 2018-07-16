@@ -28,7 +28,6 @@ protocol RegisterUserViewToPresenterProtocol {
     func signUp()
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
-    func handleCreatePinRegistrationChallenge(registerUserEntity: PinViewControllerEntityProtocol)
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
@@ -46,7 +45,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     }
 
     func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
-        let pinViewController = PinViewController(mode: .registration, registerUserEntity: registerUserEntity, registerUserViewToPresenterProtocol: self)
+        let pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
         navigationController.present(pinViewController, animated: true, completion: nil)
     }
 
@@ -64,8 +63,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     func setupRegisterUserView() -> RegisterUserViewController {
         let identityProviders = registerUserInteractor.identityProviders()
-        guard let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self, argument: Array(identityProviders))
-        else { fatalError() }
+        guard let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self, argument: Array(identityProviders)) else { fatalError() }
 
         return registerUserViewController
     }
@@ -82,9 +80,15 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     }
 
     func handleCreatePinRegistrationChallenge(registerUserEntity: PinViewControllerEntityProtocol) {
+        
+    }
+}
+
+extension RegisterUserPresenter: PinViewToPresenterProtocol {
+    func handlePin(entity: PinViewControllerEntityProtocol) {
         if navigationController.presentedViewController is PinViewController {
             navigationController.dismiss(animated: true, completion: nil)
         }
-        registerUserInteractor.handleCreatedPin(registerUserEntity: registerUserEntity)
+        registerUserInteractor.handleCreatedPin(registerUserEntity: entity)
     }
 }

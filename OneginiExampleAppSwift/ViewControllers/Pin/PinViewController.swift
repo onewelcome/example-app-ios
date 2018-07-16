@@ -17,8 +17,11 @@ import UIKit
 
 protocol PinViewControllerEntityProtocol {
     var pin: String? { get set }
-    var createPinChallenge: ONGCreatePinChallenge? { get }
-    var createPinError: Error? { get }
+    var pinError: Error? { get }
+    var pinLength: Int? { get }
+}
+protocol PinViewToPresenterProtocol {
+    func handlePin(entity: PinViewControllerEntityProtocol)
 }
 
 enum PINEntryMode {
@@ -38,19 +41,20 @@ class PinViewController: UIViewController {
 
     var mode: PINEntryMode
 
-    var registerUserEntity: PinViewControllerEntityProtocol
-    let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
+    var entity: PinViewControllerEntityProtocol
+    let viewToPresenterProtocol: PinViewToPresenterProtocol
 
     var pinSlots = Array<UIView>()
     var pinEntry = Array<String>()
     var pinEntryToVerify = Array<String>()
 
-    init(mode: PINEntryMode, registerUserEntity: PinViewControllerEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
+    init(mode: PINEntryMode, entity: PinViewControllerEntityProtocol, viewToPresenterProtocol: PinViewToPresenterProtocol) {
         self.mode = mode
-        self.registerUserEntity = registerUserEntity
-        self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
+        self.entity = entity
+        self.viewToPresenterProtocol = viewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
+    
 
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,8 +76,8 @@ class PinViewController: UIViewController {
     }
 
     @IBAction func cancelButtonPressed(_: Any) {
-        registerUserEntity.pin = nil
-        registerUserViewToPresenterProtocol.handleCreatePinRegistrationChallenge(registerUserEntity: registerUserEntity)
+        entity.pin = nil
+        viewToPresenterProtocol.handlePin(entity: entity)
     }
 
     @IBAction func backKeyPressed(_: Any) {
@@ -82,8 +86,7 @@ class PinViewController: UIViewController {
     }
 
     func buildPinSlots() {
-        guard let challenge = registerUserEntity.createPinChallenge else { return }
-        let pinLength = Int(challenge.pinLength)
+        guard let pinLength = entity.pinLength else { return }
         let pinSlotMargin = CGFloat(integerLiteral: 40)
         let pinSlotWidth = CGFloat(integerLiteral: 15)
         let offsetX = (pinSlotsView.frame.width - ((CGFloat(integerLiteral: pinLength) * pinSlotWidth) + (CGFloat(integerLiteral: pinLength - 1) * pinSlotMargin))) / CGFloat(integerLiteral: 2)
@@ -147,8 +150,8 @@ class PinViewController: UIViewController {
             case .registrationConfirm:
                 let pincodeConfirm = pinEntryToVerify.joined()
                 if pincode == pincodeConfirm {
-                    registerUserEntity.pin = pincode
-                    registerUserViewToPresenterProtocol.handleCreatePinRegistrationChallenge(registerUserEntity: registerUserEntity)
+                    entity.pin = pincode
+                    viewToPresenterProtocol.handlePin(entity: entity)
                 } else {
                     mode = .registration
                     reset()
@@ -156,6 +159,8 @@ class PinViewController: UIViewController {
                 }
                 break
             case .login:
+                entity.pin = pincode
+                viewToPresenterProtocol.handlePin(entity: entity)
                 break
             }
         }

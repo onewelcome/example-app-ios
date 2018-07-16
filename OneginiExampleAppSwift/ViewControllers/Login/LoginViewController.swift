@@ -16,6 +16,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
@@ -34,16 +35,9 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
-    init(profiles: [ONGUserProfile], authenticators: [ONGAuthenticator]) {
-        self.profiles = profiles
-        self.authenticators = authenticators
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
+    weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
+    var selectedProfile = ONGUserProfile()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +46,24 @@ class LoginViewController: UIViewController {
             let authenticatorsTableView = authenticatorsTableView else { return }
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
+        selectFirstProfile(profilesTableView)
     }
+    
+    func selectFirstProfile(_ profilesTableView: UITableView) {
+        self.selectedProfile = profiles[0]
+        let indexPath = IndexPath(row: 0, section: 0)
+        profilesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+        profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        loginViewToPresenterProtocol?.login(profile: selectedProfile)
+    }
+    
+    func reloadProfiles() {
+        profilesTableView?.reloadData()
+    }
+    
 }
 
 extension LoginViewController: UITableViewDataSource {
@@ -60,7 +71,7 @@ extension LoginViewController: UITableViewDataSource {
         if tableView == profilesTableView {
             return profiles.count
         } else if tableView == authenticatorsTableView {
-            return 4
+            return authenticators.count
         } else {
             return 0
         }
@@ -74,7 +85,8 @@ extension LoginViewController: UITableViewDataSource {
         }
         if tableView == authenticatorsTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath) as! ButtonTableViewCell
-            cell.button.setTitle("Face ID", for: .normal)
+            let authenticatorName = authenticators[indexPath.row].name
+            cell.button.setTitle(authenticatorName, for: .normal)
             return cell
         }
         return UITableViewCell()
@@ -85,6 +97,8 @@ extension LoginViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
+            selectedProfile = profiles[indexPath.row]
+            loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
         }
     }

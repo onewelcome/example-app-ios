@@ -34,7 +34,9 @@ class PresenterAssembly: Assembly {
         }
 
         container.register(LoginPresenterProtocol.self) { r in
-            LoginPresenter(loginInteractor: r.resolve(LoginInteractorProtocol.self)!)
+            LoginPresenter(loginInteractor: r.resolve(LoginInteractorProtocol.self)!,
+                           navigationController: r.resolve(UINavigationController.self)!,
+                           loginViewController: r.resolve(LoginViewController.self)!)
         }
 
         container.register(DashboardPresenterProtocol.self) { r in

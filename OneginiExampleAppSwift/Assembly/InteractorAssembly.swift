@@ -19,6 +19,10 @@ class InteractorAssembly: Assembly {
     func assemble(container: Container) {
         container.register(StartupInteractorProtocol.self) { _ in StartupInteractor() }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
+            .initCompleted { r, c in
+                let loginInteractor = c as! LoginInteractor
+                loginInteractor.loginPresenter = r.resolve(LoginPresenterProtocol.self)!
+        }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
             .initCompleted { r, c in
                 let registerUserInteractor = c as! RegisterUserInteractor
@@ -29,6 +33,5 @@ class InteractorAssembly: Assembly {
                 let logoutInteractor = c as! LogoutInteractor
                 logoutInteractor.dashboardPresenter = r.resolve(DashboardPresenterProtocol.self)
             }
-        container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
     }
 }

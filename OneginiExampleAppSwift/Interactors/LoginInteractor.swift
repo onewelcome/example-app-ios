@@ -15,17 +15,51 @@
 
 import UIKit
 
-public protocol LoginInteractorProtocol {
+protocol LoginInteractorProtocol {
     func userProfiles() -> Set<ONGUserProfile>
     func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator>
+    func login(profile: ONGUserProfile)
+    func handleLogin(loginEntity: PinViewControllerEntityProtocol)
 }
 
-class LoginInteractor: LoginInteractorProtocol {
+class LoginInteractor: NSObject, LoginInteractorProtocol {
+    weak var loginPresenter: LoginInteractorToPresenterProtocol?
+    var loginEntity = LoginEntity()
+    
     func userProfiles() -> Set<ONGUserProfile> {
         return ONGUserClient.sharedInstance().userProfiles()
     }
 
     func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator> {
-        return ONGUserClient.sharedInstance().allAuthenticators(forUser: profile)
+        return ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
+    }
+
+    func login(profile: ONGUserProfile) {
+        ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
+    }
+    
+    func handleLogin(loginEntity: PinViewControllerEntityProtocol) {
+        guard let pinChallenge = self.loginEntity.pinChallenge else { return }
+        if let pin = loginEntity.pin {
+            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+        } else {
+            pinChallenge.sender.cancel(pinChallenge)
+        }
+    }
+}
+
+extension LoginInteractor: ONGAuthenticationDelegate {
+    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
+        loginEntity.pinChallenge = challenge
+        loginEntity.pinLength = 5
+        loginPresenter?.presentPinView(loginEntity: loginEntity)
+    }
+
+    func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {
+        loginPresenter?.presentDashboardView()
+    }
+
+    func userClient(_: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, error: Error) {
+        loginPresenter?.presentError(error)
     }
 }

@@ -44,7 +44,7 @@ class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
     }
 
     func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol) {
-        guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
+        guard let createPinChallenge = self.registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
             createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
         } else {
@@ -62,6 +62,7 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
 
     func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
         registerUserEntity.createPinChallenge = challenge
+        registerUserEntity.pinLength = Int(challenge.pinLength)
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 

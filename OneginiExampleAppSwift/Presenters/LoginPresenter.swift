@@ -17,29 +17,73 @@ import UIKit
 
 typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol
 
-protocol LoginInteractorToPresenterProtocol {
+protocol LoginInteractorToPresenterProtocol: class {
+    func presentPinView(loginEntity: LoginEntity)
+    func presentDashboardView()
+    func presentError(_ error: Error)
 }
 
-protocol LoginViewToPresenterProtocol {
+protocol LoginViewToPresenterProtocol: class {
     var profiles: Array<ONGUserProfile> { get set }
 
     func setupLoginView() -> LoginViewController
+    func login(profile: ONGUserProfile)
+    func reloadAuthenticators(_ profiles: ONGUserProfile)
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
     var loginInteractor: LoginInteractorProtocol
     var profiles = Array<ONGUserProfile>()
+    let navigationController: UINavigationController
+    var loginViewController: LoginViewController
 
-    init(loginInteractor: LoginInteractorProtocol) {
+    init(loginInteractor: LoginInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
+        self.navigationController = navigationController
+        self.loginViewController = loginViewController
+    }
+    
+    func presentPinView(loginEntity: LoginEntity) {
+        let pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+        navigationController.present(pinViewController, animated: true, completion: nil)
+    }
+    
+    func presentDashboardView() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupDashboardPresenter()
+    }
+    
+    func presentError(_ error: Error) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error, title: "")
     }
 }
 
 extension LoginPresenter: LoginViewToPresenterProtocol {
     func setupLoginView() -> LoginViewController {
         profiles = Array(loginInteractor.userProfiles())
-        let authenticators = loginInteractor.authenticators(profile: profiles[0])
-        guard let loginViewController = AppAssembly.shared.resolver.resolve(LoginViewController.self, arguments: profiles, Array(authenticators)) else { fatalError() }
+        if profiles.count > 0 {
+            let authenticators = Array(loginInteractor.authenticators(profile: profiles[0]))
+            loginViewController.authenticators = authenticators
+        }
+        loginViewController.profiles = profiles
         return loginViewController
+    }
+    
+    func login(profile: ONGUserProfile) {
+        loginInteractor.login(profile: profile)
+    }
+    
+    func reloadAuthenticators(_ profiles: ONGUserProfile) {
+        loginViewController.authenticators = Array(loginInteractor.authenticators(profile: profiles))
+    }
+}
+
+extension LoginPresenter: PinViewToPresenterProtocol {
+    func handlePin(entity: PinViewControllerEntityProtocol) {
+        if navigationController.presentedViewController is PinViewController {
+            navigationController.dismiss(animated: true, completion: nil)
+        }
+        loginInteractor.handleLogin(loginEntity: entity)
     }
 }
