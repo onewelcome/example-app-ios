@@ -60,10 +60,6 @@ class LoginViewController: UIViewController {
         loginViewToPresenterProtocol?.login(profile: selectedProfile)
     }
     
-    func reloadProfiles() {
-        profilesTableView?.reloadData()
-    }
-    
 }
 
 extension LoginViewController: UITableViewDataSource {

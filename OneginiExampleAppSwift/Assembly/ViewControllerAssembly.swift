@@ -27,8 +27,9 @@ class ViewControllerAssembly: Assembly {
             RegisterUserViewController(registerUserViewToPresenterProtocol: r.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
         }
 
-        container.register(WelcomeViewController.self) { (_: Resolver, welcomePresenterProtocol: WelcomePresenter) in
-            WelcomeViewController(welcomePresenterProtocol: welcomePresenterProtocol)
+        container.register(WelcomeViewController.self) { _ in WelcomeViewController() }
+            .initCompleted { r, welcomeViewController in
+                welcomeViewController.welcomePresenterProtocol = r.resolve(WelcomePresenterProtocol.self)!
         }
     }
 }

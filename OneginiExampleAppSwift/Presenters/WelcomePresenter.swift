@@ -16,38 +16,38 @@
 import Swinject
 import UIKit
 
-protocol WelcomePresenterProtocol {
-    func setupSegmentView(welcomeViewController: WelcomeViewController)
-    func setupLoginView() -> LoginViewController
-    func setupRegisterUserView() -> RegisterUserViewController
+protocol WelcomePresenterProtocol: class {
+    func setupSegmentView()
     func presentWelcomeView()
+    func popToWelcomeViewController()
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
     let navigationController: UINavigationController
     var loginPresenter: LoginPresenterProtocol
     var registerUserPresenter: RegisterUserPresenterProtocol
+    var welcomeViewController: WelcomeViewController
 
-    init(loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
+    init(_ welcomeViewController: WelcomeViewController ,loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
+        self.welcomeViewController = welcomeViewController
         self.loginPresenter = loginPresenter
         self.registerUserPresenter = registerUserPresenter
         self.navigationController = navigationController
     }
 
     func presentWelcomeView() {
-        guard let welcomeViewController = AppAssembly.shared.resolver.resolve(WelcomeViewController.self, argument: self) else { fatalError() }
+        welcomeViewController.loginViewController = loginPresenter.setupLoginView()
+        welcomeViewController.registerUserViewController =  registerUserPresenter.setupRegisterUserView()
         navigationController.pushViewController(welcomeViewController, animated: false)
     }
-
-    func setupLoginView() -> LoginViewController {
-        return loginPresenter.setupLoginView()
+    
+    func popToWelcomeViewController() {
+        loginPresenter.reloadProfiles()
+        setupSegmentView()
+        navigationController.popToViewController(welcomeViewController, animated: true)
     }
 
-    func setupRegisterUserView() -> RegisterUserViewController {
-        return registerUserPresenter.setupRegisterUserView()
-    }
-
-    func setupSegmentView(welcomeViewController: WelcomeViewController) {
+    func setupSegmentView() {
         if loginPresenter.profiles.count > 0 {
             welcomeViewController.setupViewWithProfiles()
         } else {

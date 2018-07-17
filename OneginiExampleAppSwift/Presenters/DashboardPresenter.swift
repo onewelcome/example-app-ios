@@ -42,7 +42,7 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
 
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupWelcomePresenter()
+        appRouter.popToWelcomeView()
     }
 }
 

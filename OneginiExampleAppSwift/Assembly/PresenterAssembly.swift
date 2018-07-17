@@ -23,7 +23,8 @@ class PresenterAssembly: Assembly {
         }
 
         container.register(WelcomePresenterProtocol.self) { r in
-            WelcomePresenter(loginPresenter: r.resolve(LoginPresenterProtocol.self)!,
+            WelcomePresenter(r.resolve(WelcomeViewController.self)!,
+                             loginPresenter: r.resolve(LoginPresenterProtocol.self)!,
                              registerUserPresenter: r.resolve(RegisterUserPresenterProtocol.self)!,
                              navigationController: r.resolve(UINavigationController.self)!)
         }

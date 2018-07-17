@@ -29,6 +29,7 @@ protocol LoginViewToPresenterProtocol: class {
     func setupLoginView() -> LoginViewController
     func login(profile: ONGUserProfile)
     func reloadAuthenticators(_ profiles: ONGUserProfile)
+    func reloadProfiles()
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
@@ -76,6 +77,11 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     
     func reloadAuthenticators(_ profiles: ONGUserProfile) {
         loginViewController.authenticators = Array(loginInteractor.authenticators(profile: profiles))
+    }
+    
+    func reloadProfiles() {
+        profiles = Array(loginInteractor.userProfiles())
+        loginViewController.profiles = profiles
     }
 }
 
