@@ -16,8 +16,8 @@
 import UIKit
 
 protocol LoginInteractorProtocol {
-    func userProfiles() -> Set<ONGUserProfile>
-    func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator>
+    func userProfiles() -> Array<ONGUserProfile>
+    func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile)
     func handleLogin(loginEntity: PinViewControllerEntityProtocol)
 }
@@ -26,12 +26,14 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     weak var loginPresenter: LoginInteractorToPresenterProtocol?
     var loginEntity = LoginEntity()
     
-    func userProfiles() -> Set<ONGUserProfile> {
-        return ONGUserClient.sharedInstance().userProfiles()
+    func userProfiles() -> Array<ONGUserProfile> {
+        let userProfiles = ONGUserClient.sharedInstance().userProfiles()
+        return Array(userProfiles)
     }
 
-    func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator> {
-        return ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
+    func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator> {
+        let authenticators = ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
+        return Array(authenticators)
     }
 
     func login(profile: ONGUserProfile) {

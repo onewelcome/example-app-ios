@@ -44,6 +44,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     func popToWelcomeViewController() {
         loginPresenter.reloadProfiles()
         setupSegmentView()
+        loginPresenter.selectLastSelectedProfile()
         navigationController.popToViewController(welcomeViewController, animated: true)
     }
 

@@ -15,7 +15,12 @@
 
 import UIKit
 
-typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol
+typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol & ParentToChildPresenterProtocol
+
+protocol ParentToChildPresenterProtocol {
+    func reloadProfiles()
+    func selectLastSelectedProfile()
+}
 
 protocol LoginInteractorToPresenterProtocol: class {
     func presentPinView(loginEntity: LoginEntity)
@@ -29,7 +34,6 @@ protocol LoginViewToPresenterProtocol: class {
     func setupLoginView() -> LoginViewController
     func login(profile: ONGUserProfile)
     func reloadAuthenticators(_ profiles: ONGUserProfile)
-    func reloadProfiles()
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
@@ -62,9 +66,9 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
 
 extension LoginPresenter: LoginViewToPresenterProtocol {
     func setupLoginView() -> LoginViewController {
-        profiles = Array(loginInteractor.userProfiles())
+        profiles = loginInteractor.userProfiles()
         if profiles.count > 0 {
-            let authenticators = Array(loginInteractor.authenticators(profile: profiles[0]))
+            let authenticators = loginInteractor.authenticators(profile: profiles[0])
             loginViewController.authenticators = authenticators
         }
         loginViewController.profiles = profiles
@@ -76,12 +80,22 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     }
     
     func reloadAuthenticators(_ profiles: ONGUserProfile) {
-        loginViewController.authenticators = Array(loginInteractor.authenticators(profile: profiles))
+        loginViewController.authenticators = loginInteractor.authenticators(profile: profiles)
     }
     
+}
+
+extension LoginPresenter: ParentToChildPresenterProtocol {
     func reloadProfiles() {
-        profiles = Array(loginInteractor.userProfiles())
+        profiles = loginInteractor.userProfiles()
         loginViewController.profiles = profiles
+    }
+    
+    func selectLastSelectedProfile() {
+        let profile = loginViewController.selectedProfile
+        if let index = loginViewController.profiles.index(of: profile) {
+            loginViewController.selectProfile(index: index)
+        }
     }
 }
 

@@ -16,7 +16,7 @@
 import UIKit
 
 protocol RegisterUserInteractorProtocol {
-    func identityProviders() -> Set<ONGIdentityProvider>
+    func identityProviders() -> Array<ONGIdentityProvider>
     func startUserRegistration()
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
     func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol)
@@ -26,8 +26,9 @@ class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
 
-    func identityProviders() -> Set<ONGIdentityProvider> {
-        return ONGUserClient.sharedInstance().identityProviders()
+    func identityProviders() -> Array<ONGIdentityProvider> {
+        let identityProviders = ONGUserClient.sharedInstance().identityProviders()
+        return Array(identityProviders)
     }
 
     func startUserRegistration() {
