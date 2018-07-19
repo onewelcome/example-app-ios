@@ -54,7 +54,11 @@ extension LoginInteractor: ONGAuthenticationDelegate {
     func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
-        loginPresenter?.presentPinView(loginEntity: loginEntity)
+        if let error = challenge.error {
+            loginPresenter?.presentErrorOnPinView(errorDescription: error.localizedDescription)
+        } else {
+            loginPresenter?.presentPinView(loginEntity: loginEntity)
+        }
     }
 
     func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {

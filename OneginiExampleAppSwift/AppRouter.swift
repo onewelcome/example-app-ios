@@ -21,7 +21,8 @@ protocol AppRouterProtocol: class {
     var dashboardPresenter: DashboardPresenterProtocol { get }
     var errorPresenter: ErrorPresenterProtocol { get }
 
-    func popToWelcomeView()
+    func popToWelcomeViewWithLogin()
+    func popToWelcomeViewControllerWithRegisterUser()
     func setupStartupPresenter()
     func setupWelcomePresenter()
     func setupDashboardPresenter()
@@ -45,8 +46,12 @@ class AppRouter: AppRouterProtocol {
         self.errorPresenter = errorPresenter
     }
     
-    func popToWelcomeView() {
-        welcomePresenter.popToWelcomeViewController()
+    func popToWelcomeViewWithLogin() {
+        welcomePresenter.popToWelcomeViewControllerWithLogin()
+    }
+    
+    func popToWelcomeViewControllerWithRegisterUser() {
+        welcomePresenter.popToWelcomeViewControllerWithRegisterUser()
     }
 
     func setupStartupPresenter() {

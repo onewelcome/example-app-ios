@@ -64,7 +64,11 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
     func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
         registerUserEntity.createPinChallenge = challenge
         registerUserEntity.pinLength = Int(challenge.pinLength)
-        registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
+        if let error = challenge.error {
+            registerUserPresenter?.presentErrorOnPinView(errorDescription: error.localizedDescription)
+        } else {
+            registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
+        }
     }
 
     func userClient(_: ONGUserClient, didRegisterUser _: ONGUserProfile, info _: ONGCustomInfo?) {

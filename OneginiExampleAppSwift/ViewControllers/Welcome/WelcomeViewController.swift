@@ -50,6 +50,10 @@ class WelcomeViewController: UIViewController {
         segmentView.isHidden = true
         displayRegisterUserViewController()
     }
+    
+    func selectSignUp() {
+        try? segmentView.setIndex(1)
+    }
 
     func displayLognViewController() {
         guard let loginViewController = loginViewController else { return }

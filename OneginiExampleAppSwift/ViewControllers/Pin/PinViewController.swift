@@ -20,7 +20,7 @@ protocol PinViewControllerEntityProtocol {
     var pinError: Error? { get }
     var pinLength: Int? { get }
 }
-protocol PinViewToPresenterProtocol {
+protocol PinViewToPresenterProtocol: class {
     func handlePin(entity: PinViewControllerEntityProtocol)
 }
 
@@ -40,9 +40,8 @@ class PinViewController: UIViewController {
     let pinDotSelected = #imageLiteral(resourceName: "pinDotSelected")
 
     var mode: PINEntryMode
-
     var entity: PinViewControllerEntityProtocol
-    let viewToPresenterProtocol: PinViewToPresenterProtocol
+    unowned let viewToPresenterProtocol: PinViewToPresenterProtocol
 
     var pinSlots = Array<UIView>()
     var pinEntry = Array<String>()
@@ -54,7 +53,7 @@ class PinViewController: UIViewController {
         self.viewToPresenterProtocol = viewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
+
 
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -155,7 +154,7 @@ class PinViewController: UIViewController {
                 } else {
                     mode = .registration
                     reset()
-                    setupErrorLabel(errorDescription: "The confirmation PIN does not match.")
+                    errorLabel.text = "The confirmation PIN does not match."
                 }
                 break
             case .login:
@@ -175,10 +174,14 @@ class PinViewController: UIViewController {
         case .registrationConfirm:
             titleLabel.text = "Please confirm your PIN code"
         }
-        setupErrorLabel(errorDescription: "")
+        errorLabel.text = ""
     }
 
     func setupErrorLabel(errorDescription: String) {
+        if mode == .registrationConfirm {
+            mode = .registration
+        }
+        reset()
         errorLabel.text = errorDescription
     }
 }

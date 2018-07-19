@@ -15,9 +15,10 @@
 
 import UIKit
 
-typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProtocol & RegisterUserViewToPresenterProtocol
+typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProtocol & RegisterUserViewToPresenterProtocol & PinViewToPresenterProtocol
 
 protocol RegisterUserInteractorToPresenterProtocol: class {
+    func presentErrorOnPinView(errorDescription: String)
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
     func presentDashboardView()
@@ -33,6 +34,7 @@ protocol RegisterUserViewToPresenterProtocol {
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     var registerUserInteractor: RegisterUserInteractorProtocol
     let navigationController: UINavigationController
+    var pinViewController: PinViewController?
 
     init(registerUserInteractor: RegisterUserInteractorProtocol, navigationController: UINavigationController) {
         self.registerUserInteractor = registerUserInteractor
@@ -41,12 +43,16 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity) {
         let browserViewController = BrowserViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
-        navigationController.present(browserViewController, animated: true, completion: nil)
+        navigationController.pushViewController(browserViewController, animated: true)
     }
 
     func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
-        let pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
-        navigationController.present(pinViewController, animated: true, completion: nil)
+        pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
+        navigationController.pushViewController(pinViewController!, animated: true)
+    }
+    
+    func presentErrorOnPinView(errorDescription: String) {
+        pinViewController?.setupErrorLabel(errorDescription: errorDescription)
     }
 
     func presentDashboardView() {
@@ -56,6 +62,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 
     func presentError(_ error: Error) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToWelcomeViewControllerWithRegisterUser()
         appRouter.setupErrorAlert(error: error, title: "")
     }
 }
@@ -72,22 +79,12 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     }
 
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
-        if navigationController.presentedViewController is BrowserViewController {
-            navigationController.dismiss(animated: true, completion: nil)
-        }
         registerUserInteractor.handleRedirectURL(registerUserEntity: registerUserEntity)
-    }
-
-    func handleCreatePinRegistrationChallenge(registerUserEntity: PinViewControllerEntityProtocol) {
-        
     }
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
     func handlePin(entity: PinViewControllerEntityProtocol) {
-        if navigationController.presentedViewController is PinViewController {
-            navigationController.dismiss(animated: true, completion: nil)
-        }
         registerUserInteractor.handleCreatedPin(registerUserEntity: entity)
     }
 }
