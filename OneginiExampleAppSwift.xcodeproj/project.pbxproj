@@ -50,6 +50,7 @@
 		7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
 		7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
 		7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C420DD102E00B86628 /* LoginViewController.xib */; };
+		7E7AE42321008ED1002C49D2 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE42221008ED1002C49D2 /* ErrorExtension.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
@@ -130,6 +131,7 @@
 		7E4547A820E62D8B00FB620F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		7E5684C320DD102E00B86628 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7E5684C420DD102E00B86628 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		7E7AE42221008ED1002C49D2 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */ = {
 			isa = PBXGroup;
 			children = (
+				7E7AE42421008F1C002C49D2 /* Extensions */,
 				7E45479A20E4FEFB00FB620F /* Entity */,
 				7E300AD520DA8FF200EF1A79 /* Assembly */,
 				7E300AC820D8F86100EF1A79 /* Interactors */,
@@ -415,6 +418,14 @@
 				7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */,
 			);
 			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		7E7AE42421008F1C002C49D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E7AE42221008ED1002C49D2 /* ErrorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		91DE3EFAA921704936F26C6A /* Pods */ = {
@@ -679,6 +690,7 @@
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
 				7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */,
+				7E7AE42321008ED1002C49D2 /* ErrorExtension.swift in Sources */,
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,

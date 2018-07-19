@@ -25,7 +25,7 @@ protocol LoginInteractorProtocol {
 class LoginInteractor: NSObject, LoginInteractorProtocol {
     weak var loginPresenter: LoginInteractorToPresenterProtocol?
     var loginEntity = LoginEntity()
-    
+
     func userProfiles() -> Array<ONGUserProfile> {
         let userProfiles = ONGUserClient.sharedInstance().userProfiles()
         return Array(userProfiles)
@@ -39,7 +39,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     func login(profile: ONGUserProfile) {
         ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
     }
-    
+
     func handleLogin(loginEntity: PinViewControllerEntityProtocol) {
         guard let pinChallenge = self.loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
@@ -54,11 +54,8 @@ extension LoginInteractor: ONGAuthenticationDelegate {
     func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
-        if let error = challenge.error {
-            loginPresenter?.presentErrorOnPinView(errorDescription: error.localizedDescription)
-        } else {
-            loginPresenter?.presentPinView(loginEntity: loginEntity)
-        }
+        loginEntity.pinError = challenge.error
+        loginPresenter?.presentPinView(loginEntity: loginEntity)
     }
 
     func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {
@@ -66,6 +63,10 @@ extension LoginInteractor: ONGAuthenticationDelegate {
     }
 
     func userClient(_: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, error: Error) {
-        loginPresenter?.presentError(error)
+        if error.code != ONGGenericError.actionCancelled.rawValue {
+            loginPresenter?.loginActionFailed(error)
+        } else {
+            loginPresenter?.loginActionFailed(nil)
+        }
     }
 }

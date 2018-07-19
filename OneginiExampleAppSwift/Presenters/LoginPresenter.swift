@@ -25,9 +25,7 @@ protocol ParentToChildPresenterProtocol {
 protocol LoginInteractorToPresenterProtocol: class {
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView()
-    func presentError(_ error: Error)
-    func presentErrorOnPinView(errorDescription: String)
-
+    func loginActionFailed(_ error: Error?)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -50,26 +48,27 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         self.navigationController = navigationController
         self.loginViewController = loginViewController
     }
-    
+
     func presentPinView(loginEntity: LoginEntity) {
-        let pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-        self.pinViewController = pinViewController
-        navigationController.pushViewController(pinViewController, animated: true)
+        if let error = loginEntity.pinError {
+            pinViewController?.setupErrorLabel(errorDescription: error.localizedDescription)
+        } else {
+            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+            navigationController.pushViewController(pinViewController!, animated: true)
+        }
     }
-    
-    func presentErrorOnPinView(errorDescription: String) {
-        pinViewController?.setupErrorLabel(errorDescription: errorDescription)
-    }
-    
+
     func presentDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupDashboardPresenter()
     }
-    
-    func presentError(_ error: Error) {
+
+    func loginActionFailed(_ error: Error?) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
-        appRouter.setupErrorAlert(error: error, title: "")
+        if let error = error {
+            appRouter.setupErrorAlert(error: error, title: "")
+        }
     }
 }
 
@@ -83,15 +82,15 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
         loginViewController.profiles = profiles
         return loginViewController
     }
-    
+
     func login(profile: ONGUserProfile) {
         loginInteractor.login(profile: profile)
     }
-    
+
     func reloadAuthenticators(_ profile: ONGUserProfile) {
         loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
     }
-    
+
 }
 
 extension LoginPresenter: ParentToChildPresenterProtocol {
@@ -99,7 +98,7 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
         profiles = loginInteractor.userProfiles()
         loginViewController.profiles = profiles
     }
-    
+
     func selectLastSelectedProfileAndReloadAuthenticators() {
         let profile = loginViewController.selectedProfile
         reloadAuthenticators(profile)

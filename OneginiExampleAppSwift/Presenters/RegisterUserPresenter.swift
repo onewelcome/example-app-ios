@@ -18,11 +18,10 @@ import UIKit
 typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProtocol & RegisterUserViewToPresenterProtocol & PinViewToPresenterProtocol
 
 protocol RegisterUserInteractorToPresenterProtocol: class {
-    func presentErrorOnPinView(errorDescription: String)
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
     func presentDashboardView()
-    func presentError(_ error: Error)
+    func registerUserActionFailed(_ error: Error?)
 }
 
 protocol RegisterUserViewToPresenterProtocol {
@@ -47,12 +46,12 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     }
 
     func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
-        pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
-        navigationController.pushViewController(pinViewController!, animated: true)
-    }
-    
-    func presentErrorOnPinView(errorDescription: String) {
-        pinViewController?.setupErrorLabel(errorDescription: errorDescription)
+        if let error = registerUserEntity.pinError {
+            pinViewController?.setupErrorLabel(errorDescription: error.localizedDescription)
+        } else {
+            pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
+            navigationController.pushViewController(pinViewController!, animated: true)
+        }
     }
 
     func presentDashboardView() {
@@ -60,10 +59,12 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         appRouter.setupDashboardPresenter()
     }
 
-    func presentError(_ error: Error) {
+    func registerUserActionFailed(_ error: Error?) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewControllerWithRegisterUser()
-        appRouter.setupErrorAlert(error: error, title: "")
+        appRouter.popToWelcomeViewWithLogin()
+        if let error = error {
+            appRouter.setupErrorAlert(error: error, title: "")
+        }
     }
 }
 
