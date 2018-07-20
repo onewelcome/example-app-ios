@@ -33,7 +33,6 @@ class LoginInteractor: NSObject {
             loginEntity.pinError = nil
         }
     }
-
 }
 
 extension LoginInteractor: LoginInteractorProtocol {
@@ -69,11 +68,11 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         loginPresenter?.presentPinView(loginEntity: loginEntity)
     }
 
-    func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {
+    func userClient(_: ONGUserClient, didAuthenticateUser _: ONGUserProfile, info _: ONGCustomInfo?) {
         loginPresenter?.presentDashboardView()
     }
 
-    func userClient(_: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, error: Error) {
+    func userClient(_: ONGUserClient, didFailToAuthenticateUser _: ONGUserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             loginPresenter?.loginActionCancelled()
         } else {

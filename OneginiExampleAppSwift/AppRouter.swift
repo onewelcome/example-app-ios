@@ -45,11 +45,11 @@ class AppRouter: AppRouterProtocol {
         self.dashboardPresenter = dashboardPresenter
         self.errorPresenter = errorPresenter
     }
-    
+
     func popToWelcomeViewWithLogin() {
         welcomePresenter.popToWelcomeViewControllerWithLogin()
     }
-    
+
     func popToWelcomeViewControllerWithRegisterUser() {
         welcomePresenter.popToWelcomeViewControllerWithRegisterUser()
     }

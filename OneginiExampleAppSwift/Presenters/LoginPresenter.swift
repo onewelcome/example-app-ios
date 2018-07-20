@@ -70,7 +70,7 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         appRouter.popToWelcomeViewWithLogin()
         appRouter.setupErrorAlert(error: error)
     }
-    
+
     func loginActionCancelled() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
@@ -95,7 +95,6 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     func reloadAuthenticators(_ profile: ONGUserProfile) {
         loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
     }
-
 }
 
 extension LoginPresenter: ParentToChildPresenterProtocol {

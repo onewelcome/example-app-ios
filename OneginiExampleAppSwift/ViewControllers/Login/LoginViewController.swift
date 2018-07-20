@@ -16,7 +16,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
@@ -35,7 +34,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
     var selectedProfile = ONGUserProfile()
 
@@ -48,20 +47,19 @@ class LoginViewController: UIViewController {
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         selectProfile(index: 0)
     }
-    
+
     func selectProfile(index: Int) {
         guard let profilesTableView = profilesTableView else { return }
-        self.selectedProfile = profiles[index]
+        selectedProfile = profiles[index]
         let indexPath = IndexPath(row: index, section: 0)
         profilesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
     }
-    
-    @IBAction func login(_ sender: Any) {
+
+    @IBAction func login(_: Any) {
         guard let loginViewToPresenterProtocol = loginViewToPresenterProtocol else { return }
         loginViewToPresenterProtocol.login(profile: selectedProfile)
     }
-    
 }
 
 extension LoginViewController: UITableViewDataSource {

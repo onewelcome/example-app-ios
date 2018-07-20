@@ -14,11 +14,10 @@
 // limitations under the License.
 
 class GenericErrorDomainMapping {
-    
     func mapError(_ error: Error) -> AppError {
         switch error.code {
         case ONGGenericError.networkConnectivityFailure.rawValue, ONGGenericError.serverNotReachable.rawValue:
-            return AppError(title: "Connection error", errorDescription:"Failed to connect to the server.")
+            return AppError(title: "Connection error", errorDescription: "Failed to connect to the server.")
         case ONGGenericError.userDeregistered.rawValue:
             return AppError(title: "User error", errorDescription: "The user account is deregistered from the device.", recoverySuggestion: "Try register your user again.")
         case ONGGenericError.deviceDeregistered.rawValue:
@@ -33,5 +32,4 @@ class GenericErrorDomainMapping {
             return AppError(errorDescription: "Something went wrong.")
         }
     }
-    
 }

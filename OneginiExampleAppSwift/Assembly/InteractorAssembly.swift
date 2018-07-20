@@ -22,7 +22,7 @@ class InteractorAssembly: Assembly {
             .initCompleted { r, c in
                 let loginInteractor = c as! LoginInteractor
                 loginInteractor.loginPresenter = r.resolve(LoginPresenterProtocol.self)!
-        }
+            }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
             .initCompleted { r, c in
                 let registerUserInteractor = c as! RegisterUserInteractor

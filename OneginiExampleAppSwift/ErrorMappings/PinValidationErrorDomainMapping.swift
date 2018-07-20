@@ -14,16 +14,15 @@
 // limitations under the License.
 
 class PinValidationErrorDomainMapping {
-
     func mapError(_ error: Error) -> AppError {
         let title = "Pin validation error"
         let recoverySuggestion = "Try a different one"
-        
+
         switch error.code {
         case ONGPinValidationError.pinBlackListed.rawValue:
             let errorDescription = "PIN you've entered is blacklisted."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
-            
+
         case ONGPinValidationError.pinShouldNotBeASequence.rawValue:
             let errorDescription = "PIN you've entered appears to be a sequence."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
@@ -32,7 +31,7 @@ class PinValidationErrorDomainMapping {
             let requiredLength = String(describing: error.userInfo[ONGPinValidationErrorRequiredLengthKey]!)
             let errorDescription = "PIN has to be of \(requiredLength) characters length."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
-            
+
         case ONGPinValidationError.pinShouldNotUseSimilarDigits.rawValue:
             let maxSimilarDigits = String(describing: error.userInfo[ONGPinValidationErrorMaxSimilarDigitsKey]!)
             let errorDescription = "PIN should not use more that \(maxSimilarDigits) similar digits."
@@ -42,5 +41,4 @@ class PinValidationErrorDomainMapping {
             return AppError(errorDescription: "Something went wrong.")
         }
     }
-    
 }

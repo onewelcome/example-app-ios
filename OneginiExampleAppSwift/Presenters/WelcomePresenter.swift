@@ -29,7 +29,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     var registerUserPresenter: RegisterUserPresenterProtocol
     var welcomeViewController: WelcomeViewController
 
-    init(_ welcomeViewController: WelcomeViewController ,loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
+    init(_ welcomeViewController: WelcomeViewController, loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
         self.welcomeViewController = welcomeViewController
         self.loginPresenter = loginPresenter
         self.registerUserPresenter = registerUserPresenter
@@ -38,22 +38,22 @@ class WelcomePresenter: WelcomePresenterProtocol {
 
     func presentWelcomeView() {
         welcomeViewController.loginViewController = loginPresenter.setupLoginView()
-        welcomeViewController.registerUserViewController =  registerUserPresenter.setupRegisterUserView()
+        welcomeViewController.registerUserViewController = registerUserPresenter.setupRegisterUserView()
         navigationController.pushViewController(welcomeViewController, animated: false)
     }
-    
+
     func popToWelcomeViewControllerWithLogin() {
         loginPresenter.reloadProfiles()
         setupSegmentView()
         loginPresenter.selectLastSelectedProfileAndReloadAuthenticators()
         navigationController.popToViewController(welcomeViewController, animated: true)
     }
-    
+
     func popToWelcomeViewControllerWithRegisterUser() {
         welcomeViewController.selectSignUp()
         navigationController.popToViewController(welcomeViewController, animated: true)
     }
-    
+
     func setupSegmentView() {
         if loginPresenter.profiles.count > 0 {
             welcomeViewController.setupViewWithProfiles()

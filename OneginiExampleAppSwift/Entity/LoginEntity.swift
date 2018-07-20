@@ -20,6 +20,4 @@ class LoginEntity: PinViewControllerEntityProtocol {
     var pinLength: Int?
     var pin: String?
     var pinChallenge: ONGPinChallenge?
-    
-    
 }

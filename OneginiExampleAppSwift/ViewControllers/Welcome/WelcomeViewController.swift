@@ -29,7 +29,7 @@ class WelcomeViewController: UIViewController {
         configureSegmentView()
         navigationController?.navigationBar.isHidden = true
     }
-    
+
     func configureSegmentView() {
         segmentView.titles = ["Log in", "Sign Up"]
         let customSubview = UIView(frame: CGRect(x: 0, y: 40, width: 100, height: 1.0))
@@ -50,7 +50,7 @@ class WelcomeViewController: UIViewController {
         segmentView.isHidden = true
         displayRegisterUserViewController()
     }
-    
+
     func selectSignUp() {
         try? segmentView.setIndex(1)
     }

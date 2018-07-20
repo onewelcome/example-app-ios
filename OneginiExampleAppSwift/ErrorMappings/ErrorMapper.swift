@@ -14,7 +14,6 @@
 // limitations under the License.
 
 class ErrorMapper {
-
     func mapError(_ error: Error, pinChallenge: ONGPinChallenge? = nil) -> AppError {
         switch error.domain {
         case ONGGenericErrorDomain:
@@ -32,5 +31,4 @@ class ErrorMapper {
             return AppError(errorDescription: "Something went wrong.")
         }
     }
-
 }

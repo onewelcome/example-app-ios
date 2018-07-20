@@ -13,7 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 extension Error {
     var domain: String { return (self as NSError).domain }
     var code: Int { return (self as NSError).code }

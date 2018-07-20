@@ -33,7 +33,6 @@ class RegisterUserInteractor: NSObject {
             registerUserEntity.pinError = nil
         }
     }
-
 }
 
 extension RegisterUserInteractor: RegisterUserInteractorProtocol {

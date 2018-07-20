@@ -66,7 +66,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         appRouter.popToWelcomeViewWithLogin()
         appRouter.setupErrorAlert(error: error)
     }
-    
+
     func registerUserActionCancelled() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewControllerWithRegisterUser()

@@ -14,7 +14,6 @@
 // limitations under the License.
 
 class AuthenticationErrorDomainMapping {
-
     func mapErrorWithPinChallenge(_ error: Error, pinChallenge: ONGPinChallenge) -> AppError {
         switch error.code {
         case ONGAuthenticationError.invalidPin.rawValue:
