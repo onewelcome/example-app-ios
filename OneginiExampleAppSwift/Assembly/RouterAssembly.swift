@@ -18,10 +18,11 @@ import UIKit
 
 class RouterAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(AppRouterProtocol.self) { r in
-            AppRouter(startupPresenter: r.resolve(StartupPresenterProtocol.self)!,
-                      welcomePresenter: r.resolve(WelcomePresenterProtocol.self)!,
-                      dashboardPresenter: r.resolve(DashboardPresenterProtocol.self)!, errorPresenter: r.resolve(ErrorPresenterProtocol.self)!)
+        container.register(AppRouterProtocol.self) { resolver in
+            AppRouter(startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
+                      welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
+                      dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
+                      errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!)
         }.inObjectScope(.container)
     }
 }

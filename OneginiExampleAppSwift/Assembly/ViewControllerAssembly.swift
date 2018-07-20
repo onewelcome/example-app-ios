@@ -20,16 +20,16 @@ class ViewControllerAssembly: Assembly {
     func assemble(container: Container) {
         container.register(StartupViewController.self) { _ in StartupViewController() }
         container.register(LoginViewController.self) { _ in LoginViewController() }
-            .initCompleted { r, loginViewController in
-                loginViewController.loginViewToPresenterProtocol = r.resolve(LoginPresenterProtocol.self)!
+            .initCompleted { resolver, loginViewController in
+                loginViewController.loginViewToPresenterProtocol = resolver.resolve(LoginPresenterProtocol.self)!
             }
-        container.register(RegisterUserViewController.self) { r, identityProviders in
-            RegisterUserViewController(registerUserViewToPresenterProtocol: r.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
+        container.register(RegisterUserViewController.self) { resolver, identityProviders in
+            RegisterUserViewController(registerUserViewToPresenterProtocol: resolver.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
         }
 
         container.register(WelcomeViewController.self) { _ in WelcomeViewController() }
-            .initCompleted { r, welcomeViewController in
-                welcomeViewController.welcomePresenterProtocol = r.resolve(WelcomePresenterProtocol.self)!
+            .initCompleted { resolver, welcomeViewController in
+                welcomeViewController.welcomePresenterProtocol = resolver.resolve(WelcomePresenterProtocol.self)!
             }
     }
 }

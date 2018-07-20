@@ -15,15 +15,20 @@
 
 import UIKit
 
-public protocol StartupInteractorProtocol {
-    func oneginiSDKStartup(completion: @escaping (Bool, Error?) -> Void)
+protocol StartupInteractorProtocol {
+    func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void)
 }
 
 class StartupInteractor: StartupInteractorProtocol {
-    func oneginiSDKStartup(completion: @escaping (Bool, Error?) -> Void) {
+    func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
         ONGClientBuilder().build()
         ONGClient.sharedInstance().start { result, error in
-            completion(result, error)
+            if let error = error {
+                let mappedError = ErrorMapper().mapError(error)
+                completion(result, mappedError)
+            } else {
+                completion(result, nil)
+            }
         }
     }
 }
