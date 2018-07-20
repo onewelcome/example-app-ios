@@ -21,7 +21,10 @@ class GenericErrorDomainMapping {
             return AppError(title: "Connection error", errorDescription:"Failed to connect to the server.")
         case ONGGenericError.userDeregistered.rawValue:
             return AppError(title: "User error", errorDescription: "The user account is deregistered from the device.", recoverySuggestion: "Try register your user again.")
-
+        case ONGGenericError.deviceDeregistered.rawValue:
+            return AppError(title: "Device error", errorDescription: "All users got disconnected from the device.", recoverySuggestion: "Try register your user again.")
+        case ONGGenericError.outdatedOS.rawValue:
+            return AppError(title: "OS error", errorDescription: "Your os version is outdated.", recoverySuggestion: "Try update your os version.")
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
