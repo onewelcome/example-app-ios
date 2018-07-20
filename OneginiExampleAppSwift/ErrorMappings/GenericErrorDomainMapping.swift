@@ -24,7 +24,11 @@ class GenericErrorDomainMapping {
         case ONGGenericError.deviceDeregistered.rawValue:
             return AppError(title: "Device error", errorDescription: "All users got disconnected from the device.", recoverySuggestion: "Try register your user again.")
         case ONGGenericError.outdatedOS.rawValue:
-            return AppError(title: "OS error", errorDescription: "Your os version is outdated.", recoverySuggestion: "Try update your os version.")
+            return AppError(title: "OS error", errorDescription: "Your os version is outdated.", recoverySuggestion: "Try update your os.")
+        case ONGGenericError.outdatedApplication.rawValue:
+            return AppError(title: "Application error", errorDescription: "Your application version is outdated.", recoverySuggestion: "Try update your application.")
+        case ONGGenericError.unrecoverableDataState.rawValue:
+            return AppError(title: "Data storage error", errorDescription: "The data storage is corrupted and cannot be recovered or cleared.", recoverySuggestion: "Remove the application manually and reinstall.")
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
