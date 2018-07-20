@@ -19,6 +19,9 @@ class GenericErrorDomainMapping {
         switch error.code {
         case ONGGenericError.networkConnectivityFailure.rawValue, ONGGenericError.serverNotReachable.rawValue:
             return AppError(title: "Connection error", errorDescription:"Failed to connect to the server.")
+        case ONGGenericError.userDeregistered.rawValue:
+            return AppError(title: "User error", errorDescription: "The user account is deregistered from the device.", recoverySuggestion: "Try register your user again.")
+
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
