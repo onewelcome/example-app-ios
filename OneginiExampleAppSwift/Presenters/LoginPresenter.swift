@@ -25,7 +25,8 @@ protocol ParentToChildPresenterProtocol {
 protocol LoginInteractorToPresenterProtocol: class {
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView()
-    func loginActionFailed(_ error: Error?)
+    func loginActionFailed(_ error: AppError)
+    func loginActionCancelled()
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -51,7 +52,8 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
 
     func presentPinView(loginEntity: LoginEntity) {
         if let error = loginEntity.pinError {
-            pinViewController?.setupErrorLabel(errorDescription: error.localizedDescription)
+            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
+            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
             navigationController.pushViewController(pinViewController!, animated: true)
@@ -63,12 +65,15 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         appRouter.setupDashboardPresenter()
     }
 
-    func loginActionFailed(_ error: Error?) {
+    func loginActionFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
-        if let error = error {
-            appRouter.setupErrorAlert(error: error, title: "")
-        }
+        appRouter.setupErrorAlert(error: error)
+    }
+    
+    func loginActionCancelled() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToWelcomeViewWithLogin()
     }
 }
 

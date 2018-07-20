@@ -26,8 +26,8 @@ protocol AppRouterProtocol: class {
     func setupStartupPresenter()
     func setupWelcomePresenter()
     func setupDashboardPresenter()
-    func setupErrorAlert(error: Error, title: String)
-    func setupErrorAlertWithRetry(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void))
+    func setupErrorAlert(error: AppError)
+    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
 }
 
 class AppRouter: AppRouterProtocol {
@@ -66,11 +66,11 @@ class AppRouter: AppRouterProtocol {
         dashboardPresenter.presentDashboardView()
     }
 
-    func setupErrorAlert(error: Error, title: String) {
-        errorPresenter.showErrorAlert(error: error, title: title)
+    func setupErrorAlert(error: AppError) {
+        errorPresenter.showErrorAlert(error: error)
     }
 
-    func setupErrorAlertWithRetry(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void)) {
-        errorPresenter.showErrorAlertWithRetryAction(error: error, title: title, retryHandler: retryHandler)
+    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
+        errorPresenter.showErrorAlertWithRetryAction(error: error, retryHandler: retryHandler)
     }
 }

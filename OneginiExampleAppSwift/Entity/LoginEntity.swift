@@ -16,7 +16,7 @@
 import UIKit
 
 class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: Error?
+    var pinError: AppError?
     var pinLength: Int?
     var pin: String?
     var pinChallenge: ONGPinChallenge?

@@ -14,8 +14,9 @@
 // limitations under the License.
 
 
-
 extension Error {
     var code: Int { return (self as NSError).code }
     var domain: String { return (self as NSError).domain }
+    var userInfo: Dictionary<String, Any> { return (self as NSError).userInfo }
+    
 }

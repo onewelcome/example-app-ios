@@ -22,10 +22,21 @@ protocol RegisterUserInteractorProtocol {
     func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol)
 }
 
-class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
+class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
 
+    fileprivate func mapErrorFromChallenge(_ challenge: ONGCreatePinChallenge) {
+        if let error = challenge.error {
+            registerUserEntity.pinError = ErrorMapper().mapError(error)
+        } else {
+            registerUserEntity.pinError = nil
+        }
+    }
+
+}
+
+extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     func identityProviders() -> Array<ONGIdentityProvider> {
         let identityProviders = ONGUserClient.sharedInstance().identityProviders()
         return Array(identityProviders)
@@ -64,7 +75,7 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
     func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
         registerUserEntity.createPinChallenge = challenge
         registerUserEntity.pinLength = Int(challenge.pinLength)
-        registerUserEntity.pinError = challenge.error
+        mapErrorFromChallenge(challenge)
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 
@@ -73,10 +84,11 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
     }
 
     func userClient(_: ONGUserClient, didFailToRegisterWithError error: Error) {
-        if error.code != ONGGenericError.actionCancelled.rawValue {
-            registerUserPresenter?.registerUserActionFailed(error)
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            registerUserPresenter?.registerUserActionCancelled()
         } else {
-            registerUserPresenter?.registerUserActionFailed(nil)
+            let mappedError = ErrorMapper().mapError(error)
+            registerUserPresenter?.registerUserActionFailed(mappedError)
         }
     }
 }

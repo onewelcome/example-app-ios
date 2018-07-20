@@ -13,15 +13,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 
-class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol {
-    var registrationUserURL: URL?
-    var browserRegistrationChallenge: ONGBrowserRegistrationChallenge?
-    var customRegistrationChallenge: ONGCustomRegistrationChallenge?
-    var createPinChallenge: ONGCreatePinChallenge?
-    var pin: String?
-    var pinError: AppError?
-    var pinLength: Int?
-    var redirectURL: URL?
+extension Error {
+    var domain: String { return (self as NSError).domain }
+    var code: Int { return (self as NSError).code }
+    var userInfo: Dictionary<String, Any> { return (self as NSError).userInfo }
 }

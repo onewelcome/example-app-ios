@@ -13,15 +13,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
-
-class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol {
-    var registrationUserURL: URL?
-    var browserRegistrationChallenge: ONGBrowserRegistrationChallenge?
-    var customRegistrationChallenge: ONGCustomRegistrationChallenge?
-    var createPinChallenge: ONGCreatePinChallenge?
-    var pin: String?
-    var pinError: AppError?
-    var pinLength: Int?
-    var redirectURL: URL?
+class GenericErrorDomainMapping {
+    
+    func mapError(_ error: Error) -> AppError {
+        switch error.code {
+        case ONGGenericError.networkConnectivityFailure.rawValue, ONGGenericError.serverNotReachable.rawValue:
+            return AppError(title: "Connection error", errorDescription:"Failed to connect to the server.")
+        default:
+            return AppError(errorDescription: "Something went wrong.")
+        }
+    }
+    
 }

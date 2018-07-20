@@ -13,15 +13,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
+class AppError {
+    
+    var title: String
+    var errorDescription: String
+    var recoverySuggestion: String
+    
+    init(title: String = "Error", errorDescription: String, recoverySuggestion: String = "Please try again.") {
+        self.title = title
+        self.errorDescription = errorDescription
+        self.recoverySuggestion = recoverySuggestion
+    }
 
-class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol {
-    var registrationUserURL: URL?
-    var browserRegistrationChallenge: ONGBrowserRegistrationChallenge?
-    var customRegistrationChallenge: ONGCustomRegistrationChallenge?
-    var createPinChallenge: ONGCreatePinChallenge?
-    var pin: String?
-    var pinError: AppError?
-    var pinLength: Int?
-    var redirectURL: URL?
 }

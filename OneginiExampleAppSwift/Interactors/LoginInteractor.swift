@@ -22,10 +22,21 @@ protocol LoginInteractorProtocol {
     func handleLogin(loginEntity: PinViewControllerEntityProtocol)
 }
 
-class LoginInteractor: NSObject, LoginInteractorProtocol {
+class LoginInteractor: NSObject {
     weak var loginPresenter: LoginInteractorToPresenterProtocol?
     var loginEntity = LoginEntity()
 
+    fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
+        if let error = challenge.error {
+            loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
+        } else {
+            loginEntity.pinError = nil
+        }
+    }
+
+}
+
+extension LoginInteractor: LoginInteractorProtocol {
     func userProfiles() -> Array<ONGUserProfile> {
         let userProfiles = ONGUserClient.sharedInstance().userProfiles()
         return Array(userProfiles)
@@ -54,7 +65,7 @@ extension LoginInteractor: ONGAuthenticationDelegate {
     func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
-        loginEntity.pinError = challenge.error
+        mapErrorFromChallenge(challenge)
         loginPresenter?.presentPinView(loginEntity: loginEntity)
     }
 
@@ -63,10 +74,11 @@ extension LoginInteractor: ONGAuthenticationDelegate {
     }
 
     func userClient(_: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, error: Error) {
-        if error.code != ONGGenericError.actionCancelled.rawValue {
-            loginPresenter?.loginActionFailed(error)
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            loginPresenter?.loginActionCancelled()
         } else {
-            loginPresenter?.loginActionFailed(nil)
+            let mappedError = ErrorMapper().mapError(error)
+            loginPresenter?.loginActionFailed(mappedError)
         }
     }
 }

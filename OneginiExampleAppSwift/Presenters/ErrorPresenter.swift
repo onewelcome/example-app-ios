@@ -16,8 +16,8 @@
 import UIKit
 
 protocol ErrorPresenterProtocol {
-    func showErrorAlert(error: Error, title: String)
-    func showErrorAlertWithRetryAction(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void))
+    func showErrorAlert(error: AppError)
+    func showErrorAlertWithRetryAction(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
 }
 
 class ErrorPresenter: ErrorPresenterProtocol {
@@ -27,17 +27,17 @@ class ErrorPresenter: ErrorPresenterProtocol {
         self.navigationController = navigationController
     }
 
-    func showErrorAlert(error: Error, title: String) {
-        let errorMessage = "\(error.localizedDescription)"
-        let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
+    func showErrorAlert(error: AppError) {
+        let message = "\(error.errorDescription) \n \(error.recoverySuggestion)"
+        let alert = UIAlertController(title: error.title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(okAction)
         navigationController.present(alert, animated: true, completion: nil)
     }
 
-    func showErrorAlertWithRetryAction(error: Error, title: String, retryHandler: @escaping ((UIAlertAction) -> Void)) {
-        let errorMessage = "\(error.localizedDescription)"
-        let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
+    func showErrorAlertWithRetryAction(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
+        let message = "\(error.errorDescription) \n \(error.recoverySuggestion)"
+        let alert = UIAlertController(title: error.title, message: message, preferredStyle: .alert)
         let retryAction = UIAlertAction(title: "Retry", style: .cancel, handler: retryHandler)
         alert.addAction(retryAction)
         navigationController.present(alert, animated: true, completion: nil)

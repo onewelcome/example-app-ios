@@ -17,7 +17,7 @@ import UIKit
 
 protocol PinViewControllerEntityProtocol {
     var pin: String? { get set }
-    var pinError: Error? { get }
+    var pinError: AppError? { get }
     var pinLength: Int? { get }
 }
 protocol PinViewToPresenterProtocol: class {

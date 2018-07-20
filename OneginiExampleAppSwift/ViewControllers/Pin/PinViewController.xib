@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -218,8 +219,11 @@
                         <constraint firstAttribute="height" constant="35" id="IOS-EE-gwA"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="D3f-NL-roi">
-                    <rect key="frame" x="16" y="286" width="343" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3f-NL-roi">
+                    <rect key="frame" x="20" y="290" width="335" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="56k-a8-xmf"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="1" green="0.10192505943809005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -228,17 +232,17 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5pc-gT-YWQ" secondAttribute="trailing" constant="16" id="9D2-T6-d7l"/>
-                <constraint firstItem="D3f-NL-roi" firstAttribute="top" secondItem="o3x-hb-pV8" secondAttribute="bottom" constant="8" id="BBB-Ba-LZ7"/>
+                <constraint firstItem="D3f-NL-roi" firstAttribute="top" secondItem="o3x-hb-pV8" secondAttribute="bottom" constant="12" id="BBB-Ba-LZ7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o3x-hb-pV8" secondAttribute="trailing" constant="16" id="FaN-rd-pOd"/>
                 <constraint firstItem="Jgi-M5-Xhq" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="GUC-wr-tjj"/>
                 <constraint firstItem="ZA7-tj-yb0" firstAttribute="centerX" secondItem="5pc-gT-YWQ" secondAttribute="centerX" id="NFG-Be-VH7"/>
                 <constraint firstItem="Jgi-M5-Xhq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QTE-o4-3sH"/>
                 <constraint firstItem="5pc-gT-YWQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="139" id="Rbr-Br-Jpg"/>
                 <constraint firstItem="5pc-gT-YWQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="S6h-Fd-D4Z"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D3f-NL-roi" secondAttribute="trailing" constant="16" id="Smz-Ln-zdc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D3f-NL-roi" secondAttribute="trailing" constant="20" id="Smz-Ln-zdc"/>
                 <constraint firstItem="o3x-hb-pV8" firstAttribute="top" secondItem="5pc-gT-YWQ" secondAttribute="bottom" constant="39" id="bbP-gi-4Ri"/>
                 <constraint firstItem="ZA7-tj-yb0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="34" id="pET-Az-IIg"/>
-                <constraint firstItem="D3f-NL-roi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="sEm-Lf-qAo"/>
+                <constraint firstItem="D3f-NL-roi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="sEm-Lf-qAo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="inq-lU-vIl" secondAttribute="trailing" constant="22" id="tWQ-tH-Caf"/>
                 <constraint firstItem="Jgi-M5-Xhq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uyz-JE-R2y"/>
                 <constraint firstItem="inq-lU-vIl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xVw-9k-sfk"/>

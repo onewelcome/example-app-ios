@@ -21,7 +21,8 @@ protocol RegisterUserInteractorToPresenterProtocol: class {
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
     func presentDashboardView()
-    func registerUserActionFailed(_ error: Error?)
+    func registerUserActionFailed(_ error: AppError)
+    func registerUserActionCancelled()
 }
 
 protocol RegisterUserViewToPresenterProtocol {
@@ -47,7 +48,8 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 
     func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
         if let error = registerUserEntity.pinError {
-            pinViewController?.setupErrorLabel(errorDescription: error.localizedDescription)
+            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
+            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
             navigationController.pushViewController(pinViewController!, animated: true)
@@ -59,12 +61,15 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         appRouter.setupDashboardPresenter()
     }
 
-    func registerUserActionFailed(_ error: Error?) {
+    func registerUserActionFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
-        if let error = error {
-            appRouter.setupErrorAlert(error: error, title: "")
-        }
+        appRouter.setupErrorAlert(error: error)
+    }
+    
+    func registerUserActionCancelled() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToWelcomeViewControllerWithRegisterUser()
     }
 }
 
