@@ -219,10 +219,10 @@
                         <constraint firstAttribute="height" constant="35" id="IOS-EE-gwA"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3f-NL-roi">
-                    <rect key="frame" x="20" y="290" width="335" height="15"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3f-NL-roi">
+                    <rect key="frame" x="20" y="290" width="335" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="15" id="56k-a8-xmf"/>
+                        <constraint firstAttribute="height" constant="25" id="56k-a8-xmf"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="1" green="0.10192505943809005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
