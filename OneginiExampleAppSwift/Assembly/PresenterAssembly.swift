@@ -41,13 +41,13 @@ class PresenterAssembly: Assembly {
                            loginViewController: resolver.resolve(LoginViewController.self)!)
         }
 
-        container.register(DashboardPresenterProtocol.self) { r in
+        container.register(DashboardPresenterProtocol.self) { resolver in
             DashboardPresenter(logoutInteractor: resolver.resolve(LogoutInteractorProtocol.self)!,
                                navigationController: resolver.resolve(UINavigationController.self)!)
         }
 
-        container.register(ErrorPresenterProtocol.self) { r in
-            ErrorPresenter(navigationController: r.resolve(UINavigationController.self)!)
+        container.register(ErrorPresenterProtocol.self) { resolver in
+            ErrorPresenter(navigationController: resolver.resolve(UINavigationController.self)!)
         }
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
