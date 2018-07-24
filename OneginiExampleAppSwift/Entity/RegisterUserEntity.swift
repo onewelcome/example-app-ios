@@ -21,7 +21,7 @@ class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewController
     var customRegistrationChallenge: ONGCustomRegistrationChallenge?
     var createPinChallenge: ONGCreatePinChallenge?
     var pin: String?
-    var pinError: Error?
+    var pinError: AppError?
     var pinLength: Int?
     var redirectURL: URL?
 }

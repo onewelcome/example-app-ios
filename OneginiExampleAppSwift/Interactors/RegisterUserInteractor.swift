@@ -16,18 +16,29 @@
 import UIKit
 
 protocol RegisterUserInteractorProtocol {
-    func identityProviders() -> Set<ONGIdentityProvider>
+    func identityProviders() -> Array<ONGIdentityProvider>
     func startUserRegistration()
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
     func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol)
 }
 
-class RegisterUserInteractor: NSObject, RegisterUserInteractorProtocol {
+class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
 
-    func identityProviders() -> Set<ONGIdentityProvider> {
-        return ONGUserClient.sharedInstance().identityProviders()
+    fileprivate func mapErrorFromChallenge(_ challenge: ONGCreatePinChallenge) {
+        if let error = challenge.error {
+            registerUserEntity.pinError = ErrorMapper().mapError(error)
+        } else {
+            registerUserEntity.pinError = nil
+        }
+    }
+}
+
+extension RegisterUserInteractor: RegisterUserInteractorProtocol {
+    func identityProviders() -> Array<ONGIdentityProvider> {
+        let identityProviders = ONGUserClient.sharedInstance().identityProviders()
+        return Array(identityProviders)
     }
 
     func startUserRegistration() {
@@ -63,6 +74,7 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
     func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
         registerUserEntity.createPinChallenge = challenge
         registerUserEntity.pinLength = Int(challenge.pinLength)
+        mapErrorFromChallenge(challenge)
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 
@@ -71,6 +83,11 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
     }
 
     func userClient(_: ONGUserClient, didFailToRegisterWithError error: Error) {
-        registerUserPresenter?.presentError(error)
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            registerUserPresenter?.registerUserActionCancelled()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            registerUserPresenter?.registerUserActionFailed(mappedError)
+        }
     }
 }

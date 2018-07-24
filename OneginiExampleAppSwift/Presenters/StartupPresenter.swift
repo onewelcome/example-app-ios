@@ -40,7 +40,7 @@ class StartupPresenter: StartupInteractorToPresenterProtocol {
             startupViewController.state = .loaded
             if let error = error {
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-                appRouter.setupErrorAlertWithRetry(error: error, title: "", retryHandler: { _ in
+                appRouter.setupErrorAlertWithRetry(error: error, retryHandler: { _ in
                     self.navigationController.viewControllers.removeLast()
                     self.oneigniSDKStartup()
                 })

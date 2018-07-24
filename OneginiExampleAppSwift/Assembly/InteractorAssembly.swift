@@ -19,19 +19,19 @@ class InteractorAssembly: Assembly {
     func assemble(container: Container) {
         container.register(StartupInteractorProtocol.self) { _ in StartupInteractor() }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
-            .initCompleted { r, c in
-                let loginInteractor = c as! LoginInteractor
-                loginInteractor.loginPresenter = r.resolve(LoginPresenterProtocol.self)!
-        }
+            .initCompleted { resolver, instance in
+                let loginInteractor = instance as! LoginInteractor
+                loginInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocol.self)!
+            }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
-            .initCompleted { r, c in
-                let registerUserInteractor = c as! RegisterUserInteractor
-                registerUserInteractor.registerUserPresenter = r.resolve(RegisterUserPresenterProtocol.self)
+            .initCompleted { resolver, instance in
+                let registerUserInteractor = instance as! RegisterUserInteractor
+                registerUserInteractor.registerUserPresenter = resolver.resolve(RegisterUserPresenterProtocol.self)
             }
         container.register(LogoutInteractorProtocol.self) { _ in LogoutInteractor() }
-            .initCompleted { r, c in
-                let logoutInteractor = c as! LogoutInteractor
-                logoutInteractor.dashboardPresenter = r.resolve(DashboardPresenterProtocol.self)
+            .initCompleted { resolver, instance in
+                let logoutInteractor = instance as! LogoutInteractor
+                logoutInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
             }
     }
 }

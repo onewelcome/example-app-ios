@@ -19,16 +19,17 @@ import UIKit
 class ViewControllerAssembly: Assembly {
     func assemble(container: Container) {
         container.register(StartupViewController.self) { _ in StartupViewController() }
-        container.register(LoginViewController.self) { r in LoginViewController() }
-            .initCompleted { r, loginViewController in
-                loginViewController.loginViewToPresenterProtocol = r.resolve(LoginPresenterProtocol.self)!
-        }
-        container.register(RegisterUserViewController.self) { r, identityProviders in
-            RegisterUserViewController(registerUserViewToPresenterProtocol: r.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
+        container.register(LoginViewController.self) { _ in LoginViewController() }
+            .initCompleted { resolver, loginViewController in
+                loginViewController.loginViewToPresenterProtocol = resolver.resolve(LoginPresenterProtocol.self)!
+            }
+        container.register(RegisterUserViewController.self) { resolver, identityProviders in
+            RegisterUserViewController(registerUserViewToPresenterProtocol: resolver.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
         }
 
-        container.register(WelcomeViewController.self) { (_: Resolver, welcomePresenterProtocol: WelcomePresenter) in
-            WelcomeViewController(welcomePresenterProtocol: welcomePresenterProtocol)
-        }
+        container.register(WelcomeViewController.self) { _ in WelcomeViewController() }
+            .initCompleted { resolver, welcomeViewController in
+                welcomeViewController.welcomePresenterProtocol = resolver.resolve(WelcomePresenterProtocol.self)!
+            }
     }
 }

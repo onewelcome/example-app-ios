@@ -15,12 +15,18 @@
 
 import UIKit
 
-typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol
+typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol & ParentToChildPresenterProtocol
+
+protocol ParentToChildPresenterProtocol {
+    func reloadProfiles()
+    func selectLastSelectedProfileAndReloadAuthenticators()
+}
 
 protocol LoginInteractorToPresenterProtocol: class {
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView()
-    func presentError(_ error: Error)
+    func loginActionFailed(_ error: AppError)
+    func loginActionCancelled()
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -28,7 +34,7 @@ protocol LoginViewToPresenterProtocol: class {
 
     func setupLoginView() -> LoginViewController
     func login(profile: ONGUserProfile)
-    func reloadAuthenticators(_ profiles: ONGUserProfile)
+    func reloadAuthenticators(_ profile: ONGUserProfile)
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
@@ -36,54 +42,78 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
     var profiles = Array<ONGUserProfile>()
     let navigationController: UINavigationController
     var loginViewController: LoginViewController
+    var pinViewController: PinViewController?
 
     init(loginInteractor: LoginInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
     }
-    
+
     func presentPinView(loginEntity: LoginEntity) {
-        let pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-        navigationController.present(pinViewController, animated: true, completion: nil)
+        if let error = loginEntity.pinError {
+            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
+            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
+        } else {
+            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+            navigationController.pushViewController(pinViewController!, animated: true)
+        }
     }
-    
+
     func presentDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupDashboardPresenter()
     }
-    
-    func presentError(_ error: Error) {
+
+    func loginActionFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupErrorAlert(error: error, title: "")
+        appRouter.popToWelcomeViewWithLogin()
+        appRouter.setupErrorAlert(error: error)
+    }
+
+    func loginActionCancelled() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToWelcomeViewWithLogin()
     }
 }
 
 extension LoginPresenter: LoginViewToPresenterProtocol {
     func setupLoginView() -> LoginViewController {
-        profiles = Array(loginInteractor.userProfiles())
+        profiles = loginInteractor.userProfiles()
         if profiles.count > 0 {
-            let authenticators = Array(loginInteractor.authenticators(profile: profiles[0]))
+            let authenticators = loginInteractor.authenticators(profile: profiles[0])
             loginViewController.authenticators = authenticators
         }
         loginViewController.profiles = profiles
         return loginViewController
     }
-    
+
     func login(profile: ONGUserProfile) {
         loginInteractor.login(profile: profile)
     }
-    
-    func reloadAuthenticators(_ profiles: ONGUserProfile) {
-        loginViewController.authenticators = Array(loginInteractor.authenticators(profile: profiles))
+
+    func reloadAuthenticators(_ profile: ONGUserProfile) {
+        loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
+    }
+}
+
+extension LoginPresenter: ParentToChildPresenterProtocol {
+    func reloadProfiles() {
+        profiles = loginInteractor.userProfiles()
+        loginViewController.profiles = profiles
+    }
+
+    func selectLastSelectedProfileAndReloadAuthenticators() {
+        let profile = loginViewController.selectedProfile
+        reloadAuthenticators(profile)
+        if let index = loginViewController.profiles.index(of: profile) {
+            loginViewController.selectProfile(index: index)
+        }
     }
 }
 
 extension LoginPresenter: PinViewToPresenterProtocol {
     func handlePin(entity: PinViewControllerEntityProtocol) {
-        if navigationController.presentedViewController is PinViewController {
-            navigationController.dismiss(animated: true, completion: nil)
-        }
         loginInteractor.handleLogin(loginEntity: entity)
     }
 }

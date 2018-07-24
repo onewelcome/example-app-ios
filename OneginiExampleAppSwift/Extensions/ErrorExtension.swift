@@ -13,11 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
-
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
-    var pinChallenge: ONGPinChallenge?
+extension Error {
+    var code: Int { return (self as NSError).code }
+    var domain: String { return (self as NSError).domain }
+    var userInfo: Dictionary<String, Any> { return (self as NSError).userInfo }
 }

@@ -13,11 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
+class AppError {
+    var title: String
+    var errorDescription: String
+    var recoverySuggestion: String
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
-    var pinChallenge: ONGPinChallenge?
+    init(title: String = "Error", errorDescription: String, recoverySuggestion: String = "Please try again.") {
+        self.title = title
+        self.errorDescription = errorDescription
+        self.recoverySuggestion = recoverySuggestion
+    }
 }

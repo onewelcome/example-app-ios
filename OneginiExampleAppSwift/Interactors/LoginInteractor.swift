@@ -16,28 +16,40 @@
 import UIKit
 
 protocol LoginInteractorProtocol {
-    func userProfiles() -> Set<ONGUserProfile>
-    func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator>
+    func userProfiles() -> Array<ONGUserProfile>
+    func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile)
     func handleLogin(loginEntity: PinViewControllerEntityProtocol)
 }
 
-class LoginInteractor: NSObject, LoginInteractorProtocol {
+class LoginInteractor: NSObject {
     weak var loginPresenter: LoginInteractorToPresenterProtocol?
     var loginEntity = LoginEntity()
-    
-    func userProfiles() -> Set<ONGUserProfile> {
-        return ONGUserClient.sharedInstance().userProfiles()
+
+    fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
+        if let error = challenge.error {
+            loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
+        } else {
+            loginEntity.pinError = nil
+        }
+    }
+}
+
+extension LoginInteractor: LoginInteractorProtocol {
+    func userProfiles() -> Array<ONGUserProfile> {
+        let userProfiles = ONGUserClient.sharedInstance().userProfiles()
+        return Array(userProfiles)
     }
 
-    func authenticators(profile: ONGUserProfile) -> Set<ONGAuthenticator> {
-        return ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
+    func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator> {
+        let authenticators = ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
+        return Array(authenticators)
     }
 
     func login(profile: ONGUserProfile) {
         ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
     }
-    
+
     func handleLogin(loginEntity: PinViewControllerEntityProtocol) {
         guard let pinChallenge = self.loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
@@ -52,14 +64,20 @@ extension LoginInteractor: ONGAuthenticationDelegate {
     func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
+        mapErrorFromChallenge(challenge)
         loginPresenter?.presentPinView(loginEntity: loginEntity)
     }
 
-    func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {
+    func userClient(_: ONGUserClient, didAuthenticateUser _: ONGUserProfile, info _: ONGCustomInfo?) {
         loginPresenter?.presentDashboardView()
     }
 
-    func userClient(_: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, error: Error) {
-        loginPresenter?.presentError(error)
+    func userClient(_: ONGUserClient, didFailToAuthenticateUser _: ONGUserProfile, error: Error) {
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            loginPresenter?.loginActionCancelled()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            loginPresenter?.loginActionFailed(mappedError)
+        }
     }
 }
