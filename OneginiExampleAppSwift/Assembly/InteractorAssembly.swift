@@ -18,10 +18,14 @@ import Swinject
 class InteractorAssembly: Assembly {
     func assemble(container: Container) {
         container.register(StartupInteractorProtocol.self) { _ in StartupInteractor() }
-        container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
+        container.register(ErrorMapper.self) { _ in ErrorMapper() }
+        container.register(LoginInteractorProtocol.self) { resolver in LoginInteractor(userClient: resolver.resolve(ONGUserClient.self)!,
+                                                                                       errorMapper: resolver.resolve(ErrorMapper.self)!,
+                                                                                       loginEntity: resolver.resolve(LoginEntity.self)!)
+            }
             .initCompleted { resolver, instance in
                 let loginInteractor = instance as! LoginInteractor
-                loginInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocol.self)!
+                loginInteractor.delegate = resolver.resolve(LoginPresenterProtocol.self)!
             }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
             .initCompleted { resolver, instance in

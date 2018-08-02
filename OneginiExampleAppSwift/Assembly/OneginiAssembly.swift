@@ -14,10 +14,14 @@
 // limitations under the License.
 
 import UIKit
+import Swinject
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
-    var pinChallenge: PinChallengeProtocol?
+class OneginiAssembly: Assembly {
+    func assemble(container: Container) {
+        ONGClientBuilder().build();
+        container.register(ONGClient.self) { _ in ONGClient.sharedInstance() }
+        container.register(ONGUserClient.self) { _ in ONGUserClient.sharedInstance() }
+        container.register(ONGDeviceClient.self) { _ in ONGDeviceClient.sharedInstance() }
+    }
 }
+

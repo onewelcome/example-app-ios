@@ -14,10 +14,10 @@
 // limitations under the License.
 
 import UIKit
+import Swinject
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
-    var pinChallenge: PinChallengeProtocol?
+class EntityAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(LoginEntity.self) { _ in LoginEntity() }
+    }
 }

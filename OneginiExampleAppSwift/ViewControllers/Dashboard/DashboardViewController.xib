@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,10 +28,21 @@
                         <action selector="logoutPressed:" destination="-1" eventType="touchUpInside" id="LIw-mH-GxX"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqj-Oq-yhv">
+                    <rect key="frame" x="275" y="88" width="78" height="30"/>
+                    <state key="normal" title="Disconnect">
+                        <color key="titleColor" red="0.0" green="0.4431372549" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="disconnect:" destination="-1" eventType="touchUpInside" id="qge-mN-9XB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gqM-JS-hFb" secondAttribute="trailing" constant="22" id="B9S-OS-Bo7"/>
+                <constraint firstItem="dqj-Oq-yhv" firstAttribute="top" secondItem="gqM-JS-hFb" secondAttribute="bottom" constant="14" id="fdB-Em-lFH"/>
+                <constraint firstItem="dqj-Oq-yhv" firstAttribute="trailing" secondItem="gqM-JS-hFb" secondAttribute="trailing" id="l2d-33-6Il"/>
                 <constraint firstItem="gqM-JS-hFb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oGc-Lx-ehq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

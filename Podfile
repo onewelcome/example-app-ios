@@ -15,12 +15,13 @@ target 'OneginiExampleAppSwift' do
 
   target 'OneginiExampleAppSwiftTests' do
      inherit! :search_paths
-    # Pods for testing
+     use_frameworks!
+     pod 'Quick'
+     pod 'Nimble'
   end
 
   target 'OneginiExampleAppSwiftUITests' do
      inherit! :search_paths
-    # Pods for testing
   end
 
 end

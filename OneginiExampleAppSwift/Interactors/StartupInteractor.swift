@@ -21,7 +21,6 @@ protocol StartupInteractorProtocol {
 
 class StartupInteractor: StartupInteractorProtocol {
     func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
-        ONGClientBuilder().build()
         ONGClient.sharedInstance().start { result, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)

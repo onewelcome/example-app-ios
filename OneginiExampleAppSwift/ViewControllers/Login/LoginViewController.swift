@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
-    var profiles = [ONGUserProfile]() {
+    var profiles :Array<NSObject & UserProfileProtocol> = [NSObject & UserProfileProtocol]() {
         didSet {
             if let tableView = profilesTableView {
                 tableView.reloadData()
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     }
 
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
-    var selectedProfile = ONGUserProfile()
+    var selectedProfile : NSObject & UserProfileProtocol = ONGUserProfile()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,7 @@ extension LoginViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
-            if selectedProfile != profiles[indexPath.row] {
+            if selectedProfile.isEqual(profiles[indexPath.row]) {
                 selectedProfile = profiles[indexPath.row]
                 loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
             }

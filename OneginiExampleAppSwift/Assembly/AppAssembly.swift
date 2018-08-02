@@ -20,11 +20,13 @@ class AppAssembly {
 
     let resolver: Resolver
 
-    private let assembler = Assembler([
+    let assembler = Assembler([
         ViewControllerAssembly(),
         InteractorAssembly(),
         PresenterAssembly(),
+        EntityAssembly(),
         RouterAssembly(),
+        OneginiAssembly()
     ])
 
     private init() {

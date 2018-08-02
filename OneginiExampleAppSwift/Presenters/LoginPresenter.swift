@@ -30,16 +30,16 @@ protocol LoginInteractorToPresenterProtocol: class {
 }
 
 protocol LoginViewToPresenterProtocol: class {
-    var profiles: Array<ONGUserProfile> { get set }
+    var profiles: Array<NSObject & UserProfileProtocol> { get set }
 
     func setupLoginView() -> LoginViewController
-    func login(profile: ONGUserProfile)
-    func reloadAuthenticators(_ profile: ONGUserProfile)
+    func login(profile: NSObject & UserProfileProtocol)
+    func reloadAuthenticators(_ profile: NSObject & UserProfileProtocol)
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
     var loginInteractor: LoginInteractorProtocol
-    var profiles = Array<ONGUserProfile>()
+    var profiles = Array<NSObject & UserProfileProtocol>()
     let navigationController: UINavigationController
     var loginViewController: LoginViewController
     var pinViewController: PinViewController?
@@ -88,11 +88,11 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
         return loginViewController
     }
 
-    func login(profile: ONGUserProfile) {
+    func login(profile: NSObject & UserProfileProtocol) {
         loginInteractor.login(profile: profile)
     }
 
-    func reloadAuthenticators(_ profile: ONGUserProfile) {
+    func reloadAuthenticators(_ profile: NSObject & UserProfileProtocol) {
         loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
     }
 }
@@ -106,7 +106,7 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
     func selectLastSelectedProfileAndReloadAuthenticators() {
         let profile = loginViewController.selectedProfile
         reloadAuthenticators(profile)
-        if let index = loginViewController.profiles.index(of: profile) {
+        if let index = loginViewController.profiles.index(where:{ $0 as NSObject & UserProfileProtocol == profile}) {
             loginViewController.selectProfile(index: index)
         }
     }
