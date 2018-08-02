@@ -24,6 +24,7 @@ protocol DashboardInteractorToPresenterProtocol: class {
 
 protocol DashboardViewToPresenterProtocol: class {
     func logout()
+    func presentProfileView()
     func presentAuthenticatorsView()
     func popToDashboardView()
 }
@@ -62,5 +63,10 @@ extension DashboardPresenter: DashboardViewToPresenterProtocol {
     func presentAuthenticatorsView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupAuthenticatorsPresenter()
+    }
+    
+    func presentProfileView() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupProfilePresenter()
     }
 }

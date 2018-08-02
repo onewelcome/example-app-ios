@@ -21,6 +21,7 @@ protocol AppRouterProtocol: class {
     var dashboardPresenter: DashboardPresenterProtocol { get }
     var errorPresenter: ErrorPresenterProtocol { get }
     var authenticatorsPresenter: AuthenticatorsPresenterProtocol { get }
+    var profilePresenter: ProfilePresenterProtocol { get }
 
     func popToWelcomeViewWithLogin()
     func popToWelcomeViewControllerWithRegisterUser()
@@ -30,6 +31,7 @@ protocol AppRouterProtocol: class {
     func setupErrorAlert(error: AppError)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
     func setupAuthenticatorsPresenter()
+    func setupProfilePresenter()
     func popToDashboardView()
 }
 
@@ -39,17 +41,20 @@ class AppRouter: AppRouterProtocol {
     var dashboardPresenter: DashboardPresenterProtocol
     var errorPresenter: ErrorPresenterProtocol
     var authenticatorsPresenter: AuthenticatorsPresenterProtocol
+    var profilePresenter: ProfilePresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
          errorPresenter: ErrorPresenterProtocol,
-         authenticatorsPresenter: AuthenticatorsPresenterProtocol) {
+         authenticatorsPresenter: AuthenticatorsPresenterProtocol,
+         profilePresenter: ProfilePresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
         self.errorPresenter = errorPresenter
         self.authenticatorsPresenter = authenticatorsPresenter
+        self.profilePresenter = profilePresenter
     }
 
     func popToWelcomeViewWithLogin() {
@@ -86,5 +91,9 @@ class AppRouter: AppRouterProtocol {
     
     func setupAuthenticatorsPresenter() {
         authenticatorsPresenter.presentAuthenticatorsView()
+    }
+    
+    func setupProfilePresenter() {
+        profilePresenter.presentProfileView()
     }
 }

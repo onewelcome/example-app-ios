@@ -13,6 +13,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import UIKit
 
-@import OneginiSDKiOS;
-#import "OneginiConfigModel.h"
+extension UIButton {
+
+    @IBInspectable
+    var borderColor: UIColor? {
+        get {
+            if let color = layer.borderColor {
+                return UIColor(cgColor: color)
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                layer.borderColor = color.cgColor
+            } else {
+                layer.borderColor = nil
+            }
+        }
+    }
+
+}

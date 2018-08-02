@@ -35,7 +35,7 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func profilesPressed(_ sender: Any) {
-        
+        dashboardViewToPresenterProtocol?.presentProfileView()
     }
     
     @IBAction func mobileAuthPressed(_ sender: Any) {

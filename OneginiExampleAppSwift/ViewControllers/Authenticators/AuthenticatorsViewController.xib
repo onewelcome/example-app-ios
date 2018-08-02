@@ -80,14 +80,14 @@
                             </constraints>
                         </imageView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T5u-mH-7mi">
-                            <rect key="frame" x="30" y="59" width="315" height="557"/>
+                            <rect key="frame" x="30" y="60.333333333333314" width="315" height="555.66666666666674"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Nr5-Ey-Rll"/>
                             </connections>
                         </tableView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register / Deregister authenticator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="olP-rS-iPO">
-                            <rect key="frame" x="73" y="28.999999999999996" width="229" height="14.333333333333332"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register / Deregister authenticator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="olP-rS-iPO">
+                            <rect key="frame" x="83" y="28.999999999999996" width="209" height="14.333333333333332"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -96,14 +96,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="nIu-ss-LTx" firstAttribute="leading" secondItem="cGO-8u-tls" secondAttribute="leading" constant="15" id="8Qr-7E-blj"/>
-                        <constraint firstItem="T5u-mH-7mi" firstAttribute="top" secondItem="olP-rS-iPO" secondAttribute="bottom" constant="15.666666666666671" id="Iq0-Ek-AJl"/>
+                        <constraint firstItem="T5u-mH-7mi" firstAttribute="top" secondItem="olP-rS-iPO" secondAttribute="bottom" constant="16.666666666666686" id="Iq0-Ek-AJl"/>
                         <constraint firstItem="T5u-mH-7mi" firstAttribute="leading" secondItem="cGO-8u-tls" secondAttribute="leading" constant="30" id="KGG-oy-zJo"/>
                         <constraint firstItem="nIu-ss-LTx" firstAttribute="bottom" secondItem="FGP-5B-Yeu" secondAttribute="bottom" id="MVF-h0-iU9"/>
-                        <constraint firstItem="FGP-5B-Yeu" firstAttribute="leading" secondItem="olP-rS-iPO" secondAttribute="trailing" constant="-2" id="Po8-MJ-svL"/>
+                        <constraint firstItem="FGP-5B-Yeu" firstAttribute="leading" secondItem="olP-rS-iPO" secondAttribute="trailing" constant="8" id="Po8-MJ-svL"/>
                         <constraint firstAttribute="trailing" secondItem="T5u-mH-7mi" secondAttribute="trailing" constant="30" id="Pyx-bX-b03"/>
                         <constraint firstAttribute="trailing" secondItem="FGP-5B-Yeu" secondAttribute="trailing" constant="15" id="Ubq-Nb-9gL"/>
                         <constraint firstItem="nIu-ss-LTx" firstAttribute="top" secondItem="FGP-5B-Yeu" secondAttribute="top" id="VzP-UZ-abr"/>
-                        <constraint firstItem="olP-rS-iPO" firstAttribute="leading" secondItem="nIu-ss-LTx" secondAttribute="trailing" constant="-2" id="Y3G-i7-s65"/>
+                        <constraint firstItem="olP-rS-iPO" firstAttribute="leading" secondItem="nIu-ss-LTx" secondAttribute="trailing" constant="8" id="Y3G-i7-s65"/>
                         <constraint firstAttribute="bottom" secondItem="T5u-mH-7mi" secondAttribute="bottom" constant="32" id="bg2-BS-MgO"/>
                         <constraint firstItem="nIu-ss-LTx" firstAttribute="top" secondItem="cGO-8u-tls" secondAttribute="top" constant="36" id="ctx-y5-LOj"/>
                         <constraint firstItem="olP-rS-iPO" firstAttribute="top" secondItem="cGO-8u-tls" secondAttribute="top" constant="29" id="fq2-vg-mPB"/>

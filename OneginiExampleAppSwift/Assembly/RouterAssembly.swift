@@ -23,7 +23,8 @@ class RouterAssembly: Assembly {
                 welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
                 dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
                 errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!, 
-                authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!)
+                authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!,
+                profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!)
     }.inObjectScope(.container)
 }
 }
