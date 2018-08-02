@@ -20,7 +20,7 @@ typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProto
 protocol RegisterUserInteractorToPresenterProtocol: class {
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
-    func presentDashboardView()
+    func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func registerUserActionFailed(_ error: AppError)
     func registerUserActionCancelled()
 }
@@ -56,9 +56,9 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         }
     }
 
-    func presentDashboardView() {
+    func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupDashboardPresenter()
+        appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
     func registerUserActionFailed(_ error: AppError) {

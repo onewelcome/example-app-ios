@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,16 +21,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man-user" translatesAutoresizingMaskIntoConstraints="NO" id="Bd1-4z-QhN">
-                    <rect key="frame" x="172" y="50" width="32" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="SgX-tq-mWK"/>
-                        <constraint firstAttribute="height" constant="32" id="p1I-0H-BKv"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="light-gray-wallpaper-texture" translatesAutoresizingMaskIntoConstraints="NO" id="At6-a5-jGT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NUd-Ma-7IO">
                     <rect key="frame" x="0.0" y="82" width="375" height="130"/>
-                    <color key="backgroundColor" red="0.0" green="0.68235294117647061" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="130" id="sWZ-Ye-LMl"/>
                     </constraints>
@@ -42,7 +38,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fm3-BR-KIe">
                     <rect key="frame" x="15" y="252" width="343" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="0.44132547293505076" blue="0.60878582812658744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.44313725490196076" blue="0.60784313725490191" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Login"/>
                     <userDefinedRuntimeAttributes>
@@ -93,7 +89,7 @@
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="03O-YQ-1Sx">
                     <rect key="frame" x="0.0" y="315" width="375" height="463"/>
-                    <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="fcl-Or-8bk"/>
                         <outlet property="delegate" destination="-1" id="ita-0u-eVu"/>
@@ -106,12 +102,12 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.68235294117647061" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Dfc-PJ-dA0" firstAttribute="leading" secondItem="1L8-R3-W0k" secondAttribute="trailing" constant="7" id="01A-RR-iF0"/>
                 <constraint firstItem="03O-YQ-1Sx" firstAttribute="top" secondItem="Dfc-PJ-dA0" secondAttribute="bottom" constant="8" id="3SW-uY-Yad"/>
                 <constraint firstItem="03O-YQ-1Sx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4y8-ch-ZxK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Foc-AK-hl8" secondAttribute="trailing" constant="16" id="AEy-Pa-X6H"/>
+                <constraint firstItem="NUd-Ma-7IO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="38" id="BMf-8J-ugn"/>
                 <constraint firstItem="03O-YQ-1Sx" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Bhb-0g-F3Y"/>
                 <constraint firstItem="1Mk-Br-kcV" firstAttribute="leading" secondItem="F8V-vP-W5a" secondAttribute="trailing" constant="8" id="CQG-RF-htc"/>
                 <constraint firstItem="Foc-AK-hl8" firstAttribute="leading" secondItem="1Mk-Br-kcV" secondAttribute="trailing" constant="8" id="GZe-O0-btt"/>
@@ -121,13 +117,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fm3-BR-KIe" secondAttribute="trailing" constant="17" id="QV9-YS-Rhi"/>
                 <constraint firstItem="fm3-BR-KIe" firstAttribute="top" secondItem="F8V-vP-W5a" secondAttribute="bottom" constant="17" id="TLe-Io-dtr"/>
                 <constraint firstItem="fm3-BR-KIe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="UOU-H5-0NP"/>
-                <constraint firstItem="NUd-Ma-7IO" firstAttribute="top" secondItem="Bd1-4z-QhN" secondAttribute="bottom" id="X1P-Ca-adf"/>
                 <constraint firstItem="F8V-vP-W5a" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XdJ-5b-18s"/>
                 <constraint firstItem="GS9-fa-IRV" firstAttribute="top" secondItem="1L8-R3-W0k" secondAttribute="top" id="YPT-nD-YWF"/>
-                <constraint firstItem="Bd1-4z-QhN" firstAttribute="centerX" secondItem="NUd-Ma-7IO" secondAttribute="centerX" constant="1" id="Ywp-2Q-qHC"/>
                 <constraint firstItem="F8V-vP-W5a" firstAttribute="top" secondItem="NUd-Ma-7IO" secondAttribute="bottom" constant="22" id="ZTT-1O-L4P"/>
                 <constraint firstItem="Dfc-PJ-dA0" firstAttribute="top" secondItem="fm3-BR-KIe" secondAttribute="bottom" constant="12" id="diK-Rf-8NH"/>
-                <constraint firstItem="Bd1-4z-QhN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="6" id="gZj-B8-ELJ"/>
                 <constraint firstItem="fm3-BR-KIe" firstAttribute="top" secondItem="1Mk-Br-kcV" secondAttribute="bottom" constant="8" id="iSQ-72-O0K"/>
                 <constraint firstItem="1L8-R3-W0k" firstAttribute="top" secondItem="fm3-BR-KIe" secondAttribute="bottom" constant="18" id="j4V-W3-fF0"/>
                 <constraint firstItem="1L8-R3-W0k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="j7h-gD-yxb"/>
@@ -143,6 +136,6 @@
         </view>
     </objects>
     <resources>
-        <image name="man-user" width="64" height="64"/>
+        <image name="light-gray-wallpaper-texture" width="4272" height="4272"/>
     </resources>
 </document>

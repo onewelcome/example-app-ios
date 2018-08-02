@@ -18,25 +18,29 @@ import UIKit
 typealias DashboardPresenterProtocol = DashboardInteractorToPresenterProtocol & DashboardViewToPresenterProtocol
 
 protocol DashboardInteractorToPresenterProtocol: class {
-    func presentDashboardView()
+    func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func presentWelcomeView()
 }
 
-protocol DashboardViewToPresenterProtocol {
+protocol DashboardViewToPresenterProtocol: class {
     func logout()
+    func presentAuthenticatorsView()
+    func popToDashboardView()
 }
 
 class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     var logoutInteractor: LogoutInteractorProtocol
+    let dashboardViewController: DashboardViewController
 
-    init(logoutInteractor: LogoutInteractorProtocol, navigationController: UINavigationController) {
+    init(_ dashboardViewController: DashboardViewController, logoutInteractor: LogoutInteractorProtocol, navigationController: UINavigationController) {
         self.logoutInteractor = logoutInteractor
+        self.dashboardViewController = dashboardViewController
         self.navigationController = navigationController
     }
 
-    func presentDashboardView() {
-        let dashboardViewController = DashboardViewController(self)
+    func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
+        dashboardViewController.userProfileName = authenticatedUserProfile.profileId
         navigationController.pushViewController(dashboardViewController, animated: true)
     }
 
@@ -49,5 +53,14 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
 extension DashboardPresenter: DashboardViewToPresenterProtocol {
     func logout() {
         logoutInteractor.logout()
+    }
+    
+    func popToDashboardView() {
+        navigationController.popToViewController(dashboardViewController, animated: true)
+    }
+    
+    func presentAuthenticatorsView() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupAuthenticatorsPresenter()
     }
 }

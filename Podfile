@@ -12,6 +12,7 @@ target 'OneginiExampleAppSwift' do
     pod 'OneginiSDKiOS', '8.0.1-SNAPSHOT'
     pod 'Swinject'
     pod 'BetterSegmentedControl', '~> 0.9'
+    pod 'AIFlatSwitch', '~> 1.0.1'
 
   target 'OneginiExampleAppSwiftTests' do
      inherit! :search_paths

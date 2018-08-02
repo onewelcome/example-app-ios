@@ -16,18 +16,30 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
-    let dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol
+    weak var dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol?
 
-    init(_ dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol) {
-        self.dashboardViewToPresenterProtocol = dashboardViewToPresenterProtocol
-        super.init(nibName: nil, bundle: nil)
-    }
+    @IBOutlet weak var profileNameLabel: UILabel!
+    var userProfileName: String?
 
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        profileNameLabel.text = userProfileName
     }
 
     @IBAction func logoutPressed(_: Any) {
-        dashboardViewToPresenterProtocol.logout()
+        dashboardViewToPresenterProtocol?.logout()
     }
+    
+    @IBAction func authenticatorsPressed(_ sender: Any) {
+        dashboardViewToPresenterProtocol?.presentAuthenticatorsView()
+    }
+    
+    @IBAction func profilesPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func mobileAuthPressed(_ sender: Any) {
+        
+    }
+    
 }

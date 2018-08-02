@@ -31,5 +31,10 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, welcomeViewController in
                 welcomeViewController.welcomePresenterProtocol = resolver.resolve(WelcomePresenterProtocol.self)!
             }
+        
+        container.register(DashboardViewController.self) { authenticateProfile in DashboardViewController() }
+            .initCompleted { resolver, dashboardViewController in
+                dashboardViewController.dashboardViewToPresenterProtocol = resolver.resolve(DashboardPresenterProtocol.self)!
+        }
     }
 }
