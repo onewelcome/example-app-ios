@@ -24,7 +24,8 @@ class RouterAssembly: Assembly {
                 dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
                 errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!, 
                 authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!,
-                profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!)
+                profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
+                mobileAuthPresenter: resolver.resolve(MobileAuthPresenterProtocol.self)!)
     }.inObjectScope(.container)
 }
 }

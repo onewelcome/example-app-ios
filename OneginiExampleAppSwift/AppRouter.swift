@@ -22,6 +22,7 @@ protocol AppRouterProtocol: class {
     var errorPresenter: ErrorPresenterProtocol { get }
     var authenticatorsPresenter: AuthenticatorsPresenterProtocol { get }
     var profilePresenter: ProfilePresenterProtocol { get }
+    var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
 
     func popToWelcomeViewWithLogin()
     func popToWelcomeViewControllerWithRegisterUser()
@@ -33,6 +34,7 @@ protocol AppRouterProtocol: class {
     func setupAuthenticatorsPresenter()
     func setupProfilePresenter()
     func popToDashboardView()
+    func setupMobileAuthPresenter()
 }
 
 class AppRouter: AppRouterProtocol {
@@ -42,19 +44,22 @@ class AppRouter: AppRouterProtocol {
     var errorPresenter: ErrorPresenterProtocol
     var authenticatorsPresenter: AuthenticatorsPresenterProtocol
     var profilePresenter: ProfilePresenterProtocol
+    var mobileAuthPresenter: MobileAuthPresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
          errorPresenter: ErrorPresenterProtocol,
          authenticatorsPresenter: AuthenticatorsPresenterProtocol,
-         profilePresenter: ProfilePresenterProtocol) {
+         profilePresenter: ProfilePresenterProtocol,
+         mobileAuthPresenter: MobileAuthPresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
         self.errorPresenter = errorPresenter
         self.authenticatorsPresenter = authenticatorsPresenter
         self.profilePresenter = profilePresenter
+        self.mobileAuthPresenter = mobileAuthPresenter
     }
 
     func popToWelcomeViewWithLogin() {
@@ -95,5 +100,9 @@ class AppRouter: AppRouterProtocol {
     
     func setupProfilePresenter() {
         profilePresenter.presentProfileView()
+    }
+    
+    func setupMobileAuthPresenter() {
+        mobileAuthPresenter.presentMobileAuthView()
     }
 }

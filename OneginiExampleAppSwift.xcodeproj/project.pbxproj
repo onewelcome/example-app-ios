@@ -67,6 +67,9 @@
 		7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
 		7EB1F61B2100CAF100741E92 /* PinValidationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */; };
 		7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61C2100D73900741E92 /* ErrorMapper.swift */; };
+		7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B222114370C00133D5C /* MobileAuthViewController.swift */; };
+		7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED15B232114370C00133D5C /* MobileAuthViewController.xib */; };
+		7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */; };
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
@@ -162,6 +165,9 @@
 		7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinValidationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F61C2100D73900741E92 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
+		7ED15B222114370C00133D5C /* MobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthViewController.swift; sourceTree = "<group>"; };
+		7ED15B232114370C00133D5C /* MobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthViewController.xib; sourceTree = "<group>"; };
+		7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthPresenter.swift; sourceTree = "<group>"; };
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
@@ -302,6 +308,7 @@
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7ED15B21211436EE00133D5C /* MobileAuthentication */,
 				7E8A181A211312ED0063BDF4 /* Profile */,
 				7E01FDE62110AF4400DF0043 /* Authenticators */,
 				7E45479D20E5192400FB620F /* Dashboard */,
@@ -355,6 +362,7 @@
 				7E4547A820E62D8B00FB620F /* LoginPresenter.swift */,
 				7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */,
 				7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */,
+				7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -503,6 +511,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		7ED15B21211436EE00133D5C /* MobileAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				7ED15B222114370C00133D5C /* MobileAuthViewController.swift */,
+				7ED15B232114370C00133D5C /* MobileAuthViewController.xib */,
+			);
+			path = MobileAuthentication;
+			sourceTree = "<group>";
+		};
 		91DE3EFAA921704936F26C6A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +651,7 @@
 				7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */,
 				7E01FDFB2112E41600DF0043 /* AuthenticatorTableViewCell.xib in Resources */,
 				7E300AC220D7E8C800EF1A79 /* tokenserver-demo-test.onegini.com.cer in Resources */,
+				7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */,
 				7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */,
 				7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */,
 				7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */,
@@ -672,15 +690,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
-				"${BUILT_PRODUCTS_DIR}/OneginiSDKiOS/OneginiSDKiOS.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OneginiSDKiOS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -770,6 +790,7 @@
 				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
+				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
@@ -782,6 +803,7 @@
 				7E01FDFA2112E41600DF0043 /* AuthenticatorTableViewCell.swift in Sources */,
 				7EB1F61B2100CAF100741E92 /* PinValidationErrorDomainMapping.swift in Sources */,
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
+				7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,

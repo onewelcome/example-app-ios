@@ -39,7 +39,7 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func mobileAuthPressed(_ sender: Any) {
-        
+        dashboardViewToPresenterProtocol?.presentMobileAuthView()
     }
     
 }

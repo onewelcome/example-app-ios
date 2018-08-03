@@ -14,5 +14,5 @@
 // limitations under the License.
 
 
-@import OneginiSDKiOS;
+#import <OneginiSDKiOS/OneginiSDK.h>
 #import "OneginiConfigModel.h"
