@@ -20,9 +20,9 @@ class DashboardViewController: UIViewController {
 
     @IBOutlet weak var profileNameLabel: UILabel!
     var userProfileName: String?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         profileNameLabel.text = userProfileName
     }
 
