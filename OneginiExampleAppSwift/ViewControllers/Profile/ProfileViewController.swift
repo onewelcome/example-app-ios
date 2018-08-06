@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func disconnectProfile(_ sender: Any) {
-        
+        profileViewToPresenterProtocol.setupDisconnectPresenter()
     }
     
     @IBAction func deviceList(_ sender: Any) {

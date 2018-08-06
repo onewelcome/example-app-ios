@@ -33,5 +33,10 @@ class InteractorAssembly: Assembly {
                 let logoutInteractor = instance as! LogoutInteractor
                 logoutInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
             }
+        container.register(DisconnectInteractorProtocol.self) { _ in DisconnectInteractor() }
+            .initCompleted { resolver, instance in
+                let disconnectInteractor = instance as! DisconnectInteractor
+                disconnectInteractor.disconnectPresenter = resolver.resolve(DisconnectPresenterProtocol.self)
+        }
     }
 }

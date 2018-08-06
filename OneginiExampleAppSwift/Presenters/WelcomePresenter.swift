@@ -21,6 +21,7 @@ protocol WelcomePresenterProtocol: class {
     func presentWelcomeView()
     func popToWelcomeViewControllerWithLogin()
     func popToWelcomeViewControllerWithRegisterUser()
+    func popToWelcomeViewControllerDependsOnProfileArray()
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
@@ -52,6 +53,14 @@ class WelcomePresenter: WelcomePresenterProtocol {
     func popToWelcomeViewControllerWithRegisterUser() {
         welcomeViewController.selectSignUp()
         navigationController.popToViewController(welcomeViewController, animated: true)
+    }
+    
+    func popToWelcomeViewControllerDependsOnProfileArray() {
+        if loginPresenter.profiles.count > 0 {
+            popToWelcomeViewControllerWithLogin()
+        } else {
+            popToWelcomeViewControllerWithRegisterUser()
+        }
     }
 
     func setupSegmentView() {

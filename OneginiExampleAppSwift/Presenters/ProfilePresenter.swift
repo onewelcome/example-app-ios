@@ -24,6 +24,7 @@ protocol ProfileInteractorToPresenterProtocol: class {
 
 protocol ProfileViewToPresenterProtocol {
     func popToDashboardView()
+    func setupDisconnectPresenter()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
@@ -48,4 +49,8 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         appRouter.popToDashboardView()
     }
     
+    func setupDisconnectPresenter() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupDisconnectPresenter()
+    }
 }

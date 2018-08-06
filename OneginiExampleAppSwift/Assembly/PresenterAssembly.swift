@@ -56,6 +56,9 @@ class PresenterAssembly: Assembly {
         container.register(ProfilePresenterProtocol.self) { resolver in ProfilePresenter(navigationController: resolver.resolve(UINavigationController.self)!) }
         
         container.register(MobileAuthPresenterProtocol.self) { resolver in MobileAuthPresenter(navigationController: resolver.resolve(UINavigationController.self)!) }
+        
+        container.register(DisconnectPresenterProtocol.self) { resolver in DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,
+                                                                                          navigationController: resolver.resolve(UINavigationController.self)!)}
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
     }
