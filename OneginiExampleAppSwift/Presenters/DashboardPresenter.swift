@@ -20,6 +20,7 @@ typealias DashboardPresenterProtocol = DashboardInteractorToPresenterProtocol & 
 protocol DashboardInteractorToPresenterProtocol: class {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func presentWelcomeView()
+    func logoutUserActionFailed(_ error: AppError)
 }
 
 protocol DashboardViewToPresenterProtocol: class {
@@ -49,6 +50,11 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
+    }
+    
+    func logoutUserActionFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 }
 

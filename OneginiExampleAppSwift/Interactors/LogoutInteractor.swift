@@ -25,7 +25,8 @@ class LogoutInteractor: LogoutInteractorProtocol {
     func logout() {
         ONGUserClient.sharedInstance().logoutUser { _, error in
             if let error = error {
-                print(error)
+                let mappedError = ErrorMapper().mapError(error)
+                self.dashboardPresenter?.logoutUserActionFailed(mappedError)
             } else {
                 self.dashboardPresenter?.presentWelcomeView()
             }
