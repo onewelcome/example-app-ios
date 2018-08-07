@@ -20,6 +20,7 @@ typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginVie
 protocol ParentToChildPresenterProtocol {
     func reloadProfiles()
     func selectLastSelectedProfileAndReloadAuthenticators()
+    func selectFirstProfileAndReloadAuthenticators()
 }
 
 protocol LoginInteractorToPresenterProtocol: class {
@@ -109,6 +110,11 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
         if let index = loginViewController.profiles.index(of: profile) {
             loginViewController.selectProfile(index: index)
         }
+    }
+    
+    func selectFirstProfileAndReloadAuthenticators() {
+        reloadAuthenticators(profiles[0])
+        loginViewController.selectProfile(index: 0)
     }
 }
 

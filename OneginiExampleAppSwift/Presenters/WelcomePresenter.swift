@@ -57,7 +57,10 @@ class WelcomePresenter: WelcomePresenterProtocol {
     
     func popToWelcomeViewControllerDependsOnProfileArray() {
         if loginPresenter.profiles.count > 0 {
-            popToWelcomeViewControllerWithLogin()
+            loginPresenter.reloadProfiles()
+            setupSegmentView()
+            loginPresenter.selectFirstProfileAndReloadAuthenticators()
+            navigationController.popToViewController(welcomeViewController, animated: true)
         } else {
             popToWelcomeViewControllerWithRegisterUser()
         }
