@@ -111,7 +111,7 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
             loginViewController.selectProfile(index: index)
         }
     }
-    
+
     func selectFirstProfileAndReloadAuthenticators() {
         reloadAuthenticators(profiles[0])
         loginViewController.selectProfile(index: 0)

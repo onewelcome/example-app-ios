@@ -26,18 +26,16 @@ protocol AuthenticatorsViewToPresenterProtocol {
 }
 
 class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
-
     let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func presentAuthenticatorsView() {
         let authenticatorsViewController = AuthenticatorsViewController(self)
         navigationController.pushViewController(authenticatorsViewController, animated: true)
     }
-    
 }
 
 extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {

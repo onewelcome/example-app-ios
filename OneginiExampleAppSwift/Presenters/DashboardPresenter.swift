@@ -51,7 +51,7 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
     }
-    
+
     func logoutUserActionFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
@@ -62,21 +62,21 @@ extension DashboardPresenter: DashboardViewToPresenterProtocol {
     func logout() {
         logoutInteractor.logout()
     }
-    
+
     func popToDashboardView() {
         navigationController.popToViewController(dashboardViewController, animated: true)
     }
-    
+
     func presentAuthenticatorsView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupAuthenticatorsPresenter()
     }
-    
+
     func presentProfileView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupProfilePresenter()
     }
-    
+
     func presentMobileAuthView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupMobileAuthPresenter()

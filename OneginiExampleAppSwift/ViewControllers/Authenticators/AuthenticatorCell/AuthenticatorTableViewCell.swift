@@ -13,19 +13,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import AIFlatSwitch
+import UIKit
 
 class AuthenticatorTableViewCell: UITableViewCell {
+    @IBOutlet var authentictorSwitch: AIFlatSwitch!
+    @IBOutlet var authenticatorName: UILabel!
 
-    @IBOutlet weak var authentictorSwitch: AIFlatSwitch!
-    @IBOutlet weak var authenticatorName: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         authentictorSwitch.lineWidth = 1.0
         authentictorSwitch.strokeColor = .white
         authentictorSwitch.trailStrokeColor = .white
-        
     }
 }

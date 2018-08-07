@@ -37,6 +37,6 @@ class InteractorAssembly: Assembly {
             .initCompleted { resolver, instance in
                 let disconnectInteractor = instance as! DisconnectInteractor
                 disconnectInteractor.disconnectPresenter = resolver.resolve(DisconnectPresenterProtocol.self)
-        }
+            }
     }
 }

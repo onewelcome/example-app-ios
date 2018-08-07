@@ -24,37 +24,35 @@ protocol DisconnectInteractorToPresenterProtocol: class {
 }
 
 class DisconnectPresenter: DisconnectInteractorToPresenterProtocol {
-
     let navigationController: UINavigationController
     let disconnectInteractor: DisconnectInteractorProtocol
-    
+
     init(disconnectInteractor: DisconnectInteractorProtocol, navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.disconnectInteractor = disconnectInteractor
     }
-    
+
     func presentDisconnectAlert() {
         let message = "Are you sure you want to disconnect your profile?"
         let alert = UIAlertController(title: "Disconnect profile", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
-    
+
         let disconnectAction = UIAlertAction(title: "Disconnect", style: .default) { _ in
             self.disconnectInteractor.disconnect()
         }
         alert.addAction(disconnectAction)
-        
+
         navigationController.present(alert, animated: true, completion: nil)
     }
-    
+
     func popToWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewControllerDependsOnProfileArray()
     }
-    
+
     func disconnectActionFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
     }
-    
 }

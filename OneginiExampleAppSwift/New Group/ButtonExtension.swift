@@ -16,7 +16,6 @@
 import UIKit
 
 extension UIButton {
-
     @IBInspectable
     var borderColor: UIColor? {
         get {
@@ -33,5 +32,4 @@ extension UIButton {
             }
         }
     }
-
 }

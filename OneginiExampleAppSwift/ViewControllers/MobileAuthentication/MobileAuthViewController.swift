@@ -13,34 +13,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import TransitionButton
+import UIKit
 
 class MobileAuthViewController: UIViewController {
-
     let mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol
-    
-    @IBOutlet weak var enrollMobileAuthButton: TransitionButton!
-    @IBOutlet weak var enrollPushMobileAuthButton: TransitionButton!
-    
+
+    @IBOutlet var enrollMobileAuthButton: TransitionButton!
+    @IBOutlet var enrollPushMobileAuthButton: TransitionButton!
+
     init(_ mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol) {
         self.mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @IBAction func enrollMobileAuth(_ sender: Any) {
+
+    @IBAction func enrollMobileAuth(_: Any) {
         enrollMobileAuthButton.startAnimation()
-        self.view.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-                                                                                                                                                                             
             sleep(3) // 3: Call enroll for mobile auth method from OneginiSDK
-            
+
             DispatchQueue.main.async(execute: { () -> Void in
                 self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
                     self.enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
@@ -50,16 +48,15 @@ class MobileAuthViewController: UIViewController {
             })
         })
     }
-    
-    @IBAction func enrollPushMobileAuth(_ sender: Any) {
+
+    @IBAction func enrollPushMobileAuth(_: Any) {
         enrollPushMobileAuthButton.startAnimation()
-        self.view.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-            
             sleep(3) // 3: Call enroll for push mobile auth method from OneginiSDK
-            
+
             DispatchQueue.main.async(execute: { () -> Void in
                 self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
                     self.enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
@@ -68,18 +65,14 @@ class MobileAuthViewController: UIViewController {
                 })
             })
         })
-        
     }
-    
-    
-    @IBAction func backPressed(_ sender: Any) {
+
+    @IBAction func backPressed(_: Any) {
         mobileAuthViewToPresenterProtocol.popToDashboardView()
     }
-    
 }
 
 extension MobileAuthViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

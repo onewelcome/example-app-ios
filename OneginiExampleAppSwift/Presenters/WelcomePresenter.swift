@@ -54,7 +54,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
         welcomeViewController.selectSignUp()
         navigationController.popToViewController(welcomeViewController, animated: true)
     }
-    
+
     func popToWelcomeViewControllerDependsOnProfileArray() {
         if loginPresenter.profiles.count > 0 {
             loginPresenter.reloadProfiles()

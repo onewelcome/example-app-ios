@@ -20,9 +20,8 @@ protocol DisconnectInteractorProtocol {
 }
 
 class DisconnectInteractor: DisconnectInteractorProtocol {
-
     weak var disconnectPresenter: DisconnectInteractorToPresenterProtocol?
-    
+
     func disconnect() {
         let userClient = ONGUserClient.sharedInstance()
         if let profile = userClient.authenticatedUserProfile() {
@@ -36,5 +35,4 @@ class DisconnectInteractor: DisconnectInteractorProtocol {
             }
         }
     }
-    
 }

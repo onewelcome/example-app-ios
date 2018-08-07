@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
             profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: selectedRow)
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -96,7 +96,6 @@ extension LoginViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
 }
 
 extension LoginViewController: UITableViewDelegate {

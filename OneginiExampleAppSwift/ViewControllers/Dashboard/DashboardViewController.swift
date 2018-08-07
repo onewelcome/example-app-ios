@@ -18,9 +18,9 @@ import UIKit
 class DashboardViewController: UIViewController {
     weak var dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol?
 
-    @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet var profileNameLabel: UILabel!
     var userProfileName: String?
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileNameLabel.text = userProfileName
@@ -29,17 +29,16 @@ class DashboardViewController: UIViewController {
     @IBAction func logoutPressed(_: Any) {
         dashboardViewToPresenterProtocol?.logout()
     }
-    
-    @IBAction func authenticatorsPressed(_ sender: Any) {
+
+    @IBAction func authenticatorsPressed(_: Any) {
         dashboardViewToPresenterProtocol?.presentAuthenticatorsView()
     }
-    
-    @IBAction func profilesPressed(_ sender: Any) {
+
+    @IBAction func profilesPressed(_: Any) {
         dashboardViewToPresenterProtocol?.presentProfileView()
     }
-    
-    @IBAction func mobileAuthPressed(_ sender: Any) {
+
+    @IBAction func mobileAuthPressed(_: Any) {
         dashboardViewToPresenterProtocol?.presentMobileAuthView()
     }
-    
 }

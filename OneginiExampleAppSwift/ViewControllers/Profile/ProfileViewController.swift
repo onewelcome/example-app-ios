@@ -16,38 +16,31 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
     let profileViewToPresenterProtocol: ProfileViewToPresenterProtocol
-    
+
     init(_ profileViewToPresenterProtocol: ProfileViewToPresenterProtocol) {
         self.profileViewToPresenterProtocol = profileViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @IBAction func backPressed(_ sender: Any) {
+
+    @IBAction func backPressed(_: Any) {
         profileViewToPresenterProtocol.popToDashboardView()
     }
-    
-    @IBAction func disconnectProfile(_ sender: Any) {
+
+    @IBAction func disconnectProfile(_: Any) {
         profileViewToPresenterProtocol.setupDisconnectPresenter()
     }
-    
-    @IBAction func deviceList(_ sender: Any) {
-        
+
+    @IBAction func deviceList(_: Any) {
     }
-    
-    @IBAction func changePassword(_ sender: Any) {
-        
+
+    @IBAction func changePassword(_: Any) {
     }
-    
-    @IBAction func changeProfileName(_ sender: Any) {
-        
+
+    @IBAction func changeProfileName(_: Any) {
     }
-    
-    
-    
 }
