@@ -42,6 +42,6 @@ class InteractorAssembly: Assembly {
             .initCompleted { resolver, instance in
                 let changePinInteractor = instance as! ChangePinInteractor
                 changePinInteractor.changePinPresenter = resolver.resolve(ChangePinPresenterProtocol.self)
-        }
+            }
     }
 }

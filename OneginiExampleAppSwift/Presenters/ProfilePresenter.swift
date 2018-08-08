@@ -32,7 +32,7 @@ class ProfilePresenter: ProfileInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     let profileViewController: ProfileViewController
 
-    init(_ profileViewController: ProfileViewController ,navigationController: UINavigationController) {
+    init(_ profileViewController: ProfileViewController, navigationController: UINavigationController) {
         self.profileViewController = profileViewController
         self.navigationController = navigationController
     }
@@ -40,7 +40,6 @@ class ProfilePresenter: ProfileInteractorToPresenterProtocol {
     func presentProfileView() {
         navigationController.pushViewController(profileViewController, animated: true)
     }
-    
 }
 
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
@@ -48,7 +47,7 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToDashboardView()
     }
-    
+
     func popToProfileView() {
         navigationController.popToViewController(profileViewController, animated: true)
     }
@@ -57,7 +56,7 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupDisconnectPresenter()
     }
-    
+
     func setupChangePinPresenter() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupChangePinPresenter()

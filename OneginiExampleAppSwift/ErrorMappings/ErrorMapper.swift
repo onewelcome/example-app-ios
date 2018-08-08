@@ -26,7 +26,6 @@ class ErrorMapper {
             } else {
                 return AuthenticationErrorDomainMapping().mapError(error)
             }
-
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

@@ -60,9 +60,9 @@ class PresenterAssembly: Assembly {
 
         container.register(DisconnectPresenterProtocol.self) { resolver in DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,
                                                                                                navigationController: resolver.resolve(UINavigationController.self)!) }
-        
+
         container.register(ChangePinPresenterProtocol.self) { resolver in ChangePinPresenter(changePinInteractor: resolver.resolve(ChangePinInteractorProtocol.self)!,
-                                                                                             navigationController: resolver.resolve(UINavigationController.self)!)}
+                                                                                             navigationController: resolver.resolve(UINavigationController.self)!) }
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
     }

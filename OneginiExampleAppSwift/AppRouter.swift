@@ -94,7 +94,7 @@ class AppRouter: AppRouterProtocol {
     func popToProfileView() {
         profilePresenter.popToProfileView()
     }
-    
+
     func setupErrorAlert(error: AppError) {
         errorPresenter.showErrorAlert(error: error)
     }
@@ -130,7 +130,7 @@ class AppRouter: AppRouterProtocol {
     func setupDisconnectPresenter() {
         disconnectPresenter.presentDisconnectAlert()
     }
-    
+
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
     }

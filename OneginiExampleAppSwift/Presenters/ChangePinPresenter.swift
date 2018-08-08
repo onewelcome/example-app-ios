@@ -30,16 +30,16 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     let changePinInteractor: ChangePinInteractorProtocol
     var pinViewController: PinViewController?
-    
+
     init(changePinInteractor: ChangePinInteractorProtocol, navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.changePinInteractor = changePinInteractor
     }
-    
+
     func startChangePinFlow() {
         changePinInteractor.changePin()
     }
-    
+
     func presentLoginPinView(changePinEntity: ChangePinEntity) {
         if let error = changePinEntity.pinError {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
@@ -49,7 +49,7 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
             navigationController.pushViewController(pinViewController!, animated: true)
         }
     }
-    
+
     func presentCreatePinView(changePinEntity: ChangePinEntity) {
         if let error = changePinEntity.pinError {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
@@ -59,18 +59,18 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
             navigationController.pushViewController(pinViewController!, animated: true)
         }
     }
-    
+
     func presentProfileView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToProfileView()
     }
-    
+
     func popToWelcomeViewWithError(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewControllerDependsOnProfileArray()
         appRouter.setupErrorAlert(error: error)
     }
-    
+
     func changePinActionFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToProfileView()

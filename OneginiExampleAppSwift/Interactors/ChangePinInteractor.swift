@@ -21,10 +21,9 @@ protocol ChangePinInteractorProtocol {
 }
 
 class ChangePinInteractor: NSObject {
-
     weak var changePinPresenter: ChangePinInteractorToPresenterProtocol?
     var changePinEntity = ChangePinEntity()
-    
+
     fileprivate func mapErrorFromPinChallenge(_ challenge: ONGPinChallenge) {
         if let error = challenge.error {
             changePinEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
@@ -32,7 +31,7 @@ class ChangePinInteractor: NSObject {
             changePinEntity.pinError = nil
         }
     }
-    
+
     fileprivate func mapErrorFromCreatePinChallenge(_ challenge: ONGCreatePinChallenge) {
         if let error = challenge.error {
             changePinEntity.pinError = ErrorMapper().mapError(error)
@@ -40,15 +39,15 @@ class ChangePinInteractor: NSObject {
             changePinEntity.pinError = nil
         }
     }
-    
+
     func handlePin(changePinEntity: PinViewControllerEntityProtocol) {
-        if (self.changePinEntity.createPinChallenge != nil) {
+        if self.changePinEntity.createPinChallenge != nil {
             handleCreatePin(changePinEntity: changePinEntity)
         } else {
             handleLogin(changePinEntity: changePinEntity)
         }
     }
-    
+
     func handleCreatePin(changePinEntity: PinViewControllerEntityProtocol) {
         guard let pinChallenge = self.changePinEntity.createPinChallenge else { return }
         if let pin = changePinEntity.pin {
@@ -57,7 +56,7 @@ class ChangePinInteractor: NSObject {
             pinChallenge.sender.cancel(pinChallenge)
         }
     }
-    
+
     func handleLogin(changePinEntity: PinViewControllerEntityProtocol) {
         guard let pinChallenge = self.changePinEntity.loginPinChallenge else { return }
         if let pin = changePinEntity.pin {
@@ -69,29 +68,27 @@ class ChangePinInteractor: NSObject {
 }
 
 extension ChangePinInteractor: ChangePinInteractorProtocol {
-    
     func changePin() {
         ONGUserClient.sharedInstance().changePin(self)
     }
-    
 }
 
 extension ChangePinInteractor: ONGChangePinDelegate {
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGPinChallenge) {
+    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         changePinEntity.loginPinChallenge = challenge
         changePinEntity.pinLength = 5
         mapErrorFromPinChallenge(challenge)
         changePinPresenter?.presentLoginPinView(changePinEntity: changePinEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGCreatePinChallenge) {
+
+    func userClient(_: ONGUserClient, didReceive challenge: ONGCreatePinChallenge) {
         changePinEntity.createPinChallenge = challenge
         changePinEntity.pinLength = Int(challenge.pinLength)
         mapErrorFromCreatePinChallenge(challenge)
         changePinPresenter?.presentCreatePinView(changePinEntity: changePinEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didFailToChangePinForUser userProfile: ONGUserProfile, error: Error) {
+
+    func userClient(_: ONGUserClient, didFailToChangePinForUser _: ONGUserProfile, error: Error) {
         changePinEntity.createPinChallenge = nil
         let mappedError = ErrorMapper().mapError(error)
         if error.code == ONGGenericError.actionCancelled.rawValue {
@@ -102,10 +99,9 @@ extension ChangePinInteractor: ONGChangePinDelegate {
             changePinPresenter?.changePinActionFailed(mappedError)
         }
     }
-    
-    func userClient(_ userClient: ONGUserClient, didChangePinForUser userProfile: ONGUserProfile) {
+
+    func userClient(_: ONGUserClient, didChangePinForUser _: ONGUserProfile) {
         changePinEntity.createPinChallenge = nil
         changePinPresenter?.presentProfileView()
     }
-    
 }
