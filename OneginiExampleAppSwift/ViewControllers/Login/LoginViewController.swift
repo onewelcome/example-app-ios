@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    var authenticators = [ONGAuthenticator]() {
+    var authenticators = [AuthenticatorProtocol]() {
         didSet {
             if let tableView = authenticatorsTableView {
                 tableView.reloadData()

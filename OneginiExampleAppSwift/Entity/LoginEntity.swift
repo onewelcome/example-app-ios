@@ -19,5 +19,5 @@ class LoginEntity: PinViewControllerEntityProtocol {
     var pinError: AppError?
     var pinLength: Int?
     var pin: String?
-    var pinChallenge: PinChallengeProtocol?
+    var pinChallenge: (NSObject & PinChallengeProtocol)?
 }
