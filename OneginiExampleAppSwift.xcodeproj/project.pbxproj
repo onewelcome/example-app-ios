@@ -57,6 +57,9 @@
 		7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C420DD102E00B86628 /* LoginViewController.xib */; };
 		7E778CEF21188B02001EE257 /* DisconnectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E778CEE21188B02001EE257 /* DisconnectPresenter.swift */; };
 		7E778CF121188D6B001EE257 /* DisconnectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E778CF021188D6B001EE257 /* DisconnectInteractor.swift */; };
+		7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E778CF221199D71001EE257 /* ChangePinPresenter.swift */; };
+		7E778CF521199E54001EE257 /* ChangePinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E778CF421199E54001EE257 /* ChangePinInteractor.swift */; };
+		7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E778CF62119A230001EE257 /* ChangePinEntity.swift */; };
 		7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
@@ -157,6 +160,9 @@
 		7E5684C420DD102E00B86628 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		7E778CEE21188B02001EE257 /* DisconnectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectPresenter.swift; sourceTree = "<group>"; };
 		7E778CF021188D6B001EE257 /* DisconnectInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectInteractor.swift; sourceTree = "<group>"; };
+		7E778CF221199D71001EE257 /* ChangePinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinPresenter.swift; sourceTree = "<group>"; };
+		7E778CF421199E54001EE257 /* ChangePinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinInteractor.swift; sourceTree = "<group>"; };
+		7E778CF62119A230001EE257 /* ChangePinEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinEntity.swift; sourceTree = "<group>"; };
 		7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
@@ -368,6 +374,7 @@
 				7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */,
 				7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */,
 				7E778CEE21188B02001EE257 /* DisconnectPresenter.swift */,
+				7E778CF221199D71001EE257 /* ChangePinPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -380,6 +387,7 @@
 				7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */,
 				7E4547A420E5220600FB620F /* LogoutInteractor.swift */,
 				7E778CF021188D6B001EE257 /* DisconnectInteractor.swift */,
+				7E778CF421199E54001EE257 /* ChangePinInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -455,6 +463,7 @@
 			children = (
 				7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */,
 				7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */,
+				7E778CF62119A230001EE257 /* ChangePinEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -803,6 +812,7 @@
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
+				7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
@@ -813,10 +823,12 @@
 				7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E778CF121188D6B001EE257 /* DisconnectInteractor.swift in Sources */,
+				7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */,
 				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
+				7E778CF521199E54001EE257 /* ChangePinInteractor.swift in Sources */,
 				7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,

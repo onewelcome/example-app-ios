@@ -15,24 +15,10 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    weak var profileViewToPresenterProtocol: ProfileViewToPresenterProtocol?
-
-    @IBAction func backPressed(_: Any) {
-        profileViewToPresenterProtocol?.popToDashboardView()
-    }
-
-    @IBAction func disconnectProfile(_: Any) {
-        profileViewToPresenterProtocol?.setupDisconnectPresenter()
-    }
-
-    @IBAction func deviceList(_: Any) {
-    }
-
-    @IBAction func changePassword(_: Any) {
-        profileViewToPresenterProtocol?.setupChangePinPresenter()
-    }
-
-    @IBAction func changeProfileName(_: Any) {
-    }
+class ChangePinEntity: PinViewControllerEntityProtocol {
+    var pin: String?
+    var pinError: AppError?
+    var pinLength: Int?
+    var loginPinChallenge: ONGPinChallenge?
+    var createPinChallenge: ONGCreatePinChallenge?
 }

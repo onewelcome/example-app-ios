@@ -36,5 +36,10 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, dashboardViewController in
                 dashboardViewController.dashboardViewToPresenterProtocol = resolver.resolve(DashboardPresenterProtocol.self)!
             }
+        
+        container.register(ProfileViewController.self) { _ in ProfileViewController() }
+            .initCompleted { resolver, profileViewController in
+                profileViewController.profileViewToPresenterProtocol = resolver.resolve(ProfilePresenterProtocol.self)!
+        }
     }
 }

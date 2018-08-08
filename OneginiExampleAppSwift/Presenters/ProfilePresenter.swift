@@ -21,22 +21,26 @@ protocol ProfileInteractorToPresenterProtocol: class {
     func presentProfileView()
 }
 
-protocol ProfileViewToPresenterProtocol {
+protocol ProfileViewToPresenterProtocol: class {
     func popToDashboardView()
+    func popToProfileView()
     func setupDisconnectPresenter()
+    func setupChangePinPresenter()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
     let navigationController: UINavigationController
+    let profileViewController: ProfileViewController
 
-    init(navigationController: UINavigationController) {
+    init(_ profileViewController: ProfileViewController ,navigationController: UINavigationController) {
+        self.profileViewController = profileViewController
         self.navigationController = navigationController
     }
 
     func presentProfileView() {
-        let profileViewController = ProfileViewController(self)
         navigationController.pushViewController(profileViewController, animated: true)
     }
+    
 }
 
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
@@ -44,9 +48,18 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToDashboardView()
     }
+    
+    func popToProfileView() {
+        navigationController.popToViewController(profileViewController, animated: true)
+    }
 
     func setupDisconnectPresenter() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupDisconnectPresenter()
+    }
+    
+    func setupChangePinPresenter() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupChangePinPresenter()
     }
 }
