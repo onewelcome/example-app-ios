@@ -60,12 +60,15 @@
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
 		862951D8211B2AC80075BC31 /* LoginPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951D7211B2AC80075BC31 /* LoginPresenterSpec.swift */; };
-		862951DA211B2FBB0075BC31 /* ONGLoginInteractorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951D9211B2FBB0075BC31 /* ONGLoginInteractorStub.swift */; };
-		86504DF62109CB4500DBAC79 /* LoginInteractorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86504DF52109CB4500DBAC79 /* LoginInteractorSpec.swift */; };
+		862951DC211C91180075BC31 /* NavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951DB211C91180075BC31 /* NavigationControllerMock.swift */; };
+		862951DE211C91450075BC31 /* AppRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951DD211C91450075BC31 /* AppRouterMock.swift */; };
+		862951E0211C91750075BC31 /* LoginViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951DF211C91750075BC31 /* LoginViewControllerMock.swift */; };
+		862951E2211C92300075BC31 /* LoginInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951E1211C92300075BC31 /* LoginInteractorMock.swift */; };
+		862951E4211C92730075BC31 /* AuthenticatorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951E3211C92730075BC31 /* AuthenticatorStub.swift */; };
+		862951E6211C92920075BC31 /* UserProfileStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951E5211C92920075BC31 /* UserProfileStub.swift */; };
+		862951E8211C92BD0075BC31 /* PinViewControllerEntityStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951E7211C92BD0075BC31 /* PinViewControllerEntityStub.swift */; };
 		86504DF82109F9CB00DBAC79 /* OneginiAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86504DF72109F9CB00DBAC79 /* OneginiAssembly.swift */; };
 		867930CC210F507400632004 /* EntityAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867930CB210F507400632004 /* EntityAssembly.swift */; };
-		867930CF210F529300632004 /* ONGUserClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867930CE210F529300632004 /* ONGUserClientStub.swift */; };
-		867930D22113234900632004 /* LoginDecupling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867930D12113234900632004 /* LoginDecupling.swift */; };
 		AE46A8D74BA2B0DEBCE5468F /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,12 +156,15 @@
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		862951D7211B2AC80075BC31 /* LoginPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterSpec.swift; sourceTree = "<group>"; };
-		862951D9211B2FBB0075BC31 /* ONGLoginInteractorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONGLoginInteractorStub.swift; sourceTree = "<group>"; };
-		86504DF52109CB4500DBAC79 /* LoginInteractorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorSpec.swift; sourceTree = "<group>"; };
+		862951DB211C91180075BC31 /* NavigationControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerMock.swift; sourceTree = "<group>"; };
+		862951DD211C91450075BC31 /* AppRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterMock.swift; sourceTree = "<group>"; };
+		862951DF211C91750075BC31 /* LoginViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerMock.swift; sourceTree = "<group>"; };
+		862951E1211C92300075BC31 /* LoginInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorMock.swift; sourceTree = "<group>"; };
+		862951E3211C92730075BC31 /* AuthenticatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorStub.swift; sourceTree = "<group>"; };
+		862951E5211C92920075BC31 /* UserProfileStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStub.swift; sourceTree = "<group>"; };
+		862951E7211C92BD0075BC31 /* PinViewControllerEntityStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewControllerEntityStub.swift; sourceTree = "<group>"; };
 		86504DF72109F9CB00DBAC79 /* OneginiAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiAssembly.swift; sourceTree = "<group>"; };
 		867930CB210F507400632004 /* EntityAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAssembly.swift; sourceTree = "<group>"; };
-		867930CE210F529300632004 /* ONGUserClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONGUserClientStub.swift; sourceTree = "<group>"; };
-		867930D12113234900632004 /* LoginDecupling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDecupling.swift; sourceTree = "<group>"; };
 		8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -257,8 +263,7 @@
 		7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				867930CD210F527000632004 /* Mocks */,
-				86504DF52109CB4500DBAC79 /* LoginInteractorSpec.swift */,
+				867930CD210F527000632004 /* TestDoubles */,
 				862951D7211B2AC80075BC31 /* LoginPresenterSpec.swift */,
 				7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */,
 				7E300A7F20D7B8E300EF1A79 /* Info.plist */,
@@ -334,7 +339,6 @@
 		7E300AC820D8F86100EF1A79 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				867930D02113232100632004 /* OneginiDecouplingProtocols */,
 				7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */,
 				7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */,
 				7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */,
@@ -468,21 +472,18 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		867930CD210F527000632004 /* Mocks */ = {
+		867930CD210F527000632004 /* TestDoubles */ = {
 			isa = PBXGroup;
 			children = (
-				867930CE210F529300632004 /* ONGUserClientStub.swift */,
-				862951D9211B2FBB0075BC31 /* ONGLoginInteractorStub.swift */,
+				862951DB211C91180075BC31 /* NavigationControllerMock.swift */,
+				862951DD211C91450075BC31 /* AppRouterMock.swift */,
+				862951DF211C91750075BC31 /* LoginViewControllerMock.swift */,
+				862951E1211C92300075BC31 /* LoginInteractorMock.swift */,
+				862951E3211C92730075BC31 /* AuthenticatorStub.swift */,
+				862951E5211C92920075BC31 /* UserProfileStub.swift */,
+				862951E7211C92BD0075BC31 /* PinViewControllerEntityStub.swift */,
 			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
-		867930D02113232100632004 /* OneginiDecouplingProtocols */ = {
-			isa = PBXGroup;
-			children = (
-				867930D12113234900632004 /* LoginDecupling.swift */,
-			);
-			path = OneginiDecouplingProtocols;
+			path = TestDoubles;
 			sourceTree = "<group>";
 		};
 		91DE3EFAA921704936F26C6A /* Pods */ = {
@@ -776,7 +777,6 @@
 				7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */,
 				7EB1F61B2100CAF100741E92 /* PinValidationErrorDomainMapping.swift in Sources */,
 				86504DF82109F9CB00DBAC79 /* OneginiAssembly.swift in Sources */,
-				867930D22113234900632004 /* LoginDecupling.swift in Sources */,
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
@@ -792,11 +792,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				862951E2211C92300075BC31 /* LoginInteractorMock.swift in Sources */,
 				7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */,
-				86504DF62109CB4500DBAC79 /* LoginInteractorSpec.swift in Sources */,
-				867930CF210F529300632004 /* ONGUserClientStub.swift in Sources */,
-				862951DA211B2FBB0075BC31 /* ONGLoginInteractorStub.swift in Sources */,
+				862951E4211C92730075BC31 /* AuthenticatorStub.swift in Sources */,
 				862951D8211B2AC80075BC31 /* LoginPresenterSpec.swift in Sources */,
+				862951E8211C92BD0075BC31 /* PinViewControllerEntityStub.swift in Sources */,
+				862951DE211C91450075BC31 /* AppRouterMock.swift in Sources */,
+				862951DC211C91180075BC31 /* NavigationControllerMock.swift in Sources */,
+				862951E6211C92920075BC31 /* UserProfileStub.swift in Sources */,
+				862951E0211C91750075BC31 /* LoginViewControllerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

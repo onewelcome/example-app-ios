@@ -12,11 +12,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 import UIKit
+@testable import OneginiExampleAppSwift
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
+class LoginViewControllerMock : UIViewController & LoginPresenterToViewProtocol {
+    
+    var authenticators: Array<NSObject & AuthenticatorProtocol> = []
+    
+    var profiles: Array<NSObject & UserProfileProtocol> = [UserProfileStub("profile1"), UserProfileStub("profile2")]
+    
+    var selectedProfile: NSObject & UserProfileProtocol = UserProfileStub("profile1")
+    var selectProfileCalled = false
+    func selectProfile(index: Int) {
+        selectProfileCalled = true
+    }
+    
+    var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
 }

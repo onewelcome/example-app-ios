@@ -13,10 +13,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@testable import OneginiExampleAppSwift
 import UIKit
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
+class AuthenticatorS : NSObject & AuthenticatorProtocol {
+    var identifier: String
+    
+    var name: String
+    
+    var type: ONGAuthenticatorType
+    
+    var isRegistered: Bool
+    
+    var isPreferred: Bool
+    
+    init(identifier : String, name : String, type : ONGAuthenticatorType, isRegistered : Bool, isPreferred : Bool) {
+        self.identifier = identifier
+        self.name = name
+        self.type = type
+        self.isRegistered = isRegistered
+        self.isPreferred = isPreferred
+    }
 }

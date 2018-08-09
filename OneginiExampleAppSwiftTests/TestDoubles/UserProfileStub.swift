@@ -13,8 +13,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@testable import OneginiExampleAppSwift
 import UIKit
 
-class ONGLoginInteractorStub: NSObject {
-
+class UserProfileStub : NSObject & UserProfileProtocol {
+    var profileId: String
+    init(_ profileId: String) {
+        self.profileId = profileId
+    }
 }
+

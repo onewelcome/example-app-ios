@@ -13,10 +13,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@testable import OneginiExampleAppSwift
 import UIKit
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
+class PinViewControllerEntityStub : PinViewControllerEntityProtocol {
     var pin: String?
+    
+    var pinError: AppError?
+    
+    var pinLength: Int?
 }

@@ -14,15 +14,15 @@
 // limitations under the License.
 
 class ErrorMapper {
-    func mapError(_ error: Error, pinChallenge: PinChallengeProtocol? = nil) -> AppError {
+    func mapError(_ error: Error, remainingFailureCount: UInt? = nil) -> AppError {
         switch error.domain {
         case ONGGenericErrorDomain:
             return GenericErrorDomainMapping().mapError(error)
         case ONGPinValidationErrorDomain:
             return PinValidationErrorDomainMapping().mapError(error)
         case ONGAuthenticationErrorDomain:
-            if let pinChallenge = pinChallenge {
-                return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(error, pinChallenge: pinChallenge)
+            if let remainingFailureCount = remainingFailureCount {
+                return AuthenticationErrorDomainMapping().mapError(error, remainingFailureCount: remainingFailureCount)
             } else {
                 return AuthenticationErrorDomainMapping().mapError(error)
             }

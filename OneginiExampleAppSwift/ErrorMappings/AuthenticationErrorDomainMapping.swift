@@ -14,10 +14,10 @@
 // limitations under the License.
 
 class AuthenticationErrorDomainMapping {
-    func mapErrorWithPinChallenge(_ error: Error, pinChallenge: PinChallengeProtocol) -> AppError {
+    func mapError(_ error: Error, remainingFailureCount: UInt) -> AppError {
         switch error.code {
         case ONGAuthenticationError.invalidPin.rawValue:
-            let remainingFailureCount = String(describing: pinChallenge.remainingFailureCount)
+            let remainingFailureCount = String(describing: remainingFailureCount)
             let errorDescription = "PIN you've entered is invalid."
             let title = "Authentication error"
             let recoverySuggestion = "You have still \(remainingFailureCount) attempts left."

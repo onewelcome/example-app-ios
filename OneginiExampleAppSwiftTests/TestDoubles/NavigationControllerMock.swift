@@ -14,9 +14,11 @@
 // limitations under the License.
 
 import UIKit
+@testable import OneginiExampleAppSwift
 
-class LoginEntity: PinViewControllerEntityProtocol {
-    var pinError: AppError?
-    var pinLength: Int?
-    var pin: String?
+class NavigationControllerMock : UINavigationController {
+    var pushViewControllerCalled = false
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        pushViewControllerCalled = true
+    }
 }
