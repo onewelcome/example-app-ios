@@ -20,8 +20,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var segmentView: BetterSegmentedControl!
     @IBOutlet var tabView: UIView!
 
-    var loginViewController: LoginViewController?
-    var registerUserViewController: RegisterUserViewController?
+    var loginViewController: UIViewController?
+    var registerUserViewController: UIViewController?
     weak var welcomePresenterProtocol: WelcomePresenterProtocol?
 
     override func viewDidLoad() {

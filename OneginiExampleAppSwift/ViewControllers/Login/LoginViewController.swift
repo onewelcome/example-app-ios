@@ -15,7 +15,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController & LoginPresenterToViewProtocol{    
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    var authenticators = [AuthenticatorProtocol]() {
+    var authenticators = Array<NSObject & AuthenticatorProtocol>() {
         didSet {
             if let tableView = authenticatorsTableView {
                 tableView.reloadData()

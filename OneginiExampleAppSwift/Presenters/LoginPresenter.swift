@@ -23,6 +23,8 @@ protocol ParentToChildPresenterProtocol {
 }
 
 protocol LoginInteractorToPresenterProtocol: class {
+    var appRouterDelegate: AppRouterProtocol? { get set }
+    
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView()
     func loginActionFailed(_ error: AppError)
@@ -32,19 +34,31 @@ protocol LoginInteractorToPresenterProtocol: class {
 protocol LoginViewToPresenterProtocol: class {
     var profiles: Array<NSObject & UserProfileProtocol> { get set }
 
-    func setupLoginView() -> LoginViewController
+    func setupLoginView() -> UIViewController & LoginPresenterToViewProtocol
     func login(profile: NSObject & UserProfileProtocol)
     func reloadAuthenticators(_ profile: NSObject & UserProfileProtocol)
+}
+
+protocol LoginPresenterToViewProtocol {
+    var authenticators: Array<NSObject & AuthenticatorProtocol> { get set }
+    var profiles: Array<NSObject & UserProfileProtocol> { get set }
+    var selectedProfile: NSObject & UserProfileProtocol { get set }
+    
+    func selectProfile(index: Int)
+    var loginViewToPresenterProtocol: LoginViewToPresenterProtocol? { get set }
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
     var loginInteractor: LoginInteractorProtocol
     var profiles = Array<NSObject & UserProfileProtocol>()
     let navigationController: UINavigationController
-    var loginViewController: LoginViewController
+    var loginViewController: UIViewController & LoginPresenterToViewProtocol
     var pinViewController: PinViewController?
+    public weak var appRouterDelegate: AppRouterProtocol?
 
-    init(loginInteractor: LoginInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
+    init(loginInteractor: LoginInteractorProtocol,
+         navigationController: UINavigationController,
+         loginViewController: UIViewController & LoginPresenterToViewProtocol) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
@@ -61,24 +75,21 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
     }
 
     func presentDashboardView() {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupDashboardPresenter()
+        appRouterDelegate!.setupDashboardPresenter()
     }
 
     func loginActionFailed(_ error: AppError) {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin()
-        appRouter.setupErrorAlert(error: error)
+        appRouterDelegate!.popToWelcomeViewWithLogin()
+        appRouterDelegate!.setupErrorAlert(error: error)
     }
 
     func loginActionCancelled() {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin()
+        appRouterDelegate!.popToWelcomeViewWithLogin()
     }
 }
 
 extension LoginPresenter: LoginViewToPresenterProtocol {
-    func setupLoginView() -> LoginViewController {
+    func setupLoginView() -> UIViewController & LoginPresenterToViewProtocol {
         profiles = loginInteractor.userProfiles()
         if profiles.count > 0 {
             let authenticators = loginInteractor.authenticators(profile: profiles[0])

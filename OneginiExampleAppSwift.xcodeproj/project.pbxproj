@@ -59,6 +59,8 @@
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
+		862951D8211B2AC80075BC31 /* LoginPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951D7211B2AC80075BC31 /* LoginPresenterSpec.swift */; };
+		862951DA211B2FBB0075BC31 /* ONGLoginInteractorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862951D9211B2FBB0075BC31 /* ONGLoginInteractorStub.swift */; };
 		86504DF62109CB4500DBAC79 /* LoginInteractorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86504DF52109CB4500DBAC79 /* LoginInteractorSpec.swift */; };
 		86504DF82109F9CB00DBAC79 /* OneginiAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86504DF72109F9CB00DBAC79 /* OneginiAssembly.swift */; };
 		867930CC210F507400632004 /* EntityAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867930CB210F507400632004 /* EntityAssembly.swift */; };
@@ -150,6 +152,8 @@
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
+		862951D7211B2AC80075BC31 /* LoginPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterSpec.swift; sourceTree = "<group>"; };
+		862951D9211B2FBB0075BC31 /* ONGLoginInteractorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONGLoginInteractorStub.swift; sourceTree = "<group>"; };
 		86504DF52109CB4500DBAC79 /* LoginInteractorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorSpec.swift; sourceTree = "<group>"; };
 		86504DF72109F9CB00DBAC79 /* OneginiAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiAssembly.swift; sourceTree = "<group>"; };
 		867930CB210F507400632004 /* EntityAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAssembly.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 			children = (
 				867930CD210F527000632004 /* Mocks */,
 				86504DF52109CB4500DBAC79 /* LoginInteractorSpec.swift */,
+				862951D7211B2AC80075BC31 /* LoginPresenterSpec.swift */,
 				7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */,
 				7E300A7F20D7B8E300EF1A79 /* Info.plist */,
 			);
@@ -467,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				867930CE210F529300632004 /* ONGUserClientStub.swift */,
+				862951D9211B2FBB0075BC31 /* ONGLoginInteractorStub.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -789,6 +795,8 @@
 				7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */,
 				86504DF62109CB4500DBAC79 /* LoginInteractorSpec.swift in Sources */,
 				867930CF210F529300632004 /* ONGUserClientStub.swift in Sources */,
+				862951DA211B2FBB0075BC31 /* ONGLoginInteractorStub.swift in Sources */,
+				862951D8211B2AC80075BC31 /* LoginPresenterSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
