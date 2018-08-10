@@ -11,6 +11,11 @@
 		298537DF146913D00628861A /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BF6E3CE59F5CAFFB9AFA69 /* Pods_OneginiExampleAppSwiftUITests.framework */; };
 		3213DF0B772ABE30D86E2470 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */; };
 		4B038EA6C6F9875A3175E9E3 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */; };
+		7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */; };
+		7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */; };
+		7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */; };
+		7E01FDFA2112E41600DF0043 /* AuthenticatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */; };
+		7E01FDFB2112E41600DF0043 /* AuthenticatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */; };
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
 		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
@@ -53,11 +58,18 @@
 		7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
+		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
+		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
+		7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181F211325240063BDF4 /* ButtonExtension.swift */; };
+		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
 		7EB1F6142100BE3500741E92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6162100C32700741E92 /* ErrorExtension.swift */; };
 		7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
 		7EB1F61B2100CAF100741E92 /* PinValidationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */; };
 		7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61C2100D73900741E92 /* ErrorMapper.swift */; };
+		7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B222114370C00133D5C /* MobileAuthViewController.swift */; };
+		7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED15B232114370C00133D5C /* MobileAuthViewController.xib */; };
+		7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */; };
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
@@ -88,6 +100,11 @@
 		3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsViewController.swift; sourceTree = "<group>"; };
+		7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorsViewController.xib; sourceTree = "<group>"; };
+		7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsPresenter.swift; sourceTree = "<group>"; };
+		7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorTableViewCell.swift; sourceTree = "<group>"; };
+		7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorTableViewCell.xib; sourceTree = "<group>"; };
 		7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneginiExampleAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,11 +156,18 @@
 		7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
+		7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		7E8A181F211325240063BDF4 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		7EB1F6132100BE3500741E92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		7EB1F6162100C32700741E92 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinValidationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F61C2100D73900741E92 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
+		7ED15B222114370C00133D5C /* MobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthViewController.swift; sourceTree = "<group>"; };
+		7ED15B232114370C00133D5C /* MobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthViewController.xib; sourceTree = "<group>"; };
+		7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthPresenter.swift; sourceTree = "<group>"; };
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
@@ -198,6 +222,25 @@
 				05BF6E3CE59F5CAFFB9AFA69 /* Pods_OneginiExampleAppSwiftUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E01FDE62110AF4400DF0043 /* Authenticators */ = {
+			isa = PBXGroup;
+			children = (
+				7E01FDF72111F5E000DF0043 /* AuthenticatorCell */,
+				7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */,
+				7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */,
+			);
+			path = Authenticators;
+			sourceTree = "<group>";
+		};
+		7E01FDF72111F5E000DF0043 /* AuthenticatorCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */,
+				7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */,
+			);
+			path = AuthenticatorCell;
 			sourceTree = "<group>";
 		};
 		7E300A5C20D7B8E100EF1A79 = {
@@ -265,6 +308,9 @@
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7ED15B21211436EE00133D5C /* MobileAuthentication */,
+				7E8A181A211312ED0063BDF4 /* Profile */,
+				7E01FDE62110AF4400DF0043 /* Authenticators */,
 				7E45479D20E5192400FB620F /* Dashboard */,
 				7E45479120E24DF200FB620F /* Pin */,
 				7E45476F20DD420400FB620F /* ButtonCell */,
@@ -314,6 +360,9 @@
 				7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */,
 				7E4547A220E51A2200FB620F /* DashboardPresenter.swift */,
 				7E4547A820E62D8B00FB620F /* LoginPresenter.swift */,
+				7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */,
+				7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */,
+				7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -443,13 +492,32 @@
 			path = ErrorMappings;
 			sourceTree = "<group>";
 		};
+		7E8A181A211312ED0063BDF4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */,
+				7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		7EB1F6152100C2E700741E92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				7EB1F6162100C32700741E92 /* ErrorExtension.swift */,
+				7E8A181F211325240063BDF4 /* ButtonExtension.swift */,
 			);
 			name = Extensions;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		7ED15B21211436EE00133D5C /* MobileAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				7ED15B222114370C00133D5C /* MobileAuthViewController.swift */,
+				7ED15B232114370C00133D5C /* MobileAuthViewController.xib */,
+			);
+			path = MobileAuthentication;
 			sourceTree = "<group>";
 		};
 		91DE3EFAA921704936F26C6A /* Pods */ = {
@@ -580,13 +648,17 @@
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
 				7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */,
 				7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */,
+				7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */,
+				7E01FDFB2112E41600DF0043 /* AuthenticatorTableViewCell.xib in Resources */,
 				7E300AC220D7E8C800EF1A79 /* tokenserver-demo-test.onegini.com.cer in Resources */,
+				7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */,
 				7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */,
 				7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */,
 				7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */,
 				7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */,
 				7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */,
 				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
+				7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */,
 				7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */,
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
 			);
@@ -616,13 +688,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -696,6 +774,7 @@
 				7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */,
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */,
+				7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */,
 				7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */,
@@ -711,18 +790,25 @@
 				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
+				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
+				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
+				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
 				7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */,
+				7E01FDFA2112E41600DF0043 /* AuthenticatorTableViewCell.swift in Sources */,
 				7EB1F61B2100CAF100741E92 /* PinValidationErrorDomainMapping.swift in Sources */,
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
+				7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
+				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
+				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
 				7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,

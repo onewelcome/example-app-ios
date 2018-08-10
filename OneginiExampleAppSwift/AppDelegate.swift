@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
 
         return true

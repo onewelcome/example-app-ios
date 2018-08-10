@@ -68,8 +68,8 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         loginPresenter?.presentPinView(loginEntity: loginEntity)
     }
 
-    func userClient(_: ONGUserClient, didAuthenticateUser _: ONGUserProfile, info _: ONGCustomInfo?) {
-        loginPresenter?.presentDashboardView()
+    func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info _: ONGCustomInfo?) {
+        loginPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
 
     func userClient(_: ONGUserClient, didFailToAuthenticateUser _: ONGUserProfile, error: Error) {

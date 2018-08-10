@@ -20,14 +20,21 @@ protocol AppRouterProtocol: class {
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
     var errorPresenter: ErrorPresenterProtocol { get }
+    var authenticatorsPresenter: AuthenticatorsPresenterProtocol { get }
+    var profilePresenter: ProfilePresenterProtocol { get }
+    var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
 
     func popToWelcomeViewWithLogin()
     func popToWelcomeViewControllerWithRegisterUser()
     func setupStartupPresenter()
     func setupWelcomePresenter()
-    func setupDashboardPresenter()
+    func setupDashboardPresenter(authenticatedUserProfile: ONGUserProfile)
     func setupErrorAlert(error: AppError)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
+    func setupAuthenticatorsPresenter()
+    func setupProfilePresenter()
+    func popToDashboardView()
+    func setupMobileAuthPresenter()
 }
 
 class AppRouter: AppRouterProtocol {
@@ -35,19 +42,32 @@ class AppRouter: AppRouterProtocol {
     var welcomePresenter: WelcomePresenterProtocol
     var dashboardPresenter: DashboardPresenterProtocol
     var errorPresenter: ErrorPresenterProtocol
+    var authenticatorsPresenter: AuthenticatorsPresenterProtocol
+    var profilePresenter: ProfilePresenterProtocol
+    var mobileAuthPresenter: MobileAuthPresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
-         errorPresenter: ErrorPresenterProtocol) {
+         errorPresenter: ErrorPresenterProtocol,
+         authenticatorsPresenter: AuthenticatorsPresenterProtocol,
+         profilePresenter: ProfilePresenterProtocol,
+         mobileAuthPresenter: MobileAuthPresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
         self.errorPresenter = errorPresenter
+        self.authenticatorsPresenter = authenticatorsPresenter
+        self.profilePresenter = profilePresenter
+        self.mobileAuthPresenter = mobileAuthPresenter
     }
 
     func popToWelcomeViewWithLogin() {
         welcomePresenter.popToWelcomeViewControllerWithLogin()
+    }
+    
+    func popToDashboardView() {
+        dashboardPresenter.popToDashboardView()
     }
 
     func popToWelcomeViewControllerWithRegisterUser() {
@@ -62,8 +82,8 @@ class AppRouter: AppRouterProtocol {
         welcomePresenter.presentWelcomeView()
     }
 
-    func setupDashboardPresenter() {
-        dashboardPresenter.presentDashboardView()
+    func setupDashboardPresenter(authenticatedUserProfile: ONGUserProfile) {
+        dashboardPresenter.presentDashboardView(authenticatedUserProfile: authenticatedUserProfile)
     }
 
     func setupErrorAlert(error: AppError) {
@@ -72,5 +92,17 @@ class AppRouter: AppRouterProtocol {
 
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
         errorPresenter.showErrorAlertWithRetryAction(error: error, retryHandler: retryHandler)
+    }
+    
+    func setupAuthenticatorsPresenter() {
+        authenticatorsPresenter.presentAuthenticatorsView()
+    }
+    
+    func setupProfilePresenter() {
+        profilePresenter.presentProfileView()
+    }
+    
+    func setupMobileAuthPresenter() {
+        mobileAuthPresenter.presentMobileAuthView()
     }
 }

@@ -20,9 +20,12 @@ class RouterAssembly: Assembly {
     func assemble(container: Container) {
         container.register(AppRouterProtocol.self) { resolver in
             AppRouter(startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
-                      welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
-                      dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
-                      errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!)
-        }.inObjectScope(.container)
-    }
+                welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
+                dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
+                errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!, 
+                authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!,
+                profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
+                mobileAuthPresenter: resolver.resolve(MobileAuthPresenterProtocol.self)!)
+    }.inObjectScope(.container)
+}
 }

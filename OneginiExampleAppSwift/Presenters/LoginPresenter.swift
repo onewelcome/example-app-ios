@@ -24,7 +24,7 @@ protocol ParentToChildPresenterProtocol {
 
 protocol LoginInteractorToPresenterProtocol: class {
     func presentPinView(loginEntity: LoginEntity)
-    func presentDashboardView()
+    func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func loginActionFailed(_ error: AppError)
     func loginActionCancelled()
 }
@@ -60,9 +60,9 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         }
     }
 
-    func presentDashboardView() {
+    func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupDashboardPresenter()
+        appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
     func loginActionFailed(_ error: AppError) {

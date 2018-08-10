@@ -78,8 +78,8 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 
-    func userClient(_: ONGUserClient, didRegisterUser _: ONGUserProfile, info _: ONGCustomInfo?) {
-        registerUserPresenter?.presentDashboardView()
+    func userClient(_: ONGUserClient, didRegisterUser userProfile: ONGUserProfile, info _: ONGCustomInfo?) {
+        registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
 
     func userClient(_: ONGUserClient, didFailToRegisterWithError error: Error) {
