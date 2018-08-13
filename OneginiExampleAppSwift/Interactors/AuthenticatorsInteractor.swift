@@ -35,6 +35,10 @@ class AuthenticatorsInteractor: NSObject {
             registerAuthenticatorEntity.pinError = nil
         }
     }
+    
+    fileprivate func sortAuthenticatorsList(_ authenticators: Array<ONGAuthenticator>) -> Array<ONGAuthenticator> {
+       return authenticators.sorted { $0.type.rawValue < $1.type.rawValue }
+    }
 }
 
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
@@ -42,7 +46,7 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
         let userClient = ONGUserClient.sharedInstance()
         guard let authenticatedUserProfile = userClient.authenticatedUserProfile() else { return [] }
         let authenticatros = userClient.allAuthenticators(forUser: authenticatedUserProfile)
-        return Array(authenticatros)
+        return sortAuthenticatorsList(Array(authenticatros))
     }
     
     func registerAuthenticator(_ authenticator: ONGAuthenticator) {
