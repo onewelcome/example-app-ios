@@ -12,7 +12,6 @@ target 'OneginiExampleAppSwift' do
     pod 'OneginiSDKiOS', '8.0.1-SNAPSHOT'
     pod 'Swinject'
     pod 'BetterSegmentedControl', '~> 0.9'
-    pod 'AIFlatSwitch', '~> 1.0.1'
     pod 'TransitionButton'
     pod 'SkyFloatingLabelTextField', '~> 3.0'
 
