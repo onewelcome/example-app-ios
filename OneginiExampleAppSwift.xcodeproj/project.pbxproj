@@ -74,6 +74,8 @@
 		7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61C2100D73900741E92 /* ErrorMapper.swift */; };
 		7EBF8B78211C4CDB00C3D94E /* AuthenticatorsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B77211C4CDB00C3D94E /* AuthenticatorsInteractor.swift */; };
 		7EBF8B7A211C80D300C3D94E /* RegisterAuthenticatorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B79211C80D300C3D94E /* RegisterAuthenticatorEntity.swift */; };
+		7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */; };
+		7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */; };
 		7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B222114370C00133D5C /* MobileAuthViewController.swift */; };
 		7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED15B232114370C00133D5C /* MobileAuthViewController.xib */; };
 		7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */; };
@@ -179,6 +181,8 @@
 		7EB1F61C2100D73900741E92 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
 		7EBF8B77211C4CDB00C3D94E /* AuthenticatorsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsInteractor.swift; sourceTree = "<group>"; };
 		7EBF8B79211C80D300C3D94E /* RegisterAuthenticatorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAuthenticatorEntity.swift; sourceTree = "<group>"; };
+		7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorRegistrationErrorDomainMapping.swift; sourceTree = "<group>"; };
+		7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorDeregistrationErrorMapping.swift; sourceTree = "<group>"; };
 		7ED15B222114370C00133D5C /* MobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthViewController.swift; sourceTree = "<group>"; };
 		7ED15B232114370C00133D5C /* MobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthViewController.xib; sourceTree = "<group>"; };
 		7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthPresenter.swift; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 				7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */,
 				7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */,
 				7EB1F61C2100D73900741E92 /* ErrorMapper.swift */,
+				7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */,
+				7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -892,11 +898,13 @@
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
+				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
+				7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
 				7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */,

@@ -81,7 +81,12 @@ extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
     }
     
     func userClient(_ userClient: ONGUserClient, didFailToRegister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile, error: Error) {
-        
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            authenticatorsPresenter?.authenticatorActionCancelled()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            authenticatorsPresenter?.authenticatorActionFailed(mappedError)
+        }
     }
     
     func userClient(_ userClient: ONGUserClient, didRegister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {
@@ -94,6 +99,15 @@ extension AuthenticatorsInteractor: ONGAuthenticatorDeregistrationDelegate {
 
     func userClient(_ userClient: ONGUserClient, didDeregister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile) {
         authenticatorsPresenter?.authenticatorDeregistrationSucced()
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didFailToDeregister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile, error: Error) {
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            authenticatorsPresenter?.authenticatorActionCancelled()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            authenticatorsPresenter?.authenticatorActionFailed(mappedError)
+        }
     }
 
 }

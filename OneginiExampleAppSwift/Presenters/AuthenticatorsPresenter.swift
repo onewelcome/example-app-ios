@@ -22,6 +22,8 @@ protocol AuthenticatorsInteractorToPresenterProtocol: class {
     func presentPinView(registerAuthenticatorEntity: RegisterAuthenticatorEntity)
     func popToAuthenticatorsView()
     func authenticatorDeregistrationSucced()
+    func authenticatorActionFailed(_ error: AppError)
+    func authenticatorActionCancelled()
 }
 
 protocol AuthenticatorsViewToPresenterProtocol: class {
@@ -70,6 +72,17 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
     func popToAuthenticatorsView() {
         reloadAuthenticators()
         navigationController.popToViewController(authenticatorsViewController, animated: true)
+    }
+    
+    func authenticatorActionFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToAuthenticatorsView()
+        appRouter.setupErrorAlert(error: error)
+    }
+    
+    func authenticatorActionCancelled() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToAuthenticatorsView()
     }
 }
 
