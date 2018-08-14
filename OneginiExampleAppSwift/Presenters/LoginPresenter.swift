@@ -19,15 +19,15 @@ typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginVie
 
 protocol ParentToChildPresenterProtocol {
     func reloadProfiles()
-    func selectLastSelectedProfileAndReloadAuthenticators()
-    func selectFirstProfileAndReloadAuthenticators()
+    func updateView()
+    func updateSelectedProfile(_ profile: ONGUserProfile)
 }
 
 protocol LoginInteractorToPresenterProtocol: class {
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
-    func loginActionFailed(_ error: AppError)
-    func loginActionCancelled()
+    func loginActionFailed(_ error: AppError, profile: ONGUserProfile)
+    func loginActionCancelled(profile: ONGUserProfile)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -66,15 +66,15 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
-    func loginActionFailed(_ error: AppError) {
+    func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin()
+        appRouter.popToWelcomeViewWithLogin(profile: profile)
         appRouter.setupErrorAlert(error: error)
     }
 
-    func loginActionCancelled() {
+    func loginActionCancelled(profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin()
+        appRouter.popToWelcomeViewWithLogin(profile: profile)
     }
 }
 
@@ -99,22 +99,26 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
 }
 
 extension LoginPresenter: ParentToChildPresenterProtocol {
+    func updateSelectedProfile(_ profile: ONGUserProfile) {
+        loginViewController.selectedProfile = profile
+    }
+
     func reloadProfiles() {
         profiles = loginInteractor.userProfiles()
         loginViewController.profiles = profiles
     }
 
-    func selectLastSelectedProfileAndReloadAuthenticators() {
+    func updateView() {
         let profile = loginViewController.selectedProfile
-        reloadAuthenticators(profile)
-        if let index = loginViewController.profiles.index(of: profile) {
-            loginViewController.selectProfile(index: index)
+        if profiles.contains(profile) {
+            reloadAuthenticators(profile)
+            if let index = loginViewController.profiles.index(of: profile) {
+                loginViewController.selectProfile(index: index)
+            }
+        } else {
+            reloadAuthenticators(profiles[0])
+            loginViewController.selectProfile(index: 0)
         }
-    }
-
-    func selectFirstProfileAndReloadAuthenticators() {
-        reloadAuthenticators(profiles[0])
-        loginViewController.selectProfile(index: 0)
     }
 }
 

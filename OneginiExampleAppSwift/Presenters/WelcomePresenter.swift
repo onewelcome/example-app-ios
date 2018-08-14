@@ -19,9 +19,9 @@ import UIKit
 protocol WelcomePresenterProtocol: class {
     func setupSegmentView()
     func presentWelcomeView()
-    func popToWelcomeViewControllerWithLogin()
+    func popToWelcomeViewControllerWithLogin(profile: ONGUserProfile)
     func popToWelcomeViewControllerWithRegisterUser()
-    func popToWelcomeViewControllerDependsOnProfileArray()
+    func popToWelcomeViewController()
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
@@ -43,10 +43,11 @@ class WelcomePresenter: WelcomePresenterProtocol {
         navigationController.pushViewController(welcomeViewController, animated: false)
     }
 
-    func popToWelcomeViewControllerWithLogin() {
+    func popToWelcomeViewControllerWithLogin(profile: ONGUserProfile) {
         loginPresenter.reloadProfiles()
+        loginPresenter.updateSelectedProfile(profile)
         setupSegmentView()
-        loginPresenter.selectLastSelectedProfileAndReloadAuthenticators()
+        loginPresenter.updateView()
         navigationController.popToViewController(welcomeViewController, animated: true)
     }
 
@@ -55,11 +56,11 @@ class WelcomePresenter: WelcomePresenterProtocol {
         navigationController.popToViewController(welcomeViewController, animated: true)
     }
 
-    func popToWelcomeViewControllerDependsOnProfileArray() {
+    func popToWelcomeViewController() {
+        loginPresenter.reloadProfiles()
+        setupSegmentView()
         if loginPresenter.profiles.count > 0 {
-            loginPresenter.reloadProfiles()
-            setupSegmentView()
-            loginPresenter.selectFirstProfileAndReloadAuthenticators()
+            loginPresenter.updateView()
             navigationController.popToViewController(welcomeViewController, animated: true)
         } else {
             popToWelcomeViewControllerWithRegisterUser()

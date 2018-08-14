@@ -35,6 +35,7 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     var logoutInteractor: LogoutInteractorProtocol
     let dashboardViewController: DashboardViewController
+    var authenticatedUserProfile: ONGUserProfile?
 
     init(_ dashboardViewController: DashboardViewController, logoutInteractor: LogoutInteractorProtocol, navigationController: UINavigationController) {
         self.logoutInteractor = logoutInteractor
@@ -43,13 +44,16 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     }
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
+        self.authenticatedUserProfile = authenticatedUserProfile
         dashboardViewController.userProfileName = authenticatedUserProfile.profileId
         navigationController.pushViewController(dashboardViewController, animated: true)
     }
 
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin()
+        if let authenticatedUserProfile = authenticatedUserProfile {
+            appRouter.popToWelcomeViewWithLogin(profile: authenticatedUserProfile)
+        }
     }
 
     func logoutUserActionFailed(_ error: AppError) {
