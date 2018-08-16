@@ -29,6 +29,7 @@ protocol AppRouterProtocol: class {
     func popToWelcomeViewWithLogin(profile: ONGUserProfile)
     func popToWelcomeViewControllerWithRegisterUser()
     func popToWelcomeViewController()
+    func popToProfileView()
 
     func setupErrorAlert(error: AppError)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
@@ -40,6 +41,7 @@ protocol AppRouterProtocol: class {
     func setupProfilePresenter()
     func setupMobileAuthPresenter()
     func setupDisconnectPresenter()
+    func setupChangePinPresenter()
 }
 
 class AppRouter: AppRouterProtocol {
@@ -51,6 +53,7 @@ class AppRouter: AppRouterProtocol {
     var profilePresenter: ProfilePresenterProtocol
     var mobileAuthPresenter: MobileAuthPresenterProtocol
     var disconnectPresenter: DisconnectPresenterProtocol
+    var changePinPresenter: ChangePinPresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
@@ -59,7 +62,8 @@ class AppRouter: AppRouterProtocol {
          authenticatorsPresenter: AuthenticatorsPresenterProtocol,
          profilePresenter: ProfilePresenterProtocol,
          mobileAuthPresenter: MobileAuthPresenterProtocol,
-         disconnectPresenter: DisconnectPresenterProtocol) {
+         disconnectPresenter: DisconnectPresenterProtocol,
+         changePinPresenter: ChangePinPresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -68,6 +72,7 @@ class AppRouter: AppRouterProtocol {
         self.profilePresenter = profilePresenter
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
+        self.changePinPresenter = changePinPresenter
     }
 
     func popToDashboardView() {
@@ -84,6 +89,10 @@ class AppRouter: AppRouterProtocol {
 
     func popToWelcomeViewController() {
         welcomePresenter.popToWelcomeViewController()
+    }
+
+    func popToProfileView() {
+        profilePresenter.popToProfileView()
     }
 
     func setupErrorAlert(error: AppError) {
@@ -120,5 +129,9 @@ class AppRouter: AppRouterProtocol {
 
     func setupDisconnectPresenter() {
         disconnectPresenter.presentDisconnectAlert()
+    }
+
+    func setupChangePinPresenter() {
+        changePinPresenter.startChangePinFlow()
     }
 }

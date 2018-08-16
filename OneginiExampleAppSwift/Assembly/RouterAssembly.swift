@@ -26,7 +26,8 @@ class RouterAssembly: Assembly {
                       authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!,
                       profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
                       mobileAuthPresenter: resolver.resolve(MobileAuthPresenterProtocol.self)!,
-                      disconnectPresenter: resolver.resolve(DisconnectPresenterProtocol.self)!)
+                      disconnectPresenter: resolver.resolve(DisconnectPresenterProtocol.self)!,
+                      changePinPresenter: resolver.resolve(ChangePinPresenterProtocol.self)!)
         }.inObjectScope(.container)
     }
 }

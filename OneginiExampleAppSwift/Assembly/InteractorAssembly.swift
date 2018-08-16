@@ -38,5 +38,10 @@ class InteractorAssembly: Assembly {
                 let disconnectInteractor = instance as! DisconnectInteractor
                 disconnectInteractor.disconnectPresenter = resolver.resolve(DisconnectPresenterProtocol.self)
             }
+        container.register(ChangePinInteractorProtocol.self) { _ in ChangePinInteractor() }
+            .initCompleted { resolver, instance in
+                let changePinInteractor = instance as! ChangePinInteractor
+                changePinInteractor.changePinPresenter = resolver.resolve(ChangePinPresenterProtocol.self)
+            }
     }
 }
