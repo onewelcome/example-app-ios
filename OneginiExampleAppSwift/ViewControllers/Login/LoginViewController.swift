@@ -38,6 +38,15 @@ class LoginViewController: UIViewController {
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
     var selectedProfile = ONGUserProfile()
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let selectedRow = profilesTableView?.indexPathForSelectedRow,
+            let profilesTableView = profilesTableView {
+            profilesTableView.deselectRow(at: selectedRow, animated: true)
+            profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: selectedRow)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -87,7 +96,6 @@ extension LoginViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
 }
 
 extension LoginViewController: UITableViewDelegate {

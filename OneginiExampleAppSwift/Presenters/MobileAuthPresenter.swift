@@ -13,7 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import UIKit
 
 typealias MobileAuthPresenterProtocol = MobileAuthInteractorToPresenterProtocol & MobileAuthViewToPresenterProtocol
@@ -27,26 +26,21 @@ protocol MobileAuthViewToPresenterProtocol {
 }
 
 class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
-    
     let navigationController: UINavigationController
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func presentMobileAuthView() {
         let mobileAuthViewController = MobileAuthViewController(self)
         navigationController.pushViewController(mobileAuthViewController, animated: true)
     }
 }
 
-
 extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
-    
     func popToDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToDashboardView()
     }
-    
 }
-

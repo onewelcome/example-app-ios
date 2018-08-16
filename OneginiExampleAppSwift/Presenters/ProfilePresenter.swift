@@ -13,7 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import UIKit
 
 typealias ProfilePresenterProtocol = ProfileInteractorToPresenterProtocol & ProfileViewToPresenterProtocol
@@ -24,28 +23,30 @@ protocol ProfileInteractorToPresenterProtocol: class {
 
 protocol ProfileViewToPresenterProtocol {
     func popToDashboardView()
+    func setupDisconnectPresenter()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    
     let navigationController: UINavigationController
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func presentProfileView() {
         let profileViewController = ProfileViewController(self)
         navigationController.pushViewController(profileViewController, animated: true)
     }
 }
 
-
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
-    
     func popToDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToDashboardView()
     }
-    
+
+    func setupDisconnectPresenter() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupDisconnectPresenter()
+    }
 }

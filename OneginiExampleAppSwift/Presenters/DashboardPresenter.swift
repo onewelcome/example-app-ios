@@ -20,6 +20,7 @@ typealias DashboardPresenterProtocol = DashboardInteractorToPresenterProtocol & 
 protocol DashboardInteractorToPresenterProtocol: class {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func presentWelcomeView()
+    func logoutUserActionFailed(_ error: AppError)
 }
 
 protocol DashboardViewToPresenterProtocol: class {
@@ -34,6 +35,7 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     var logoutInteractor: LogoutInteractorProtocol
     let dashboardViewController: DashboardViewController
+    var authenticatedUserProfile: ONGUserProfile?
 
     init(_ dashboardViewController: DashboardViewController, logoutInteractor: LogoutInteractorProtocol, navigationController: UINavigationController) {
         self.logoutInteractor = logoutInteractor
@@ -42,13 +44,21 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     }
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
+        self.authenticatedUserProfile = authenticatedUserProfile
         dashboardViewController.userProfileName = authenticatedUserProfile.profileId
         navigationController.pushViewController(dashboardViewController, animated: true)
     }
 
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin()
+        if let authenticatedUserProfile = authenticatedUserProfile {
+            appRouter.popToWelcomeViewWithLogin(profile: authenticatedUserProfile)
+        }
+    }
+
+    func logoutUserActionFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 }
 
@@ -56,21 +66,21 @@ extension DashboardPresenter: DashboardViewToPresenterProtocol {
     func logout() {
         logoutInteractor.logout()
     }
-    
+
     func popToDashboardView() {
         navigationController.popToViewController(dashboardViewController, animated: true)
     }
-    
+
     func presentAuthenticatorsView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupAuthenticatorsPresenter()
     }
-    
+
     func presentProfileView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupProfilePresenter()
     }
-    
+
     func presentMobileAuthView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupMobileAuthPresenter()

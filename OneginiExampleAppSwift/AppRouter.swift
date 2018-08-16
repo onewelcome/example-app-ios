@@ -23,18 +23,23 @@ protocol AppRouterProtocol: class {
     var authenticatorsPresenter: AuthenticatorsPresenterProtocol { get }
     var profilePresenter: ProfilePresenterProtocol { get }
     var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
+    var disconnectPresenter: DisconnectPresenterProtocol { get }
 
-    func popToWelcomeViewWithLogin()
+    func popToDashboardView()
+    func popToWelcomeViewWithLogin(profile: ONGUserProfile)
     func popToWelcomeViewControllerWithRegisterUser()
+    func popToWelcomeViewController()
+
+    func setupErrorAlert(error: AppError)
+    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
+
     func setupStartupPresenter()
     func setupWelcomePresenter()
     func setupDashboardPresenter(authenticatedUserProfile: ONGUserProfile)
-    func setupErrorAlert(error: AppError)
-    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
     func setupAuthenticatorsPresenter()
     func setupProfilePresenter()
-    func popToDashboardView()
     func setupMobileAuthPresenter()
+    func setupDisconnectPresenter()
 }
 
 class AppRouter: AppRouterProtocol {
@@ -45,6 +50,7 @@ class AppRouter: AppRouterProtocol {
     var authenticatorsPresenter: AuthenticatorsPresenterProtocol
     var profilePresenter: ProfilePresenterProtocol
     var mobileAuthPresenter: MobileAuthPresenterProtocol
+    var disconnectPresenter: DisconnectPresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
@@ -52,7 +58,8 @@ class AppRouter: AppRouterProtocol {
          errorPresenter: ErrorPresenterProtocol,
          authenticatorsPresenter: AuthenticatorsPresenterProtocol,
          profilePresenter: ProfilePresenterProtocol,
-         mobileAuthPresenter: MobileAuthPresenterProtocol) {
+         mobileAuthPresenter: MobileAuthPresenterProtocol,
+         disconnectPresenter: DisconnectPresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -60,18 +67,31 @@ class AppRouter: AppRouterProtocol {
         self.authenticatorsPresenter = authenticatorsPresenter
         self.profilePresenter = profilePresenter
         self.mobileAuthPresenter = mobileAuthPresenter
+        self.disconnectPresenter = disconnectPresenter
     }
 
-    func popToWelcomeViewWithLogin() {
-        welcomePresenter.popToWelcomeViewControllerWithLogin()
-    }
-    
     func popToDashboardView() {
         dashboardPresenter.popToDashboardView()
     }
 
+    func popToWelcomeViewWithLogin(profile: ONGUserProfile) {
+        welcomePresenter.popToWelcomeViewControllerWithLogin(profile: profile)
+    }
+
     func popToWelcomeViewControllerWithRegisterUser() {
         welcomePresenter.popToWelcomeViewControllerWithRegisterUser()
+    }
+
+    func popToWelcomeViewController() {
+        welcomePresenter.popToWelcomeViewController()
+    }
+
+    func setupErrorAlert(error: AppError) {
+        errorPresenter.showErrorAlert(error: error)
+    }
+
+    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
+        errorPresenter.showErrorAlertWithRetryAction(error: error, retryHandler: retryHandler)
     }
 
     func setupStartupPresenter() {
@@ -86,23 +106,19 @@ class AppRouter: AppRouterProtocol {
         dashboardPresenter.presentDashboardView(authenticatedUserProfile: authenticatedUserProfile)
     }
 
-    func setupErrorAlert(error: AppError) {
-        errorPresenter.showErrorAlert(error: error)
-    }
-
-    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
-        errorPresenter.showErrorAlertWithRetryAction(error: error, retryHandler: retryHandler)
-    }
-    
     func setupAuthenticatorsPresenter() {
         authenticatorsPresenter.presentAuthenticatorsView()
     }
-    
+
     func setupProfilePresenter() {
         profilePresenter.presentProfileView()
     }
-    
+
     func setupMobileAuthPresenter() {
         mobileAuthPresenter.presentMobileAuthView()
+    }
+
+    func setupDisconnectPresenter() {
+        disconnectPresenter.presentDisconnectAlert()
     }
 }
