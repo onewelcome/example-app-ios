@@ -26,9 +26,9 @@ protocol AppRouterProtocol: class {
     var disconnectPresenter: DisconnectPresenterProtocol { get }
 
     func popToDashboardView()
-    func popToWelcomeViewWithLogin()
+    func popToWelcomeViewWithLogin(profile: ONGUserProfile)
     func popToWelcomeViewControllerWithRegisterUser()
-    func popToWelcomeViewControllerDependsOnProfileArray()
+    func popToWelcomeViewController()
     func popToProfileView()
 
     func setupErrorAlert(error: AppError)
@@ -79,16 +79,16 @@ class AppRouter: AppRouterProtocol {
         dashboardPresenter.popToDashboardView()
     }
 
-    func popToWelcomeViewWithLogin() {
-        welcomePresenter.popToWelcomeViewControllerWithLogin()
+    func popToWelcomeViewWithLogin(profile: ONGUserProfile) {
+        welcomePresenter.popToWelcomeViewControllerWithLogin(profile: profile)
     }
 
     func popToWelcomeViewControllerWithRegisterUser() {
         welcomePresenter.popToWelcomeViewControllerWithRegisterUser()
     }
 
-    func popToWelcomeViewControllerDependsOnProfileArray() {
-        welcomePresenter.popToWelcomeViewControllerDependsOnProfileArray()
+    func popToWelcomeViewController() {
+        welcomePresenter.popToWelcomeViewController()
     }
 
     func popToProfileView() {
