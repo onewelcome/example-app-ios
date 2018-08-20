@@ -98,7 +98,7 @@ class AppRouter: AppRouterProtocol {
     }
     
     func popToAuthenticatorsView() {
-        authenticatorsPresenter.presentAuthenticatorsView()
+        authenticatorsPresenter.popToAuthenticatorsView()
     }
 
     func setupErrorAlert(error: AppError) {

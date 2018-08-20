@@ -30,7 +30,8 @@ protocol AuthenticatorsViewToPresenterProtocol: class {
     func registerAuthenticator(_ authenticator: ONGAuthenticator)
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
     func popToDashboardView()
-    func reloadAuthenticators() 
+    func reloadAuthenticators()
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
 }
 
 class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
@@ -83,6 +84,10 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
     func authenticatorActionCancelled() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToAuthenticatorsView()
+    }
+    
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator) {
+        authenticatorsInteractor.setPreferredAuthenticator(authenticator)
     }
 }
 

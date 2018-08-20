@@ -22,6 +22,7 @@ class AuthenticatorTableViewCell: UITableViewCell {
     @IBOutlet var authenticatorName: UILabel!
     @IBOutlet weak var deregisterButton: TransitionButton!
     @IBOutlet weak var registerButton: TransitionButton!
+    @IBOutlet weak var setPreferredButton: TransitionButton!
     
     var selectedRow: ((AuthenticatorTableViewCell) -> Void)?
     weak var authenticatorsViewController: AuthenticatorsViewController?
@@ -36,6 +37,7 @@ class AuthenticatorTableViewCell: UITableViewCell {
         registerButton.isHidden = authenticator.isRegistered || authenticator.type == .PIN
         
         preferredLabel.isHidden = !authenticator.isPreferred
+        setPreferredButton.isHidden = !authenticator.isRegistered || authenticator.isPreferred
     }
     
     
@@ -49,6 +51,13 @@ class AuthenticatorTableViewCell: UITableViewCell {
         guard let authenticator = authenticator else { return }
         deregisterButton.startAnimation()
         self.authenticatorsViewController?.deregisterAuthenticator(authenticator)
+    }
+    
+    @IBAction func setPreferredAuthenticator(_ sender: Any) {
+        if let authenticator = authenticator {
+            authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.setPreferredAuthenticator(authenticator)
+            authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
+        }
     }
     
     func deregistrationFinished() {

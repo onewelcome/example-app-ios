@@ -20,6 +20,7 @@ protocol AuthenticatorsInteractorProtocol {
     func registerAuthenticator(_ authenticator: ONGAuthenticator)
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
     func handleLogin(registerAuthenticatorEntity: PinViewControllerEntityProtocol)
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
 }
 
 class AuthenticatorsInteractor: NSObject {
@@ -39,6 +40,7 @@ class AuthenticatorsInteractor: NSObject {
     fileprivate func sortAuthenticatorsList(_ authenticators: Array<ONGAuthenticator>) -> Array<ONGAuthenticator> {
        return authenticators.sorted { $0.type.rawValue < $1.type.rawValue }
     }
+
 }
 
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
@@ -64,6 +66,10 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
+    }
+    
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator) {
+        ONGUserClient.sharedInstance().preferredAuthenticator = authenticator
     }
 }
 
