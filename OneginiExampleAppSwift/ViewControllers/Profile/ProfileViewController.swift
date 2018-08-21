@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func deviceList(_: Any) {
+        profileViewToPresenterProtocol?.setupFetchDeviceListPresenter()
     }
 
     @IBAction func changePassword(_: Any) {

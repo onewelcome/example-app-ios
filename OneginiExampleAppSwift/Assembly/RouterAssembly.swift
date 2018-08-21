@@ -27,7 +27,9 @@ class RouterAssembly: Assembly {
                       profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
                       mobileAuthPresenter: resolver.resolve(MobileAuthPresenterProtocol.self)!,
                       disconnectPresenter: resolver.resolve(DisconnectPresenterProtocol.self)!,
-                      changePinPresenter: resolver.resolve(ChangePinPresenterProtocol.self)!)
+                      changePinPresenter: resolver.resolve(ChangePinPresenterProtocol.self)!,
+                      fetchDeviceListPresenter: resolver.resolve(FetchDeviceListPresenterProtocol.self)!,
+                      appDetailsPresenter: resolver.resolve(AppDetailsPresenterProtocol.self)!)
         }.inObjectScope(.container)
     }
 }

@@ -24,6 +24,8 @@ protocol AppRouterProtocol: class {
     var profilePresenter: ProfilePresenterProtocol { get }
     var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
     var disconnectPresenter: DisconnectPresenterProtocol { get }
+    var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol { get }
+    var appDetailsPresenter: AppDetailsPresenterProtocol { get }
 
     func popToDashboardView()
     func popToWelcomeViewWithLogin()
@@ -43,6 +45,8 @@ protocol AppRouterProtocol: class {
     func setupMobileAuthPresenter()
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
+    func setupFetchDeviceListPresenter()
+    func setupAppDetailsPresenter()
 }
 
 class AppRouter: AppRouterProtocol {
@@ -55,6 +59,8 @@ class AppRouter: AppRouterProtocol {
     var mobileAuthPresenter: MobileAuthPresenterProtocol
     var disconnectPresenter: DisconnectPresenterProtocol
     var changePinPresenter: ChangePinPresenterProtocol
+    var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol
+    var appDetailsPresenter: AppDetailsPresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
@@ -64,7 +70,9 @@ class AppRouter: AppRouterProtocol {
          profilePresenter: ProfilePresenterProtocol,
          mobileAuthPresenter: MobileAuthPresenterProtocol,
          disconnectPresenter: DisconnectPresenterProtocol,
-         changePinPresenter: ChangePinPresenterProtocol) {
+         changePinPresenter: ChangePinPresenterProtocol,
+         fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
+         appDetailsPresenter: AppDetailsPresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -74,7 +82,8 @@ class AppRouter: AppRouterProtocol {
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
         self.changePinPresenter = changePinPresenter
-        
+        self.fetchDeviceListPresenter = fetchDeviceListPresenter
+        self.appDetailsPresenter = appDetailsPresenter
     }
 
     func popToDashboardView() {
@@ -139,5 +148,13 @@ class AppRouter: AppRouterProtocol {
 
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
+    }
+    
+    func setupFetchDeviceListPresenter() {
+        fetchDeviceListPresenter.setupDeviceListPresenter()
+    }
+    
+    func setupAppDetailsPresenter() {
+        appDetailsPresenter.presentAppDetails()
     }
 }

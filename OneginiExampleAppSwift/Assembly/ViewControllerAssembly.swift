@@ -46,5 +46,6 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, authenticatorsViewController in
                 authenticatorsViewController.authenticatorsViewToPresenterProtocol = resolver.resolve(AuthenticatorsPresenterProtocol.self)!
         }
+                
     }
 }
