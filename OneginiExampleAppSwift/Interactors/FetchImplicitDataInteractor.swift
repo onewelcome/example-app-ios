@@ -26,14 +26,26 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     
     func fetchImplicitResources(profile: ONGUserProfile) {
         if isProfileImplicitlyAuthenticated(profile) {
-            implicitResourcesRequest { userIdDecorated in
-                self.loginPresenter?.presentImplicitData(data: userIdDecorated)
+            implicitResourcesRequest { userIdDecorated, error in
+                if let userIdDecorated = userIdDecorated {
+                    self.loginPresenter?.presentImplicitData(data: userIdDecorated)
+                } else if let error = error {
+                    self.loginPresenter?.fetchImplicitDataFailed(error)
+                }
             }
         } else {
-            authenticateUserImplicitly(profile) { success in
+            authenticateUserImplicitly(profile) { success, error in
                 if success {
-                    self.implicitResourcesRequest { userIdDecorated in
-                        self.loginPresenter?.presentImplicitData(data: userIdDecorated)
+                    self.implicitResourcesRequest { userIdDecorated, error in
+                        if let userIdDecorated = userIdDecorated {
+                            self.loginPresenter?.presentImplicitData(data: userIdDecorated)
+                        } else if let error = error {
+                            self.loginPresenter?.fetchImplicitDataFailed(error)
+                        }
+                    }
+                } else {
+                    if let error = error {
+                        self.loginPresenter?.fetchImplicitDataFailed(error)
                     }
                 }
             }
@@ -42,30 +54,31 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     
     fileprivate func isProfileImplicitlyAuthenticated(_ profile: ONGUserProfile) -> Bool {
         let implicitlyAuthenticatedProfile = ONGUserClient.sharedInstance().implicitlyAuthenticatedUserProfile()
-        
         return implicitlyAuthenticatedProfile != nil && implicitlyAuthenticatedProfile == profile
     }
     
-    fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion:@escaping (Bool) -> Void) {
+    fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion:@escaping (Bool, AppError?) -> Void) {
         ONGUserClient.sharedInstance().implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
             if !success {
-                print(error)
+                let authenticateUserImplicitlyError = ErrorMapper().mapError(error)
+                completion(success, authenticateUserImplicitlyError)
             }
-            completion(success)
+            completion(success, nil)
 
         }
     }
     
-    fileprivate func implicitResourcesRequest(completion:@escaping (String) -> Void) {
+    fileprivate func implicitResourcesRequest(completion:@escaping (String?, AppError?) -> Void) {
         let implicitRequest = ONGResourceRequest(path: "resources/user-id-decorated", method: "GET")
         ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
             if let error = error {
-                print(error)
+                let fetchResourceImplicitlyError = ErrorMapper().mapError(error)
+                completion(nil, fetchResourceImplicitlyError)
             } else {
                 if let data = response?.data {
                     if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: String],
                         let userIdDecorated = responseData["decorated_user_id"] {
-                            completion(userIdDecorated)
+                            completion(userIdDecorated, nil)
                     }
                 }
             }

@@ -21,6 +21,7 @@
 		7E241DFF212C2AA7008FCD9A /* AppDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */; };
 		7E241E01212C2ACB008FCD9A /* AppDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */; };
 		7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
+		7E241E06212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */; };
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
 		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
@@ -130,6 +131,7 @@
 		7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsPresenter.swift; sourceTree = "<group>"; };
 		7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsInteractor.swift; sourceTree = "<group>"; };
 		7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImplicitDataInteractor.swift; sourceTree = "<group>"; };
+		7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImplicitResourceErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneginiExampleAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -547,12 +549,13 @@
 		7E7AE4252100ACB6002C49D2 /* ErrorMappings */ = {
 			isa = PBXGroup;
 			children = (
+				7EB1F61C2100D73900741E92 /* ErrorMapper.swift */,
 				7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */,
 				7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */,
 				7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */,
-				7EB1F61C2100D73900741E92 /* ErrorMapper.swift */,
 				7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */,
 				7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */,
+				7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
 				7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */,
+				7E241E06212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,

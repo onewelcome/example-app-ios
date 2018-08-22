@@ -29,6 +29,7 @@ protocol LoginInteractorToPresenterProtocol: class {
     func loginActionFailed(_ error: AppError)
     func loginActionCancelled()
     func presentImplicitData(data: String)
+    func fetchImplicitDataFailed(_ error: AppError)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -83,6 +84,11 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
     
     func presentImplicitData(data: String) {
         loginViewController.implicitData.text = data
+    }
+    
+    func fetchImplicitDataFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 }
 

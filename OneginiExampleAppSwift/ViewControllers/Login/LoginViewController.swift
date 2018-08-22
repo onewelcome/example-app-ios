@@ -108,8 +108,8 @@ extension LoginViewController: UITableViewDelegate {
             if selectedProfile != profiles[indexPath.row] {
                 selectedProfile = profiles[indexPath.row]
                 loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
-                loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
             }
+            loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
         }
     }
