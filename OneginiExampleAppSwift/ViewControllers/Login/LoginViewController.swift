@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
+    @IBOutlet weak var implicitData: UILabel!
+    
     var profiles = [ONGUserProfile]() {
         didSet {
             if let tableView = profilesTableView {
@@ -55,6 +57,7 @@ class LoginViewController: UIViewController {
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         selectProfile(index: 0)
+        loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
     }
 
     func selectProfile(index: Int) {
@@ -105,6 +108,7 @@ extension LoginViewController: UITableViewDelegate {
             if selectedProfile != profiles[indexPath.row] {
                 selectedProfile = profiles[indexPath.row]
                 loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
+                loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
             }
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
         }

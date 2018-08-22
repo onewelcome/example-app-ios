@@ -37,9 +37,10 @@ class PresenterAssembly: Assembly {
 
         container.register(LoginPresenterProtocol.self) { resolver in
             LoginPresenter(loginInteractor: resolver.resolve(LoginInteractorProtocol.self)!,
+                fetchImplicitDataInteractor: resolver.resolve(FetchImplicitDataInteractorProtocol.self)!,
                 navigationController: resolver.resolve(UINavigationController.self)!,
                 loginViewController: resolver.resolve(LoginViewController.self)!)
-        }
+        }.inObjectScope(.weak)
 
         container.register(DashboardPresenterProtocol.self) { resolver in
             DashboardPresenter(resolver.resolve(DashboardViewController.self)!,

@@ -20,6 +20,7 @@
 		7E241DFD212C0BE4008FCD9A /* AppDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241DFB212C0BE4008FCD9A /* AppDetailsViewController.xib */; };
 		7E241DFF212C2AA7008FCD9A /* AppDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */; };
 		7E241E01212C2ACB008FCD9A /* AppDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */; };
+		7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
 		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
@@ -128,6 +129,7 @@
 		7E241DFB212C0BE4008FCD9A /* AppDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppDetailsViewController.xib; sourceTree = "<group>"; };
 		7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsPresenter.swift; sourceTree = "<group>"; };
 		7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsInteractor.swift; sourceTree = "<group>"; };
+		7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImplicitDataInteractor.swift; sourceTree = "<group>"; };
 		7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneginiExampleAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				7EBF8B77211C4CDB00C3D94E /* AuthenticatorsInteractor.swift */,
 				7EBF8B812122F50C00C3D94E /* FetchDeviceListInteractor.swift */,
 				7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */,
+				7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
+				7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
 				7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */,

@@ -60,5 +60,11 @@ class InteractorAssembly: Assembly {
                 let appDetailsInteractor = instance as! AppDetailsInteractor
                 appDetailsInteractor.appDetailsPresenter = resolver.resolve(AppDetailsPresenterProtocol.self)
         }
+        
+        container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor() }
+            .initCompleted { resolver, instance in
+                let fetchImplicitDataInteractor = instance as! FetchImplicitDataInteractor
+                fetchImplicitDataInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocol.self)
+        }
     }
 }

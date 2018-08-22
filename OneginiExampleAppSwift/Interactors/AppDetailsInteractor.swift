@@ -38,9 +38,8 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
         ONGDeviceClient.sharedInstance().authenticateDevice(["application-details"]) { success, error in
             if let error = error {
                 print(error)
-            } else {
-                completion(success)
             }
+            completion(success)
         }
     }
     

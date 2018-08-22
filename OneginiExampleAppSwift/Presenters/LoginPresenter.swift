@@ -28,6 +28,7 @@ protocol LoginInteractorToPresenterProtocol: class {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func loginActionFailed(_ error: AppError)
     func loginActionCancelled()
+    func presentImplicitData(data: String)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -36,19 +37,22 @@ protocol LoginViewToPresenterProtocol: class {
     func setupLoginView() -> LoginViewController
     func login(profile: ONGUserProfile)
     func reloadAuthenticators(_ profile: ONGUserProfile)
+    func fetchImplicitData(profile: ONGUserProfile)
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
     var loginInteractor: LoginInteractorProtocol
     var profiles = Array<ONGUserProfile>()
     let navigationController: UINavigationController
+    let fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol
     var loginViewController: LoginViewController
     var pinViewController: PinViewController?
 
-    init(loginInteractor: LoginInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
+    init(loginInteractor: LoginInteractorProtocol, fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
+        self.fetchImplicitDataInteractor = fetchImplicitDataInteractor
     }
 
     func presentPinView(loginEntity: LoginEntity) {
@@ -76,6 +80,10 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToWelcomeViewWithLogin()
     }
+    
+    func presentImplicitData(data: String) {
+        loginViewController.implicitData.text = data
+    }
 }
 
 extension LoginPresenter: LoginViewToPresenterProtocol {
@@ -95,6 +103,10 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
 
     func reloadAuthenticators(_ profile: ONGUserProfile) {
         loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
+    }
+    
+    func fetchImplicitData(profile: ONGUserProfile) {
+        fetchImplicitDataInteractor.fetchImplicitResources(profile: profile)
     }
 }
 
