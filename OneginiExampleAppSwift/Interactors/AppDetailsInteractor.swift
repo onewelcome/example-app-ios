@@ -25,33 +25,42 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
     let decoder = JSONDecoder()
     
     func fetchDeviceResources() {
-        authenticateDevice { success in
+        authenticateDevice { success, error in
             if success {
-                self.deviceResourcesRequest(completion: { applicationDetails in
-                    self.appDetailsPresenter?.setupAppDetailsView(applicationDetails)
+                self.deviceResourcesRequest(completion: { applicationDetails, error in
+                    if let applicationDetails = applicationDetails {
+                        self.appDetailsPresenter?.setupAppDetailsView(applicationDetails)
+                    } else if let error = error {
+                        self.appDetailsPresenter?.fetchAppDetailsFailed(error)
+                    }
                 })
+            } else if let error = error {
+                self.appDetailsPresenter?.fetchAppDetailsFailed(error)
             }
         }
     }
     
-    fileprivate func authenticateDevice(completion:@escaping (Bool) -> Void ) {
+    fileprivate func authenticateDevice(completion:@escaping (Bool, AppError?) -> Void ) {
         ONGDeviceClient.sharedInstance().authenticateDevice(["application-details"]) { success, error in
             if let error = error {
-                print(error)
+                let mappedError = ErrorMapper().mapError(error)
+                completion(success, mappedError)
+            } else {
+                completion(success, nil)
             }
-            completion(success)
         }
     }
     
-    fileprivate func deviceResourcesRequest(completion: @escaping (ApplicationDetails) -> Void) {
+    fileprivate func deviceResourcesRequest(completion: @escaping (ApplicationDetails?, AppError?) -> Void) {
         let resourceRequest = ONGResourceRequest(path: "resources/application-details", method: "GET")
         ONGDeviceClient.sharedInstance().fetchResource(resourceRequest) { response, error in
             if let error = error {
-                print(error)
+                let mappedError = ErrorMapper().mapError(error)
+                completion(nil, mappedError)
             } else {
                 if let data = response?.data {
                     if let appDetails = try? self.decoder.decode(ApplicationDetails.self, from: data) {
-                        completion(appDetails)
+                        completion(appDetails, nil)
                     }
                 }
             }

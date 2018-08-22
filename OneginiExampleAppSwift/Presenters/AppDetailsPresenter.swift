@@ -21,6 +21,7 @@ typealias AppDetailsPresenterProtocol = AppDetailsInteractorToPresenterProtocol
 protocol AppDetailsInteractorToPresenterProtocol: class {
     func setupAppDetailsView(_ appDetails: ApplicationDetails)
     func presentAppDetails()
+    func fetchAppDetailsFailed(_ error: AppError)
 }
 
 class AppDetailsPresenter: AppDetailsInteractorToPresenterProtocol {
@@ -42,5 +43,10 @@ class AppDetailsPresenter: AppDetailsInteractorToPresenterProtocol {
     func presentAppDetails() {
         navigationController.pushViewController(appDetailsViewController, animated: true)
         appDetailsInteractor.fetchDeviceResources()
+    }
+    
+    func fetchAppDetailsFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 }
