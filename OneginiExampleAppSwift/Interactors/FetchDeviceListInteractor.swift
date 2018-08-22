@@ -28,16 +28,13 @@ class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
         let request = ONGResourceRequest(path: "resources/devices", method: "GET")
         ONGUserClient.sharedInstance().fetchResource(request) { response, error in
             if let error = error {
-                print(error)
+                let mappedError = ErrorMapper().mapError(error)
+                self.fetchDeviceListPresenter?.fetchDeviceListFailed(mappedError)
             } else {
-                if let data = response?.data {
-                    do {
-                        let deviceList = try self.decoder.decode(Devices.self, from: data)
+                if let data = response?.data,
+                    let deviceList = try? self.decoder.decode(Devices.self, from: data) {
                         self.fetchDeviceListPresenter?.presentDeviceList(deviceList.devices)
-                    } catch {
-                        print(error.localizedDescription)
                     }
-                }
             }
         }
     }

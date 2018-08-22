@@ -20,6 +20,7 @@ typealias FetchDeviceListPresenterProtocol = FetchDeviceListInteractorToPresente
 protocol FetchDeviceListInteractorToPresenterProtocol: class {
     func presentDeviceList(_ deviceList: [Device])
     func setupDeviceListPresenter()
+    func fetchDeviceListFailed(_ error: AppError)
 }
 
 class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
@@ -41,6 +42,11 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
         deviceListViewController.deviceList = deviceList
         deviceListViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(deviceListViewController, animated: false, completion: nil)
+    }
+    
+    func fetchDeviceListFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 
 }

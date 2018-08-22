@@ -60,8 +60,8 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion:@escaping (Bool, AppError?) -> Void) {
         ONGUserClient.sharedInstance().implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
             if !success {
-                let authenticateUserImplicitlyError = ErrorMapper().mapError(error)
-                completion(success, authenticateUserImplicitlyError)
+                let mappedError = ErrorMapper().mapError(error)
+                completion(success, mappedError)
             }
             completion(success, nil)
 
@@ -72,8 +72,8 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
         let implicitRequest = ONGResourceRequest(path: "resources/user-id-decorated", method: "GET")
         ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
             if let error = error {
-                let fetchResourceImplicitlyError = ErrorMapper().mapError(error)
-                completion(nil, fetchResourceImplicitlyError)
+                let mappedError = ErrorMapper().mapError(error)
+                completion(nil, mappedError)
             } else {
                 if let data = response?.data {
                     if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: String],
