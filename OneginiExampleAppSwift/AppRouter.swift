@@ -30,6 +30,7 @@ protocol AppRouterProtocol: class {
     func popToWelcomeViewControllerWithRegisterUser()
     func popToWelcomeViewController()
     func popToProfileView()
+    func popToAuthenticatorsView()
 
     func setupErrorAlert(error: AppError)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
@@ -73,6 +74,7 @@ class AppRouter: AppRouterProtocol {
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
         self.changePinPresenter = changePinPresenter
+        
     }
 
     func popToDashboardView() {
@@ -93,6 +95,10 @@ class AppRouter: AppRouterProtocol {
 
     func popToProfileView() {
         profilePresenter.popToProfileView()
+    }
+    
+    func popToAuthenticatorsView() {
+        authenticatorsPresenter.popToAuthenticatorsView()
     }
 
     func setupErrorAlert(error: AppError) {

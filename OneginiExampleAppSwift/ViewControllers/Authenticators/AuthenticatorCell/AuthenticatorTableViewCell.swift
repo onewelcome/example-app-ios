@@ -13,17 +13,58 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import AIFlatSwitch
+import TransitionButton
 import UIKit
 
 class AuthenticatorTableViewCell: UITableViewCell {
-    @IBOutlet var authentictorSwitch: AIFlatSwitch!
+    
+    @IBOutlet weak var preferredLabel: UILabel!
     @IBOutlet var authenticatorName: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        authentictorSwitch.lineWidth = 1.0
-        authentictorSwitch.strokeColor = .white
-        authentictorSwitch.trailStrokeColor = .white
+    @IBOutlet weak var deregisterButton: TransitionButton!
+    @IBOutlet weak var registerButton: TransitionButton!
+    @IBOutlet weak var setPreferredButton: TransitionButton!
+    
+    var selectedRow: ((AuthenticatorTableViewCell) -> Void)?
+    weak var authenticatorsViewController: AuthenticatorsViewController?
+    var authenticator: ONGAuthenticator?
+    
+    func setupCell(_ authenticator: ONGAuthenticator) {
+        self.authenticator = authenticator
+        
+        authenticatorName.text = authenticator.name
+        
+        deregisterButton.isHidden = !authenticator.isRegistered || authenticator.type == .PIN
+        registerButton.isHidden = authenticator.isRegistered || authenticator.type == .PIN
+        
+        preferredLabel.isHidden = !authenticator.isPreferred
+        setPreferredButton.isHidden = !authenticator.isRegistered || authenticator.isPreferred
     }
+    
+    
+    @IBAction func register(_ sender: Any) {
+        guard let authenticator = authenticator else { return }
+        authenticatorsViewController?.registerAuthenticator(authenticator)
+    }
+    
+    @IBAction func deregister(_ sender: Any) {
+        selectedRow?(self)
+        guard let authenticator = authenticator else { return }
+        deregisterButton.startAnimation()
+        self.authenticatorsViewController?.deregisterAuthenticator(authenticator)
+    }
+    
+    @IBAction func setPreferredAuthenticator(_ sender: Any) {
+        if let authenticator = authenticator {
+            authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.setPreferredAuthenticator(authenticator)
+            authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
+        }
+    }
+    
+    func deregistrationFinished() {
+        self.deregisterButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0, completion: {
+            self.authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
+        })
+    }
+    
+
 }

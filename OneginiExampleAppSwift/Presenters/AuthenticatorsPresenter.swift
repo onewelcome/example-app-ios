@@ -19,28 +19,96 @@ typealias AuthenticatorsPresenterProtocol = AuthenticatorsInteractorToPresenterP
 
 protocol AuthenticatorsInteractorToPresenterProtocol: class {
     func presentAuthenticatorsView()
+    func presentPinView(registerAuthenticatorEntity: RegisterAuthenticatorEntity)
+    func popToAuthenticatorsView()
+    func authenticatorDeregistrationSucced()
+    func authenticatorActionFailed(_ error: AppError)
+    func authenticatorActionCancelled()
 }
 
-protocol AuthenticatorsViewToPresenterProtocol {
+protocol AuthenticatorsViewToPresenterProtocol: class {
+    func registerAuthenticator(_ authenticator: ONGAuthenticator)
+    func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
     func popToDashboardView()
+    func reloadAuthenticators()
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
 }
 
 class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
     let navigationController: UINavigationController
+    let authenticatorsInteractor: AuthenticatorsInteractorProtocol
+    let authenticatorsViewController: AuthenticatorsViewController
+    var pinViewController: PinViewController?
 
-    init(navigationController: UINavigationController) {
+    init(_ authenticatorsInteractor: AuthenticatorsInteractorProtocol, navigationController: UINavigationController, authenticatorsViewController: AuthenticatorsViewController) {
         self.navigationController = navigationController
+        self.authenticatorsInteractor = authenticatorsInteractor
+        self.authenticatorsViewController = authenticatorsViewController
+    }
+    
+    func reloadAuthenticators() {
+        let authenticators = authenticatorsInteractor.authenticatorsListForAuthenticatedUserProfile()
+        authenticatorsViewController.authenticatorsList = authenticators
+    }
+    
+    func authenticatorDeregistrationSucced() {
+        authenticatorsViewController.finishDeregistrationAnimation()
     }
 
     func presentAuthenticatorsView() {
-        let authenticatorsViewController = AuthenticatorsViewController(self)
+        reloadAuthenticators()
         navigationController.pushViewController(authenticatorsViewController, animated: true)
+    }
+    
+    func presentPinView(registerAuthenticatorEntity: RegisterAuthenticatorEntity) {
+        if let error = registerAuthenticatorEntity.pinError {
+            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
+            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
+        } else {
+            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
+            navigationController.pushViewController(pinViewController!, animated: true)
+        }
+    }
+    
+    func popToAuthenticatorsView() {
+        reloadAuthenticators()
+        navigationController.popToViewController(authenticatorsViewController, animated: true)
+    }
+    
+    func authenticatorActionFailed(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToAuthenticatorsView()
+        appRouter.setupErrorAlert(error: error)
+    }
+    
+    func authenticatorActionCancelled() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.popToAuthenticatorsView()
+    }
+    
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator) {
+        authenticatorsInteractor.setPreferredAuthenticator(authenticator)
     }
 }
 
 extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {
+    
+    func registerAuthenticator(_ authenticator: ONGAuthenticator) {
+        authenticatorsInteractor.registerAuthenticator(authenticator)
+    }
+    
+    func deregisterAuthenticator(_ authenticator: ONGAuthenticator) {
+        authenticatorsInteractor.deregisterAuthenticator(authenticator)
+    }
+    
     func popToDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToDashboardView()
+    }
+}
+
+extension AuthenticatorsPresenter: PinViewToPresenterProtocol {
+    func handlePin(entity: PinViewControllerEntityProtocol) {
+        authenticatorsInteractor.handleLogin(registerAuthenticatorEntity: entity)
     }
 }

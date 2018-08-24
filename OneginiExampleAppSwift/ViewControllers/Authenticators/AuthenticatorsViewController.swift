@@ -16,36 +16,58 @@
 import UIKit
 
 class AuthenticatorsViewController: UIViewController {
-    @IBOutlet var authenticatorsTableView: UITableView!
-    let authenticatorsViewToPresenterProtocol: AuthenticatorsViewToPresenterProtocol
-
-    init(_ authenticatorsViewToPresenterProtocol: AuthenticatorsViewToPresenterProtocol) {
-        self.authenticatorsViewToPresenterProtocol = authenticatorsViewToPresenterProtocol
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @IBOutlet var authenticatorsTableView: UITableView?
+    
+    var selectedRow: Int?
+    
+    weak var authenticatorsViewToPresenterProtocol: AuthenticatorsViewToPresenterProtocol?
+    var authenticatorsList = Array<ONGAuthenticator>() {
+        didSet {
+            authenticatorsTableView?.reloadData()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        authenticatorsTableView.register(UINib(nibName: "AuthenticatorTableViewCell", bundle: nil), forCellReuseIdentifier: "AuthenticatorTableViewCell")
+        if let authenticatorsTableView = authenticatorsTableView {
+            authenticatorsTableView.register(UINib(nibName: "AuthenticatorTableViewCell", bundle: nil), forCellReuseIdentifier: "AuthenticatorTableViewCell")
+        }
     }
 
     @IBAction func backPressed(_: Any) {
-        authenticatorsViewToPresenterProtocol.popToDashboardView()
+        authenticatorsViewToPresenterProtocol?.popToDashboardView()
     }
 }
 
 extension AuthenticatorsViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 2
+        return authenticatorsList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuthenticatorTableViewCell", for: indexPath) as! AuthenticatorTableViewCell
-        cell.authenticatorName.text = "Authenticator"
+        let authenticator = authenticatorsList[indexPath.row]
+        cell.setupCell(authenticator)
+        cell.authenticatorsViewController = self
+        cell.selectedRow = { selectedCell in
+            let selectedIndex = self.authenticatorsTableView?.indexPath(for: selectedCell)
+            self.authenticatorsTableView?.selectRow(at: selectedIndex, animated: true, scrollPosition: .none)
+        }
         return cell
     }
+    
+    func registerAuthenticator(_ authenticator: ONGAuthenticator) {
+        authenticatorsViewToPresenterProtocol?.registerAuthenticator(authenticator)
+    }
+    
+    func deregisterAuthenticator(_ authenticator: ONGAuthenticator) {
+        authenticatorsViewToPresenterProtocol?.deregisterAuthenticator(authenticator)
+    }
+    
+    func finishDeregistrationAnimation() {
+        guard let indexPathForSelectedRow = authenticatorsTableView?.indexPathForSelectedRow else { return }
+        let selectedCell = authenticatorsTableView?.cellForRow(at: indexPathForSelectedRow) as! AuthenticatorTableViewCell
+        selectedCell.deregistrationFinished()
+    }
+    
 }
