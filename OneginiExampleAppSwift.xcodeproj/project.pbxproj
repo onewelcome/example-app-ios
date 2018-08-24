@@ -78,6 +78,17 @@
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
+		866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */; };
+		86A3C5F3212DBE450056A997 /* charles-proxy-ssl-proxying-certificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 86A3C5F2212DBE450056A997 /* charles-proxy-ssl-proxying-certificate.cer */; };
+		86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */; };
+		86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */; };
+		86ABF3532126FE8600C5BE60 /* PendingMobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */; };
+		86ABF3552126FED000C5BE60 /* PendingMobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABF3542126FED000C5BE60 /* PendingMobileAuthPresenter.swift */; };
+		86CD10E4212C352F005FA824 /* MobileAuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E3212C352F005FA824 /* MobileAuthInteractor.swift */; };
+		86CD10E6212C3A9A005FA824 /* MobileAuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E5212C3A9A005FA824 /* MobileAuthEntity.swift */; };
+		86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E7212C4A9A005FA824 /* TabBarController.swift */; };
+		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
+		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
 		AE46A8D74BA2B0DEBCE5468F /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4F7FDD1FCD6EC3A2EE34DE /* Pods_OneginiExampleAppSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +192,18 @@
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
+		866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullToRefreshTableViewCell.xib; sourceTree = "<group>"; };
+		86A3C5F2212DBE450056A997 /* charles-proxy-ssl-proxying-certificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "charles-proxy-ssl-proxying-certificate.cer"; sourceTree = "<group>"; };
+		86A3C5F4212DC1020056A997 /* OneginiExampleAppSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneginiExampleAppSwift.entitlements; sourceTree = "<group>"; };
+		86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
+		86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthViewController.swift; sourceTree = "<group>"; };
+		86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthViewController.xib; sourceTree = "<group>"; };
+		86ABF3542126FED000C5BE60 /* PendingMobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthPresenter.swift; sourceTree = "<group>"; };
+		86CD10E3212C352F005FA824 /* MobileAuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthInteractor.swift; sourceTree = "<group>"; };
+		86CD10E5212C3A9A005FA824 /* MobileAuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthEntity.swift; sourceTree = "<group>"; };
+		86CD10E7212C4A9A005FA824 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthTableViewCell.swift; sourceTree = "<group>"; };
+		86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthTableViewCell.xib; sourceTree = "<group>"; };
 		8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +304,7 @@
 		7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */ = {
 			isa = PBXGroup;
 			children = (
+				86A3C5F4212DC1020056A997 /* OneginiExampleAppSwift.entitlements */,
 				7EB1F6152100C2E700741E92 /* Extensions */,
 				7E7AE4252100ACB6002C49D2 /* ErrorMappings */,
 				7E45479A20E4FEFB00FB620F /* Entity */,
@@ -318,6 +342,8 @@
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				86ABF34F2126FE5A00C5BE60 /* PendingMobileAuth */,
+				86ABF34C2126E25B00C5BE60 /* TabBar */,
 				7ED15B21211436EE00133D5C /* MobileAuthentication */,
 				7E8A181A211312ED0063BDF4 /* Profile */,
 				7E01FDE62110AF4400DF0043 /* Authenticators */,
@@ -347,6 +373,7 @@
 		7E300AC020D7E89200EF1A79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				86A3C5F2212DBE450056A997 /* charles-proxy-ssl-proxying-certificate.cer */,
 				7E300AC120D7E8C700EF1A79 /* tokenserver-demo-test.onegini.com.cer */,
 			);
 			path = Resources;
@@ -375,6 +402,7 @@
 				7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */,
 				7E778CEE21188B02001EE257 /* DisconnectPresenter.swift */,
 				7E778CF221199D71001EE257 /* ChangePinPresenter.swift */,
+				86ABF3542126FED000C5BE60 /* PendingMobileAuthPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -388,6 +416,7 @@
 				7E4547A420E5220600FB620F /* LogoutInteractor.swift */,
 				7E778CF021188D6B001EE257 /* DisconnectInteractor.swift */,
 				7E778CF421199E54001EE257 /* ChangePinInteractor.swift */,
+				86CD10E3212C352F005FA824 /* MobileAuthInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -464,6 +493,7 @@
 				7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */,
 				7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */,
 				7E778CF62119A230001EE257 /* ChangePinEntity.swift */,
+				86CD10E5212C3A9A005FA824 /* MobileAuthEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -533,6 +563,35 @@
 				7ED15B232114370C00133D5C /* MobileAuthViewController.xib */,
 			);
 			path = MobileAuthentication;
+			sourceTree = "<group>";
+		};
+		86ABF34C2126E25B00C5BE60 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */,
+				86CD10E7212C4A9A005FA824 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		86ABF34F2126FE5A00C5BE60 /* PendingMobileAuth */ = {
+			isa = PBXGroup;
+			children = (
+				86CD10E9212C5251005FA824 /* PendingMovileAuthCell */,
+				86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */,
+				86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */,
+			);
+			path = PendingMobileAuth;
+			sourceTree = "<group>";
+		};
+		86CD10E9212C5251005FA824 /* PendingMovileAuthCell */ = {
+			isa = PBXGroup;
+			children = (
+				86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */,
+				86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */,
+				866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */,
+			);
+			path = PendingMovileAuthCell;
 			sourceTree = "<group>";
 		};
 		91DE3EFAA921704936F26C6A /* Pods */ = {
@@ -624,6 +683,11 @@
 				TargetAttributes = {
 					7E300A6420D7B8E100EF1A79 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					7E300A7820D7B8E300EF1A79 = {
 						CreatedOnToolsVersion = 9.3;
@@ -663,18 +727,23 @@
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
 				7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */,
 				7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */,
+				86A3C5F3212DBE450056A997 /* charles-proxy-ssl-proxying-certificate.cer in Resources */,
 				7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */,
 				7E01FDFB2112E41600DF0043 /* AuthenticatorTableViewCell.xib in Resources */,
 				7E300AC220D7E8C800EF1A79 /* tokenserver-demo-test.onegini.com.cer in Resources */,
 				7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */,
 				7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */,
+				86ABF3532126FE8600C5BE60 /* PendingMobileAuthViewController.xib in Resources */,
 				7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */,
 				7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */,
 				7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */,
 				7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */,
+				86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */,
+				866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */,
 				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
 				7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */,
 				7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */,
+				86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */,
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +774,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${PODS_ROOT}/../../SDKiOS-8/output/OneginiSDKiOS/OneginiSDKiOS.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
@@ -713,6 +783,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OneginiSDKiOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
@@ -786,6 +857,7 @@
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
 				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
+				86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */,
 				7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */,
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */,
@@ -812,6 +884,7 @@
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
+				86ABF3552126FED000C5BE60 /* PendingMobileAuthPresenter.swift in Sources */,
 				7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
@@ -824,9 +897,13 @@
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E778CF121188D6B001EE257 /* DisconnectInteractor.swift in Sources */,
 				7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */,
+				86CD10E4212C352F005FA824 /* MobileAuthInteractor.swift in Sources */,
+				86CD10E6212C3A9A005FA824 /* MobileAuthEntity.swift in Sources */,
 				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
+				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
+				86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */,
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
 				7E778CF521199E54001EE257 /* ChangePinInteractor.swift in Sources */,
 				7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */,
@@ -999,6 +1076,7 @@
 			baseConfigurationReference = E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OneginiExampleAppSwift/OneginiExampleAppSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47G5S528XM;
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
@@ -1020,6 +1098,7 @@
 			baseConfigurationReference = C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OneginiExampleAppSwift/OneginiExampleAppSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47G5S528XM;
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";

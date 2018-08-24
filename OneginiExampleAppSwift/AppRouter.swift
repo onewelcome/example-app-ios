@@ -16,6 +16,7 @@
 import UIKit
 
 protocol AppRouterProtocol: class {
+    var window: UIWindow? { get set }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
@@ -24,7 +25,8 @@ protocol AppRouterProtocol: class {
     var profilePresenter: ProfilePresenterProtocol { get }
     var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
     var disconnectPresenter: DisconnectPresenterProtocol { get }
-
+    var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol { get }
+    
     func popToDashboardView()
     func popToWelcomeViewWithLogin(profile: ONGUserProfile)
     func popToWelcomeViewControllerWithRegisterUser()
@@ -42,9 +44,15 @@ protocol AppRouterProtocol: class {
     func setupMobileAuthPresenter()
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
+    func setupTabBar()
 }
 
-class AppRouter: AppRouterProtocol {
+class AppRouter: NSObject, AppRouterProtocol {
+    var window: UIWindow?
+    
+    var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
+    var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
+    
     var startupPresenter: StartupPresenterProtocol
     var welcomePresenter: WelcomePresenterProtocol
     var dashboardPresenter: DashboardPresenterProtocol
@@ -54,6 +62,7 @@ class AppRouter: AppRouterProtocol {
     var mobileAuthPresenter: MobileAuthPresenterProtocol
     var disconnectPresenter: DisconnectPresenterProtocol
     var changePinPresenter: ChangePinPresenterProtocol
+    var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
 
     init(startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
@@ -63,7 +72,8 @@ class AppRouter: AppRouterProtocol {
          profilePresenter: ProfilePresenterProtocol,
          mobileAuthPresenter: MobileAuthPresenterProtocol,
          disconnectPresenter: DisconnectPresenterProtocol,
-         changePinPresenter: ChangePinPresenterProtocol) {
+         changePinPresenter: ChangePinPresenterProtocol,
+         pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol) {
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -73,6 +83,7 @@ class AppRouter: AppRouterProtocol {
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
         self.changePinPresenter = changePinPresenter
+        self.pendingMobileAuthPresenter = pendingMobileAuthPresenter
     }
 
     func popToDashboardView() {
@@ -104,7 +115,15 @@ class AppRouter: AppRouterProtocol {
     }
 
     func setupStartupPresenter() {
+        window?.rootViewController = startupPresenter.startupViewController
         startupPresenter.oneigniSDKStartup()
+    }
+    
+    func setupTabBar() {
+        navigationController?.viewControllers = [welcomePresenter.welcomeViewController]
+        tabBarController?.setup(navigationController: navigationController!, pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate, delegate: self)
+        welcomePresenter.presentWelcomeView()
+        window?.rootViewController = tabBarController
     }
 
     func setupWelcomePresenter() {
@@ -133,5 +152,11 @@ class AppRouter: AppRouterProtocol {
 
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
+    }
+}
+
+extension AppRouter : UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return viewController != tabBarController.selectedViewController
     }
 }

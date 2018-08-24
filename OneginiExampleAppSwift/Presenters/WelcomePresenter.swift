@@ -17,6 +17,10 @@ import Swinject
 import UIKit
 
 protocol WelcomePresenterProtocol: class {
+    var loginPresenter: LoginPresenterProtocol { get set }
+    var registerUserPresenter: RegisterUserPresenterProtocol { get set }
+    var welcomeViewController: WelcomeViewController { get set }
+    
     func setupSegmentView()
     func presentWelcomeView()
     func popToWelcomeViewControllerWithLogin(profile: ONGUserProfile)
@@ -26,21 +30,27 @@ protocol WelcomePresenterProtocol: class {
 
 class WelcomePresenter: WelcomePresenterProtocol {
     let navigationController: UINavigationController
+    let tabBarController: TabBarController
     var loginPresenter: LoginPresenterProtocol
     var registerUserPresenter: RegisterUserPresenterProtocol
     var welcomeViewController: WelcomeViewController
 
-    init(_ welcomeViewController: WelcomeViewController, loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
+    init(_ welcomeViewController: WelcomeViewController,
+         loginPresenter: LoginPresenterProtocol,
+         registerUserPresenter: RegisterUserPresenterProtocol,
+         navigationController: UINavigationController,
+         tabBarController: TabBarController) {
         self.welcomeViewController = welcomeViewController
         self.loginPresenter = loginPresenter
         self.registerUserPresenter = registerUserPresenter
         self.navigationController = navigationController
+        self.tabBarController = tabBarController
     }
 
     func presentWelcomeView() {
         welcomeViewController.loginViewController = loginPresenter.setupLoginView()
         welcomeViewController.registerUserViewController = registerUserPresenter.setupRegisterUserView()
-        navigationController.pushViewController(welcomeViewController, animated: false)
+        tabBarController.selectedIndex = 0
     }
 
     func popToWelcomeViewControllerWithLogin(profile: ONGUserProfile) {

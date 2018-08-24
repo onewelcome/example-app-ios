@@ -41,5 +41,9 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, profileViewController in
                 profileViewController.profileViewToPresenterProtocol = resolver.resolve(ProfilePresenterProtocol.self)!
             }
+        container.register((UIViewController & PendingMobileAuthPresenterViewDelegate).self) { _ in PendingMobileAuthViewController() }
+            .initCompleted { resolver, pendingMobileAuthViewController in
+                pendingMobileAuthViewController.pendingMobileAuthPresenter = resolver.resolve(PendingMobileAuthPresenterProtocol.self)!
+            }
     }
 }

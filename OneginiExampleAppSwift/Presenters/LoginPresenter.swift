@@ -57,24 +57,24 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-            navigationController.pushViewController(pinViewController!, animated: true)
+            navigationController.present(pinViewController!, animated: true, completion: nil)
         }
     }
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: true, completion: nil)
         appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin(profile: profile)
+        navigationController.dismiss(animated: true, completion: nil)
         appRouter.setupErrorAlert(error: error)
     }
 
     func loginActionCancelled(profile: ONGUserProfile) {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin(profile: profile)
+        navigationController.dismiss(animated: true, completion: nil)
     }
 }
 
