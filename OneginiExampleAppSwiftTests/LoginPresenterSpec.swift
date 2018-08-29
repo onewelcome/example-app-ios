@@ -66,15 +66,14 @@ class LoginPresenterSpec: QuickSpec {
             describe("LoginViewToPresenterProtocol") {
                 describe("setupLoginView") {
                     it("should set authenticators") {
-//                        let loginViewController = loginPresenter.setupLoginView()
-//                        let interactorAuthenticators = loginInteractor.authenticators(profile: loginInteractor.userProfiles()[0])
-//                        equal(interactorAuthenticators)
-//                        expect(loginViewController.authenticators).toEventually(equal(interactorAuthenticators))
+                        let loginViewController = loginPresenter.setupLoginView()
+                        let interactorAuthenticators = loginInteractor.authenticators(profile: loginInteractor.userProfiles()[0])
+                        expect(loginViewController.authenticators as NSArray).toEventually(equal(interactorAuthenticators as NSArray))
                     }
                     it("should set profiles") {
-//                        let loginViewController = loginPresenter.setupLoginView()
-//                        let interactorProfiles = loginInteractor.userProfiles()
-//                        expect(loginViewController.profiles).toEventually(beIdenticalTo(interactorProfiles as [Equatable]))
+                        let loginViewController = loginPresenter.setupLoginView()
+                        let interactorProfiles = loginInteractor.userProfiles()
+                        expect(loginViewController.profiles as NSArray).toEventually(equal(interactorProfiles as NSArray))
                     }
                 }
                 describe("login") {
@@ -88,7 +87,8 @@ class LoginPresenterSpec: QuickSpec {
                     it("should set authenticators") {
                         let userProfile = UserProfileStub("profile")
                         loginPresenter.reloadAuthenticators(userProfile)
-                        expect(loginViewController.authenticators).toEventuallyNot(beNil())
+                        let authenticators = loginInteractor.authenticators(profile: userProfile)
+                        expect(loginViewController.authenticators as NSArray).toEventually(equal(authenticators as NSArray))
                     }
                 }
             }

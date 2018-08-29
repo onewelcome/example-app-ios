@@ -21,8 +21,8 @@ class LoginInteractorMock : LoginInteractorProtocol {
         return [UserProfileStub("profile1")]
     }
     
-    func authenticators(profile: NSObject & UserProfileProtocol) -> Array<NSObject & AuthenticatorProtocol> {
-        return [AuthenticatorS(identifier: "authenticator1", name: "authenticator1", type: ONGAuthenticatorType.PIN, isRegistered: true, isPreferred: true)]
+    func authenticators(profile: NSObject & UserProfileProtocol) -> [NSObject & AuthenticatorProtocol] {
+        return [AuthenticatorStub(identifier: "authenticator1", name: "authenticator1", type: ONGAuthenticatorType.PIN, isRegistered: true, isPreferred: true)]
     }
     var loginCalled = false
     func login(profile: NSObject & UserProfileProtocol) {

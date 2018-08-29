@@ -16,7 +16,7 @@
 @testable import OneginiExampleAppSwift
 import UIKit
 
-class AuthenticatorS : NSObject & AuthenticatorProtocol {
+class AuthenticatorStub: NSObject & AuthenticatorProtocol {
     var identifier: String
     
     var name: String
@@ -33,5 +33,13 @@ class AuthenticatorS : NSObject & AuthenticatorProtocol {
         self.type = type
         self.isRegistered = isRegistered
         self.isPreferred = isPreferred
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let object = object as? AuthenticatorStub {
+            return identifier == object.identifier
+        } else {
+            return false
+        }
     }
 }
