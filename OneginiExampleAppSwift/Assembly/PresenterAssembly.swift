@@ -32,7 +32,8 @@ class PresenterAssembly: Assembly {
 
         container.register(RegisterUserPresenterProtocol.self) { resolver in
             RegisterUserPresenter(registerUserInteractor: resolver.resolve(RegisterUserInteractorProtocol.self)!,
-                                  navigationController: resolver.resolve(UINavigationController.self)!)
+                                  navigationController: resolver.resolve(UINavigationController.self)!,
+                                  userRegistrationNavigationController: UINavigationController())
         }
 
         container.register(LoginPresenterProtocol.self) { resolver in
