@@ -15,7 +15,7 @@
 
 import UIKit
 
-class PendingMobileAuthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PendingMobileAuthPresenterViewDelegate {
+class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresenterViewDelegate {
     
     var pendingMobileAuths : Array<MobileAuthEntity>? {
         didSet {
@@ -23,6 +23,32 @@ class PendingMobileAuthViewController: UIViewController, UITableViewDelegate, UI
         }
     }
     weak var pendingMobileAuthPresenter : PendingMobileAuthPresenterProtocol?
+    
+    @IBOutlet weak var pendingMobileAuthTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.white
+        pendingMobileAuthTableView.backgroundView = refreshControl
+        refreshControl.addTarget(self, action: #selector(reloadData(_:)), for: UIControlEvents.valueChanged)
+        pendingMobileAuthTableView.register(UINib(nibName: "PendingMobileAuthTableViewCell", bundle: nil), forCellReuseIdentifier: "pendingMobileAuthCell")
+        pendingMobileAuthTableView.register(UINib(nibName: "PullToRefreshTableViewCell", bundle: nil), forCellReuseIdentifier: "pullToRefreshCell")
+        pendingMobileAuthTableView.rowHeight = 135
+    }
+    
+    @objc func reloadData(_ refreshControl : UIRefreshControl){
+        refreshControl.endRefreshing()
+        self.pendingMobileAuthPresenter?.presentPendingMobileAuth()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.pendingMobileAuthPresenter?.presentPendingMobileAuth()
+    }
+}
+
+extension PendingMobileAuthViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let pendingMobileAuths = pendingMobileAuths, pendingMobileAuths.count > 0 else {
@@ -45,30 +71,4 @@ class PendingMobileAuthViewController: UIViewController, UITableViewDelegate, UI
             return tableView.dequeueReusableCell(withIdentifier: "pullToRefreshCell", for: indexPath)
         }
     }
-    
-
-    @IBOutlet weak var pendingMobileAuthTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.white
-        pendingMobileAuthTableView.backgroundView = refreshControl
-        refreshControl.addTarget(self, action: #selector(reloadData(_:)), for: UIControlEvents.valueChanged)
-        pendingMobileAuthTableView.register(UINib(nibName: "PendingMobileAuthTableViewCell", bundle: nil), forCellReuseIdentifier: "pendingMobileAuthCell")
-        pendingMobileAuthTableView.register(UINib(nibName: "PullToRefreshTableViewCell", bundle: nil), forCellReuseIdentifier: "pullToRefreshCell")
-        pendingMobileAuthTableView.rowHeight = 135
-    }
-    
-    @objc func reloadData(_ refreshControl : UIRefreshControl){
-        refreshControl.endRefreshing()
-        self.pendingMobileAuthPresenter?.presentPendingMobileAuth()
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.pendingMobileAuthPresenter?.presentPendingMobileAuth()
-    }
-    
 }
