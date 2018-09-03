@@ -21,7 +21,7 @@ protocol PendingMobileAuthPresenterProtocol: class {
 }
 
 protocol PendingMobileAuthPresenterViewDelegate: class {
-    var pendingMobileAuths : Array<MobileAuthEntity>? { get set }
+    var pendingMobileAuths : Array<MobileAuthEntity> { get set }
     var pendingMobileAuthPresenter : PendingMobileAuthPresenterProtocol? { get set }
 }
 
@@ -36,6 +36,11 @@ class PendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol {
     
     func presentPendingMobileAuth() {
         mobileAuthInteractor.fetchPendingTransactions { (pendingMobileAuths, error) in
+            guard let pendingMobileAuths = pendingMobileAuths else {
+                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+                appRouter.setupErrorAlert(error: error!)
+                return
+            }
             self.viewDelegate.pendingMobileAuths = pendingMobileAuths
         }
     }

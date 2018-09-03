@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PendingMobileAuthViewController" customModule="OneginiExampleAppSwift" customModuleProvider="target">
             <connections>
-                <outlet property="pendingMobileAuthTableView" destination="O61-ZM-lty" id="swD-uq-IP6"/>
+                <outlet property="pendingMobileAuthTableView" destination="O61-ZM-lty" id="pEV-2W-est"/>
                 <outlet property="view" destination="UW1-Tm-bhY" id="rcz-X2-kh8"/>
             </connections>
         </placeholder>
@@ -46,8 +46,8 @@
                             <rect key="frame" x="30" y="60.333333333333314" width="315" height="583.66666666666674"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="3ZQ-iE-cMo"/>
-                                <outlet property="delegate" destination="-1" id="oFs-Ir-qd8"/>
+                                <outlet property="dataSource" destination="-1" id="oHM-dM-cf6"/>
+                                <outlet property="delegate" destination="-1" id="y2F-v6-VxD"/>
                             </connections>
                         </tableView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Handle Transaction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-Zk-4WD">

@@ -17,23 +17,18 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     func setup(mobileAuthEntity: MobileAuthEntity) {
-        container.layer.cornerRadius = 5;
-        container.layer.masksToBounds = true;
-        self.backgroundColor = UIColor.clear
-        
         profileLabel.text = mobileAuthEntity.pendingMobileAuthRequest.userProfile.profileId
         messageLabel.text = mobileAuthEntity.pendingMobileAuthRequest.message
-        timeLabel.text = DateFormatter.localizedString(from: mobileAuthEntity.pendingMobileAuthRequest.date!, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
-        expireTimeLabel.text = "Expiration time: " + DateFormatter.localizedString(from: mobileAuthEntity.pendingMobileAuthRequest.date!.addingTimeInterval((mobileAuthEntity.pendingMobileAuthRequest.timeToLive?.doubleValue)!), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
-    }
-    
-    func setup() {
-        container.layer.cornerRadius = 5;
-        container.layer.masksToBounds = true;
-        self.backgroundColor = UIColor.clear
-        profileLabel.text = ""
-        messageLabel.text = "Pull to refresh"
-        timeLabel.text = ""
-        expireTimeLabel.text = ""
+        guard let date = mobileAuthEntity.pendingMobileAuthRequest.date else {
+            timeLabel.text = ""
+            expireTimeLabel.text = ""
+            return
+        }
+        timeLabel.text = DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
+        guard let timeToLive = mobileAuthEntity.pendingMobileAuthRequest.timeToLive else {
+            expireTimeLabel.text = ""
+            return
+        }
+        expireTimeLabel.text = "Expiration time: " + DateFormatter.localizedString(from: date.addingTimeInterval(timeToLive.doubleValue), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
     }
 }

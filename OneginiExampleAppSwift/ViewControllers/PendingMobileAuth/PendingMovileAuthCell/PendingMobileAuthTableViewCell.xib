@@ -73,6 +73,12 @@
                             <constraint firstItem="BY9-3S-1Q4" firstAttribute="top" secondItem="uzk-Bb-lYO" secondAttribute="top" constant="15" id="tcN-n8-Buc"/>
                             <constraint firstItem="8dZ-rl-Cbh" firstAttribute="leading" secondItem="IWt-8w-BgU" secondAttribute="leading" id="zvz-3s-yaw"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
