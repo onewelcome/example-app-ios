@@ -102,7 +102,6 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
 }
 
 extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {
-
     func registerAuthenticator(_ authenticator: ONGAuthenticator) {
         authenticatorsInteractor.registerAuthenticator(authenticator)
     }

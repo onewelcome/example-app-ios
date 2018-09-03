@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import SkyFloatingLabelTextField
+import UIKit
 
 enum PasswordAuthenticatorMode: String {
     case register = "Register"
@@ -31,40 +31,38 @@ protocol PasswordAuthenticatorViewToPresenterProtocol: class {
 }
 
 class PasswordAuthenticatorViewController: UIViewController {
+    @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
+    @IBOutlet var submitButton: UIButton!
+    @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    
     unowned let viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol
     let mode: PasswordAuthenticatorMode
     var entity: PasswordAuthenticatorEntityProtocol
-    
+
     init(mode: PasswordAuthenticatorMode, entity: PasswordAuthenticatorEntityProtocol, viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol) {
         self.mode = mode
         self.entity = entity
         self.viewToPresenterProtocol = viewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.setTitle(mode.rawValue, for: .normal)
         titleLabel.text = mode == .register ? "Create password" : "Login with password"
     }
-    
-    @IBAction func cancel(_ sender: Any) {
+
+    @IBAction func cancel(_: Any) {
         entity.cancelled = true
         viewToPresenterProtocol.handlePassword(entity: entity)
     }
-    
-    @IBAction func submit(_ sender: Any) {
+
+    @IBAction func submit(_: Any) {
         entity.data = passwordTextField.text
         viewToPresenterProtocol.handlePassword(entity: entity)
     }
-    
 }

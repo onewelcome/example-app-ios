@@ -41,10 +41,10 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, profileViewController in
                 profileViewController.profileViewToPresenterProtocol = resolver.resolve(ProfilePresenterProtocol.self)!
             }
-        
-        container.register(AuthenticatorsViewController.self) { _ in AuthenticatorsViewController()}
+
+        container.register(AuthenticatorsViewController.self) { _ in AuthenticatorsViewController() }
             .initCompleted { resolver, authenticatorsViewController in
                 authenticatorsViewController.authenticatorsViewToPresenterProtocol = resolver.resolve(AuthenticatorsPresenterProtocol.self)!
-        }
+            }
     }
 }

@@ -34,7 +34,7 @@ class LoginInteractor: NSObject {
             loginEntity.pinError = nil
         }
     }
-    
+
     func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol) {
         guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorAuthenticationChallenege else { return }
         if loginEntity.cancelled {
@@ -82,8 +82,8 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         mapErrorFromChallenge(challenge)
         loginPresenter?.presentPinView(loginEntity: loginEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge) {
+
+    func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
         loginPresenter?.presentPasswordAuthenticatorView(loginEnity: loginEntity)
     }

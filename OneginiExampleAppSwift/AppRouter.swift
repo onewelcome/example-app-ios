@@ -134,5 +134,4 @@ class AppRouter: AppRouterProtocol {
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
     }
-    
 }

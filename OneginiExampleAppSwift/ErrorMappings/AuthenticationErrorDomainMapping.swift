@@ -14,7 +14,6 @@
 // limitations under the License.
 
 class AuthenticationErrorDomainMapping {
-
     let title = "Authentication error"
 
     func mapErrorWithPinChallenge(pinChallenge: ONGPinChallenge) -> AppError {
@@ -53,5 +52,4 @@ class AuthenticationErrorDomainMapping {
             return AppError(errorDescription: "Something went wrong.")
         }
     }
-
 }

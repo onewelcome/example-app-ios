@@ -17,56 +17,52 @@ import TransitionButton
 import UIKit
 
 class AuthenticatorTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var preferredLabel: UILabel!
+    @IBOutlet var preferredLabel: UILabel!
     @IBOutlet var authenticatorName: UILabel!
-    @IBOutlet weak var deregisterButton: TransitionButton!
-    @IBOutlet weak var registerButton: TransitionButton!
-    @IBOutlet weak var setPreferredButton: TransitionButton!
-    
+    @IBOutlet var deregisterButton: TransitionButton!
+    @IBOutlet var registerButton: TransitionButton!
+    @IBOutlet var setPreferredButton: TransitionButton!
+
     var selectedRow: ((AuthenticatorTableViewCell) -> Void)?
     weak var authenticatorsViewController: AuthenticatorsViewController?
     var authenticator: ONGAuthenticator?
-    
+
     func setupCell(_ authenticator: ONGAuthenticator) {
         self.authenticator = authenticator
-        
+
         authenticatorName.text = authenticator.name
-        
+
         deregisterButton.isHidden = !authenticator.isRegistered || authenticator.type == .PIN
         registerButton.isHidden = authenticator.isRegistered || authenticator.type == .PIN
-        
+
         preferredLabel.isHidden = !authenticator.isPreferred
         setPreferredButton.isHidden = !authenticator.isRegistered || authenticator.isPreferred
     }
-    
-    
-    @IBAction func register(_ sender: Any) {
+
+    @IBAction func register(_: Any) {
         guard let authenticator = authenticator else { return }
         authenticatorsViewController?.registerAuthenticator(authenticator)
     }
-    
-    @IBAction func deregister(_ sender: Any) {
+
+    @IBAction func deregister(_: Any) {
         selectedRow?(self)
         guard let authenticator = authenticator else { return }
         deregisterButton.startAnimation()
         isUserInteractionEnabled = false
-        self.authenticatorsViewController?.deregisterAuthenticator(authenticator)
+        authenticatorsViewController?.deregisterAuthenticator(authenticator)
     }
-    
-    @IBAction func setPreferredAuthenticator(_ sender: Any) {
+
+    @IBAction func setPreferredAuthenticator(_: Any) {
         if let authenticator = authenticator {
             authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.setPreferredAuthenticator(authenticator)
             authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
         }
     }
-    
+
     func deregistrationFinished() {
-        self.deregisterButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.1, completion: {
+        deregisterButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.1, completion: {
             self.isUserInteractionEnabled = true
             self.authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
         })
     }
-    
-
 }

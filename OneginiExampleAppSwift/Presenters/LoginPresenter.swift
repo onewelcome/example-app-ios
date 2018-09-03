@@ -61,7 +61,7 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
             navigationController.pushViewController(pinViewController!, animated: true)
         }
     }
-    
+
     func presentPasswordAuthenticatorView(loginEnity: LoginEntity) {
         let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEnity, viewToPresenterProtocol: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
