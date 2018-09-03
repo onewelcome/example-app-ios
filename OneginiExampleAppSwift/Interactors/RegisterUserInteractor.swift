@@ -90,12 +90,10 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }
     }
-    
-    func userClient(_ userClient: ONGUserClient, didReceiveCustomRegistrationInitChallenge challenge: ONGCustomRegistrationChallenge) {
-        
+
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge _: ONGCustomRegistrationChallenge) {
     }
-    
-    func userClient(_ userClient: ONGUserClient, didReceiveCustomRegistrationFinish challenge: ONGCustomRegistrationChallenge) {
-        
+
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish _: ONGCustomRegistrationChallenge) {
     }
 }

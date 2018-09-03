@@ -16,6 +16,5 @@
 import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet var title: UILabel!
 }

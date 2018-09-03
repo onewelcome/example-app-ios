@@ -65,7 +65,7 @@ extension RegisterUserViewController: UITableViewDataSource {
 }
 
 extension RegisterUserViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let identityProvider = identityProviders[indexPath.row]
         registerUserViewToPresenterProtocol.signUp(identityProvider)
     }

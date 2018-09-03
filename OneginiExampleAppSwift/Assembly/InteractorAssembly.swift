@@ -47,6 +47,6 @@ class InteractorAssembly: Assembly {
             .initCompleted { resolver, instance in
                 let authenticatorsInteractor = instance as! AuthenticatorsInteractor
                 authenticatorsInteractor.authenticatorsPresenter = resolver.resolve(AuthenticatorsPresenterProtocol.self)
-        }
+            }
     }
 }
