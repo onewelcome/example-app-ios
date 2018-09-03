@@ -15,9 +15,13 @@
 
 import UIKit
 
-class LoginEntity: PinViewControllerEntityProtocol {
+class LoginEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEntityProtocol {
     var pinError: AppError?
     var pinLength: Int?
     var pin: String?
     var pinChallenge: ONGPinChallenge?
+    
+    var customAuthenticatorAuthenticationChallenege: ONGCustomAuthFinishAuthenticationChallenge?
+    var data: String?
+    var cancelled: Bool = false
 }

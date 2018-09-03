@@ -28,6 +28,7 @@ protocol LoginInteractorToPresenterProtocol: class {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile)
     func loginActionCancelled(profile: ONGUserProfile)
+    func presentPasswordAuthenticatorView(loginEnity: LoginEntity)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -60,6 +61,12 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
             navigationController.pushViewController(pinViewController!, animated: true)
         }
     }
+    
+    func presentPasswordAuthenticatorView(loginEnity: LoginEntity) {
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEnity, viewToPresenterProtocol: self)
+        passwordViewController.modalPresentationStyle = .overCurrentContext
+        navigationController.present(passwordViewController, animated: false, completion: nil)
+    }
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
@@ -68,12 +75,18 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
 
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        if navigationController.presentedViewController != nil {
+            navigationController.dismiss(animated: false, completion: nil)
+        }
         appRouter.popToWelcomeViewWithLogin(profile: profile)
         appRouter.setupErrorAlert(error: error)
     }
 
     func loginActionCancelled(profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        if navigationController.presentedViewController != nil {
+            navigationController.dismiss(animated: false, completion: nil)
+        }
         appRouter.popToWelcomeViewWithLogin(profile: profile)
     }
 }
@@ -125,5 +138,11 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
 extension LoginPresenter: PinViewToPresenterProtocol {
     func handlePin(entity: PinViewControllerEntityProtocol) {
         loginInteractor.handleLogin(loginEntity: entity)
+    }
+}
+
+extension LoginPresenter: PasswordAuthenticatorViewToPresenterProtocol {
+    func handlePassword(entity: PasswordAuthenticatorEntityProtocol) {
+        loginInteractor.handleRegisterPasswordAuthenticator(entity: entity)
     }
 }

@@ -20,6 +20,7 @@ protocol LoginInteractorProtocol {
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile)
     func handleLogin(loginEntity: PinViewControllerEntityProtocol)
+    func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol)
 }
 
 class LoginInteractor: NSObject {
@@ -31,6 +32,20 @@ class LoginInteractor: NSObject {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             loginEntity.pinError = nil
+        }
+    }
+    
+    func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol) {
+        guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorAuthenticationChallenege else { return }
+        if loginEntity.cancelled {
+            loginEntity.cancelled = false
+            customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
+        } else {
+            if let data = entity.data {
+                customAuthenticatorChallenge.sender.respond(withData: data, challenge: customAuthenticatorChallenge)
+            } else {
+                customAuthenticatorChallenge.sender.respond(withData: "", challenge: customAuthenticatorChallenge)
+            }
         }
     }
 }
@@ -66,6 +81,11 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         loginPresenter?.presentPinView(loginEntity: loginEntity)
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge) {
+        loginEntity.customAuthenticatorAuthenticationChallenege = challenge
+        loginPresenter?.presentPasswordAuthenticatorView(loginEnity: loginEntity)
     }
 
     func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info _: ONGCustomInfo?) {
