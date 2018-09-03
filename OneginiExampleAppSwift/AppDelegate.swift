@@ -16,7 +16,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
 
@@ -29,10 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func oneginiSDKStartup() {
         guard let appRouter = appRouter else { fatalError() }
         appRouter.setupStartupPresenter()
-    }
-    
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return viewController != tabBarController.selectedViewController
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
