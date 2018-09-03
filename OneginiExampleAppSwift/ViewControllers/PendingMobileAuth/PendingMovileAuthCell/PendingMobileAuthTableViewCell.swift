@@ -16,16 +16,16 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet weak var expireTimeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    func setup(mobileAuthEntity: MobileAuthEntity) {
-        profileLabel.text = mobileAuthEntity.pendingMobileAuthRequest.userProfile.profileId
-        messageLabel.text = mobileAuthEntity.pendingMobileAuthRequest.message
-        guard let date = mobileAuthEntity.pendingMobileAuthRequest.date else {
+    func setup(pendingMobileAuthEntity: ONGPendingMobileAuthRequest) {
+        profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
+        messageLabel.text = pendingMobileAuthEntity.message
+        guard let date = pendingMobileAuthEntity.date else {
             timeLabel.text = ""
             expireTimeLabel.text = ""
             return
         }
         timeLabel.text = DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
-        guard let timeToLive = mobileAuthEntity.pendingMobileAuthRequest.timeToLive else {
+        guard let timeToLive = pendingMobileAuthEntity.timeToLive else {
             expireTimeLabel.text = ""
             return
         }

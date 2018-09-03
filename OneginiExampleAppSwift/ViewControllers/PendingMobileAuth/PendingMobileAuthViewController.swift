@@ -17,7 +17,7 @@ import UIKit
 
 class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresenterViewDelegate {
     
-    var pendingMobileAuths = Array<MobileAuthEntity>() {
+    var pendingMobileAuths = Array<ONGPendingMobileAuthRequest>() {
         didSet {
             pendingMobileAuthTableView.reloadData()
         }
@@ -56,7 +56,7 @@ extension PendingMobileAuthViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (pendingMobileAuths.count > 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pendingMobileAuthCell", for: indexPath) as! PendingMobileAuthTableViewCell
-            cell.setup(mobileAuthEntity: pendingMobileAuths[indexPath.row])
+            cell.setup(pendingMobileAuthEntity: pendingMobileAuths[indexPath.row])
             return cell
         } else {
             return tableView.dequeueReusableCell(withIdentifier: "pullToRefreshCell", for: indexPath)

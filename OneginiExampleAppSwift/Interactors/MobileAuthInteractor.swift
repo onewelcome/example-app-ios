@@ -16,21 +16,23 @@
 import UIKit
 
 protocol MobileAuthInteractorProtocol {
-    func fetchPendingTransactions(completion: @escaping (Array<MobileAuthEntity>?, AppError?) -> Void)
+    func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void)
 }
 
 class MobileAuthInteractor: MobileAuthInteractorProtocol{
 
-    func fetchPendingTransactions(completion: @escaping (Array<MobileAuthEntity>?, AppError?) -> Void) {
+    func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void) {
         ONGUserClient.sharedInstance().pendingPushMobileAuthRequests { (requests : Array<ONGPendingMobileAuthRequest>?, error: Error?) in
-            guard let entities = requests?.map({ (request: ONGPendingMobileAuthRequest) -> MobileAuthEntity in
-                return MobileAuthEntity(pendingMobileAuthRequest: request)
-            }) else {
-                let appError = ErrorMapper().mapError(error!)
+            if let error = error {
+                let appError = ErrorMapper().mapError(error)
                 completion(nil, appError)
                 return
             }
-            completion(entities, nil)
+            if let requests = requests {
+                completion(requests, nil)
+                return
+            }
+            completion(Array(), nil)
         }
     }
 }

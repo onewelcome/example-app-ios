@@ -84,7 +84,6 @@
 		86ABF3532126FE8600C5BE60 /* PendingMobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */; };
 		86ABF3552126FED000C5BE60 /* PendingMobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABF3542126FED000C5BE60 /* PendingMobileAuthPresenter.swift */; };
 		86CD10E4212C352F005FA824 /* MobileAuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E3212C352F005FA824 /* MobileAuthInteractor.swift */; };
-		86CD10E6212C3A9A005FA824 /* MobileAuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E5212C3A9A005FA824 /* MobileAuthEntity.swift */; };
 		86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E7212C4A9A005FA824 /* TabBarController.swift */; };
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
@@ -198,7 +197,6 @@
 		86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthViewController.xib; sourceTree = "<group>"; };
 		86ABF3542126FED000C5BE60 /* PendingMobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthPresenter.swift; sourceTree = "<group>"; };
 		86CD10E3212C352F005FA824 /* MobileAuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthInteractor.swift; sourceTree = "<group>"; };
-		86CD10E5212C3A9A005FA824 /* MobileAuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthEntity.swift; sourceTree = "<group>"; };
 		86CD10E7212C4A9A005FA824 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthTableViewCell.swift; sourceTree = "<group>"; };
 		86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthTableViewCell.xib; sourceTree = "<group>"; };
@@ -490,7 +488,6 @@
 				7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */,
 				7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */,
 				7E778CF62119A230001EE257 /* ChangePinEntity.swift */,
-				86CD10E5212C3A9A005FA824 /* MobileAuthEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -894,7 +891,6 @@
 				7E778CF121188D6B001EE257 /* DisconnectInteractor.swift in Sources */,
 				7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */,
 				86CD10E4212C352F005FA824 /* MobileAuthInteractor.swift in Sources */,
-				86CD10E6212C3A9A005FA824 /* MobileAuthEntity.swift in Sources */,
 				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
 				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
