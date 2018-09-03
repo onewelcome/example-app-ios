@@ -14,23 +14,29 @@
 // limitations under the License.
 
 class ErrorMapper {
-    func mapError(_ error: Error, pinChallenge: ONGPinChallenge? = nil) -> AppError {
+    func mapError(_ error: Error, pinChallenge: ONGPinChallenge? = nil, customInfo: ONGCustomInfo? = nil) -> AppError {
         switch error.domain {
         case ONGGenericErrorDomain:
             return GenericErrorDomainMapping().mapError(error)
         case ONGPinValidationErrorDomain:
             return PinValidationErrorDomainMapping().mapError(error)
         case ONGAuthenticationErrorDomain:
-            if let pinChallenge = pinChallenge {
-                return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(error, pinChallenge: pinChallenge)
+            if let pinChallenge = pinChallenge, error.code == ONGAuthenticationError.invalidPin.rawValue {
+                return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(pinChallenge: pinChallenge)
+            } else if let customInfo = customInfo, error.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+                return AuthenticationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
             } else {
                 return AuthenticationErrorDomainMapping().mapError(error)
             }
         case ONGAuthenticatorRegistrationErrorDomain:
-            return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
+            if let customInfo = customInfo, error.code == ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
+                return AuthenticatorRegistrationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
+            } else {
+                return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
+            }
         case ONGAuthenticatorDeregistrationErrorDomain:
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
-            
+
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
