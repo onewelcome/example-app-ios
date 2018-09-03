@@ -19,7 +19,8 @@ import UIKit
 class RouterAssembly: Assembly {
     func assemble(container: Container) {
         container.register(AppRouterProtocol.self) { resolver in
-            AppRouter(startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
+            AppRouter(window: UIWindow(frame: UIScreen.main.bounds),
+                      startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
                       welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
                       dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
                       errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!,

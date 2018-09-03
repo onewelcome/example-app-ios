@@ -17,23 +17,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
-    var window: UIWindow?
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        setupWindow()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
-
         return true
-    }
-
-    func setupWindow() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
-        window?.makeKeyAndVisible()
-        appRouter?.window = window
     }
 
     func oneginiSDKStartup() {

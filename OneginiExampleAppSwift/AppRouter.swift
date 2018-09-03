@@ -16,7 +16,7 @@
 import UIKit
 
 protocol AppRouterProtocol: class {
-    var window: UIWindow? { get set }
+    var window: UIWindow { get set }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
@@ -48,7 +48,7 @@ protocol AppRouterProtocol: class {
 }
 
 class AppRouter: NSObject, AppRouterProtocol {
-    var window: UIWindow?
+    var window: UIWindow
     
     var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
@@ -64,7 +64,8 @@ class AppRouter: NSObject, AppRouterProtocol {
     var changePinPresenter: ChangePinPresenterProtocol
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
 
-    init(startupPresenter: StartupPresenterProtocol,
+    init(window: UIWindow,
+         startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
          errorPresenter: ErrorPresenterProtocol,
@@ -74,6 +75,9 @@ class AppRouter: NSObject, AppRouterProtocol {
          disconnectPresenter: DisconnectPresenterProtocol,
          changePinPresenter: ChangePinPresenterProtocol,
          pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol) {
+        self.window = window
+        self.window.backgroundColor = UIColor.white
+        self.window.makeKeyAndVisible()
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -115,7 +119,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
 
     func setupStartupPresenter() {
-        window?.rootViewController = startupPresenter.startupViewController
+        window.rootViewController = startupPresenter.startupViewController
         startupPresenter.oneigniSDKStartup()
     }
     
@@ -123,7 +127,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         navigationController?.viewControllers = [welcomePresenter.welcomeViewController]
         tabBarController?.setup(navigationController: navigationController!, pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate, delegate: self)
         welcomePresenter.presentWelcomeView()
-        window?.rootViewController = tabBarController
+        window.rootViewController = tabBarController
     }
 
     func setupWelcomePresenter() {
