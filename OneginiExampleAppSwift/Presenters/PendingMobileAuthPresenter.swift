@@ -25,7 +25,7 @@ protocol PendingMobileAuthPresenterViewDelegate: class {
     var pendingMobileAuthPresenter : PendingMobileAuthPresenterProtocol? { get set }
 }
 
-class PendingMobileAuthPresenter: NSObject, PendingMobileAuthPresenterProtocol {
+class PendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol {
     var viewDelegate: UIViewController & PendingMobileAuthPresenterViewDelegate
     var mobileAuthInteractor: MobileAuthInteractorProtocol
     
