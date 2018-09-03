@@ -124,8 +124,8 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
     
     func setupTabBar() {
-        navigationController?.viewControllers = [welcomePresenter.welcomeViewController]
-        tabBarController?.setup(navigationController: navigationController!, pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate, delegate: self)
+        navigationController!.viewControllers = [welcomePresenter.welcomeViewController]
+        tabBarController!.setup(navigationController: navigationController!, pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate, delegate: self)
         welcomePresenter.presentWelcomeView()
         window.rootViewController = tabBarController
     }
