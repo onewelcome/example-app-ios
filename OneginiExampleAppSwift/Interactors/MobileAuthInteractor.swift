@@ -23,7 +23,7 @@ protocol MobileAuthInteractorProtocol {
 class MobileAuthInteractor: MobileAuthInteractorProtocol {
 
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
-    
+
     func isUserEnrolledForMobileAuth() -> Bool {
         let userClient = ONGUserClient.sharedInstance()
         if let userProfile = userClient.authenticatedUserProfile() {
@@ -31,7 +31,7 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
         }
         return false
     }
-    
+
     func isUserEnrolledForPushMobileAuth() -> Bool {
         let userClient = ONGUserClient.sharedInstance()
         if let userProfile = userClient.authenticatedUserProfile() {
@@ -39,7 +39,7 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
         }
         return false
     }
-    
+
     func enrollForMobileAuth() {
         ONGUserClient.sharedInstance().enroll { enrolled, error in
             if enrolled {
@@ -52,9 +52,10 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
             }
         }
     }
-    
+
     func enrollForPushMobileAuth() {
-        ONGUserClient.sharedInstance().enroll { enrolled, error in
+        guard let deviceToken = MobileAuthEntrollmentEntity.shared.deviceToken else { return }
+        ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { enrolled, error in
             if enrolled {
                 self.mobileAuthPresenter?.pushMobileAuthEnrolled()
             } else {
@@ -65,5 +66,5 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
             }
         }
     }
-    
+
 }

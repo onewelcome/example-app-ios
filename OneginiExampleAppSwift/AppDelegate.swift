@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
+        registerForPushMessages(application: application)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
 
@@ -41,4 +43,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let appRouter = appRouter else { fatalError() }
         appRouter.setupStartupPresenter()
     }
+
+    func registerForPushMessages(application: UIApplication) {
+        UNUserNotificationCenter.current().delegate = self
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { permissionGranted, error in
+            if let error = error {
+                
+            }
+        }
+        application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        MobileAuthEntrollmentEntity.shared.deviceToken = deviceToken
+    }
+    
 }
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+}
+
