@@ -48,5 +48,11 @@ class InteractorAssembly: Assembly {
                 let authenticatorsInteractor = instance as! AuthenticatorsInteractor
                 authenticatorsInteractor.authenticatorsPresenter = resolver.resolve(AuthenticatorsPresenterProtocol.self)
         }
+        
+        container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
+            .initCompleted { resolver, instance in
+                let mobileAuthInteractor = instance as! MobileAuthInteractor
+                mobileAuthInteractor.mobileAuthPresenter = resolver.resolve(MobileAuthPresenterProtocol.self)
+        }
     }
 }

@@ -19,22 +19,53 @@ typealias MobileAuthPresenterProtocol = MobileAuthInteractorToPresenterProtocol 
 
 protocol MobileAuthInteractorToPresenterProtocol: class {
     func presentMobileAuthView()
+    func mobileAuthEnrolled()
+    func pushMobileAuthEnrolled()
+    func enrollMobileAuthFailed(_ error: AppError)
+    func enrollPushMobileAuthFailed(_ error: AppError)
 }
 
-protocol MobileAuthViewToPresenterProtocol {
+protocol MobileAuthViewToPresenterProtocol: class {
     func popToDashboardView()
+    func enrollForMobileAuth()
+    func enrollForPushMobileAuth()
+    func isUserEnrolledForMobileAuth() -> Bool
+    func isUserEnrolledForPushMobileAuth() -> Bool
 }
 
 class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let navigationController: UINavigationController
+    let mobileAuthInteractor: MobileAuthInteractorProtocol
+    let mobileAuthViewController: MobileAuthViewController
 
-    init(navigationController: UINavigationController) {
+    init(_ mobileAuthViewController: MobileAuthViewController, navigationController: UINavigationController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
         self.navigationController = navigationController
+        self.mobileAuthInteractor = mobileAuthInteractor
+        self.mobileAuthViewController = mobileAuthViewController
     }
 
     func presentMobileAuthView() {
-        let mobileAuthViewController = MobileAuthViewController(self)
         navigationController.pushViewController(mobileAuthViewController, animated: true)
+    }
+    
+    func mobileAuthEnrolled() {
+        mobileAuthViewController.stopEnrollMobileAuthAnimation(succeed: true)
+    }
+    
+    func pushMobileAuthEnrolled() {
+        mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: true)
+    }
+    
+    func enrollMobileAuthFailed(_ error: AppError) {
+        mobileAuthViewController.stopEnrollMobileAuthAnimation(succeed: false)
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
+    }
+    
+    func enrollPushMobileAuthFailed(_ error: AppError) {
+        mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 }
 
@@ -42,5 +73,21 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     func popToDashboardView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.popToDashboardView()
+    }
+    
+    func enrollForMobileAuth() {
+        mobileAuthInteractor.enrollForMobileAuth()
+    }
+    
+    func enrollForPushMobileAuth() {
+        mobileAuthInteractor.enrollForPushMobileAuth()
+    }
+    
+    func isUserEnrolledForMobileAuth() -> Bool {
+        return mobileAuthInteractor.isUserEnrolledForMobileAuth()
+    }
+    
+    func isUserEnrolledForPushMobileAuth() -> Bool {
+        return mobileAuthInteractor.isUserEnrolledForPushMobileAuth()
     }
 }

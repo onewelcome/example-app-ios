@@ -17,35 +17,31 @@ import TransitionButton
 import UIKit
 
 class MobileAuthViewController: UIViewController {
-    let mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol
+    weak var mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol?
 
     @IBOutlet var enrollMobileAuthButton: TransitionButton!
     @IBOutlet var enrollPushMobileAuthButton: TransitionButton!
-
-    init(_ mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol) {
-        self.mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol
-        super.init(nibName: nil, bundle: nil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
+        self.enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
     }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol else { return }
+        enrollMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth()
+        enrollPushMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth()
     }
-
+    
     @IBAction func enrollMobileAuth(_: Any) {
         enrollMobileAuthButton.startAnimation()
         view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-            sleep(3) // 3: Call enroll for mobile auth method from OneginiSDK
-
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
-                    self.enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
-                    self.enrollMobileAuthButton.isEnabled = false
-                    self.view.isUserInteractionEnabled = true
-                })
-            })
+            self.mobileAuthViewToPresenterProtocol?.enrollForMobileAuth()
         })
     }
 
@@ -55,20 +51,34 @@ class MobileAuthViewController: UIViewController {
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-            sleep(3) // 3: Call enroll for push mobile auth method from OneginiSDK
-
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
-                    self.enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
-                    self.enrollPushMobileAuthButton.isEnabled = false
-                    self.view.isUserInteractionEnabled = true
-                })
-            })
+            self.mobileAuthViewToPresenterProtocol?.enrollForPushMobileAuth()
         })
     }
 
     @IBAction func backPressed(_: Any) {
-        mobileAuthViewToPresenterProtocol.popToDashboardView()
+        mobileAuthViewToPresenterProtocol?.popToDashboardView()
+    }
+    
+    func stopEnrollPushMobileAuthAnimation(succeed: Bool) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
+                self.view.isUserInteractionEnabled = true
+                if succeed {
+                    self.enrollPushMobileAuthButton.isEnabled = false
+                }
+            })
+        })
+    }
+    
+    func stopEnrollMobileAuthAnimation(succeed: Bool) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
+                self.view.isUserInteractionEnabled = true
+                if succeed {
+                    self.enrollMobileAuthButton.isEnabled = false
+                }
+            })
+        })
     }
 }
 

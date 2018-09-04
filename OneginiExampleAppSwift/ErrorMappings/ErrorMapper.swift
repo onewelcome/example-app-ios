@@ -30,7 +30,8 @@ class ErrorMapper {
             return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
         case ONGAuthenticatorDeregistrationErrorDomain:
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
-            
+        case ONGMobileAuthEnrollmentErrorDomain:
+            return MobileAuthEnrollmentErrorDomainMapping().mapError(error)
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
