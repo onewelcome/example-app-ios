@@ -54,7 +54,11 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
     }
 
     func enrollForPushMobileAuth() {
-        guard let deviceToken = MobileAuthEntrollmentEntity.shared.deviceToken else { return }
+        guard let deviceToken = MobileAuthEntrollmentEntity.shared.deviceToken else {
+            let error = AppError(title: "Mobile auth enrollment error", errorDescription: "The device token does not exist.", recoverySuggestion: "Please restart application.")
+            mobileAuthPresenter?.enrollMobileAuthFailed(error)
+            return
+        }
         ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { enrolled, error in
             if enrolled {
                 self.mobileAuthPresenter?.pushMobileAuthEnrolled()
