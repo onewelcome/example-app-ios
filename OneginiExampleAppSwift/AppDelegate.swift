@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
+    weak var pushMobileAuthEnrollment: PushMobileAuthEntrollmentProtocol?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
-        registerForPushMessages(application: application)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
 
@@ -44,28 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appRouter.setupStartupPresenter()
     }
 
-    func registerForPushMessages(application: UIApplication) {
-        UNUserNotificationCenter.current().delegate = self
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { permissionGranted, error in
-            if let error = error {
-                print(error)
-            }
-        }
-        application.registerForRemoteNotifications()
-    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        MobileAuthEntrollmentEntity.shared.deviceToken = deviceToken
+        pushMobileAuthEnrollment?.enrollForPushMobileAuth(deviceToken: deviceToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        MobileAuthEntrollmentEntity.shared.deviceToken = nil
+        let mappedError = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
+        pushMobileAuthEnrollment?.enrollForPushMobileAuthFailed(mappedError)
     }
-    
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
     
 }
 

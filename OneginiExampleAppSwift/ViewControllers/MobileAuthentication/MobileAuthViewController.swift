@@ -51,7 +51,7 @@ class MobileAuthViewController: UIViewController {
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-            self.mobileAuthViewToPresenterProtocol?.enrollForPushMobileAuth()
+            self.mobileAuthViewToPresenterProtocol?.registerForPushMobileAuth()
         })
     }
 

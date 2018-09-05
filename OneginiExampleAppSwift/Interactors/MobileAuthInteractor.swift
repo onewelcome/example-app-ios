@@ -13,14 +13,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import UserNotifications
+
 protocol MobileAuthInteractorProtocol {
     func enrollForMobileAuth()
-    func enrollForPushMobileAuth()
+    func enrollForPushMobileAuth(deviceToken: Data)
+    func registerForPushMessages(completion: @escaping (Bool) -> Void)
     func isUserEnrolledForMobileAuth() -> Bool
     func isUserEnrolledForPushMobileAuth() -> Bool
 }
 
-class MobileAuthInteractor: MobileAuthInteractorProtocol {
+class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
 
@@ -53,12 +56,7 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
         }
     }
 
-    func enrollForPushMobileAuth() {
-        guard let deviceToken = MobileAuthEntrollmentEntity.shared.deviceToken else {
-            let error = AppError(title: "Mobile auth enrollment error", errorDescription: "The device token does not exist.", recoverySuggestion: "Please restart application.")
-            mobileAuthPresenter?.enrollMobileAuthFailed(error)
-            return
-        }
+    func enrollForPushMobileAuth(deviceToken: Data) {
         ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { enrolled, error in
             if enrolled {
                 self.mobileAuthPresenter?.pushMobileAuthEnrolled()
@@ -70,5 +68,53 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
             }
         }
     }
+    
+    func registerForPushMessages(completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { permissionGranted, error in
+            if error != nil {
+                let error = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
+                self.mobileAuthPresenter?.enrollPushMobileAuthFailed(error)
+            }
+            completion(permissionGranted)
+        }
+    }
+}
 
+extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
+    
+    func userClient(_ userClient: ONGUserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: ONGMobileAuthRequest) {
+        
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGPinChallenge, for request: ONGMobileAuthRequest) {
+        
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGFingerprintChallenge, for request: ONGMobileAuthRequest) {
+        
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge, for request: ONGMobileAuthRequest) {
+        
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didFailToHandle request: ONGMobileAuthRequest, error: Error) {
+        
+    }
+    
+    func userClient(_ userClient: ONGUserClient, didHandle request: ONGMobileAuthRequest, info customAuthenticatorInfo: ONGCustomInfo?) {
+    
+    }
+    
+}
+
+extension MobileAuthInteractor: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+    }
 }
