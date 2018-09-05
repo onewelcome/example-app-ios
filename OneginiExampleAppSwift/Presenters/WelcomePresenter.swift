@@ -21,11 +21,9 @@ protocol WelcomePresenterProtocol: class {
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }
     
-    func setupSegmentView()
     func presentWelcomeView()
-    func popToWelcomeViewControllerWithLogin(profile: ONGUserProfile)
-    func popToWelcomeViewControllerWithRegisterUser()
     func popToWelcomeViewController()
+    func update(selectedProfile: ONGUserProfile?)
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
@@ -33,6 +31,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     let tabBarController: TabBarController
     var loginPresenter: LoginPresenterProtocol
     var registerUserPresenter: RegisterUserPresenterProtocol
+    
     var welcomeViewController: WelcomeViewController
 
     init(_ welcomeViewController: WelcomeViewController,
@@ -52,36 +51,24 @@ class WelcomePresenter: WelcomePresenterProtocol {
         welcomeViewController.registerUserViewController = registerUserPresenter.setupRegisterUserView()
         tabBarController.selectedIndex = 0
     }
-
-    func popToWelcomeViewControllerWithLogin(profile: ONGUserProfile) {
-        loginPresenter.reloadProfiles()
-        loginPresenter.updateSelectedProfile(profile)
+    
+    func update(selectedProfile: ONGUserProfile?) {
+        if let profile = selectedProfile {
+            loginPresenter.updateSelectedProfile(profile)
+        } 
+        loginPresenter.update()
         setupSegmentView()
-        loginPresenter.updateView()
-        navigationController.popToViewController(welcomeViewController, animated: true)
     }
-
-    func popToWelcomeViewControllerWithRegisterUser() {
-        welcomeViewController.selectSignUp()
-        navigationController.popToViewController(welcomeViewController, animated: true)
-    }
-
-    func popToWelcomeViewController() {
-        loginPresenter.reloadProfiles()
-        setupSegmentView()
-        if loginPresenter.profiles.count > 0 {
-            loginPresenter.updateView()
-            navigationController.popToViewController(welcomeViewController, animated: true)
-        } else {
-            popToWelcomeViewControllerWithRegisterUser()
-        }
-    }
-
+    
     func setupSegmentView() {
         if loginPresenter.profiles.count > 0 {
             welcomeViewController.setupViewWithProfiles()
         } else {
             welcomeViewController.setupViewWithoutProfiles()
         }
+    }
+    
+    func popToWelcomeViewController() {
+        navigationController.popToViewController(welcomeViewController, animated: true)
     }
 }

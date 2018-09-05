@@ -18,8 +18,7 @@ import UIKit
 typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol & ParentToChildPresenterProtocol
 
 protocol ParentToChildPresenterProtocol {
-    func reloadProfiles()
-    func updateView()
+    func update()
     func updateSelectedProfile(_ profile: ONGUserProfile)
 }
 
@@ -69,12 +68,31 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
 
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.updateWelcomeView(selectedProfile: nil)
         navigationController.dismiss(animated: true, completion: nil)
         appRouter.setupErrorAlert(error: error)
     }
 
     func loginActionCancelled(profile: ONGUserProfile) {
         navigationController.dismiss(animated: true, completion: nil)
+    }
+    
+    func reloadProfiles() {
+        profiles = loginInteractor.userProfiles()
+        loginViewController.profiles = profiles
+    }
+    
+    func updateView() {
+        let profile = loginViewController.selectedProfile
+        if profiles.contains(profile) {
+            reloadAuthenticators(profile)
+            if let index = loginViewController.profiles.index(of: profile) {
+                loginViewController.selectProfile(index: index)
+            }
+        } else {
+            reloadAuthenticators(profiles[0])
+            loginViewController.selectProfile(index: 0)
+        }
     }
 }
 
@@ -103,21 +121,10 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
         loginViewController.selectedProfile = profile
     }
 
-    func reloadProfiles() {
-        profiles = loginInteractor.userProfiles()
-        loginViewController.profiles = profiles
-    }
-
-    func updateView() {
-        let profile = loginViewController.selectedProfile
-        if profiles.contains(profile) {
-            reloadAuthenticators(profile)
-            if let index = loginViewController.profiles.index(of: profile) {
-                loginViewController.selectProfile(index: index)
-            }
-        } else {
-            reloadAuthenticators(profiles[0])
-            loginViewController.selectProfile(index: 0)
+    func update() {
+        reloadProfiles()
+        if (profiles.count > 0) {
+            updateView()
         }
     }
 }

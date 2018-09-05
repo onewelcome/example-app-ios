@@ -28,9 +28,8 @@ protocol AppRouterProtocol: class {
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol { get }
     
     func popToDashboardView()
-    func popToWelcomeViewWithLogin(profile: ONGUserProfile)
-    func popToWelcomeViewControllerWithRegisterUser()
-    func popToWelcomeViewController()
+    func updateWelcomeView(selectedProfile: ONGUserProfile?)
+    func popToWelcomeView()
     func popToProfileView()
 
     func setupErrorAlert(error: AppError)
@@ -94,15 +93,11 @@ class AppRouter: NSObject, AppRouterProtocol {
         dashboardPresenter.popToDashboardView()
     }
 
-    func popToWelcomeViewWithLogin(profile: ONGUserProfile) {
-        welcomePresenter.popToWelcomeViewControllerWithLogin(profile: profile)
+    func updateWelcomeView(selectedProfile: ONGUserProfile?) {
+        welcomePresenter.update(selectedProfile: selectedProfile)
     }
-
-    func popToWelcomeViewControllerWithRegisterUser() {
-        welcomePresenter.popToWelcomeViewControllerWithRegisterUser()
-    }
-
-    func popToWelcomeViewController() {
+    
+    func popToWelcomeView() {
         welcomePresenter.popToWelcomeViewController()
     }
 

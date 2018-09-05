@@ -52,7 +52,8 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     func presentWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         if let authenticatedUserProfile = authenticatedUserProfile {
-            appRouter.popToWelcomeViewWithLogin(profile: authenticatedUserProfile)
+            appRouter.updateWelcomeView(selectedProfile: authenticatedUserProfile)
+            appRouter.popToWelcomeView()
         }
     }
 

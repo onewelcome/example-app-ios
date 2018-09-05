@@ -38,15 +38,6 @@ class LoginViewController: UIViewController {
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
     var selectedProfile = ONGUserProfile()
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let selectedRow = profilesTableView?.indexPathForSelectedRow,
-            let profilesTableView = profilesTableView {
-            profilesTableView.deselectRow(at: selectedRow, animated: true)
-            profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: selectedRow)
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -60,6 +51,12 @@ class LoginViewController: UIViewController {
     func selectProfile(index: Int) {
         guard let profilesTableView = profilesTableView else { return }
         selectedProfile = profiles[index]
+        if let indexPaths = profilesTableView.indexPathsForSelectedRows{
+            for indexPath in indexPaths {
+                profilesTableView.deselectRow(at: indexPath, animated: false)
+                profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: indexPath)
+            }
+        }
         let indexPath = IndexPath(row: index, section: 0)
         profilesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
@@ -86,6 +83,11 @@ extension LoginViewController: UITableViewDataSource {
         if tableView == profilesTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileIdCell", for: indexPath) as! ProfileTableViewCell
             cell.profileIdLabel.text = profiles[indexPath.row].profileId
+            if selectedProfile == profiles[indexPath.row] {
+                cell.tickImage.image = #imageLiteral(resourceName: "tick")
+            } else {
+                cell.tickImage.image = nil
+            }
             return cell
         }
         if tableView == authenticatorsTableView {
