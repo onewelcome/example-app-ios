@@ -67,7 +67,7 @@ class PresenterAssembly: Assembly {
                                                                                              changePinNavigationController: UINavigationController()) }
 
         container.register(PendingMobileAuthPresenterProtocol.self) { resolver in PendingMobileAuthPresenter(pendingMobileAuthViewController: resolver.resolve((UIViewController & PendingMobileAuthPresenterViewDelegate).self)!, mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
-        
+
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)
     }

@@ -19,10 +19,9 @@ protocol MobileAuthInteractorProtocol {
     func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void)
 }
 
-class MobileAuthInteractor: MobileAuthInteractorProtocol{
-
+class MobileAuthInteractor: MobileAuthInteractorProtocol {
     func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void) {
-        ONGUserClient.sharedInstance().pendingPushMobileAuthRequests { (requests : Array<ONGPendingMobileAuthRequest>?, error: Error?) in
+        ONGUserClient.sharedInstance().pendingPushMobileAuthRequests { (requests: Array<ONGPendingMobileAuthRequest>?, error: Error?) in
             if let error = error {
                 let appError = ErrorMapper().mapError(error)
                 completion(nil, appError)

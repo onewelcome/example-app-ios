@@ -26,7 +26,7 @@ protocol AppRouterProtocol: class {
     var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
     var disconnectPresenter: DisconnectPresenterProtocol { get }
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol { get }
-    
+
     func popToDashboardView()
     func updateWelcomeView(selectedProfile: ONGUserProfile?)
     func popToWelcomeView()
@@ -48,10 +48,10 @@ protocol AppRouterProtocol: class {
 
 class AppRouter: NSObject, AppRouterProtocol {
     var window: UIWindow
-    
+
     var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
-    
+
     var startupPresenter: StartupPresenterProtocol
     var welcomePresenter: WelcomePresenterProtocol
     var dashboardPresenter: DashboardPresenterProtocol
@@ -96,7 +96,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     func updateWelcomeView(selectedProfile: ONGUserProfile?) {
         welcomePresenter.update(selectedProfile: selectedProfile)
     }
-    
+
     func popToWelcomeView() {
         welcomePresenter.popToWelcomeViewController()
     }
@@ -117,7 +117,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         window.rootViewController = startupPresenter.startupViewController
         startupPresenter.oneigniSDKStartup()
     }
-    
+
     func setupTabBar() {
         navigationController!.viewControllers = [welcomePresenter.welcomeViewController]
         tabBarController!.setup(navigationController: navigationController!, pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate, delegate: self)
@@ -154,7 +154,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
 }
 
-extension AppRouter : UITabBarControllerDelegate {
+extension AppRouter: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return viewController != tabBarController.selectedViewController
     }

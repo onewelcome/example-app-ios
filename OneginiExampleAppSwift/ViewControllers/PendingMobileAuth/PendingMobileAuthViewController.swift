@@ -16,45 +16,44 @@
 import UIKit
 
 class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresenterViewDelegate {
-    
     var pendingMobileAuths = Array<ONGPendingMobileAuthRequest>() {
         didSet {
             pendingMobileAuthTableView.reloadData()
         }
     }
-    weak var pendingMobileAuthPresenter : PendingMobileAuthPresenterProtocol?
-    
-    @IBOutlet weak var pendingMobileAuthTableView: UITableView!
-    
+
+    weak var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol?
+
+    @IBOutlet var pendingMobileAuthTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.white
         pendingMobileAuthTableView.backgroundView = refreshControl
-        refreshControl.addTarget(self, action: #selector(reloadData(_:)), for:.valueChanged)
+        refreshControl.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
         pendingMobileAuthTableView.register(UINib(nibName: "PendingMobileAuthTableViewCell", bundle: nil), forCellReuseIdentifier: "pendingMobileAuthCell")
         pendingMobileAuthTableView.register(UINib(nibName: "PullToRefreshTableViewCell", bundle: nil), forCellReuseIdentifier: "pullToRefreshCell")
     }
-    
-    @objc func reloadData(_ refreshControl : UIRefreshControl){
+
+    @objc func reloadData(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        self.pendingMobileAuthPresenter?.presentPendingMobileAuth()
+        pendingMobileAuthPresenter?.presentPendingMobileAuth()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.pendingMobileAuthPresenter?.presentPendingMobileAuth()
+        pendingMobileAuthPresenter?.presentPendingMobileAuth()
     }
 }
 
 extension PendingMobileAuthViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return max(pendingMobileAuths.count, 1)
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (pendingMobileAuths.count > 0) {
+        if pendingMobileAuths.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pendingMobileAuthCell", for: indexPath) as! PendingMobileAuthTableViewCell
             cell.setup(pendingMobileAuthEntity: pendingMobileAuths[indexPath.row])
             return cell
@@ -65,8 +64,8 @@ extension PendingMobileAuthViewController: UITableViewDataSource {
 }
 
 extension PendingMobileAuthViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (pendingMobileAuths.count > 0) {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+        if pendingMobileAuths.count > 0 {
             return 135
         } else {
             return 50

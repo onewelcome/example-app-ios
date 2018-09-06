@@ -20,7 +20,7 @@ protocol WelcomePresenterProtocol: class {
     var loginPresenter: LoginPresenterProtocol { get set }
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }
-    
+
     func presentWelcomeView()
     func popToWelcomeViewController()
     func update(selectedProfile: ONGUserProfile?)
@@ -31,7 +31,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     let tabBarController: TabBarController
     var loginPresenter: LoginPresenterProtocol
     var registerUserPresenter: RegisterUserPresenterProtocol
-    
+
     var welcomeViewController: WelcomeViewController
 
     init(_ welcomeViewController: WelcomeViewController,
@@ -51,15 +51,15 @@ class WelcomePresenter: WelcomePresenterProtocol {
         welcomeViewController.registerUserViewController = registerUserPresenter.setupRegisterUserView()
         tabBarController.selectedIndex = 0
     }
-    
+
     func update(selectedProfile: ONGUserProfile?) {
         if let profile = selectedProfile {
             loginPresenter.updateSelectedProfile(profile)
-        } 
+        }
         loginPresenter.update()
         setupSegmentView()
     }
-    
+
     func setupSegmentView() {
         if loginPresenter.profiles.count > 0 {
             welcomeViewController.setupViewWithProfiles()
@@ -67,7 +67,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
             welcomeViewController.setupViewWithoutProfiles()
         }
     }
-    
+
     func popToWelcomeViewController() {
         navigationController.popToViewController(welcomeViewController, animated: true)
     }

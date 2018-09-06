@@ -30,13 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let appRouter = appRouter else { fatalError() }
         appRouter.setupStartupPresenter()
     }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { (success, error) in
+
+    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { _, _ in
         }
     }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        
-    }
+
+    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {}
 }

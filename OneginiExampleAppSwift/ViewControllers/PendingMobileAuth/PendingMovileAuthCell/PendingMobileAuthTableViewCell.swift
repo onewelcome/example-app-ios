@@ -9,13 +9,12 @@
 import UIKit
 
 class PendingMobileAuthTableViewCell: UITableViewCell {
+    @IBOutlet var container: UIView!
+    @IBOutlet var profileLabel: UILabel!
+    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var expireTimeLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
 
-    @IBOutlet weak var container: UIView!
-    @IBOutlet weak var profileLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var expireTimeLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    
     func setup(pendingMobileAuthEntity: ONGPendingMobileAuthRequest) {
         profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
         messageLabel.text = pendingMobileAuthEntity.message

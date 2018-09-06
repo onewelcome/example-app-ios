@@ -34,8 +34,7 @@ class MobileAuthViewController: UIViewController {
 
     @IBAction func enrollMobileAuth(_: Any) {
         enrollMobileAuthButton.startAnimation()
-        ONGUserClient.sharedInstance().enroll { (success, error) in
-            
+        ONGUserClient.sharedInstance().enroll { _, _ in
         }
         view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
@@ -56,8 +55,8 @@ class MobileAuthViewController: UIViewController {
     @IBAction func enrollPushMobileAuth(_: Any) {
         enrollPushMobileAuthButton.startAnimation()
         let center = UNUserNotificationCenter.current()
-        
-        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+
+        center.requestAuthorization(options: [.badge, .alert, .sound]) { _, _ in
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
             }

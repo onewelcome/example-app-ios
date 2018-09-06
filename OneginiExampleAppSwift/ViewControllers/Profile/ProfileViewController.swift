@@ -26,13 +26,11 @@ class ProfileViewController: UIViewController {
         profileViewToPresenterProtocol?.setupDisconnectPresenter()
     }
 
-    @IBAction func deviceList(_: Any) {
-    }
+    @IBAction func deviceList(_: Any) {}
 
     @IBAction func changePassword(_: Any) {
         profileViewToPresenterProtocol?.setupChangePinPresenter()
     }
 
-    @IBAction func changeProfileName(_: Any) {
-    }
+    @IBAction func changeProfileName(_: Any) {}
 }

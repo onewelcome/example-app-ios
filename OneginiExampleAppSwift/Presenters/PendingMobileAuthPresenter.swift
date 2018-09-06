@@ -16,26 +16,26 @@
 import UIKit
 
 protocol PendingMobileAuthPresenterProtocol: class {
-    var viewDelegate : UIViewController & PendingMobileAuthPresenterViewDelegate { get set }
+    var viewDelegate: UIViewController & PendingMobileAuthPresenterViewDelegate { get set }
     func presentPendingMobileAuth()
 }
 
 protocol PendingMobileAuthPresenterViewDelegate: class {
-    var pendingMobileAuths : Array<ONGPendingMobileAuthRequest> { get set }
-    var pendingMobileAuthPresenter : PendingMobileAuthPresenterProtocol? { get set }
+    var pendingMobileAuths: Array<ONGPendingMobileAuthRequest> { get set }
+    var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol? { get set }
 }
 
 class PendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol {
     var viewDelegate: UIViewController & PendingMobileAuthPresenterViewDelegate
     var mobileAuthInteractor: MobileAuthInteractorProtocol
-    
+
     init(pendingMobileAuthViewController: (UIViewController & PendingMobileAuthPresenterViewDelegate), mobileAuthInteractor: MobileAuthInteractorProtocol) {
-        self.viewDelegate = pendingMobileAuthViewController
+        viewDelegate = pendingMobileAuthViewController
         self.mobileAuthInteractor = mobileAuthInteractor
     }
-    
+
     func presentPendingMobileAuth() {
-        mobileAuthInteractor.fetchPendingTransactions { (pendingMobileAuths, error) in
+        mobileAuthInteractor.fetchPendingTransactions { pendingMobileAuths, error in
             guard let pendingMobileAuths = pendingMobileAuths else {
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
                 appRouter.setupErrorAlert(error: error!)

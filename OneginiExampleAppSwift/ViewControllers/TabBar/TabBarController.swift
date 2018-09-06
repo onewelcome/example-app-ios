@@ -13,22 +13,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import UIKit
 
 class TabBarController: UITabBarController {
-    func setup(navigationController: UINavigationController, pendingMobileAuthViewController : UIViewController, delegate : UITabBarControllerDelegate){
-        self.viewControllers = [navigationController, pendingMobileAuthViewController]
-        self.delegate = delegate;
-        let tabBarHome = self.tabBar.items![0]
+    func setup(navigationController: UINavigationController, pendingMobileAuthViewController: UIViewController, delegate: UITabBarControllerDelegate) {
+        viewControllers = [navigationController, pendingMobileAuthViewController]
+        self.delegate = delegate
+        let tabBarHome = tabBar.items![0]
         tabBarHome.title = "User"
         tabBarHome.image = #imageLiteral(resourceName: "tabBarUserProfile")
         tabBarHome.image = tabBarHome.image?.stretchableImage(withLeftCapWidth: 30, topCapHeight: 30)
         tabBar.tintColor = UIColor(red: 0 / 255, green: 113 / 255, blue: 155 / 255, alpha: 1)
-        let tabBarPending = self.tabBar.items![1]
+        let tabBarPending = tabBar.items![1]
         tabBarPending.title = "Notifications"
         tabBarPending.image = #imageLiteral(resourceName: "tabBarNotification")
-        tabBarPending.imageInsets = UIEdgeInsetsMake(0,0,0,0)
-        self.tabBar.isTranslucent = false
+        tabBarPending.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        tabBar.isTranslucent = false
     }
 }

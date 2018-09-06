@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
     func selectProfile(index: Int) {
         guard let profilesTableView = profilesTableView else { return }
         selectedProfile = profiles[index]
-        if let indexPaths = profilesTableView.indexPathsForSelectedRows{
+        if let indexPaths = profilesTableView.indexPathsForSelectedRows {
             for indexPath in indexPaths {
                 profilesTableView.deselectRow(at: indexPath, animated: false)
                 profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: indexPath)

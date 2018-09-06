@@ -20,16 +20,16 @@ typealias StartupPresenterProtocol = StartupInteractorToPresenterProtocol
 
 protocol StartupInteractorToPresenterProtocol {
     func oneigniSDKStartup()
-    var startupViewController : StartupViewController? { get set }
+    var startupViewController: StartupViewController? { get set }
 }
 
 class StartupPresenter: StartupInteractorToPresenterProtocol {
     var startupInteractor: StartupInteractorProtocol
-    var startupViewController : StartupViewController?
-    
+    var startupViewController: StartupViewController?
+
     init(startupInteractor: StartupInteractorProtocol) {
         self.startupInteractor = startupInteractor
-        self.startupViewController = AppAssembly.shared.resolver.resolve(StartupViewController.self)
+        startupViewController = AppAssembly.shared.resolver.resolve(StartupViewController.self)
     }
 
     func oneigniSDKStartup() {

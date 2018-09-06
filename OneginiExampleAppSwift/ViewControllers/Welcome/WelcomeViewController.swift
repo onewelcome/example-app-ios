@@ -35,7 +35,7 @@ class WelcomeViewController: UIViewController {
             setupViewWithoutProfiles()
         }
     }
-    
+
     func configureSegmentView() {
         segmentView.titles = ["Log in", "Sign Up"]
         let customSubview = UIView(frame: CGRect(x: 0, y: 40, width: 100, height: 1.0))
