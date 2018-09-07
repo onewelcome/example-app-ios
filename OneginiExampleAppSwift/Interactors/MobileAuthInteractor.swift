@@ -25,13 +25,12 @@ class MobileAuthInteractor: MobileAuthInteractorProtocol {
             if let error = error {
                 let appError = ErrorMapper().mapError(error)
                 completion(nil, appError)
-                return
-            }
-            if let requests = requests {
+            } else if let requests = requests {
                 completion(requests, nil)
-                return
+                
+            } else {
+                completion([], nil)
             }
-            completion(Array(), nil)
         }
     }
 }

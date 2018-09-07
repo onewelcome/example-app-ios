@@ -36,12 +36,12 @@ class PendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol {
 
     func presentPendingMobileAuth() {
         mobileAuthInteractor.fetchPendingTransactions { pendingMobileAuths, error in
-            guard let pendingMobileAuths = pendingMobileAuths else {
+            if let error = error {
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-                appRouter.setupErrorAlert(error: error!)
-                return
+                appRouter.setupErrorAlert(error: error)
+            } else if let pendingMobileAuths = pendingMobileAuths {
+                self.viewDelegate.pendingMobileAuths = pendingMobileAuths
             }
-            self.viewDelegate.pendingMobileAuths = pendingMobileAuths
         }
     }
 }

@@ -28,12 +28,16 @@ class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresen
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRefreshControl()
+        pendingMobileAuthTableView.register(UINib(nibName: "PendingMobileAuthTableViewCell", bundle: nil), forCellReuseIdentifier: "pendingMobileAuthCell")
+        pendingMobileAuthTableView.register(UINib(nibName: "PullToRefreshTableViewCell", bundle: nil), forCellReuseIdentifier: "pullToRefreshCell")
+    }
+    
+    func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.white
         pendingMobileAuthTableView.backgroundView = refreshControl
         refreshControl.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
-        pendingMobileAuthTableView.register(UINib(nibName: "PendingMobileAuthTableViewCell", bundle: nil), forCellReuseIdentifier: "pendingMobileAuthCell")
-        pendingMobileAuthTableView.register(UINib(nibName: "PullToRefreshTableViewCell", bundle: nil), forCellReuseIdentifier: "pullToRefreshCell")
     }
 
     @objc func reloadData(_ refreshControl: UIRefreshControl) {

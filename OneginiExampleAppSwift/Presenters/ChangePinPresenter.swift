@@ -61,7 +61,7 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
             registrationPinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             registrationPinViewController = PinViewController(mode: .registration, entity: changePinEntity, viewToPresenterProtocol: self)
-            changePinNavigationController.pushViewController(registrationPinViewController!, animated: true)
+            changePinNavigationController.pushViewController(registrationPinViewController!, animated: false)
         }
     }
 
