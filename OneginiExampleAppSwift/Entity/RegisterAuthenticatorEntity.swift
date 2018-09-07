@@ -15,6 +15,9 @@
 
 import UIKit
 
-class ButtonTableViewCell: UITableViewCell {
-    @IBOutlet var title: UILabel!
+class RegisterAuthenticatorEntity: PinViewControllerEntityProtocol {
+    var pin: String?
+    var pinError: AppError?
+    var pinLength: Int?
+    var pinChallenge: ONGPinChallenge?
 }

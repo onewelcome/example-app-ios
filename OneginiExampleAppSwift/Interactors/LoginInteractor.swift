@@ -27,7 +27,7 @@ class LoginInteractor: NSObject {
     var loginEntity = LoginEntity()
 
     fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
-        if let error = challenge.error {
+        if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             loginEntity.pinError = nil

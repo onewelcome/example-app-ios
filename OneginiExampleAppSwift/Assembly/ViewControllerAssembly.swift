@@ -45,5 +45,10 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, pendingMobileAuthViewController in
                 pendingMobileAuthViewController.pendingMobileAuthPresenter = resolver.resolve(PendingMobileAuthPresenterProtocol.self)!
             }
+
+        container.register(AuthenticatorsViewController.self) { _ in AuthenticatorsViewController() }
+            .initCompleted { resolver, authenticatorsViewController in
+                authenticatorsViewController.authenticatorsViewToPresenterProtocol = resolver.resolve(AuthenticatorsPresenterProtocol.self)!
+            }
     }
 }

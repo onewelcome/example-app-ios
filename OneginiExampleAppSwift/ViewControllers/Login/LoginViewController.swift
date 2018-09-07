@@ -93,7 +93,7 @@ extension LoginViewController: UITableViewDataSource {
         if tableView == authenticatorsTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath) as! ButtonTableViewCell
             let authenticatorName = authenticators[indexPath.row].name
-            cell.button.setTitle(authenticatorName, for: .normal)
+            cell.title.text = authenticatorName
             return cell
         }
         return UITableViewCell()

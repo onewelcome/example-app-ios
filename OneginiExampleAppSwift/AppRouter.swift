@@ -31,6 +31,7 @@ protocol AppRouterProtocol: class {
     func updateWelcomeView(selectedProfile: ONGUserProfile?)
     func popToWelcomeView()
     func popToProfileView()
+    func popToAuthenticatorsView()
 
     func setupErrorAlert(error: AppError)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
@@ -103,6 +104,10 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func popToProfileView() {
         profilePresenter.popToProfileView()
+    }
+
+    func popToAuthenticatorsView() {
+        authenticatorsPresenter.popToAuthenticatorsView()
     }
 
     func setupErrorAlert(error: AppError) {

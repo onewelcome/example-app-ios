@@ -52,7 +52,9 @@ class PresenterAssembly: Assembly {
             ErrorPresenter(navigationController: resolver.resolve(UINavigationController.self)!)
         }
 
-        container.register(AuthenticatorsPresenterProtocol.self) { resolver in AuthenticatorsPresenter(navigationController: resolver.resolve(UINavigationController.self)!) }
+        container.register(AuthenticatorsPresenterProtocol.self) { resolver in AuthenticatorsPresenter(resolver.resolve(AuthenticatorsInteractorProtocol.self)!,
+                                                                                                       navigationController: resolver.resolve(UINavigationController.self)!,
+                                                                                                       authenticatorsViewController: resolver.resolve(AuthenticatorsViewController.self)!) }
 
         container.register(ProfilePresenterProtocol.self) { resolver in ProfilePresenter(resolver.resolve(ProfileViewController.self)!,
                                                                                          navigationController: resolver.resolve(UINavigationController.self)!) }
