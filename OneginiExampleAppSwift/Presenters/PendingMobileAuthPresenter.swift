@@ -17,7 +17,7 @@ import UIKit
 
 protocol PendingMobileAuthPresenterProtocol: class {
     var viewDelegate: UIViewController & PendingMobileAuthPresenterViewDelegate { get set }
-    func presentPendingMobileAuth()
+    func reloadPendingMobileAuth()
 }
 
 protocol PendingMobileAuthPresenterViewDelegate: class {
@@ -34,7 +34,7 @@ class PendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol {
         self.mobileAuthInteractor = mobileAuthInteractor
     }
 
-    func presentPendingMobileAuth() {
+    func reloadPendingMobileAuth() {
         mobileAuthInteractor.fetchPendingTransactions { pendingMobileAuths, error in
             if let error = error {
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }

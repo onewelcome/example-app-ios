@@ -42,12 +42,12 @@ class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresen
 
     @objc func reloadData(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        pendingMobileAuthPresenter?.presentPendingMobileAuth()
+        pendingMobileAuthPresenter?.reloadPendingMobileAuth()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        pendingMobileAuthPresenter?.presentPendingMobileAuth()
+        pendingMobileAuthPresenter?.reloadPendingMobileAuth()
     }
 }
 
