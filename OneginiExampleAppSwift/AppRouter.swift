@@ -107,7 +107,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
 
     func popToAuthenticatorsView() {
-        authenticatorsPresenter.popToAuthenticatorsView()
+        authenticatorsPresenter.backToAuthenticatorsView()
     }
 
     func setupErrorAlert(error: AppError) {

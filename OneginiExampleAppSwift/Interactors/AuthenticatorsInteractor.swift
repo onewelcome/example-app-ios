@@ -91,7 +91,7 @@ extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
     }
 
     func userClient(_: ONGUserClient, didRegister _: ONGAuthenticator, forUser _: ONGUserProfile, info _: ONGCustomInfo?) {
-        authenticatorsPresenter?.popToAuthenticatorsView()
+        authenticatorsPresenter?.backToAuthenticatorsView()
     }
 }
 
