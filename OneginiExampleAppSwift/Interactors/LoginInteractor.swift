@@ -19,8 +19,8 @@ protocol LoginInteractorProtocol {
     func userProfiles() -> Array<ONGUserProfile>
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile)
-    func handleLogin(loginEntity: PinViewControllerEntityProtocol)
-    func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol)
+    func handleLogin()
+    func handlePasswordAuthenticatorRegistration()
 }
 
 class LoginInteractor: NSObject {
@@ -35,13 +35,13 @@ class LoginInteractor: NSObject {
         }
     }
 
-    func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol) {
-        guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorAuthenticationChallenege else { return }
+    func handlePasswordAuthenticatorRegistration() {
+        guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorAuthenticationChallenege else { fatalError() }
         if loginEntity.cancelled {
             loginEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            if let data = entity.data {
+            if let data = loginEntity.data {
                 customAuthenticatorChallenge.sender.respond(withData: data, challenge: customAuthenticatorChallenge)
             } else {
                 customAuthenticatorChallenge.sender.respond(withData: "", challenge: customAuthenticatorChallenge)
@@ -65,8 +65,8 @@ extension LoginInteractor: LoginInteractorProtocol {
         ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
     }
 
-    func handleLogin(loginEntity: PinViewControllerEntityProtocol) {
-        guard let pinChallenge = self.loginEntity.pinChallenge else { return }
+    func handleLogin() {
+        guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
             pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
         } else {

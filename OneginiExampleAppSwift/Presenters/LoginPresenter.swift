@@ -137,12 +137,12 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
 
 extension LoginPresenter: PinViewToPresenterProtocol {
     func handlePin(entity: PinViewControllerEntityProtocol) {
-        loginInteractor.handleLogin(loginEntity: entity)
+        loginInteractor.handleLogin()
     }
 }
 
 extension LoginPresenter: PasswordAuthenticatorViewToPresenterProtocol {
-    func handlePassword(entity: PasswordAuthenticatorEntityProtocol) {
-        loginInteractor.handleRegisterPasswordAuthenticator(entity: entity)
+    func handlePassword() {
+        loginInteractor.handlePasswordAuthenticatorRegistration()
     }
 }

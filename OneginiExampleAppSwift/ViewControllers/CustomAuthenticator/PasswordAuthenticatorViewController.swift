@@ -27,7 +27,7 @@ protocol PasswordAuthenticatorEntityProtocol {
 }
 
 protocol PasswordAuthenticatorViewToPresenterProtocol: class {
-    func handlePassword(entity: PasswordAuthenticatorEntityProtocol)
+    func handlePassword()
 }
 
 class PasswordAuthenticatorViewController: UIViewController {
@@ -58,11 +58,11 @@ class PasswordAuthenticatorViewController: UIViewController {
 
     @IBAction func cancel(_: Any) {
         entity.cancelled = true
-        viewToPresenterProtocol.handlePassword(entity: entity)
+        viewToPresenterProtocol.handlePassword()
     }
 
     @IBAction func submit(_: Any) {
         entity.data = passwordTextField.text
-        viewToPresenterProtocol.handlePassword(entity: entity)
+        viewToPresenterProtocol.handlePassword()
     }
 }

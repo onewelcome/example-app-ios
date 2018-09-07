@@ -21,7 +21,7 @@ protocol AuthenticatorsInteractorProtocol {
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
     func handleLogin(registerAuthenticatorEntity: PinViewControllerEntityProtocol)
     func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
-    func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol)
+    func handlePasswordAuthenticatorRegistration()
 }
 
 class AuthenticatorsInteractor: NSObject {
@@ -37,16 +37,22 @@ class AuthenticatorsInteractor: NSObject {
     }
 
     fileprivate func sortAuthenticatorsList(_ authenticators: Array<ONGAuthenticator>) -> Array<ONGAuthenticator> {
-        return authenticators.sorted { $0.type.rawValue < $1.type.rawValue }
+        return authenticators.sorted {
+            if $0.type.rawValue == $1.type.rawValue {
+                return $0.name < $1.name
+            } else {
+                return $0.type.rawValue < $1.type.rawValue
+            }
+        }
     }
 
-    func handleRegisterPasswordAuthenticator(entity: PasswordAuthenticatorEntityProtocol) {
-        guard let customAuthenticatorChallenge = registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege else { return }
+    func handlePasswordAuthenticatorRegistration() {
+        guard let customAuthenticatorChallenge = registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege else { fatalError() }
         if registerAuthenticatorEntity.cancelled {
             registerAuthenticatorEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            if let data = entity.data {
+            if let data = registerAuthenticatorEntity.data {
                 customAuthenticatorChallenge.sender.respond(withData: data, challenge: customAuthenticatorChallenge)
             } else {
                 customAuthenticatorChallenge.sender.respond(withData: "", challenge: customAuthenticatorChallenge)

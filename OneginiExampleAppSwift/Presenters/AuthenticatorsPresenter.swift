@@ -123,7 +123,7 @@ extension AuthenticatorsPresenter: PinViewToPresenterProtocol {
 }
 
 extension AuthenticatorsPresenter: PasswordAuthenticatorViewToPresenterProtocol {
-    func handlePassword(entity: PasswordAuthenticatorEntityProtocol) {
-        authenticatorsInteractor.handleRegisterPasswordAuthenticator(entity: entity)
+    func handlePassword() {
+        authenticatorsInteractor.handlePasswordAuthenticatorRegistration()
     }
 }
