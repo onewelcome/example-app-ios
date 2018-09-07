@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWindow()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
-
+        
         return true
     }
 
@@ -44,15 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appRouter.setupStartupPresenter()
     }
 
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         pushMobileAuthEnrollment?.enrollForPushMobileAuth(deviceToken: deviceToken)
     }
-    
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         let mappedError = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
         pushMobileAuthEnrollment?.enrollForPushMobileAuthFailed(mappedError)
     }
-    
-}
 
+
+}

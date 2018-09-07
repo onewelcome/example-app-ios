@@ -32,7 +32,7 @@ protocol AppRouterProtocol: class {
     func popToProfileView()
     func popToAuthenticatorsView()
 
-    func setupErrorAlert(error: AppError)
+    func setupErrorAlert(error: AppError, okButtonHandler:((UIAlertAction) -> Void)?)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
 
     func setupStartupPresenter()
@@ -101,8 +101,8 @@ class AppRouter: AppRouterProtocol {
         authenticatorsPresenter.popToAuthenticatorsView()
     }
 
-    func setupErrorAlert(error: AppError) {
-        errorPresenter.showErrorAlert(error: error)
+    func setupErrorAlert(error: AppError, okButtonHandler:((UIAlertAction) -> Void)? = nil) {
+        errorPresenter.showErrorAlert(error: error, okButtonHandler: okButtonHandler)
     }
 
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
@@ -139,5 +139,11 @@ class AppRouter: AppRouterProtocol {
 
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
+    }
+}
+
+extension AppRouterProtocol {
+    func setupErrorAlert(error: AppError, okButtonHandler:((UIAlertAction) -> Void)? = nil) {
+        return setupErrorAlert(error: error, okButtonHandler: okButtonHandler)
     }
 }

@@ -23,6 +23,9 @@ protocol MobileAuthInteractorToPresenterProtocol: class {
     func pushMobileAuthEnrolled()
     func enrollMobileAuthFailed(_ error: AppError)
     func enrollPushMobileAuthFailed(_ error: AppError)
+    func presentPinView(mobileAuthEntity: MobileAuthEntity)
+    func mobileAuthenticationHandled()
+    func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void)
 }
 
 protocol MobileAuthViewToPresenterProtocol: class {
@@ -42,6 +45,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     let mobileAuthInteractor: MobileAuthInteractorProtocol
     let mobileAuthViewController: MobileAuthViewController
+    var pinViewController: PinViewController?
 
     init(_ mobileAuthViewController: MobileAuthViewController, navigationController: UINavigationController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
         self.navigationController = navigationController
@@ -72,6 +76,27 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
     }
+    
+    func presentPinView(mobileAuthEntity: MobileAuthEntity) {
+        if let error = mobileAuthEntity.pinError {
+            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
+            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
+        } else {
+            pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+            navigationController.present(pinViewController!, animated: true)
+        }
+    }
+    
+    func mobileAuthenticationHandled() {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+    
+    func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: true, completion: nil)
+        appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
+    }
+
 }
 
 extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
@@ -115,4 +140,10 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
         enrollForPushMobileAuthFailed(error)
     }
 
+}
+
+extension MobileAuthPresenter: PinViewToPresenterProtocol {
+    func handlePin(entity: PinViewControllerEntityProtocol) {
+        mobileAuthInteractor.handlePinMobileAuth(mobileAuthEntity: entity)
+    }
 }

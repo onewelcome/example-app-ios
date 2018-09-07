@@ -21,12 +21,20 @@ protocol MobileAuthInteractorProtocol {
     func registerForPushMessages(completion: @escaping (Bool) -> Void)
     func isUserEnrolledForMobileAuth() -> Bool
     func isUserEnrolledForPushMobileAuth() -> Bool
+    func handlePinMobileAuth(mobileAuthEntity: PinViewControllerEntityProtocol)
 }
 
 class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
-
+    var mobileAuthQueue = MobileAuthQueue()
+    var mobileAuthEntity = MobileAuthEntity()
+    
+    override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
     func isUserEnrolledForMobileAuth() -> Bool {
         let userClient = ONGUserClient.sharedInstance()
         if let userProfile = userClient.authenticatedUserProfile() {
@@ -68,7 +76,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
             }
         }
     }
-    
+
     func registerForPushMessages(completion: @escaping (Bool) -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { permissionGranted, error in
             if error != nil {
@@ -78,43 +86,90 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
             completion(permissionGranted)
         }
     }
+    
+    func handlePinMobileAuth(mobileAuthEntity: PinViewControllerEntityProtocol) {
+        guard let pinChallenge = self.mobileAuthEntity.pinChallenge else { return }
+        if let pin = mobileAuthEntity.pin {
+            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+        } else {
+            pinChallenge.sender.cancel(pinChallenge)
+        }
+    }
+
+    fileprivate func handlePushMobileAuthenticationRequest(userInfo: Dictionary<AnyHashable, Any>) {
+        if let pendingTransaction = ONGUserClient.sharedInstance().pendingMobileAuthRequest(fromUserInfo: userInfo) {
+            let mobileAuthRequest = MobileAuthRequest(delegate: self, pendingTransaction: pendingTransaction)
+            self.mobileAuthQueue.enqueue(mobileAuthRequest)
+        }
+    }
+    
+    fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
+        if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
+            mobileAuthEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
+        } else {
+            mobileAuthEntity.pinError = nil
+        }
+    }
+
 }
 
 extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
-    
+
     func userClient(_ userClient: ONGUserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: ONGMobileAuthRequest) {
-        
+
     }
-    
+
     func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGPinChallenge, for request: ONGMobileAuthRequest) {
-        
+        mobileAuthEntity.pinChallenge = challenge
+        mobileAuthEntity.pinLength = 5
+        mapErrorFromChallenge(challenge)
+        mobileAuthPresenter?.presentPinView(mobileAuthEntity: mobileAuthEntity)
     }
-    
+
     func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGFingerprintChallenge, for request: ONGMobileAuthRequest) {
-        
+
     }
-    
+
     func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge, for request: ONGMobileAuthRequest) {
-        
+
     }
-    
+
     func userClient(_ userClient: ONGUserClient, didFailToHandle request: ONGMobileAuthRequest, error: Error) {
-        
+        let mappedError = ErrorMapper().mapError(error)
+        mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, completion: { _ in
+            self.mobileAuthQueue.dequeue()
+        })
     }
-    
+
     func userClient(_ userClient: ONGUserClient, didHandle request: ONGMobileAuthRequest, info customAuthenticatorInfo: ONGCustomInfo?) {
-    
+        mobileAuthPresenter?.mobileAuthenticationHandled()
+        mobileAuthQueue.dequeue()
     }
-    
+
 }
 
 extension MobileAuthInteractor: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        handlePushMobileAuthenticationRequest(userInfo: response.notification.request.content.userInfo)
+        completionHandler()
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        handlePushMobileAuthenticationRequest(userInfo: notification.request.content.userInfo)
+        completionHandler(.sound)
+    }
 
+}
+
+struct MobileAuthRequest {
+    let pendingTransaction: ONGPendingMobileAuthRequest?
+    let otp: String?
+    let delegate: ONGMobileAuthRequestDelegate
+    
+    init(delegate: ONGMobileAuthRequestDelegate, pendingTransaction: ONGPendingMobileAuthRequest? = nil, otp: String? = nil) {
+        self.delegate = delegate
+        self.pendingTransaction = pendingTransaction
+        self.otp = otp
     }
 }
