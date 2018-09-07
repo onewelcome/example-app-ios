@@ -17,9 +17,9 @@ import UIKit
 
 class AuthenticatorsViewController: UIViewController {
     @IBOutlet var authenticatorsTableView: UITableView?
-    
+
     var selectedRow: Int?
-    
+
     weak var authenticatorsViewToPresenterProtocol: AuthenticatorsViewToPresenterProtocol?
     var authenticatorsList = Array<ONGAuthenticator>() {
         didSet {
@@ -55,19 +55,18 @@ extension AuthenticatorsViewController: UITableViewDataSource {
         }
         return cell
     }
-    
+
     func registerAuthenticator(_ authenticator: ONGAuthenticator) {
         authenticatorsViewToPresenterProtocol?.registerAuthenticator(authenticator)
     }
-    
+
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator) {
         authenticatorsViewToPresenterProtocol?.deregisterAuthenticator(authenticator)
     }
-    
+
     func finishDeregistrationAnimation() {
         guard let indexPathForSelectedRow = authenticatorsTableView?.indexPathForSelectedRow else { return }
         let selectedCell = authenticatorsTableView?.cellForRow(at: indexPathForSelectedRow) as! AuthenticatorTableViewCell
         selectedCell.deregistrationFinished()
     }
-    
 }

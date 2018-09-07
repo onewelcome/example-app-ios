@@ -74,7 +74,6 @@ class AppRouter: AppRouterProtocol {
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
         self.changePinPresenter = changePinPresenter
-        
     }
 
     func popToDashboardView() {
@@ -96,7 +95,7 @@ class AppRouter: AppRouterProtocol {
     func popToProfileView() {
         profilePresenter.popToProfileView()
     }
-    
+
     func popToAuthenticatorsView() {
         authenticatorsPresenter.popToAuthenticatorsView()
     }

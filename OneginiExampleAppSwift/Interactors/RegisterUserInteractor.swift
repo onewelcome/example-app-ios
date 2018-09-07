@@ -17,7 +17,7 @@ import UIKit
 
 protocol RegisterUserInteractorProtocol {
     func identityProviders() -> Array<ONGIdentityProvider>
-    func startUserRegistration()
+    func startUserRegistration(identityProvider: ONGIdentityProvider?)
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
     func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol)
 }
@@ -41,8 +41,8 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         return Array(identityProviders)
     }
 
-    func startUserRegistration() {
-        ONGUserClient.sharedInstance().registerUser(with: nil, scopes: ["read"], delegate: self)
+    func startUserRegistration(identityProvider: ONGIdentityProvider? = nil) {
+        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read"], delegate: self)
     }
 
     func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
@@ -89,5 +89,11 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }
+    }
+
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge _: ONGCustomRegistrationChallenge) {
+    }
+
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish _: ONGCustomRegistrationChallenge) {
     }
 }
