@@ -136,7 +136,7 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
 }
 
 extension LoginPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
+    func handlePin() {
         loginInteractor.handleLogin()
     }
 }

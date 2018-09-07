@@ -117,8 +117,8 @@ extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {
 }
 
 extension AuthenticatorsPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
-        authenticatorsInteractor.handleLogin(registerAuthenticatorEntity: entity)
+    func handlePin() {
+        authenticatorsInteractor.handleLogin()
     }
 }
 

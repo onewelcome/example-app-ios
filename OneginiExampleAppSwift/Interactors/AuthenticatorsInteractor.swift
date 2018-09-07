@@ -19,7 +19,7 @@ protocol AuthenticatorsInteractorProtocol {
     func authenticatorsListForAuthenticatedUserProfile() -> Array<ONGAuthenticator>
     func registerAuthenticator(_ authenticator: ONGAuthenticator)
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
-    func handleLogin(registerAuthenticatorEntity: PinViewControllerEntityProtocol)
+    func handleLogin()
     func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
     func handlePasswordAuthenticatorRegistration()
 }
@@ -77,8 +77,8 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
         ONGUserClient.sharedInstance().deregister(authenticator, delegate: self)
     }
 
-    func handleLogin(registerAuthenticatorEntity: PinViewControllerEntityProtocol) {
-        guard let pinChallenge = self.registerAuthenticatorEntity.pinChallenge else { return }
+    func handleLogin() {
+        guard let pinChallenge = registerAuthenticatorEntity.pinChallenge else { return }
         if let pin = registerAuthenticatorEntity.pin {
             pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
         } else {

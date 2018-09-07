@@ -18,8 +18,8 @@ import UIKit
 protocol RegisterUserInteractorProtocol {
     func identityProviders() -> Array<ONGIdentityProvider>
     func startUserRegistration()
-    func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
-    func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol)
+    func handleRedirectURL()
+    func handleCreatedPin()
 }
 
 class RegisterUserInteractor: NSObject {
@@ -45,7 +45,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         ONGUserClient.sharedInstance().registerUser(with: nil, scopes: ["read"], delegate: self)
     }
 
-    func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
+    func handleRedirectURL() {
         guard let browserRegistrationChallenge = registerUserEntity.browserRegistrationChallenge else { return }
         if let url = registerUserEntity.redirectURL {
             browserRegistrationChallenge.sender.respond(with: url, challenge: browserRegistrationChallenge)
@@ -54,8 +54,8 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol) {
-        guard let createPinChallenge = self.registerUserEntity.createPinChallenge else { return }
+    func handleCreatedPin() {
+        guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
             createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
         } else {

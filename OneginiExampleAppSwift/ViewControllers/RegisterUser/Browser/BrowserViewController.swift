@@ -70,7 +70,7 @@ class BrowserViewController: UIViewController, WKUIDelegate {
 
     @objc func cancelButtonPressed() {
         registerUserEntity.redirectURL = nil
-        registerUserViewToPresenterProtocol.handleRedirectURL(registerUserEntity: registerUserEntity)
+        registerUserViewToPresenterProtocol.handleRedirectURL()
     }
 
     override func viewDidLoad() {
@@ -91,7 +91,7 @@ extension BrowserViewController: WKNavigationDelegate {
         }
         if url.absoluteString.hasPrefix(redirectUrl) {
             registerUserEntity.redirectURL = url
-            registerUserViewToPresenterProtocol.handleRedirectURL(registerUserEntity: registerUserEntity)
+            registerUserViewToPresenterProtocol.handleRedirectURL()
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
