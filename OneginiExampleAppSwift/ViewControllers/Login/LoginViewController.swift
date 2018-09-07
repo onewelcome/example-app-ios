@@ -15,12 +15,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController & LoginPresenterToViewProtocol{
-    
+class LoginViewController: UIViewController & LoginPresenterToViewProtocol {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
-    var profiles :Array<NSObject & UserProfileProtocol> = [NSObject & UserProfileProtocol]() {
+    var profiles: Array<NSObject & UserProfileProtocol> = [NSObject & UserProfileProtocol]() {
         didSet {
             if let tableView = profilesTableView {
                 tableView.reloadData()
@@ -37,7 +36,7 @@ class LoginViewController: UIViewController & LoginPresenterToViewProtocol{
     }
 
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
-    var selectedProfile : (NSObject & UserProfileProtocol)?
+    var selectedProfile: (NSObject & UserProfileProtocol)?
 
     override func viewDidLoad() {
         super.viewDidLoad()

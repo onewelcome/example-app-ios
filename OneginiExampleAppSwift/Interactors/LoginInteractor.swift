@@ -23,18 +23,18 @@ protocol LoginInteractorProtocol {
 }
 
 class LoginInteractor: NSObject {
-    private let loginEntity : LoginEntity
-    private let userClient : ONGUserClient
-    private let errorMapper : ErrorMapper
-    fileprivate var pinChallenge : ONGPinChallenge?
+    private let loginEntity: LoginEntity
+    private let userClient: ONGUserClient
+    private let errorMapper: ErrorMapper
+    fileprivate var pinChallenge: ONGPinChallenge?
     public weak var delegate: LoginInteractorToPresenterProtocol?
-    
-    init(userClient : ONGUserClient, errorMapper : ErrorMapper, loginEntity : LoginEntity){
+
+    init(userClient: ONGUserClient, errorMapper: ErrorMapper, loginEntity: LoginEntity) {
         self.userClient = userClient
         self.errorMapper = errorMapper
         self.loginEntity = loginEntity
     }
-    
+
     fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
         if let error = challenge.error {
             loginEntity.pinError = errorMapper.mapError(error, remainingFailureCount: challenge.remainingFailureCount)
@@ -69,18 +69,18 @@ extension LoginInteractor: LoginInteractorProtocol {
 }
 
 extension LoginInteractor: ONGAuthenticationDelegate {
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGPinChallenge) {
+    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         delegate?.presentPinView(loginEntity: loginEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info: ONGCustomInfo?) {
+
+    func userClient(_: ONGUserClient, didAuthenticateUser _: ONGUserProfile, info _: ONGCustomInfo?) {
         delegate?.presentDashboardView()
     }
-    
-    func userClient(_ userClient: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, error: Error) {
+
+    func userClient(_: ONGUserClient, didFailToAuthenticateUser _: ONGUserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             delegate?.loginActionCancelled()
         } else {

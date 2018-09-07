@@ -13,14 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Quick
 import Nimble
 @testable import OneginiExampleAppSwift
+import Quick
 
 class LoginPresenterSpec: QuickSpec {
     override func spec() {
         describe("LoginPresenter") {
-            var loginPresenter : LoginPresenter!
+            var loginPresenter: LoginPresenter!
             let loginInteractor = LoginInteractorMock()
             let navigationController = NavigationControllerMock()
             let loginViewController = LoginViewControllerMock()
@@ -32,7 +32,7 @@ class LoginPresenterSpec: QuickSpec {
             describe("LoginInteractorToPresenterProtocol", {
                 describe("presentPinView", {
                     it("should push pin on navigation controller") {
-                        let loginEntity = LoginEntity();
+                        let loginEntity = LoginEntity()
                         loginPresenter.presentPinView(loginEntity: loginEntity)
                         expect(navigationController.pushViewControllerCalled).toEventually(equal(true))
                     }
@@ -49,7 +49,7 @@ class LoginPresenterSpec: QuickSpec {
                         loginPresenter.loginActionFailed(appError)
                         expect(appRouterStub.popToWelcomeViewWithLoginCalled).toEventually(equal(true))
                     }
-                    it("should present error"){
+                    it("should present error") {
                         let appError = AppError(errorDescription: "error")
                         loginPresenter.loginActionFailed(appError)
                         expect(appRouterStub.setupErrorAlertCalled).toEventually(equal(true))

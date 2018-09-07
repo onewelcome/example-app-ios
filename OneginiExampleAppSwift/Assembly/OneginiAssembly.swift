@@ -13,15 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 class OneginiAssembly: Assembly {
     func assemble(container: Container) {
-        ONGClientBuilder().build();
+        ONGClientBuilder().build()
         container.register(ONGClient.self) { _ in ONGClient.sharedInstance() }
         container.register(ONGUserClient.self) { _ in ONGUserClient.sharedInstance() }
         container.register(ONGDeviceClient.self) { _ in ONGDeviceClient.sharedInstance() }
     }
 }
-

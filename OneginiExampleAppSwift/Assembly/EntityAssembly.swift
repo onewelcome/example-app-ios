@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import Swinject
+import UIKit
 
 class EntityAssembly: Assembly {
     func assemble(container: Container) {

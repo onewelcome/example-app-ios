@@ -14,20 +14,19 @@
 // limitations under the License.
 //
 
-import UIKit
 @testable import OneginiExampleAppSwift
+import UIKit
 
-class LoginViewControllerMock : UIViewController & LoginPresenterToViewProtocol {
-    
+class LoginViewControllerMock: UIViewController & LoginPresenterToViewProtocol {
     var authenticators: Array<NSObject & AuthenticatorProtocol> = []
-    
+
     var profiles: Array<NSObject & UserProfileProtocol> = [UserProfileStub("profile1"), UserProfileStub("profile2")]
-    
+
     var selectedProfile: NSObject & UserProfileProtocol = UserProfileStub("profile1")
     var selectProfileCalled = false
-    func selectProfile(index: Int) {
+    func selectProfile(index _: Int) {
         selectProfileCalled = true
     }
-    
+
     var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
 }

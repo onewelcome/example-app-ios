@@ -26,7 +26,7 @@ class AppAssembly {
         PresenterAssembly(),
         EntityAssembly(),
         RouterAssembly(),
-        OneginiAssembly()
+        OneginiAssembly(),
     ])
 
     private init() {

@@ -13,12 +13,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 @testable import OneginiExampleAppSwift
+import UIKit
 
-class NavigationControllerMock : UINavigationController {
+class NavigationControllerMock: UINavigationController {
     var pushViewControllerCalled = false
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    override func pushViewController(_: UIViewController, animated _: Bool) {
         pushViewControllerCalled = true
     }
 }

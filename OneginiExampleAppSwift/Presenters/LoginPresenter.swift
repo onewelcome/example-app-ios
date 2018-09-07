@@ -24,7 +24,7 @@ protocol ParentToChildPresenterProtocol {
 
 protocol LoginInteractorToPresenterProtocol: class {
     var appRouterDelegate: AppRouterProtocol? { get set }
-    
+
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView()
     func loginActionFailed(_ error: AppError)
@@ -43,7 +43,7 @@ protocol LoginPresenterToViewProtocol {
     var authenticators: Array<NSObject & AuthenticatorProtocol> { get set }
     var profiles: Array<NSObject & UserProfileProtocol> { get set }
     var selectedProfile: (NSObject & UserProfileProtocol)? { get set }
-    
+
     func selectProfile(index: Int)
     var loginViewToPresenterProtocol: LoginViewToPresenterProtocol? { get set }
 }
@@ -117,7 +117,7 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
     func selectLastSelectedProfileAndReloadAuthenticators() {
         if let profile = loginViewController.selectedProfile {
             reloadAuthenticators(profile)
-            if let index = loginViewController.profiles.index(where:{ $0 as NSObject & UserProfileProtocol == profile}) {
+            if let index = loginViewController.profiles.index(where: { $0 as NSObject & UserProfileProtocol == profile }) {
                 loginViewController.selectProfile(index: index)
             }
         }

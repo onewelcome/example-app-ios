@@ -16,10 +16,10 @@
 @testable import OneginiExampleAppSwift
 import UIKit
 
-class PinViewControllerEntityStub : PinViewControllerEntityProtocol {
+class PinViewControllerEntityStub: PinViewControllerEntityProtocol {
     var pin: String?
-    
+
     var pinError: AppError?
-    
+
     var pinLength: Int?
 }

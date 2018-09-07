@@ -27,9 +27,8 @@ class AuthenticationErrorDomainMapping {
             return AppError(errorDescription: "Something went wrong.")
         }
     }
-    
-    func mapError(_ error: Error) -> AppError {
+
+    func mapError(_: Error) -> AppError {
         return AppError(errorDescription: "Something went wrong.")
     }
-    
 }

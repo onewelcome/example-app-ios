@@ -18,23 +18,23 @@ import UIKit
 
 class AuthenticatorStub: NSObject & AuthenticatorProtocol {
     var identifier: String
-    
+
     var name: String
-    
+
     var type: ONGAuthenticatorType
-    
+
     var isRegistered: Bool
-    
+
     var isPreferred: Bool
-    
-    init(identifier : String, name : String, type : ONGAuthenticatorType, isRegistered : Bool, isPreferred : Bool) {
+
+    init(identifier: String, name: String, type: ONGAuthenticatorType, isRegistered: Bool, isPreferred: Bool) {
         self.identifier = identifier
         self.name = name
         self.type = type
         self.isRegistered = isRegistered
         self.isPreferred = isPreferred
     }
-    
+
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? AuthenticatorStub {
             return identifier == object.identifier

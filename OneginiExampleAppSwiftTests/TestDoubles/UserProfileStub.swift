@@ -16,13 +16,13 @@
 @testable import OneginiExampleAppSwift
 import UIKit
 
-class UserProfileStub : NSObject & UserProfileProtocol {
+class UserProfileStub: NSObject & UserProfileProtocol {
     var profileId: String
-    
+
     init(_ profileId: String) {
         self.profileId = profileId
     }
-    
+
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? UserProfileStub {
             return profileId == object.profileId
@@ -31,4 +31,3 @@ class UserProfileStub : NSObject & UserProfileProtocol {
         }
     }
 }
-

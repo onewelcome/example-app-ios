@@ -16,20 +16,22 @@
 @testable import OneginiExampleAppSwift
 import UIKit
 
-class LoginInteractorMock : LoginInteractorProtocol {
+class LoginInteractorMock: LoginInteractorProtocol {
     func userProfiles() -> Array<NSObject & UserProfileProtocol> {
         return [UserProfileStub("profile1")]
     }
-    
-    func authenticators(profile: NSObject & UserProfileProtocol) -> [NSObject & AuthenticatorProtocol] {
+
+    func authenticators(profile _: NSObject & UserProfileProtocol) -> [NSObject & AuthenticatorProtocol] {
         return [AuthenticatorStub(identifier: "authenticator1", name: "authenticator1", type: ONGAuthenticatorType.PIN, isRegistered: true, isPreferred: true)]
     }
+
     var loginCalled = false
-    func login(profile: NSObject & UserProfileProtocol) {
+    func login(profile _: NSObject & UserProfileProtocol) {
         loginCalled = true
     }
+
     var handleLoginCalled = false
-    func handleLogin(loginEntity: PinViewControllerEntityProtocol) {
+    func handleLogin(loginEntity _: PinViewControllerEntityProtocol) {
         handleLoginCalled = true
     }
 }

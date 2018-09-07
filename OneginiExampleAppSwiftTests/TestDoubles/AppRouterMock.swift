@@ -13,34 +13,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 @testable import OneginiExampleAppSwift
+import UIKit
 
-class AppRouterMock : AppRouterProtocol {
+class AppRouterMock: AppRouterProtocol {
     var popToWelcomeViewWithLoginCalled = false
     func popToWelcomeViewWithLogin() {
         popToWelcomeViewWithLoginCalled = true
     }
+
     var popToWelcomeViewControllerWithRegisterUserCalled = false
     func popToWelcomeViewControllerWithRegisterUser() {
         popToWelcomeViewControllerWithRegisterUserCalled = true
     }
-    
-    func setupStartupPresenter() {
-        
-    }
-    
-    func setupWelcomePresenter() {
-    }
+
+    func setupStartupPresenter() {}
+
+    func setupWelcomePresenter() {}
+
     var setupDashboardPresenterCalled = false
     func setupDashboardPresenter() {
         setupDashboardPresenterCalled = true
     }
+
     var setupErrorAlertCalled = false
-    func setupErrorAlert(error: AppError) {
+    func setupErrorAlert(error _: AppError) {
         setupErrorAlertCalled = true
     }
-    
-    func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
-    }
+
+    func setupErrorAlertWithRetry(error _: AppError, retryHandler _: @escaping ((UIAlertAction) -> Void)) {}
 }

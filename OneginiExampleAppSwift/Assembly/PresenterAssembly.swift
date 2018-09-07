@@ -39,8 +39,8 @@ class PresenterAssembly: Assembly {
             LoginPresenter(loginInteractor: resolver.resolve(LoginInteractorProtocol.self)!,
                            navigationController: resolver.resolve(UINavigationController.self)!,
                            loginViewController: resolver.resolve((UIViewController & LoginPresenterToViewProtocol).self)!)
-            }.initCompleted{ resolver, instance in
-                instance.appRouterDelegate = resolver.resolve(AppRouterProtocol.self)!
+        }.initCompleted { resolver, instance in
+            instance.appRouterDelegate = resolver.resolve(AppRouterProtocol.self)!
         }
 
         container.register(DashboardPresenterProtocol.self) { resolver in

@@ -22,11 +22,11 @@ class InteractorAssembly: Assembly {
         container.register(LoginInteractorProtocol.self) { resolver in LoginInteractor(userClient: resolver.resolve(ONGUserClient.self)!,
                                                                                        errorMapper: resolver.resolve(ErrorMapper.self)!,
                                                                                        loginEntity: resolver.resolve(LoginEntity.self)!)
-            }
-            .initCompleted { resolver, instance in
-                let loginInteractor = instance as! LoginInteractor
-                loginInteractor.delegate = resolver.resolve(LoginPresenterProtocol.self)!
-            }
+        }
+        .initCompleted { resolver, instance in
+            let loginInteractor = instance as! LoginInteractor
+            loginInteractor.delegate = resolver.resolve(LoginPresenterProtocol.self)!
+        }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
             .initCompleted { resolver, instance in
                 let registerUserInteractor = instance as! RegisterUserInteractor

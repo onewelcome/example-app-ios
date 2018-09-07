@@ -14,11 +14,11 @@
 // limitations under the License.
 
 @objc public protocol AuthenticatorProtocol {
-    var identifier : String { get }
-    var name : String { get }
-    var type : ONGAuthenticatorType { get }
-    var isRegistered : Bool { get }
-    var isPreferred : Bool { get }
+    var identifier: String { get }
+    var name: String { get }
+    var type: ONGAuthenticatorType { get }
+    var isRegistered: Bool { get }
+    var isPreferred: Bool { get }
 }
 
 @objc public protocol UserProfileProtocol {
@@ -30,8 +30,8 @@
     var data: String { get }
 }
 
-extension ONGUserProfile : UserProfileProtocol {}
+extension ONGUserProfile: UserProfileProtocol {}
 
-extension ONGCustomInfo : CustomInfoProtocol {}
+extension ONGCustomInfo: CustomInfoProtocol {}
 
-extension ONGAuthenticator : AuthenticatorProtocol {}
+extension ONGAuthenticator: AuthenticatorProtocol {}
