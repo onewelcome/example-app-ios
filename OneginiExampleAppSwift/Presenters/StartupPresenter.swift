@@ -20,32 +20,31 @@ typealias StartupPresenterProtocol = StartupInteractorToPresenterProtocol
 
 protocol StartupInteractorToPresenterProtocol {
     func oneigniSDKStartup()
+    var startupViewController: StartupViewController { get set }
 }
 
 class StartupPresenter: StartupInteractorToPresenterProtocol {
-    let navigationController: UINavigationController
     var startupInteractor: StartupInteractorProtocol
+    var startupViewController: StartupViewController
 
-    init(startupInteractor: StartupInteractorProtocol, navigationController: UINavigationController) {
+    init(startupInteractor: StartupInteractorProtocol) {
         self.startupInteractor = startupInteractor
-        self.navigationController = navigationController
+        guard let startupViewController = AppAssembly.shared.resolver.resolve(StartupViewController.self) else { fatalError() }
+        self.startupViewController = startupViewController
     }
 
     func oneigniSDKStartup() {
-        guard let startupViewController = AppAssembly.shared.resolver.resolve(StartupViewController.self) else { fatalError() }
-        navigationController.pushViewController(startupViewController, animated: false)
-
         startupViewController.state = .loading
         startupInteractor.oneginiSDKStartup { _, error in
-            startupViewController.state = .loaded
+            self.startupViewController.state = .loaded
             if let error = error {
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
                 appRouter.setupErrorAlertWithRetry(error: error, retryHandler: { _ in
-                    self.navigationController.viewControllers.removeLast()
                     self.oneigniSDKStartup()
                 })
             } else {
-                self.presentWelcomeView()
+                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+                appRouter.setupTabBar()
             }
         }
     }

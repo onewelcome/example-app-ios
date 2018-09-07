@@ -17,28 +17,24 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        setupWindow()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
-
         return true
-    }
-
-    func setupWindow() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
-        window?.makeKeyAndVisible()
-        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "background"), for: .default)
-        window?.rootViewController = navigationController
     }
 
     func oneginiSDKStartup() {
         guard let appRouter = appRouter else { fatalError() }
         appRouter.setupStartupPresenter()
     }
+
+    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { _, _ in
+        }
+    }
+
+    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {}
 }

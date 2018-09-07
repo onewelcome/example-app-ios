@@ -18,8 +18,7 @@ import UIKit
 typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol & ParentToChildPresenterProtocol
 
 protocol ParentToChildPresenterProtocol {
-    func reloadProfiles()
-    func updateView()
+    func update()
     func updateSelectedProfile(_ profile: ONGUserProfile)
 }
 
@@ -57,24 +56,43 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-            navigationController.pushViewController(pinViewController!, animated: true)
+            navigationController.present(pinViewController!, animated: true, completion: nil)
         }
     }
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: true, completion: nil)
         appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
-    func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
+    func loginActionFailed(_ error: AppError, profile _: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin(profile: profile)
+        appRouter.updateWelcomeView(selectedProfile: nil)
+        navigationController.dismiss(animated: true, completion: nil)
         appRouter.setupErrorAlert(error: error)
     }
 
-    func loginActionCancelled(profile: ONGUserProfile) {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin(profile: profile)
+    func loginActionCancelled(profile _: ONGUserProfile) {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+
+    func reloadProfiles() {
+        profiles = loginInteractor.userProfiles()
+        loginViewController.profiles = profiles
+    }
+
+    func updateView() {
+        let profile = loginViewController.selectedProfile
+        if profiles.contains(profile) {
+            reloadAuthenticators(profile)
+            if let index = loginViewController.profiles.index(of: profile) {
+                loginViewController.selectProfile(index: index)
+            }
+        } else {
+            reloadAuthenticators(profiles[0])
+            loginViewController.selectProfile(index: 0)
+        }
     }
 }
 
@@ -103,21 +121,10 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
         loginViewController.selectedProfile = profile
     }
 
-    func reloadProfiles() {
-        profiles = loginInteractor.userProfiles()
-        loginViewController.profiles = profiles
-    }
-
-    func updateView() {
-        let profile = loginViewController.selectedProfile
-        if profiles.contains(profile) {
-            reloadAuthenticators(profile)
-            if let index = loginViewController.profiles.index(of: profile) {
-                loginViewController.selectProfile(index: index)
-            }
-        } else {
-            reloadAuthenticators(profiles[0])
-            loginViewController.selectProfile(index: 0)
+    func update() {
+        reloadProfiles()
+        if profiles.count > 0 {
+            updateView()
         }
     }
 }
