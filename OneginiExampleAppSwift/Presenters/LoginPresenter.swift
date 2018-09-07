@@ -42,7 +42,7 @@ protocol LoginViewToPresenterProtocol: class {
 protocol LoginPresenterToViewProtocol {
     var authenticators: Array<NSObject & AuthenticatorProtocol> { get set }
     var profiles: Array<NSObject & UserProfileProtocol> { get set }
-    var selectedProfile: NSObject & UserProfileProtocol { get set }
+    var selectedProfile: (NSObject & UserProfileProtocol)? { get set }
     
     func selectProfile(index: Int)
     var loginViewToPresenterProtocol: LoginViewToPresenterProtocol? { get set }
@@ -115,10 +115,11 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
     }
 
     func selectLastSelectedProfileAndReloadAuthenticators() {
-        let profile = loginViewController.selectedProfile
-        reloadAuthenticators(profile)
-        if let index = loginViewController.profiles.index(where:{ $0 as NSObject & UserProfileProtocol == profile}) {
-            loginViewController.selectProfile(index: index)
+        if let profile = loginViewController.selectedProfile {
+            reloadAuthenticators(profile)
+            if let index = loginViewController.profiles.index(where:{ $0 as NSObject & UserProfileProtocol == profile}) {
+                loginViewController.selectProfile(index: index)
+            }
         }
     }
 }

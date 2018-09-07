@@ -13,6 +13,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@objc public protocol AuthenticatorProtocol {
+    var identifier : String { get }
+    var name : String { get }
+    var type : ONGAuthenticatorType { get }
+    var isRegistered : Bool { get }
+    var isPreferred : Bool { get }
+}
 
-#import <OneginiSDKiOS/OneginiSDK.h>
-#import "OneginiConfigModel.h"
+@objc public protocol UserProfileProtocol {
+    var profileId: String { get set }
+}
+
+@objc public protocol CustomInfoProtocol {
+    var status: Int { get }
+    var data: String { get }
+}
+
+extension ONGUserProfile : UserProfileProtocol {}
+
+extension ONGCustomInfo : CustomInfoProtocol {}
+
+extension ONGAuthenticator : AuthenticatorProtocol {}

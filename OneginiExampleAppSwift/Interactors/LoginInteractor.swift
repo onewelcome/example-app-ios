@@ -28,10 +28,6 @@ class LoginInteractor: NSObject {
     private let errorMapper : ErrorMapper
     fileprivate var pinChallenge : ONGPinChallenge?
     public weak var delegate: LoginInteractorToPresenterProtocol?
-
-    func isEmpty(xs: Array<String>) -> Bool {
-        return xs.count == 0
-    }
     
     init(userClient : ONGUserClient, errorMapper : ErrorMapper, loginEntity : LoginEntity){
         self.userClient = userClient
@@ -59,7 +55,7 @@ extension LoginInteractor: LoginInteractorProtocol {
     }
 
     func login(profile: NSObject & UserProfileProtocol) {
-        self.userClient.authenticateUser(profile as! ONGUserProfile, delegate: self)
+        userClient.authenticateUser(profile as! ONGUserProfile, delegate: self)
     }
 
     func handleLogin(loginEntity: PinViewControllerEntityProtocol) {
@@ -93,26 +89,3 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         }
     }
 }
-
-@objc public protocol AuthenticatorProtocol {
-    var identifier : String { get }
-    var name : String { get }
-    var type : ONGAuthenticatorType { get }
-    var isRegistered : Bool { get }
-    var isPreferred : Bool { get }
-}
-
-@objc public protocol UserProfileProtocol {
-    var profileId: String { get set }
-}
-
-@objc public protocol CustomInfoProtocol {
-    var status: Int { get }
-    var data: String { get }
-}
-
-extension ONGUserProfile : UserProfileProtocol {}
-
-extension ONGCustomInfo : CustomInfoProtocol {}
-
-extension ONGAuthenticator : AuthenticatorProtocol {}

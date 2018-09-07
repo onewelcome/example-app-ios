@@ -20,9 +20,9 @@ class ViewControllerAssembly: Assembly {
     func assemble(container: Container) {
         container.register(StartupViewController.self) { _ in StartupViewController() }
         container.register((UIViewController & LoginPresenterToViewProtocol).self) { _ in LoginViewController() }
-            .initCompleted { resolver, loginViewController in
-                var l = loginViewController
-                l.loginViewToPresenterProtocol = resolver.resolve(LoginPresenterProtocol.self)!
+            .initCompleted { resolver, instance in
+                let loginViewController = instance as! LoginViewController
+                loginViewController.loginViewToPresenterProtocol = resolver.resolve(LoginPresenterProtocol.self)!
             }
         container.register(RegisterUserViewController.self) { resolver, identityProviders in
             RegisterUserViewController(registerUserViewToPresenterProtocol: resolver.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)

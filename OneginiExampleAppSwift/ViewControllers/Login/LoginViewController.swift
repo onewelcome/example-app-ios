@@ -15,7 +15,8 @@
 
 import UIKit
 
-class LoginViewController: UIViewController & LoginPresenterToViewProtocol{    
+class LoginViewController: UIViewController & LoginPresenterToViewProtocol{
+    
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController & LoginPresenterToViewProtocol{
     }
 
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
-    var selectedProfile : NSObject & UserProfileProtocol = ONGUserProfile()
+    var selectedProfile : (NSObject & UserProfileProtocol)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,9 @@ class LoginViewController: UIViewController & LoginPresenterToViewProtocol{
 
     @IBAction func login(_: Any) {
         guard let loginViewToPresenterProtocol = loginViewToPresenterProtocol else { return }
-        loginViewToPresenterProtocol.login(profile: selectedProfile)
+        if let selectedProfile = selectedProfile {
+            loginViewToPresenterProtocol.login(profile: selectedProfile)
+        }
     }
 }
 
@@ -93,8 +96,8 @@ extension LoginViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
-            if selectedProfile.isEqual(profiles[indexPath.row]) {
-                selectedProfile = profiles[indexPath.row]
+            selectedProfile = profiles[indexPath.row]
+            if let selectedProfile = selectedProfile, selectedProfile.isEqual(profiles[indexPath.row]) {
                 loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
             }
             cell.tickImage.image = #imageLiteral(resourceName: "tick")

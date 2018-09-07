@@ -16,11 +16,7 @@
 import UIKit
 
 protocol AppRouterProtocol: class {
-//    var startupPresenter: StartupPresenterProtocol { get }
-//    var welcomePresenter: WelcomePresenterProtocol { get }
-//    var dashboardPresenter: DashboardPresenterProtocol { get }
-//    var errorPresenter: ErrorPresenterProtocol { get }
-
+    
     func popToWelcomeViewWithLogin()
     func popToWelcomeViewControllerWithRegisterUser()
     func setupStartupPresenter()
