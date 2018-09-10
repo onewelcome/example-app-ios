@@ -83,7 +83,7 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
 }
 
 extension ChangePinPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
-        changePinInteractor.handlePin(changePinEntity: entity)
+    func handlePin() {
+        changePinInteractor.handlePin()
     }
 }

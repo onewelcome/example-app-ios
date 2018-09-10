@@ -46,6 +46,9 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         self.authenticatedUserProfile = authenticatedUserProfile
         dashboardViewController.userProfileName = authenticatedUserProfile.profileId
+        if navigationController.presentedViewController != nil {
+            navigationController.dismiss(animated: false, completion: nil)
+        }
         navigationController.pushViewController(dashboardViewController, animated: true)
     }
 

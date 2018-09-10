@@ -29,6 +29,7 @@ protocol LoginInteractorToPresenterProtocol: class {
     func loginActionCancelled(profile: ONGUserProfile)
     func presentImplicitData(data: String)
     func fetchImplicitDataFailed(_ error: AppError)
+    func presentPasswordAuthenticatorView(loginEnity: LoginEntity)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -65,21 +66,27 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
         }
     }
 
+    func presentPasswordAuthenticatorView(loginEnity: LoginEntity) {
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEnity, viewToPresenterProtocol: self)
+        passwordViewController.modalPresentationStyle = .overCurrentContext
+        navigationController.present(passwordViewController, animated: false, completion: nil)
+    }
+
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        navigationController.dismiss(animated: true, completion: nil)
+        navigationController.dismiss(animated: false, completion: nil)
         appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
-    func loginActionFailed(_ error: AppError, profile _: ONGUserProfile) {
+    func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.updateWelcomeView(selectedProfile: nil)
-        navigationController.dismiss(animated: true, completion: nil)
+        navigationController.dismiss(animated: false, completion: nil)
+        appRouter.updateWelcomeView(selectedProfile: profile)
         appRouter.setupErrorAlert(error: error)
     }
 
     func loginActionCancelled(profile _: ONGUserProfile) {
-        navigationController.dismiss(animated: true, completion: nil)
+        navigationController.dismiss(animated: false, completion: nil)
     }
 
     func reloadProfiles() {
@@ -148,7 +155,13 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
 }
 
 extension LoginPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
-        loginInteractor.handleLogin(loginEntity: entity)
+    func handlePin() {
+        loginInteractor.handleLogin()
+    }
+}
+
+extension LoginPresenter: PasswordAuthenticatorViewToPresenterProtocol {
+    func handlePassword() {
+        loginInteractor.handlePasswordAuthenticatorLogin()
     }
 }

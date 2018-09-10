@@ -48,6 +48,7 @@ class AuthenticatorTableViewCell: UITableViewCell {
         selectedRow?(self)
         guard let authenticator = authenticator else { return }
         deregisterButton.startAnimation()
+        isUserInteractionEnabled = false
         authenticatorsViewController?.deregisterAuthenticator(authenticator)
     }
 
@@ -59,7 +60,8 @@ class AuthenticatorTableViewCell: UITableViewCell {
     }
 
     func deregistrationFinished() {
-        deregisterButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0, completion: {
+        deregisterButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.1, completion: {
+            self.isUserInteractionEnabled = true
             self.authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
         })
     }
