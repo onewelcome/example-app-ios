@@ -26,6 +26,7 @@ protocol ProfileViewToPresenterProtocol: class {
     func popToProfileView()
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
+    func setupFetchDeviceListPresenter()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
@@ -60,5 +61,10 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     func setupChangePinPresenter() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupChangePinPresenter()
+    }
+    
+    func setupFetchDeviceListPresenter() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupFetchDeviceListPresenter()
     }
 }

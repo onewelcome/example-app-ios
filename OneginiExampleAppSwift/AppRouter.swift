@@ -25,6 +25,8 @@ protocol AppRouterProtocol: class {
     var profilePresenter: ProfilePresenterProtocol { get }
     var mobileAuthPresenter: MobileAuthPresenterProtocol { get }
     var disconnectPresenter: DisconnectPresenterProtocol { get }
+    var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol { get }
+    var appDetailsPresenter: AppDetailsPresenterProtocol { get }
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol { get }
 
     func popToDashboardView()
@@ -43,6 +45,7 @@ protocol AppRouterProtocol: class {
     func setupMobileAuthPresenter()
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
+    func setupFetchDeviceListPresenter()
     func setupTabBar()
 }
 
@@ -61,19 +64,23 @@ class AppRouter: NSObject, AppRouterProtocol {
     var mobileAuthPresenter: MobileAuthPresenterProtocol
     var disconnectPresenter: DisconnectPresenterProtocol
     var changePinPresenter: ChangePinPresenterProtocol
+    var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol
+    var appDetailsPresenter: AppDetailsPresenterProtocol
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
 
     init(window: UIWindow,
-         startupPresenter: StartupPresenterProtocol,
-         welcomePresenter: WelcomePresenterProtocol,
-         dashboardPresenter: DashboardPresenterProtocol,
-         errorPresenter: ErrorPresenterProtocol,
-         authenticatorsPresenter: AuthenticatorsPresenterProtocol,
-         profilePresenter: ProfilePresenterProtocol,
-         mobileAuthPresenter: MobileAuthPresenterProtocol,
-         disconnectPresenter: DisconnectPresenterProtocol,
-         changePinPresenter: ChangePinPresenterProtocol,
-         pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol) {
+        startupPresenter: StartupPresenterProtocol,
+        welcomePresenter: WelcomePresenterProtocol,
+        dashboardPresenter: DashboardPresenterProtocol,
+        errorPresenter: ErrorPresenterProtocol,
+        authenticatorsPresenter: AuthenticatorsPresenterProtocol,
+        profilePresenter: ProfilePresenterProtocol,
+        mobileAuthPresenter: MobileAuthPresenterProtocol,
+        disconnectPresenter: DisconnectPresenterProtocol,
+        changePinPresenter: ChangePinPresenterProtocol,
+        pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
+        fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
+        appDetailsPresenter: AppDetailsPresenterProtocol) {
         self.window = window
         self.window.backgroundColor = UIColor.white
         self.window.makeKeyAndVisible()
@@ -86,6 +93,8 @@ class AppRouter: NSObject, AppRouterProtocol {
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
         self.changePinPresenter = changePinPresenter
+        self.fetchDeviceListPresenter = fetchDeviceListPresenter
+        self.appDetailsPresenter = appDetailsPresenter
         self.pendingMobileAuthPresenter = pendingMobileAuthPresenter
     }
 
@@ -120,7 +129,10 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func setupTabBar() {
         navigationController!.viewControllers = [welcomePresenter.welcomeViewController]
-        tabBarController!.setup(navigationController: navigationController!, pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate, delegate: self)
+        tabBarController!.setup(navigationController: navigationController!,
+            pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate,
+            applicationInfoViewController: appDetailsPresenter.appDetailsViewController,
+            delegate: self)
         welcomePresenter.presentWelcomeView()
         window.rootViewController = tabBarController
     }
@@ -151,6 +163,10 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
+    }
+
+    func setupFetchDeviceListPresenter() {
+        fetchDeviceListPresenter.setupDeviceListPresenter()
     }
 }
 

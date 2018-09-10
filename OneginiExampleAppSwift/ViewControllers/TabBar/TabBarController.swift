@@ -16,18 +16,26 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    func setup(navigationController: UINavigationController, pendingMobileAuthViewController: UIViewController, delegate: UITabBarControllerDelegate) {
-        viewControllers = [navigationController, pendingMobileAuthViewController]
+    func setup(navigationController: UINavigationController,
+        pendingMobileAuthViewController: UIViewController,
+        applicationInfoViewController: UIViewController,
+        delegate: UITabBarControllerDelegate) {
+        
+        viewControllers = [navigationController, pendingMobileAuthViewController, applicationInfoViewController]
         self.delegate = delegate
+        tabBar.isTranslucent = false
+        tabBar.tintColor = UIColor(red: 0 / 255, green: 113 / 255, blue: 155 / 255, alpha: 1)
+
         let tabBarHome = tabBar.items![0]
         tabBarHome.title = "User"
         tabBarHome.image = #imageLiteral(resourceName: "tabBarUserProfile")
-        tabBarHome.image = tabBarHome.image?.stretchableImage(withLeftCapWidth: 30, topCapHeight: 30)
-        tabBar.tintColor = UIColor(red: 0 / 255, green: 113 / 255, blue: 155 / 255, alpha: 1)
+        
         let tabBarPending = tabBar.items![1]
         tabBarPending.title = "Notifications"
         tabBarPending.image = #imageLiteral(resourceName: "tabBarNotification")
-        tabBarPending.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        tabBar.isTranslucent = false
+        
+        let tabBarApplicationInfo = tabBar.items![2]
+        tabBarApplicationInfo.title = "Application details"
+        tabBarApplicationInfo.image = #imageLiteral(resourceName: "info")
     }
 }

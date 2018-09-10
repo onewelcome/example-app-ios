@@ -16,6 +16,12 @@
 		7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */; };
 		7E01FDFA2112E41600DF0043 /* AuthenticatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */; };
 		7E01FDFB2112E41600DF0043 /* AuthenticatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */; };
+		7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFA212C0BE4008FCD9A /* AppDetailsViewController.swift */; };
+		7E241DFD212C0BE4008FCD9A /* AppDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241DFB212C0BE4008FCD9A /* AppDetailsViewController.xib */; };
+		7E241DFF212C2AA7008FCD9A /* AppDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */; };
+		7E241E01212C2ACB008FCD9A /* AppDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */; };
+		7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
+		7E241E06212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */; };
 		7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E122138098D008FCD9A /* PasswordAuthenticatorViewController.swift */; };
 		7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */; };
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
@@ -78,6 +84,12 @@
 		7EBF8B7A211C80D300C3D94E /* RegisterAuthenticatorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B79211C80D300C3D94E /* RegisterAuthenticatorEntity.swift */; };
 		7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */; };
 		7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */; };
+		7EBF8B822122F50C00C3D94E /* FetchDeviceListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B812122F50C00C3D94E /* FetchDeviceListInteractor.swift */; };
+		7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B832122F74600C3D94E /* FetchDeviceListPresenter.swift */; };
+		7EBF8B882122FAAA00C3D94E /* DeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B862122FAAA00C3D94E /* DeviceListViewController.swift */; };
+		7EBF8B892122FAAA00C3D94E /* DeviceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EBF8B872122FAAA00C3D94E /* DeviceListViewController.xib */; };
+		7EBF8B8D21231A0600C3D94E /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B8B21231A0600C3D94E /* DeviceTableViewCell.swift */; };
+		7EBF8B8E21231A0600C3D94E /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EBF8B8C21231A0600C3D94E /* DeviceTableViewCell.xib */; };
 		7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B222114370C00133D5C /* MobileAuthViewController.swift */; };
 		7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED15B232114370C00133D5C /* MobileAuthViewController.xib */; };
 		7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */; };
@@ -125,6 +137,12 @@
 		7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsPresenter.swift; sourceTree = "<group>"; };
 		7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorTableViewCell.swift; sourceTree = "<group>"; };
 		7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorTableViewCell.xib; sourceTree = "<group>"; };
+		7E241DFA212C0BE4008FCD9A /* AppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsViewController.swift; sourceTree = "<group>"; };
+		7E241DFB212C0BE4008FCD9A /* AppDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppDetailsViewController.xib; sourceTree = "<group>"; };
+		7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsPresenter.swift; sourceTree = "<group>"; };
+		7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsInteractor.swift; sourceTree = "<group>"; };
+		7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImplicitDataInteractor.swift; sourceTree = "<group>"; };
+		7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImplicitResourceErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E241E122138098D008FCD9A /* PasswordAuthenticatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuthenticatorViewController.swift; sourceTree = "<group>"; };
 		7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordAuthenticatorViewController.xib; sourceTree = "<group>"; };
 		7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneginiExampleAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +214,12 @@
 		7EBF8B79211C80D300C3D94E /* RegisterAuthenticatorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAuthenticatorEntity.swift; sourceTree = "<group>"; };
 		7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorRegistrationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorDeregistrationErrorMapping.swift; sourceTree = "<group>"; };
+		7EBF8B812122F50C00C3D94E /* FetchDeviceListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDeviceListInteractor.swift; sourceTree = "<group>"; };
+		7EBF8B832122F74600C3D94E /* FetchDeviceListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDeviceListPresenter.swift; sourceTree = "<group>"; };
+		7EBF8B862122FAAA00C3D94E /* DeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewController.swift; sourceTree = "<group>"; };
+		7EBF8B872122FAAA00C3D94E /* DeviceListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceListViewController.xib; sourceTree = "<group>"; };
+		7EBF8B8B21231A0600C3D94E /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
+		7EBF8B8C21231A0600C3D94E /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceTableViewCell.xib; sourceTree = "<group>"; };
 		7ED15B222114370C00133D5C /* MobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthViewController.swift; sourceTree = "<group>"; };
 		7ED15B232114370C00133D5C /* MobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthViewController.xib; sourceTree = "<group>"; };
 		7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthPresenter.swift; sourceTree = "<group>"; };
@@ -284,6 +308,15 @@
 			path = AuthenticatorCell;
 			sourceTree = "<group>";
 		};
+		7E241DF9212BF45A008FCD9A /* ApplicationInfo */ = {
+			isa = PBXGroup;
+			children = (
+				7E241DFA212C0BE4008FCD9A /* AppDetailsViewController.swift */,
+				7E241DFB212C0BE4008FCD9A /* AppDetailsViewController.xib */,
+			);
+			path = ApplicationInfo;
+			sourceTree = "<group>";
+		};
 		7E241E11213806DE008FCD9A /* CustomAuthenticator */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +392,8 @@
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E241DF9212BF45A008FCD9A /* ApplicationInfo */,
+				7EBF8B852122FA8E00C3D94E /* DeviceList */,
 				7E241E11213806DE008FCD9A /* CustomAuthenticator */,
 				86ABF34F2126FE5A00C5BE60 /* PendingMobileAuth */,
 				86ABF34C2126E25B00C5BE60 /* TabBar */,
@@ -419,6 +454,8 @@
 				7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */,
 				7E778CEE21188B02001EE257 /* DisconnectPresenter.swift */,
 				7E778CF221199D71001EE257 /* ChangePinPresenter.swift */,
+				7EBF8B832122F74600C3D94E /* FetchDeviceListPresenter.swift */,
+				7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */,
 				86ABF3542126FED000C5BE60 /* PendingMobileAuthPresenter.swift */,
 			);
 			path = Presenters;
@@ -435,6 +472,9 @@
 				7E778CF421199E54001EE257 /* ChangePinInteractor.swift */,
 				86CD10E3212C352F005FA824 /* MobileAuthInteractor.swift */,
 				7EBF8B77211C4CDB00C3D94E /* AuthenticatorsInteractor.swift */,
+				7EBF8B812122F50C00C3D94E /* FetchDeviceListInteractor.swift */,
+				7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */,
+				7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -547,12 +587,13 @@
 		7E7AE4252100ACB6002C49D2 /* ErrorMappings */ = {
 			isa = PBXGroup;
 			children = (
+				7EB1F61C2100D73900741E92 /* ErrorMapper.swift */,
 				7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */,
 				7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */,
 				7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */,
-				7EB1F61C2100D73900741E92 /* ErrorMapper.swift */,
 				7EBF8B7D2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift */,
 				7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */,
+				7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -574,6 +615,25 @@
 			);
 			name = Extensions;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		7EBF8B852122FA8E00C3D94E /* DeviceList */ = {
+			isa = PBXGroup;
+			children = (
+				7EBF8B8A212319E300C3D94E /* DeviceCell */,
+				7EBF8B862122FAAA00C3D94E /* DeviceListViewController.swift */,
+				7EBF8B872122FAAA00C3D94E /* DeviceListViewController.xib */,
+			);
+			path = DeviceList;
+			sourceTree = "<group>";
+		};
+		7EBF8B8A212319E300C3D94E /* DeviceCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EBF8B8B21231A0600C3D94E /* DeviceTableViewCell.swift */,
+				7EBF8B8C21231A0600C3D94E /* DeviceTableViewCell.xib */,
+			);
+			path = DeviceCell;
 			sourceTree = "<group>";
 		};
 		7ED15B21211436EE00133D5C /* MobileAuthentication */ = {
@@ -750,6 +810,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
+				7E241DFD212C0BE4008FCD9A /* AppDetailsViewController.xib in Resources */,
+				7EBF8B8E21231A0600C3D94E /* DeviceTableViewCell.xib in Resources */,
 				7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */,
 				7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */,
 				7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */,
@@ -765,6 +827,7 @@
 				86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */,
 				866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */,
 				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
+				7EBF8B892122FAAA00C3D94E /* DeviceListViewController.xib in Resources */,
 				7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */,
 				7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */,
 				86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */,
@@ -957,16 +1020,19 @@
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
 				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
+				7E241E01212C2ACB008FCD9A /* AppDetailsInteractor.swift in Sources */,
 				86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */,
 				7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */,
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */,
 				7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */,
+				7EBF8B822122F50C00C3D94E /* FetchDeviceListInteractor.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7EBF8B78211C4CDB00C3D94E /* AuthenticatorsInteractor.swift in Sources */,
 				7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */,
 				7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */,
 				7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */,
+				7E241DFF212C2AA7008FCD9A /* AppDetailsPresenter.swift in Sources */,
 				7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */,
 				7E4547A020E5198C00FB620F /* DashboardViewController.swift in Sources */,
 				7E300ACE20DA498600EF1A79 /* StartupInteractor.swift in Sources */,
@@ -974,22 +1040,26 @@
 				7E300AEF20DBE31F00EF1A79 /* StartupViewController.swift in Sources */,
 				7E45477520E0BB5B00FB620F /* WelcomePresenter.swift in Sources */,
 				7E4547A320E51A2200FB620F /* DashboardPresenter.swift in Sources */,
+				7EBF8B882122FAAA00C3D94E /* DeviceListViewController.swift in Sources */,
 				7EB1F6142100BE3500741E92 /* AppError.swift in Sources */,
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
+				7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
+				7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
 				86ABF3552126FED000C5BE60 /* PendingMobileAuthPresenter.swift in Sources */,
 				7E778CF72119A230001EE257 /* ChangePinEntity.swift in Sources */,
+				7E241E06212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
@@ -1004,6 +1074,7 @@
 				7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */,
 				86CD10E4212C352F005FA824 /* MobileAuthInteractor.swift in Sources */,
 				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
+				7EBF8B8D21231A0600C3D94E /* DeviceTableViewCell.swift in Sources */,
 				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
 				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
@@ -1011,6 +1082,7 @@
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
 				7E778CF521199E54001EE257 /* ChangePinInteractor.swift in Sources */,
 				7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */,
+				7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,
 			);
