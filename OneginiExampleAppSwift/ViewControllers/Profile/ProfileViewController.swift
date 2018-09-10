@@ -27,12 +27,12 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func deviceList(_: Any) {
+        profileViewToPresenterProtocol?.setupFetchDeviceListPresenter()
     }
 
     @IBAction func changePassword(_: Any) {
         profileViewToPresenterProtocol?.setupChangePinPresenter()
     }
 
-    @IBAction func changeProfileName(_: Any) {
-    }
+    @IBAction func changeProfileName(_: Any) {}
 }

@@ -26,6 +26,7 @@ protocol MobileAuthInteractorToPresenterProtocol: class {
     func presentPinView(mobileAuthEntity: MobileAuthEntity)
     func mobileAuthenticationHandled()
     func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void)
+    func mobileAuthenticationCancelled()
 }
 
 protocol MobileAuthViewToPresenterProtocol: class {
@@ -96,6 +97,10 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         navigationController.dismiss(animated: true, completion: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
     }
+    
+    func mobileAuthenticationCancelled() {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
 
 }
 
@@ -143,7 +148,7 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
 }
 
 extension MobileAuthPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
-        mobileAuthInteractor.handlePinMobileAuth(mobileAuthEntity: entity)
+    func handlePin() {
+        mobileAuthInteractor.handlePinMobileAuth()
     }
 }

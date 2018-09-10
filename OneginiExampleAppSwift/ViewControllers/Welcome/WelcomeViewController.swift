@@ -28,6 +28,12 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         configureSegmentView()
         navigationController?.navigationBar.isHidden = true
+        guard let loginViewController = loginViewController else { return }
+        if loginViewController.profiles.count > 0 {
+            setupViewWithProfiles()
+        } else {
+            setupViewWithoutProfiles()
+        }
     }
 
     func configureSegmentView() {
@@ -37,7 +43,6 @@ class WelcomeViewController: UIViewController {
         customSubview.layer.cornerRadius = 2.0
         customSubview.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin]
         segmentView.addSubviewToIndicator(customSubview)
-        welcomePresenterProtocol?.setupSegmentView()
     }
 
     func setupViewWithProfiles() {

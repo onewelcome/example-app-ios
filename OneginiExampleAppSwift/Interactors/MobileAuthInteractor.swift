@@ -21,7 +21,8 @@ protocol MobileAuthInteractorProtocol {
     func registerForPushMessages(completion: @escaping (Bool) -> Void)
     func isUserEnrolledForMobileAuth() -> Bool
     func isUserEnrolledForPushMobileAuth() -> Bool
-    func handlePinMobileAuth(mobileAuthEntity: PinViewControllerEntityProtocol)
+    func handlePinMobileAuth()
+    func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void)
 }
 
 class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
@@ -29,12 +30,12 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
     var mobileAuthQueue = MobileAuthQueue()
     var mobileAuthEntity = MobileAuthEntity()
-    
+
     override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
     }
-    
+
     func isUserEnrolledForMobileAuth() -> Bool {
         let userClient = ONGUserClient.sharedInstance()
         if let userProfile = userClient.authenticatedUserProfile() {
@@ -77,6 +78,20 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
+    func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void) {
+        ONGUserClient.sharedInstance().pendingPushMobileAuthRequests { (requests: Array<ONGPendingMobileAuthRequest>?, error: Error?) in
+            if let error = error {
+                let appError = ErrorMapper().mapError(error)
+                completion(nil, appError)
+            } else if let requests = requests {
+                completion(requests, nil)
+
+            } else {
+                completion([], nil)
+            }
+        }
+    }
+
     func registerForPushMessages(completion: @escaping (Bool) -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { permissionGranted, error in
             if error != nil {
@@ -86,9 +101,9 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
             completion(permissionGranted)
         }
     }
-    
-    func handlePinMobileAuth(mobileAuthEntity: PinViewControllerEntityProtocol) {
-        guard let pinChallenge = self.mobileAuthEntity.pinChallenge else { return }
+
+    func handlePinMobileAuth() {
+        guard let pinChallenge = mobileAuthEntity.pinChallenge else { return }
         if let pin = mobileAuthEntity.pin {
             pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
         } else {
@@ -102,7 +117,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
             self.mobileAuthQueue.enqueue(mobileAuthRequest)
         }
     }
-    
+
     fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
         if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
             mobileAuthEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
@@ -135,10 +150,15 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
     }
 
     func userClient(_ userClient: ONGUserClient, didFailToHandle request: ONGMobileAuthRequest, error: Error) {
-        let mappedError = ErrorMapper().mapError(error)
-        mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, completion: { _ in
-            self.mobileAuthQueue.dequeue()
-        })
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            mobileAuthPresenter?.mobileAuthenticationCancelled()
+            mobileAuthQueue.dequeue()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, completion: { _ in
+                self.mobileAuthQueue.dequeue()
+            })
+        }
     }
 
     func userClient(_ userClient: ONGUserClient, didHandle request: ONGMobileAuthRequest, info customAuthenticatorInfo: ONGCustomInfo?) {
@@ -166,7 +186,7 @@ struct MobileAuthRequest {
     let pendingTransaction: ONGPendingMobileAuthRequest?
     let otp: String?
     let delegate: ONGMobileAuthRequestDelegate
-    
+
     init(delegate: ONGMobileAuthRequestDelegate, pendingTransaction: ONGPendingMobileAuthRequest? = nil, otp: String? = nil) {
         self.delegate = delegate
         self.pendingTransaction = pendingTransaction

@@ -18,8 +18,7 @@ import UIKit
 typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol & ParentToChildPresenterProtocol
 
 protocol ParentToChildPresenterProtocol {
-    func reloadProfiles()
-    func updateView()
+    func update()
     func updateSelectedProfile(_ profile: ONGUserProfile)
 }
 
@@ -28,6 +27,9 @@ protocol LoginInteractorToPresenterProtocol: class {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile)
     func loginActionCancelled(profile: ONGUserProfile)
+    func presentImplicitData(data: String)
+    func fetchImplicitDataFailed(_ error: AppError)
+    func presentPasswordAuthenticatorView(loginEnity: LoginEntity)
 }
 
 protocol LoginViewToPresenterProtocol: class {
@@ -36,19 +38,22 @@ protocol LoginViewToPresenterProtocol: class {
     func setupLoginView() -> LoginViewController
     func login(profile: ONGUserProfile)
     func reloadAuthenticators(_ profile: ONGUserProfile)
+    func fetchImplicitData(profile: ONGUserProfile)
 }
 
 class LoginPresenter: LoginInteractorToPresenterProtocol {
     var loginInteractor: LoginInteractorProtocol
     var profiles = Array<ONGUserProfile>()
     let navigationController: UINavigationController
+    let fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol
     var loginViewController: LoginViewController
     var pinViewController: PinViewController?
 
-    init(loginInteractor: LoginInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
+    init(loginInteractor: LoginInteractorProtocol, fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
+        self.fetchImplicitDataInteractor = fetchImplicitDataInteractor
     }
 
     func presentPinView(loginEntity: LoginEntity) {
@@ -57,24 +62,58 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-            navigationController.pushViewController(pinViewController!, animated: true)
+            navigationController.present(pinViewController!, animated: true, completion: nil)
         }
+    }
+
+    func presentPasswordAuthenticatorView(loginEnity: LoginEntity) {
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEnity, viewToPresenterProtocol: self)
+        passwordViewController.modalPresentationStyle = .overCurrentContext
+        navigationController.present(passwordViewController, animated: false, completion: nil)
     }
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: false, completion: nil)
         appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
     }
 
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin(profile: profile)
+        navigationController.dismiss(animated: false, completion: nil)
+        appRouter.updateWelcomeView(selectedProfile: profile)
         appRouter.setupErrorAlert(error: error)
     }
 
-    func loginActionCancelled(profile: ONGUserProfile) {
+    func loginActionCancelled(profile _: ONGUserProfile) {
+        navigationController.dismiss(animated: false, completion: nil)
+    }
+
+    func reloadProfiles() {
+        profiles = loginInteractor.userProfiles()
+        loginViewController.profiles = profiles
+    }
+
+    func updateView() {
+        let profile = loginViewController.selectedProfile
+        if profiles.contains(profile) {
+            reloadAuthenticators(profile)
+            if let index = loginViewController.profiles.index(of: profile) {
+                loginViewController.selectProfile(index: index)
+            }
+        } else {
+            reloadAuthenticators(profiles[0])
+            loginViewController.selectProfile(index: 0)
+        }
+    }
+    
+    func presentImplicitData(data: String) {
+        loginViewController.implicitData.text = data
+    }
+    
+    func fetchImplicitDataFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewWithLogin(profile: profile)
+        appRouter.setupErrorAlert(error: error)
     }
 }
 
@@ -96,6 +135,10 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     func reloadAuthenticators(_ profile: ONGUserProfile) {
         loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
     }
+    
+    func fetchImplicitData(profile: ONGUserProfile) {
+        fetchImplicitDataInteractor.fetchImplicitResources(profile: profile)
+    }
 }
 
 extension LoginPresenter: ParentToChildPresenterProtocol {
@@ -103,27 +146,22 @@ extension LoginPresenter: ParentToChildPresenterProtocol {
         loginViewController.selectedProfile = profile
     }
 
-    func reloadProfiles() {
-        profiles = loginInteractor.userProfiles()
-        loginViewController.profiles = profiles
-    }
-
-    func updateView() {
-        let profile = loginViewController.selectedProfile
-        if profiles.contains(profile) {
-            reloadAuthenticators(profile)
-            if let index = loginViewController.profiles.index(of: profile) {
-                loginViewController.selectProfile(index: index)
-            }
-        } else {
-            reloadAuthenticators(profiles[0])
-            loginViewController.selectProfile(index: 0)
+    func update() {
+        reloadProfiles()
+        if profiles.count > 0 {
+            updateView()
         }
     }
 }
 
 extension LoginPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
-        loginInteractor.handleLogin(loginEntity: entity)
+    func handlePin() {
+        loginInteractor.handleLogin()
+    }
+}
+
+extension LoginPresenter: PasswordAuthenticatorViewToPresenterProtocol {
+    func handlePassword() {
+        loginInteractor.handlePasswordAuthenticatorLogin()
     }
 }

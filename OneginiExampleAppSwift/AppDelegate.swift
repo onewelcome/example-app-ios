@@ -18,25 +18,14 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
     weak var pushMobileAuthEnrollment: PushMobileAuthEntrollmentProtocol?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        setupWindow()
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
-        
         return true
-    }
-
-    func setupWindow() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
-        window?.makeKeyAndVisible()
-        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "background"), for: .default)
-        window?.rootViewController = navigationController
     }
 
     func oneginiSDKStartup() {

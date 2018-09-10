@@ -40,11 +40,20 @@ class ViewControllerAssembly: Assembly {
         container.register(ProfileViewController.self) { _ in ProfileViewController() }
             .initCompleted { resolver, profileViewController in
                 profileViewController.profileViewToPresenterProtocol = resolver.resolve(ProfilePresenterProtocol.self)!
-        }
+            }
+        container.register((UIViewController & PendingMobileAuthPresenterViewDelegate).self) { _ in PendingMobileAuthViewController() }
+            .initCompleted { resolver, pendingMobileAuthViewController in
+                pendingMobileAuthViewController.pendingMobileAuthPresenter = resolver.resolve(PendingMobileAuthPresenterProtocol.self)!
+            }
 
         container.register(AuthenticatorsViewController.self) { _ in AuthenticatorsViewController() }
             .initCompleted { resolver, authenticatorsViewController in
                 authenticatorsViewController.authenticatorsViewToPresenterProtocol = resolver.resolve(AuthenticatorsPresenterProtocol.self)!
+            }
+        
+        container.register(AppDetailsViewController.self) { _ in AppDetailsViewController() }
+            .initCompleted { resolver, appDetailsViewController in
+            appDetailsViewController.viewToPresenterProtocol = resolver.resolve(AppDetailsPresenterProtocol.self)!
         }
 
         container.register(MobileAuthViewController.self) { _ in MobileAuthViewController() }

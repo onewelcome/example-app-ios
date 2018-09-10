@@ -17,9 +17,9 @@ import UIKit
 
 protocol RegisterUserInteractorProtocol {
     func identityProviders() -> Array<ONGIdentityProvider>
-    func startUserRegistration()
-    func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
-    func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol)
+    func startUserRegistration(identityProvider: ONGIdentityProvider?)
+    func handleRedirectURL()
+    func handleCreatedPin()
 }
 
 class RegisterUserInteractor: NSObject {
@@ -41,11 +41,11 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         return Array(identityProviders)
     }
 
-    func startUserRegistration() {
-        ONGUserClient.sharedInstance().registerUser(with: nil, scopes: ["read"], delegate: self)
+    func startUserRegistration(identityProvider: ONGIdentityProvider? = nil) {
+        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read"], delegate: self)
     }
 
-    func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
+    func handleRedirectURL() {
         guard let browserRegistrationChallenge = registerUserEntity.browserRegistrationChallenge else { return }
         if let url = registerUserEntity.redirectURL {
             browserRegistrationChallenge.sender.respond(with: url, challenge: browserRegistrationChallenge)
@@ -54,8 +54,8 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    func handleCreatedPin(registerUserEntity: PinViewControllerEntityProtocol) {
-        guard let createPinChallenge = self.registerUserEntity.createPinChallenge else { return }
+    func handleCreatedPin() {
+        guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
             createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
         } else {
@@ -89,5 +89,11 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }
+    }
+
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge _: ONGCustomRegistrationChallenge) {
+    }
+
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish _: ONGCustomRegistrationChallenge) {
     }
 }

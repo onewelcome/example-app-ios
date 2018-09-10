@@ -22,7 +22,7 @@ protocol PinViewControllerEntityProtocol {
 }
 
 protocol PinViewToPresenterProtocol: class {
-    func handlePin(entity: PinViewControllerEntityProtocol)
+    func handlePin()
 }
 
 enum PINEntryMode {
@@ -76,7 +76,7 @@ class PinViewController: UIViewController {
 
     @IBAction func cancelButtonPressed(_: Any) {
         entity.pin = nil
-        viewToPresenterProtocol.handlePin(entity: entity)
+        viewToPresenterProtocol.handlePin()
     }
 
     @IBAction func backKeyPressed(_: Any) {
@@ -150,7 +150,7 @@ class PinViewController: UIViewController {
                 let pincodeConfirm = pinEntryToVerify.joined()
                 if pincode == pincodeConfirm {
                     entity.pin = pincode
-                    viewToPresenterProtocol.handlePin(entity: entity)
+                    viewToPresenterProtocol.handlePin()
                 } else {
                     mode = .registration
                     reset()
@@ -159,7 +159,7 @@ class PinViewController: UIViewController {
                 break
             case .login:
                 entity.pin = pincode
-                viewToPresenterProtocol.handlePin(entity: entity)
+                viewToPresenterProtocol.handlePin()
                 break
             }
         }

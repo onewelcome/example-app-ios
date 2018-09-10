@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
+    @IBOutlet weak var implicitData: UILabel!
+    
     var profiles = [ONGUserProfile]() {
         didSet {
             if let tableView = profilesTableView {
@@ -38,15 +40,6 @@ class LoginViewController: UIViewController {
     weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
     var selectedProfile = ONGUserProfile()
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let selectedRow = profilesTableView?.indexPathForSelectedRow,
-            let profilesTableView = profilesTableView {
-            profilesTableView.deselectRow(at: selectedRow, animated: true)
-            profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: selectedRow)
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -55,11 +48,18 @@ class LoginViewController: UIViewController {
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         selectProfile(index: 0)
+        loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
     }
 
     func selectProfile(index: Int) {
         guard let profilesTableView = profilesTableView else { return }
         selectedProfile = profiles[index]
+        if let indexPaths = profilesTableView.indexPathsForSelectedRows {
+            for indexPath in indexPaths {
+                profilesTableView.deselectRow(at: indexPath, animated: false)
+                profilesTableView.delegate?.tableView?(profilesTableView, didDeselectRowAt: indexPath)
+            }
+        }
         let indexPath = IndexPath(row: index, section: 0)
         profilesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
@@ -86,12 +86,17 @@ extension LoginViewController: UITableViewDataSource {
         if tableView == profilesTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileIdCell", for: indexPath) as! ProfileTableViewCell
             cell.profileIdLabel.text = profiles[indexPath.row].profileId
+            if selectedProfile == profiles[indexPath.row] {
+                cell.tickImage.image = #imageLiteral(resourceName: "tick")
+            } else {
+                cell.tickImage.image = nil
+            }
             return cell
         }
         if tableView == authenticatorsTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath) as! ButtonTableViewCell
             let authenticatorName = authenticators[indexPath.row].name
-            cell.button.setTitle(authenticatorName, for: .normal)
+            cell.title.text = authenticatorName
             return cell
         }
         return UITableViewCell()
@@ -106,6 +111,7 @@ extension LoginViewController: UITableViewDelegate {
                 selectedProfile = profiles[indexPath.row]
                 loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
             }
+            loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
         }
     }
