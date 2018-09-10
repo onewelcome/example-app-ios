@@ -67,17 +67,14 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
-            navigationController.pushViewController(pinViewController!, animated: true)
+            navigationController.present(pinViewController!, animated: true)
         }
     }
 
     func backToAuthenticatorsView(authenticator: ONGAuthenticator) {
         reloadAuthenticators()
-        if authenticator.type == .custom {
-            navigationController.dismiss(animated: false, completion: nil)
-        } else {
-            navigationController.popToViewController(authenticatorsViewController, animated: true)
-        }
+        let animated = authenticator.type != .custom
+        navigationController.dismiss(animated: animated, completion: nil)
     }
 
     func authenticatorActionFailed(_ error: AppError, authenticator: ONGAuthenticator) {

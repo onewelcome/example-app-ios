@@ -43,6 +43,7 @@ class InteractorAssembly: Assembly {
                 let changePinInteractor = instance as! ChangePinInteractor
                 changePinInteractor.changePinPresenter = resolver.resolve(ChangePinPresenterProtocol.self)
             }
+        container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
         container.register(AuthenticatorsInteractorProtocol.self) { _ in AuthenticatorsInteractor() }
             .initCompleted { resolver, instance in
                 let authenticatorsInteractor = instance as! AuthenticatorsInteractor

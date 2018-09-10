@@ -15,6 +15,7 @@
 
 import TransitionButton
 import UIKit
+import UserNotifications
 
 class MobileAuthViewController: UIViewController {
     let mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol
@@ -33,6 +34,8 @@ class MobileAuthViewController: UIViewController {
 
     @IBAction func enrollMobileAuth(_: Any) {
         enrollMobileAuthButton.startAnimation()
+        ONGUserClient.sharedInstance().enroll { _, _ in
+        }
         view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
@@ -51,6 +54,13 @@ class MobileAuthViewController: UIViewController {
 
     @IBAction func enrollPushMobileAuth(_: Any) {
         enrollPushMobileAuthButton.startAnimation()
+        let center = UNUserNotificationCenter.current()
+
+        center.requestAuthorization(options: [.badge, .alert, .sound]) { _, _ in
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
         view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)

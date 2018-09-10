@@ -42,6 +42,7 @@ class BrowserViewController: UIViewController, WKUIDelegate {
 
     override func loadView() {
         super.loadView()
+        view.backgroundColor = UIColor.white
         configureCancelButton()
         configureWebView()
     }
