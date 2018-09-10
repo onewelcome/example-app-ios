@@ -20,7 +20,7 @@ protocol LoginInteractorProtocol {
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile)
     func handleLogin()
-    func handlePasswordAuthenticatorRegistration()
+    func handlePasswordAuthenticatorLogin()
 }
 
 class LoginInteractor: NSObject {
@@ -35,7 +35,7 @@ class LoginInteractor: NSObject {
         }
     }
 
-    func handlePasswordAuthenticatorRegistration() {
+    func handlePasswordAuthenticatorLogin() {
         guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorAuthenticationChallenege else { fatalError() }
         if loginEntity.cancelled {
             loginEntity.cancelled = false

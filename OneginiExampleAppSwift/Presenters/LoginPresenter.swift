@@ -144,6 +144,6 @@ extension LoginPresenter: PinViewToPresenterProtocol {
 
 extension LoginPresenter: PasswordAuthenticatorViewToPresenterProtocol {
     func handlePassword() {
-        loginInteractor.handlePasswordAuthenticatorRegistration()
+        loginInteractor.handlePasswordAuthenticatorLogin()
     }
 }
