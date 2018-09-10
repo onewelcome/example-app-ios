@@ -16,9 +16,9 @@
 import UIKit
 
 class AuthenticatorRegistrationErrorDomainMapping {
-    func mapError(_ error: Error) -> AppError {
-        let title = "Authenticator Registration error"
+    let title = "Authenticator Registration error"
 
+    func mapError(_ error: Error) -> AppError {
         switch error.code {
         case ONGAuthenticatorRegistrationError.userNotAuthenticated.rawValue:
             let errorDescription = "A user must be authenticated in order to register an authenticator."
@@ -33,6 +33,15 @@ class AuthenticatorRegistrationErrorDomainMapping {
             return AppError(title: title, errorDescription: errorDescription)
 
         default:
+            return AppError(errorDescription: "Something went wrong.")
+        }
+    }
+
+    func mapErrorWithCustomInfo(_ customInfo: ONGCustomInfo) -> AppError {
+        if customInfo.status >= 4000 && customInfo.status < 5000 {
+            let message = "Authenticator registration failed"
+            return AppError(title: title, errorDescription: message)
+        } else {
             return AppError(errorDescription: "Something went wrong.")
         }
     }

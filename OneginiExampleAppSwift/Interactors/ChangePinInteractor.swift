@@ -17,7 +17,7 @@ import UIKit
 
 protocol ChangePinInteractorProtocol {
     func changePin()
-    func handlePin(changePinEntity: PinViewControllerEntityProtocol)
+    func handlePin()
 }
 
 class ChangePinInteractor: NSObject {
@@ -40,16 +40,16 @@ class ChangePinInteractor: NSObject {
         }
     }
 
-    func handlePin(changePinEntity: PinViewControllerEntityProtocol) {
-        if self.changePinEntity.createPinChallenge != nil {
-            handleCreatePin(changePinEntity: changePinEntity)
+    func handlePin() {
+        if changePinEntity.createPinChallenge != nil {
+            handleCreatePin()
         } else {
-            handleLogin(changePinEntity: changePinEntity)
+            handleLogin()
         }
     }
 
-    func handleCreatePin(changePinEntity: PinViewControllerEntityProtocol) {
-        guard let pinChallenge = self.changePinEntity.createPinChallenge else { return }
+    func handleCreatePin() {
+        guard let pinChallenge = changePinEntity.createPinChallenge else { return }
         if let pin = changePinEntity.pin {
             pinChallenge.sender.respond(withCreatedPin: pin, challenge: pinChallenge)
         } else {
@@ -57,8 +57,8 @@ class ChangePinInteractor: NSObject {
         }
     }
 
-    func handleLogin(changePinEntity: PinViewControllerEntityProtocol) {
-        guard let pinChallenge = self.changePinEntity.loginPinChallenge else { return }
+    func handleLogin() {
+        guard let pinChallenge = changePinEntity.loginPinChallenge else { return }
         if let pin = changePinEntity.pin {
             pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
         } else {

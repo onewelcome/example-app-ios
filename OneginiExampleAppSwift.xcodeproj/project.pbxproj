@@ -16,6 +16,8 @@
 		7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */; };
 		7E01FDFA2112E41600DF0043 /* AuthenticatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */; };
 		7E01FDFB2112E41600DF0043 /* AuthenticatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */; };
+		7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E122138098D008FCD9A /* PasswordAuthenticatorViewController.swift */; };
+		7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */; };
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
 		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
@@ -123,6 +125,8 @@
 		7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsPresenter.swift; sourceTree = "<group>"; };
 		7E01FDF82112E41600DF0043 /* AuthenticatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorTableViewCell.swift; sourceTree = "<group>"; };
 		7E01FDF92112E41600DF0043 /* AuthenticatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorTableViewCell.xib; sourceTree = "<group>"; };
+		7E241E122138098D008FCD9A /* PasswordAuthenticatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAuthenticatorViewController.swift; sourceTree = "<group>"; };
+		7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordAuthenticatorViewController.xib; sourceTree = "<group>"; };
 		7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneginiExampleAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -280,6 +284,15 @@
 			path = AuthenticatorCell;
 			sourceTree = "<group>";
 		};
+		7E241E11213806DE008FCD9A /* CustomAuthenticator */ = {
+			isa = PBXGroup;
+			children = (
+				7E241E122138098D008FCD9A /* PasswordAuthenticatorViewController.swift */,
+				7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */,
+			);
+			path = CustomAuthenticator;
+			sourceTree = "<group>";
+		};
 		7E300A5C20D7B8E100EF1A79 = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +359,7 @@
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E241E11213806DE008FCD9A /* CustomAuthenticator */,
 				86ABF34F2126FE5A00C5BE60 /* PendingMobileAuth */,
 				86ABF34C2126E25B00C5BE60 /* TabBar */,
 				7ED15B21211436EE00133D5C /* MobileAuthentication */,
@@ -755,6 +769,7 @@
 				7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */,
 				86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */,
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
+				7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,6 +978,7 @@
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
+				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,

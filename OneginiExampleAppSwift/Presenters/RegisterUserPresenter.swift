@@ -28,7 +28,7 @@ protocol RegisterUserInteractorToPresenterProtocol: class {
 protocol RegisterUserViewToPresenterProtocol {
     func signUp(_ identityProvider: ONGIdentityProvider?)
     func setupRegisterUserView() -> RegisterUserViewController
-    func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol)
+    func handleRedirectURL()
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
@@ -88,13 +88,13 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
         registerUserInteractor.startUserRegistration(identityProvider: identityProvider)
     }
 
-    func handleRedirectURL(registerUserEntity: BrowserViewControllerEntityProtocol) {
-        registerUserInteractor.handleRedirectURL(registerUserEntity: registerUserEntity)
+    func handleRedirectURL() {
+        registerUserInteractor.handleRedirectURL()
     }
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
-    func handlePin(entity: PinViewControllerEntityProtocol) {
-        registerUserInteractor.handleCreatedPin(registerUserEntity: entity)
+    func handlePin() {
+        registerUserInteractor.handleCreatedPin()
     }
 }
