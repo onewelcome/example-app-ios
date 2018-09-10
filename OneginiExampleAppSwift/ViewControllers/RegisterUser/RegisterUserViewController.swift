@@ -47,7 +47,7 @@ class RegisterUserViewController: UIViewController {
     }
 
     @IBAction func signUp(_: Any) {
-        registerUserViewToPresenterProtocol.signUp()
+        registerUserViewToPresenterProtocol.signUp(nil)
     }
 }
 
@@ -59,7 +59,14 @@ extension RegisterUserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath) as! ButtonTableViewCell
         let identityProviderName = identityProviders[indexPath.row].name
-        cell.button.setTitle(identityProviderName, for: .normal)
+        cell.title.text = identityProviderName
         return cell
+    }
+}
+
+extension RegisterUserViewController: UITableViewDelegate {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let identityProvider = identityProviders[indexPath.row]
+        registerUserViewToPresenterProtocol.signUp(identityProvider)
     }
 }

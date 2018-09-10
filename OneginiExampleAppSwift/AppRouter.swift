@@ -16,6 +16,7 @@
 import UIKit
 
 protocol AppRouterProtocol: class {
+    var window: UIWindow { get set }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
@@ -26,11 +27,11 @@ protocol AppRouterProtocol: class {
     var disconnectPresenter: DisconnectPresenterProtocol { get }
     var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol { get }
     var appDetailsPresenter: AppDetailsPresenterProtocol { get }
+    var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol { get }
 
     func popToDashboardView()
-    func popToWelcomeViewWithLogin()
-    func popToWelcomeViewControllerWithRegisterUser()
-    func popToWelcomeViewControllerDependsOnProfileArray()
+    func updateWelcomeView(selectedProfile: ONGUserProfile?)
+    func popToWelcomeView()
     func popToProfileView()
     func popToAuthenticatorsView()
 
@@ -46,10 +47,15 @@ protocol AppRouterProtocol: class {
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
     func setupFetchDeviceListPresenter()
-    func setupAppDetailsPresenter()
+    func setupTabBar()
 }
 
-class AppRouter: AppRouterProtocol {
+class AppRouter: NSObject, AppRouterProtocol {
+    var window: UIWindow
+
+    var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
+    var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
+
     var startupPresenter: StartupPresenterProtocol
     var welcomePresenter: WelcomePresenterProtocol
     var dashboardPresenter: DashboardPresenterProtocol
@@ -61,18 +67,24 @@ class AppRouter: AppRouterProtocol {
     var changePinPresenter: ChangePinPresenterProtocol
     var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol
     var appDetailsPresenter: AppDetailsPresenterProtocol
+    var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
 
-    init(startupPresenter: StartupPresenterProtocol,
-         welcomePresenter: WelcomePresenterProtocol,
-         dashboardPresenter: DashboardPresenterProtocol,
-         errorPresenter: ErrorPresenterProtocol,
-         authenticatorsPresenter: AuthenticatorsPresenterProtocol,
-         profilePresenter: ProfilePresenterProtocol,
-         mobileAuthPresenter: MobileAuthPresenterProtocol,
-         disconnectPresenter: DisconnectPresenterProtocol,
-         changePinPresenter: ChangePinPresenterProtocol,
-         fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
-         appDetailsPresenter: AppDetailsPresenterProtocol) {
+    init(window: UIWindow,
+        startupPresenter: StartupPresenterProtocol,
+        welcomePresenter: WelcomePresenterProtocol,
+        dashboardPresenter: DashboardPresenterProtocol,
+        errorPresenter: ErrorPresenterProtocol,
+        authenticatorsPresenter: AuthenticatorsPresenterProtocol,
+        profilePresenter: ProfilePresenterProtocol,
+        mobileAuthPresenter: MobileAuthPresenterProtocol,
+        disconnectPresenter: DisconnectPresenterProtocol,
+        changePinPresenter: ChangePinPresenterProtocol,
+        pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
+        fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
+        appDetailsPresenter: AppDetailsPresenterProtocol) {
+        self.window = window
+        self.window.backgroundColor = UIColor.white
+        self.window.makeKeyAndVisible()
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -84,30 +96,27 @@ class AppRouter: AppRouterProtocol {
         self.changePinPresenter = changePinPresenter
         self.fetchDeviceListPresenter = fetchDeviceListPresenter
         self.appDetailsPresenter = appDetailsPresenter
+        self.pendingMobileAuthPresenter = pendingMobileAuthPresenter
     }
 
     func popToDashboardView() {
         dashboardPresenter.popToDashboardView()
     }
 
-    func popToWelcomeViewWithLogin() {
-        welcomePresenter.popToWelcomeViewControllerWithLogin()
+    func updateWelcomeView(selectedProfile: ONGUserProfile?) {
+        welcomePresenter.update(selectedProfile: selectedProfile)
     }
 
-    func popToWelcomeViewControllerWithRegisterUser() {
-        welcomePresenter.popToWelcomeViewControllerWithRegisterUser()
-    }
-
-    func popToWelcomeViewControllerDependsOnProfileArray() {
-        welcomePresenter.popToWelcomeViewControllerDependsOnProfileArray()
+    func popToWelcomeView() {
+        welcomePresenter.popToWelcomeViewController()
     }
 
     func popToProfileView() {
         profilePresenter.popToProfileView()
     }
-    
+
     func popToAuthenticatorsView() {
-        authenticatorsPresenter.presentAuthenticatorsView()
+        authenticatorsPresenter.backToAuthenticatorsView()
     }
 
     func setupErrorAlert(error: AppError) {
@@ -119,7 +128,18 @@ class AppRouter: AppRouterProtocol {
     }
 
     func setupStartupPresenter() {
+        window.rootViewController = startupPresenter.startupViewController
         startupPresenter.oneigniSDKStartup()
+    }
+
+    func setupTabBar() {
+        navigationController!.viewControllers = [welcomePresenter.welcomeViewController]
+        tabBarController!.setup(navigationController: navigationController!,
+            pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate,
+            applicationInfoViewController: appDetailsPresenter.appDetailsViewController,
+            delegate: self)
+        welcomePresenter.presentWelcomeView()
+        window.rootViewController = tabBarController
     }
 
     func setupWelcomePresenter() {
@@ -149,12 +169,14 @@ class AppRouter: AppRouterProtocol {
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
     }
-    
+
     func setupFetchDeviceListPresenter() {
         fetchDeviceListPresenter.setupDeviceListPresenter()
     }
-    
-    func setupAppDetailsPresenter() {
-        appDetailsPresenter.presentAppDetails()
+}
+
+extension AppRouter: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return viewController != tabBarController.selectedViewController
     }
 }

@@ -34,6 +34,5 @@ class ProfileViewController: UIViewController {
         profileViewToPresenterProtocol?.setupChangePinPresenter()
     }
 
-    @IBAction func changeProfileName(_: Any) {
-    }
+    @IBAction func changeProfileName(_: Any) {}
 }

@@ -16,12 +16,17 @@
 
 import UIKit
 
-typealias AppDetailsPresenterProtocol = AppDetailsInteractorToPresenterProtocol
+typealias AppDetailsPresenterProtocol = AppDetailsInteractorToPresenterProtocol & AppDetailsViewToPresenterProtocol
 
 protocol AppDetailsInteractorToPresenterProtocol: class {
+    var appDetailsViewController: AppDetailsViewController { get set }
+
     func setupAppDetailsView(_ appDetails: ApplicationDetails)
-    func presentAppDetails()
     func fetchAppDetailsFailed(_ error: AppError)
+}
+
+protocol AppDetailsViewToPresenterProtocol: class {
+    func reloadAppDetails()
 }
 
 class AppDetailsPresenter: AppDetailsInteractorToPresenterProtocol {
@@ -40,13 +45,14 @@ class AppDetailsPresenter: AppDetailsInteractorToPresenterProtocol {
         appDetailsViewController.applicationDetails = appDetails
     }
     
-    func presentAppDetails() {
-        navigationController.pushViewController(appDetailsViewController, animated: true)
-        appDetailsInteractor.fetchDeviceResources()
-    }
-    
     func fetchAppDetailsFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
+    }
+}
+
+extension AppDetailsPresenter: AppDetailsViewToPresenterProtocol {
+    func reloadAppDetails() {
+        appDetailsInteractor.fetchDeviceResources()
     }
 }

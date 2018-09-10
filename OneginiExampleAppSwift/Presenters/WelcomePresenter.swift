@@ -17,53 +17,47 @@ import Swinject
 import UIKit
 
 protocol WelcomePresenterProtocol: class {
-    func setupSegmentView()
+    var loginPresenter: LoginPresenterProtocol { get set }
+    var registerUserPresenter: RegisterUserPresenterProtocol { get set }
+    var welcomeViewController: WelcomeViewController { get set }
+
     func presentWelcomeView()
-    func popToWelcomeViewControllerWithLogin()
-    func popToWelcomeViewControllerWithRegisterUser()
-    func popToWelcomeViewControllerDependsOnProfileArray()
+    func popToWelcomeViewController()
+    func update(selectedProfile: ONGUserProfile?)
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
     let navigationController: UINavigationController
+    let tabBarController: TabBarController
     var loginPresenter: LoginPresenterProtocol
     var registerUserPresenter: RegisterUserPresenterProtocol
+
     var welcomeViewController: WelcomeViewController
 
-    init(_ welcomeViewController: WelcomeViewController, loginPresenter: LoginPresenterProtocol, registerUserPresenter: RegisterUserPresenterProtocol, navigationController: UINavigationController) {
+    init(_ welcomeViewController: WelcomeViewController,
+         loginPresenter: LoginPresenterProtocol,
+         registerUserPresenter: RegisterUserPresenterProtocol,
+         navigationController: UINavigationController,
+         tabBarController: TabBarController) {
         self.welcomeViewController = welcomeViewController
         self.loginPresenter = loginPresenter
         self.registerUserPresenter = registerUserPresenter
         self.navigationController = navigationController
+        self.tabBarController = tabBarController
     }
 
     func presentWelcomeView() {
         welcomeViewController.loginViewController = loginPresenter.setupLoginView()
         welcomeViewController.registerUserViewController = registerUserPresenter.setupRegisterUserView()
-        navigationController.pushViewController(welcomeViewController, animated: false)
+        tabBarController.selectedIndex = 0
     }
 
-    func popToWelcomeViewControllerWithLogin() {
-        loginPresenter.reloadProfiles()
-        setupSegmentView()
-        loginPresenter.selectLastSelectedProfileAndReloadAuthenticators()
-        navigationController.popToViewController(welcomeViewController, animated: true)
-    }
-
-    func popToWelcomeViewControllerWithRegisterUser() {
-        welcomeViewController.selectSignUp()
-        navigationController.popToViewController(welcomeViewController, animated: true)
-    }
-
-    func popToWelcomeViewControllerDependsOnProfileArray() {
-        if loginPresenter.profiles.count > 0 {
-            loginPresenter.reloadProfiles()
-            setupSegmentView()
-            loginPresenter.selectFirstProfileAndReloadAuthenticators()
-            navigationController.popToViewController(welcomeViewController, animated: true)
-        } else {
-            popToWelcomeViewControllerWithRegisterUser()
+    func update(selectedProfile: ONGUserProfile?) {
+        if let profile = selectedProfile {
+            loginPresenter.updateSelectedProfile(profile)
         }
+        loginPresenter.update()
+        setupSegmentView()
     }
 
     func setupSegmentView() {
@@ -72,5 +66,9 @@ class WelcomePresenter: WelcomePresenterProtocol {
         } else {
             welcomeViewController.setupViewWithoutProfiles()
         }
+    }
+
+    func popToWelcomeViewController() {
+        navigationController.popToViewController(welcomeViewController, animated: true)
     }
 }

@@ -27,7 +27,7 @@ class LoginInteractor: NSObject {
     var loginEntity = LoginEntity()
 
     fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
-        if let error = challenge.error {
+        if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             loginEntity.pinError = nil
@@ -72,12 +72,12 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         loginPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
 
-    func userClient(_: ONGUserClient, didFailToAuthenticateUser _: ONGUserProfile, error: Error) {
+    func userClient(_: ONGUserClient, didFailToAuthenticateUser profile: ONGUserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
-            loginPresenter?.loginActionCancelled()
+            loginPresenter?.loginActionCancelled(profile: profile)
         } else {
             let mappedError = ErrorMapper().mapError(error)
-            loginPresenter?.loginActionFailed(mappedError)
+            loginPresenter?.loginActionFailed(mappedError, profile: profile)
         }
     }
 }

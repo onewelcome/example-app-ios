@@ -22,12 +22,19 @@ class AppDetailsViewController: UIViewController {
     @IBOutlet weak var appVersion: UILabel!
     @IBOutlet weak var appPlatform: UILabel!
     
+    weak var viewToPresenterProtocol: AppDetailsViewToPresenterProtocol?
+    
     var applicationDetails: ApplicationDetails? {
         didSet {
             appId.text = applicationDetails?.appId
             appVersion.text = applicationDetails?.appVersion
             appPlatform.text = applicationDetails?.appPlatform
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewToPresenterProtocol?.reloadAppDetails()
     }
     
 }

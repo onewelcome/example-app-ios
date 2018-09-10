@@ -48,7 +48,8 @@ class DisconnectPresenter: DisconnectInteractorToPresenterProtocol {
 
     func popToWelcomeView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.popToWelcomeViewControllerDependsOnProfileArray()
+        appRouter.updateWelcomeView(selectedProfile: nil)
+        appRouter.popToWelcomeView()
     }
 
     func disconnectActionFailed(_ error: AppError) {

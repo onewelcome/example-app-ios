@@ -20,14 +20,13 @@ protocol AuthenticatorsInteractorProtocol {
     func registerAuthenticator(_ authenticator: ONGAuthenticator)
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
     func handleLogin(registerAuthenticatorEntity: PinViewControllerEntityProtocol)
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
 }
 
 class AuthenticatorsInteractor: NSObject {
-
     var registerAuthenticatorEntity = RegisterAuthenticatorEntity()
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
 
-    
     fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
         if let error = challenge.error {
             registerAuthenticatorEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
@@ -35,9 +34,9 @@ class AuthenticatorsInteractor: NSObject {
             registerAuthenticatorEntity.pinError = nil
         }
     }
-    
+
     fileprivate func sortAuthenticatorsList(_ authenticators: Array<ONGAuthenticator>) -> Array<ONGAuthenticator> {
-       return authenticators.sorted { $0.type.rawValue < $1.type.rawValue }
+        return authenticators.sorted { $0.type.rawValue < $1.type.rawValue }
     }
 }
 
@@ -48,15 +47,15 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
         let authenticatros = userClient.allAuthenticators(forUser: authenticatedUserProfile)
         return sortAuthenticatorsList(Array(authenticatros))
     }
-    
+
     func registerAuthenticator(_ authenticator: ONGAuthenticator) {
         ONGUserClient.sharedInstance().register(authenticator, delegate: self)
     }
-    
+
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator) {
         ONGUserClient.sharedInstance().deregister(authenticator, delegate: self)
     }
-    
+
     func handleLogin(registerAuthenticatorEntity: PinViewControllerEntityProtocol) {
         guard let pinChallenge = self.registerAuthenticatorEntity.pinChallenge else { return }
         if let pin = registerAuthenticatorEntity.pin {
@@ -65,22 +64,24 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
             pinChallenge.sender.cancel(pinChallenge)
         }
     }
+
+    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator) {
+        ONGUserClient.sharedInstance().preferredAuthenticator = authenticator
+    }
 }
 
 extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
-    
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGPinChallenge) {
+    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
         registerAuthenticatorEntity.pinChallenge = challenge
         registerAuthenticatorEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         authenticatorsPresenter?.presentPinView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
-    
-    func userClient(_ userClient: ONGUserClient, didReceive challenge: ONGCustomAuthFinishRegistrationChallenge) {
-        
+
+    func userClient(_: ONGUserClient, didReceive _: ONGCustomAuthFinishRegistrationChallenge) {
     }
-    
-    func userClient(_ userClient: ONGUserClient, didFailToRegister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile, error: Error) {
+
+    func userClient(_: ONGUserClient, didFailToRegister _: ONGAuthenticator, forUser _: ONGUserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled()
         } else {
@@ -88,20 +89,18 @@ extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
             authenticatorsPresenter?.authenticatorActionFailed(mappedError)
         }
     }
-    
-    func userClient(_ userClient: ONGUserClient, didRegister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile, info customAuthInfo: ONGCustomInfo?) {
-        authenticatorsPresenter?.popToAuthenticatorsView()
+
+    func userClient(_: ONGUserClient, didRegister _: ONGAuthenticator, forUser _: ONGUserProfile, info _: ONGCustomInfo?) {
+        authenticatorsPresenter?.backToAuthenticatorsView()
     }
-    
 }
 
 extension AuthenticatorsInteractor: ONGAuthenticatorDeregistrationDelegate {
-
-    func userClient(_ userClient: ONGUserClient, didDeregister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile) {
+    func userClient(_: ONGUserClient, didDeregister _: ONGAuthenticator, forUser _: ONGUserProfile) {
         authenticatorsPresenter?.authenticatorDeregistrationSucced()
     }
-    
-    func userClient(_ userClient: ONGUserClient, didFailToDeregister authenticator: ONGAuthenticator, forUser userProfile: ONGUserProfile, error: Error) {
+
+    func userClient(_: ONGUserClient, didFailToDeregister _: ONGAuthenticator, forUser _: ONGUserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled()
         } else {
@@ -109,5 +108,4 @@ extension AuthenticatorsInteractor: ONGAuthenticatorDeregistrationDelegate {
             authenticatorsPresenter?.authenticatorActionFailed(mappedError)
         }
     }
-
 }
