@@ -97,6 +97,8 @@
 		7EDAB74F21411483004918CE /* MobileAuthQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB74E21411483004918CE /* MobileAuthQueue.swift */; };
 		7EDAB751214149D8004918CE /* MobileAuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB750214149D8004918CE /* MobileAuthEntity.swift */; };
 		7EDAB7532146958E004918CE /* MobileAuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB7522146958E004918CE /* MobileAuthInteractor.swift */; };
+		7EDAB7582146B583004918CE /* MobileAuthConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB7562146B583004918CE /* MobileAuthConfirmationViewController.swift */; };
+		7EDAB7592146B583004918CE /* MobileAuthConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EDAB7572146B583004918CE /* MobileAuthConfirmationViewController.xib */; };
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
@@ -231,6 +233,8 @@
 		7EDAB74E21411483004918CE /* MobileAuthQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthQueue.swift; sourceTree = "<group>"; };
 		7EDAB750214149D8004918CE /* MobileAuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthEntity.swift; sourceTree = "<group>"; };
 		7EDAB7522146958E004918CE /* MobileAuthInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileAuthInteractor.swift; sourceTree = "<group>"; };
+		7EDAB7562146B583004918CE /* MobileAuthConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthConfirmationViewController.swift; sourceTree = "<group>"; };
+		7EDAB7572146B583004918CE /* MobileAuthConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthConfirmationViewController.xib; sourceTree = "<group>"; };
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
@@ -648,10 +652,20 @@
 		7ED15B21211436EE00133D5C /* MobileAuthentication */ = {
 			isa = PBXGroup;
 			children = (
+				7EDAB7552146B549004918CE /* ConfirmationView */,
 				7ED15B222114370C00133D5C /* MobileAuthViewController.swift */,
 				7ED15B232114370C00133D5C /* MobileAuthViewController.xib */,
 			);
 			path = MobileAuthentication;
+			sourceTree = "<group>";
+		};
+		7EDAB7552146B549004918CE /* ConfirmationView */ = {
+			isa = PBXGroup;
+			children = (
+				7EDAB7562146B583004918CE /* MobileAuthConfirmationViewController.swift */,
+				7EDAB7572146B583004918CE /* MobileAuthConfirmationViewController.xib */,
+			);
+			path = ConfirmationView;
 			sourceTree = "<group>";
 		};
 		86ABF34C2126E25B00C5BE60 /* TabBar */ = {
@@ -819,6 +833,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
+				7EDAB7592146B583004918CE /* MobileAuthConfirmationViewController.xib in Resources */,
 				7E241DFD212C0BE4008FCD9A /* AppDetailsViewController.xib in Resources */,
 				7EBF8B8E21231A0600C3D94E /* DeviceTableViewCell.xib in Resources */,
 				7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */,
@@ -1039,6 +1054,7 @@
 				7EBF8B822122F50C00C3D94E /* FetchDeviceListInteractor.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7EBF8B78211C4CDB00C3D94E /* AuthenticatorsInteractor.swift in Sources */,
+				7EDAB7582146B583004918CE /* MobileAuthConfirmationViewController.swift in Sources */,
 				7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */,
 				7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */,
 				7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */,

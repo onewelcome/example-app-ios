@@ -22,6 +22,6 @@ class RegisterAuthenticatorEntity: PinViewControllerEntityProtocol, PasswordAuth
     var pinChallenge: ONGPinChallenge?
 
     var customAuthenticatorRegistrationChallenege: ONGCustomAuthFinishRegistrationChallenge?
-    var data: String?
+    var data: String = ""
     var cancelled: Bool = false
 }

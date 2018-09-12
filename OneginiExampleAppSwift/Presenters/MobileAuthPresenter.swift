@@ -27,6 +27,8 @@ protocol MobileAuthInteractorToPresenterProtocol: class {
     func mobileAuthenticationHandled()
     func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void)
     func mobileAuthenticationCancelled()
+    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity)
+    func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
 }
 
 protocol MobileAuthViewToPresenterProtocol: class {
@@ -35,6 +37,8 @@ protocol MobileAuthViewToPresenterProtocol: class {
     func registerForPushMobileAuth()
     func isUserEnrolledForMobileAuth() -> Bool
     func isUserEnrolledForPushMobileAuth() -> Bool
+    func handleMobileAuthConfirmation()
+    func authenticateWithOTP(_ otp: String)
 }
 
 protocol PushMobileAuthEntrollmentProtocol: class {
@@ -44,14 +48,16 @@ protocol PushMobileAuthEntrollmentProtocol: class {
 
 class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let navigationController: UINavigationController
+    let tabBarController: TabBarController
     let mobileAuthInteractor: MobileAuthInteractorProtocol
     let mobileAuthViewController: MobileAuthViewController
     var pinViewController: PinViewController?
 
-    init(_ mobileAuthViewController: MobileAuthViewController, navigationController: UINavigationController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
+    init(_ mobileAuthViewController: MobileAuthViewController, navigationController: UINavigationController, tabBarController: TabBarController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
         self.navigationController = navigationController
         self.mobileAuthInteractor = mobileAuthInteractor
         self.mobileAuthViewController = mobileAuthViewController
+        self.tabBarController = tabBarController
     }
 
     func presentMobileAuthView() {
@@ -84,22 +90,39 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
             pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
-            navigationController.present(pinViewController!, animated: true)
+            tabBarController.present(pinViewController!, animated: true)
         }
     }
     
+    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
+        let confirmationViewController = MobileAuthConfirmationViewController(mobileAuthEntity: mobileAuthEntity)
+        confirmationViewController.mobileAuthPresenter = self
+        confirmationViewController.modalPresentationStyle = .overCurrentContext
+        tabBarController.present(confirmationViewController, animated: false, completion: nil)
+    }
+    
+    func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .mobileAuth, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+        passwordViewController.modalPresentationStyle = .overCurrentContext
+        tabBarController.present(passwordViewController, animated: false, completion: nil)
+    }
+    
     func mobileAuthenticationHandled() {
-        navigationController.dismiss(animated: true, completion: nil)
+        tabBarController.dismiss(animated: true, completion: nil)
     }
     
     func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        navigationController.dismiss(animated: true, completion: nil)
+        tabBarController.dismiss(animated: true, completion: nil)
+        if !(navigationController.viewControllers.last is WelcomeViewController) {
+            appRouter.popToWelcomeView()
+        }
+        appRouter.updateWelcomeView(selectedProfile: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
     }
     
     func mobileAuthenticationCancelled() {
-        navigationController.dismiss(animated: true, completion: nil)
+        tabBarController.dismiss(animated: true, completion: nil)
     }
 
 }
@@ -133,6 +156,15 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     func isUserEnrolledForPushMobileAuth() -> Bool {
         return mobileAuthInteractor.isUserEnrolledForPushMobileAuth()
     }
+    
+    func handleMobileAuthConfirmation() {
+        mobileAuthInteractor.handleMobileAuthWithConfirmation()
+    }
+    
+    func authenticateWithOTP(_ otp: String) {
+        mobileAuthInteractor.handleOTPMobileAuth(otp)
+    }
+    
 }
 
 extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
@@ -150,5 +182,11 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
 extension MobileAuthPresenter: PinViewToPresenterProtocol {
     func handlePin() {
         mobileAuthInteractor.handlePinMobileAuth()
+    }
+}
+
+extension MobileAuthPresenter: PasswordAuthenticatorViewToPresenterProtocol {
+    func handlePassword() {
+        mobileAuthInteractor.handleCustomAuthenticatorMobileAuth()
     }
 }

@@ -68,6 +68,12 @@ extension PendingMobileAuthViewController: UITableViewDataSource {
 }
 
 extension PendingMobileAuthViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pendingTransaction = pendingMobileAuths[indexPath.row]
+        pendingMobileAuthPresenter?.handlePendingMobileAuth(pendingTransaction)
+        pendingMobileAuthPresenter?.reloadPendingMobileAuth()
+    }
+    
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         if pendingMobileAuths.count > 0 {
             return 135

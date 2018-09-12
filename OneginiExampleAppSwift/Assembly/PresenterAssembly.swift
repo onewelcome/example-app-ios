@@ -62,6 +62,7 @@ class PresenterAssembly: Assembly {
 
         container.register(MobileAuthPresenterProtocol.self) { resolver in MobileAuthPresenter(resolver.resolve(MobileAuthViewController.self)!,
                                                                                                navigationController: resolver.resolve(UINavigationController.self)!,
+                                                                                               tabBarController: resolver.resolve(TabBarController.self)!,
                                                                                                mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
 
         container.register(DisconnectPresenterProtocol.self) { resolver in DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,

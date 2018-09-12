@@ -15,15 +15,18 @@
 
 import TransitionButton
 import UIKit
+import SkyFloatingLabelTextField
 
 class MobileAuthViewController: UIViewController {
     weak var mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol?
 
     @IBOutlet var enrollMobileAuthButton: TransitionButton!
     @IBOutlet var enrollPushMobileAuthButton: TransitionButton!
+    @IBOutlet weak var otpCode: SkyFloatingLabelTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        otpCode.text = ""
         self.enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
         self.enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
     }
@@ -58,6 +61,14 @@ class MobileAuthViewController: UIViewController {
     @IBAction func backPressed(_: Any) {
         mobileAuthViewToPresenterProtocol?.popToDashboardView()
     }
+    
+    @IBAction func authenticate(_ sender: Any) {
+        if let otp = otpCode.text {
+            mobileAuthViewToPresenterProtocol?.authenticateWithOTP(otp)
+            otpCode.text = ""
+        }
+    }
+    
     
     func stopEnrollPushMobileAuthAnimation(succeed: Bool) {
         DispatchQueue.main.async(execute: { () -> Void in

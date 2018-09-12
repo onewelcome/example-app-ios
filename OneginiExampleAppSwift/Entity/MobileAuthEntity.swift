@@ -15,9 +15,26 @@
 
 import UIKit
 
-class MobileAuthEntity: PinViewControllerEntityProtocol {
+enum MobileAuthAuthenticatorType: String {
+    case fingerprint = "biometric"
+    case confirmation = ""
+}
+
+class MobileAuthEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEntityProtocol {    
     var pin: String?
     var pinError: AppError?
     var pinLength: Int?
     var pinChallenge: ONGPinChallenge?
+    
+    var fingerprintChallenge: ONGFingerprintChallenge?
+    var userProfile: ONGUserProfile?
+    var message: String?
+    var authenticatorType: MobileAuthAuthenticatorType?
+    
+    var customAuthChallenge: ONGCustomAuthFinishAuthenticationChallenge?
+    var data: String = ""
+    
+    var cancelled: Bool = false
+
+    var confirmation: ((Bool) -> Void)?
 }

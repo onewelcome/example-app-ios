@@ -41,11 +41,7 @@ class LoginInteractor: NSObject {
             loginEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            if let data = loginEntity.data {
-                customAuthenticatorChallenge.sender.respond(withData: data, challenge: customAuthenticatorChallenge)
-            } else {
-                customAuthenticatorChallenge.sender.respond(withData: "", challenge: customAuthenticatorChallenge)
-            }
+            customAuthenticatorChallenge.sender.respond(withData: loginEntity.data, challenge: customAuthenticatorChallenge)
         }
     }
 }

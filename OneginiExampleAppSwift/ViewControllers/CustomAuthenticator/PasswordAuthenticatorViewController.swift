@@ -19,10 +19,11 @@ import UIKit
 enum PasswordAuthenticatorMode: String {
     case register = "Register"
     case login = "Login"
+    case mobileAuth = "Confirm"
 }
 
 protocol PasswordAuthenticatorEntityProtocol {
-    var data: String? { get set }
+    var data: String { get set }
     var cancelled: Bool { get set }
 }
 
@@ -53,7 +54,15 @@ class PasswordAuthenticatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.setTitle(mode.rawValue, for: .normal)
-        titleLabel.text = mode == .register ? "Create password" : "Login with password"
+        var title = ""
+        if mode == .login {
+            title = "Login with password"
+        } else if mode == .mobileAuth {
+            title = "Confirm push with password"
+        } else if mode == .register {
+            title = "Create password"
+        }
+        titleLabel.text = title
     }
 
     @IBAction func cancel(_: Any) {
@@ -62,7 +71,7 @@ class PasswordAuthenticatorViewController: UIViewController {
     }
 
     @IBAction func submit(_: Any) {
-        entity.data = passwordTextField.text
+        entity.data = passwordTextField.text ?? ""
         viewToPresenterProtocol.handlePassword()
     }
 }

@@ -27,9 +27,11 @@ struct MobileAuthQueue {
     }
     
     mutating func dequeue() {
-        list.removeFirst()
-        if !list.isEmpty, let firstElement = list.first {
-            handleMobileAuthRequest(firstElement)
+        if !list.isEmpty {
+            list.removeFirst()
+            if let firstElement = list.first {
+                handleMobileAuthRequest(firstElement)
+            }
         }
     }
     
