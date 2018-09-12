@@ -48,30 +48,30 @@ class InteractorAssembly: Assembly {
             .initCompleted { resolver, instance in
                 let authenticatorsInteractor = instance as! AuthenticatorsInteractor
                 authenticatorsInteractor.authenticatorsPresenter = resolver.resolve(AuthenticatorsPresenterProtocol.self)
-        }
-        
+            }
+
         container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
             .initCompleted { resolver, instance in
                 let mobileAuthInteractor = instance as! MobileAuthInteractor
                 mobileAuthInteractor.mobileAuthPresenter = resolver.resolve(MobileAuthPresenterProtocol.self)
-        }
-        
+            }
+
         container.register(FetchDeviceListInteractorProtocol.self) { _ in FetchDeviceListInteractor() }
             .initCompleted { resolver, instance in
                 let fetchDeviceListInteractor = instance as! FetchDeviceListInteractor
                 fetchDeviceListInteractor.fetchDeviceListPresenter = resolver.resolve(FetchDeviceListPresenterProtocol.self)
-        }
-        
+            }
+
         container.register(AppDetailsInteractorProtocol.self) { _ in AppDetailsInteractor() }
             .initCompleted { resolver, instance in
                 let appDetailsInteractor = instance as! AppDetailsInteractor
                 appDetailsInteractor.appDetailsPresenter = resolver.resolve(AppDetailsPresenterProtocol.self)
-        }
-        
+            }
+
         container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor() }
             .initCompleted { resolver, instance in
                 let fetchImplicitDataInteractor = instance as! FetchImplicitDataInteractor
                 fetchImplicitDataInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocol.self)
-        }
+            }
     }
 }

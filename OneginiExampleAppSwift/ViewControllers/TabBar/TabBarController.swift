@@ -17,10 +17,9 @@ import UIKit
 
 class TabBarController: UITabBarController {
     func setup(navigationController: UINavigationController,
-        pendingMobileAuthViewController: UIViewController,
-        applicationInfoViewController: UIViewController,
-        delegate: UITabBarControllerDelegate) {
-        
+               pendingMobileAuthViewController: UIViewController,
+               applicationInfoViewController: UIViewController,
+               delegate: UITabBarControllerDelegate) {
         viewControllers = [navigationController, pendingMobileAuthViewController, applicationInfoViewController]
         self.delegate = delegate
         tabBar.isTranslucent = false
@@ -29,11 +28,11 @@ class TabBarController: UITabBarController {
         let tabBarHome = tabBar.items![0]
         tabBarHome.title = "User"
         tabBarHome.image = #imageLiteral(resourceName: "tabBarUserProfile")
-        
+
         let tabBarPending = tabBar.items![1]
         tabBarPending.title = "Notifications"
         tabBarPending.image = #imageLiteral(resourceName: "tabBarNotification")
-        
+
         let tabBarApplicationInfo = tabBar.items![2]
         tabBarApplicationInfo.title = "Application details"
         tabBarApplicationInfo.image = #imageLiteral(resourceName: "info")

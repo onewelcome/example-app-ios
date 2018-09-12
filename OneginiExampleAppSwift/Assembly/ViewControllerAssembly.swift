@@ -22,7 +22,7 @@ class ViewControllerAssembly: Assembly {
         container.register(LoginViewController.self) { _ in LoginViewController() }
             .initCompleted { resolver, loginViewController in
                 loginViewController.loginViewToPresenterProtocol = resolver.resolve(LoginPresenterProtocol.self)!
-        }
+            }
         container.register(RegisterUserViewController.self) { resolver, identityProviders in
             RegisterUserViewController(registerUserViewToPresenterProtocol: resolver.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
         }
@@ -30,12 +30,12 @@ class ViewControllerAssembly: Assembly {
         container.register(WelcomeViewController.self) { _ in WelcomeViewController() }
             .initCompleted { resolver, welcomeViewController in
                 welcomeViewController.welcomePresenterProtocol = resolver.resolve(WelcomePresenterProtocol.self)!
-        }
+            }
 
         container.register(DashboardViewController.self) { _ in DashboardViewController() }
             .initCompleted { resolver, dashboardViewController in
                 dashboardViewController.dashboardViewToPresenterProtocol = resolver.resolve(DashboardPresenterProtocol.self)!
-        }
+            }
 
         container.register(ProfileViewController.self) { _ in ProfileViewController() }
             .initCompleted { resolver, profileViewController in
@@ -50,15 +50,15 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, authenticatorsViewController in
                 authenticatorsViewController.authenticatorsViewToPresenterProtocol = resolver.resolve(AuthenticatorsPresenterProtocol.self)!
             }
-        
+
         container.register(AppDetailsViewController.self) { _ in AppDetailsViewController() }
             .initCompleted { resolver, appDetailsViewController in
-            appDetailsViewController.viewToPresenterProtocol = resolver.resolve(AppDetailsPresenterProtocol.self)!
-        }
+                appDetailsViewController.viewToPresenterProtocol = resolver.resolve(AppDetailsPresenterProtocol.self)!
+            }
 
         container.register(MobileAuthViewController.self) { _ in MobileAuthViewController() }
             .initCompleted { resolver, mobileAuthViewController in
                 mobileAuthViewController.mobileAuthViewToPresenterProtocol = resolver.resolve(MobileAuthPresenterProtocol.self)!
-        }
+            }
     }
 }

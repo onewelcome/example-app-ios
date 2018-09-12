@@ -33,15 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appRouter.setupStartupPresenter()
     }
 
-
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         pushMobileAuthEnrollment?.enrollForPushMobileAuth(deviceToken: deviceToken)
     }
 
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {
         let mappedError = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
         pushMobileAuthEnrollment?.enrollForPushMobileAuthFailed(mappedError)
     }
-
-
 }

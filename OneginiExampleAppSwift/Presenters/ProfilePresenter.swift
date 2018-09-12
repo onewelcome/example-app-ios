@@ -62,7 +62,7 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupChangePinPresenter()
     }
-    
+
     func setupFetchDeviceListPresenter() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupFetchDeviceListPresenter()

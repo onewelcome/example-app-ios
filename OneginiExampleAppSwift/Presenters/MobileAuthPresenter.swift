@@ -83,7 +83,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
     }
-    
+
     func presentPinView(mobileAuthEntity: MobileAuthEntity) {
         if let error = mobileAuthEntity.pinError {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
@@ -93,24 +93,24 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
             tabBarController.present(pinViewController!, animated: true)
         }
     }
-    
+
     func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
         let confirmationViewController = MobileAuthConfirmationViewController(mobileAuthEntity: mobileAuthEntity)
         confirmationViewController.mobileAuthPresenter = self
         confirmationViewController.modalPresentationStyle = .overCurrentContext
         tabBarController.present(confirmationViewController, animated: false, completion: nil)
     }
-    
+
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {
         let passwordViewController = PasswordAuthenticatorViewController(mode: .mobileAuth, entity: mobileAuthEntity, viewToPresenterProtocol: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
         tabBarController.present(passwordViewController, animated: false, completion: nil)
     }
-    
+
     func mobileAuthenticationHandled() {
         tabBarController.dismiss(animated: true, completion: nil)
     }
-    
+
     func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         tabBarController.dismiss(animated: true, completion: nil)
@@ -120,11 +120,10 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         appRouter.updateWelcomeView(selectedProfile: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
     }
-    
+
     func mobileAuthenticationCancelled() {
         tabBarController.dismiss(animated: true, completion: nil)
     }
-
 }
 
 extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
@@ -156,19 +155,17 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     func isUserEnrolledForPushMobileAuth() -> Bool {
         return mobileAuthInteractor.isUserEnrolledForPushMobileAuth()
     }
-    
+
     func handleMobileAuthConfirmation() {
         mobileAuthInteractor.handleMobileAuthWithConfirmation()
     }
-    
+
     func authenticateWithOTP(_ otp: String) {
         mobileAuthInteractor.handleOTPMobileAuth(otp)
     }
-    
 }
 
 extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
-    
     func enrollForPushMobileAuth(deviceToken: Data) {
         mobileAuthInteractor.enrollForPushMobileAuth(deviceToken: deviceToken)
     }
@@ -176,7 +173,6 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
     func enrollForPushMobileAuthFailed(_ error: AppError) {
         enrollForPushMobileAuthFailed(error)
     }
-
 }
 
 extension MobileAuthPresenter: PinViewToPresenterProtocol {

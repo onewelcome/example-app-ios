@@ -13,17 +13,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import TransitionButton
+import UIKit
 
 class AppDetailsViewController: UIViewController {
+    @IBOutlet var appId: UILabel!
+    @IBOutlet var appVersion: UILabel!
+    @IBOutlet var appPlatform: UILabel!
 
-    @IBOutlet weak var appId: UILabel!
-    @IBOutlet weak var appVersion: UILabel!
-    @IBOutlet weak var appPlatform: UILabel!
-    
     weak var viewToPresenterProtocol: AppDetailsViewToPresenterProtocol?
-    
+
     var applicationDetails: ApplicationDetails? {
         didSet {
             appId.text = applicationDetails?.appId
@@ -31,10 +30,9 @@ class AppDetailsViewController: UIViewController {
             appPlatform.text = applicationDetails?.appPlatform
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewToPresenterProtocol?.reloadAppDetails()
     }
-    
 }

@@ -16,7 +16,7 @@
 import UIKit
 
 protocol ErrorPresenterProtocol {
-    func showErrorAlert(error: AppError, okButtonHandler:((UIAlertAction) -> Void)?)
+    func showErrorAlert(error: AppError, okButtonHandler: ((UIAlertAction) -> Void)?)
     func showErrorAlertWithRetryAction(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
 }
 
@@ -27,7 +27,7 @@ class ErrorPresenter: ErrorPresenterProtocol {
         self.navigationController = navigationController
     }
 
-    func showErrorAlert(error: AppError, okButtonHandler:((UIAlertAction) -> Void)? = nil) {
+    func showErrorAlert(error: AppError, okButtonHandler: ((UIAlertAction) -> Void)? = nil) {
         let message = "\(error.errorDescription) \n \(error.recoverySuggestion)"
         let alert = UIAlertController(title: error.title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: okButtonHandler)

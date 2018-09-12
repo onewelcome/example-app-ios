@@ -16,41 +16,37 @@
 import UIKit
 
 class DeviceListViewController: UIViewController {
+    @IBOutlet var popupContentView: UIView!
+    @IBOutlet var tableView: UITableView?
 
-    @IBOutlet weak var popupContentView: UIView!    
-    @IBOutlet weak var tableView: UITableView?
-    
     var deviceList: [Device] = [] {
         didSet {
             tableView?.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.register(UINib(nibName: "DeviceTableViewCell", bundle: nil), forCellReuseIdentifier: "DeviceTableViewCell")
     }
-    
-    @IBAction func dismissAction(_ sender: Any) {
+
+    @IBAction func dismissAction(_: Any) {
         dismiss(animated: false, completion: nil)
     }
-    
 }
 
 extension DeviceListViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return deviceList.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceTableViewCell", for: indexPath) as! DeviceTableViewCell
         let device = deviceList[indexPath.row]
-        
+
         cell.applicationLabel.text = device.application
         cell.nameLabel.text = device.name
         cell.idLabel.text = device.id
         return cell
     }
-    
 }

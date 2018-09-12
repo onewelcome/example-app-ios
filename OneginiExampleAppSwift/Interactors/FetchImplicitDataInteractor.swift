@@ -13,7 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import UIKit
 
 protocol FetchImplicitDataInteractorProtocol {
@@ -21,9 +20,8 @@ protocol FetchImplicitDataInteractorProtocol {
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    
     weak var loginPresenter: LoginInteractorToPresenterProtocol?
-    
+
     func fetchImplicitResources(profile: ONGUserProfile) {
         if isProfileImplicitlyAuthenticated(profile) {
             implicitResourcesRequest { userIdDecorated, error in
@@ -51,24 +49,23 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
             }
         }
     }
-    
+
     fileprivate func isProfileImplicitlyAuthenticated(_ profile: ONGUserProfile) -> Bool {
         let implicitlyAuthenticatedProfile = ONGUserClient.sharedInstance().implicitlyAuthenticatedUserProfile()
         return implicitlyAuthenticatedProfile != nil && implicitlyAuthenticatedProfile == profile
     }
-    
-    fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion:@escaping (Bool, AppError?) -> Void) {
+
+    fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion: @escaping (Bool, AppError?) -> Void) {
         ONGUserClient.sharedInstance().implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
             if !success {
                 let mappedError = ErrorMapper().mapError(error)
                 completion(success, mappedError)
             }
             completion(success, nil)
-
         }
     }
-    
-    fileprivate func implicitResourcesRequest(completion:@escaping (String?, AppError?) -> Void) {
+
+    fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
         let implicitRequest = ONGResourceRequest(path: "resources/user-id-decorated", method: "GET")
         ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
             if let error = error {
@@ -78,11 +75,10 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
                 if let data = response?.data {
                     if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: String],
                         let userIdDecorated = responseData["decorated_user_id"] {
-                            completion(userIdDecorated, nil)
+                        completion(userIdDecorated, nil)
                     }
                 }
             }
         }
     }
-
 }

@@ -24,29 +24,29 @@ class PresenterAssembly: Assembly {
 
         container.register(WelcomePresenterProtocol.self) { resolver in
             WelcomePresenter(resolver.resolve(WelcomeViewController.self)!,
-                loginPresenter: resolver.resolve(LoginPresenterProtocol.self)!,
-                registerUserPresenter: resolver.resolve(RegisterUserPresenterProtocol.self)!,
-                navigationController: resolver.resolve(UINavigationController.self)!,
-                tabBarController: resolver.resolve(TabBarController.self)!)
+                             loginPresenter: resolver.resolve(LoginPresenterProtocol.self)!,
+                             registerUserPresenter: resolver.resolve(RegisterUserPresenterProtocol.self)!,
+                             navigationController: resolver.resolve(UINavigationController.self)!,
+                             tabBarController: resolver.resolve(TabBarController.self)!)
         }
 
         container.register(RegisterUserPresenterProtocol.self) { resolver in
             RegisterUserPresenter(registerUserInteractor: resolver.resolve(RegisterUserInteractorProtocol.self)!,
-                navigationController: resolver.resolve(UINavigationController.self)!,
-                userRegistrationNavigationController: UINavigationController())
+                                  navigationController: resolver.resolve(UINavigationController.self)!,
+                                  userRegistrationNavigationController: UINavigationController())
         }
 
         container.register(LoginPresenterProtocol.self) { resolver in
             LoginPresenter(loginInteractor: resolver.resolve(LoginInteractorProtocol.self)!,
-                fetchImplicitDataInteractor: resolver.resolve(FetchImplicitDataInteractorProtocol.self)!,
-                navigationController: resolver.resolve(UINavigationController.self)!,
-                loginViewController: resolver.resolve(LoginViewController.self)!)
+                           fetchImplicitDataInteractor: resolver.resolve(FetchImplicitDataInteractorProtocol.self)!,
+                           navigationController: resolver.resolve(UINavigationController.self)!,
+                           loginViewController: resolver.resolve(LoginViewController.self)!)
         }.inObjectScope(.weak)
 
         container.register(DashboardPresenterProtocol.self) { resolver in
             DashboardPresenter(resolver.resolve(DashboardViewController.self)!,
-                logoutInteractor: resolver.resolve(LogoutInteractorProtocol.self)!,
-                navigationController: resolver.resolve(UINavigationController.self)!)
+                               logoutInteractor: resolver.resolve(LogoutInteractorProtocol.self)!,
+                               navigationController: resolver.resolve(UINavigationController.self)!)
         }
 
         container.register(ErrorPresenterProtocol.self) { resolver in
@@ -54,11 +54,11 @@ class PresenterAssembly: Assembly {
         }
 
         container.register(AuthenticatorsPresenterProtocol.self) { resolver in AuthenticatorsPresenter(resolver.resolve(AuthenticatorsInteractorProtocol.self)!,
-            navigationController: resolver.resolve(UINavigationController.self)!,
-            authenticatorsViewController: resolver.resolve(AuthenticatorsViewController.self)!) }
+                                                                                                       navigationController: resolver.resolve(UINavigationController.self)!,
+                                                                                                       authenticatorsViewController: resolver.resolve(AuthenticatorsViewController.self)!) }
 
         container.register(ProfilePresenterProtocol.self) { resolver in ProfilePresenter(resolver.resolve(ProfileViewController.self)!,
-            navigationController: resolver.resolve(UINavigationController.self)!) }
+                                                                                         navigationController: resolver.resolve(UINavigationController.self)!) }
 
         container.register(MobileAuthPresenterProtocol.self) { resolver in MobileAuthPresenter(resolver.resolve(MobileAuthViewController.self)!,
                                                                                                navigationController: resolver.resolve(UINavigationController.self)!,
@@ -66,24 +66,24 @@ class PresenterAssembly: Assembly {
                                                                                                mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
 
         container.register(DisconnectPresenterProtocol.self) { resolver in DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,
-            navigationController: resolver.resolve(UINavigationController.self)!) }
+                                                                                               navigationController: resolver.resolve(UINavigationController.self)!) }
 
         container.register(ChangePinPresenterProtocol.self) { resolver in ChangePinPresenter(changePinInteractor: resolver.resolve(ChangePinInteractorProtocol.self)!,
-            navigationController: resolver.resolve(UINavigationController.self)!,
-            changePinNavigationController: UINavigationController()) }
+                                                                                             navigationController: resolver.resolve(UINavigationController.self)!,
+                                                                                             changePinNavigationController: UINavigationController()) }
 
         container.register(PendingMobileAuthPresenterProtocol.self) { resolver in
             PendingMobileAuthPresenter(pendingMobileAuthViewController: resolver.resolve((UIViewController & PendingMobileAuthPresenterViewDelegate).self)!,
-                mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
+                                       mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
 
         container.register(FetchDeviceListPresenterProtocol.self) { resolver in
             FetchDeviceListPresenter(fetchDeviceListInteractor: resolver.resolve(FetchDeviceListInteractorProtocol.self)!,
-                navigationController: resolver.resolve(UINavigationController.self)!) }
+                                     navigationController: resolver.resolve(UINavigationController.self)!) }
 
         container.register(AppDetailsPresenterProtocol.self) { resolver in
             AppDetailsPresenter(resolver.resolve(AppDetailsViewController.self)!,
-                appDetailsInteractor: resolver.resolve(AppDetailsInteractorProtocol.self)!,
-                navigationController: resolver.resolve(UINavigationController.self)!) }
+                                appDetailsInteractor: resolver.resolve(AppDetailsInteractorProtocol.self)!,
+                                navigationController: resolver.resolve(UINavigationController.self)!) }
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)

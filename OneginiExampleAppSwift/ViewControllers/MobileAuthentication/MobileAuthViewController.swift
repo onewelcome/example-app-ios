@@ -13,31 +13,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import SkyFloatingLabelTextField
 import TransitionButton
 import UIKit
-import SkyFloatingLabelTextField
 
 class MobileAuthViewController: UIViewController {
     weak var mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol?
 
     @IBOutlet var enrollMobileAuthButton: TransitionButton!
     @IBOutlet var enrollPushMobileAuthButton: TransitionButton!
-    @IBOutlet weak var otpCode: SkyFloatingLabelTextField!
-    
+    @IBOutlet var otpCode: SkyFloatingLabelTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         otpCode.text = ""
-        self.enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
-        self.enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
+        enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
+        enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol else { return }
         enrollMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth()
         enrollPushMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth()
     }
-    
+
     @IBAction func enrollMobileAuth(_: Any) {
         enrollMobileAuthButton.startAnimation()
         view.isUserInteractionEnabled = false
@@ -61,15 +61,14 @@ class MobileAuthViewController: UIViewController {
     @IBAction func backPressed(_: Any) {
         mobileAuthViewToPresenterProtocol?.popToDashboardView()
     }
-    
-    @IBAction func authenticate(_ sender: Any) {
+
+    @IBAction func authenticate(_: Any) {
         if let otp = otpCode.text {
             mobileAuthViewToPresenterProtocol?.authenticateWithOTP(otp)
             otpCode.text = ""
         }
     }
-    
-    
+
     func stopEnrollPushMobileAuthAnimation(succeed: Bool) {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
@@ -80,7 +79,7 @@ class MobileAuthViewController: UIViewController {
             })
         })
     }
-    
+
     func stopEnrollMobileAuthAnimation(succeed: Bool) {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {

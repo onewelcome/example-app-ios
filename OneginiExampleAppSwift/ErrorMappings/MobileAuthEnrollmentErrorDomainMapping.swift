@@ -13,22 +13,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 class MobileAuthEnrollmentErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         let title = "Mobile auth enrollment error"
-        
+
         switch error.code {
         case ONGMobileAuthEnrollmentError.userNotAuthenticated.rawValue:
             let errorDescription = "No user is currently authenticated."
             let recoverySuggestion = "Please authenticate user and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
-            
+
         case ONGMobileAuthEnrollmentError.deviceAlreadyEnrolled.rawValue:
             let errorDescription = "The device is already enrolled for mobile authentication."
             let recoverySuggestion = "Please authenticate user and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
-            
+
         case ONGMobileAuthEnrollmentError.enrollmentNotAvailable.rawValue:
             let errorDescription = "Mobile authentication enrollment is not available."
             let recoverySuggestion = ""
@@ -38,12 +37,12 @@ class MobileAuthEnrollmentErrorDomainMapping {
             let errorDescription = "The user is already enrolled for mobile authentication on another device."
             let recoverySuggestion = "Please disable mobile authentication on the other device and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
-            
+
         case ONGMobileAuthEnrollmentError.notEnrolled.rawValue:
             let errorDescription = "The user is not enrolled for mobile authentication."
             let recoverySuggestion = "Enroll for mobile authentication."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
-            
+
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

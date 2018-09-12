@@ -106,11 +106,11 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
             loginViewController.selectProfile(index: 0)
         }
     }
-    
+
     func presentImplicitData(data: String) {
         loginViewController.implicitData.text = data
     }
-    
+
     func fetchImplicitDataFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
@@ -135,7 +135,7 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     func reloadAuthenticators(_ profile: ONGUserProfile) {
         loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
     }
-    
+
     func fetchImplicitData(profile: ONGUserProfile) {
         fetchImplicitDataInteractor.fetchImplicitResources(profile: profile)
     }

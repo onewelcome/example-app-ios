@@ -40,7 +40,7 @@ class ErrorMapper {
             return MobileAuthEnrollmentErrorDomainMapping().mapError(error)
         case ONGFetchImplicitResourceErrorDomain:
             return FetchImplicitResourceErrorDomainMapping().mapError(error)
-            
+
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

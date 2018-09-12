@@ -17,7 +17,7 @@ import UIKit
 
 protocol PendingMobileAuthPresenterProtocol: class {
     var viewDelegate: UIViewController & PendingMobileAuthPresenterViewDelegate { get set }
-    
+
     func reloadPendingMobileAuth()
     func handlePendingMobileAuth(_ pendingTransaction: ONGPendingMobileAuthRequest)
 }
@@ -46,7 +46,7 @@ class PendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol {
             }
         }
     }
-    
+
     func handlePendingMobileAuth(_ pendingTransaction: ONGPendingMobileAuthRequest) {
         mobileAuthInteractor.handlePendingMobileAuth(pendingTransaction)
     }

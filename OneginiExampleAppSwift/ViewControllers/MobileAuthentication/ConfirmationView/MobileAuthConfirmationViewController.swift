@@ -16,23 +16,22 @@
 import UIKit
 
 class MobileAuthConfirmationViewController: UIViewController {
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var message: UILabel!
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var message: UILabel!
-    
     var mobileAuthEntity: MobileAuthEntity
-    
+
     weak var mobileAuthPresenter: MobileAuthViewToPresenterProtocol?
-    
+
     init(mobileAuthEntity: MobileAuthEntity) {
         self.mobileAuthEntity = mobileAuthEntity
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let profileId = mobileAuthEntity.userProfile?.profileId {
@@ -40,14 +39,13 @@ class MobileAuthConfirmationViewController: UIViewController {
         }
         message.text = mobileAuthEntity.message
     }
-    
-    @IBAction func cancel(_ sender: Any) {
+
+    @IBAction func cancel(_: Any) {
         mobileAuthEntity.cancelled = true
         mobileAuthPresenter?.handleMobileAuthConfirmation()
     }
-    
-    @IBAction func confirm(_ sender: Any) {
+
+    @IBAction func confirm(_: Any) {
         mobileAuthPresenter?.handleMobileAuthConfirmation()
     }
-    
 }

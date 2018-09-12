@@ -16,7 +16,6 @@
 import Foundation
 
 struct MobileAuthQueue {
-
     fileprivate var list = [MobileAuthRequest]()
 
     mutating func enqueue(_ mobileAuthRequest: MobileAuthRequest) {
@@ -25,7 +24,7 @@ struct MobileAuthQueue {
         }
         list.append(mobileAuthRequest)
     }
-    
+
     mutating func dequeue() {
         if !list.isEmpty {
             list.removeFirst()
@@ -34,7 +33,7 @@ struct MobileAuthQueue {
             }
         }
     }
-    
+
     fileprivate func handleMobileAuthRequest(_ mobileAuthRequest: MobileAuthRequest) {
         if let pendingTransaction = mobileAuthRequest.pendingTransaction {
             ONGUserClient.sharedInstance().handlePendingPush(pendingTransaction, delegate: mobileAuthRequest.delegate)
@@ -42,5 +41,4 @@ struct MobileAuthQueue {
             ONGUserClient.sharedInstance().handleOTPMobileAuthRequest(otp, delegate: mobileAuthRequest.delegate)
         }
     }
-    
 }

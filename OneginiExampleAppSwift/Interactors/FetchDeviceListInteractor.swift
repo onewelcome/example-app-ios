@@ -20,7 +20,6 @@ protocol FetchDeviceListInteractorProtocol {
 }
 
 class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
-    
     weak var fetchDeviceListPresenter: FetchDeviceListInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
 
@@ -33,12 +32,11 @@ class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
             } else {
                 if let data = response?.data,
                     let deviceList = try? self.decoder.decode(Devices.self, from: data) {
-                        self.fetchDeviceListPresenter?.presentDeviceList(deviceList.devices)
-                    }
+                    self.fetchDeviceListPresenter?.presentDeviceList(deviceList.devices)
+                }
             }
         }
     }
-    
 }
 
 struct Devices: Codable {
@@ -46,9 +44,7 @@ struct Devices: Codable {
 }
 
 struct Device: Codable {
-    
     var name: String
     var id: String
     var application: String
 }
-
