@@ -23,7 +23,7 @@ protocol MobileAuthInteractorProtocol {
     func isUserEnrolledForPushMobileAuth() -> Bool
     func handlePinMobileAuth()
     func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void)
-    func handleMobileAuthWithConfirmation()
+    func handleMobileAuth()
     func handleCustomAuthenticatorMobileAuth()
     func handlePendingMobileAuth(_ pendingTransaction: ONGPendingMobileAuthRequest)
     func handleOTPMobileAuth(_ otp: String)
@@ -114,7 +114,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
-    func handleMobileAuthWithConfirmation() {
+    func handleMobileAuth() {
         if mobileAuthEntity.authenticatorType == .fingerprint {
             handleFingerprintMobileAuth()
         } else if mobileAuthEntity.authenticatorType == .confirmation {

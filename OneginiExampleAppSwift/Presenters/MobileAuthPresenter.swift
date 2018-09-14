@@ -152,7 +152,7 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     }
 
     func handleMobileAuthConfirmation() {
-        mobileAuthInteractor.handleMobileAuthWithConfirmation()
+        mobileAuthInteractor.handleMobileAuth()
     }
 
     func authenticateWithOTP(_ otp: String) {
