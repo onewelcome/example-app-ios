@@ -107,12 +107,12 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     }
 
     func dismiss() {
-        tabBarController.dismiss(animated: true, completion: nil)
+        tabBarController.dismiss(animated: false, completion: nil)
     }
 
     func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        tabBarController.dismiss(animated: true, completion: nil)
+        tabBarController.dismiss(animated: false, completion: nil)
         if !(navigationController.viewControllers.last is WelcomeViewController) {
             appRouter.popToWelcomeView()
         }
