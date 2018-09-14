@@ -166,7 +166,8 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
     }
 
     func enrollForPushMobileAuthFailed(_ error: AppError) {
-        enrollForPushMobileAuthFailed(error)
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupErrorAlert(error: error)
     }
 }
 
