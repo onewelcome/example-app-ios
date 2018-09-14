@@ -24,9 +24,8 @@ protocol MobileAuthInteractorToPresenterProtocol: class {
     func enrollMobileAuthFailed(_ error: AppError)
     func enrollPushMobileAuthFailed(_ error: AppError)
     func presentPinView(mobileAuthEntity: MobileAuthEntity)
-    func mobileAuthenticationHandled()
+    func dismiss()
     func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void)
-    func mobileAuthenticationCancelled()
     func presentConfirmationView(mobileAuthEntity: MobileAuthEntity)
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
 }
@@ -107,7 +106,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         tabBarController.present(passwordViewController, animated: false, completion: nil)
     }
 
-    func mobileAuthenticationHandled() {
+    func dismiss() {
         tabBarController.dismiss(animated: true, completion: nil)
     }
 
@@ -119,10 +118,6 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         }
         appRouter.updateWelcomeView(selectedProfile: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
-    }
-
-    func mobileAuthenticationCancelled() {
-        tabBarController.dismiss(animated: true, completion: nil)
     }
 }
 

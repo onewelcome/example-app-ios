@@ -17,6 +17,7 @@ import UIKit
 
 enum MobileAuthAuthenticatorType: String {
     case fingerprint = "biometric"
+    case pin = "PIN"
     case confirmation = ""
 }
 
