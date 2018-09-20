@@ -17,7 +17,7 @@ import UIKit
 
 typealias ChangePinPresenterProtocol = ChangePinInteractorToPresenterProtocol
 
-protocol ChangePinInteractorToPresenterProtocol: class {
+protocol ChangePinInteractorToPresenterProtocol: AnyObject {
     func startChangePinFlow()
     func presentLoginPinView(changePinEntity: ChangePinEntity)
     func presentCreatePinView(changePinEntity: ChangePinEntity)

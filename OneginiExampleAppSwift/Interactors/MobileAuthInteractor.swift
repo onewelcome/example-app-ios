@@ -15,7 +15,7 @@
 
 import UserNotifications
 
-protocol MobileAuthInteractorProtocol {
+protocol MobileAuthInteractorProtocol: AnyObject{
     func enrollForMobileAuth()
     func enrollForPushMobileAuth(deviceToken: Data)
     func registerForPushMessages(completion: @escaping (Bool) -> Void)

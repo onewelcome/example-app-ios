@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol FetchImplicitDataInteractorProtocol {
+protocol FetchImplicitDataInteractorProtocol: AnyObject {
     func fetchImplicitResources(profile: ONGUserProfile)
 }
 

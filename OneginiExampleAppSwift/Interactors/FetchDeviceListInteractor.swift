@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol FetchDeviceListInteractorProtocol {
+protocol FetchDeviceListInteractorProtocol: AnyObject {
     func fetchDeviceList()
 }
 

@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol ChangePinInteractorProtocol {
+protocol ChangePinInteractorProtocol: AnyObject {
     func changePin()
     func handlePin()
 }

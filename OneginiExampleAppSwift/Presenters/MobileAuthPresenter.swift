@@ -17,7 +17,7 @@ import UIKit
 
 typealias MobileAuthPresenterProtocol = MobileAuthInteractorToPresenterProtocol & MobileAuthViewToPresenterProtocol
 
-protocol MobileAuthInteractorToPresenterProtocol: class {
+protocol MobileAuthInteractorToPresenterProtocol: AnyObject {
     func presentMobileAuthView()
     func mobileAuthEnrolled()
     func pushMobileAuthEnrolled()
@@ -30,7 +30,7 @@ protocol MobileAuthInteractorToPresenterProtocol: class {
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
 }
 
-protocol MobileAuthViewToPresenterProtocol: class {
+protocol MobileAuthViewToPresenterProtocol: AnyObject {
     func popToDashboardView()
     func enrollForMobileAuth()
     func registerForPushMobileAuth()
@@ -40,7 +40,7 @@ protocol MobileAuthViewToPresenterProtocol: class {
     func authenticateWithOTP(_ otp: String)
 }
 
-protocol PushMobileAuthEntrollmentProtocol: class {
+protocol PushMobileAuthEntrollmentProtocol: AnyObject {
     func enrollForPushMobileAuth(deviceToken: Data)
     func enrollForPushMobileAuthFailed(_ error: AppError)
 }

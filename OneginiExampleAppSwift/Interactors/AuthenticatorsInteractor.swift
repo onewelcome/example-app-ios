@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol AuthenticatorsInteractorProtocol {
+protocol AuthenticatorsInteractorProtocol: AnyObject {
     func authenticatorsListForAuthenticatedUserProfile() -> Array<ONGAuthenticator>
     func registerAuthenticator(_ authenticator: ONGAuthenticator)
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)

@@ -17,7 +17,7 @@ import UIKit
 
 typealias FetchDeviceListPresenterProtocol = FetchDeviceListInteractorToPresenterProtocol
 
-protocol FetchDeviceListInteractorToPresenterProtocol: class {
+protocol FetchDeviceListInteractorToPresenterProtocol: AnyObject {
     func presentDeviceList(_ deviceList: [Device])
     func setupDeviceListPresenter()
     func fetchDeviceListFailed(_ error: AppError)

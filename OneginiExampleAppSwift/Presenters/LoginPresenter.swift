@@ -22,7 +22,7 @@ protocol ParentToChildPresenterProtocol {
     func updateSelectedProfile(_ profile: ONGUserProfile)
 }
 
-protocol LoginInteractorToPresenterProtocol: class {
+protocol LoginInteractorToPresenterProtocol: AnyObject {
     func presentPinView(loginEntity: LoginEntity)
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func loginActionFailed(_ error: AppError, profile: ONGUserProfile)

@@ -17,14 +17,14 @@ import UIKit
 
 typealias AppDetailsPresenterProtocol = AppDetailsInteractorToPresenterProtocol & AppDetailsViewToPresenterProtocol
 
-protocol AppDetailsInteractorToPresenterProtocol: class {
+protocol AppDetailsInteractorToPresenterProtocol: AnyObject {
     var appDetailsViewController: AppDetailsViewController { get set }
 
     func setupAppDetailsView(_ appDetails: ApplicationDetails)
     func fetchAppDetailsFailed(_ error: AppError)
 }
 
-protocol AppDetailsViewToPresenterProtocol: class {
+protocol AppDetailsViewToPresenterProtocol: AnyObject {
     func reloadAppDetails()
 }
 

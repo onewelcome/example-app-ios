@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol AppDetailsInteractorProtocol {
+protocol AppDetailsInteractorProtocol: AnyObject {
     func fetchDeviceResources()
 }
 
