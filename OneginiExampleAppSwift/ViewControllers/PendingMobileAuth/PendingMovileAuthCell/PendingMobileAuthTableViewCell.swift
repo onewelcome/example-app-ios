@@ -18,11 +18,11 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
     func setup(pendingMobileAuthEntity: ONGPendingMobileAuthRequest) {
         profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
         messageLabel.text = pendingMobileAuthEntity.message
-        
+
         if let date = pendingMobileAuthEntity.date {
             timeLabel.text = DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
             if let timeToLive = pendingMobileAuthEntity.timeToLive {
-              expireTimeLabel.text = "Expiration time: " + DateFormatter.localizedString(from: date.addingTimeInterval(timeToLive.doubleValue), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
+                expireTimeLabel.text = "Expiration time: " + DateFormatter.localizedString(from: date.addingTimeInterval(timeToLive.doubleValue), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
             } else {
                 expireTimeLabel.text = ""
             }
@@ -30,6 +30,5 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
             timeLabel.text = ""
             expireTimeLabel.text = ""
         }
-        
     }
 }

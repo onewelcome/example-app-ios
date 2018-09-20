@@ -20,18 +20,18 @@ class RouterAssembly: Assembly {
     func assemble(container: Container) {
         container.register(AppRouterProtocol.self) { resolver in
             AppRouter(window: UIWindow(frame: UIScreen.main.bounds),
-                startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
-                welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
-                dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
-                errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!,
-                authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!,
-                profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
-                mobileAuthPresenter: resolver.resolve(MobileAuthPresenterProtocol.self)!,
-                disconnectPresenter: resolver.resolve(DisconnectPresenterProtocol.self)!,
-                changePinPresenter: resolver.resolve(ChangePinPresenterProtocol.self)!,
-                pendingMobileAuthPresenter: resolver.resolve(PendingMobileAuthPresenterProtocol.self)!,
-                fetchDeviceListPresenter: resolver.resolve(FetchDeviceListPresenterProtocol.self)!,
-                appDetailsPresenter: resolver.resolve(AppDetailsPresenterProtocol.self)!)
+                      startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
+                      welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
+                      dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
+                      errorPresenter: resolver.resolve(ErrorPresenterProtocol.self)!,
+                      authenticatorsPresenter: resolver.resolve(AuthenticatorsPresenterProtocol.self)!,
+                      profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
+                      mobileAuthPresenter: resolver.resolve(MobileAuthPresenterProtocol.self)!,
+                      disconnectPresenter: resolver.resolve(DisconnectPresenterProtocol.self)!,
+                      changePinPresenter: resolver.resolve(ChangePinPresenterProtocol.self)!,
+                      pendingMobileAuthPresenter: resolver.resolve(PendingMobileAuthPresenterProtocol.self)!,
+                      fetchDeviceListPresenter: resolver.resolve(FetchDeviceListPresenterProtocol.self)!,
+                      appDetailsPresenter: resolver.resolve(AppDetailsPresenterProtocol.self)!)
         }.inObjectScope(.container)
     }
 }

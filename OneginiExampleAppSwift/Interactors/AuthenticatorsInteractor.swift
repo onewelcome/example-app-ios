@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol AuthenticatorsInteractorProtocol {
+protocol AuthenticatorsInteractorProtocol: AnyObject {
     func authenticatorsListForAuthenticatedUserProfile() -> Array<ONGAuthenticator>
     func registerAuthenticator(_ authenticator: ONGAuthenticator)
     func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
@@ -52,11 +52,7 @@ class AuthenticatorsInteractor: NSObject {
             registerAuthenticatorEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            if let data = registerAuthenticatorEntity.data {
-                customAuthenticatorChallenge.sender.respond(withData: data, challenge: customAuthenticatorChallenge)
-            } else {
-                customAuthenticatorChallenge.sender.respond(withData: "", challenge: customAuthenticatorChallenge)
-            }
+            customAuthenticatorChallenge.sender.respond(withData: registerAuthenticatorEntity.data, challenge: customAuthenticatorChallenge)
         }
     }
 }

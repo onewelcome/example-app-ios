@@ -38,15 +38,23 @@ class StartupPresenter: StartupInteractorToPresenterProtocol {
         startupInteractor.oneginiSDKStartup { _, error in
             self.startupViewController.state = .loaded
             if let error = error {
-                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-                appRouter.setupErrorAlertWithRetry(error: error, retryHandler: { _ in
+                let errorAlert = self.createErrorAlert(error: error, retryHandler: { _ in
                     self.oneigniSDKStartup()
                 })
+                self.startupViewController.present(errorAlert, animated: true, completion: nil)
             } else {
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
                 appRouter.setupTabBar()
             }
         }
+    }
+    
+    func createErrorAlert(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) -> UIAlertController {
+        let message = "\(error.errorDescription) \n \(error.recoverySuggestion)"
+        let alert = UIAlertController(title: error.title, message: message, preferredStyle: .alert)
+        let retryAction = UIAlertAction(title: "Retry", style: .cancel, handler: retryHandler)
+        alert.addAction(retryAction)
+        return alert
     }
 
     func presentWelcomeView() {

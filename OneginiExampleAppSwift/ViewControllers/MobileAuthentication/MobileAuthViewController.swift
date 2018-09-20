@@ -13,72 +13,82 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import SkyFloatingLabelTextField
 import TransitionButton
 import UIKit
-import UserNotifications
 
 class MobileAuthViewController: UIViewController {
-    let mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol
+    weak var mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol?
 
     @IBOutlet var enrollMobileAuthButton: TransitionButton!
     @IBOutlet var enrollPushMobileAuthButton: TransitionButton!
+    @IBOutlet var otpCode: SkyFloatingLabelTextField!
 
-    init(_ mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol) {
-        self.mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol
-        super.init(nibName: nil, bundle: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        otpCode.text = ""
+        enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
+        enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
     }
 
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol else { return }
+        enrollMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth()
+        enrollPushMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth()
     }
 
     @IBAction func enrollMobileAuth(_: Any) {
         enrollMobileAuthButton.startAnimation()
-        ONGUserClient.sharedInstance().enroll { _, _ in
-        }
         view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-            sleep(3) // 3: Call enroll for mobile auth method from OneginiSDK
-
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
-                    self.enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
-                    self.enrollMobileAuthButton.isEnabled = false
-                    self.view.isUserInteractionEnabled = true
-                })
-            })
+            self.mobileAuthViewToPresenterProtocol?.enrollForMobileAuth()
         })
     }
 
     @IBAction func enrollPushMobileAuth(_: Any) {
         enrollPushMobileAuthButton.startAnimation()
-        let center = UNUserNotificationCenter.current()
-
-        center.requestAuthorization(options: [.badge, .alert, .sound]) { _, _ in
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
         view.isUserInteractionEnabled = false
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         backgroundQueue.async(execute: {
-            sleep(3) // 3: Call enroll for push mobile auth method from OneginiSDK
-
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
-                    self.enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
-                    self.enrollPushMobileAuthButton.isEnabled = false
-                    self.view.isUserInteractionEnabled = true
-                })
-            })
+            self.mobileAuthViewToPresenterProtocol?.registerForPushMobileAuth()
         })
     }
 
     @IBAction func backPressed(_: Any) {
-        mobileAuthViewToPresenterProtocol.popToDashboardView()
+        mobileAuthViewToPresenterProtocol?.popToDashboardView()
+    }
+
+    @IBAction func authenticate(_: Any) {
+        if let otp = otpCode.text {
+            mobileAuthViewToPresenterProtocol?.authenticateWithOTP(otp)
+            otpCode.text = ""
+        }
+    }
+
+    func stopEnrollPushMobileAuthAnimation(succeed: Bool) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
+                self.view.isUserInteractionEnabled = true
+                if succeed {
+                    self.enrollPushMobileAuthButton.isEnabled = false
+                }
+            })
+        })
+    }
+
+    func stopEnrollMobileAuthAnimation(succeed: Bool) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
+                self.view.isUserInteractionEnabled = true
+                if succeed {
+                    self.enrollMobileAuthButton.isEnabled = false
+                }
+            })
+        })
     }
 }
 

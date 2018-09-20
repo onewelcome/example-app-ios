@@ -16,10 +16,7 @@
 import UIKit
 
 class DeviceTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var applicationLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
-    
-    
+    @IBOutlet var applicationLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var idLabel: UILabel!
 }

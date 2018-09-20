@@ -34,7 +34,7 @@ protocol AppRouterProtocol: class {
     func popToWelcomeView()
     func popToProfileView()
 
-    func setupErrorAlert(error: AppError)
+    func setupErrorAlert(error: AppError, okButtonHandler: ((UIAlertAction) -> Void)?)
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
 
     func setupStartupPresenter()
@@ -69,18 +69,18 @@ class AppRouter: NSObject, AppRouterProtocol {
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
 
     init(window: UIWindow,
-        startupPresenter: StartupPresenterProtocol,
-        welcomePresenter: WelcomePresenterProtocol,
-        dashboardPresenter: DashboardPresenterProtocol,
-        errorPresenter: ErrorPresenterProtocol,
-        authenticatorsPresenter: AuthenticatorsPresenterProtocol,
-        profilePresenter: ProfilePresenterProtocol,
-        mobileAuthPresenter: MobileAuthPresenterProtocol,
-        disconnectPresenter: DisconnectPresenterProtocol,
-        changePinPresenter: ChangePinPresenterProtocol,
-        pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
-        fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
-        appDetailsPresenter: AppDetailsPresenterProtocol) {
+         startupPresenter: StartupPresenterProtocol,
+         welcomePresenter: WelcomePresenterProtocol,
+         dashboardPresenter: DashboardPresenterProtocol,
+         errorPresenter: ErrorPresenterProtocol,
+         authenticatorsPresenter: AuthenticatorsPresenterProtocol,
+         profilePresenter: ProfilePresenterProtocol,
+         mobileAuthPresenter: MobileAuthPresenterProtocol,
+         disconnectPresenter: DisconnectPresenterProtocol,
+         changePinPresenter: ChangePinPresenterProtocol,
+         pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
+         fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
+         appDetailsPresenter: AppDetailsPresenterProtocol) {
         self.window = window
         self.window.backgroundColor = UIColor.white
         self.window.makeKeyAndVisible()
@@ -114,8 +114,8 @@ class AppRouter: NSObject, AppRouterProtocol {
         profilePresenter.popToProfileView()
     }
 
-    func setupErrorAlert(error: AppError) {
-        errorPresenter.showErrorAlert(error: error)
+    func setupErrorAlert(error: AppError, okButtonHandler: ((UIAlertAction) -> Void)? = nil) {
+        errorPresenter.showErrorAlert(error: error, okButtonHandler: okButtonHandler)
     }
 
     func setupErrorAlertWithRetry(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) {
@@ -130,9 +130,9 @@ class AppRouter: NSObject, AppRouterProtocol {
     func setupTabBar() {
         navigationController!.viewControllers = [welcomePresenter.welcomeViewController]
         tabBarController!.setup(navigationController: navigationController!,
-            pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate,
-            applicationInfoViewController: appDetailsPresenter.appDetailsViewController,
-            delegate: self)
+                                pendingMobileAuthViewController: pendingMobileAuthPresenter.viewDelegate,
+                                applicationInfoViewController: appDetailsPresenter.appDetailsViewController,
+                                delegate: self)
         welcomePresenter.presentWelcomeView()
         window.rootViewController = tabBarController
     }
@@ -173,5 +173,11 @@ class AppRouter: NSObject, AppRouterProtocol {
 extension AppRouter: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return viewController != tabBarController.selectedViewController
+    }
+}
+
+extension AppRouterProtocol {
+    func setupErrorAlert(error: AppError, okButtonHandler: ((UIAlertAction) -> Void)? = nil) {
+        return setupErrorAlert(error: error, okButtonHandler: okButtonHandler)
     }
 }

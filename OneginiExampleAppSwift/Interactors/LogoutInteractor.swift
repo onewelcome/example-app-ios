@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol LogoutInteractorProtocol {
+protocol LogoutInteractorProtocol: AnyObject {
     func logout()
 }
 

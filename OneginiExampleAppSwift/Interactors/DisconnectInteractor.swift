@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol DisconnectInteractorProtocol {
+protocol DisconnectInteractorProtocol: AnyObject {
     func disconnect()
 }
 

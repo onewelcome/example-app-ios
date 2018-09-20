@@ -17,37 +17,34 @@ import UIKit
 
 typealias FetchDeviceListPresenterProtocol = FetchDeviceListInteractorToPresenterProtocol
 
-protocol FetchDeviceListInteractorToPresenterProtocol: class {
+protocol FetchDeviceListInteractorToPresenterProtocol: AnyObject {
     func presentDeviceList(_ deviceList: [Device])
     func setupDeviceListPresenter()
     func fetchDeviceListFailed(_ error: AppError)
 }
 
 class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
-    
     let navigationController: UINavigationController
     let fetchDeviceListInteractor: FetchDeviceListInteractorProtocol
-    
+
     init(fetchDeviceListInteractor: FetchDeviceListInteractorProtocol, navigationController: UINavigationController) {
         self.fetchDeviceListInteractor = fetchDeviceListInteractor
         self.navigationController = navigationController
     }
-    
+
     func setupDeviceListPresenter() {
         fetchDeviceListInteractor.fetchDeviceList()
     }
-    
+
     func presentDeviceList(_ deviceList: [Device]) {
         let deviceListViewController = DeviceListViewController()
         deviceListViewController.deviceList = deviceList
         deviceListViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(deviceListViewController, animated: false, completion: nil)
     }
-    
+
     func fetchDeviceListFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
     }
-
 }
-

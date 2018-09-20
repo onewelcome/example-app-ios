@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="enrollMobileAuthButton" destination="WLj-MH-7Ob" id="cFr-l5-HQ2"/>
                 <outlet property="enrollPushMobileAuthButton" destination="ntF-Kg-kRA" id="gfs-YQ-xK0"/>
+                <outlet property="otpCode" destination="Siw-PI-vaC" id="fcb-kk-6Hv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -198,6 +199,9 @@
                                     <real key="value" value="15"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="authenticate:" destination="-1" eventType="touchUpInside" id="EEl-3O-cVt"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

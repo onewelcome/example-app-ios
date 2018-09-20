@@ -17,7 +17,7 @@ import UIKit
 
 typealias DisconnectPresenterProtocol = DisconnectInteractorToPresenterProtocol
 
-protocol DisconnectInteractorToPresenterProtocol: class {
+protocol DisconnectInteractorToPresenterProtocol: AnyObject {
     func presentDisconnectAlert()
     func disconnectActionFailed(_ error: AppError)
     func popToWelcomeView()

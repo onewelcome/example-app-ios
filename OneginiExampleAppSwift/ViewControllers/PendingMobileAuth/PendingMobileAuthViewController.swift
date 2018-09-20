@@ -32,7 +32,7 @@ class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresen
         pendingMobileAuthTableView.register(UINib(nibName: "PendingMobileAuthTableViewCell", bundle: nil), forCellReuseIdentifier: "pendingMobileAuthCell")
         pendingMobileAuthTableView.register(UINib(nibName: "PullToRefreshTableViewCell", bundle: nil), forCellReuseIdentifier: "pullToRefreshCell")
     }
-    
+
     func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.white
@@ -68,6 +68,12 @@ extension PendingMobileAuthViewController: UITableViewDataSource {
 }
 
 extension PendingMobileAuthViewController: UITableViewDelegate {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pendingTransaction = pendingMobileAuths[indexPath.row]
+        pendingMobileAuthPresenter?.handlePendingMobileAuth(pendingTransaction)
+        pendingMobileAuthPresenter?.reloadPendingMobileAuth()
+    }
+
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         if pendingMobileAuths.count > 0 {
             return 135

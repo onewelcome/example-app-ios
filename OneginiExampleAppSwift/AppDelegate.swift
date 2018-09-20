@@ -14,11 +14,13 @@
 // limitations under the License.
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
+    weak var pushMobileAuthEnrollment: PushMobileAuthEntrollmentProtocol?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -32,9 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { _, _ in
-        }
+        pushMobileAuthEnrollment?.enrollForPushMobileAuth(deviceToken: deviceToken)
     }
 
-    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {}
+    func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {
+        let mappedError = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
+        pushMobileAuthEnrollment?.enrollForPushMobileAuthFailed(mappedError)
+    }
 }

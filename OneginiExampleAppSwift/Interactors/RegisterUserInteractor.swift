@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol RegisterUserInteractorProtocol {
+protocol RegisterUserInteractorProtocol: AnyObject {
     func identityProviders() -> Array<ONGIdentityProvider>
     func startUserRegistration(identityProvider: ONGIdentityProvider?)
     func handleRedirectURL()

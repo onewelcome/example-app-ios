@@ -15,15 +15,14 @@
 
 import UIKit
 
-protocol AppDetailsInteractorProtocol {
+protocol AppDetailsInteractorProtocol: AnyObject {
     func fetchDeviceResources()
 }
 
 class AppDetailsInteractor: AppDetailsInteractorProtocol {
-    
     weak var appDetailsPresenter: AppDetailsInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
-    
+
     func fetchDeviceResources() {
         authenticateDevice { success, error in
             if success {
@@ -39,8 +38,8 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
             }
         }
     }
-    
-    fileprivate func authenticateDevice(completion:@escaping (Bool, AppError?) -> Void ) {
+
+    fileprivate func authenticateDevice(completion: @escaping (Bool, AppError?) -> Void) {
         ONGDeviceClient.sharedInstance().authenticateDevice(["application-details"]) { success, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
@@ -50,7 +49,7 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
             }
         }
     }
-    
+
     fileprivate func deviceResourcesRequest(completion: @escaping (ApplicationDetails?, AppError?) -> Void) {
         let resourceRequest = ONGResourceRequest(path: "resources/application-details", method: "GET")
         ONGDeviceClient.sharedInstance().fetchResource(resourceRequest) { response, error in
@@ -69,15 +68,13 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
 }
 
 struct ApplicationDetails: Codable {
-    
     private enum CodingKeys: String, CodingKey {
         case appId = "application_identifier"
         case appVersion = "application_version"
         case appPlatform = "application_platform"
     }
-    
+
     let appId: String
     let appVersion: String
     let appPlatform: String
-    
 }

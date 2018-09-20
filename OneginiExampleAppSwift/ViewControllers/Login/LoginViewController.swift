@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
 
-    @IBOutlet weak var implicitData: UILabel!
-    
+    @IBOutlet var implicitData: UILabel!
+
     var profiles = [ONGUserProfile]() {
         didSet {
             if let tableView = profilesTableView {

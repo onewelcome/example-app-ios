@@ -50,10 +50,15 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, authenticatorsViewController in
                 authenticatorsViewController.authenticatorsViewToPresenterProtocol = resolver.resolve(AuthenticatorsPresenterProtocol.self)!
             }
-        
+
         container.register(AppDetailsViewController.self) { _ in AppDetailsViewController() }
             .initCompleted { resolver, appDetailsViewController in
-            appDetailsViewController.viewToPresenterProtocol = resolver.resolve(AppDetailsPresenterProtocol.self)!
-        }
+                appDetailsViewController.viewToPresenterProtocol = resolver.resolve(AppDetailsPresenterProtocol.self)!
+            }
+
+        container.register(MobileAuthViewController.self) { _ in MobileAuthViewController() }
+            .initCompleted { resolver, mobileAuthViewController in
+                mobileAuthViewController.mobileAuthViewToPresenterProtocol = resolver.resolve(MobileAuthPresenterProtocol.self)!
+            }
     }
 }

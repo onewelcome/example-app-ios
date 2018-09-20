@@ -17,13 +17,13 @@ import UIKit
 
 typealias DashboardPresenterProtocol = DashboardInteractorToPresenterProtocol & DashboardViewToPresenterProtocol
 
-protocol DashboardInteractorToPresenterProtocol: class {
+protocol DashboardInteractorToPresenterProtocol: AnyObject {
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func presentWelcomeView()
     func logoutUserActionFailed(_ error: AppError)
 }
 
-protocol DashboardViewToPresenterProtocol: class {
+protocol DashboardViewToPresenterProtocol: AnyObject {
     func logout()
     func presentProfileView()
     func presentAuthenticatorsView()

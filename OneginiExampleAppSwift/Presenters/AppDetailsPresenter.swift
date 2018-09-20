@@ -13,38 +13,36 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import UIKit
 
 typealias AppDetailsPresenterProtocol = AppDetailsInteractorToPresenterProtocol & AppDetailsViewToPresenterProtocol
 
-protocol AppDetailsInteractorToPresenterProtocol: class {
+protocol AppDetailsInteractorToPresenterProtocol: AnyObject {
     var appDetailsViewController: AppDetailsViewController { get set }
 
     func setupAppDetailsView(_ appDetails: ApplicationDetails)
     func fetchAppDetailsFailed(_ error: AppError)
 }
 
-protocol AppDetailsViewToPresenterProtocol: class {
+protocol AppDetailsViewToPresenterProtocol: AnyObject {
     func reloadAppDetails()
 }
 
 class AppDetailsPresenter: AppDetailsInteractorToPresenterProtocol {
-
     let navigationController: UINavigationController
     let appDetailsInteractor: AppDetailsInteractorProtocol
     var appDetailsViewController: AppDetailsViewController
-    
+
     init(_ appDetailsViewController: AppDetailsViewController, appDetailsInteractor: AppDetailsInteractorProtocol, navigationController: UINavigationController) {
         self.appDetailsInteractor = appDetailsInteractor
         self.navigationController = navigationController
         self.appDetailsViewController = appDetailsViewController
     }
-    
+
     func setupAppDetailsView(_ appDetails: ApplicationDetails) {
         appDetailsViewController.applicationDetails = appDetails
     }
-    
+
     func fetchAppDetailsFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
