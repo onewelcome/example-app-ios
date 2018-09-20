@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func login(_: Any) {
         guard let loginViewToPresenterProtocol = loginViewToPresenterProtocol else { return }
-        loginViewToPresenterProtocol.login(profile: selectedProfile)
+        loginViewToPresenterProtocol.login(profile: selectedProfile, authenticator: nil)
     }
 }
 
@@ -113,6 +113,9 @@ extension LoginViewController: UITableViewDelegate {
             }
             loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
+        } else if tableView == authenticatorsTableView {
+            let authenticator = authenticators[indexPath.row]
+            loginViewToPresenterProtocol?.login(profile: selectedProfile, authenticator: authenticator)
         }
     }
 

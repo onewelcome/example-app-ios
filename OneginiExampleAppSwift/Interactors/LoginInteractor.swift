@@ -18,7 +18,7 @@ import UIKit
 protocol LoginInteractorProtocol : AnyObject {
     func userProfiles() -> Array<ONGUserProfile>
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
-    func login(profile: ONGUserProfile)
+    func login(profile: ONGUserProfile, authenticator: ONGAuthenticator?)
     func handleLogin()
     func handlePasswordAuthenticatorLogin()
 }
@@ -57,8 +57,12 @@ extension LoginInteractor: LoginInteractorProtocol {
         return Array(authenticators)
     }
 
-    func login(profile: ONGUserProfile) {
-        ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
+    func login(profile: ONGUserProfile, authenticator: ONGAuthenticator? = nil) {
+        if let authenticator = authenticator {
+            ONGUserClient.sharedInstance().authenticateUser(with: authenticator, profile: profile, delegate: self)
+        } else {
+            ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
+        }
     }
 
     func handleLogin() {
