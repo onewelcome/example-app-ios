@@ -20,6 +20,7 @@ protocol RegisterUserInteractorProtocol: AnyObject {
     func startUserRegistration(identityProvider: ONGIdentityProvider?)
     func handleRedirectURL()
     func handleCreatedPin()
+    func handleOTPCode()
 }
 
 class RegisterUserInteractor: NSObject {
@@ -53,6 +54,16 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
             browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
         }
     }
+    
+    func handleOTPCode() {
+        guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
+        if registerUserEntity.cancelled {
+            registerUserEntity.cancelled = false
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+        } else {
+            customRegistrationChallenge.sender.respond(withData: registerUserEntity.responseCode, challenge: customRegistrationChallenge)
+        }
+    }
 
     func handleCreatedPin() {
         guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
@@ -60,6 +71,16 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
             createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
         } else {
             createPinChallenge.sender.cancel(createPinChallenge)
+        }
+    }
+    
+    fileprivate func mapErrorMessageFromStatus(_ status: Int) {
+        if status == 2000 {
+            registerUserEntity.errorMessage = nil
+        } else if status == 4002 {
+            registerUserEntity.errorMessage = "This code is not initialized on portal."
+        } else {
+            registerUserEntity.errorMessage = "Provided code is incorrect."
         }
     }
 }
@@ -91,9 +112,20 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
         }
     }
 
-    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge _: ONGCustomRegistrationChallenge) {
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge challenge: ONGCustomRegistrationChallenge) {
+        if challenge.identityProvider.identifier == "2-way-otp-api" {
+            challenge.sender.respond(withData: nil, challenge: challenge)
+        }
     }
 
-    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish _: ONGCustomRegistrationChallenge) {
+    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish challenge: ONGCustomRegistrationChallenge) {
+        if challenge.identityProvider.identifier == "2-way-otp-api" {
+            if let info = challenge.info {
+                registerUserEntity.challengeCode = info.data
+                mapErrorMessageFromStatus(info.status)
+            }
+            registerUserEntity.customRegistrationChallenge = challenge
+            registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
+        }
     }
 }
