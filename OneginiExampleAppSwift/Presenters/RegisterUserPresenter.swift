@@ -19,6 +19,7 @@ typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProto
 
 protocol RegisterUserInteractorToPresenterProtocol: class {
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
+    func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func registerUserActionFailed(_ error: AppError)
@@ -29,6 +30,7 @@ protocol RegisterUserViewToPresenterProtocol {
     func signUp(_ identityProvider: ONGIdentityProvider?)
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL()
+    func handleOTPCode()
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
@@ -36,6 +38,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     let userRegistrationNavigationController: UINavigationController
     var pinViewController: PinViewController?
+    var twoWayOTPViewController: TwoWayOTPViewController?
 
     init(registerUserInteractor: RegisterUserInteractorProtocol, navigationController: UINavigationController, userRegistrationNavigationController: UINavigationController) {
         self.registerUserInteractor = registerUserInteractor
@@ -48,6 +51,17 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         let browserViewController = BrowserViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
         userRegistrationNavigationController.viewControllers = [browserViewController]
         navigationController.present(userRegistrationNavigationController, animated: true)
+    }
+
+    func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity) {
+        if regiserUserEntity.errorMessage != nil {
+            twoWayOTPViewController?.reset()
+        } else {
+            twoWayOTPViewController = TwoWayOTPViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
+            userRegistrationNavigationController.viewControllers = [twoWayOTPViewController!]
+            userRegistrationNavigationController.modalPresentationStyle = .overFullScreen
+            navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
+        }
     }
 
     func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
@@ -67,13 +81,13 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     }
 
     func registerUserActionFailed(_ error: AppError) {
-        navigationController.dismiss(animated: true)
+        navigationController.dismiss(animated: false)
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
     }
 
     func registerUserActionCancelled() {
-        navigationController.dismiss(animated: true)
+        navigationController.dismiss(animated: false)
     }
 }
 
@@ -90,6 +104,10 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
 
     func handleRedirectURL() {
         registerUserInteractor.handleRedirectURL()
+    }
+
+    func handleOTPCode() {
+        registerUserInteractor.handleOTPCode()
     }
 }
 

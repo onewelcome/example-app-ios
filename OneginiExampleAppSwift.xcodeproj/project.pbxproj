@@ -75,6 +75,8 @@
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
 		7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181F211325240063BDF4 /* ButtonExtension.swift */; };
 		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
+		7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */; };
+		7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */; };
 		7EB1F6142100BE3500741E92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6162100C32700741E92 /* ErrorExtension.swift */; };
 		7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
@@ -210,6 +212,8 @@
 		7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		7E8A181F211325240063BDF4 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayOTPViewController.swift; sourceTree = "<group>"; };
+		7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayOTPViewController.xib; sourceTree = "<group>"; };
 		7EB1F6132100BE3500741E92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		7EB1F6162100C32700741E92 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDomainMapping.swift; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 		7E45476A20DD199E00FB620F /* RegisterUser */ = {
 			isa = PBXGroup;
 			children = (
+				7E990DE42153DB9C007F63EE /* 2-way-otp */,
 				7E45478020E21DFE00FB620F /* Browser */,
 				7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */,
 				7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */,
@@ -618,6 +623,15 @@
 				7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		7E990DE42153DB9C007F63EE /* 2-way-otp */ = {
+			isa = PBXGroup;
+			children = (
+				7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */,
+				7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */,
+			);
+			path = "2-way-otp";
 			sourceTree = "<group>";
 		};
 		7EB1F6152100C2E700741E92 /* Extensions */ = {
@@ -833,6 +847,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
+				7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */,
 				7EDAB7592146B583004918CE /* MobileAuthConfirmationViewController.xib in Resources */,
 				7E241DFD212C0BE4008FCD9A /* AppDetailsViewController.xib in Resources */,
 				7EBF8B8E21231A0600C3D94E /* DeviceTableViewCell.xib in Resources */,
@@ -1071,6 +1086,7 @@
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
+				7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */,
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */,
