@@ -9,8 +9,8 @@ plugin 'cocoapods-art', :sources => [
 
 target 'OneginiExampleAppSwift' do
     use_frameworks!
-    pod 'OneginiSDKiOS', '8.0.1-SNAPSHOT'
-    pod 'Swinject'
+    pod 'OneginiSDKiOS', '9.0.0'
+    pod 'Swinject', '2.4.1'
     pod 'BetterSegmentedControl', '~> 0.9'
     pod 'TransitionButton'
     pod 'SkyFloatingLabelTextField', '~> 3.0'
