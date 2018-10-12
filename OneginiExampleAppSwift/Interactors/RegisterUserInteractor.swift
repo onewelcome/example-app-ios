@@ -21,6 +21,7 @@ protocol RegisterUserInteractorProtocol: AnyObject {
     func handleRedirectURL()
     func handleCreatedPin()
     func handleOTPCode()
+    func handleQRCode()
 }
 
 class RegisterUserInteractor: NSObject {
@@ -54,7 +55,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
             browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
         }
     }
-    
+
     func handleOTPCode() {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
         if registerUserEntity.cancelled {
@@ -62,6 +63,16 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
             customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
         } else {
             customRegistrationChallenge.sender.respond(withData: registerUserEntity.responseCode, challenge: customRegistrationChallenge)
+        }
+    }
+
+    func handleQRCode() {
+        guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
+        if registerUserEntity.cancelled {
+            registerUserEntity.cancelled = false
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+        } else {
+            customRegistrationChallenge.sender.respond(withData: registerUserEntity.qrCodeData, challenge: customRegistrationChallenge)
         }
     }
 
@@ -73,14 +84,30 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
             createPinChallenge.sender.cancel(createPinChallenge)
         }
     }
-    
-    fileprivate func mapErrorMessageFromStatus(_ status: Int) {
+
+    fileprivate func mapErrorMessageFromTwoWayOTPStatus(_ status: Int) {
         if status == 2000 {
             registerUserEntity.errorMessage = nil
         } else if status == 4002 {
             registerUserEntity.errorMessage = "This code is not initialized on portal."
         } else {
             registerUserEntity.errorMessage = "Provided code is incorrect."
+        }
+    }
+
+    fileprivate func mapErrorMessageFromQRCodeStatus(_ status: Int) {
+        if status == 2000 {
+            registerUserEntity.errorMessage = nil
+        } else {
+            registerUserEntity.errorMessage = "QR code is not valid."
+        }
+    }
+
+    fileprivate func mapErrorMessageFromStatus(_ status: Int, identityProviderIdentifier: String) {
+        if identityProviderIdentifier == "2-way-otp-api" {
+            mapErrorMessageFromTwoWayOTPStatus(status)
+        } else if identityProviderIdentifier == "qr-code-api" {
+            mapErrorMessageFromQRCodeStatus(status)
         }
     }
 }
@@ -110,6 +137,7 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }
+        registerUserEntity.errorMessage = nil
     }
 
     func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge challenge: ONGCustomRegistrationChallenge) {
@@ -119,13 +147,15 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
     }
 
     func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish challenge: ONGCustomRegistrationChallenge) {
+        registerUserEntity.customRegistrationChallenge = challenge
+        if let info = challenge.info {
+            registerUserEntity.challengeCode = info.data
+            mapErrorMessageFromStatus(info.status, identityProviderIdentifier: challenge.identityProvider.identifier)
+        }
         if challenge.identityProvider.identifier == "2-way-otp-api" {
-            if let info = challenge.info {
-                registerUserEntity.challengeCode = info.data
-                mapErrorMessageFromStatus(info.status)
-            }
-            registerUserEntity.customRegistrationChallenge = challenge
             registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
+        } else if challenge.identityProvider.identifier == "qr-code-api" {
+            registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
         }
     }
 }
