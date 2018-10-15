@@ -75,6 +75,8 @@
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
 		7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181F211325240063BDF4 /* ButtonExtension.swift */; };
 		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
+		7E8F4723216E016900C2D8C6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */; };
+		7E8F4724216E016900C2D8C6 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */; };
 		7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */; };
 		7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */; };
 		7EB1F6142100BE3500741E92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
@@ -225,6 +227,8 @@
 		7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		7E8A181F211325240063BDF4 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
 		7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayOTPViewController.swift; sourceTree = "<group>"; };
 		7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayOTPViewController.xib; sourceTree = "<group>"; };
 		7EB1F6132100BE3500741E92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -540,6 +544,7 @@
 		7E45476A20DD199E00FB620F /* RegisterUser */ = {
 			isa = PBXGroup;
 			children = (
+				7E8F4720216DFD4200C2D8C6 /* QR-code */,
 				7E990DE42153DB9C007F63EE /* 2-way-otp */,
 				7E45478020E21DFE00FB620F /* Browser */,
 				7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */,
@@ -636,6 +641,15 @@
 				7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		7E8F4720216DFD4200C2D8C6 /* QR-code */ = {
+			isa = PBXGroup;
+			children = (
+				7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */,
+				7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */,
+			);
+			path = "QR-code";
 			sourceTree = "<group>";
 		};
 		7E990DE42153DB9C007F63EE /* 2-way-otp */ = {
@@ -873,6 +887,7 @@
 				7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */,
 				7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */,
 				86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */,
+				7E8F4724216E016900C2D8C6 /* QRCodeViewController.xib in Resources */,
 				866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */,
 				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
 				7EBF8B892122FAAA00C3D94E /* DeviceListViewController.xib in Resources */,
@@ -1040,6 +1055,7 @@
 				7E241E06212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
+				7E8F4723216E016900C2D8C6 /* QRCodeViewController.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
 				7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */,
 				7E01FDFA2112E41600DF0043 /* AuthenticatorTableViewCell.swift in Sources */,
