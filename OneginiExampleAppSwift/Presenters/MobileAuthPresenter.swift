@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import UserNotifications
 
 typealias MobileAuthPresenterProtocol = MobileAuthInteractorToPresenterProtocol & MobileAuthViewToPresenterProtocol
 
@@ -139,6 +140,9 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
                     appDelegate.pushMobileAuthEnrollment = self
                     UIApplication.shared.registerForRemoteNotifications()
                 })
+            } else {
+                self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
+                self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed", errorDescription: "Notifications where not allowed by the user.", recoverySuggestion: "Please enable notifications for the application in Settings."))
             }
         }
     }
