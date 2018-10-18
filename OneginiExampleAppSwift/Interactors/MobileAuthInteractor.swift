@@ -127,6 +127,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     fileprivate func handlePinConfirmationMobileAuth() {
         guard let pinChallenge = mobileAuthEntity.pinChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {
+            mobileAuthEntity.cancelled = false
             pinChallenge.sender.cancel(pinChallenge)
         } else {
             mobileAuthPresenter?.dismiss()
