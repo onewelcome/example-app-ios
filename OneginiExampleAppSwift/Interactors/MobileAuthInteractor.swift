@@ -15,7 +15,7 @@
 
 import UserNotifications
 
-protocol MobileAuthInteractorProtocol: AnyObject{
+protocol MobileAuthInteractorProtocol: AnyObject {
     func enrollForMobileAuth()
     func enrollForPushMobileAuth(deviceToken: Data)
     func registerForPushMessages(completion: @escaping (Bool) -> Void)
@@ -123,7 +123,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
             handlePinConfirmationMobileAuth()
         }
     }
-    
+
     fileprivate func handlePinConfirmationMobileAuth() {
         guard let pinChallenge = mobileAuthEntity.pinChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {

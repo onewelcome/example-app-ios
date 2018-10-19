@@ -32,7 +32,7 @@ class MobileAuthEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEn
     var message: String?
     var authenticatorType: MobileAuthAuthenticatorType?
     var fallbackToPIN: Bool = false
-    
+
     var customAuthChallenge: ONGCustomAuthFinishAuthenticationChallenge?
     var data: String = ""
 

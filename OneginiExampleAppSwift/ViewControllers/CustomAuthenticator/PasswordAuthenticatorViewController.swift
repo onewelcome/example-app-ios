@@ -36,8 +36,8 @@ class PasswordAuthenticatorViewController: UIViewController {
     @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet var submitButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet weak var message: UILabel!
-    
+    @IBOutlet var message: UILabel!
+
     unowned let viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol
     let mode: PasswordAuthenticatorMode
     var entity: PasswordAuthenticatorEntityProtocol

@@ -16,7 +16,6 @@
 import UIKit
 
 class RegisterAuthenticatorEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEntityProtocol {
-    
     var pin: String?
     var pinError: AppError?
     var pinLength: Int?
