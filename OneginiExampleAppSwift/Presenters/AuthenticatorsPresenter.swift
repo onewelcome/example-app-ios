@@ -25,6 +25,7 @@ protocol AuthenticatorsInteractorToPresenterProtocol: class {
     func authenticatorActionFailed(_ error: AppError, authenticator: ONGAuthenticator)
     func authenticatorActionCancelled(authenticator: ONGAuthenticator)
     func presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: RegisterAuthenticatorEntity)
+    func popToWelcomeView(_ error: AppError)
 }
 
 protocol AuthenticatorsViewToPresenterProtocol: class {
@@ -85,6 +86,14 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
 
     func authenticatorActionCancelled(authenticator: ONGAuthenticator) {
         backToAuthenticatorsView(authenticator: authenticator)
+    }
+    
+    func popToWelcomeView(_ error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: true, completion: nil)
+        appRouter.updateWelcomeView(selectedProfile: nil)
+        appRouter.popToWelcomeView()
+        appRouter.setupErrorAlert(error: error)
     }
 
     func setPreferredAuthenticator(_ authenticator: ONGAuthenticator) {

@@ -101,10 +101,12 @@ extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
     }
 
     func userClient(_: ONGUserClient, didFailToRegister authenticator: ONGAuthenticator, forUser _: ONGUserProfile, error: Error) {
+        let mappedError = ErrorMapper().mapError(error)
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
+        } else if error.code == ONGGenericError.userDeregistered.rawValue {
+            authenticatorsPresenter?.popToWelcomeView(mappedError)
         } else {
-            let mappedError = ErrorMapper().mapError(error)
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
     }
