@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import UIKit
 import AVFoundation
+import UIKit
 
 protocol QRCodeEntityProtocol {
     var cancelled: Bool { get set }
@@ -22,89 +22,88 @@ protocol QRCodeEntityProtocol {
 }
 
 class QRCodeViewController: UIViewController {
+    @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var qrCodeView: UIView!
 
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var qrCodeView: UIView!
-    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    
+
     var registerUserEntity: QRCodeEntityProtocol
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
-    
+
     init(registerUserEntity: QRCodeEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
         self.registerUserEntity = registerUserEntity
         self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
-        
+
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
-        
+
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
         } catch {
             return
         }
-        
-        if (captureSession.canAddInput(videoInput)) {
+
+        if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
             failed()
             return
         }
-        
+
         let metadataOutput = AVCaptureMetadataOutput()
-        
-        if (captureSession.canAddOutput(metadataOutput)) {
+
+        if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
-            
+
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
             failed()
             return
         }
-        
+
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = qrCodeView.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         qrCodeView.layer.addSublayer(previewLayer)
-        
+
         captureSession.startRunning()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if (captureSession?.isRunning == false) {
+
+        if captureSession?.isRunning == false {
             captureSession.startRunning()
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        if (captureSession?.isRunning == true) {
+
+        if captureSession?.isRunning == true {
             captureSession.stopRunning()
         }
     }
-    
+
     func failed() {
         captureSession = nil
         registerUserViewToPresenterProtocol.handleQRCode()
     }
-    
+
     fileprivate func shakeLabel(_ label: UILabel) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.1
@@ -112,34 +111,31 @@ class QRCodeViewController: UIViewController {
         animation.autoreverses = true
         animation.fromValue = NSValue(cgPoint: CGPoint(x: label.center.x - 10, y: label.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: label.center.x + 10, y: label.center.y))
-        
+
         label.layer.add(animation, forKey: "position")
     }
-    
+
     func setupErrorLabel(_ errorMessage: String?) {
         captureSession.startRunning()
         errorLabel.text = errorMessage
         shakeLabel(errorLabel)
     }
-    
-    @IBAction func cancel(_ sender: Any) {
+
+    @IBAction func cancel(_: Any) {
         registerUserEntity.cancelled = true
         registerUserViewToPresenterProtocol.handleQRCode()
     }
-    
 }
 
 extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
-    
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
         captureSession.stopRunning()
-        
+
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             registerUserEntity.qrCodeData = stringValue
             registerUserViewToPresenterProtocol.handleQRCode()
         }
-        
     }
 }

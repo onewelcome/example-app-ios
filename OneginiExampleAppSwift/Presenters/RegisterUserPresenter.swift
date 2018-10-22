@@ -66,6 +66,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
             navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
         }
     }
+
     func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity) {
         if let errorMessage = registerUserEntity.errorMessage {
             qrCodeViewController?.setupErrorLabel(errorMessage)

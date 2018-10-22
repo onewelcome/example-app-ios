@@ -31,6 +31,7 @@ class MobileAuthEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEn
     var userProfile: ONGUserProfile?
     var message: String?
     var authenticatorType: MobileAuthAuthenticatorType?
+    var fallbackToPIN: Bool = false
 
     var customAuthChallenge: ONGCustomAuthFinishAuthenticationChallenge?
     var data: String = ""

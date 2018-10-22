@@ -15,7 +15,7 @@
 
 import UserNotifications
 
-protocol MobileAuthInteractorProtocol: AnyObject{
+protocol MobileAuthInteractorProtocol: AnyObject {
     func enrollForMobileAuth()
     func enrollForPushMobileAuth(deviceToken: Data)
     func registerForPushMessages(completion: @escaping (Bool) -> Void)
@@ -123,11 +123,10 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
             handlePinConfirmationMobileAuth()
         }
     }
-    
+
     fileprivate func handlePinConfirmationMobileAuth() {
         guard let pinChallenge = mobileAuthEntity.pinChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {
-            mobileAuthEntity.cancelled = false
             pinChallenge.sender.cancel(pinChallenge)
         } else {
             mobileAuthPresenter?.dismiss()
@@ -138,7 +137,6 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     fileprivate func handleFingerprintMobileAuth() {
         guard let fingerprintChallenge = mobileAuthEntity.fingerprintChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {
-            mobileAuthEntity.cancelled = false
             fingerprintChallenge.sender.cancel(fingerprintChallenge)
         } else {
             fingerprintChallenge.sender.respondWithDefaultPrompt(for: fingerprintChallenge)
@@ -148,7 +146,6 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     fileprivate func handleConfirmationMobileAuth() {
         guard let confirmation = mobileAuthEntity.confirmation else { fatalError() }
         if mobileAuthEntity.cancelled {
-            mobileAuthEntity.cancelled = false
             confirmation(false)
         } else {
             confirmation(true)
@@ -158,7 +155,6 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     func handleCustomAuthenticatorMobileAuth() {
         guard let customAuthChallenge = mobileAuthEntity.customAuthChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {
-            mobileAuthEntity.cancelled = false
             customAuthChallenge.sender.cancel(customAuthChallenge, underlyingError: nil)
         } else {
             customAuthChallenge.sender.respond(withData: mobileAuthEntity.data, challenge: customAuthChallenge)
@@ -197,13 +193,14 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthEntity.userProfile = request.userProfile
         mobileAuthEntity.authenticatorType = .confirmation
         mobileAuthEntity.confirmation = confirmation
-        mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        mobileAuthPresenter?.prepareConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge, for request: ONGMobileAuthRequest) {
         if challenge.error?.code == ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue
             || challenge.error?.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
             mobileAuthPresenter?.dismiss()
+            mobileAuthEntity.fallbackToPIN = true
         }
         mobileAuthEntity.pinChallenge = challenge
         mobileAuthEntity.pinLength = 5
@@ -211,7 +208,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthEntity.authenticatorType = .pin
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
-        mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        mobileAuthPresenter?.prepareConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGFingerprintChallenge, for request: ONGMobileAuthRequest) {
@@ -219,7 +216,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthEntity.authenticatorType = .fingerprint
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
-        mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        mobileAuthPresenter?.prepareConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge, for request: ONGMobileAuthRequest) {
@@ -230,6 +227,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
     }
 
     func userClient(_: ONGUserClient, didFailToHandle _: ONGMobileAuthRequest, error: Error) {
+        mobileAuthEntity = MobileAuthEntity()
         if error.code == ONGGenericError.actionCancelled.rawValue {
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
@@ -242,6 +240,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
     }
 
     func userClient(_: ONGUserClient, didHandle _: ONGMobileAuthRequest, info _: ONGCustomInfo?) {
+        mobileAuthEntity = MobileAuthEntity()
         mobileAuthPresenter?.dismiss()
         mobileAuthQueue.dequeue()
     }
