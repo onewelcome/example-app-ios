@@ -193,22 +193,23 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthEntity.userProfile = request.userProfile
         mobileAuthEntity.authenticatorType = .confirmation
         mobileAuthEntity.confirmation = confirmation
-        mobileAuthPresenter?.prepareConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge, for request: ONGMobileAuthRequest) {
-        if challenge.error?.code == ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue
-            || challenge.error?.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
-            mobileAuthPresenter?.dismiss()
-            mobileAuthEntity.fallbackToPIN = true
-        }
         mobileAuthEntity.pinChallenge = challenge
         mobileAuthEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         mobileAuthEntity.authenticatorType = .pin
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
-        mobileAuthPresenter?.prepareConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        if challenge.error?.code == ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue
+            || challenge.error?.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+            mobileAuthPresenter?.dismiss()
+            mobileAuthPresenter?.presentPinView(mobileAuthEntity: mobileAuthEntity)
+        } else {
+            mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        }
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGFingerprintChallenge, for request: ONGMobileAuthRequest) {
@@ -216,7 +217,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthEntity.authenticatorType = .fingerprint
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
-        mobileAuthPresenter?.prepareConfirmationView(mobileAuthEntity: mobileAuthEntity)
+        mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge, for request: ONGMobileAuthRequest) {

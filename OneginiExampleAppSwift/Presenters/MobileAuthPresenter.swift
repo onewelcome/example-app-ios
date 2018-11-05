@@ -27,7 +27,7 @@ protocol MobileAuthInteractorToPresenterProtocol: AnyObject {
     func presentPinView(mobileAuthEntity: MobileAuthEntity)
     func dismiss()
     func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void)
-    func prepareConfirmationView(mobileAuthEntity: MobileAuthEntity)
+    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity)
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
 }
 
@@ -89,7 +89,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         tabBarController.present(pinViewController!, animated: true)
     }
 
-    fileprivate func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
+    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
         if let error = mobileAuthEntity.pinError {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
@@ -99,19 +99,6 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
             confirmationViewController.modalPresentationStyle = .overCurrentContext
             tabBarController.present(confirmationViewController, animated: false, completion: nil)
         }
-    }
-
-    func prepareConfirmationView(mobileAuthEntity: MobileAuthEntity) {
-        if mobileAuthEntity.fallbackToPIN {
-            fallbackToPin(mobileAuthEntity: mobileAuthEntity)
-        } else {
-            presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
-        }
-    }
-
-    fileprivate func fallbackToPin(mobileAuthEntity: MobileAuthEntity) {
-        mobileAuthEntity.fallbackToPIN = false
-        presentPinView(mobileAuthEntity: mobileAuthEntity)
     }
 
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {
