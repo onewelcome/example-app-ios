@@ -227,14 +227,15 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthPresenter?.presentPasswordAuthenticatorView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_: ONGUserClient, didFailToHandle _: ONGMobileAuthRequest, error: Error) {
+    func userClient(_ userClient: ONGUserClient, didFailToHandle mobileAuthRequest: ONGMobileAuthRequest, error: Error) {
         mobileAuthEntity = MobileAuthEntity()
         if error.code == ONGGenericError.actionCancelled.rawValue {
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
         } else {
             let mappedError = ErrorMapper().mapError(error)
-            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, completion: { _ in
+            let isUserLoggedIn = mobileAuthRequest.userProfile == userClient.authenticatedUserProfile()
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
                 self.mobileAuthQueue.dequeue()
             })
         }

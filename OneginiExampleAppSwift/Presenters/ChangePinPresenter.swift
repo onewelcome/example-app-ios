@@ -72,6 +72,8 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
     func popToWelcomeViewWithError(_ error: AppError) {
         navigationController.dismiss(animated: true)
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.updateWelcomeView(selectedProfile: nil)
+        appRouter.popToWelcomeView()
         appRouter.setupErrorAlert(error: error)
     }
 

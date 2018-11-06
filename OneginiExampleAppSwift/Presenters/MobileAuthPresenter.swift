@@ -26,7 +26,7 @@ protocol MobileAuthInteractorToPresenterProtocol: AnyObject {
     func enrollPushMobileAuthFailed(_ error: AppError)
     func presentPinView(mobileAuthEntity: MobileAuthEntity)
     func dismiss()
-    func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void)
+    func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void)
     func presentConfirmationView(mobileAuthEntity: MobileAuthEntity)
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
 }
@@ -111,10 +111,10 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         tabBarController.dismiss(animated: false, completion: nil)
     }
 
-    func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void) {
+    func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         tabBarController.dismiss(animated: false, completion: nil)
-        if !(navigationController.viewControllers.last is WelcomeViewController) {
+        if !(navigationController.viewControllers.last is WelcomeViewController) && isUserLoggedIn {
             appRouter.popToWelcomeView()
         }
         appRouter.updateWelcomeView(selectedProfile: nil)
