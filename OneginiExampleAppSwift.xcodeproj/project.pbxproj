@@ -51,7 +51,6 @@
 		7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */; };
 		7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477C20E117FD00FB620F /* PresenterAssembly.swift */; };
 		7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478120E21E4D00FB620F /* BrowserViewController.swift */; };
-		7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478B20E2329600FB620F /* OneginiConfigModel.m */; };
 		7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		7E45479020E24DEE00FB620F /* PinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45478E20E24DEE00FB620F /* PinViewController.xib */; };
 		7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */; };
@@ -107,6 +106,7 @@
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
 		866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */; };
+		86644F782191D4C200231DB9 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86644F762191D4C100231DB9 /* OneginiConfigModel.m */; };
 		86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */; };
 		86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */; };
 		86ABF3532126FE8600C5BE60 /* PendingMobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */; };
@@ -202,8 +202,6 @@
 		7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserPresenter.swift; sourceTree = "<group>"; };
 		7E45477C20E117FD00FB620F /* PresenterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterAssembly.swift; sourceTree = "<group>"; };
 		7E45478120E21E4D00FB620F /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
-		7E45478A20E2329600FB620F /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
-		7E45478B20E2329600FB620F /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
 		7E45478D20E24DEE00FB620F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		7E45478E20E24DEE00FB620F /* PinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PinViewController.xib; sourceTree = "<group>"; };
 		7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserEntity.swift; sourceTree = "<group>"; };
@@ -260,6 +258,8 @@
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullToRefreshTableViewCell.xib; sourceTree = "<group>"; };
+		86644F762191D4C100231DB9 /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OneginiConfigModel.m; path = Configuration/OneginiConfigModel.m; sourceTree = "<group>"; };
+		86644F772191D4C100231DB9 /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneginiConfigModel.h; path = Configuration/OneginiConfigModel.h; sourceTree = "<group>"; };
 		86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthViewController.swift; sourceTree = "<group>"; };
 		86ABF3512126FE8600C5BE60 /* PendingMobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthViewController.xib; sourceTree = "<group>"; };
@@ -446,8 +446,8 @@
 		7E300AB720D7E5F800EF1A79 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				7E45478A20E2329600FB620F /* OneginiConfigModel.h */,
-				7E45478B20E2329600FB620F /* OneginiConfigModel.m */,
+				86644F772191D4C100231DB9 /* OneginiConfigModel.h */,
+				86644F762191D4C100231DB9 /* OneginiConfigModel.m */,
 				7E300ABA20D7E60800EF1A79 /* SecurityController.h */,
 				7E300AB820D7E60700EF1A79 /* SecurityController.m */,
 			);
@@ -1017,6 +1017,7 @@
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */,
 				7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */,
+				86644F782191D4C200231DB9 /* OneginiConfigModel.m in Sources */,
 				7EBF8B822122F50C00C3D94E /* FetchDeviceListInteractor.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7EBF8B78211C4CDB00C3D94E /* AuthenticatorsInteractor.swift in Sources */,
@@ -1069,7 +1070,6 @@
 				7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */,
 				7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */,
 				7EBF8B8D21231A0600C3D94E /* DeviceTableViewCell.swift in Sources */,
-				7E45478C20E2329600FB620F /* OneginiConfigModel.m in Sources */,
 				7EDAB730213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */,
 				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
