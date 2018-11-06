@@ -85,20 +85,20 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     }
 
     func presentPinView(mobileAuthEntity: MobileAuthEntity) {
+        pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+        tabBarController.present(pinViewController!, animated: true)
+    }
+
+    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
         if let error = mobileAuthEntity.pinError {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
-            tabBarController.present(pinViewController!, animated: true)
+            let confirmationViewController = MobileAuthConfirmationViewController(mobileAuthEntity: mobileAuthEntity)
+            confirmationViewController.mobileAuthPresenter = self
+            confirmationViewController.modalPresentationStyle = .overCurrentContext
+            tabBarController.present(confirmationViewController, animated: false, completion: nil)
         }
-    }
-
-    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
-        let confirmationViewController = MobileAuthConfirmationViewController(mobileAuthEntity: mobileAuthEntity)
-        confirmationViewController.mobileAuthPresenter = self
-        confirmationViewController.modalPresentationStyle = .overCurrentContext
-        tabBarController.present(confirmationViewController, animated: false, completion: nil)
     }
 
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {

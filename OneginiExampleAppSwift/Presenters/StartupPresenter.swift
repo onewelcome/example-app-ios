@@ -48,7 +48,7 @@ class StartupPresenter: StartupInteractorToPresenterProtocol {
             }
         }
     }
-    
+
     func createErrorAlert(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void)) -> UIAlertController {
         let message = "\(error.errorDescription) \n \(error.recoverySuggestion)"
         let alert = UIAlertController(title: error.title, message: message, preferredStyle: .alert)
