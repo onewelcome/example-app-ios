@@ -15,6 +15,14 @@
 
 import UIKit
 
+protocol LoginViewDelegate: class {
+    
+    func loginView(_ loginView: UIViewController, didLoginProfile profile: ONGUserProfile, withAuthenticator authenticator: ONGAuthenticator?)
+    func loginView(profilesInLoginView loginView: UIViewController) -> [ONGUserProfile]
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: ONGUserProfile) -> [ONGAuthenticator]
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String) -> Void)
+}
+
 class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
@@ -37,18 +45,25 @@ class LoginViewController: UIViewController {
         }
     }
 
-    weak var loginViewToPresenterProtocol: LoginViewToPresenterProtocol?
+    weak var loginDelegate: LoginViewDelegate?
     var selectedProfile = ONGUserProfile()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         guard let profilesTableView = profilesTableView,
-            let authenticatorsTableView = authenticatorsTableView else { return }
+            let authenticatorsTableView = authenticatorsTableView,
+            let loginDelegate = loginDelegate else { return }
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
+    
+        profiles = loginDelegate.loginView(profilesInLoginView: self)
         selectProfile(index: 0)
-        loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
+        profilesTableView.reloadData()
+        loginDelegate.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
+            self.implicitData.text = implicitDataString
+        })
+        authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
     }
 
     func selectProfile(index: Int) {
@@ -65,9 +80,15 @@ class LoginViewController: UIViewController {
         profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
     }
 
+    func reloadAuthenticators(){
+        if let tableView = authenticatorsTableView {
+            tableView.reloadData()
+        }
+    }
+    
     @IBAction func login(_: Any) {
-        guard let loginViewToPresenterProtocol = loginViewToPresenterProtocol else { return }
-        loginViewToPresenterProtocol.login(profile: selectedProfile, authenticator: nil)
+        guard let loginDelegate = loginDelegate else { return }
+        loginDelegate.loginView(self, didLoginProfile: selectedProfile, withAuthenticator: nil)
     }
 }
 
@@ -109,13 +130,16 @@ extension LoginViewController: UITableViewDelegate {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
             if selectedProfile != profiles[indexPath.row] {
                 selectedProfile = profiles[indexPath.row]
-                loginViewToPresenterProtocol?.reloadAuthenticators(selectedProfile)
+                guard let loginDelegate = loginDelegate else { return }
+                authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
             }
-            loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
+            loginDelegate?.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
+                self.implicitData.text = implicitDataString
+            })
             cell.tickImage.image = #imageLiteral(resourceName: "tick")
         } else if tableView == authenticatorsTableView {
             let authenticator = authenticators[indexPath.row]
-            loginViewToPresenterProtocol?.login(profile: selectedProfile, authenticator: authenticator)
+            loginDelegate?.loginView(self, didLoginProfile: selectedProfile, withAuthenticator: authenticator)
         }
     }
 

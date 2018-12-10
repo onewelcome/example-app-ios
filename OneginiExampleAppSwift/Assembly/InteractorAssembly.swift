@@ -21,7 +21,7 @@ class InteractorAssembly: Assembly {
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
             .initCompleted { resolver, instance in
                 let loginInteractor = instance as! LoginInteractor
-                loginInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocol.self)!
+                loginInteractor.delegate = resolver.resolve(LoginPresenterProtocolAlias.self)!
             }
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
             .initCompleted { resolver, instance in
@@ -71,7 +71,7 @@ class InteractorAssembly: Assembly {
         container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor() }
             .initCompleted { resolver, instance in
                 let fetchImplicitDataInteractor = instance as! FetchImplicitDataInteractor
-                fetchImplicitDataInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocol.self)
+                fetchImplicitDataInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocolAlias.self)
             }
     }
 }

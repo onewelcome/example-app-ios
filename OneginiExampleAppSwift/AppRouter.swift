@@ -170,6 +170,21 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
 }
 
+extension AppRouter: LoginPresenterDelegate {
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: ONGUserProfile) {
+        dashboardPresenter.presentDashboardView(authenticatedUserProfile: profile)
+    }
+    
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError) {
+        welcomePresenter.update(selectedProfile: profile)
+        errorPresenter.showErrorAlert(error: error, okButtonHandler: nil)
+    }
+    
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoadImplicitDataWithError error: AppError) {
+        errorPresenter.showErrorAlert(error: error, okButtonHandler: nil)
+    }
+}
+
 extension AppRouter: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return viewController != tabBarController.selectedViewController

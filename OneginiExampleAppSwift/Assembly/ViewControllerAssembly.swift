@@ -21,7 +21,7 @@ class ViewControllerAssembly: Assembly {
         container.register(StartupViewController.self) { _ in StartupViewController() }
         container.register(LoginViewController.self) { _ in LoginViewController() }
             .initCompleted { resolver, loginViewController in
-                loginViewController.loginViewToPresenterProtocol = resolver.resolve(LoginPresenterProtocol.self)!
+                loginViewController.loginDelegate = resolver.resolve(LoginPresenterProtocolAlias.self)!
             }
         container.register(RegisterUserViewController.self) { resolver, identityProviders in
             RegisterUserViewController(registerUserViewToPresenterProtocol: resolver.resolve(RegisterUserPresenterProtocol.self)!, identityProviders: identityProviders)
