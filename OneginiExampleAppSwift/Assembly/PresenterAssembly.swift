@@ -24,7 +24,7 @@ class PresenterAssembly: Assembly {
 
         container.register(WelcomePresenterProtocol.self) { resolver in
             WelcomePresenter(resolver.resolve(WelcomeViewController.self)!,
-                             loginPresenter: resolver.resolve(LoginPresenterProtocolAlias.self)!,
+                             loginPresenter: resolver.resolve(LoginPresenterProtocols.self)!,
                              registerUserPresenter: resolver.resolve(RegisterUserPresenterProtocol.self)!,
                              navigationController: resolver.resolve(UINavigationController.self)!,
                              tabBarController: resolver.resolve(TabBarController.self)!)
@@ -36,7 +36,7 @@ class PresenterAssembly: Assembly {
                                   userRegistrationNavigationController: UINavigationController())
         }
 
-        container.register(LoginPresenterProtocolAlias.self) { resolver in
+        container.register(LoginPresenterProtocols.self) { resolver in
             LoginPresenter(loginInteractor: resolver.resolve(LoginInteractorProtocol.self)!,
                            fetchImplicitDataInteractor: resolver.resolve(FetchImplicitDataInteractorProtocol.self)!,
                            navigationController: resolver.resolve(UINavigationController.self)!,

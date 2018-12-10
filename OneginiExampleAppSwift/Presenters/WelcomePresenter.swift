@@ -17,7 +17,7 @@ import Swinject
 import UIKit
 
 protocol WelcomePresenterProtocol: class {
-    var loginPresenter: LoginPresenterProtocolAlias { get set }
+    var loginPresenter: LoginPresenterProtocols { get set }
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }
 
@@ -29,13 +29,13 @@ protocol WelcomePresenterProtocol: class {
 class WelcomePresenter: WelcomePresenterProtocol {
     let navigationController: UINavigationController
     let tabBarController: TabBarController
-    var loginPresenter: LoginPresenterProtocolAlias
+    var loginPresenter: LoginPresenterProtocols
     var registerUserPresenter: RegisterUserPresenterProtocol
 
     var welcomeViewController: WelcomeViewController
 
     init(_ welcomeViewController: WelcomeViewController,
-         loginPresenter: LoginPresenterProtocolAlias,
+         loginPresenter: LoginPresenterProtocols,
          registerUserPresenter: RegisterUserPresenterProtocol,
          navigationController: UINavigationController,
          tabBarController: TabBarController) {

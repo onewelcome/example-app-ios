@@ -15,14 +15,11 @@
 
 import UIKit
 
-typealias LoginPresenterProtocolAlias = LoginPresenterProtocol & LoginViewDelegate & LoginInteractorDelegate & ParentToChildPresenterProtocol
-
-protocol ParentToChildPresenterProtocol {
-    func update()
-    func updateSelectedProfile(_ profile: ONGUserProfile)
-}
+typealias LoginPresenterProtocols = LoginPresenterProtocol & LoginViewDelegate & LoginInteractorDelegate
 
 protocol LoginPresenterProtocol: AnyObject {
+    func update()
+    func updateSelectedProfile(_ profile: ONGUserProfile)
     var profiles: Array<ONGUserProfile> { get set }
     func setupLoginView() -> LoginViewController
     func presentImplicitData(data: String)
@@ -36,23 +33,34 @@ protocol LoginPresenterDelegate: AnyObject {
 
 class LoginPresenter: LoginPresenterProtocol {
     
-    func setupLoginView() -> LoginViewController {
-        loginViewController.profiles = loginInteractor.userProfiles()
-        return loginViewController
-    }
-    
     var loginInteractor: LoginInteractorProtocol
     var profiles = Array<ONGUserProfile>()
     let navigationController: UINavigationController
     let fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol
     var loginViewController: LoginViewController
     var pinViewController: PinViewController?
-
+    
     init(loginInteractor: LoginInteractorProtocol, fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
         self.fetchImplicitDataInteractor = fetchImplicitDataInteractor
+    }
+    
+    func updateSelectedProfile(_ profile: ONGUserProfile) {
+        loginViewController.selectedProfile = profile
+    }
+    
+    func update() {
+        reloadProfiles()
+        if profiles.count > 0 {
+            updateView()
+        }
+    }
+    
+    func setupLoginView() -> LoginViewController {
+        loginViewController.profiles = loginInteractor.userProfiles()
+        return loginViewController
     }
 
     func reloadProfiles() {
@@ -141,19 +149,6 @@ extension LoginPresenter: LoginViewDelegate {
                 return
             }
             completion(implicitData)
-        }
-    }
-}
-
-extension LoginPresenter: ParentToChildPresenterProtocol {
-    func updateSelectedProfile(_ profile: ONGUserProfile) {
-        loginViewController.selectedProfile = profile
-    }
-
-    func update() {
-        reloadProfiles()
-        if profiles.count > 0 {
-            updateView()
         }
     }
 }
