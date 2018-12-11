@@ -20,6 +20,7 @@ typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProto
 protocol RegisterUserInteractorToPresenterProtocol: class {
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity)
+    func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
     func registerUserActionFailed(_ error: AppError)
@@ -31,6 +32,7 @@ protocol RegisterUserViewToPresenterProtocol {
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL()
     func handleOTPCode()
+    func handleQRCode()
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
@@ -39,6 +41,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     let userRegistrationNavigationController: UINavigationController
     var pinViewController: PinViewController?
     var twoWayOTPViewController: TwoWayOTPViewController?
+    var qrCodeViewController: QRCodeViewController?
 
     init(registerUserInteractor: RegisterUserInteractorProtocol, navigationController: UINavigationController, userRegistrationNavigationController: UINavigationController) {
         self.registerUserInteractor = registerUserInteractor
@@ -59,6 +62,17 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         } else {
             twoWayOTPViewController = TwoWayOTPViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
             userRegistrationNavigationController.viewControllers = [twoWayOTPViewController!]
+            userRegistrationNavigationController.modalPresentationStyle = .overFullScreen
+            navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
+        }
+    }
+
+    func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity) {
+        if let errorMessage = registerUserEntity.errorMessage {
+            qrCodeViewController?.setupErrorLabel(errorMessage)
+        } else {
+            qrCodeViewController = QRCodeViewController(registerUserEntity: registerUserEntity, registerUserViewToPresenterProtocol: self)
+            userRegistrationNavigationController.viewControllers = [qrCodeViewController!]
             userRegistrationNavigationController.modalPresentationStyle = .overFullScreen
             navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
         }
@@ -108,6 +122,10 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
 
     func handleOTPCode() {
         registerUserInteractor.handleOTPCode()
+    }
+
+    func handleQRCode() {
+        registerUserInteractor.handleQRCode()
     }
 }
 

@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import UserNotifications
 
 typealias MobileAuthPresenterProtocol = MobileAuthInteractorToPresenterProtocol & MobileAuthViewToPresenterProtocol
 
@@ -25,7 +26,7 @@ protocol MobileAuthInteractorToPresenterProtocol: AnyObject {
     func enrollPushMobileAuthFailed(_ error: AppError)
     func presentPinView(mobileAuthEntity: MobileAuthEntity)
     func dismiss()
-    func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void)
+    func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void)
     func presentConfirmationView(mobileAuthEntity: MobileAuthEntity)
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
 }
@@ -84,20 +85,20 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     }
 
     func presentPinView(mobileAuthEntity: MobileAuthEntity) {
+        pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+        tabBarController.present(pinViewController!, animated: true)
+    }
+
+    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
         if let error = mobileAuthEntity.pinError {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
-            tabBarController.present(pinViewController!, animated: true)
+            let confirmationViewController = MobileAuthConfirmationViewController(mobileAuthEntity: mobileAuthEntity)
+            confirmationViewController.mobileAuthPresenter = self
+            confirmationViewController.modalPresentationStyle = .overCurrentContext
+            tabBarController.present(confirmationViewController, animated: false, completion: nil)
         }
-    }
-
-    func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {
-        let confirmationViewController = MobileAuthConfirmationViewController(mobileAuthEntity: mobileAuthEntity)
-        confirmationViewController.mobileAuthPresenter = self
-        confirmationViewController.modalPresentationStyle = .overCurrentContext
-        tabBarController.present(confirmationViewController, animated: false, completion: nil)
     }
 
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {
@@ -110,10 +111,10 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         tabBarController.dismiss(animated: false, completion: nil)
     }
 
-    func mobileAuthenticationFailed(_ error: AppError, completion: @escaping (UIAlertAction) -> Void) {
+    func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         tabBarController.dismiss(animated: false, completion: nil)
-        if !(navigationController.viewControllers.last is WelcomeViewController) {
+        if !(navigationController.viewControllers.last is WelcomeViewController) && isUserLoggedIn {
             appRouter.popToWelcomeView()
         }
         appRouter.updateWelcomeView(selectedProfile: nil)
@@ -139,6 +140,9 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
                     appDelegate.pushMobileAuthEnrollment = self
                     UIApplication.shared.registerForRemoteNotifications()
                 })
+            } else {
+                self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
+                self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed", errorDescription: "Notifications where not allowed by the user.", recoverySuggestion: "Please enable notifications for the application in Settings."))
             }
         }
     }

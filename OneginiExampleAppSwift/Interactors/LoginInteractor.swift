@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol LoginInteractorProtocol : AnyObject {
+protocol LoginInteractorProtocol: AnyObject {
     func userProfiles() -> Array<ONGUserProfile>
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile, authenticator: ONGAuthenticator?)
