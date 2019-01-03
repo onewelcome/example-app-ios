@@ -140,9 +140,10 @@ extension LoginPresenter: LoginViewDelegate {
         return loginInteractor.authenticators(profile: profile)
     }
     
-    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String) -> Void) {
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String?) -> Void) {
         fetchImplicitDataInteractor.fetchImplicitResources(profile: profile) { (implicitData, error) in
             guard let implicitData = implicitData else {
+                completion(nil)
                 guard let error = error else { return }
                 guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
                 appRouter.setupErrorAlert(error: error)

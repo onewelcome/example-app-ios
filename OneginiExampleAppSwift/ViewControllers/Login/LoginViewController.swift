@@ -20,7 +20,7 @@ protocol LoginViewDelegate: class {
     func loginView(_ loginView: UIViewController, didLoginProfile profile: ONGUserProfile, withAuthenticator authenticator: ONGAuthenticator?)
     func loginView(profilesInLoginView loginView: UIViewController) -> [ONGUserProfile]
     func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: ONGUserProfile) -> [ONGAuthenticator]
-    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String) -> Void)
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String?) -> Void)
 }
 
 class LoginViewController: UIViewController {
