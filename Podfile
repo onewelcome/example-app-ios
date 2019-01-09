@@ -3,8 +3,7 @@ platform :ios, '9.0'
 inhibit_all_warnings!
 
 plugin 'cocoapods-art', :sources => [
-'onegini',
-'onegini-snapshot'
+'onegini'
 ]
 
 target 'OneginiExampleAppSwift' do
@@ -12,7 +11,7 @@ target 'OneginiExampleAppSwift' do
     pod 'OneginiSDKiOS', '9.0.0'
     pod 'Swinject', '2.4.1'
     pod 'BetterSegmentedControl', '~> 0.9'
-    pod 'TransitionButton', '0.4.0'
+    pod 'TransitionButton', '0.5.1'
     pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   target 'OneginiExampleAppSwiftTests' do
