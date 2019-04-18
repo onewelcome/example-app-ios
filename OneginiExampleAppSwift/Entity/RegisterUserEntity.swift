@@ -15,7 +15,7 @@
 
 import UIKit
 
-class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol, TwoWayOTPEntityProtocol, QRCodeEntityProtocol {
+class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol, TwoWayOTPEntityProtocol {
     var registrationUserURL: URL?
     var browserRegistrationChallenge: ONGBrowserRegistrationChallenge?
     var customRegistrationChallenge: ONGCustomRegistrationChallenge?
@@ -30,5 +30,4 @@ class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewController
     var errorMessage: String?
     var cancelled: Bool = false
 
-    var qrCodeData: String?
 }

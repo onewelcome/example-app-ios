@@ -39,6 +39,7 @@ protocol MobileAuthViewToPresenterProtocol: AnyObject {
     func isUserEnrolledForPushMobileAuth() -> Bool
     func handleMobileAuthConfirmation()
     func authenticateWithOTP(_ otp: String)
+    func presentQRCodeScanner()
 }
 
 protocol PushMobileAuthEntrollmentProtocol: AnyObject {
@@ -158,6 +159,11 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     func handleMobileAuthConfirmation() {
         mobileAuthInteractor.handleMobileAuth()
     }
+    
+    func presentQRCodeScanner() {
+        let qrCodeViewController = QRCodeViewController(qrCodeViewDelegate: self)
+        navigationController.present(qrCodeViewController, animated: true, completion: nil)
+    }
 
     func authenticateWithOTP(_ otp: String) {
         mobileAuthInteractor.handleOTPMobileAuth(otp)
@@ -185,4 +191,17 @@ extension MobileAuthPresenter: PasswordAuthenticatorViewToPresenterProtocol {
     func handlePassword() {
         mobileAuthInteractor.handleCustomAuthenticatorMobileAuth()
     }
+}
+
+extension MobileAuthPresenter: QRCodeViewDelegate {
+    
+    func qrCodeView(_ qrCodeView: UIViewController, handleQRCode qrCode: String) {
+        navigationController.dismiss(animated: true, completion: nil)
+        mobileAuthInteractor.handleOTPMobileAuth(qrCode)
+    }
+    
+    func qrCodeView(qrCodeScanCancelled qrCodeView: UIViewController) {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+    
 }

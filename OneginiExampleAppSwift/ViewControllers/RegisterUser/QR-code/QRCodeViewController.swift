@@ -16,9 +16,9 @@
 import AVFoundation
 import UIKit
 
-protocol QRCodeEntityProtocol {
-    var cancelled: Bool { get set }
-    var qrCodeData: String? { get set }
+protocol QRCodeViewDelegate {
+    func qrCodeView(_ qrCodeView: UIViewController, handleQRCode qrCode: String)
+    func qrCodeView(qrCodeScanCancelled qrCodeView: UIViewController)
 }
 
 class QRCodeViewController: UIViewController {
@@ -28,12 +28,10 @@ class QRCodeViewController: UIViewController {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
-    var registerUserEntity: QRCodeEntityProtocol
-    let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
+    let qrCodeViewDelegate: QRCodeViewDelegate
 
-    init(registerUserEntity: QRCodeEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
-        self.registerUserEntity = registerUserEntity
-        self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
+    init(qrCodeViewDelegate: QRCodeViewDelegate) {
+        self.qrCodeViewDelegate = qrCodeViewDelegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -101,7 +99,7 @@ class QRCodeViewController: UIViewController {
 
     func failed() {
         captureSession = nil
-        registerUserViewToPresenterProtocol.handleQRCode()
+        qrCodeViewDelegate.qrCodeView(qrCodeScanCancelled: self)
     }
 
     fileprivate func shakeLabel(_ label: UILabel) {
@@ -122,8 +120,7 @@ class QRCodeViewController: UIViewController {
     }
 
     @IBAction func cancel(_: Any) {
-        registerUserEntity.cancelled = true
-        registerUserViewToPresenterProtocol.handleQRCode()
+        qrCodeViewDelegate.qrCodeView(qrCodeScanCancelled: self)
     }
 }
 
@@ -134,8 +131,7 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
-            registerUserEntity.qrCodeData = stringValue
-            registerUserViewToPresenterProtocol.handleQRCode()
+            qrCodeViewDelegate.qrCodeView(self, handleQRCode: stringValue)
         }
     }
 }
