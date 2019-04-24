@@ -134,11 +134,11 @@ extension RegisterUserPresenter: PinViewToPresenterProtocol {
 
 extension RegisterUserPresenter: QRCodeViewDelegate {
     
-    func qrCodeView(_ qrCodeView: UIViewController, handleQRCode qrCode: String) {
+    func qrCodeView(_ qrCodeView: UIViewController, didScanQRCode qrCode: String) {
         registerUserInteractor.handleQRCode(qrCode)
     }
     
-    func qrCodeView(qrCodeScanCancelled qrCodeView: UIViewController) {
+    func qrCodeView(didCancelQRCodeScan qrCodeView: UIViewController) {
         registerUserInteractor.handleQRCode(nil)
     }
     

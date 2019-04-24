@@ -195,12 +195,12 @@ extension MobileAuthPresenter: PasswordAuthenticatorViewToPresenterProtocol {
 
 extension MobileAuthPresenter: QRCodeViewDelegate {
     
-    func qrCodeView(_ qrCodeView: UIViewController, handleQRCode qrCode: String) {
+    func qrCodeView(_ qrCodeView: UIViewController, didScanQRCode qrCode: String) {
         navigationController.dismiss(animated: true, completion: nil)
         mobileAuthInteractor.handleOTPMobileAuth(qrCode)
     }
     
-    func qrCodeView(qrCodeScanCancelled qrCodeView: UIViewController) {
+    func qrCodeView(didCancelQRCodeScan qrCodeView: UIViewController) {
         navigationController.dismiss(animated: true, completion: nil)
     }
     

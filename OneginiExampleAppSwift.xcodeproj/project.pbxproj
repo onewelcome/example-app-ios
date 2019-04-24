@@ -425,6 +425,7 @@
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E8F4720216DFD4200C2D8C6 /* QR-code */,
 				7E241DF9212BF45A008FCD9A /* ApplicationInfo */,
 				7EBF8B852122FA8E00C3D94E /* DeviceList */,
 				7E241E11213806DE008FCD9A /* CustomAuthenticator */,
@@ -546,7 +547,6 @@
 		7E45476A20DD199E00FB620F /* RegisterUser */ = {
 			isa = PBXGroup;
 			children = (
-				7E8F4720216DFD4200C2D8C6 /* QR-code */,
 				7E990DE42153DB9C007F63EE /* 2-way-otp */,
 				7E45478020E21DFE00FB620F /* Browser */,
 				7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */,

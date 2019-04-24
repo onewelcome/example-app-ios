@@ -17,8 +17,8 @@ import AVFoundation
 import UIKit
 
 protocol QRCodeViewDelegate {
-    func qrCodeView(_ qrCodeView: UIViewController, handleQRCode qrCode: String)
-    func qrCodeView(qrCodeScanCancelled qrCodeView: UIViewController)
+    func qrCodeView(_ qrCodeView: UIViewController, didScanQRCode qrCode: String)
+    func qrCodeView(didCancelQRCodeScan qrCodeView: UIViewController)
 }
 
 class QRCodeViewController: UIViewController {
@@ -99,7 +99,7 @@ class QRCodeViewController: UIViewController {
 
     func failed() {
         captureSession = nil
-        qrCodeViewDelegate.qrCodeView(qrCodeScanCancelled: self)
+        qrCodeViewDelegate.qrCodeView(didCancelQRCodeScan: self)
     }
 
     fileprivate func shakeLabel(_ label: UILabel) {
@@ -120,7 +120,7 @@ class QRCodeViewController: UIViewController {
     }
 
     @IBAction func cancel(_: Any) {
-        qrCodeViewDelegate.qrCodeView(qrCodeScanCancelled: self)
+        qrCodeViewDelegate.qrCodeView(didCancelQRCodeScan: self)
     }
 }
 
@@ -131,7 +131,7 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
-            qrCodeViewDelegate.qrCodeView(self, handleQRCode: stringValue)
+            qrCodeViewDelegate.qrCodeView(self, didScanQRCode: stringValue)
         }
     }
 }
