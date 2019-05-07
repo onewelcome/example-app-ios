@@ -21,7 +21,7 @@ protocol RegisterUserInteractorProtocol: AnyObject {
     func handleRedirectURL()
     func handleCreatedPin()
     func handleOTPCode()
-    func handleQRCode()
+    func handleQRCode(_ qrCode: String?)
 }
 
 class RegisterUserInteractor: NSObject {
@@ -66,13 +66,12 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    func handleQRCode() {
+    func handleQRCode(_ qrCode: String?) {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
-        if registerUserEntity.cancelled {
-            registerUserEntity.cancelled = false
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+        if let qrCode = qrCode {
+            customRegistrationChallenge.sender.respond(withData: qrCode, challenge: customRegistrationChallenge)
         } else {
-            customRegistrationChallenge.sender.respond(withData: registerUserEntity.qrCodeData, challenge: customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
         }
     }
 

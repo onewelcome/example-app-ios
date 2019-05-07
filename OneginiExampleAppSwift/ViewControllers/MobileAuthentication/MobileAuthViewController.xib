@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +14,6 @@
             <connections>
                 <outlet property="enrollMobileAuthButton" destination="WLj-MH-7Ob" id="cFr-l5-HQ2"/>
                 <outlet property="enrollPushMobileAuthButton" destination="ntF-Kg-kRA" id="gfs-YQ-xK0"/>
-                <outlet property="otpCode" destination="Siw-PI-vaC" id="fcb-kk-6Hv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -121,12 +121,12 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Mobile Authentication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Eaa-vr-Rv0">
-                            <rect key="frame" x="83" y="136" width="209" height="14.666666666666657"/>
+                            <rect key="frame" x="83" y="136" width="209" height="14"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Authentication with OTP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="DJf-UV-Ldp">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with QR Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="DJf-UV-Ldp">
                             <rect key="frame" x="82" y="232" width="209" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,51 +147,11 @@
                                 <constraint firstAttribute="width" constant="60" id="aO6-2T-6Wu"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Siw-PI-vaC" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="16" y="265" width="343" height="40"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="OeZ-dH-2zR"/>
-                            </constraints>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                    <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="OTP"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="ExF-Nt-Dtf"/>
-                            </connections>
-                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAG-77-XCQ">
-                            <rect key="frame" x="16" y="323" width="343" height="30"/>
+                            <rect key="frame" x="16" y="265" width="343" height="30"/>
                             <color key="backgroundColor" red="0.0" green="0.4431372549" blue="0.60784313729999995" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Authenticate">
+                            <state key="normal" title="Scan QR code">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -200,7 +160,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="authenticate:" destination="-1" eventType="touchUpInside" id="EEl-3O-cVt"/>
+                                <action selector="scanQRCode:" destination="-1" eventType="touchUpInside" id="KLn-g7-veG"/>
                             </connections>
                         </button>
                     </subviews>
@@ -219,7 +179,6 @@
                         <constraint firstItem="DJf-UV-Ldp" firstAttribute="leading" secondItem="cRe-p0-m7w" secondAttribute="trailing" constant="8" id="GlR-m2-I1I"/>
                         <constraint firstAttribute="trailing" secondItem="WLj-MH-7Ob" secondAttribute="trailing" constant="16" id="HU1-kk-sfg"/>
                         <constraint firstItem="G6Q-Uc-QGc" firstAttribute="leading" secondItem="u4i-cU-Q7K" secondAttribute="leading" constant="15" id="JKo-tp-I0G"/>
-                        <constraint firstItem="Siw-PI-vaC" firstAttribute="top" secondItem="DJf-UV-Ldp" secondAttribute="bottom" constant="16" id="Lgr-E5-W14"/>
                         <constraint firstAttribute="trailing" secondItem="NKa-pH-3ng" secondAttribute="trailing" constant="15" id="N0B-da-txM"/>
                         <constraint firstItem="ntF-Kg-kRA" firstAttribute="top" secondItem="Eaa-vr-Rv0" secondAttribute="bottom" constant="16" id="NXa-1c-d6W"/>
                         <constraint firstItem="tgd-uv-1hr" firstAttribute="bottom" secondItem="NKa-pH-3ng" secondAttribute="bottom" id="OJ6-r1-nKV"/>
@@ -236,15 +195,13 @@
                         <constraint firstItem="NKa-pH-3ng" firstAttribute="top" secondItem="WLj-MH-7Ob" secondAttribute="bottom" constant="43" id="lgL-0D-gIy"/>
                         <constraint firstItem="ntF-Kg-kRA" firstAttribute="top" secondItem="tgd-uv-1hr" secondAttribute="bottom" constant="22" id="m1i-UU-oFP"/>
                         <constraint firstItem="ntF-Kg-kRA" firstAttribute="top" secondItem="NKa-pH-3ng" secondAttribute="bottom" constant="22" id="oqG-9J-ZeB"/>
-                        <constraint firstItem="SAG-77-XCQ" firstAttribute="top" secondItem="Siw-PI-vaC" secondAttribute="bottom" constant="18" id="otH-Qu-tin"/>
                         <constraint firstAttribute="trailing" secondItem="6ta-Yv-HvK" secondAttribute="trailing" constant="16" id="qdb-we-qi8"/>
                         <constraint firstItem="cRe-p0-m7w" firstAttribute="top" secondItem="6ta-Yv-HvK" secondAttribute="top" id="rgb-WB-w5J"/>
-                        <constraint firstItem="Siw-PI-vaC" firstAttribute="leading" secondItem="u4i-cU-Q7K" secondAttribute="leading" constant="16" id="tQo-cC-9rR"/>
                         <constraint firstItem="cRe-p0-m7w" firstAttribute="top" secondItem="ntF-Kg-kRA" secondAttribute="bottom" constant="44" id="uhS-o5-LpL"/>
                         <constraint firstAttribute="trailing" secondItem="SAG-77-XCQ" secondAttribute="trailing" constant="16" id="vYL-6V-pdc"/>
                         <constraint firstItem="DJf-UV-Ldp" firstAttribute="top" secondItem="ntF-Kg-kRA" secondAttribute="bottom" constant="36" id="vu0-Tf-Xl7"/>
                         <constraint firstItem="tgd-uv-1hr" firstAttribute="leading" secondItem="u4i-cU-Q7K" secondAttribute="leading" constant="15" id="wfF-UE-qKB"/>
-                        <constraint firstAttribute="trailing" secondItem="Siw-PI-vaC" secondAttribute="trailing" constant="16" id="xo4-98-SSt"/>
+                        <constraint firstItem="SAG-77-XCQ" firstAttribute="top" secondItem="DJf-UV-Ldp" secondAttribute="bottom" constant="16" id="ygE-bS-h70"/>
                         <constraint firstItem="G6Q-Uc-QGc" firstAttribute="top" secondItem="6kb-yc-Wkm" secondAttribute="top" id="zp1-KZ-Qe2"/>
                     </constraints>
                 </view>
@@ -288,7 +245,7 @@
     </objects>
     <resources>
         <image name="Onegini Blue Key]" width="794" height="802"/>
-        <image name="left-arrow (3)" width="24" height="24"/>
+        <image name="left-arrow (3)" width="19.200000762939453" height="19.200000762939453"/>
         <image name="light-gray-wallpaper-texture" width="4272" height="4272"/>
     </resources>
 </document>

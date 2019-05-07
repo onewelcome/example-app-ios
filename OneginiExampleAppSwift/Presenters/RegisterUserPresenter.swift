@@ -32,7 +32,6 @@ protocol RegisterUserViewToPresenterProtocol {
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL()
     func handleOTPCode()
-    func handleQRCode()
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
@@ -71,7 +70,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         if let errorMessage = registerUserEntity.errorMessage {
             qrCodeViewController?.setupErrorLabel(errorMessage)
         } else {
-            qrCodeViewController = QRCodeViewController(registerUserEntity: registerUserEntity, registerUserViewToPresenterProtocol: self)
+            qrCodeViewController = QRCodeViewController(qrCodeViewDelegate: self)
             userRegistrationNavigationController.viewControllers = [qrCodeViewController!]
             userRegistrationNavigationController.modalPresentationStyle = .overFullScreen
             navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
@@ -124,13 +123,23 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
         registerUserInteractor.handleOTPCode()
     }
 
-    func handleQRCode() {
-        registerUserInteractor.handleQRCode()
-    }
+    
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
     func handlePin() {
         registerUserInteractor.handleCreatedPin()
     }
+}
+
+extension RegisterUserPresenter: QRCodeViewDelegate {
+    
+    func qrCodeView(_ qrCodeView: UIViewController, didScanQRCode qrCode: String) {
+        registerUserInteractor.handleQRCode(qrCode)
+    }
+    
+    func qrCodeView(didCancelQRCodeScan qrCodeView: UIViewController) {
+        registerUserInteractor.handleQRCode(nil)
+    }
+    
 }
