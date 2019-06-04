@@ -41,4 +41,9 @@ class DashboardViewController: UIViewController {
     @IBAction func mobileAuthPressed(_: Any) {
         dashboardViewToPresenterProtocol?.presentMobileAuthView()
     }
+    
+    @IBAction func appToWebPressed(_ sender: Any) {
+        dashboardViewToPresenterProtocol?.presetAppToWebView()
+    }
+    
 }

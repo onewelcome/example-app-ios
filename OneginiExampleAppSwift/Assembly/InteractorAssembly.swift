@@ -73,5 +73,7 @@ class InteractorAssembly: Assembly {
                 let fetchImplicitDataInteractor = instance as! FetchImplicitDataInteractor
                 fetchImplicitDataInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocols.self)
             }
+        
+        container.register(AppToWebInteractorProtocol.self) { _ in AppToWebInteractor() }
     }
 }

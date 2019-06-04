@@ -29,6 +29,7 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
     func presentAuthenticatorsView()
     func presentMobileAuthView()
     func popToDashboardView()
+    func presetAppToWebView()
 }
 
 class DashboardPresenter: DashboardInteractorToPresenterProtocol {
@@ -88,5 +89,10 @@ extension DashboardPresenter: DashboardViewToPresenterProtocol {
     func presentMobileAuthView() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupMobileAuthPresenter()
+    }
+    
+    func presetAppToWebView() {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupAppToWebPresenter()
     }
 }
