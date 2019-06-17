@@ -84,6 +84,11 @@ class PresenterAssembly: Assembly {
             AppDetailsPresenter(resolver.resolve(AppDetailsViewController.self)!,
                                 appDetailsInteractor: resolver.resolve(AppDetailsInteractorProtocol.self)!,
                                 navigationController: resolver.resolve(UINavigationController.self)!) }
+        
+        container.register(AppToWebPresenterProtocol.self) { resolver in
+            AppToWebPresenter(appToWebInteractorProtocol: resolver.resolve(AppToWebInteractorProtocol.self)!,
+                              navigationController: resolver.resolve(UINavigationController.self)!)
+        }
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)
