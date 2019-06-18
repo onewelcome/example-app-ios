@@ -80,7 +80,7 @@
 		7E999E1B22A1421700FEE3EC /* AppToWebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1A22A1421700FEE3EC /* AppToWebPresenter.swift */; };
 		7E999E1E22A1434000FEE3EC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1D22A1434000FEE3EC /* WebViewController.swift */; };
 		7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */; };
-		7E999E4B22A6B6E500FEE3EC /* SingleSignOnErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E4A22A6B6E500FEE3EC /* SingleSignOnErrorDomainMapping.swift */; };
+		7E999E4B22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */; };
 		7EB1F6142100BE3500741E92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6162100C32700741E92 /* ErrorExtension.swift */; };
 		7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
@@ -236,7 +236,7 @@
 		7E999E1A22A1421700FEE3EC /* AppToWebPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebPresenter.swift; sourceTree = "<group>"; };
 		7E999E1D22A1434000FEE3EC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebInteractor.swift; sourceTree = "<group>"; };
-		7E999E4A22A6B6E500FEE3EC /* SingleSignOnErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSignOnErrorDomainMapping.swift; sourceTree = "<group>"; };
+		7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebSingleSignOnErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F6132100BE3500741E92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		7EB1F6162100C32700741E92 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDomainMapping.swift; sourceTree = "<group>"; };
@@ -643,7 +643,7 @@
 				7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */,
 				7EDAB72F213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift */,
 				7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */,
-				7E999E4A22A6B6E500FEE3EC /* SingleSignOnErrorDomainMapping.swift */,
+				7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -1075,7 +1075,7 @@
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */,
-				7E999E4B22A6B6E500FEE3EC /* SingleSignOnErrorDomainMapping.swift in Sources */,
+				7E999E4B22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift in Sources */,
 				7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
