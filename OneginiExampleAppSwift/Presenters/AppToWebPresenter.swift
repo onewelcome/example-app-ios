@@ -17,7 +17,7 @@ class AppToWebPresenter: AppToWebPresenterProtocol {
     }
     
     func presentSingleSignOn() {
-        appToWebInteractor.singleSignOn { (url, error) in
+        appToWebInteractor.appToWebSingleSignOn { (url, error) in
             if let url = url {
                 let webView = WebViewController(url: url)
                 webView.delegate = self
