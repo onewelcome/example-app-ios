@@ -1,25 +1,33 @@
 PODS:
   - BetterSegmentedControl (0.9)
-  - OneginiSDKiOS (8.0.1-SNAPSHOT)
-  - Swinject (2.4.0)
+  - OneginiSDKiOS (9.2.0)
+  - SkyFloatingLabelTextField (3.7.0)
+  - Swinject (2.4.1)
+  - TransitionButton (0.5.1)
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
-  - OneginiSDKiOS (= 8.0.1-SNAPSHOT)
-  - Swinject
+  - OneginiSDKiOS (= 9.2.0)
+  - SkyFloatingLabelTextField (~> 3.0)
+  - Swinject (= 2.4.1)
+  - TransitionButton (= 0.5.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BetterSegmentedControl
+    - SkyFloatingLabelTextField
     - Swinject
-  https://repo.onegini.com/artifactory/api/pods/cocoapods-snapshot-local:
+    - TransitionButton
+  https://repo.onegini.com/artifactory/api/pods/cocoapods-public:
     - OneginiSDKiOS
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
-  OneginiSDKiOS: 7401aa97a16f76f181a3cb03c5e8e612c5bd0a11
-  Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
+  OneginiSDKiOS: f9ad2132305c0c32aca62a52f3323be32498eeb8
+  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
+  Swinject: f7f15a9672e99328c1f07f277091087917215700
+  TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81
 
-PODFILE CHECKSUM: b98af5f74b20515acd9ed167333b86e784559108
+PODFILE CHECKSUM: 985c664f6b4693e75c68a2e5e41b438d2fe487ee
 
 COCOAPODS: 1.5.3
