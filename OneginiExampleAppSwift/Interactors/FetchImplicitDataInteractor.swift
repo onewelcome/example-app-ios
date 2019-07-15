@@ -66,7 +66,7 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
-        let implicitRequest = ONGResourceRequest(path: "resources/user-id-decorated", method: "GET")
+        let implicitRequest = ONGResourceRequest(path: "user-id-decorated", method: "GET")
         ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)

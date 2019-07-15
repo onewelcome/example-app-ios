@@ -51,7 +51,7 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
     }
 
     fileprivate func deviceResourcesRequest(completion: @escaping (ApplicationDetails?, AppError?) -> Void) {
-        let resourceRequest = ONGResourceRequest(path: "resources/application-details", method: "GET")
+        let resourceRequest = ONGResourceRequest(path: "application-details", method: "GET")
         ONGDeviceClient.sharedInstance().fetchResource(resourceRequest) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
