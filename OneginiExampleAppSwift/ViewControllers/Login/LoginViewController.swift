@@ -58,8 +58,8 @@ class LoginViewController: UIViewController {
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
     
         profiles = loginDelegate.loginView(profilesInLoginView: self)
-        selectProfile(index: 0)
         profilesTableView.reloadData()
+        selectProfile(index: 0)
         loginDelegate.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
             self.implicitData.text = implicitDataString
         })
