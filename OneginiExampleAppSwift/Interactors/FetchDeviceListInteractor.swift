@@ -24,7 +24,7 @@ class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
     let decoder = JSONDecoder()
 
     func fetchDeviceList() {
-        let request = ONGResourceRequest(path: "resources/devices", method: "GET")
+        let request = ONGResourceRequest(path: "devices", method: "GET")
         ONGUserClient.sharedInstance().fetchResource(request) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
