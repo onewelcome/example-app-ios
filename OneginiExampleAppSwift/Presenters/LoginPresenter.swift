@@ -144,9 +144,10 @@ extension LoginPresenter: LoginViewDelegate {
         fetchImplicitDataInteractor.fetchImplicitResources(profile: profile) { (implicitData, error) in
             guard let implicitData = implicitData else {
                 completion(nil)
-                guard let error = error else { return }
-                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-                appRouter.setupErrorAlert(error: error)
+                // Commented because of Bug in Token server, sometimes is returned 401
+//                guard let error = error else { return }
+//                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+//                appRouter.setupErrorAlert(error: error)
                 return
             }
             completion(implicitData)
