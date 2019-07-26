@@ -115,8 +115,8 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     }
 
     func handleMobileAuth() {
-        if mobileAuthEntity.authenticatorType == .fingerprint {
-            handleFingerprintMobileAuth()
+        if mobileAuthEntity.authenticatorType == .biometric {
+            handleBiometrictMobileAuth()
         } else if mobileAuthEntity.authenticatorType == .confirmation {
             handleConfirmationMobileAuth()
         } else if mobileAuthEntity.authenticatorType == .pin {
@@ -134,12 +134,12 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
-    fileprivate func handleFingerprintMobileAuth() {
-        guard let fingerprintChallenge = mobileAuthEntity.fingerprintChallenge else { fatalError() }
+    fileprivate func handleBiometrictMobileAuth() {
+        guard let biometricChallenge = mobileAuthEntity.biometricChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {
-            fingerprintChallenge.sender.cancel(fingerprintChallenge)
+            biometricChallenge.sender.cancel(biometricChallenge)
         } else {
-            fingerprintChallenge.sender.respondWithDefaultPrompt(for: fingerprintChallenge)
+            biometricChallenge.sender.respondWithDefaultPrompt(for: biometricChallenge)
         }
     }
 
@@ -212,9 +212,9 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         }
     }
 
-    func userClient(_: ONGUserClient, didReceive challenge: ONGFingerprintChallenge, for request: ONGMobileAuthRequest) {
-        mobileAuthEntity.fingerprintChallenge = challenge
-        mobileAuthEntity.authenticatorType = .fingerprint
+    func userClient(_: ONGUserClient, didReceive challenge: ONGBiometricChallenge, for request: ONGMobileAuthRequest) {
+        mobileAuthEntity.biometricChallenge = challenge
+        mobileAuthEntity.authenticatorType = .biometric
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
