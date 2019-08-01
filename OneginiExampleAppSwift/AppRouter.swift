@@ -131,7 +131,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         window.rootViewController = startupPresenter.startupViewController
         startupPresenter.oneigniSDKStartup()
     }
-
+    
     func setupTabBar() {
         navigationController!.viewControllers = [welcomePresenter.welcomeViewController]
         tabBarController!.setup(navigationController: navigationController!,

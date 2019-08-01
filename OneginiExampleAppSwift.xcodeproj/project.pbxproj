@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08FE976510E1DFA4538C97F0 /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4350C92B09B475879CAD71D7 /* Pods_OneginiExampleAppSwift.framework */; };
-		2D9D2EFF0EFCFBBC80F3D545 /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7845792DCDAA316594C09607 /* OneginiConfigModel.h */; };
 		30FA03B8666BFF96524DED57 /* Pods_OneginiExampleAppSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7D42A4E6EB78B2144A8B99 /* Pods_OneginiExampleAppSwiftTests.framework */; };
 		3213DF0B772ABE30D86E2470 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */; };
 		4B038EA6C6F9875A3175E9E3 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */; };
@@ -41,6 +39,7 @@
 		7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */; };
 		7E300AEF20DBE31F00EF1A79 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */; };
 		7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */; };
+		7E3B929922D4B1CC00AB8679 /* charles-proxy-ssl-proxying-certificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B929822D4B1CC00AB8679 /* charles-proxy-ssl-proxying-certificate.cer */; };
 		7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */; };
 		7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
 		7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
@@ -75,12 +74,25 @@
 		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
 		7E8F4723216E016900C2D8C6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */; };
 		7E8F4724216E016900C2D8C6 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */; };
+		7E96D25722D8C972004DE84E /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4350C92B09B475879CAD71D7 /* Pods_OneginiExampleAppSwift.framework */; };
 		7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */; };
 		7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */; };
 		7E999E1B22A1421700FEE3EC /* AppToWebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1A22A1421700FEE3EC /* AppToWebPresenter.swift */; };
 		7E999E1E22A1434000FEE3EC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1D22A1434000FEE3EC /* WebViewController.swift */; };
 		7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */; };
 		7E999E4B22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */; };
+		7EA4730022EB2540005B6EDE /* ClientBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472F022EB253F005B6EDE /* ClientBuilder.swift */; };
+		7EA4730122EB2540005B6EDE /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472F122EB253F005B6EDE /* ConfigModel.swift */; };
+		7EA4730222EB2540005B6EDE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472F222EB253F005B6EDE /* Configuration.swift */; };
+		7EA4730322EB2540005B6EDE /* ONGStartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472F422EB253F005B6EDE /* ONGStartupPresenter.swift */; };
+		7EA4730422EB2540005B6EDE /* ONGRegisterUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472F522EB253F005B6EDE /* ONGRegisterUserPresenter.swift */; };
+		7EA4730522EB2540005B6EDE /* IdPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472F922EB253F005B6EDE /* IdPTableViewCell.swift */; };
+		7EA4730622EB2540005B6EDE /* ONGRegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472FA22EB253F005B6EDE /* ONGRegisterUserViewController.swift */; };
+		7EA4730822EB2540005B6EDE /* ONGRegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472FD22EB253F005B6EDE /* ONGRegisterUserInteractor.swift */; };
+		7EA4730922EB2540005B6EDE /* ONGStartupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA472FE22EB253F005B6EDE /* ONGStartupInteractor.swift */; };
+		7EA4730D22EB4A71005B6EDE /* ONGRegisterUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4730C22EB4A71005B6EDE /* ONGRegisterUserEntity.swift */; };
+		7EA4730F22EEF2B1005B6EDE /* ONGSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4730E22EEF2B1005B6EDE /* ONGSafariViewController.swift */; };
+		7EA4731222F05165005B6EDE /* ONGPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4731122F05165005B6EDE /* ONGPinViewController.swift */; };
 		7EB1F6142100BE3500741E92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6162100C32700741E92 /* ErrorExtension.swift */; };
 		7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
@@ -99,8 +111,6 @@
 		7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B222114370C00133D5C /* MobileAuthViewController.swift */; };
 		7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED15B232114370C00133D5C /* MobileAuthViewController.xib */; };
 		7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */; };
-		7ED2028D226763BF00B37C66 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED2028B226763BE00B37C66 /* SecurityController.h */; };
-		7ED2028E226763BF00B37C66 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2028C226763BE00B37C66 /* SecurityController.m */; };
 		7EDAB730213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB72F213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift */; };
 		7EDAB74F21411483004918CE /* MobileAuthQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB74E21411483004918CE /* MobileAuthQueue.swift */; };
 		7EDAB751214149D8004918CE /* MobileAuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB750214149D8004918CE /* MobileAuthEntity.swift */; };
@@ -119,7 +129,6 @@
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
 		D1EE694D1408ADD07F5E6A84 /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A81B86459DA07A0631C06E /* Pods_OneginiExampleAppSwiftUITests.framework */; };
-		DB88EDA4B39247419EF9DBD8 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */; };
 		DB985BF87FAB703F795C107E /* token-server-intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */; };
 /* End PBXBuildFile section */
 
@@ -141,7 +150,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		869F92ED2163BDB100B31EF5 /* Embed Frameworks */ = {
+		7E96D25A22D8C976004DE84E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -160,7 +169,6 @@
 		3E0623D3F1CD178C373E9D71 /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4350C92B09B475879CAD71D7 /* Pods_OneginiExampleAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6150C1D542C59C238AC5E0AA /* libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7845792DCDAA316594C09607 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OneginiConfigModel.h; path = Configuration/OneginiConfigModel.h; sourceTree = "<group>"; };
 		7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsViewController.swift; sourceTree = "<group>"; };
 		7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorsViewController.xib; sourceTree = "<group>"; };
 		7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsPresenter.swift; sourceTree = "<group>"; };
@@ -197,6 +205,7 @@
 		7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
+		7E3B929822D4B1CC00AB8679 /* charles-proxy-ssl-proxying-certificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "charles-proxy-ssl-proxying-certificate.cer"; sourceTree = "<group>"; };
 		7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterUserViewController.xib; sourceTree = "<group>"; };
 		7E45477020DD422500FB620F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,6 +246,19 @@
 		7E999E1D22A1434000FEE3EC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebInteractor.swift; sourceTree = "<group>"; };
 		7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebSingleSignOnErrorDomainMapping.swift; sourceTree = "<group>"; };
+		7EA472F022EB253F005B6EDE /* ClientBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientBuilder.swift; sourceTree = "<group>"; };
+		7EA472F122EB253F005B6EDE /* ConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
+		7EA472F222EB253F005B6EDE /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		7EA472F422EB253F005B6EDE /* ONGStartupPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONGStartupPresenter.swift; sourceTree = "<group>"; };
+		7EA472F522EB253F005B6EDE /* ONGRegisterUserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONGRegisterUserPresenter.swift; sourceTree = "<group>"; };
+		7EA472F922EB253F005B6EDE /* IdPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdPTableViewCell.swift; sourceTree = "<group>"; };
+		7EA472FA22EB253F005B6EDE /* ONGRegisterUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONGRegisterUserViewController.swift; sourceTree = "<group>"; };
+		7EA472FD22EB253F005B6EDE /* ONGRegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONGRegisterUserInteractor.swift; sourceTree = "<group>"; };
+		7EA472FE22EB253F005B6EDE /* ONGStartupInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ONGStartupInteractor.swift; sourceTree = "<group>"; };
+		7EA472FF22EB253F005B6EDE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7EA4730C22EB4A71005B6EDE /* ONGRegisterUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONGRegisterUserEntity.swift; sourceTree = "<group>"; };
+		7EA4730E22EEF2B1005B6EDE /* ONGSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONGSafariViewController.swift; sourceTree = "<group>"; };
+		7EA4731122F05165005B6EDE /* ONGPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONGPinViewController.swift; sourceTree = "<group>"; };
 		7EB1F6132100BE3500741E92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		7EB1F6162100C32700741E92 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDomainMapping.swift; sourceTree = "<group>"; };
@@ -255,8 +277,6 @@
 		7ED15B222114370C00133D5C /* MobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthViewController.swift; sourceTree = "<group>"; };
 		7ED15B232114370C00133D5C /* MobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthViewController.xib; sourceTree = "<group>"; };
 		7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthPresenter.swift; sourceTree = "<group>"; };
-		7ED2028B226763BE00B37C66 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityController.h; path = Configuration/SecurityController.h; sourceTree = "<group>"; };
-		7ED2028C226763BE00B37C66 /* SecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityController.m; path = Configuration/SecurityController.m; sourceTree = "<group>"; };
 		7EDAB72F213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthEnrollmentErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EDAB731213E9D01004918CE /* OneginiExampleAppSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneginiExampleAppSwift.entitlements; sourceTree = "<group>"; };
 		7EDAB74E21411483004918CE /* MobileAuthQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthQueue.swift; sourceTree = "<group>"; };
@@ -280,7 +300,6 @@
 		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "token-server-intermediate.cer"; sourceTree = "<group>"; };
-		A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OneginiConfigModel.m; path = Configuration/OneginiConfigModel.m; sourceTree = "<group>"; };
 		AFC62865DF977C72E094FEB1 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -293,7 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08FE976510E1DFA4538C97F0 /* Pods_OneginiExampleAppSwift.framework in Frameworks */,
+				7E96D25722D8C972004DE84E /* Pods_OneginiExampleAppSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,12 +389,12 @@
 		7E300A5C20D7B8E100EF1A79 = {
 			isa = PBXGroup;
 			children = (
+				7EA472ED22EB253F005B6EDE /* iOS-App-Development-Library */,
 				7E300ABE20D7E84300EF1A79 /* README.md */,
 				7E300AC020D7E89200EF1A79 /* Resources */,
 				7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */,
 				7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */,
 				7E300A8720D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */,
-				7E300AB720D7E5F800EF1A79 /* Configuration */,
 				7E300A6620D7B8E100EF1A79 /* Products */,
 				91DE3EFAA921704936F26C6A /* Pods */,
 				2B391B3D82E18E544B473331 /* Frameworks */,
@@ -455,20 +474,10 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		7E300AB720D7E5F800EF1A79 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				7ED2028B226763BE00B37C66 /* SecurityController.h */,
-				7ED2028C226763BE00B37C66 /* SecurityController.m */,
-				A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */,
-				7845792DCDAA316594C09607 /* OneginiConfigModel.h */,
-			);
-			name = Configuration;
-			sourceTree = "<group>";
-		};
 		7E300AC020D7E89200EF1A79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7E3B929822D4B1CC00AB8679 /* charles-proxy-ssl-proxying-certificate.cer */,
 				9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */,
 			);
 			path = Resources;
@@ -683,6 +692,90 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		7EA472ED22EB253F005B6EDE /* iOS-App-Development-Library */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472EE22EB253F005B6EDE /* iOS-App-Development-Library */,
+				7EA472FF22EB253F005B6EDE /* README.md */,
+			);
+			path = "iOS-App-Development-Library";
+			sourceTree = "<group>";
+		};
+		7EA472EE22EB253F005B6EDE /* iOS-App-Development-Library */ = {
+			isa = PBXGroup;
+			children = (
+				7EA4730B22EB4A3E005B6EDE /* Entity */,
+				7EA472EF22EB253F005B6EDE /* Configuration */,
+				7EA472F322EB253F005B6EDE /* Presenters */,
+				7EA472F622EB253F005B6EDE /* ViewControllers */,
+				7EA472FC22EB253F005B6EDE /* Interactors */,
+			);
+			path = "iOS-App-Development-Library";
+			sourceTree = "<group>";
+		};
+		7EA472EF22EB253F005B6EDE /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472F022EB253F005B6EDE /* ClientBuilder.swift */,
+				7EA472F122EB253F005B6EDE /* ConfigModel.swift */,
+				7EA472F222EB253F005B6EDE /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		7EA472F322EB253F005B6EDE /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472F422EB253F005B6EDE /* ONGStartupPresenter.swift */,
+				7EA472F522EB253F005B6EDE /* ONGRegisterUserPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		7EA472F622EB253F005B6EDE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472F722EB253F005B6EDE /* Registartion */,
+				7EA4731122F05165005B6EDE /* ONGPinViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7EA472F722EB253F005B6EDE /* Registartion */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472F822EB253F005B6EDE /* IdpCell */,
+				7EA472FA22EB253F005B6EDE /* ONGRegisterUserViewController.swift */,
+				7EA4730E22EEF2B1005B6EDE /* ONGSafariViewController.swift */,
+			);
+			path = Registartion;
+			sourceTree = "<group>";
+		};
+		7EA472F822EB253F005B6EDE /* IdpCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472F922EB253F005B6EDE /* IdPTableViewCell.swift */,
+			);
+			path = IdpCell;
+			sourceTree = "<group>";
+		};
+		7EA472FC22EB253F005B6EDE /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				7EA472FD22EB253F005B6EDE /* ONGRegisterUserInteractor.swift */,
+				7EA472FE22EB253F005B6EDE /* ONGStartupInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		7EA4730B22EB4A3E005B6EDE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7EA4730C22EB4A71005B6EDE /* ONGRegisterUserEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		7EB1F6152100C2E700741E92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,8 +877,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED2028D226763BF00B37C66 /* SecurityController.h in Headers */,
-				2D9D2EFF0EFCFBBC80F3D545 /* OneginiConfigModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,8 +892,8 @@
 				7E300A6220D7B8E100EF1A79 /* Frameworks */,
 				7E300A6320D7B8E100EF1A79 /* Resources */,
 				1804AAB91AFE036B66455B9F /* [CP] Embed Pods Frameworks */,
-				869F92ED2163BDB100B31EF5 /* Embed Frameworks */,
 				24010873C0730FC66AEFEE25 /* Headers */,
+				7E96D25A22D8C976004DE84E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -923,6 +1014,7 @@
 				86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */,
 				7E8F4724216E016900C2D8C6 /* QRCodeViewController.xib in Resources */,
 				866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */,
+				7E3B929922D4B1CC00AB8679 /* charles-proxy-ssl-proxying-certificate.cer in Resources */,
 				7E300ABF20D7E84300EF1A79 /* README.md in Resources */,
 				7EBF8B892122FAAA00C3D94E /* DeviceListViewController.xib in Resources */,
 				7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */,
@@ -964,6 +1056,7 @@
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/iOS_App_Development_Framework/iOS_App_Development_Framework.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -973,6 +1066,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOS_App_Development_Framework.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1040,22 +1134,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA4731222F05165005B6EDE /* ONGPinViewController.swift in Sources */,
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
+				7EA4730F22EEF2B1005B6EDE /* ONGSafariViewController.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
 				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
 				7EDAB751214149D8004918CE /* MobileAuthEntity.swift in Sources */,
 				7E241E01212C2ACB008FCD9A /* AppDetailsInteractor.swift in Sources */,
 				86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */,
 				7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */,
+				7EA4730822EB2540005B6EDE /* ONGRegisterUserInteractor.swift in Sources */,
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */,
 				7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */,
+				7EA4730D22EB4A71005B6EDE /* ONGRegisterUserEntity.swift in Sources */,
+				7EA4730922EB2540005B6EDE /* ONGStartupInteractor.swift in Sources */,
 				7EBF8B822122F50C00C3D94E /* FetchDeviceListInteractor.swift in Sources */,
+				7EA4730022EB2540005B6EDE /* ClientBuilder.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7EBF8B78211C4CDB00C3D94E /* AuthenticatorsInteractor.swift in Sources */,
 				7EDAB7582146B583004918CE /* MobileAuthConfirmationViewController.swift in Sources */,
 				7E45477720E0D63800FB620F /* RegisterUserInteractor.swift in Sources */,
 				7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */,
+				7EA4730622EB2540005B6EDE /* ONGRegisterUserViewController.swift in Sources */,
 				7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */,
 				7E241DFF212C2AA7008FCD9A /* AppDetailsPresenter.swift in Sources */,
 				7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */,
@@ -1070,19 +1171,22 @@
 				7EB1F6142100BE3500741E92 /* AppError.swift in Sources */,
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
-				7ED2028E226763BF00B37C66 /* SecurityController.m in Sources */,
 				7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */,
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
+				7EA4730222EB2540005B6EDE /* Configuration.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
+				7EA4730322EB2540005B6EDE /* ONGStartupPresenter.swift in Sources */,
 				7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */,
 				7E999E4B22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift in Sources */,
 				7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */,
+				7EA4730522EB2540005B6EDE /* IdPTableViewCell.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
+				7EA4730122EB2540005B6EDE /* ConfigModel.swift in Sources */,
 				7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */,
 				7E300AD020DA684700EF1A79 /* InteractorAssembly.swift in Sources */,
 				7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */,
@@ -1113,11 +1217,11 @@
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
 				7EDAB7532146958E004918CE /* MobileAuthInteractor.swift in Sources */,
 				7E778CF521199E54001EE257 /* ChangePinInteractor.swift in Sources */,
+				7EA4730422EB2540005B6EDE /* ONGRegisterUserPresenter.swift in Sources */,
 				7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */,
 				7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,
-				DB88EDA4B39247419EF9DBD8 /* OneginiConfigModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,12 +1395,32 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"BetterSegmentedControl\"",
+					"-framework",
+					"\"OneginiCrypto\"",
+					"-framework",
+					"\"OneginiSDKiOS\"",
+					"-framework",
+					"\"SkyFloatingLabelTextField\"",
+					"-framework",
+					"\"Swinject\"",
+					"-framework",
+					"\"TransitionButton\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1317,12 +1441,32 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"BetterSegmentedControl\"",
+					"-framework",
+					"\"OneginiCrypto\"",
+					"-framework",
+					"\"OneginiSDKiOS\"",
+					"-framework",
+					"\"SkyFloatingLabelTextField\"",
+					"-framework",
+					"\"Swinject\"",
+					"-framework",
+					"\"TransitionButton\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";

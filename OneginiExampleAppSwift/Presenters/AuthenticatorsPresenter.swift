@@ -67,8 +67,8 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
-            navigationController.present(pinViewController!, animated: true)
+//            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
+//            navigationController.present(pinViewController!, animated: true)
         }
     }
 

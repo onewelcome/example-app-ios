@@ -86,8 +86,8 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     }
 
     func presentPinView(mobileAuthEntity: MobileAuthEntity) {
-        pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
-        tabBarController.present(pinViewController!, animated: true)
+//        pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+//        tabBarController.present(pinViewController!, animated: true)
     }
 
     func presentConfirmationView(mobileAuthEntity: MobileAuthEntity) {

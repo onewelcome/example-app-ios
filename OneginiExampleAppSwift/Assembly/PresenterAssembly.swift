@@ -18,8 +18,8 @@ import UIKit
 
 class PresenterAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(StartupPresenterProtocol.self) { resolver in
-            StartupPresenter(startupInteractor: resolver.resolve(StartupInteractorProtocol.self)!)
+        container.register(StartupPresenterProtocol.self) { _ in
+            StartupPresenter()
         }
 
         container.register(WelcomePresenterProtocol.self) { resolver in

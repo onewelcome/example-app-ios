@@ -41,19 +41,20 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     var pinViewController: PinViewController?
     var twoWayOTPViewController: TwoWayOTPViewController?
     var qrCodeViewController: QRCodeViewController?
-
+    
+    let oneginiRegisterUserPresenter = ONGRegisterUserPresenter()
+    var registerUserViewController: RegisterUserViewController? = nil
+    
     init(registerUserInteractor: RegisterUserInteractorProtocol, navigationController: UINavigationController, userRegistrationNavigationController: UINavigationController) {
         self.registerUserInteractor = registerUserInteractor
         self.navigationController = navigationController
         self.userRegistrationNavigationController = userRegistrationNavigationController
         self.userRegistrationNavigationController.navigationBar.isHidden = true
+        oneginiRegisterUserPresenter.viewSource = self
+        oneginiRegisterUserPresenter.delegate = self
     }
 
-    func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity) {
-        let browserViewController = BrowserViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
-        userRegistrationNavigationController.viewControllers = [browserViewController]
-        navigationController.present(userRegistrationNavigationController, animated: true)
-    }
+    func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity) {}
 
     func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity) {
         if regiserUserEntity.errorMessage != nil {
@@ -77,20 +78,10 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         }
     }
 
-    func presentCreatePinView(registerUserEntity: RegisterUserEntity) {
-        if let error = registerUserEntity.pinError {
-            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
-            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
-        } else {
-            pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
-            userRegistrationNavigationController.pushViewController(pinViewController!, animated: true)
-        }
-    }
+    func presentCreatePinView(registerUserEntity: RegisterUserEntity) {}
 
     func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
-        navigationController.dismiss(animated: true)
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
+        
     }
 
     func registerUserActionFailed(_ error: AppError) {
@@ -108,12 +99,12 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     func setupRegisterUserView() -> RegisterUserViewController {
         let identityProviders = registerUserInteractor.identityProviders()
         guard let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self, argument: identityProviders) else { fatalError() }
+        self.registerUserViewController = registerUserViewController
+        oneginiRegisterUserPresenter.setupUserRegistration()
         return registerUserViewController
     }
 
-    func signUp(_ identityProvider: ONGIdentityProvider? = nil) {
-        registerUserInteractor.startUserRegistration(identityProvider: identityProvider)
-    }
+    func signUp(_ identityProvider: ONGIdentityProvider? = nil) {}
 
     func handleRedirectURL() {
         registerUserInteractor.handleRedirectURL()
@@ -127,19 +118,63 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
-    func handlePin() {
-        registerUserInteractor.handleCreatedPin()
-    }
+    func handlePin() {}
 }
 
 extension RegisterUserPresenter: QRCodeViewDelegate {
-    
+
     func qrCodeView(_ qrCodeView: UIViewController, didScanQRCode qrCode: String) {
         registerUserInteractor.handleQRCode(qrCode)
     }
-    
+
     func qrCodeView(didCancelQRCodeScan qrCodeView: UIViewController) {
         registerUserInteractor.handleQRCode(nil)
     }
+
+}
+
+extension RegisterUserPresenter: ONGRegisterUserPresenterViewSource {
     
+    func registerUserPresenter(pinViewControllerFor registerUserPresenter: ONGRegisterUserPresenter) -> ONGPinViewController {
+        return PinViewController(mode: .registration)
+    }
+    
+    
+    func registerUserPresenter(registerUserViewControllerFor registerUserPresenter: ONGRegisterUserPresenter) -> ONGRegisterUserViewController {
+        return registerUserViewController!
+    }
+    
+}
+
+extension RegisterUserPresenter: ONGRegisterUserPresenterDelegate {
+    
+    func registerUserPresenter(_ registerUserPresenter: ONGRegisterUserPresenter, didUserRegistrationFailed error: Error) {
+        navigationController.dismiss(animated: false)
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        let mappedError = ErrorMapper().mapError(error)
+        appRouter.setupErrorAlert(error: mappedError)
+    }
+    
+    func registerUserPresenter(_ registerUserPresenter: ONGRegisterUserPresenter, didUserRegistrationSucceeded userProfile: ONGUserProfile, info: ONGCustomInfo?) {
+        navigationController.dismiss(animated: true)
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        appRouter.setupDashboardPresenter(authenticatedUserProfile: userProfile)
+    }
+    
+    func registerUserPresenter(_ registerUserPresenter: ONGRegisterUserPresenter, presentPinViewController: ONGPinViewController) {
+        userRegistrationNavigationController.pushViewController(presentPinViewController, animated: true)
+    }
+    
+    func registerUserPresenter(_ registerUserPresenter: ONGRegisterUserPresenter, presentSafariViewController: ONGSafariViewController) {
+        userRegistrationNavigationController.viewControllers = [presentSafariViewController]
+        navigationController.present(userRegistrationNavigationController, animated: true)
+    }
+    
+    func registerUserPresenterDidCancelUserRegistration(_ registerUserPresenter: ONGRegisterUserPresenter) {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+    
+    func registerUserPresenter(_ registerUserPresenter: ONGRegisterUserPresenter, presentRegisterUserViewController: ONGRegisterUserViewController) {
+        
+    }
 }

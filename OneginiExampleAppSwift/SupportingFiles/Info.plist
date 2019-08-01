@@ -4,6 +4,17 @@
 <dict>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Used for user authentication.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.onegini.OneginiExampleAppSwift</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>oneginiexample</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera is required to use QR code registration</string>
 	<key>CFBundleDevelopmentRegion</key>

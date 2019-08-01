@@ -15,6 +15,4 @@
 
 import UIKit
 
-class ButtonTableViewCell: UITableViewCell {
-    @IBOutlet var title: UILabel!
-}
+class ButtonTableViewCell: IdPTableViewCell { }

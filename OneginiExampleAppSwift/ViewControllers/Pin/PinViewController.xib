@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PinViewController" customModule="OneginiExampleAppSwift" customModuleProvider="target">
             <connections>
                 <outlet property="backKey" destination="kVf-8m-QZ7" id="DuN-HI-EER"/>
-                <outlet property="errorLabel" destination="D3f-NL-roi" id="gd0-gf-rjF"/>
+                <outlet property="errorLabel" destination="D3f-NL-roi" id="37z-7t-8hY"/>
                 <outlet property="pinSlotsView" destination="o3x-hb-pV8" id="tAM-Qh-nQh"/>
                 <outlet property="titleLabel" destination="5pc-gT-YWQ" id="IuA-la-7aS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,7 +38,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="G0f-qK-g5u"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="7Gg-p8-Ugp"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWT-GW-1Ya">
@@ -52,7 +52,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="qn3-HH-Syo"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="Ypp-dP-Ta2"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vh-BZ-GgU">
@@ -66,7 +66,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="GYt-pe-qc2"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="cG6-Oz-Z4N"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnD-pr-sGr">
@@ -80,7 +80,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="d0H-7Q-YcE"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="yRP-Dd-rNY"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVf-8m-QZ7">
@@ -91,7 +91,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="backKeyPressed:" destination="-1" eventType="touchUpInside" id="gvh-sH-kan"/>
+                                <action selector="backKeyPressed:" destination="-1" eventType="touchUpInside" id="ULI-4a-GRH"/>
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="left-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="jGP-N4-5VY">
@@ -109,10 +109,10 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="DBM-Rm-7DE"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="14A-D7-8pt"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ds4-RQ-jE0">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ds4-RQ-jE0">
                             <rect key="frame" x="132" y="15" width="109" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
@@ -123,10 +123,10 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="T7F-Nf-5ac"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="lC6-zC-MpF"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXz-jM-3bf">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXz-jM-3bf">
                             <rect key="frame" x="251" y="15" width="108" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
@@ -137,7 +137,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="Yos-WF-EVd"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="egq-yc-p82"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgY-hi-TFw">
@@ -151,7 +151,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="98u-oA-Qqf"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="gZ6-8s-OB6"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ei-OI-Scs">
@@ -165,7 +165,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="pjD-vm-RUi"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="p8k-Nw-xqg"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb2-rF-O8e">
@@ -179,7 +179,7 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="keyPressed:" destination="-1" eventType="touchUpInside" id="hDl-Ag-uLr"/>
+                                <action selector="numericButtonPressed:" destination="-1" eventType="touchUpInside" id="1Xi-27-lrT"/>
                             </connections>
                         </button>
                     </subviews>
@@ -188,7 +188,7 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_300x300" translatesAutoresizingMaskIntoConstraints="NO" id="ZA7-tj-yb0">
-                    <rect key="frame" x="150.66666666666666" y="78" width="75" height="75"/>
+                    <rect key="frame" x="150" y="78" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="OYz-ZM-N26"/>
                         <constraint firstAttribute="height" constant="75" id="h37-He-XFj"/>
@@ -200,7 +200,7 @@
                         <color key="titleColor" red="0.0" green="0.44313725490196076" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="p6g-Yk-lmY"/>
+                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="5nW-Nw-pzE"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pc-gT-YWQ">

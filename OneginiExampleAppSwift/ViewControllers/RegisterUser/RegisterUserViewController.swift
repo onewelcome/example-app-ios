@@ -15,58 +15,24 @@
 
 import UIKit
 
-class RegisterUserViewController: UIViewController {
-    @IBOutlet var identityProvidersTableView: UITableView?
-
+class RegisterUserViewController: ONGRegisterUserViewController {
+    
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
-
-    var identityProviders = [ONGIdentityProvider]() {
-        didSet {
-            if let identityProvidersTableView = identityProvidersTableView {
-                identityProvidersTableView.reloadData()
-            }
-        }
-    }
 
     init(registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol, identityProviders: [ONGIdentityProvider]) {
         self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
-        self.identityProviders = identityProviders
         super.init(nibName: nil, bundle: nil)
+        self.identityProviders = identityProviders
     }
-
+    
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
+        self.cellIdentifier = "ButtonCell"
+        self.cellNib = UINib(nibName: "ButtonTableViewCell", bundle: nil)
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        if let identityProvidersTableView = identityProvidersTableView {
-            identityProvidersTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
-        }
-    }
-
-    @IBAction func signUp(_: Any) {
-        registerUserViewToPresenterProtocol.signUp(nil)
-    }
-}
-
-extension RegisterUserViewController: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return identityProviders.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath) as! ButtonTableViewCell
-        let identityProviderName = identityProviders[indexPath.row].name
-        cell.title.text = identityProviderName
-        return cell
-    }
-}
-
-extension RegisterUserViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let identityProvider = identityProviders[indexPath.row]
-        registerUserViewToPresenterProtocol.signUp(identityProvider)
     }
 }

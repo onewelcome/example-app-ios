@@ -1,0 +1,4 @@
+[submodule "iOS-App-Development-Library"]
+	path = iOS-App-Development-Library
+url=ssh://git@gitlab.onegini.com:10022/app-development-framework/iOS-App-Development-Library.git
+	branch = SDKIOS-634

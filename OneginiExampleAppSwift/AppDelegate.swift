@@ -41,4 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mappedError = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
         pushMobileAuthEnrollment?.enrollForPushMobileAuthFailed(mappedError)
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.absoluteString.hasPrefix(Config().configuration["ONGRedirectURL"]!) {
+            NotificationCenter.default.post(name: Notification.Name.ONGSafariViewHandler, object: nil, userInfo: ["ONGRedirectURL": url])
+        }
+        return true
+    }
+
 }

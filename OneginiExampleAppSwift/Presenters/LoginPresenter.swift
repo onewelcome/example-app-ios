@@ -97,8 +97,8 @@ extension LoginPresenter: LoginInteractorDelegate {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-            navigationController.present(pinViewController!, animated: true, completion: nil)
+//            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+//            navigationController.present(pinViewController!, animated: true, completion: nil)
         }
     }
     
