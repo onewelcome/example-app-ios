@@ -15,6 +15,7 @@
 
 import Swinject
 import UIKit
+import Dip
 
 protocol WelcomePresenterProtocol {
     func setupSegmentView(welcomeViewController: WelcomeViewController)
@@ -35,7 +36,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     }
 
     func presentWelcomeView() {
-        guard let welcomeViewController = AppAssembly.shared.resolver.resolve(WelcomeViewController.self, argument: self) else { fatalError() }
+        guard let welcomeViewController = try? container.resolve() as WelcomeViewController else {fatalError()}
         navigationController.pushViewController(welcomeViewController, animated: false)
     }
 

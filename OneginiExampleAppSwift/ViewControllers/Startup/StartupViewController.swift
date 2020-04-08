@@ -45,6 +45,6 @@ class StartupViewController: UIViewController {
     }
 
     func hideActivityIndicator() {
-        activityIndicator.stopAnimating()
+//        activityIndicator.stopAnimating()
     }
 }

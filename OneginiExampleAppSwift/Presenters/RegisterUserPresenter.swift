@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import Dip
 
 typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProtocol & RegisterUserViewToPresenterProtocol
 
@@ -50,7 +51,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     }
 
     func presentDashboardView() {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        guard let appRouter = Injected<AppRouterProtocol>().value else { fatalError() }
         appRouter.setupDashboardPresenter()
     }
 
@@ -63,8 +64,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     func setupRegisterUserView() -> RegisterUserViewController {
         let identityProviders = registerUserInteractor.identityProviders()
-        guard let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self, argument: Array(identityProviders)) else { fatalError() }
-
+        guard let registerUserViewController = try? container.resolve(arguments: Array(identityProviders)) as RegisterUserViewController else { fatalError() }
         return registerUserViewController
     }
 

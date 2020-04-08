@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Swinject
+import Dip
 import UIKit
 
 typealias StartupPresenterProtocol = StartupInteractorToPresenterProtocol
@@ -32,14 +32,14 @@ class StartupPresenter: StartupInteractorToPresenterProtocol {
     }
 
     func oneigniSDKStartup() {
-        guard let startupViewController = AppAssembly.shared.resolver.resolve(StartupViewController.self) else { fatalError() }
+        guard let startupViewController = try? container.resolve() as StartupViewController else { fatalError() }
         navigationController.pushViewController(startupViewController, animated: false)
 
         startupViewController.state = .loading
         startupInteractor.oneginiSDKStartup { _, error in
             startupViewController.state = .loaded
             if let error = error {
-                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+                guard let appRouter = try? container.resolve() as AppRouterProtocol else { fatalError() }
                 appRouter.setupErrorAlertWithRetry(error: error, title: "", retryHandler: { _ in
                     self.navigationController.viewControllers.removeLast()
                     self.oneigniSDKStartup()
@@ -51,7 +51,7 @@ class StartupPresenter: StartupInteractorToPresenterProtocol {
     }
 
     func presentWelcomeView() {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        guard let appRouter = try? container.resolve() as AppRouterProtocol else { fatalError() }
         appRouter.setupWelcomePresenter()
     }
 }
