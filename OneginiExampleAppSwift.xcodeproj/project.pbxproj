@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		1A4CDFC40197246CAF599F86 /* Pods_OneginiExampleAppSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE94269EA06349E45897491 /* Pods_OneginiExampleAppSwiftTests.framework */; };
 		298537DF146913D00628861A /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BF6E3CE59F5CAFFB9AFA69 /* Pods_OneginiExampleAppSwiftUITests.framework */; };
+		7E2E88D32445F0F50051B5DE /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478B20E2329600FB620F /* OneginiConfigModel.m */; };
+		7E2E88D42445F0F80051B5DE /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AB820D7E60700EF1A79 /* SecurityController.m */; };
+		7E2E88D52445F2340051B5DE /* SectigoIntermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7E634C4B243DD23D002A9ECA /* SectigoIntermediate.cer */; };
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
 		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
-		7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */; };
+		7E300A7E20D7B8E300EF1A79 /* StartupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A7D20D7B8E300EF1A79 /* StartupPresenterTests.swift */; };
 		7E300A8920D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */; };
 		7E300ABC20D7E60800EF1A79 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AB820D7E60700EF1A79 /* SecurityController.m */; };
 		7E300ABF20D7E84300EF1A79 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E300ABE20D7E84300EF1A79 /* README.md */; };
@@ -45,12 +48,46 @@
 		7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A420E5220600FB620F /* LogoutInteractor.swift */; };
 		7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
 		7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
+		7E4794D22445A7ED00242046 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
+		7E4794D32445A87200242046 /* RegisterUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */; };
+		7E4794D42445A87200242046 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
+		7E4794D82445A87A00242046 /* StartupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */; };
+		7E4794D92445A87A00242046 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */; };
+		7E4794DA2445A87A00242046 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477620E0D63800FB620F /* RegisterUserInteractor.swift */; };
+		7E4794DB2445A87A00242046 /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A420E5220600FB620F /* LogoutInteractor.swift */; };
+		7E4794E12445A87F00242046 /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AD320DA888100EF1A79 /* ErrorPresenter.swift */; };
+		7E4794E22445A87F00242046 /* StartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AC920D8F8D400EF1A79 /* StartupPresenter.swift */; };
+		7E4794E32445A87F00242046 /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477420E0BB5B00FB620F /* WelcomePresenter.swift */; };
+		7E4794E42445A87F00242046 /* RegisterUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477820E0ED5300FB620F /* RegisterUserPresenter.swift */; };
+		7E4794E52445A87F00242046 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A220E51A2200FB620F /* DashboardPresenter.swift */; };
+		7E4794E62445A87F00242046 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
+		7E4794E72445A88400242046 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479E20E5198C00FB620F /* DashboardViewController.swift */; };
+		7E4794E82445A88400242046 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45479F20E5198C00FB620F /* DashboardViewController.xib */; };
+		7E4794E92445A89500242046 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
+		7E4794EA2445A89500242046 /* PinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45478E20E24DEE00FB620F /* PinViewController.xib */; };
+		7E4794EB2445A89A00242046 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
+		7E4794EC2445A89A00242046 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45477120DD422600FB620F /* ButtonTableViewCell.xib */; };
+		7E4794ED2445A89F00242046 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478120E21E4D00FB620F /* BrowserViewController.swift */; };
+		7E4794EE2445A89F00242046 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */; };
+		7E4794EF2445A89F00242046 /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
+		7E4794F02445A8A400242046 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
+		7E4794F12445A8A400242046 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
+		7E4794F22445A8A400242046 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
+		7E4794F32445A8A400242046 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C420DD102E00B86628 /* LoginViewController.xib */; };
+		7E4794F62445A8C300242046 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */; };
+		7E4794F72445A8C300242046 /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */; };
+		7E4794F82445A8C700242046 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AE820DBE17600EF1A79 /* WelcomeViewController.swift */; };
+		7E4794F92445A8C700242046 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */; };
+		7E4795012445C2C000242046 /* AppRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4795002445C2C000242046 /* AppRouterMock.swift */; };
+		7E4795022445CCD400242046 /* TestContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C9492440A15E00AA4001 /* TestContainer.swift */; };
+		7E4795072445E25E00242046 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
 		7E5684C620DD102E00B86628 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5684C420DD102E00B86628 /* LoginViewController.xib */; };
 		7E634C4C243DD23D002A9ECA /* SectigoIntermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7E634C4B243DD23D002A9ECA /* SectigoIntermediate.cer */; };
 		7E634C4F243DD877002A9ECA /* AppConteiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E634C4E243DD877002A9ECA /* AppConteiner.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
+		7EB1C94D2440A6DC00AA4001 /* StartupInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C94C2440A6DC00AA4001 /* StartupInteractorMock.swift */; };
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
@@ -85,7 +122,7 @@
 		7E300A7220D7B8E200EF1A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E300A7420D7B8E200EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneginiExampleAppSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiExampleAppSwiftTests.swift; sourceTree = "<group>"; };
+		7E300A7D20D7B8E300EF1A79 /* StartupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPresenterTests.swift; sourceTree = "<group>"; };
 		7E300A7F20D7B8E300EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneginiExampleAppSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiExampleAppSwiftUITests.swift; sourceTree = "<group>"; };
@@ -124,12 +161,15 @@
 		7E4547A420E5220600FB620F /* LogoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
 		7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
 		7E4547A820E62D8B00FB620F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		7E4795002445C2C000242046 /* AppRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterMock.swift; sourceTree = "<group>"; };
 		7E5684C320DD102E00B86628 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7E5684C420DD102E00B86628 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		7E634C4B243DD23D002A9ECA /* SectigoIntermediate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = SectigoIntermediate.cer; sourceTree = "<group>"; };
 		7E634C4E243DD877002A9ECA /* AppConteiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConteiner.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
+		7EB1C9492440A15E00AA4001 /* TestContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContainer.swift; sourceTree = "<group>"; };
+		7EB1C94C2440A6DC00AA4001 /* StartupInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupInteractorMock.swift; sourceTree = "<group>"; };
 		7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
@@ -227,7 +267,8 @@
 		7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */,
+				7EB1C94B2440A62300AA4001 /* Mocks */,
+				7E300A7D20D7B8E300EF1A79 /* StartupPresenterTests.swift */,
 				7E300A7F20D7B8E300EF1A79 /* Info.plist */,
 			);
 			path = OneginiExampleAppSwiftTests;
@@ -416,8 +457,18 @@
 			isa = PBXGroup;
 			children = (
 				7E634C4E243DD877002A9ECA /* AppConteiner.swift */,
+				7EB1C9492440A15E00AA4001 /* TestContainer.swift */,
 			);
 			path = Dip;
+			sourceTree = "<group>";
+		};
+		7EB1C94B2440A62300AA4001 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7EB1C94C2440A6DC00AA4001 /* StartupInteractorMock.swift */,
+				7E4795002445C2C000242046 /* AppRouterMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		91DE3EFAA921704936F26C6A /* Pods */ = {
@@ -467,6 +518,7 @@
 				7E300A7520D7B8E300EF1A79 /* Sources */,
 				7E300A7620D7B8E300EF1A79 /* Frameworks */,
 				7E300A7720D7B8E300EF1A79 /* Resources */,
+				24D3A1FD3ED957940A811203 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -564,6 +616,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E4794E82445A88400242046 /* DashboardViewController.xib in Resources */,
+				7E4794EA2445A89500242046 /* PinViewController.xib in Resources */,
+				7E4794F72445A8C300242046 /* StartupViewController.xib in Resources */,
+				7E4794EC2445A89A00242046 /* ButtonTableViewCell.xib in Resources */,
+				7E4794EF2445A89F00242046 /* RegisterUserViewController.xib in Resources */,
+				7E4794F92445A8C700242046 /* WelcomeViewController.xib in Resources */,
+				7E4794F32445A8A400242046 /* LoginViewController.xib in Resources */,
+				7E4794F12445A8A400242046 /* ProfileTableViewCell.xib in Resources */,
+				7E2E88D52445F2340051B5DE /* SectigoIntermediate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +653,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		24D3A1FD3ED957940A811203 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5C02B746B36629490CAF97F1 /* [CP] Check Pods Manifest.lock */ = {
@@ -693,7 +771,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */,
+				7E4795072445E25E00242046 /* AppDelegate.swift in Sources */,
+				7E4794E22445A87F00242046 /* StartupPresenter.swift in Sources */,
+				7E4794ED2445A89F00242046 /* BrowserViewController.swift in Sources */,
+				7E4794F02445A8A400242046 /* ProfileTableViewCell.swift in Sources */,
+				7E4794E72445A88400242046 /* DashboardViewController.swift in Sources */,
+				7E300A7E20D7B8E300EF1A79 /* StartupPresenterTests.swift in Sources */,
+				7E4794F82445A8C700242046 /* WelcomeViewController.swift in Sources */,
+				7E4794E52445A87F00242046 /* DashboardPresenter.swift in Sources */,
+				7E4795012445C2C000242046 /* AppRouterMock.swift in Sources */,
+				7E4794DB2445A87A00242046 /* LogoutInteractor.swift in Sources */,
+				7E4794D82445A87A00242046 /* StartupInteractor.swift in Sources */,
+				7E4794EB2445A89A00242046 /* ButtonTableViewCell.swift in Sources */,
+				7E4794D32445A87200242046 /* RegisterUserEntity.swift in Sources */,
+				7E4794E92445A89500242046 /* PinViewController.swift in Sources */,
+				7E2E88D32445F0F50051B5DE /* OneginiConfigModel.m in Sources */,
+				7E4794F22445A8A400242046 /* LoginViewController.swift in Sources */,
+				7E4794E42445A87F00242046 /* RegisterUserPresenter.swift in Sources */,
+				7E4795022445CCD400242046 /* TestContainer.swift in Sources */,
+				7E4794EE2445A89F00242046 /* RegisterUserViewController.swift in Sources */,
+				7E4794E12445A87F00242046 /* ErrorPresenter.swift in Sources */,
+				7E4794F62445A8C300242046 /* StartupViewController.swift in Sources */,
+				7E2E88D42445F0F80051B5DE /* SecurityController.m in Sources */,
+				7E4794E62445A87F00242046 /* LoginPresenter.swift in Sources */,
+				7E4794DA2445A87A00242046 /* RegisterUserInteractor.swift in Sources */,
+				7E4794D22445A7ED00242046 /* AppRouter.swift in Sources */,
+				7E4794E32445A87F00242046 /* WelcomePresenter.swift in Sources */,
+				7EB1C94D2440A6DC00AA4001 /* StartupInteractorMock.swift in Sources */,
+				7E4794D92445A87A00242046 /* LoginInteractor.swift in Sources */,
+				7E4794D42445A87200242046 /* LoginEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,6 +1012,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneginiExampleAppSwift.app/OneginiExampleAppSwift";
@@ -928,6 +1035,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneginiExampleAppSwift.app/OneginiExampleAppSwift";

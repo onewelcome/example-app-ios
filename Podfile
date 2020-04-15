@@ -14,16 +14,21 @@ target 'OneginiExampleAppSwift' do
     pod 'Swinject'
     pod 'BetterSegmentedControl', '~> 0.9'
 
-  target 'OneginiExampleAppSwiftTests' do
-     inherit! :search_paths
-    # Pods for testing
-  end
-
   target 'OneginiExampleAppSwiftUITests' do
      inherit! :search_paths
     # Pods for testing
   end
 
+end
+
+target 'OneginiExampleAppSwiftTests' do
+   use_frameworks!
+   pod 'Dip'
+   pod 'Swinject'
+   pod 'BetterSegmentedControl', '~> 0.9'
+   pod 'OneginiSDKiOS', '9.5.1'
+   pod 'Quick'
+   pod 'Nimble'
 end
 
 post_install do |installer|

@@ -56,7 +56,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     }
 
     func presentError(_ error: Error) {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        guard let appRouter = try? container.resolve() as AppRouterProtocol else { fatalError() }
         appRouter.setupErrorAlert(error: error, title: "")
     }
 }

@@ -1,19 +1,25 @@
 PODS:
   - BetterSegmentedControl (0.9)
   - Dip (7.0.1)
+  - Nimble (8.0.5)
   - OneginiSDKiOS (9.5.1)
+  - Quick (2.2.0)
   - Swinject (2.4.0)
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
   - Dip
+  - Nimble
   - OneginiSDKiOS (= 9.5.1)
+  - Quick
   - Swinject
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - BetterSegmentedControl
     - Dip
+    - Nimble
+    - Quick
     - Swinject
   https://repo.onegini.com/artifactory/api/pods/cocoapods-public:
     - OneginiSDKiOS
@@ -21,9 +27,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
   Dip: 79509d5dc4f648e10e922ed79c608a7761c52b13
+  Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   OneginiSDKiOS: 486984ab0598c871850cbd59d78c0851c3ed3066
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
 
-PODFILE CHECKSUM: 13d74289e405e31ecb78eceb7a54cb6877e809e6
+PODFILE CHECKSUM: 4f752a44b4d554a328d8a5c5400b0a27cc2b1240
 
 COCOAPODS: 1.9.1

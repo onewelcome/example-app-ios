@@ -1,21 +1,22 @@
 //
-//  AppConteiner.swift
-//  OneginiExampleAppSwift
+//  TestContainer.swift
+//  OneginiExampleAppSwiftTests
 //
-//  Created by Łukasz Łabuński on 08/04/2020.
+//  Created by Łukasz Łabuński on 10/04/2020.
 //  Copyright © 2020 Onegini. All rights reserved.
 //
 
 import Dip
 
-var container = DependencyContainer(configBlock: configureContainer)
+let container = DependencyContainer(configBlock: configureContainer)
 
 func configureContainer(container rootContainer: DependencyContainer) {
+    
     rootContainer.register(.eagerSingleton) { UINavigationController() }
-
+    
     rootContainer.register { WelcomeViewController(welcomePresenterProtocol: try rootContainer.resolve() as WelcomePresenterProtocol) }
-
-    rootContainer.register(.singleton) { AppRouter(startupPresenter: try rootContainer.resolve() as StartupPresenterProtocol,
+    
+    rootContainer.register(.singleton) { AppRouterMock(startupPresenter: try rootContainer.resolve() as StartupPresenterProtocol,
         welcomePresenter: try rootContainer.resolve() as WelcomePresenterProtocol,
         dashboardPresenter: try rootContainer.resolve() as DashboardPresenterProtocol,
         errorPresenter: try rootContainer.resolve() as ErrorPresenterProtocol) as AppRouterProtocol }
@@ -23,7 +24,7 @@ func configureContainer(container rootContainer: DependencyContainer) {
     rootContainer.register { StartupPresenter(startupInteractor: try rootContainer.resolve() as StartupInteractorProtocol,
         navigationController: try rootContainer.resolve() as UINavigationController) as StartupPresenterProtocol }
 
-    rootContainer.register { StartupInteractor() as StartupInteractorProtocol }
+    rootContainer.register { StartupInteractorMock() as StartupInteractorProtocol }
 
     rootContainer.register { StartupViewController() }
 

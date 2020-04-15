@@ -19,7 +19,7 @@ import Dip
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
+    var appRouter = try? container.resolve() as AppRouterProtocol
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
@@ -41,4 +41,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let appRouter = appRouter else { fatalError() }
         appRouter.setupStartupPresenter()
     }
+
 }
