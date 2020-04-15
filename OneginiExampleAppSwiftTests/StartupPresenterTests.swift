@@ -15,7 +15,6 @@
 
 import Nimble
 import Quick
-//@testable import OneginiExampleAppSwift
 
 class StartupPresenterTests: QuickSpec {
     override func spec() {
