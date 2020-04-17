@@ -48,7 +48,6 @@ class LoginViewController: UIViewController {
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
         selectProfile(index: 0)
-        loginViewToPresenterProtocol?.fetchImplicitData(profile: selectedProfile)
     }
 
     func selectProfile(index: Int) {

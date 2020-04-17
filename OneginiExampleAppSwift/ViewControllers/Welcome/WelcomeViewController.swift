@@ -61,6 +61,7 @@ class WelcomeViewController: UIViewController {
     }
 
     func displayLognViewController() {
+        removeAllSubviews()
         guard let loginViewController = loginViewController else { return }
         addChildViewController(loginViewController)
         tabView.addSubview(loginViewController.view)
@@ -68,10 +69,17 @@ class WelcomeViewController: UIViewController {
     }
 
     func displayRegisterUserViewController() {
+        removeAllSubviews()
         guard let registerUserViewController = registerUserViewController else { return }
         addChildViewController(registerUserViewController)
         tabView.addSubview(registerUserViewController.view)
         registerUserViewController.view.frame = tabView.bounds
+    }
+    
+    func removeAllSubviews() {
+        tabView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
     }
 
     @IBAction func segmentValueChanged(_ sender: BetterSegmentedControl) {
