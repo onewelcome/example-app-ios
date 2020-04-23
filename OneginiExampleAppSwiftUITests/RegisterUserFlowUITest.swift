@@ -19,10 +19,10 @@ import Nimble
 class RegisterUserFlowUITest: QuickSpec {
     
     let pinLength = 5
-    let longTimeout = TimeInterval(15)
-    let shortTimeout = TimeInterval(2)
     let email = "username@test.com"
     let password = "password"
+    let longTimeout = TimeInterval(10)
+    let shortTimeout = TimeInterval(1)
     
     /**
         If there are any users registered, app will load with select profile screen and will select first user by default.
@@ -55,16 +55,23 @@ class RegisterUserFlowUITest: QuickSpec {
         }
     }
     
-    func inputEmailAndPasswordAndTapLoginButton(emailTextField: XCUIElement, passwordSecureTextField: XCUIElement, loginButton:XCUIElement) {
-        emailTextField.tap()
-        emailTextField.typeText(email)
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText(password + "\n")
-        loginButton.tap()
+    func tapAndTypeText(inputElement: XCUIElement, text:String) {
+        inputElement.tap()
+        inputElement.typeText(text)
     }
     
-    func inputPIN(app: XCUIApplication) {
+    func enterValidPin(app: XCUIApplication) {
         app.buttons["zeroButton"].tap(withNumberOfTaps: self.pinLength, numberOfTouches: self.pinLength)
+    }
+    
+    func enterInvalidPin(app: XCUIApplication) {
+        app.buttons["oneButton"].tap(withNumberOfTaps: self.pinLength, numberOfTouches: self.pinLength)
+    }
+
+    override func setUp() {
+        super.setUp()
+
+        continueAfterFailure = false
     }
     
     override func spec() {
@@ -78,25 +85,21 @@ class RegisterUserFlowUITest: QuickSpec {
                 self.disconnectSelectedUser(app: app)
             }
             afterEach {
+                if let failureCount = self.testRun?.failureCount, failureCount > 0 {
+                    let screenshot = XCUIScreen.main.screenshot()
+                    self.add(XCTAttachment(screenshot: screenshot))
+                }
                 app.terminate()
             }
             context("when no user is not registered") {
-                let signUpButton = app.buttons["Sign Up"]
-                it("should show welcome view on sign up page") {
-                    let signUpButtonExists = signUpButton.waitForExistence(timeout: self.longTimeout)
-                    expect(signUpButtonExists).to(beTrue())
+                let signUpButton = app.buttons["signUpButton"]
+                beforeEach {
+                    _ = signUpButton.waitForExistence(timeout: self.longTimeout)
                 }
                 context("when user taps Sign Up button") {
                     let emailTextField = app.webViews.element.textFields.element
                     let passwordSecureTextField = app.webViews.element.secureTextFields.element
                     let loginButton = app.webViews.element.buttons["Inloggen"]
-                    it("should load web view with registration") {
-                        signUpButton.tap()
-                        _ = loginButton.waitForExistence(timeout: self.longTimeout)
-                        expect(emailTextField.exists).to(beTrue())
-                        expect(passwordSecureTextField.exists).to(beTrue())
-                        expect(loginButton.exists).to(beTrue())
-                    }
                     context("when user inputs email and password") {
                         context("when email and password are valid") {
                             let createPinCodeLabel = app.staticTexts["Please create your PIN code"]
@@ -104,32 +107,36 @@ class RegisterUserFlowUITest: QuickSpec {
                                 signUpButton.tap()
                                 _ = loginButton.waitForExistence(timeout: self.longTimeout)
                             }
-                            it("should load create PIN view") {
-                                self.inputEmailAndPasswordAndTapLoginButton(emailTextField: emailTextField, passwordSecureTextField: passwordSecureTextField, loginButton: loginButton)
-                                let createPinCodeLabelExists = createPinCodeLabel.waitForExistence(timeout: self.longTimeout)
-                                expect(createPinCodeLabelExists).to(beTrue())
-                            }
                             context("when user inputs new PIN") {
                                 let confirmPinCodeLabel = app.staticTexts["Please confirm your PIN code"]
                                 beforeEach {
-                                    self.inputEmailAndPasswordAndTapLoginButton(emailTextField: emailTextField, passwordSecureTextField: passwordSecureTextField, loginButton: loginButton)
+                                    self.tapAndTypeText(inputElement: emailTextField, text: self.email)
+                                    self.tapAndTypeText(inputElement: passwordSecureTextField, text: self.password)
+                                    loginButton.tap()
                                     _ = createPinCodeLabel.waitForExistence(timeout: self.longTimeout)
                                 }
-                                it("should load confirm PIN view") {
-                                    self.inputPIN(app: app)
-                                    let confirmPinCodeLabelExists = confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout)
-                                    expect(confirmPinCodeLabelExists).to(beTrue())
-                                }
                                 context("when user confirms PIN") {
-                                    let dashboardTitleLabel = app.staticTexts["Dashboard"]
+                                    let dashboardTitleLabel = app.staticTexts["dashboardLabel"]
                                     beforeEach {
-                                        self.inputPIN(app: app)
+                                        self.enterValidPin(app: app)
                                         _ = confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout)
                                     }
                                     it("should load dashboard view") {
-                                        self.inputPIN(app: app)
+                                        self.enterValidPin(app: app)
                                         let dashboardTitleLabelExists = dashboardTitleLabel.waitForExistence(timeout: self.shortTimeout)
                                         expect(dashboardTitleLabelExists).to(beTrue())
+                                    }
+                                }
+                                context("when user enters wrong PIN") {
+                                    let confirmationPinDoesNotMatchLabel = app.staticTexts["The confirmation PIN does not match."]
+                                    beforeEach {
+                                        self.enterValidPin(app: app)
+                                        _ = confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout)
+                                    }
+                                    it("should show message that confirmation PIN does not match") {
+                                        self.enterInvalidPin(app: app)
+                                        let confirmationPinDoesNotMatchLabelExists = confirmationPinDoesNotMatchLabel.waitForExistence(timeout: self.shortTimeout)
+                                        expect(confirmationPinDoesNotMatchLabelExists).to(beTrue())
                                     }
                                 }
                             }

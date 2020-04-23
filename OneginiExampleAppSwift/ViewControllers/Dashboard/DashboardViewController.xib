@@ -27,7 +27,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rf-9Z-gJs">
-                            <rect key="frame" x="195" y="30" width="150" height="125"/>
+                            <rect key="frame" x="194" y="30" width="150" height="125"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.4431372549" blue="0.60784313729999995" alpha="0.25178724320000001" colorSpace="custom" customColorSpace="sRGB"/>
                             <accessibility key="accessibilityConfiguration" label="profileButton"/>
@@ -52,11 +52,11 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user (1)" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-iu-aTv">
-                            <rect key="frame" x="238" y="47" width="65" height="65"/>
+                            <rect key="frame" x="237" y="47" width="65" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doj-Cd-6qJ">
-                            <rect key="frame" x="30" y="30" width="150" height="125"/>
+                            <rect key="frame" x="29" y="30" width="151" height="125"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.44313725490196076" blue="0.60784313725490191" alpha="0.25178724315068501" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -80,11 +80,11 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="house-key" translatesAutoresizingMaskIntoConstraints="NO" id="2tg-1B-GlW">
-                            <rect key="frame" x="73" y="47" width="65" height="65"/>
+                            <rect key="frame" x="72" y="47" width="65" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfR-Nq-j1f">
-                            <rect key="frame" x="30" y="170" width="315" height="125"/>
+                            <rect key="frame" x="29" y="170" width="315" height="125"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.4431372549" blue="0.60784313729999995" alpha="0.25178724320000001" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -132,6 +132,7 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lm-As-QdT">
                             <rect key="frame" x="50.000000000000014" y="0.0" width="154.33333333333337" height="50"/>
+                            <accessibility key="accessibilityConfiguration" identifier="dashboardLabel"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="29"/>
                             <color key="textColor" red="0.13725490196078433" green="0.62745098039215685" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
