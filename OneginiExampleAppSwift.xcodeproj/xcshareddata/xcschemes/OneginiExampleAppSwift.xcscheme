@@ -48,6 +48,16 @@
                ReferencedContainer = "container:OneginiExampleAppSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B420853F2451C9BB0076E8DE"
+               BuildableName = "OneginiExampleAppSwiftUITest.xctest"
+               BlueprintName = "OneginiExampleAppSwiftUITest"
+               ReferencedContainer = "container:OneginiExampleAppSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -70,31 +70,24 @@ class RegisterUserFlowUITest: QuickSpec {
 
     override func setUp() {
         super.setUp()
-
-        continueAfterFailure = false
     }
     
     override func spec() {
         describe("register user") {
             let app = XCUIApplication()
-            beforeSuite {
-                Springboard.deleteApp(appName: "OneginiExampleAppSwift")
-            }
             beforeEach {
                 app.launch()
                 self.disconnectSelectedUser(app: app)
             }
             afterEach {
-                if let failureCount = self.testRun?.failureCount, failureCount > 0 {
-                    let screenshot = XCUIScreen.main.screenshot()
-                    self.add(XCTAttachment(screenshot: screenshot))
-                }
                 app.terminate()
             }
             context("when no user is not registered") {
                 let signUpButton = app.buttons["signUpButton"]
                 beforeEach {
-                    _ = signUpButton.waitForExistence(timeout: self.longTimeout)
+                    guard signUpButton.waitForExistence(timeout: self.longTimeout) else {
+                        fatalError("Could not find 'Sign Up' button")
+                    }
                 }
                 context("when user taps Sign Up button") {
                     let emailTextField = app.webViews.element.textFields.element
@@ -105,7 +98,9 @@ class RegisterUserFlowUITest: QuickSpec {
                             let createPinCodeLabel = app.staticTexts["Please create your PIN code"]
                             beforeEach {
                                 signUpButton.tap()
-                                _ = loginButton.waitForExistence(timeout: self.longTimeout)
+                                guard loginButton.waitForExistence(timeout: self.longTimeout) else {
+                                    fatalError("Could not find 'Inloggen' button")
+                                }
                             }
                             context("when user inputs new PIN") {
                                 let confirmPinCodeLabel = app.staticTexts["Please confirm your PIN code"]
@@ -113,13 +108,17 @@ class RegisterUserFlowUITest: QuickSpec {
                                     self.tapAndTypeText(inputElement: emailTextField, text: self.email)
                                     self.tapAndTypeText(inputElement: passwordSecureTextField, text: self.password)
                                     loginButton.tap()
-                                    _ = createPinCodeLabel.waitForExistence(timeout: self.longTimeout)
+                                    guard createPinCodeLabel.waitForExistence(timeout: self.longTimeout) else {
+                                        fatalError("Could not find 'Please confirm your PIN code' text")
+                                    }
                                 }
                                 context("when user confirms PIN") {
                                     let dashboardTitleLabel = app.staticTexts["dashboardLabel"]
                                     beforeEach {
                                         self.enterValidPin(app: app)
-                                        _ = confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout)
+                                        guard confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout) else {
+                                            fatalError("Could not find 'Please confirm your PIN code' text")
+                                        }
                                     }
                                     it("should load dashboard view") {
                                         self.enterValidPin(app: app)
@@ -131,7 +130,9 @@ class RegisterUserFlowUITest: QuickSpec {
                                     let confirmationPinDoesNotMatchLabel = app.staticTexts["The confirmation PIN does not match."]
                                     beforeEach {
                                         self.enterValidPin(app: app)
-                                        _ = confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout)
+                                        guard confirmPinCodeLabel.waitForExistence(timeout: self.shortTimeout) else {
+                                            fatalError("Could not find 'Please confirm your PIN code' text")
+                                        }
                                     }
                                     it("should show message that confirmation PIN does not match") {
                                         self.enterInvalidPin(app: app)
@@ -145,7 +146,9 @@ class RegisterUserFlowUITest: QuickSpec {
                             let invalidEmailLabel = app.staticTexts["Dit e-mailadres is niet geldig"]
                             beforeEach {
                                 signUpButton.tap()
-                                _ = loginButton.waitForExistence(timeout: self.longTimeout)
+                                guard loginButton.waitForExistence(timeout: self.longTimeout) else {
+                                    fatalError("Could not find 'Dit e-mailadres is niet geldig' text")
+                                }
                             }
                             it("should show error about invalid email") {
                                 emailTextField.tap()
