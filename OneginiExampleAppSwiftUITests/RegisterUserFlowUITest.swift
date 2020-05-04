@@ -75,6 +75,16 @@ class RegisterUserFlowUITest: QuickSpec {
     override func spec() {
         describe("register user") {
             let app = XCUIApplication()
+            beforeSuite {
+                // With default user agent from webview, our demo IDP views register page in Dutch instead English. This ensures that it should load in English.
+                UserDefaults.standard.register(defaults: ["UserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/81.0.4044.124 Mobile/15E148 Safari/604.1"])
+            }
+            afterSuite {
+                // Reset user agent after tests.
+                var registeredDefaults = UserDefaults.standard.volatileDomain(forName: UserDefaults.registrationDomain)
+                registeredDefaults["UserAgent"] = nil
+                UserDefaults.standard.setVolatileDomain(registeredDefaults, forName: UserDefaults.registrationDomain)
+            }
             beforeEach {
                 app.launch()
                 self.disconnectSelectedUser(app: app)
@@ -92,7 +102,7 @@ class RegisterUserFlowUITest: QuickSpec {
                 context("when user taps Sign Up button") {
                     let emailTextField = app.webViews.element.textFields.element
                     let passwordSecureTextField = app.webViews.element.secureTextFields.element
-                    let loginButton = app.webViews.element.buttons["Inloggen"]
+                    let loginButton = app.webViews.element.buttons["Login"]
                     context("when user inputs email and password") {
                         context("when email and password are valid") {
                             let createPinCodeLabel = app.staticTexts["Please create your PIN code"]
@@ -106,7 +116,7 @@ class RegisterUserFlowUITest: QuickSpec {
                                 let confirmPinCodeLabel = app.staticTexts["Please confirm your PIN code"]
                                 beforeEach {
                                     self.tapAndTypeText(inputElement: emailTextField, text: self.email)
-                                    self.tapAndTypeText(inputElement: passwordSecureTextField, text: self.password)
+                                    self.tapAndTypeText(inputElement: passwordSecureTextField, text: self.password + "\n")
                                     loginButton.tap()
                                     guard createPinCodeLabel.waitForExistence(timeout: self.longTimeout) else {
                                         fatalError("Could not find 'Please confirm your PIN code' text")
@@ -143,7 +153,7 @@ class RegisterUserFlowUITest: QuickSpec {
                             }
                         }
                         context("when email is not valid") {
-                            let invalidEmailLabel = app.staticTexts["Dit e-mailadres is niet geldig"]
+                            let invalidEmailLabel = app.staticTexts["Email address you entered is not valid"]
                             beforeEach {
                                 signUpButton.tap()
                                 guard loginButton.waitForExistence(timeout: self.longTimeout) else {
