@@ -38,6 +38,14 @@ class QRCodeViewController: UIViewController {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let previewLayer = previewLayer {
+            previewLayer.frame = qrCodeView.layer.bounds
+            previewLayer.videoGravity = .resizeAspectFill
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +82,7 @@ class QRCodeViewController: UIViewController {
         }
 
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = qrCodeView.layer.bounds
+        previewLayer.frame = qrCodeView.bounds
         previewLayer.videoGravity = .resizeAspectFill
         qrCodeView.layer.addSublayer(previewLayer)
 
