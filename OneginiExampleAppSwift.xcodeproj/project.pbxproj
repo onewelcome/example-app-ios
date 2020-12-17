@@ -68,6 +68,8 @@
 		7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
+		7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */; };
+		7E7CCCF2258B7E7D00FA3CD3 /* MediumImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */; };
 		7E804F5E258A5C6A000E110E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E804F5D258A5C6A000E110E /* WidgetKit.framework */; };
 		7E804F60258A5C6A000E110E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E804F5F258A5C6A000E110E /* SwiftUI.framework */; };
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
@@ -254,6 +256,8 @@
 		7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
+		7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallImplicitDataView.swift; path = widget/SmallImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
+		7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediumImplicitDataView.swift; path = widget/MediumImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
 		7E804F5C258A5C69000E110E /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E804F5D258A5C6A000E110E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7E804F5F258A5C6A000E110E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -706,6 +710,8 @@
 				7E804F66258A5C6D000E110E /* Info.plist */,
 				7E40D8C7258B5945005C8662 /* Startup.swift */,
 				7E40D8CC258B59EE005C8662 /* ResourceGateway.swift */,
+				7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */,
+				7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -1249,7 +1255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E7CCCF2258B7E7D00FA3CD3 /* MediumImplicitDataView.swift in Sources */,
 				7E804F63258A5C6A000E110E /* Widget.swift in Sources */,
+				7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */,
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,

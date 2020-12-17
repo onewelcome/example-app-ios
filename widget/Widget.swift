@@ -50,28 +50,21 @@ struct SimpleEntry: TimelineEntry {
 
 struct WidgetEntryView : View {
     var entry: Provider.Entry
+    
+    @Environment(\.widgetFamily) var family
 
     var body: some View {
         ZStack {
             Image("light-gray-wallpaper-texture")
                 .resizable()
                 .scaledToFill()
-            VStack {
-                Image("Image 1")
-                    .resizable()
-                    .frame(width: 60, height: 41, alignment: .leading)
-                    .aspectRatio(contentMode: .fit)
-                Text("Implicit data")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.4)
-                Text(entry.implicitData)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.4)
-                    .font(.system(size: 10, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-            }.padding()
+            switch family {
+            case .systemMedium:
+                MediumImplicitDataView(entry.implicitData)
+                
+            default:
+                SmallImplicitDataView(entry.implicitData)
+            }
         }
     }
 }
