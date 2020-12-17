@@ -24,6 +24,11 @@ struct Provider: TimelineProvider {
         Startup().oneginiSDKStartup { success in
             if success {
                 guard let profile = ONGUserClient.sharedInstance().userProfiles().first else {
+                    let entries = [
+                        SimpleEntry(date: Date(), implicitData: "User not registered")
+                        ]
+                    let timeline = Timeline(entries: entries, policy: .atEnd)
+                    completion(timeline)
                     return
                 }
                 ResourceGateway().fetchImplicitResources(profile: profile) { data in
