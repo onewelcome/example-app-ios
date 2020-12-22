@@ -15,6 +15,7 @@
 
 import UIKit
 import UserNotifications
+import WidgetKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,5 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError _: Error) {
         let mappedError = AppError(title: "Push mobile auth enrollment error", errorDescription: "Something went wrong.")
         pushMobileAuthEnrollment?.enrollForPushMobileAuthFailed(mappedError)
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
 }
