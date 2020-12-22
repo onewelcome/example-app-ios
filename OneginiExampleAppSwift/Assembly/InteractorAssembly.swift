@@ -69,10 +69,6 @@ class InteractorAssembly: Assembly {
             }
 
         container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor() }
-            .initCompleted { resolver, instance in
-                let fetchImplicitDataInteractor = instance as! FetchImplicitDataInteractor
-                fetchImplicitDataInteractor.loginPresenter = resolver.resolve(LoginPresenterProtocols.self)
-            }
         
         container.register(AppToWebInteractorProtocol.self) { _ in AppToWebInteractor() }
     }
