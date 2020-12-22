@@ -16,19 +16,18 @@
 import UIKit
 
 protocol FetchImplicitDataInteractorProtocol: AnyObject {
-    func fetchImplicitResources(profile: ONGUserProfile)
+    func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?, AppError?) -> Void)
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    weak var loginPresenter: LoginInteractorToPresenterProtocol?
 
-    func fetchImplicitResources(profile: ONGUserProfile) {
+    func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
             implicitResourcesRequest { userIdDecorated, error in
                 if let userIdDecorated = userIdDecorated {
-                    self.loginPresenter?.presentImplicitData(data: userIdDecorated)
+                    completion(userIdDecorated, nil)
                 } else if let error = error {
-                    self.loginPresenter?.fetchImplicitDataFailed(error)
+                    completion(nil, error)
                 }
             }
         } else {
@@ -36,14 +35,14 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
                 if success {
                     self.implicitResourcesRequest { userIdDecorated, error in
                         if let userIdDecorated = userIdDecorated {
-                            self.loginPresenter?.presentImplicitData(data: userIdDecorated)
+                            completion(userIdDecorated, nil)
                         } else if let error = error {
-                            self.loginPresenter?.fetchImplicitDataFailed(error)
+                            completion(nil, error)
                         }
                     }
                 } else {
                     if let error = error {
-                        self.loginPresenter?.fetchImplicitDataFailed(error)
+                        completion(nil, error)
                     }
                 }
             }
@@ -66,7 +65,7 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
-        let implicitRequest = ONGResourceRequest(path: "resources/user-id-decorated", method: "GET")
+        let implicitRequest = ONGResourceRequest(path: "user-id-decorated", method: "GET")
         ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)

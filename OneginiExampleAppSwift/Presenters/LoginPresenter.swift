@@ -15,78 +15,52 @@
 
 import UIKit
 
-typealias LoginPresenterProtocol = LoginInteractorToPresenterProtocol & LoginViewToPresenterProtocol & ParentToChildPresenterProtocol
+typealias LoginPresenterProtocols = LoginPresenterProtocol & LoginViewDelegate & LoginInteractorDelegate
 
-protocol ParentToChildPresenterProtocol {
+protocol LoginPresenterProtocol: AnyObject {
     func update()
     func updateSelectedProfile(_ profile: ONGUserProfile)
-}
-
-protocol LoginInteractorToPresenterProtocol: AnyObject {
-    func presentPinView(loginEntity: LoginEntity)
-    func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
-    func loginActionFailed(_ error: AppError, profile: ONGUserProfile)
-    func loginActionCancelled(profile: ONGUserProfile)
+    var profiles: Array<ONGUserProfile> { get set }
+    func setupLoginView() -> LoginViewController
     func presentImplicitData(data: String)
     func fetchImplicitDataFailed(_ error: AppError)
-    func presentPasswordAuthenticatorView(loginEnity: LoginEntity)
 }
 
-protocol LoginViewToPresenterProtocol: class {
-    var profiles: Array<ONGUserProfile> { get set }
-
-    func setupLoginView() -> LoginViewController
-    func login(profile: ONGUserProfile, authenticator: ONGAuthenticator?)
-    func reloadAuthenticators(_ profile: ONGUserProfile)
-    func fetchImplicitData(profile: ONGUserProfile)
+protocol LoginPresenterDelegate: AnyObject {
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: ONGUserProfile)
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError)
 }
 
-class LoginPresenter: LoginInteractorToPresenterProtocol {
+class LoginPresenter: LoginPresenterProtocol {
+    
     var loginInteractor: LoginInteractorProtocol
     var profiles = Array<ONGUserProfile>()
     let navigationController: UINavigationController
     let fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol
     var loginViewController: LoginViewController
     var pinViewController: PinViewController?
-
+    
     init(loginInteractor: LoginInteractorProtocol, fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
         self.fetchImplicitDataInteractor = fetchImplicitDataInteractor
     }
-
-    func presentPinView(loginEntity: LoginEntity) {
-        if let error = loginEntity.pinError {
-            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
-            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
-        } else {
-            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
-            navigationController.present(pinViewController!, animated: true, completion: nil)
+    
+    func updateSelectedProfile(_ profile: ONGUserProfile) {
+        loginViewController.selectedProfile = profile
+    }
+    
+    func update() {
+        reloadProfiles()
+        if profiles.count > 0 {
+            updateView()
         }
     }
-
-    func presentPasswordAuthenticatorView(loginEnity: LoginEntity) {
-        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEnity, viewToPresenterProtocol: self)
-        passwordViewController.modalPresentationStyle = .overCurrentContext
-        navigationController.present(passwordViewController, animated: false, completion: nil)
-    }
-
-    func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        navigationController.dismiss(animated: false, completion: nil)
-        appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
-    }
-
-    func loginActionFailed(_ error: AppError, profile: ONGUserProfile) {
-        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        navigationController.dismiss(animated: false, completion: nil)
-        appRouter.updateWelcomeView(selectedProfile: profile)
-        appRouter.setupErrorAlert(error: error)
-    }
-
-    func loginActionCancelled(profile _: ONGUserProfile) {
-        navigationController.dismiss(animated: false, completion: nil)
+    
+    func setupLoginView() -> LoginViewController {
+        loginViewController.profiles = loginInteractor.userProfiles()
+        return loginViewController
     }
 
     func reloadProfiles() {
@@ -97,13 +71,13 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
     func updateView() {
         let profile = loginViewController.selectedProfile
         if profiles.contains(profile) {
-            reloadAuthenticators(profile)
+            loginViewController.reloadAuthenticators()
             if let index = loginViewController.profiles.index(of: profile) {
                 loginViewController.selectProfile(index: index)
             }
         } else {
-            reloadAuthenticators(profiles[0])
             loginViewController.selectProfile(index: 0)
+            loginViewController.reloadAuthenticators()
         }
     }
 
@@ -117,39 +91,66 @@ class LoginPresenter: LoginInteractorToPresenterProtocol {
     }
 }
 
-extension LoginPresenter: LoginViewToPresenterProtocol {
-    func setupLoginView() -> LoginViewController {
-        profiles = loginInteractor.userProfiles()
-        if profiles.count > 0 {
-            let authenticators = loginInteractor.authenticators(profile: profiles[0])
-            loginViewController.authenticators = authenticators
+extension LoginPresenter: LoginInteractorDelegate {
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPin loginEntity: LoginEntity) {
+        if let error = loginEntity.pinError {
+            let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
+            pinViewController?.setupErrorLabel(errorDescription: errorDescription)
+        } else {
+            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+            navigationController.present(pinViewController!, animated: true, completion: nil)
         }
-        loginViewController.profiles = profiles
-        return loginViewController
     }
-
-    func login(profile: ONGUserProfile, authenticator: ONGAuthenticator? = nil) {
-        loginInteractor.login(profile: profile, authenticator: authenticator)
+    
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPassword loginEntity: LoginEntity) {
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+        passwordViewController.modalPresentationStyle = .overCurrentContext
+        navigationController.present(passwordViewController, animated: false, completion: nil)
     }
-
-    func reloadAuthenticators(_ profile: ONGUserProfile) {
-        loginViewController.authenticators = loginInteractor.authenticators(profile: profile)
+    
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didLoginUser profile: ONGUserProfile) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: false, completion: nil)
+        appRouter.setupDashboardPresenter(authenticatedUserProfile: profile)
     }
-
-    func fetchImplicitData(profile: ONGUserProfile) {
-        fetchImplicitDataInteractor.fetchImplicitResources(profile: profile)
+    
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError) {
+        guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+        navigationController.dismiss(animated: false, completion: nil)
+        appRouter.updateWelcomeView(selectedProfile: profile)
+        appRouter.setupErrorAlert(error: error)
+    }
+    
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didCancelLoginUser profile: ONGUserProfile) {
+        navigationController.dismiss(animated: false, completion: nil)
     }
 }
 
-extension LoginPresenter: ParentToChildPresenterProtocol {
-    func updateSelectedProfile(_ profile: ONGUserProfile) {
-        loginViewController.selectedProfile = profile
+extension LoginPresenter: LoginViewDelegate {
+    
+    func loginView(profilesInLoginView loginView: UIViewController) -> [ONGUserProfile] {
+        return loginInteractor.userProfiles()
     }
 
-    func update() {
-        reloadProfiles()
-        if profiles.count > 0 {
-            updateView()
+    func loginView(_ loginView: UIViewController, didLoginProfile profile: ONGUserProfile, withAuthenticator authenticator: ONGAuthenticator?) {
+        loginInteractor.login(profile: profile, authenticator: authenticator)
+    }
+
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: ONGUserProfile) -> [ONGAuthenticator] {
+        return loginInteractor.authenticators(profile: profile)
+    }
+    
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String?) -> Void) {
+        fetchImplicitDataInteractor.fetchImplicitResources(profile: profile) { (implicitData, error) in
+            guard let implicitData = implicitData else {
+                completion(nil)
+                // Commented because of Bug in Token server, sometimes is returned 401
+//                guard let error = error else { return }
+//                guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+//                appRouter.setupErrorAlert(error: error)
+                return
+            }
+            completion(implicitData)
         }
     }
 }

@@ -28,6 +28,7 @@ protocol AppRouterProtocol: class {
     var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol { get }
     var appDetailsPresenter: AppDetailsPresenterProtocol { get }
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol { get }
+    var appToWebPresenter: AppToWebPresenterProtocol { get }
 
     func popToDashboardView()
     func updateWelcomeView(selectedProfile: ONGUserProfile?)
@@ -47,6 +48,7 @@ protocol AppRouterProtocol: class {
     func setupChangePinPresenter()
     func setupFetchDeviceListPresenter()
     func setupTabBar()
+    func setupAppToWebPresenter()
 }
 
 class AppRouter: NSObject, AppRouterProtocol {
@@ -67,6 +69,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol
     var appDetailsPresenter: AppDetailsPresenterProtocol
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
+    var appToWebPresenter: AppToWebPresenterProtocol
 
     init(window: UIWindow,
          startupPresenter: StartupPresenterProtocol,
@@ -80,7 +83,8 @@ class AppRouter: NSObject, AppRouterProtocol {
          changePinPresenter: ChangePinPresenterProtocol,
          pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
          fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
-         appDetailsPresenter: AppDetailsPresenterProtocol) {
+         appDetailsPresenter: AppDetailsPresenterProtocol,
+         appToWebPresenter: AppToWebPresenterProtocol) {
         self.window = window
         self.window.backgroundColor = UIColor.white
         self.window.makeKeyAndVisible()
@@ -96,6 +100,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         self.fetchDeviceListPresenter = fetchDeviceListPresenter
         self.appDetailsPresenter = appDetailsPresenter
         self.pendingMobileAuthPresenter = pendingMobileAuthPresenter
+        self.appToWebPresenter = appToWebPresenter
     }
 
     func popToDashboardView() {
@@ -167,6 +172,25 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func setupFetchDeviceListPresenter() {
         fetchDeviceListPresenter.setupDeviceListPresenter()
+    }
+    
+    func setupAppToWebPresenter() {
+        appToWebPresenter.presentSingleSignOn()
+    }
+}
+
+extension AppRouter: LoginPresenterDelegate {
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: ONGUserProfile) {
+        dashboardPresenter.presentDashboardView(authenticatedUserProfile: profile)
+    }
+    
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError) {
+        welcomePresenter.update(selectedProfile: profile)
+        errorPresenter.showErrorAlert(error: error, okButtonHandler: nil)
+    }
+    
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoadImplicitDataWithError error: AppError) {
+        errorPresenter.showErrorAlert(error: error, okButtonHandler: nil)
     }
 }
 

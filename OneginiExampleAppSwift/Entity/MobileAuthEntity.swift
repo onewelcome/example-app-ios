@@ -16,7 +16,7 @@
 import UIKit
 
 enum MobileAuthAuthenticatorType: String {
-    case fingerprint = "biometric"
+    case biometric = "biometric"
     case pin = "PIN"
     case confirmation = ""
 }
@@ -27,7 +27,7 @@ class MobileAuthEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEn
     var pinLength: Int?
     var pinChallenge: ONGPinChallenge?
 
-    var fingerprintChallenge: ONGFingerprintChallenge?
+    var biometricChallenge: ONGBiometricChallenge?
     var userProfile: ONGUserProfile?
     var message: String?
     var authenticatorType: MobileAuthAuthenticatorType?

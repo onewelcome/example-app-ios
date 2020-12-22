@@ -24,7 +24,7 @@ class PresenterAssembly: Assembly {
 
         container.register(WelcomePresenterProtocol.self) { resolver in
             WelcomePresenter(resolver.resolve(WelcomeViewController.self)!,
-                             loginPresenter: resolver.resolve(LoginPresenterProtocol.self)!,
+                             loginPresenter: resolver.resolve(LoginPresenterProtocols.self)!,
                              registerUserPresenter: resolver.resolve(RegisterUserPresenterProtocol.self)!,
                              navigationController: resolver.resolve(UINavigationController.self)!,
                              tabBarController: resolver.resolve(TabBarController.self)!)
@@ -36,7 +36,7 @@ class PresenterAssembly: Assembly {
                                   userRegistrationNavigationController: UINavigationController())
         }
 
-        container.register(LoginPresenterProtocol.self) { resolver in
+        container.register(LoginPresenterProtocols.self) { resolver in
             LoginPresenter(loginInteractor: resolver.resolve(LoginInteractorProtocol.self)!,
                            fetchImplicitDataInteractor: resolver.resolve(FetchImplicitDataInteractorProtocol.self)!,
                            navigationController: resolver.resolve(UINavigationController.self)!,
@@ -84,6 +84,11 @@ class PresenterAssembly: Assembly {
             AppDetailsPresenter(resolver.resolve(AppDetailsViewController.self)!,
                                 appDetailsInteractor: resolver.resolve(AppDetailsInteractorProtocol.self)!,
                                 navigationController: resolver.resolve(UINavigationController.self)!) }
+        
+        container.register(AppToWebPresenterProtocol.self) { resolver in
+            AppToWebPresenter(appToWebInteractorProtocol: resolver.resolve(AppToWebInteractorProtocol.self)!,
+                              navigationController: resolver.resolve(UINavigationController.self)!)
+        }
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)

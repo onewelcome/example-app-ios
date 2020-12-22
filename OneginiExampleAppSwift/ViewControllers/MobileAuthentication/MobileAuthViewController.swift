@@ -22,11 +22,9 @@ class MobileAuthViewController: UIViewController {
 
     @IBOutlet var enrollMobileAuthButton: TransitionButton!
     @IBOutlet var enrollPushMobileAuthButton: TransitionButton!
-    @IBOutlet var otpCode: SkyFloatingLabelTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        otpCode.text = ""
         enrollMobileAuthButton.setTitle("Enrolled", for: .disabled)
         enrollPushMobileAuthButton.setTitle("Enrolled", for: .disabled)
     }
@@ -61,13 +59,11 @@ class MobileAuthViewController: UIViewController {
     @IBAction func backPressed(_: Any) {
         mobileAuthViewToPresenterProtocol?.popToDashboardView()
     }
-
-    @IBAction func authenticate(_: Any) {
-        if let otp = otpCode.text {
-            mobileAuthViewToPresenterProtocol?.authenticateWithOTP(otp)
-            otpCode.text = ""
-        }
+    
+    @IBAction func scanQRCode(_ sender: Any) {
+        mobileAuthViewToPresenterProtocol?.presentQRCodeScanner()
     }
+    
 
     func stopEnrollPushMobileAuthAnimation(succeed: Bool) {
         DispatchQueue.main.async(execute: { () -> Void in

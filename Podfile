@@ -6,9 +6,12 @@ plugin 'cocoapods-art', :sources => [
 'onegini'
 ]
 
+target 'WidgetExtension' do
+  pod 'OneginiSDKiOS', '9.6.0'
+end
+
 target 'OneginiExampleAppSwift' do
-    use_frameworks!
-    pod 'OneginiSDKiOS', '9.0.0'
+    pod 'OneginiSDKiOS', '9.6.0'
     pod 'Swinject', '2.4.1'
     pod 'BetterSegmentedControl', '~> 0.9'
     pod 'TransitionButton', '0.5.1'

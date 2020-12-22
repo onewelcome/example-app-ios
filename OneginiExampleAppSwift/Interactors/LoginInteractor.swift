@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol LoginInteractorProtocol : AnyObject {
+protocol LoginInteractorProtocol: AnyObject {
     func userProfiles() -> Array<ONGUserProfile>
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
     func login(profile: ONGUserProfile, authenticator: ONGAuthenticator?)
@@ -23,8 +23,16 @@ protocol LoginInteractorProtocol : AnyObject {
     func handlePasswordAuthenticatorLogin()
 }
 
-class LoginInteractor: NSObject {
-    weak var loginPresenter: LoginInteractorToPresenterProtocol?
+protocol LoginInteractorDelegate: AnyObject {
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPin loginEntity: LoginEntity)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPassword loginEntity: LoginEntity)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didLoginUser profile: ONGUserProfile)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didCancelLoginUser profile: ONGUserProfile)
+}
+
+class LoginInteractor: NSObject, LoginInteractorProtocol {
+    weak var delegate: LoginInteractorDelegate?
     var loginEntity = LoginEntity()
 
     fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
@@ -44,19 +52,17 @@ class LoginInteractor: NSObject {
             customAuthenticatorChallenge.sender.respond(withData: loginEntity.data, challenge: customAuthenticatorChallenge)
         }
     }
-}
-
-extension LoginInteractor: LoginInteractorProtocol {
+    
     func userProfiles() -> Array<ONGUserProfile> {
         let userProfiles = ONGUserClient.sharedInstance().userProfiles()
         return Array(userProfiles)
     }
-
+    
     func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator> {
         let authenticators = ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
         return Array(authenticators)
     }
-
+    
     func login(profile: ONGUserProfile, authenticator: ONGAuthenticator? = nil) {
         if let authenticator = authenticator {
             ONGUserClient.sharedInstance().authenticateUser(with: authenticator, profile: profile, delegate: self)
@@ -64,7 +70,7 @@ extension LoginInteractor: LoginInteractorProtocol {
             ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
         }
     }
-
+    
     func handleLogin() {
         guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
@@ -80,24 +86,24 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
-        loginPresenter?.presentPinView(loginEntity: loginEntity)
+        delegate?.loginInteractor(self, didAskForPin: loginEntity)
     }
 
     func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
-        loginPresenter?.presentPasswordAuthenticatorView(loginEnity: loginEntity)
+        delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }
 
     func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info _: ONGCustomInfo?) {
-        loginPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
+        delegate?.loginInteractor(self, didLoginUser: userProfile)
     }
 
     func userClient(_: ONGUserClient, didFailToAuthenticateUser profile: ONGUserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
-            loginPresenter?.loginActionCancelled(profile: profile)
+            delegate?.loginInteractor(self, didCancelLoginUser: profile)
         } else {
             let mappedError = ErrorMapper().mapError(error)
-            loginPresenter?.loginActionFailed(mappedError, profile: profile)
+            delegate?.loginInteractor(self, didFailToLoginUser: profile, withError: mappedError)
         }
     }
 }
