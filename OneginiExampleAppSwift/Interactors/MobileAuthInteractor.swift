@@ -116,7 +116,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     func handleMobileAuth() {
         if mobileAuthEntity.authenticatorType == .biometric {
-            handleBiometrictMobileAuth()
+            handleBiometricMobileAuth()
         } else if mobileAuthEntity.authenticatorType == .confirmation {
             handleConfirmationMobileAuth()
         } else if mobileAuthEntity.authenticatorType == .pin {
@@ -134,7 +134,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
-    fileprivate func handleBiometrictMobileAuth() {
+    fileprivate func handleBiometricMobileAuth() {
         guard let biometricChallenge = mobileAuthEntity.biometricChallenge else { fatalError() }
         if mobileAuthEntity.cancelled {
             biometricChallenge.sender.cancel(biometricChallenge)

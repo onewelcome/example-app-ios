@@ -20,7 +20,6 @@ protocol FetchImplicitDataInteractorProtocol: AnyObject {
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    weak var loginPresenter: LoginPresenterProtocol?
 
     func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
