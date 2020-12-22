@@ -6,26 +6,15 @@ import OneginiSDKiOS
 class ResourceGateway {
     
     func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?) -> Void) {
-        if isProfileImplicitlyAuthenticated(profile) {
-            implicitResourcesRequest { userIdDecorated in
-                completion(userIdDecorated)
-            }
-        } else {
-            authenticateUserImplicitly(profile) { success in
-                if success {
-                    self.implicitResourcesRequest { userIdDecorated in
-                        completion(userIdDecorated)
-                    }
-                } else {
-                    completion(nil)
+        authenticateUserImplicitly(profile) { success in
+            if success {
+                self.implicitResourcesRequest { userIdDecorated in
+                    completion(userIdDecorated)
                 }
+            } else {
+                completion(nil)
             }
         }
-    }
-
-    fileprivate func isProfileImplicitlyAuthenticated(_ profile: ONGUserProfile) -> Bool {
-        let implicitlyAuthenticatedProfile = ONGUserClient.sharedInstance().implicitlyAuthenticatedUserProfile()
-        return implicitlyAuthenticatedProfile != nil && implicitlyAuthenticatedProfile == profile
     }
 
     fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion: @escaping (Bool) -> Void) {
