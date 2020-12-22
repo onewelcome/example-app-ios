@@ -6,8 +6,8 @@ protocol AppToWebInteractorProtocol {
 
 class AppToWebInteractor: AppToWebInteractorProtocol {
     
-    let targetUrl = "https://onegini-idp-snapshot.test.onegini.io/personal/dashboard"
-    
+    let targetUrl = "https://demo-cim.onegini.com/personal/dashboard"
+
     func appToWebSingleSignOn(completion:@escaping ((URL?, AppError?) -> ())) {
         guard let url = URL(string: targetUrl) else {
             completion(nil, nil)
