@@ -1,17 +1,7 @@
-//  Copyright (c) 2018 Onegini. All rights reserved.
-
 #import <Foundation/Foundation.h>
 
-/**
- *  Class responsible for toggling debug/jailbreak detection. This class is read by the Onegini SDK trough reflection.
- */
-
-#ifdef DEBUG
 @interface SecurityController : NSObject
-
-+ (BOOL)rootDetection;
-+ (BOOL)debugDetection;
-+ (BOOL)debugLogs;
-
++ (bool)rootDetection;
++ (bool)debugDetection;
++ (bool)debugLogs;
 @end
-#endif
