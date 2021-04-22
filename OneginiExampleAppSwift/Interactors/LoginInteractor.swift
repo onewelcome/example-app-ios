@@ -64,11 +64,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
     
     func login(profile: ONGUserProfile, authenticator: ONGAuthenticator? = nil) {
-        if let authenticator = authenticator {
-            ONGUserClient.sharedInstance().authenticateUser(with: authenticator, profile: profile, delegate: self)
-        } else {
-            ONGUserClient.sharedInstance().authenticateUser(profile, delegate: self)
-        }
+        ONGUserClient.sharedInstance().authenticateUser(profile, authenticator: authenticator, delegate: self)
     }
     
     func handleLogin() {
@@ -94,16 +90,16 @@ extension LoginInteractor: ONGAuthenticationDelegate {
         delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }
 
-    func userClient(_: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, info _: ONGCustomInfo?) {
+    func userClient(_ userClient: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, authenticator: ONGAuthenticator, info customAuthInfo: ONGCustomInfo?) {
         delegate?.loginInteractor(self, didLoginUser: userProfile)
     }
 
-    func userClient(_: ONGUserClient, didFailToAuthenticateUser profile: ONGUserProfile, error: Error) {
+    func userClient(_ userClient: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, authenticator: ONGAuthenticator, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
-            delegate?.loginInteractor(self, didCancelLoginUser: profile)
+            delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
         } else {
             let mappedError = ErrorMapper().mapError(error)
-            delegate?.loginInteractor(self, didFailToLoginUser: profile, withError: mappedError)
+            delegate?.loginInteractor(self, didFailToLoginUser: userProfile, withError: mappedError)
         }
     }
 }
