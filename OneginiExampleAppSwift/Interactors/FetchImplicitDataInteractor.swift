@@ -59,6 +59,7 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
             if !success, let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 completion(success, mappedError)
+                return
             }
             completion(success, nil)
         }
