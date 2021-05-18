@@ -74,9 +74,9 @@
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
 		7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E804F64258A5C6D000E110E /* Assets.xcassets */; };
 		7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7E804FA2258A5D3F000E110E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		7E804FA3258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		7E804FA4258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7E804FA2258A5D3F000E110E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		7E804FA3258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7E804FA4258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
@@ -1034,7 +1034,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E804FA2258A5D3F000E110E /* BuildFile in Resources */,
+				7E804FA2258A5D3F000E110E /* (null) in Resources */,
 				7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1249,8 +1249,8 @@
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
-				7E804FA4258A5D3F000E110E /* BuildFile in Sources */,
-				7E804FA3258A5D3F000E110E /* BuildFile in Sources */,
+				7E804FA4258A5D3F000E110E /* (null) in Sources */,
+				7E804FA3258A5D3F000E110E /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,7 +1338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1393,7 +1393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1415,7 +1415,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1442,7 +1441,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
