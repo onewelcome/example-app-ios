@@ -1,22 +1,13 @@
 #import "SecurityController.h"
 
-#ifdef DEBUG
 @implementation SecurityController
-
-+ (BOOL)rootDetection
-{
-    return NO;
++(bool)rootDetection{
+  return NO;
 }
-
-+ (BOOL)debugDetection
-{
-    return NO;
++(bool)debugDetection{
+  return NO;
 }
-
-+ (BOOL)debugLogs
-{
-    return YES;
++(bool)debugLogs{
+  return YES;
 }
-
 @end
-#endif

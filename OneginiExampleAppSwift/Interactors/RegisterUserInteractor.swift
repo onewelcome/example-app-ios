@@ -44,7 +44,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     func startUserRegistration(identityProvider: ONGIdentityProvider? = nil) {
-        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read"], delegate: self)
+        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read", "write"], delegate: self)
     }
 
     func handleRedirectURL() {
@@ -125,11 +125,11 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 
-    func userClient(_: ONGUserClient, didRegisterUser userProfile: ONGUserProfile, info _: ONGCustomInfo?) {
+    func userClient(_ userClient: ONGUserClient, didRegisterUser userProfile: ONGUserProfile, identityProvider: ONGIdentityProvider, info: ONGCustomInfo?) {
         registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
-
-    func userClient(_: ONGUserClient, didFailToRegisterWithError error: Error) {
+    
+    func userClient(_ userClient: ONGUserClient, didFailToRegisterWith identityProvider: ONGIdentityProvider, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             registerUserPresenter?.registerUserActionCancelled()
         } else {

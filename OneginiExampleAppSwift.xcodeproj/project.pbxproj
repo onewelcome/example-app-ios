@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D9D2EFF0EFCFBBC80F3D545 /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7845792DCDAA316594C09607 /* OneginiConfigModel.h */; };
 		724667FC720030D08A212E1F /* libPods-OneginiExampleAppSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41CADE618CED68AAA7581B5 /* libPods-OneginiExampleAppSwiftTests.a */; };
 		7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */; };
 		7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */; };
@@ -75,9 +74,9 @@
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
 		7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E804F64258A5C6D000E110E /* Assets.xcassets */; };
 		7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7E804FA2258A5D3F000E110E /* token-server-intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */; };
-		7E804FA3258A5D3F000E110E /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2028C226763BE00B37C66 /* SecurityController.m */; };
-		7E804FA4258A5D3F000E110E /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */; };
+		7E804FA2258A5D3F000E110E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		7E804FA3258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7E804FA4258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
@@ -109,8 +108,6 @@
 		7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B222114370C00133D5C /* MobileAuthViewController.swift */; };
 		7ED15B252114370C00133D5C /* MobileAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED15B232114370C00133D5C /* MobileAuthViewController.xib */; };
 		7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */; };
-		7ED2028D226763BF00B37C66 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED2028B226763BE00B37C66 /* SecurityController.h */; };
-		7ED2028E226763BF00B37C66 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2028C226763BE00B37C66 /* SecurityController.m */; };
 		7EDAB730213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB72F213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift */; };
 		7EDAB74F21411483004918CE /* MobileAuthQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB74E21411483004918CE /* MobileAuthQueue.swift */; };
 		7EDAB751214149D8004918CE /* MobileAuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDAB750214149D8004918CE /* MobileAuthEntity.swift */; };
@@ -120,6 +117,7 @@
 		7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		7EF384E620EA66F800914E96 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */; };
 		7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */; };
+		8370ED383542A99997AE3683 /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C2C6E1E54B2C1BC631C5B26 /* OneginiConfigModel.h */; };
 		866384D6212EF48900DD112D /* PullToRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */; };
 		86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */; };
 		86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */; };
@@ -128,11 +126,12 @@
 		86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E7212C4A9A005FA824 /* TabBarController.swift */; };
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
+		9F53A4D3C9B36F1F29F8B6E5 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB8782B8B25A0574433BB6 /* SecurityController.m */; };
 		A2564380A7F49E603A6F8215 /* libPods-OneginiExampleAppSwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42092E3085C29D7403CF373E /* libPods-OneginiExampleAppSwiftUITests.a */; };
 		AB10C65C056BC800E5C32AEA /* libPods-WidgetExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 124687E27C55153156DEDC7F /* libPods-WidgetExtension.a */; };
 		C4AB6E9809E7BD7E198DF4E9 /* libPods-OneginiExampleAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F40CB72A4157BDC6E1308EF /* libPods-OneginiExampleAppSwift.a */; };
-		DB88EDA4B39247419EF9DBD8 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */; };
-		DB985BF87FAB703F795C107E /* token-server-intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */; };
+		D6F30EC37DFF5F59C4F91F5E /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A983FE0582D9D97769943841 /* OneginiConfigModel.m */; };
+		F2B33FBA0C9FC7111A5FC6AC /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 480A092355BE18EBEB999689 /* SecurityController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,11 +184,13 @@
 
 /* Begin PBXFileReference section */
 		124687E27C55153156DEDC7F /* libPods-WidgetExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WidgetExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BDB8782B8B25A0574433BB6 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SecurityController.m; path = Configuration/SecurityController.m; sourceTree = "<group>"; };
+		1C2C6E1E54B2C1BC631C5B26 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OneginiConfigModel.h; path = Configuration/OneginiConfigModel.h; sourceTree = "<group>"; };
 		1DC55E15AB19DFC62B90E1ED /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42092E3085C29D7403CF373E /* libPods-OneginiExampleAppSwiftUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwiftUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		480A092355BE18EBEB999689 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SecurityController.h; path = Configuration/SecurityController.h; sourceTree = "<group>"; };
 		4F40CB72A4157BDC6E1308EF /* libPods-OneginiExampleAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BAA3A0241CFA17F3900A0B /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		7845792DCDAA316594C09607 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OneginiConfigModel.h; path = Configuration/OneginiConfigModel.h; sourceTree = "<group>"; };
 		7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsViewController.swift; sourceTree = "<group>"; };
 		7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorsViewController.xib; sourceTree = "<group>"; };
 		7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsPresenter.swift; sourceTree = "<group>"; };
@@ -295,8 +296,6 @@
 		7ED15B222114370C00133D5C /* MobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthViewController.swift; sourceTree = "<group>"; };
 		7ED15B232114370C00133D5C /* MobileAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileAuthViewController.xib; sourceTree = "<group>"; };
 		7ED15B26211438AC00133D5C /* MobileAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthPresenter.swift; sourceTree = "<group>"; };
-		7ED2028B226763BE00B37C66 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityController.h; path = Configuration/SecurityController.h; sourceTree = "<group>"; };
-		7ED2028C226763BE00B37C66 /* SecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityController.m; path = Configuration/SecurityController.m; sourceTree = "<group>"; };
 		7EDAB72F213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthEnrollmentErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EDAB731213E9D01004918CE /* OneginiExampleAppSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneginiExampleAppSwift.entitlements; sourceTree = "<group>"; };
 		7EDAB74E21411483004918CE /* MobileAuthQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthQueue.swift; sourceTree = "<group>"; };
@@ -319,8 +318,7 @@
 		905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "token-server-intermediate.cer"; sourceTree = "<group>"; };
-		A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OneginiConfigModel.m; path = Configuration/OneginiConfigModel.m; sourceTree = "<group>"; };
+		A983FE0582D9D97769943841 /* OneginiConfigModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OneginiConfigModel.m; path = Configuration/OneginiConfigModel.m; sourceTree = "<group>"; };
 		AFC62865DF977C72E094FEB1 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		D010E293A4C19AB4EF1689C4 /* Pods-WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 			children = (
 				7E804F71258A5C9D000E110E /* WidgetExtension.entitlements */,
 				7E300ABE20D7E84300EF1A79 /* README.md */,
-				7E300AC020D7E89200EF1A79 /* Resources */,
 				7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */,
 				7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */,
 				7E300A8720D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */,
@@ -512,20 +509,12 @@
 		7E300AB720D7E5F800EF1A79 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				7ED2028B226763BE00B37C66 /* SecurityController.h */,
-				7ED2028C226763BE00B37C66 /* SecurityController.m */,
-				A8CC771C309E1BF7FCEDD32E /* OneginiConfigModel.m */,
-				7845792DCDAA316594C09607 /* OneginiConfigModel.h */,
+				A983FE0582D9D97769943841 /* OneginiConfigModel.m */,
+				1C2C6E1E54B2C1BC631C5B26 /* OneginiConfigModel.h */,
+				480A092355BE18EBEB999689 /* SecurityController.h */,
+				1BDB8782B8B25A0574433BB6 /* SecurityController.m */,
 			);
 			name = Configuration;
-			sourceTree = "<group>";
-		};
-		7E300AC020D7E89200EF1A79 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9DA968C43287803ABEF8ABA6 /* token-server-intermediate.cer */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		7E300AC320D7E8FE00EF1A79 /* SupportingFiles */ = {
@@ -854,8 +843,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED2028D226763BF00B37C66 /* SecurityController.h in Headers */,
-				2D9D2EFF0EFCFBBC80F3D545 /* OneginiConfigModel.h in Headers */,
+				8370ED383542A99997AE3683 /* OneginiConfigModel.h in Headers */,
+				F2B33FBA0C9FC7111A5FC6AC /* SecurityController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,7 +1013,6 @@
 				86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */,
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
 				7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */,
-				DB985BF87FAB703F795C107E /* token-server-intermediate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,7 +1034,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E804FA2258A5D3F000E110E /* token-server-intermediate.cer in Resources */,
+				7E804FA2258A5D3F000E110E /* (null) in Resources */,
 				7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1184,7 +1172,6 @@
 				7EB1F6142100BE3500741E92 /* AppError.swift in Sources */,
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
-				7ED2028E226763BF00B37C66 /* SecurityController.m in Sources */,
 				7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */,
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
@@ -1231,7 +1218,8 @@
 				7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,
-				DB88EDA4B39247419EF9DBD8 /* OneginiConfigModel.m in Sources */,
+				D6F30EC37DFF5F59C4F91F5E /* OneginiConfigModel.m in Sources */,
+				9F53A4D3C9B36F1F29F8B6E5 /* SecurityController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,8 +1249,8 @@
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
-				7E804FA4258A5D3F000E110E /* OneginiConfigModel.m in Sources */,
-				7E804FA3258A5D3F000E110E /* SecurityController.m in Sources */,
+				7E804FA4258A5D3F000E110E /* (null) in Sources */,
+				7E804FA3258A5D3F000E110E /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,7 +1338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1405,7 +1393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1427,12 +1415,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
@@ -1454,12 +1441,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
