@@ -16,7 +16,7 @@
 import UIKit
 
 protocol AppRouterProtocol: class {
-    var window: UIWindow { get set }
+    var windowCreator: () -> UIWindow { get set }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
@@ -52,7 +52,13 @@ protocol AppRouterProtocol: class {
 }
 
 class AppRouter: NSObject, AppRouterProtocol {
-    var window: UIWindow
+    var windowCreator: () -> UIWindow
+    private lazy var window: UIWindow = {
+        let window = windowCreator()
+        window.backgroundColor = UIColor.white
+        window.makeKeyAndVisible()
+        return window
+    }()
 
     var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
@@ -71,7 +77,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
     var appToWebPresenter: AppToWebPresenterProtocol
 
-    init(window: UIWindow,
+    init(windowCreator: @escaping () -> UIWindow,
          startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
@@ -85,9 +91,7 @@ class AppRouter: NSObject, AppRouterProtocol {
          fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
          appDetailsPresenter: AppDetailsPresenterProtocol,
          appToWebPresenter: AppToWebPresenterProtocol) {
-        self.window = window
-        self.window.backgroundColor = UIColor.white
-        self.window.makeKeyAndVisible()
+        self.windowCreator = windowCreator
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
