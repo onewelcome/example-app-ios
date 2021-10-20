@@ -18,6 +18,11 @@ import UIKit
 
 class PresenterAssembly: Assembly {
     func assemble(container: Container) {
+
+        container.register(LazyWindowPresenterProtocol.self) { resolver in
+            LazyWindowPresenter(window: resolver.resolve(Lazy<UIWindow>.self)!)
+        }
+
         container.register(StartupPresenterProtocol.self) { resolver in
             StartupPresenter(startupInteractor: resolver.resolve(StartupInteractorProtocol.self)!)
         }
@@ -92,5 +97,7 @@ class PresenterAssembly: Assembly {
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)
+        container.register(UIWindow.self) { _ in UIWindow(frame: UIScreen.main.bounds ) }.inObjectScope(.container)
+
     }
 }

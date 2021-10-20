@@ -16,7 +16,7 @@
 import UIKit
 
 protocol AppRouterProtocol: class {
-    var windowCreator: () -> UIWindow { get set }
+    var windowPresenter: LazyWindowPresenterProtocol { get }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
@@ -52,13 +52,7 @@ protocol AppRouterProtocol: class {
 }
 
 class AppRouter: NSObject, AppRouterProtocol {
-    var windowCreator: () -> UIWindow
-    private lazy var window: UIWindow = {
-        let window = windowCreator()
-        window.backgroundColor = UIColor.white
-        window.makeKeyAndVisible()
-        return window
-    }()
+    var windowPresenter: LazyWindowPresenterProtocol
 
     var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
@@ -77,7 +71,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
     var appToWebPresenter: AppToWebPresenterProtocol
 
-    init(windowCreator: @escaping () -> UIWindow,
+    init(windowPresenter: LazyWindowPresenterProtocol,
          startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
@@ -91,7 +85,7 @@ class AppRouter: NSObject, AppRouterProtocol {
          fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
          appDetailsPresenter: AppDetailsPresenterProtocol,
          appToWebPresenter: AppToWebPresenterProtocol) {
-        self.windowCreator = windowCreator
+        self.windowPresenter = windowPresenter
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
         self.dashboardPresenter = dashboardPresenter
@@ -132,7 +126,8 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
 
     func setupStartupPresenter() {
-        window.rootViewController = startupPresenter.startupViewController
+        windowPresenter.setUp()
+        windowPresenter.setRootViewController(to: startupPresenter.startupViewController)
         startupPresenter.oneigniSDKStartup()
     }
 
@@ -143,7 +138,7 @@ class AppRouter: NSObject, AppRouterProtocol {
                                 applicationInfoViewController: appDetailsPresenter.appDetailsViewController,
                                 delegate: self)
         welcomePresenter.presentWelcomeView()
-        window.rootViewController = tabBarController
+        windowPresenter.setRootViewController(to: tabBarController)
     }
 
     func setupWelcomePresenter() {
