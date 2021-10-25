@@ -16,10 +16,12 @@
 import Swinject
 import UIKit
 
+typealias LazyWindow = Lazy<UIWindow>
+
 class RouterAssembly: Assembly {
     func assemble(container: Container) {
         container.register(AppRouterProtocol.self) { resolver in
-            AppRouter(window: UIWindow(frame: UIScreen.main.bounds),
+            AppRouter(window: resolver.resolve(LazyWindow.self)!,
                       startupPresenter: resolver.resolve(StartupPresenterProtocol.self)!,
                       welcomePresenter: resolver.resolve(WelcomePresenterProtocol.self)!,
                       dashboardPresenter: resolver.resolve(DashboardPresenterProtocol.self)!,
