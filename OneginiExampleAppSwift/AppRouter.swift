@@ -14,10 +14,9 @@
 // limitations under the License.
 
 import UIKit
-import Swinject
 
 protocol AppRouterProtocol: class {
-    var window: Lazy<UIWindow> { get }
+    var window: LazyWindow { get }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
     var dashboardPresenter: DashboardPresenterProtocol { get }
@@ -53,10 +52,7 @@ protocol AppRouterProtocol: class {
 }
 
 class AppRouter: NSObject, AppRouterProtocol {
-    var window: Lazy<UIWindow>
-    private var lazyWindow: UIWindow {
-        return window.instance
-    }
+    var window: LazyWindow
 
     var tabBarController = AppAssembly.shared.resolver.resolve(TabBarController.self)
     var navigationController = AppAssembly.shared.resolver.resolve(UINavigationController.self)
@@ -75,7 +71,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
     var appToWebPresenter: AppToWebPresenterProtocol
 
-    init(window: Lazy<UIWindow>,
+    init(window: LazyWindow,
          startupPresenter: StartupPresenterProtocol,
          welcomePresenter: WelcomePresenterProtocol,
          dashboardPresenter: DashboardPresenterProtocol,
@@ -130,7 +126,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     }
 
     func setupStartupPresenter() {
-        lazyWindow.rootViewController = startupPresenter.startupViewController
+        window.instance.rootViewController = startupPresenter.startupViewController
         startupPresenter.oneigniSDKStartup()
     }
 
@@ -141,7 +137,7 @@ class AppRouter: NSObject, AppRouterProtocol {
                                 applicationInfoViewController: appDetailsPresenter.appDetailsViewController,
                                 delegate: self)
         welcomePresenter.presentWelcomeView()
-        lazyWindow.rootViewController = tabBarController
+        window.instance.rootViewController = tabBarController
     }
 
     func setupWelcomePresenter() {
