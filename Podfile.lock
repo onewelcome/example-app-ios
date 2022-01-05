@@ -1,33 +1,62 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - BetterSegmentedControl (0.9)
-  - OneginiSDKiOS (9.6.0)
-  - SkyFloatingLabelTextField (3.7.0)
+  - OneginiSDKiOS (11.0.0):
+    - AFNetworking (~> 4.0.1)
+    - Typhoon (~> 4.0.8)
+  - SkyFloatingLabelTextField (3.8.0)
   - Swinject (2.4.1)
   - TransitionButton (0.5.1)
+  - Typhoon (4.0.9):
+    - Typhoon/DeallocNotifier (= 4.0.9)
+    - Typhoon/IntrospectionUtils (= 4.0.9)
+    - Typhoon/no-arc (= 4.0.9)
+  - Typhoon/DeallocNotifier (4.0.9)
+  - Typhoon/IntrospectionUtils (4.0.9)
+  - Typhoon/no-arc (4.0.9):
+    - Typhoon/IntrospectionUtils
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
-  - OneginiSDKiOS (= 9.6.0)
+  - OneginiSDKiOS (= 11.0.0)
   - SkyFloatingLabelTextField (~> 3.0)
   - Swinject (= 2.4.1)
   - TransitionButton (= 0.5.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
     - BetterSegmentedControl
     - SkyFloatingLabelTextField
     - Swinject
     - TransitionButton
+    - Typhoon
   https://repo.onegini.com/artifactory/api/pods/cocoapods-public:
     - OneginiSDKiOS
 
 SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
-  OneginiSDKiOS: 407d6cfc8eeb4c8b76c2662dacef514153cc29eb
-  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
+  OneginiSDKiOS: 65cc96311a54f2f89704cf2be33630fdcbd200dd
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   Swinject: f7f15a9672e99328c1f07f277091087917215700
   TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81
+  Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: 05934d098e59747de2c12afac60fc8a88973185a
+PODFILE CHECKSUM: 9fb01effd928cc8497d2212adff151a5a1492321
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.2

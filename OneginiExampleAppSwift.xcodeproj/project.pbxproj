@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		724667FC720030D08A212E1F /* libPods-OneginiExampleAppSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41CADE618CED68AAA7581B5 /* libPods-OneginiExampleAppSwiftTests.a */; };
+		098C63CF00F82FEB073C59DA /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69D19E058DF125C40E96E43 /* Pods_OneginiExampleAppSwiftUITests.framework */; };
+		7992854D65B92A65EE23A538 /* Pods_OneginiExampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E49328327EEA5417448395E /* Pods_OneginiExampleAppSwift.framework */; };
+		7CE54FA8E21FC874003D8E3C /* Pods_OneginiExampleAppSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610C908317593AE332B73507 /* Pods_OneginiExampleAppSwiftTests.framework */; };
 		7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */; };
 		7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */; };
 		7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */; };
@@ -74,9 +76,9 @@
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
 		7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E804F64258A5C6D000E110E /* Assets.xcassets */; };
 		7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7E804FA2258A5D3F000E110E /* (null) in Resources */ = {isa = PBXBuildFile; };
-		7E804FA3258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7E804FA4258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7E804FA2258A5D3F000E110E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		7E804FA3258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7E804FA4258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
@@ -127,9 +129,7 @@
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
 		9F53A4D3C9B36F1F29F8B6E5 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDB8782B8B25A0574433BB6 /* SecurityController.m */; };
-		A2564380A7F49E603A6F8215 /* libPods-OneginiExampleAppSwiftUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42092E3085C29D7403CF373E /* libPods-OneginiExampleAppSwiftUITests.a */; };
-		AB10C65C056BC800E5C32AEA /* libPods-WidgetExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 124687E27C55153156DEDC7F /* libPods-WidgetExtension.a */; };
-		C4AB6E9809E7BD7E198DF4E9 /* libPods-OneginiExampleAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F40CB72A4157BDC6E1308EF /* libPods-OneginiExampleAppSwift.a */; };
+		BED336D77D6A488D9C775398 /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD30FE43375CCD23A9B18AF /* Pods_WidgetExtension.framework */; };
 		D6F30EC37DFF5F59C4F91F5E /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A983FE0582D9D97769943841 /* OneginiConfigModel.m */; };
 		F2B33FBA0C9FC7111A5FC6AC /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 480A092355BE18EBEB999689 /* SecurityController.h */; };
 /* End PBXBuildFile section */
@@ -183,14 +183,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		124687E27C55153156DEDC7F /* libPods-WidgetExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WidgetExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BDB8782B8B25A0574433BB6 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SecurityController.m; path = Configuration/SecurityController.m; sourceTree = "<group>"; };
 		1C2C6E1E54B2C1BC631C5B26 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OneginiConfigModel.h; path = Configuration/OneginiConfigModel.h; sourceTree = "<group>"; };
-		1DC55E15AB19DFC62B90E1ED /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		42092E3085C29D7403CF373E /* libPods-OneginiExampleAppSwiftUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwiftUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35F8A0F6409B4C78E1779080 /* Pods-OneginiExampleAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.release.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		480A092355BE18EBEB999689 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SecurityController.h; path = Configuration/SecurityController.h; sourceTree = "<group>"; };
-		4F40CB72A4157BDC6E1308EF /* libPods-OneginiExampleAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63BAA3A0241CFA17F3900A0B /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		59B9D54A252DF41916921AB1 /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		5A8ABC18DF5B88EB35270B5B /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		610C908317593AE332B73507 /* Pods_OneginiExampleAppSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D874C184DB7F67A265B4E48 /* Pods-OneginiExampleAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.debug.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		6FD30FE43375CCD23A9B18AF /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsViewController.swift; sourceTree = "<group>"; };
 		7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorsViewController.xib; sourceTree = "<group>"; };
 		7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsPresenter.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 		7E4547A420E5220600FB620F /* LogoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
 		7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
 		7E4547A820E62D8B00FB620F /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		7E49328327EEA5417448395E /* Pods_OneginiExampleAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5684C320DD102E00B86628 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7E5684C420DD102E00B86628 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		7E778CEE21188B02001EE257 /* DisconnectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectPresenter.swift; sourceTree = "<group>"; };
@@ -314,18 +316,12 @@
 		86CD10E7212C4A9A005FA824 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthTableViewCell.swift; sourceTree = "<group>"; };
 		86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthTableViewCell.xib; sourceTree = "<group>"; };
-		8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
-		905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
-		98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
-		99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8C80ED86A5FFB635C7823326 /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D4C5C14545E0232FC99B28E /* Pods-WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A983FE0582D9D97769943841 /* OneginiConfigModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OneginiConfigModel.m; path = Configuration/OneginiConfigModel.m; sourceTree = "<group>"; };
-		AFC62865DF977C72E094FEB1 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
-		C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.release.xcconfig"; sourceTree = "<group>"; };
-		D010E293A4C19AB4EF1689C4 /* Pods-WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
-		D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DF148FB71FF74047CA88053D /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwiftUITests/Pods-OneginiExampleAppSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E41CADE618CED68AAA7581B5 /* libPods-OneginiExampleAppSwiftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneginiExampleAppSwiftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		CD44DF0EABC1E69888970772 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwiftTests/Pods-OneginiExampleAppSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D69D19E058DF125C40E96E43 /* Pods_OneginiExampleAppSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneginiExampleAppSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9022E8C5886EE3519CD425C /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,7 +329,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4AB6E9809E7BD7E198DF4E9 /* libPods-OneginiExampleAppSwift.a in Frameworks */,
+				7992854D65B92A65EE23A538 /* Pods_OneginiExampleAppSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				724667FC720030D08A212E1F /* libPods-OneginiExampleAppSwiftTests.a in Frameworks */,
+				7CE54FA8E21FC874003D8E3C /* Pods_OneginiExampleAppSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2564380A7F49E603A6F8215 /* libPods-OneginiExampleAppSwiftUITests.a in Frameworks */,
+				098C63CF00F82FEB073C59DA /* Pods_OneginiExampleAppSwiftUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +355,7 @@
 			files = (
 				7E804F60258A5C6A000E110E /* SwiftUI.framework in Frameworks */,
 				7E804F5E258A5C6A000E110E /* WidgetKit.framework in Frameworks */,
-				AB10C65C056BC800E5C32AEA /* libPods-WidgetExtension.a in Frameworks */,
+				BED336D77D6A488D9C775398 /* Pods_WidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,12 +367,27 @@
 			children = (
 				7E804F5D258A5C6A000E110E /* WidgetKit.framework */,
 				7E804F5F258A5C6A000E110E /* SwiftUI.framework */,
-				4F40CB72A4157BDC6E1308EF /* libPods-OneginiExampleAppSwift.a */,
-				E41CADE618CED68AAA7581B5 /* libPods-OneginiExampleAppSwiftTests.a */,
-				42092E3085C29D7403CF373E /* libPods-OneginiExampleAppSwiftUITests.a */,
-				124687E27C55153156DEDC7F /* libPods-WidgetExtension.a */,
+				7E49328327EEA5417448395E /* Pods_OneginiExampleAppSwift.framework */,
+				610C908317593AE332B73507 /* Pods_OneginiExampleAppSwiftTests.framework */,
+				D69D19E058DF125C40E96E43 /* Pods_OneginiExampleAppSwiftUITests.framework */,
+				6FD30FE43375CCD23A9B18AF /* Pods_WidgetExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DA33BE6ACA514447376B272 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D874C184DB7F67A265B4E48 /* Pods-OneginiExampleAppSwift.debug.xcconfig */,
+				35F8A0F6409B4C78E1779080 /* Pods-OneginiExampleAppSwift.release.xcconfig */,
+				CD44DF0EABC1E69888970772 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */,
+				59B9D54A252DF41916921AB1 /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */,
+				8C80ED86A5FFB635C7823326 /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */,
+				5A8ABC18DF5B88EB35270B5B /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */,
+				D9022E8C5886EE3519CD425C /* Pods-WidgetExtension.debug.xcconfig */,
+				9D4C5C14545E0232FC99B28E /* Pods-WidgetExtension.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		7E01FDE62110AF4400DF0043 /* Authenticators */ = {
@@ -427,8 +438,8 @@
 				7E300AB720D7E5F800EF1A79 /* Configuration */,
 				7E804F61258A5C6A000E110E /* Widget */,
 				7E300A6620D7B8E100EF1A79 /* Products */,
-				91DE3EFAA921704936F26C6A /* Pods */,
 				2B391B3D82E18E544B473331 /* Frameworks */,
+				4DA33BE6ACA514447376B272 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -817,25 +828,6 @@
 			path = PendingMovileAuthCell;
 			sourceTree = "<group>";
 		};
-		91DE3EFAA921704936F26C6A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */,
-				C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */,
-				D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */,
-				98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */,
-				DF148FB71FF74047CA88053D /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */,
-				99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */,
-				905944DCE21DEF0C6A5231CF /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.debug.xcconfig */,
-				AFC62865DF977C72E094FEB1 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftTests.release.xcconfig */,
-				1DC55E15AB19DFC62B90E1ED /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.debug.xcconfig */,
-				8A9FDEEBCA0A31A6FCC2BEF5 /* Pods-OneginiExampleAppSwift-OneginiExampleAppSwiftUITests.release.xcconfig */,
-				63BAA3A0241CFA17F3900A0B /* Pods-WidgetExtension.debug.xcconfig */,
-				D010E293A4C19AB4EF1689C4 /* Pods-WidgetExtension.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -855,14 +847,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E300A8D20D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwift" */;
 			buildPhases = (
-				5C02B746B36629490CAF97F1 /* [CP] Check Pods Manifest.lock */,
+				2972D0708703E06BED4D557C /* [CP] Check Pods Manifest.lock */,
 				7E300A6120D7B8E100EF1A79 /* Sources */,
 				7E300A6220D7B8E100EF1A79 /* Frameworks */,
 				7E300A6320D7B8E100EF1A79 /* Resources */,
-				1804AAB91AFE036B66455B9F /* [CP] Embed Pods Frameworks */,
 				869F92ED2163BDB100B31EF5 /* Embed Frameworks */,
 				24010873C0730FC66AEFEE25 /* Headers */,
 				7E804F6A258A5C6D000E110E /* Embed App Extensions */,
+				C9C784B647FD30B3D92F9002 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -878,7 +870,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E300A9020D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftTests" */;
 			buildPhases = (
-				6B8B31C0DEFA823B2E9419B9 /* [CP] Check Pods Manifest.lock */,
+				B1B45CB3279C14422F89427F /* [CP] Check Pods Manifest.lock */,
 				7E300A7520D7B8E300EF1A79 /* Sources */,
 				7E300A7620D7B8E300EF1A79 /* Frameworks */,
 				7E300A7720D7B8E300EF1A79 /* Resources */,
@@ -897,7 +889,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E300A9320D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftUITests" */;
 			buildPhases = (
-				E02042D4FD43A55BD3AD0636 /* [CP] Check Pods Manifest.lock */,
+				B9F261135817863AA94B71E5 /* [CP] Check Pods Manifest.lock */,
 				7E300A8020D7B8E300EF1A79 /* Sources */,
 				7E300A8120D7B8E300EF1A79 /* Frameworks */,
 				7E300A8220D7B8E300EF1A79 /* Resources */,
@@ -916,7 +908,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E804F6D258A5C6D000E110E /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
 			buildPhases = (
-				D98C1D929EEB073BFFBD06A4 /* [CP] Check Pods Manifest.lock */,
+				406716BDB37B85775330E315 /* [CP] Check Pods Manifest.lock */,
 				7E804F58258A5C69000E110E /* Sources */,
 				7E804F59258A5C69000E110E /* Frameworks */,
 				7E804F5A258A5C69000E110E /* Resources */,
@@ -942,6 +934,7 @@
 				TargetAttributes = {
 					7E300A6420D7B8E100EF1A79 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1300;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1034,7 +1027,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E804FA2258A5D3F000E110E /* (null) in Resources */,
+				7E804FA2258A5D3F000E110E /* BuildFile in Resources */,
 				7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1042,33 +1035,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1804AAB91AFE036B66455B9F /* [CP] Embed Pods Frameworks */ = {
+		2972D0708703E06BED4D557C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5C02B746B36629490CAF97F1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-OneginiExampleAppSwift-checkManifestLockResult.txt",
 			);
@@ -1077,25 +1057,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6B8B31C0DEFA823B2E9419B9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OneginiExampleAppSwiftTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D98C1D929EEB073BFFBD06A4 /* [CP] Check Pods Manifest.lock */ = {
+		406716BDB37B85775330E315 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1117,22 +1079,65 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E02042D4FD43A55BD3AD0636 /* [CP] Check Pods Manifest.lock */ = {
+		B1B45CB3279C14422F89427F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneginiExampleAppSwiftTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9F261135817863AA94B71E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-OneginiExampleAppSwiftUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9C784B647FD30B3D92F9002 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1249,8 +1254,8 @@
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
-				7E804FA4258A5D3F000E110E /* (null) in Sources */,
-				7E804FA3258A5D3F000E110E /* (null) in Sources */,
+				7E804FA4258A5D3F000E110E /* BuildFile in Sources */,
+				7E804FA3258A5D3F000E110E /* BuildFile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,7 +1343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1393,7 +1398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1404,7 +1409,7 @@
 		};
 		7E300A8E20D7B8E300EF1A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8B7690F6C95D0CB85CFBFCE /* Pods-OneginiExampleAppSwift.debug.xcconfig */;
+			baseConfigurationReference = 6D874C184DB7F67A265B4E48 /* Pods-OneginiExampleAppSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneginiExampleAppSwift/OneginiExampleAppSwift.entitlements;
@@ -1419,7 +1424,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
@@ -1430,7 +1435,7 @@
 		};
 		7E300A8F20D7B8E300EF1A79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C138559DEE60668A95215188 /* Pods-OneginiExampleAppSwift.release.xcconfig */;
+			baseConfigurationReference = 35F8A0F6409B4C78E1779080 /* Pods-OneginiExampleAppSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneginiExampleAppSwift/OneginiExampleAppSwift.entitlements;
@@ -1445,7 +1450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneginiExampleAppSwift/SupportingFiles/OneginiExampleAppSwift-Bridging-Header.h";
@@ -1456,7 +1461,7 @@
 		};
 		7E300A9120D7B8E300EF1A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D17280C0C2C5E2B7E8D09425 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */;
+			baseConfigurationReference = CD44DF0EABC1E69888970772 /* Pods-OneginiExampleAppSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1477,7 +1482,7 @@
 		};
 		7E300A9220D7B8E300EF1A79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98FFAD1186588A9F8544147A /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */;
+			baseConfigurationReference = 59B9D54A252DF41916921AB1 /* Pods-OneginiExampleAppSwiftTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1498,7 +1503,7 @@
 		};
 		7E300A9420D7B8E300EF1A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF148FB71FF74047CA88053D /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */;
+			baseConfigurationReference = 8C80ED86A5FFB635C7823326 /* Pods-OneginiExampleAppSwiftUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47G5S528XM;
@@ -1518,7 +1523,7 @@
 		};
 		7E300A9520D7B8E300EF1A79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99709912BD2056B5F6E60871 /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */;
+			baseConfigurationReference = 5A8ABC18DF5B88EB35270B5B /* Pods-OneginiExampleAppSwiftUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47G5S528XM;
@@ -1538,7 +1543,7 @@
 		};
 		7E804F6B258A5C6D000E110E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63BAA3A0241CFA17F3900A0B /* Pods-WidgetExtension.debug.xcconfig */;
+			baseConfigurationReference = D9022E8C5886EE3519CD425C /* Pods-WidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1552,7 +1557,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift.ImplicitWidget;
@@ -1565,7 +1570,7 @@
 		};
 		7E804F6C258A5C6D000E110E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D010E293A4C19AB4EF1689C4 /* Pods-WidgetExtension.release.xcconfig */;
+			baseConfigurationReference = 9D4C5C14545E0232FC99B28E /* Pods-WidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1579,7 +1584,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift.ImplicitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
