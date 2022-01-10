@@ -44,7 +44,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     func startUserRegistration(identityProvider: ONGIdentityProvider? = nil) {
-        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read", "write"], delegate: self)
+        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read", "openid"], delegate: self)
     }
 
     func handleRedirectURL() {

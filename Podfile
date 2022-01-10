@@ -8,7 +8,7 @@ plugin 'cocoapods-art', :sources => [
 ]
 
 def oneginiSDKiOS
-    pod 'OneginiSDKiOS', '11.0.0'
+    pod 'OneginiSDKiOS', '~> 11.0.0'
 end
 
 target 'WidgetExtension' do

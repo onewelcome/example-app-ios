@@ -27,7 +27,8 @@ class ResourceGateway {
         let implicitRequest = ONGResourceRequest(path: "user-id-decorated", method: "GET")
         ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
             guard let data = response?.data,
-                  let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] else {
+                  let responseJsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
+                  let responseData = responseJsonData else {
                 completion(nil)
                 return
             }

@@ -32,7 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
-  - OneginiSDKiOS (= 11.0.0)
+  - OneginiSDKiOS (~> 11.0.0)
   - SkyFloatingLabelTextField (~> 3.0)
   - Swinject (= 2.4.1)
   - TransitionButton (= 0.5.1)
@@ -57,6 +57,6 @@ SPEC CHECKSUMS:
   TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81
   Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: 9fb01effd928cc8497d2212adff151a5a1492321
+PODFILE CHECKSUM: e1167eda3a20e063d4a9b91691f431f92e466bf8
 
 COCOAPODS: 1.11.2
