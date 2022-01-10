@@ -14,7 +14,7 @@
     return @{
              @"ONGAppIdentifier" : @"ExampleApp",
              @"ONGAppPlatform" : @"ios",
-             @"ONGAppVersion" : @"5.1.0",
+             @"ONGAppVersion" : @"6.0.0",
              @"ONGAppBaseURL" : @"https://demo-msp.onegini.com",
              @"ONGResourceBaseURL" : @"https://demo-msp.onegini.com/resources/",
              @"ONGRedirectURL" : @"oneginiexample://loginsuccess",
@@ -23,7 +23,7 @@
 
 + (NSString *)serverPublicKey
 {
-	return @"A15C9438A136F4D58051241338069C78C355907FB2C25E9429F3F55E07632A96";
+	return @"F16DD1AEE008B284ED70AD4498D196B8CFF90CB878317F39C71DD70C28E620C4";
 }
 
 @end

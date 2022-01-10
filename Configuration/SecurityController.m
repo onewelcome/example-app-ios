@@ -7,7 +7,4 @@
 +(bool)debugDetection{
   return NO;
 }
-+(bool)debugLogs{
-  return YES;
-}
 @end

@@ -18,6 +18,7 @@ import UIKit
 
 class PresenterAssembly: Assembly {
     func assemble(container: Container) {
+
         container.register(StartupPresenterProtocol.self) { resolver in
             StartupPresenter(startupInteractor: resolver.resolve(StartupInteractorProtocol.self)!)
         }
@@ -92,5 +93,12 @@ class PresenterAssembly: Assembly {
 
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)
+        container.register(UIWindow.self) { _ in
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.backgroundColor = .white
+            window.makeKeyAndVisible()
+            return window
+        }.inObjectScope(.container)
+
     }
 }
