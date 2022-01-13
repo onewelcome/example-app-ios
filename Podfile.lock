@@ -38,8 +38,6 @@ DEPENDENCIES:
   - TransitionButton (= 0.5.1)
 
 SPEC REPOS:
-  file:///Users/kfalkowski/.cocoapods/repos-art/onegini2:
-    - OneginiSDKiOS
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - BetterSegmentedControl
@@ -47,11 +45,13 @@ SPEC REPOS:
     - Swinject
     - TransitionButton
     - Typhoon
+  https://repo.onegini.com/artifactory/api/pods/cocoapods-public:
+    - OneginiSDKiOS
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
-  OneginiSDKiOS: defb4379e8c5a4fb65dd3443b217eb558747502c
+  OneginiSDKiOS: 39bd4151d410fc9a39a01df397819c636a86396e
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   Swinject: f7f15a9672e99328c1f07f277091087917215700
   TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81
