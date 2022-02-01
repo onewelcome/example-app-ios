@@ -20,7 +20,6 @@ protocol FetchImplicitDataInteractorProtocol: AnyObject {
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    weak var loginPresenter: LoginPresenterProtocol?
 
     func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
@@ -57,9 +56,10 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
 
     fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion: @escaping (Bool, AppError?) -> Void) {
         ONGUserClient.sharedInstance().implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
-            if !success {
+            if !success, let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 completion(success, mappedError)
+                return
             }
             completion(success, nil)
         }

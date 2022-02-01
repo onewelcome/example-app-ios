@@ -1,17 +1,20 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '13.0'
 inhibit_all_warnings!
+use_frameworks!
 
-plugin 'cocoapods-art', :sources => [
-'onegini'
-]
+plugin 'cocoapods-art', :sources => ['onegini']
+
+def oneginiSDKiOS
+    pod 'OneginiSDKiOS', '11.0.1'
+end
 
 target 'WidgetExtension' do
-  pod 'OneginiSDKiOS', '9.6.0'
+    oneginiSDKiOS
 end
 
 target 'OneginiExampleAppSwift' do
-    pod 'OneginiSDKiOS', '9.6.0'
+    oneginiSDKiOS
     pod 'Swinject', '2.4.1'
     pod 'BetterSegmentedControl', '~> 0.9'
     pod 'TransitionButton', '0.5.1'
@@ -32,7 +35,7 @@ end
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
         end
     end
 end
