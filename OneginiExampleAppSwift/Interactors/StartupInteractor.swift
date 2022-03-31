@@ -21,13 +21,20 @@ protocol StartupInteractorProtocol {
 
 class StartupInteractor: StartupInteractorProtocol {
     func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
-        ONGClientBuilder().build()
-        ONGClient.sharedInstance().start { result, error in
+        //TODO: take proper values
+        let configuration = Configuration(certificates: [],
+                                             configuration: [:],
+                                             jailbreakDetection: true,
+                                             debugDetection: true,
+                                             debugLogs: true)
+        let client = ClientBuilder().build(configuration: configuration)
+        
+        client.start { success, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
-                completion(result, mappedError)
+                completion(success, mappedError)
             } else {
-                completion(result, nil)
+                completion(success, nil)
             }
         }
     }

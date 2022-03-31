@@ -31,7 +31,7 @@ protocol AppRouterProtocol: class {
     var appToWebPresenter: AppToWebPresenterProtocol { get }
 
     func popToDashboardView()
-    func updateWelcomeView(selectedProfile: ONGUserProfile?)
+    func updateWelcomeView(selectedProfile: UserProfile?)
     func popToWelcomeView()
     func popToProfileView()
 
@@ -40,7 +40,7 @@ protocol AppRouterProtocol: class {
 
     func setupStartupPresenter()
     func setupWelcomePresenter()
-    func setupDashboardPresenter(authenticatedUserProfile: ONGUserProfile)
+    func setupDashboardPresenter(authenticatedUserProfile: UserProfile)
     func setupAuthenticatorsPresenter()
     func setupProfilePresenter()
     func setupMobileAuthPresenter()
@@ -105,7 +105,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         dashboardPresenter.popToDashboardView()
     }
 
-    func updateWelcomeView(selectedProfile: ONGUserProfile?) {
+    func updateWelcomeView(selectedProfile: UserProfile?) {
         welcomePresenter.update(selectedProfile: selectedProfile)
     }
 
@@ -144,7 +144,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         welcomePresenter.presentWelcomeView()
     }
 
-    func setupDashboardPresenter(authenticatedUserProfile: ONGUserProfile) {
+    func setupDashboardPresenter(authenticatedUserProfile: UserProfile) {
         dashboardPresenter.presentDashboardView(authenticatedUserProfile: authenticatedUserProfile)
     }
 
@@ -178,11 +178,11 @@ class AppRouter: NSObject, AppRouterProtocol {
 }
 
 extension AppRouter: LoginPresenterDelegate {
-    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: ONGUserProfile) {
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: UserProfile) {
         dashboardPresenter.presentDashboardView(authenticatedUserProfile: profile)
     }
     
-    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError) {
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: UserProfile, withError error: AppError) {
         welcomePresenter.update(selectedProfile: profile)
         errorPresenter.showErrorAlert(error: error, okButtonHandler: nil)
     }

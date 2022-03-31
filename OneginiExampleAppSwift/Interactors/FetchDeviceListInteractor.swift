@@ -22,20 +22,22 @@ protocol FetchDeviceListInteractorProtocol: AnyObject {
 class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
     weak var fetchDeviceListPresenter: FetchDeviceListInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
-
+    private let userClient: UserClient = UserClientImplementation.shared //TODO: pass in init
+    
     func fetchDeviceList() {
-        let request = ONGResourceRequest(path: "devices", method: "GET")
-        ONGUserClient.sharedInstance().fetchResource(request) { response, error in
-            if let error = error {
-                let mappedError = ErrorMapper().mapError(error)
-                self.fetchDeviceListPresenter?.fetchDeviceListFailed(mappedError)
-            } else {
-                if let data = response?.data,
-                    let deviceList = try? self.decoder.decode(Devices.self, from: data) {
-                    self.fetchDeviceListPresenter?.presentDeviceList(deviceList.devices)
-                }
-            }
-        }
+        //TODO:
+//        let request = ONGResourceRequest(path: "devices", method: "GET")
+//        userClient.fetchResource(request) { response, error in
+//            if let error = error {
+//                let mappedError = ErrorMapper().mapError(error)
+//                self.fetchDeviceListPresenter?.fetchDeviceListFailed(mappedError)
+//            } else {
+//                if let data = response?.data,
+//                    let deviceList = try? self.decoder.decode(Devices.self, from: data) {
+//                    self.fetchDeviceListPresenter?.presentDeviceList(deviceList.devices)
+//                }
+//            }
+//        }
     }
 }
 

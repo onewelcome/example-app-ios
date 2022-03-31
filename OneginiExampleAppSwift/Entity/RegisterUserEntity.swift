@@ -17,9 +17,9 @@ import UIKit
 
 class RegisterUserEntity: BrowserViewControllerEntityProtocol, PinViewControllerEntityProtocol, TwoWayOTPEntityProtocol {
     var registrationUserURL: URL?
-    var browserRegistrationChallenge: ONGBrowserRegistrationChallenge?
-    var customRegistrationChallenge: ONGCustomRegistrationChallenge?
-    var createPinChallenge: ONGCreatePinChallenge?
+    var browserRegistrationChallenge: BrowserRegistrationChallenge?
+    var customRegistrationChallenge: CustomRegistrationChallenge?
+    var createPinChallenge: CreatePinChallenge?
     var pin: String?
     var pinError: AppError?
     var pinLength: Int?

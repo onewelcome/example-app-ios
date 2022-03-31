@@ -12,12 +12,12 @@
 + (NSDictionary *)configuration
 {
     return @{
-             @"ONGAppIdentifier" : @"ExampleApp",
-             @"ONGAppPlatform" : @"ios",
-             @"ONGAppVersion" : @"6.0.1",
-             @"ONGAppBaseURL" : @"https://token-mobile.test.onegini.com",
-             @"ONGResourceBaseURL" : @"https://token-mobile.test.onegini.com/resources/",
-             @"ONGRedirectURL" : @"oneginiexample://loginsuccess",
+             @"AppIdentifier" : @"ExampleApp",
+             @"AppPlatform" : @"ios",
+             @"AppVersion" : @"6.0.1",
+             @"AppBaseURL" : @"https://token-mobile.test.onegini.com",
+             @"ResourceBaseURL" : @"https://token-mobile.test.onegini.com/resources/",
+             @"RedirectURL" : @"oneginiexample://loginsuccess",
              };
 }
 

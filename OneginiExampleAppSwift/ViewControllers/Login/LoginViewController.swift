@@ -17,10 +17,10 @@ import UIKit
 
 protocol LoginViewDelegate: class {
     
-    func loginView(_ loginView: UIViewController, didLoginProfile profile: ONGUserProfile, withAuthenticator authenticator: ONGAuthenticator?)
-    func loginView(profilesInLoginView loginView: UIViewController) -> [ONGUserProfile]
-    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: ONGUserProfile) -> [ONGAuthenticator]
-    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String?) -> Void)
+    func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?)
+    func loginView(profilesInLoginView loginView: UIViewController) -> [UserProfile]
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator]
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void)
 }
 
 class LoginViewController: UIViewController {
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet var implicitData: UILabel!
 
-    var profiles = [ONGUserProfile]() {
+    var profiles = [UserProfile]() {
         didSet {
             if let tableView = profilesTableView {
                 tableView.reloadData()
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    var authenticators = [ONGAuthenticator]() {
+    var authenticators = [Authenticator]() {
         didSet {
             if let tableView = authenticatorsTableView {
                 tableView.reloadData()
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
     }
 
     weak var loginDelegate: LoginViewDelegate?
-    var selectedProfile = ONGUserProfile()
+    var selectedProfile: UserProfile = UserProfileImplementation(ONGUserProfile())
 
     override func viewDidLoad() {
         super.viewDidLoad()

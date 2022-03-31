@@ -17,7 +17,7 @@ import UIKit
 import WebKit
 
 protocol BrowserViewControllerEntityProtocol {
-    var browserRegistrationChallenge: ONGBrowserRegistrationChallenge? { get }
+    var browserRegistrationChallenge: BrowserRegistrationChallenge? { get }
     var registrationUserURL: URL? { get }
     var redirectURL: URL? { get set }
     var pin: String? { get set }
@@ -86,7 +86,7 @@ extension BrowserViewController: WKNavigationDelegate {
     func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url,
             let oneginiConfig = OneginiConfigModel.configuration() as? [String: String],
-            let redirectUrl = oneginiConfig["ONGRedirectURL"] else {
+            let redirectUrl = oneginiConfig["RedirectURL"] else {
             decisionHandler(.allow)
             return
         }

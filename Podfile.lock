@@ -15,24 +15,24 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - BetterSegmentedControl (0.9)
-  - OneginiSDKiOS (11.0.1):
-    - AFNetworking (~> 4.0.1)
-    - Typhoon (~> 4.0.8)
+  - OneginiSDKiOS (12.0.0):
+    - AFNetworking (= 4.0.1)
+    - Typhoon (= 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
   - Swinject (2.4.1)
   - TransitionButton (0.5.1)
-  - Typhoon (4.0.9):
-    - Typhoon/DeallocNotifier (= 4.0.9)
-    - Typhoon/IntrospectionUtils (= 4.0.9)
-    - Typhoon/no-arc (= 4.0.9)
-  - Typhoon/DeallocNotifier (4.0.9)
-  - Typhoon/IntrospectionUtils (4.0.9)
-  - Typhoon/no-arc (4.0.9):
+  - Typhoon (4.0.8):
+    - Typhoon/DeallocNotifier (= 4.0.8)
+    - Typhoon/IntrospectionUtils (= 4.0.8)
+    - Typhoon/no-arc (= 4.0.8)
+  - Typhoon/DeallocNotifier (4.0.8)
+  - Typhoon/IntrospectionUtils (4.0.8)
+  - Typhoon/no-arc (4.0.8):
     - Typhoon/IntrospectionUtils
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
-  - OneginiSDKiOS (= 11.0.1)
+  - OneginiSDKiOS (from `/Users/szymon/Projects/onegini-msp-sdk-ios`)
   - SkyFloatingLabelTextField (~> 3.0)
   - Swinject (= 2.4.1)
   - TransitionButton (= 0.5.1)
@@ -45,18 +45,20 @@ SPEC REPOS:
     - Swinject
     - TransitionButton
     - Typhoon
-  https://repo.onegini.com/artifactory/api/pods/cocoapods-public:
-    - OneginiSDKiOS
+
+EXTERNAL SOURCES:
+  OneginiSDKiOS:
+    :path: "/Users/szymon/Projects/onegini-msp-sdk-ios"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
-  OneginiSDKiOS: 39bd4151d410fc9a39a01df397819c636a86396e
+  OneginiSDKiOS: 8094995980bb5764881b8782defeb9b8288fce92
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   Swinject: f7f15a9672e99328c1f07f277091087917215700
   TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81
-  Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
+  Typhoon: f8901ef1ad0e2fa520cda0f668492dd33353f7dc
 
-PODFILE CHECKSUM: ba754cc6256d0a572b6d66d7d8240293e05731a6
+PODFILE CHECKSUM: b9d87cfc3d2902d0b42aae979116069cf7ac10e2
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

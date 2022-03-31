@@ -5,10 +5,16 @@ import OneginiSDKiOS
 class Startup {
 
     func oneginiSDKStartup(completion: @escaping (Bool) -> Void) {
-        ONGClientBuilder().build()
-        ONGClient.sharedInstance().start { result, error in
-            completion(result)
+        //TODO: take proper values
+        let configuration = Configuration(certificates: [],
+                                          configuration: [:],
+                                          jailbreakDetection: true,
+                                          debugDetection: true,
+                                          debugLogs: true)
+        let client = ClientBuilder().build(configuration: configuration)
+        
+        client.start { success, error in
+            completion(success)
         }
     }
-    
 }

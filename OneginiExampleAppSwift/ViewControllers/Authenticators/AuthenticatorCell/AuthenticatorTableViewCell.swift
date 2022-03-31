@@ -25,15 +25,15 @@ class AuthenticatorTableViewCell: UITableViewCell {
 
     var selectedRow: ((AuthenticatorTableViewCell) -> Void)?
     weak var authenticatorsViewController: AuthenticatorsViewController?
-    var authenticator: ONGAuthenticator?
+    var authenticator: Authenticator?
 
-    func setupCell(_ authenticator: ONGAuthenticator) {
+    func setupCell(_ authenticator: Authenticator) {
         self.authenticator = authenticator
 
         authenticatorName.text = authenticator.name
-
-        deregisterButton.isHidden = !authenticator.isRegistered || authenticator.type == .PIN
-        registerButton.isHidden = authenticator.isRegistered || authenticator.type == .PIN
+            
+        deregisterButton.isHidden = !authenticator.isRegistered || authenticator.type == .pin
+        registerButton.isHidden = authenticator.isRegistered || authenticator.type == .pin
 
         preferredLabel.isHidden = !authenticator.isPreferred
         setPreferredButton.isHidden = !authenticator.isRegistered || authenticator.isPreferred
@@ -53,10 +53,9 @@ class AuthenticatorTableViewCell: UITableViewCell {
     }
 
     @IBAction func setPreferredAuthenticator(_: Any) {
-        if let authenticator = authenticator {
-            authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.setPreferredAuthenticator(authenticator)
-            authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
-        }
+        guard let authenticator = authenticator else { return }
+        authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.setPreferredAuthenticator(authenticator)
+        authenticatorsViewController?.authenticatorsViewToPresenterProtocol?.reloadAuthenticators()
     }
 
     func deregistrationFinished() {

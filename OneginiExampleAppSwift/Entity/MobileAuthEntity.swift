@@ -25,14 +25,14 @@ class MobileAuthEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEn
     var pin: String?
     var pinError: AppError?
     var pinLength: Int?
-    var pinChallenge: ONGPinChallenge?
+    var pinChallenge: PinChallenge?
 
-    var biometricChallenge: ONGBiometricChallenge?
-    var userProfile: ONGUserProfile?
+    var biometricChallenge: BiometricChallenge?
+    var userProfile: UserProfile?
     var message: String?
     var authenticatorType: MobileAuthAuthenticatorType?
 
-    var customAuthChallenge: ONGCustomAuthFinishAuthenticationChallenge?
+    var customAuthChallenge: CustomAuthFinishAuthenticationChallenge?
     var data: String = ""
 
     var cancelled: Bool = false

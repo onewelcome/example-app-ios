@@ -2,11 +2,17 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '13.0'
 inhibit_all_warnings!
 use_frameworks!
+#use_modular_headers!
 
 plugin 'cocoapods-art', :sources => ['onegini']
 
 def oneginiSDKiOS
-    pod 'OneginiSDKiOS', '11.0.1'
+#    pod 'OneginiSDKiOS', '12.0.0'
+#    pod 'OneginiSDKiOS', :git => 'https://github.com/onewelcome/sdk-ios.git', :branch => 'SwiftAPI'
+    pod 'OneginiSDKiOS', :path => '/Users/szymon/Projects/onegini-msp-sdk-ios'
+#pod 'OneginiSDKiOS', :path => '/Users/szymon/Projects/onegini-msp-sdk-ios'
+#pod 'OneginiSDKiOS', :path => '/Users/szymon/Projects/onegini-msp-sdk-ios/output/OneginiSDKiOS/OneginiSDKiOS.podspec'
+
 end
 
 target 'WidgetExtension' do

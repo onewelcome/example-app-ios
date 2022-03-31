@@ -16,8 +16,8 @@
 import UIKit
 
 protocol RegisterUserInteractorProtocol: AnyObject {
-    func identityProviders() -> Array<ONGIdentityProvider>
-    func startUserRegistration(identityProvider: ONGIdentityProvider?)
+    func identityProviders() -> Array<IdentityProvider>
+    func startUserRegistration(identityProvider: IdentityProvider?)
     func handleRedirectURL()
     func handleCreatedPin()
     func handleOTPCode()
@@ -27,8 +27,9 @@ protocol RegisterUserInteractorProtocol: AnyObject {
 class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
-
-    fileprivate func mapErrorFromChallenge(_ challenge: ONGCreatePinChallenge) {
+    private let userClient: UserClient = UserClientImplementation.shared //TODO: pass in init
+    
+    fileprivate func mapErrorFromChallenge(_ challenge: CreatePinChallenge) {
         if let error = challenge.error {
             registerUserEntity.pinError = ErrorMapper().mapError(error)
         } else {
@@ -38,13 +39,12 @@ class RegisterUserInteractor: NSObject {
 }
 
 extension RegisterUserInteractor: RegisterUserInteractorProtocol {
-    func identityProviders() -> Array<ONGIdentityProvider> {
-        let identityProviders = ONGUserClient.sharedInstance().identityProviders()
-        return Array(identityProviders)
+    func identityProviders() -> Array<IdentityProvider> {
+        return userClient.identityProviders
     }
 
-    func startUserRegistration(identityProvider: ONGIdentityProvider? = nil) {
-        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read", "openid"], delegate: self)
+    func startUserRegistration(identityProvider: IdentityProvider? = nil) {
+        userClient.registerUser(with: identityProvider, scopes: ["read", "openid"], delegate: self)
     }
 
     func handleRedirectURL() {
@@ -111,26 +111,26 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 }
 
-extension RegisterUserInteractor: ONGRegistrationDelegate {
-    func userClient(_: ONGUserClient, didReceive challenge: ONGBrowserRegistrationChallenge) {
+extension RegisterUserInteractor: RegistrationDelegate {
+    func userClient(_: UserClient, didReceive challenge: BrowserRegistrationChallenge) {
         registerUserEntity.browserRegistrationChallenge = challenge
         registerUserEntity.registrationUserURL = challenge.url
         registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
     }
 
-    func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
+    func userClient(_: UserClient, didReceivePinRegistrationChallenge challenge: CreatePinChallenge) {
         registerUserEntity.createPinChallenge = challenge
         registerUserEntity.pinLength = Int(challenge.pinLength)
         mapErrorFromChallenge(challenge)
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 
-    func userClient(_ userClient: ONGUserClient, didRegisterUser userProfile: ONGUserProfile, identityProvider: ONGIdentityProvider, info: ONGCustomInfo?) {
+    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, identityProvider: IdentityProvider, info: CustomInfo?) {
         registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
     
-    func userClient(_ userClient: ONGUserClient, didFailToRegisterWith identityProvider: ONGIdentityProvider, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+    func userClient(_ userClient: UserClient, didFailToRegisterWith identityProvider: IdentityProvider, error: Error) {
+        if error.code == GenericError.actionCancelled.rawValue {
             registerUserPresenter?.registerUserActionCancelled()
         } else {
             let mappedError = ErrorMapper().mapError(error)
@@ -139,13 +139,13 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
         registerUserEntity.errorMessage = nil
     }
 
-    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge challenge: ONGCustomRegistrationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
         if challenge.identityProvider.identifier == "2-way-otp-api" {
             challenge.sender.respond(withData: nil, challenge: challenge)
         }
     }
 
-    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish challenge: ONGCustomRegistrationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomRegistrationFinish challenge: CustomRegistrationChallenge) {
         registerUserEntity.customRegistrationChallenge = challenge
         if let info = challenge.info {
             registerUserEntity.challengeCode = info.data

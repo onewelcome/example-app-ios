@@ -15,7 +15,7 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet var expireTimeLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
 
-    func setup(pendingMobileAuthEntity: ONGPendingMobileAuthRequest) {
+    func setup(pendingMobileAuthEntity: PendingMobileAuthRequest) {
         profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
         messageLabel.text = pendingMobileAuthEntity.message
 

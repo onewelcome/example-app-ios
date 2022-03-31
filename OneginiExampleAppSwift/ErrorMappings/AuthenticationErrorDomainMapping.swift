@@ -16,14 +16,14 @@
 class AuthenticationErrorDomainMapping {
     let title = "Authentication error"
 
-    func mapErrorWithPinChallenge(pinChallenge: ONGPinChallenge) -> AppError {
+    func mapErrorWithPinChallenge(pinChallenge: PinChallenge) -> AppError {
         let remainingFailureCount = String(describing: pinChallenge.remainingFailureCount)
         let errorDescription = "PIN you've entered is invalid."
         let recoverySuggestion = "You have still \(remainingFailureCount) attempts left."
         return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
     }
 
-    func mapErrorWithCustomInfo(_ customInfo: ONGCustomInfo) -> AppError {
+    func mapErrorWithCustomInfo(_ customInfo: CustomInfo) -> AppError {
         if customInfo.status >= 4000 && customInfo.status < 5000 {
             let message = "Authentication failed"
             return AppError(title: title, errorDescription: message)

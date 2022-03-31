@@ -22,10 +22,10 @@ protocol MobileAuthInteractorProtocol: AnyObject {
     func isUserEnrolledForMobileAuth() -> Bool
     func isUserEnrolledForPushMobileAuth() -> Bool
     func handlePinMobileAuth()
-    func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void)
+    func fetchPendingTransactions(completion: @escaping (Array<PendingMobileAuthRequest>?, AppError?) -> Void)
     func handleMobileAuth()
     func handleCustomAuthenticatorMobileAuth()
-    func handlePendingMobileAuth(_ pendingTransaction: ONGPendingMobileAuthRequest)
+    func handlePendingMobileAuth(_ pendingTransaction: PendingMobileAuthRequest)
     func handleOTPMobileAuth(_ otp: String)
 }
 
@@ -33,30 +33,29 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
     var mobileAuthQueue = MobileAuthQueue()
     var mobileAuthEntity = MobileAuthEntity()
-
+    private let userClient: UserClient = UserClientImplementation.shared //TODO pass in the init
+    
     override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
     }
 
     func isUserEnrolledForMobileAuth() -> Bool {
-        let userClient = ONGUserClient.sharedInstance()
-        if let userProfile = userClient.authenticatedUserProfile() {
-            return userClient.isUserEnrolled(forMobileAuth: userProfile)
+        if let userProfile = userClient.authenticatedUserProfile {
+            return userClient.isUserEnrolledForMobileAuth(userProfile)
         }
         return false
     }
 
     func isUserEnrolledForPushMobileAuth() -> Bool {
-        let userClient = ONGUserClient.sharedInstance()
-        if let userProfile = userClient.authenticatedUserProfile() {
-            return userClient.isUserEnrolled(forPushMobileAuth: userProfile)
+        if let userProfile = userClient.authenticatedUserProfile {
+            return userClient.isUserEnrolledForPushMobileAuth(userProfile)
         }
         return false
     }
 
     func enrollForMobileAuth() {
-        ONGUserClient.sharedInstance().enroll { enrolled, error in
+        userClient.enrollForMobileAuth { enrolled, error in
             if enrolled {
                 self.mobileAuthPresenter?.mobileAuthEnrolled()
             } else {
@@ -69,7 +68,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     }
 
     func enrollForPushMobileAuth(deviceToken: Data) {
-        ONGUserClient.sharedInstance().enrollForPushMobileAuth(withDeviceToken: deviceToken) { enrolled, error in
+        userClient.enrollForPushMobileAuth(deviceToken: deviceToken) { enrolled, error in
             if enrolled {
                 self.mobileAuthPresenter?.pushMobileAuthEnrolled()
             } else {
@@ -81,16 +80,22 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
-    func fetchPendingTransactions(completion: @escaping (Array<ONGPendingMobileAuthRequest>?, AppError?) -> Void) {
-        ONGUserClient.sharedInstance().pendingPushMobileAuthRequests { (requests: Array<ONGPendingMobileAuthRequest>?, error: Error?) in
-            if let error = error {
-                let appError = ErrorMapper().mapError(error)
-                completion(nil, appError)
-            } else if let requests = requests {
-                completion(requests, nil)
-
-            } else {
-                completion([], nil)
+    func fetchPendingTransactions(completion: @escaping (Array<PendingMobileAuthRequest>?, AppError?) -> Void) {
+//        userClient.pendingPushMobileAuthRequests { (requests: Array<PendingMobileAuthRequest>?, error: Error?) in
+//            if let error = error {
+//                let appError = ErrorMapper().mapError(error)
+//                completion(nil, appError)
+//            } else if let requests = requests {
+//                completion(requests, nil)
+//
+//            } else {
+//                completion([], nil)
+//            }
+//        }
+        userClient.pendingPushMobileAuthRequests { result in
+            switch result {
+            case .success(let requests): completion(requests, nil)
+            case .failure(let error): completion([], ErrorMapper().mapError(error))
             }
         }
     }
@@ -161,22 +166,21 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
-    func handlePendingMobileAuth(_ pendingTransaction: ONGPendingMobileAuthRequest) {
-        ONGUserClient.sharedInstance().handlePendingPush(pendingTransaction, delegate: self)
+    func handlePendingMobileAuth(_ pendingTransaction: PendingMobileAuthRequest) {
+        userClient.handlePendingPushMobileAuth(request: pendingTransaction, delegate: self)
     }
 
     func handleOTPMobileAuth(_ otp: String) {
-        ONGUserClient.sharedInstance().handleOTPMobileAuthRequest(otp, delegate: self)
+        userClient.handleOTPMobileAuth(otp: otp, delegate: self)
     }
 
     fileprivate func handlePushMobileAuthenticationRequest(userInfo: Dictionary<AnyHashable, Any>) {
-        if let pendingTransaction = ONGUserClient.sharedInstance().pendingMobileAuthRequest(fromUserInfo: userInfo) {
-            let mobileAuthRequest = MobileAuthRequest(delegate: self, pendingTransaction: pendingTransaction)
-            mobileAuthQueue.enqueue(mobileAuthRequest)
-        }
+        guard let pendingTransaction = userClient.pendingMobileAuthRequestFromUserInfo(userInfo) else { return }
+        let mobileAuthRequest = MobileAuthRequest(delegate: self, pendingTransaction: pendingTransaction)
+        mobileAuthQueue.enqueue(mobileAuthRequest)
     }
 
-    fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
+    fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error,
             error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue,
             error.code != ONGAuthenticationError.customAuthenticatorFailure.rawValue {
@@ -187,8 +191,9 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     }
 }
 
-extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
-    func userClient(_: ONGUserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: ONGMobileAuthRequest) {
+extension MobileAuthInteractor: MobileAuthRequestDelegate {
+    func userClient(_ userClient: UserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: OneginiSDKiOS.MobileAuthRequest) {
+        //TODO: solve colision with MobileAuthRequest struct from ExampleApp and OneginiSDKiOS.MobileAuthRequest
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = request.userProfile
         mobileAuthEntity.authenticatorType = .confirmation
@@ -196,7 +201,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge, for request: ONGMobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge, for request: OneginiSDKiOS.MobileAuthRequest) {
         mobileAuthEntity.pinChallenge = challenge
         mobileAuthEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
@@ -212,7 +217,7 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         }
     }
 
-    func userClient(_: ONGUserClient, didReceive challenge: ONGBiometricChallenge, for request: ONGMobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceive challenge: BiometricChallenge, for request: OneginiSDKiOS.MobileAuthRequest) {
         mobileAuthEntity.biometricChallenge = challenge
         mobileAuthEntity.authenticatorType = .biometric
         mobileAuthEntity.message = request.message
@@ -220,28 +225,29 @@ extension MobileAuthInteractor: ONGMobileAuthRequestDelegate {
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge, for request: ONGMobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthFinishAuthenticationChallenge, for request: OneginiSDKiOS.MobileAuthRequest) {
         mobileAuthEntity.customAuthChallenge = challenge
         mobileAuthEntity.userProfile = challenge.userProfile
         mobileAuthEntity.message = request.message
         mobileAuthPresenter?.presentPasswordAuthenticatorView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: ONGUserClient, didFailToHandle request: ONGMobileAuthRequest, authenticator: ONGAuthenticator?, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToHandle request: OneginiSDKiOS.MobileAuthRequest, authenticator: Authenticator?, error: Error) {
         mobileAuthEntity = MobileAuthEntity()
         if error.code == ONGGenericError.actionCancelled.rawValue {
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
         } else {
-            let mappedError = ErrorMapper().mapError(error)
-            let isUserLoggedIn = request.userProfile == userClient.authenticatedUserProfile()
-            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
-                self.mobileAuthQueue.dequeue()
-            })
+            //TODO
+//            let mappedError = ErrorMapper().mapError(error)
+//            let isUserLoggedIn = request.userProfile.profileId == userClient.authenticatedUserProfile.profileId //TODO: check if this is good comparison
+//            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
+//                self.mobileAuthQueue.dequeue()
+//            })
         }
     }
 
-    func userClient(_ userClient: ONGUserClient, didHandle request: ONGMobileAuthRequest, authenticator: ONGAuthenticator?, info customAuthenticatorInfo: ONGCustomInfo?) {
+    func userClient(_ userClient: UserClient, didHandle request: OneginiSDKiOS.MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
         mobileAuthEntity = MobileAuthEntity()
         mobileAuthPresenter?.dismiss()
         mobileAuthQueue.dequeue()
@@ -261,11 +267,11 @@ extension MobileAuthInteractor: UNUserNotificationCenterDelegate {
 }
 
 struct MobileAuthRequest {
-    let pendingTransaction: ONGPendingMobileAuthRequest?
+    let pendingTransaction: PendingMobileAuthRequest?
     let otp: String?
-    let delegate: ONGMobileAuthRequestDelegate
+    let delegate: MobileAuthRequestDelegate
 
-    init(delegate: ONGMobileAuthRequestDelegate, pendingTransaction: ONGPendingMobileAuthRequest? = nil, otp: String? = nil) {
+    init(delegate: MobileAuthRequestDelegate, pendingTransaction: PendingMobileAuthRequest? = nil, otp: String? = nil) {
         self.delegate = delegate
         self.pendingTransaction = pendingTransaction
         self.otp = otp

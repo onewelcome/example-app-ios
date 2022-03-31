@@ -22,13 +22,13 @@ protocol RegisterUserInteractorToPresenterProtocol: class {
     func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
-    func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
+    func presentDashboardView(authenticatedUserProfile: UserProfile)
     func registerUserActionFailed(_ error: AppError)
     func registerUserActionCancelled()
 }
 
 protocol RegisterUserViewToPresenterProtocol {
-    func signUp(_ identityProvider: ONGIdentityProvider?)
+    func signUp(_ identityProvider: IdentityProvider?)
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL()
     func handleOTPCode()
@@ -87,7 +87,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         }
     }
 
-    func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
+    func presentDashboardView(authenticatedUserProfile: UserProfile) {
         navigationController.dismiss(animated: true)
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupDashboardPresenter(authenticatedUserProfile: authenticatedUserProfile)
@@ -111,7 +111,7 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
         return registerUserViewController
     }
 
-    func signUp(_ identityProvider: ONGIdentityProvider? = nil) {
+    func signUp(_ identityProvider: IdentityProvider? = nil) {
         registerUserInteractor.startUserRegistration(identityProvider: identityProvider)
     }
 
