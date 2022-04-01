@@ -33,7 +33,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
     var mobileAuthQueue = MobileAuthQueue()
     var mobileAuthEntity = MobileAuthEntity()
-    private let userClient: UserClient = UserClientImplementation.shared //TODO pass in the init
+    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
     
     override init() {
         super.init()
@@ -239,7 +239,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
             mobileAuthQueue.dequeue()
         } else {
             let mappedError = ErrorMapper().mapError(error)
-            let isUserLoggedIn = request.userProfile?.profileId == userClient.authenticatedUserProfile?.profileId //TODO: check if this is good
+            let isUserLoggedIn = request.userProfile?.profileId == userClient.authenticatedUserProfile?.profileId //TODO: check if this is good comparison
             mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
                 self.mobileAuthQueue.dequeue()
             })

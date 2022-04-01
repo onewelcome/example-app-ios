@@ -21,7 +21,7 @@ protocol DisconnectInteractorProtocol: AnyObject {
 
 class DisconnectInteractor: DisconnectInteractorProtocol {
     weak var disconnectPresenter: DisconnectInteractorToPresenterProtocol?
-    private let userClient: UserClient = UserClientImplementation.shared //TODO: pass in init
+    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
     
     func disconnect() {
         guard let profile = userClient.authenticatedUserProfile else { return }

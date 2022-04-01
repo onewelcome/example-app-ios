@@ -27,7 +27,7 @@ protocol RegisterUserInteractorProtocol: AnyObject {
 class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
-    private let userClient: UserClient = UserClientImplementation.shared //TODO: pass in init
+    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
     
     fileprivate func mapErrorFromChallenge(_ challenge: CreatePinChallenge) {
         if let error = challenge.error {

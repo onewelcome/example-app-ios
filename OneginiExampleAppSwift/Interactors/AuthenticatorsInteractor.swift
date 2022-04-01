@@ -28,7 +28,7 @@ protocol AuthenticatorsInteractorProtocol: AnyObject {
 class AuthenticatorsInteractor: NSObject {
     var registerAuthenticatorEntity = RegisterAuthenticatorEntity()
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
-    private let userClient: UserClient = UserClientImplementation.shared //TODO pass in the init
+    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error {

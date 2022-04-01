@@ -22,7 +22,8 @@ protocol AppDetailsInteractorProtocol: AnyObject {
 class AppDetailsInteractor: AppDetailsInteractorProtocol {
     weak var appDetailsPresenter: AppDetailsInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
-
+    private let deviceClient: DeviceClient = sharedDeviceClient() //TODO: pass in init
+    
     func fetchDeviceResources() {
         authenticateDevice { success, error in
             if success {
@@ -40,32 +41,30 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
     }
 
     fileprivate func authenticateDevice(completion: @escaping (Bool, AppError?) -> Void) {
-        //TODO:
-//        DeviceClient.sharedInstance().authenticateDevice(["application-details"]) { success, error in
-//            if let error = error {
-//                let mappedError = ErrorMapper().mapError(error)
-//                completion(success, mappedError)
-//            } else {
-//                completion(success, nil)
-//            }
-//        }
+        deviceClient.authenticateDevice(scopes: ["application-details"]) { success, error in
+            if let error = error {
+                let mappedError = ErrorMapper().mapError(error)
+                completion(success, mappedError)
+            } else {
+                completion(success, nil)
+            }
+        }
     }
 
     fileprivate func deviceResourcesRequest(completion: @escaping (ApplicationDetails?, AppError?) -> Void) {
-        //TODO:
-//        let resourceRequest = ResourceRequest(path: "application-details", method: "GET")
-//        DeviceClient.sharedInstance().fetchResource(resourceRequest) { response, error in
-//            if let error = error {
-//                let mappedError = ErrorMapper().mapError(error)
-//                completion(nil, mappedError)
-//            } else {
-//                if let data = response?.data {
-//                    if let appDetails = try? self.decoder.decode(ApplicationDetails.self, from: data) {
-//                        completion(appDetails, nil)
-//                    }
-//                }
-//            }
-//        }
+        let resourceRequest = ResourceRequest(path: "application-details", method: .get)
+        deviceClient.fetchResource(request: resourceRequest) { response, error in
+            if let error = error {
+                let mappedError = ErrorMapper().mapError(error)
+                completion(nil, mappedError)
+            } else {
+                if let data = response?.data {
+                    if let appDetails = try? self.decoder.decode(ApplicationDetails.self, from: data) {
+                        completion(appDetails, nil)
+                    }
+                }
+            }
+        }
     }
 }
 

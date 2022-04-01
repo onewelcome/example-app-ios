@@ -21,7 +21,7 @@ protocol LogoutInteractorProtocol: AnyObject {
 
 class LogoutInteractor: LogoutInteractorProtocol {
     weak var dashboardPresenter: DashboardInteractorToPresenterProtocol?
-    private let userClient: UserClient = UserClientImplementation.shared //TODO: pass in init
+    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
     
     func logout() {
         userClient.logoutUser { _, error in

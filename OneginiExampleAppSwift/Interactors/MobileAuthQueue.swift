@@ -18,7 +18,7 @@ import Foundation
 struct MobileAuthQueue {
     fileprivate var list = [MobileAuthRequest]()
     
-    private let userClient: UserClient = UserClientImplementation.shared //TODO: pass in init
+    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
     
     mutating func enqueue(_ mobileAuthRequest: MobileAuthRequest) {
         if list.isEmpty {

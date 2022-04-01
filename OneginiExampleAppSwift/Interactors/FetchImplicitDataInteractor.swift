@@ -20,7 +20,7 @@ protocol FetchImplicitDataInteractorProtocol: AnyObject {
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    private let userClient: UserClient = UserClientImplementation.shared //TODO pass in the init
+    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
     
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
