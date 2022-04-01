@@ -51,39 +51,34 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     }
 
     fileprivate func isProfileImplicitlyAuthenticated(_ profile: UserProfile) -> Bool {
-        //TODO:
-        return true
-//        let implicitlyAuthenticatedProfile = userClient.implicitlyAuthenticatedUserProfile()
-//        return implicitlyAuthenticatedProfile != nil && implicitlyAuthenticatedProfile == profile
+        userClient.implicitlyAuthenticatedUserProfile?.isEqual(to: profile) ?? false
     }
 
     fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (Bool, AppError?) -> Void) {
-        //TODO:
-//        userClient.implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
-//            if !success, let error = error {
-//                let mappedError = ErrorMapper().mapError(error)
-//                completion(success, mappedError)
-//                return
-//            }
-//            completion(success, nil)
-//        }
+        userClient.implicitlyAuthenticateUser(userProfile: profile, scopes: nil) { success, error in
+            if !success, let error = error {
+                let mappedError = ErrorMapper().mapError(error)
+                completion(success, mappedError)
+                return
+            }
+            completion(success, nil)
+        }
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
-        //TODO:
-//        let implicitRequest = ResourceRequest(path: "user-id-decorated", method: "GET")
-//        userClient.fetchImplicitResource(implicitRequest) { response, error in
-//            if let error = error {
-//                let mappedError = ErrorMapper().mapError(error)
-//                completion(nil, mappedError)
-//            } else {
-//                if let data = response?.data {
-//                    if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: String],
-//                        let userIdDecorated = responseData["decorated_user_id"] {
-//                        completion(userIdDecorated, nil)
-//                    }
-//                }
-//            }
-//        }
+        let implicitRequest = ResourceRequest(path: "user-id-decorated", method: .get)
+        userClient.fetchImplicitResource(request: implicitRequest) { response, error in
+            if let error = error {
+                let mappedError = ErrorMapper().mapError(error)
+                completion(nil, mappedError)
+            } else {
+                if let data = response?.data {
+                    if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: String],
+                        let userIdDecorated = responseData["decorated_user_id"] {
+                        completion(userIdDecorated, nil)
+                    }
+                }
+            }
+        }
     }
 }
