@@ -238,12 +238,11 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
         } else {
-            //TODO
-//            let mappedError = ErrorMapper().mapError(error)
-//            let isUserLoggedIn = request.userProfile.profileId == userClient.authenticatedUserProfile.profileId //TODO: check if this is good comparison
-//            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
-//                self.mobileAuthQueue.dequeue()
-//            })
+            let mappedError = ErrorMapper().mapError(error)
+            let isUserLoggedIn = request.userProfile?.profileId == userClient.authenticatedUserProfile?.profileId //TODO: check if this is good
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
+                self.mobileAuthQueue.dequeue()
+            })
         }
     }
 

@@ -67,19 +67,18 @@ class LoginPresenter: LoginPresenterProtocol {
         profiles = loginInteractor.userProfiles()
         loginViewController.profiles = profiles
     }
-
+    
     func updateView() {
         let profile = loginViewController.selectedProfile
-        //TODO:
-//        if profiles.contains(profile) {
-//            loginViewController.reloadAuthenticators()
-//            if let index = loginViewController.profiles.index(of: profile) {
-//                loginViewController.selectProfile(index: index)
-//            }
-//        } else {
-//            loginViewController.selectProfile(index: 0)
-//            loginViewController.reloadAuthenticators()
-//        }
+        if profiles.contains(where: { $0.isEqual(to: profile) }) {
+            loginViewController.reloadAuthenticators()
+            if let index = loginViewController.profiles.firstIndex(where: { $0.isEqual(to: profile) }) {
+                loginViewController.selectProfile(index: index)
+            }
+        } else {
+            loginViewController.selectProfile(index: 0)
+            loginViewController.reloadAuthenticators()
+        }
     }
 
     func presentImplicitData(data: String) {

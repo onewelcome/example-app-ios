@@ -79,14 +79,6 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
 }
 
 extension LoginInteractor: AuthenticationDelegate {
-    func userClient(_ userClient: UserClient, didStartAuthenticationForUser userProfile: UserProfile, authenticator: Authenticator) {
-        //TODO:
-    }
-    
-    func userClient(_ userClient: UserClient, didReceive challenge: BiometricChallenge) {
-        //TODO:
-    }
-    
     func userClient(_: UserClient, didReceive challenge: PinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5

@@ -88,58 +88,50 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
 }
 
 extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
-//    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge) {
-////    func userClient(_: UserClient, didReceive challenge: PinChallenge) {
-//        registerAuthenticatorEntity.pinChallenge = challenge
-//        registerAuthenticatorEntity.pinLength = 5
-//        mapErrorFromChallenge(challenge)
-//        authenticatorsPresenter?.presentPinView(registerAuthenticatorEntity: registerAuthenticatorEntity)
-//    }
-//
-//    func userClient(_: UserClient, didReceive challenge: CustomAuthFinishRegistrationChallenge) {
-//        registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
-//        authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
-//    }
-//
-//    func userClient(_: UserClient, didFailToRegister authenticator: Authenticator, forUser _: UserProfile, error: Error) {
-////        let mappedError = ErrorMapper().mapError(error)
-////        if error.code == GenericError.actionCancelled.rawValue {
-////            authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-////        } else if error.code == GenericError.userDeregistered.rawValue {
-////            authenticatorsPresenter?.popToWelcomeView(mappedError)
-////        } else {
-////            authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
-////        }
-//    }
-//
-//    func userClient(_: UserClient, didRegister authenticator: Authenticator, forUser _: UserProfile, info _: CustomInfo?) {
-//        //TODO:
-////        authenticatorsPresenter?.backToAuthenticatorsView(authenticator: authenticator)
-//    }
+    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge) {
+//    func userClient(_: UserClient, didReceive challenge: PinChallenge) {
+        registerAuthenticatorEntity.pinChallenge = challenge
+        registerAuthenticatorEntity.pinLength = 5
+        mapErrorFromChallenge(challenge)
+        authenticatorsPresenter?.presentPinView(registerAuthenticatorEntity: registerAuthenticatorEntity)
+    }
+
+    func userClient(_: UserClient, didReceive challenge: CustomAuthFinishRegistrationChallenge) {
+        registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
+        authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
+    }
+
+    func userClient(_: UserClient, didFailToRegister authenticator: Authenticator, forUser _: UserProfile, error: Error) {
+        let mappedError = ErrorMapper().mapError(error)
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
+        } else if error.code == ONGGenericError.userDeregistered.rawValue {
+            authenticatorsPresenter?.popToWelcomeView(mappedError)
+        } else {
+            authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
+        }
+    }
+
+    func userClient(_: UserClient, didRegister authenticator: Authenticator, forUser _: UserProfile, info _: CustomInfo?) {
+        authenticatorsPresenter?.backToAuthenticatorsView(authenticator: authenticator)
+    }
 }
 
 extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
-//    func userClient(_ userClient: UserClient, didStartDeregistering authenticator: Authenticator, forUser userProfile: UserProfile) {
-//        //TODO
-//    }
-//
-//    func userClient(_ userClient: UserClient, didDeregister authenticator: Authenticator, forUser userProfile: UserProfile) {
-//        //        //TODO:
-//        //      ////        authenticatorsPresenter?.authenticatorDeregistrationSucced()
-//    }
-//
-//    func userClient(_ userClient: UserClient, didFailToDeregister authenticator: Authenticator, forUser userProfile: UserProfile, error: Error) {
-//        ////TODO:
-//        //        //        if error.code == GenericError.actionCancelled.rawValue {
-//        ////            authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-//        ////        } else {
-//        ////            let mappedError = ErrorMapper().mapError(error)
-//        ////            authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
-//        ////        }
-//    }
-//
-//    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthDeregistrationChallenge) {
-//        //TODO:
-////        challenge.sender.continue(with: challenge)
-//    }
+    func userClient(_ userClient: UserClient, didDeregister authenticator: Authenticator, forUser userProfile: UserProfile) {
+        authenticatorsPresenter?.authenticatorDeregistrationSucced()
+    }
+
+    func userClient(_ userClient: UserClient, didFailToDeregister authenticator: Authenticator, forUser userProfile: UserProfile, error: Error) {
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
+        }
+    }
+
+    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthDeregistrationChallenge) {
+        challenge.sender.continue(with: challenge)
+    }
 }
