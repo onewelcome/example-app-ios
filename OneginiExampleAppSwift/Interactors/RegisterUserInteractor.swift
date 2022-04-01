@@ -49,39 +49,43 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 
     func handleRedirectURL() {
         guard let browserRegistrationChallenge = registerUserEntity.browserRegistrationChallenge else { return }
-        if let url = registerUserEntity.redirectURL {
-            browserRegistrationChallenge.sender.respond(with: url, challenge: browserRegistrationChallenge)
-        } else {
-            browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
-        }
+        //TODO:
+//        if let url = registerUserEntity.redirectURL {
+//            browserRegistrationChallenge.sender.respond(with: url, challenge: browserRegistrationChallenge)
+//        } else {
+//            browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
+//        }
     }
 
     func handleOTPCode() {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
-        if registerUserEntity.cancelled {
-            registerUserEntity.cancelled = false
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
-        } else {
-            customRegistrationChallenge.sender.respond(withData: registerUserEntity.responseCode, challenge: customRegistrationChallenge)
-        }
+        //TODO:
+//        if registerUserEntity.cancelled {
+//            registerUserEntity.cancelled = false
+//            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+//        } else {
+//            customRegistrationChallenge.sender.respond(withData: registerUserEntity.responseCode, challenge: customRegistrationChallenge)
+//        }
     }
 
     func handleQRCode(_ qrCode: String?) {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
-        if let qrCode = qrCode {
-            customRegistrationChallenge.sender.respond(withData: qrCode, challenge: customRegistrationChallenge)
-        } else {
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
-        }
+        //TODO:
+//        if let qrCode = qrCode {
+//            customRegistrationChallenge.sender.respond(withData: qrCode, challenge: customRegistrationChallenge)
+//        } else {
+//            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+//        }
     }
 
     func handleCreatedPin() {
         guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
-        if let pin = registerUserEntity.pin {
-            createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
-        } else {
-            createPinChallenge.sender.cancel(createPinChallenge)
-        }
+        //TODO:
+//        if let pin = registerUserEntity.pin {
+//            createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
+//        } else {
+//            createPinChallenge.sender.cancel(createPinChallenge)
+//        }
     }
 
     fileprivate func mapErrorMessageFromTwoWayOTPStatus(_ status: Int) {
@@ -112,49 +116,78 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 }
 
 extension RegisterUserInteractor: RegistrationDelegate {
-    func userClient(_: UserClient, didReceive challenge: BrowserRegistrationChallenge) {
-        registerUserEntity.browserRegistrationChallenge = challenge
-        registerUserEntity.registrationUserURL = challenge.url
-        registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
+    func userClient(_ userClient: UserClient, didReceive createPinChallenge: CreatePinChallenge) {
+        //TODO
     }
-
-    func userClient(_: UserClient, didReceivePinRegistrationChallenge challenge: CreatePinChallenge) {
-        registerUserEntity.createPinChallenge = challenge
-        registerUserEntity.pinLength = Int(challenge.pinLength)
-        mapErrorFromChallenge(challenge)
-        registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
+    
+    func userClient(_ userClient: UserClient, didReceive browserRegistrationChallenge: BrowserRegistrationChallenge) {
+        //TODO
     }
-
+    
+    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationInit challenge: CustomRegistrationChallenge) {
+        //TODO
+    }
+    
+    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationFinish challenge: CustomRegistrationChallenge) {
+        //TODO
+    }
+    
+    func userClientDidStartRegistration(_ userClient: UserClient) {
+        //TODO
+    }
+    
     func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, identityProvider: IdentityProvider, info: CustomInfo?) {
-        registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
+        //TODO
     }
     
     func userClient(_ userClient: UserClient, didFailToRegisterWith identityProvider: IdentityProvider, error: Error) {
-        if error.code == GenericError.actionCancelled.rawValue {
-            registerUserPresenter?.registerUserActionCancelled()
-        } else {
-            let mappedError = ErrorMapper().mapError(error)
-            registerUserPresenter?.registerUserActionFailed(mappedError)
-        }
-        registerUserEntity.errorMessage = nil
+        //TODO
     }
-
-    func userClient(_: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
-        if challenge.identityProvider.identifier == "2-way-otp-api" {
-            challenge.sender.respond(withData: nil, challenge: challenge)
-        }
-    }
-
-    func userClient(_: UserClient, didReceiveCustomRegistrationFinish challenge: CustomRegistrationChallenge) {
-        registerUserEntity.customRegistrationChallenge = challenge
-        if let info = challenge.info {
-            registerUserEntity.challengeCode = info.data
-            mapErrorMessageFromStatus(info.status, identityProviderIdentifier: challenge.identityProvider.identifier)
-        }
-        if challenge.identityProvider.identifier == "2-way-otp-api" {
-            registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
-        } else if challenge.identityProvider.identifier == "qr-code-api" {
-            registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
-        }
-    }
+    
+//    func userClient(_: UserClient, didReceive challenge: BrowserRegistrationChallenge) {
+//        registerUserEntity.browserRegistrationChallenge = challenge
+//        registerUserEntity.registrationUserURL = challenge.url
+//        registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
+//    }
+//
+//    func userClient(_: UserClient, didReceivePinRegistrationChallenge challenge: CreatePinChallenge) {
+//        registerUserEntity.createPinChallenge = challenge
+//        registerUserEntity.pinLength = Int(challenge.pinLength)
+//        mapErrorFromChallenge(challenge)
+//        registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
+//    }
+//
+//    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, identityProvider: IdentityProvider, info: CustomInfo?) {
+//        registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
+//    }
+//
+//    func userClient(_ userClient: UserClient, didFailToRegisterWith identityProvider: IdentityProvider, error: Error) {
+//        if error.code == ONGGenericError.actionCancelled.rawValue {
+//            registerUserPresenter?.registerUserActionCancelled()
+//        } else {
+//            let mappedError = ErrorMapper().mapError(error)
+//            registerUserPresenter?.registerUserActionFailed(mappedError)
+//        }
+//        registerUserEntity.errorMessage = nil
+//    }
+//
+//    func userClient(_: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
+//        //TODO:
+////        if challenge.identityProvider.identifier == "2-way-otp-api" {
+////            challenge.sender.respond(withData: nil, challenge: challenge)
+////        }
+//    }
+//
+//    func userClient(_: UserClient, didReceiveCustomRegistrationFinish challenge: CustomRegistrationChallenge) {
+//        registerUserEntity.customRegistrationChallenge = challenge
+//        if let info = challenge.info {
+//            registerUserEntity.challengeCode = info.data
+//            mapErrorMessageFromStatus(info.status, identityProviderIdentifier: challenge.identityProvider.identifier)
+//        }
+//        if challenge.identityProvider.identifier == "2-way-otp-api" {
+//            registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
+//        } else if challenge.identityProvider.identifier == "qr-code-api" {
+//            registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
+//        }
+//    }
 }

@@ -107,11 +107,12 @@ extension LoginViewController: UITableViewDataSource {
         if tableView == profilesTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileIdCell", for: indexPath) as! ProfileTableViewCell
             cell.profileIdLabel.text = profiles[indexPath.row].profileId
-            if selectedProfile == profiles[indexPath.row] {
-                cell.tickImage.image = #imageLiteral(resourceName: "tick")
-            } else {
-                cell.tickImage.image = nil
-            }
+            //TODO:
+//            if selectedProfile == profiles[indexPath.row] {
+//                cell.tickImage.image = #imageLiteral(resourceName: "tick")
+//            } else {
+//                cell.tickImage.image = nil
+//            }
             return cell
         }
         if tableView == authenticatorsTableView {
@@ -128,11 +129,13 @@ extension LoginViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
-            if selectedProfile != profiles[indexPath.row] {
-                selectedProfile = profiles[indexPath.row]
-                guard let loginDelegate = loginDelegate else { return }
-                authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
-            }
+
+            //TODO:
+            //            if selectedProfile != profiles[indexPath.row] {
+//                selectedProfile = profiles[indexPath.row]
+//                guard let loginDelegate = loginDelegate else { return }
+//                authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
+//            }
             loginDelegate?.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
                 self.implicitData.text = implicitDataString
             })
