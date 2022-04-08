@@ -81,21 +81,14 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     }
 
     func fetchPendingTransactions(completion: @escaping (Array<PendingMobileAuthRequest>?, AppError?) -> Void) {
-//        userClient.pendingPushMobileAuthRequests { (requests: Array<PendingMobileAuthRequest>?, error: Error?) in
-//            if let error = error {
-//                let appError = ErrorMapper().mapError(error)
-//                completion(nil, appError)
-//            } else if let requests = requests {
-//                completion(requests, nil)
-//
-//            } else {
-//                completion([], nil)
-//            }
-//        }
-        userClient.pendingPushMobileAuthRequests { result in
-            switch result {
-            case .success(let requests): completion(requests, nil)
-            case .failure(let error): completion([], ErrorMapper().mapError(error))
+        userClient.pendingPushMobileAuthRequests { requests, error in
+            if let error = error {
+                let appError = ErrorMapper().mapError(error)
+                completion(nil, appError)
+            } else if let requests = requests {
+                completion(requests, nil)
+            } else {
+                completion([], nil)
             }
         }
     }
