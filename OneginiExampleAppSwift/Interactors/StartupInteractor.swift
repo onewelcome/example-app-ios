@@ -25,10 +25,10 @@ class StartupInteractor: StartupInteractorProtocol {
         let oneginiConfigModelConfiguration = OneginiConfigModel.configuration() as? [String: String] ?? [:]
         
         let configuration = Configuration(certificates: [],
-                                             configuration: oneginiConfigModelConfiguration,
-                                             jailbreakDetection: true,
-                                             debugDetection: true,
-                                             debugLogs: true)
+                                          configuration: oneginiConfigModelConfiguration,
+                                          jailbreakDetection: true,
+                                          debugDetection: true,
+                                          debugLogs: true)
         let client = ClientBuilder().build(configuration: configuration)
         
         client.start { success, error in
