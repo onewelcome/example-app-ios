@@ -22,8 +22,10 @@ protocol StartupInteractorProtocol {
 class StartupInteractor: StartupInteractorProtocol {
     func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
         //TODO: take proper values
+        let oneginiConfigModelConfiguration = OneginiConfigModel.configuration() as? [String: String] ?? [:]
+        
         let configuration = Configuration(certificates: [],
-                                             configuration: [:],
+                                             configuration: oneginiConfigModelConfiguration,
                                              jailbreakDetection: true,
                                              debugDetection: true,
                                              debugLogs: true)

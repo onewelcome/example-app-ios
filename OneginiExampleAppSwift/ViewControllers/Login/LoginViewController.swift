@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol LoginViewDelegate: class {
     
@@ -46,7 +47,7 @@ class LoginViewController: UIViewController {
     }
 
     weak var loginDelegate: LoginViewDelegate?
-    var selectedProfile: UserProfile = UserProfileImplementation(ONGUserProfile())
+    var selectedProfile = UserProfile(profileId: "FakeId")
 
     override func viewDidLoad() {
         super.viewDidLoad()

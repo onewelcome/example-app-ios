@@ -33,5 +33,7 @@ class DisconnectInteractor: DisconnectInteractorProtocol {
                 self.disconnectPresenter?.popToWelcomeView()
             }
         }
+//        userClient.deregi
     }
+    
 }
