@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol StartupInteractorProtocol {
     func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void)
@@ -21,15 +22,19 @@ protocol StartupInteractorProtocol {
 
 class StartupInteractor: StartupInteractorProtocol {
     func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
-        //TODO: take proper values
-        let oneginiConfigModelConfiguration = OneginiConfigModel.configuration() as? [String: String] ?? [:]
         
-        let configuration = Configuration(certificates: [],
+        
+        //TODO: this should be done inside build function ClientBuilder().build()
+        let oneginiConfigModelConfiguration = OneginiConfigModel.configuration() as? [String: String] ?? [:]
+        let certificates = OneginiConfigModel.certificates() as? [String] ?? [] //TODO: or take this ONGSDKConfiguration.oneginiConfigModel()
+        let configuration = Configuration(certificates: certificates,
                                           configuration: oneginiConfigModelConfiguration,
-                                          jailbreakDetection: true,
+                                          jailbreakDetection: true, //TODO: take those from SecurityController
                                           debugDetection: true,
                                           debugLogs: true)
-        let client = ClientBuilder().build(configuration: configuration)
+        
+        
+        let client = ClientBuilder().build(configuration: configuration) //TODO: try to pass this object from one source of truth
         
         client.start { success, error in
             if let error = error {
