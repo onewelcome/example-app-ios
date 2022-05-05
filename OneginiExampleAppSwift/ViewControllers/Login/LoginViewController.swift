@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
     }
 
     weak var loginDelegate: LoginViewDelegate?
-    var selectedProfile = UserProfile(profileId: "FakeId")
+    var selectedProfile: UserProfile!// = UserProfileImplementation(profileId: "FakeId") //TODO: solve somehow
 
     override func viewDidLoad() {
         super.viewDidLoad()

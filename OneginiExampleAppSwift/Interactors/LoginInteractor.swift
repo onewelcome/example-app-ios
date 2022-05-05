@@ -35,7 +35,11 @@ protocol LoginInteractorDelegate: AnyObject {
 class LoginInteractor: NSObject, LoginInteractorProtocol {
     weak var delegate: LoginInteractorDelegate?
     var loginEntity = LoginEntity()
-    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
@@ -51,27 +55,26 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
             loginEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            customAuthenticatorChallenge.sender.respond(withData: loginEntity.data, challenge: customAuthenticatorChallenge)
+            customAuthenticatorChallenge.sender.respond(with: loginEntity.data, to: customAuthenticatorChallenge)
         }
     }
     
-    func userProfiles() -> Array<UserProfile> {
+    func userProfiles() -> [UserProfile] {
         return userClient.userProfiles
     }
     
-    func authenticators(profile: UserProfile) -> Array<Authenticator> {
-        let authenticators = userClient.registeredAuthenticators(userProfile: profile)
-        return Array(authenticators)
+    func authenticators(profile: UserProfile) -> [Authenticator] {
+        return userClient.authenticators(for: .registered, for: profile)
     }
     
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-        userClient.authenticateUser(userProfile: profile, authenticator: authenticator, delegate: self)
+        userClient.authenticate(user: profile, with: authenticator, delegate: self)
     }
     
     func handleLogin() {
         guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
-            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }

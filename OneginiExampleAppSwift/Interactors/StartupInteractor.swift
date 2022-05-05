@@ -17,32 +17,13 @@ import UIKit
 import OneginiSDKiOS
 
 protocol StartupInteractorProtocol {
-    func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void)
+    func oneginiSDKStartup(completion: @escaping (AppError?) -> Void)
 }
 
 class StartupInteractor: StartupInteractorProtocol {
-    func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
-        
-        
-        //TODO: this should be done inside build function ClientBuilder().build()
-        let oneginiConfigModelConfiguration = OneginiConfigModel.configuration() as? [String: String] ?? [:]
-        let certificates = OneginiConfigModel.certificates() as? [String] ?? [] //TODO: or take this ONGSDKConfiguration.oneginiConfigModel()
-        let configuration = Configuration(certificates: certificates,
-                                          configuration: oneginiConfigModelConfiguration,
-                                          jailbreakDetection: true, //TODO: take those from SecurityController
-                                          debugDetection: true,
-                                          debugLogs: true)
-        
-        
-        let client = ClientBuilder().build(configuration: configuration) //TODO: try to pass this object from one source of truth
-        
-        client.start { success, error in
-            if let error = error {
-                let mappedError = ErrorMapper().mapError(error)
-                completion(success, mappedError)
-            } else {
-                completion(success, nil)
-            }
+    func oneginiSDKStartup(completion: @escaping (AppError?) -> Void) {
+        ClientBuilder().build().start { error in
+            completion(error.flatMap { ErrorMapper().mapError($0) })
         }
     }
 }

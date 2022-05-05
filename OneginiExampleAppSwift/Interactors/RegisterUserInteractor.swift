@@ -27,7 +27,11 @@ protocol RegisterUserInteractorProtocol: AnyObject {
 class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
-    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
     
     fileprivate func mapErrorFromChallenge(_ challenge: CreatePinChallenge) {
         if let error = challenge.error {
@@ -52,7 +56,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         if let url = registerUserEntity.redirectURL {
             browserRegistrationChallenge.sender.respond(with: url, to: browserRegistrationChallenge)
         } else {
-            browserRegistrationChallenge.sender.cancel(challenge: browserRegistrationChallenge)
+            browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
         }
     }
 
@@ -60,7 +64,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
         if registerUserEntity.cancelled {
             registerUserEntity.cancelled = false
-            customRegistrationChallenge.sender.cancel(challenge: customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
         } else {
             customRegistrationChallenge.sender.respond(with: registerUserEntity.responseCode, to: customRegistrationChallenge)
         }
@@ -71,7 +75,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         if let qrCode = qrCode {
             customRegistrationChallenge.sender.respond(with: qrCode, to: customRegistrationChallenge)
         } else {
-            customRegistrationChallenge.sender.cancel(challenge: customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
         }
     }
 

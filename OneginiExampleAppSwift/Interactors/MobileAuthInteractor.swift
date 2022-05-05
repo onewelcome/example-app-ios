@@ -33,50 +33,43 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
     var mobileAuthQueue = MobileAuthQueue()
     var mobileAuthEntity = MobileAuthEntity()
-    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
+    private let userClient: UserClient
     
-    override init() {
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
         super.init()
         UNUserNotificationCenter.current().delegate = self
     }
 
     func isUserEnrolledForMobileAuth() -> Bool {
-        if let userProfile = userClient.authenticatedUserProfile {
-            return userClient.isUserEnrolledForMobileAuth(userProfile)
-        }
-        return false
+        guard let userProfile = userClient.authenticatedUserProfile else { return false }
+        return userClient.isMobileAuthEnrolled(for: userProfile)
     }
 
     func isUserEnrolledForPushMobileAuth() -> Bool {
-        if let userProfile = userClient.authenticatedUserProfile {
-            return userClient.isUserEnrolledForPushMobileAuth(userProfile)
-        }
-        return false
+        guard let userProfile = userClient.authenticatedUserProfile else { return false }
+        return userClient.isPushMobileAuthEnrolled(for: userProfile)
     }
-
+    
     func enrollForMobileAuth() {
-        userClient.enrollForMobileAuth { enrolled, error in
-            if enrolled {
+        userClient.enrollMobileAuth { error in
+            guard let error = error else {
                 self.mobileAuthPresenter?.mobileAuthEnrolled()
-            } else {
-                if let error = error {
-                    let mappedError = ErrorMapper().mapError(error)
-                    self.mobileAuthPresenter?.enrollMobileAuthFailed(mappedError)
-                }
+                return
             }
+            let mappedError = ErrorMapper().mapError(error)
+            self.mobileAuthPresenter?.enrollMobileAuthFailed(mappedError)
         }
     }
 
     func enrollForPushMobileAuth(deviceToken: Data) {
-        userClient.enrollForPushMobileAuth(deviceToken: deviceToken) { enrolled, error in
-            if enrolled {
+        userClient.enrollPushMobileAuth(with: deviceToken) { error in
+            guard let error = error else {
                 self.mobileAuthPresenter?.pushMobileAuthEnrolled()
-            } else {
-                if let error = error {
-                    let mappedError = ErrorMapper().mapError(error)
-                    self.mobileAuthPresenter?.enrollPushMobileAuthFailed(mappedError)
-                }
+                return
             }
+            let mappedError = ErrorMapper().mapError(error)
+            self.mobileAuthPresenter?.enrollPushMobileAuthFailed(mappedError)
         }
     }
 
@@ -106,7 +99,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     func handlePinMobileAuth() {
         guard let pinChallenge = mobileAuthEntity.pinChallenge else { fatalError() }
         if let pin = mobileAuthEntity.pin {
-            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
@@ -137,7 +130,8 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         if mobileAuthEntity.cancelled {
             biometricChallenge.sender.cancel(biometricChallenge)
         } else {
-            biometricChallenge.sender.respondWithDefaultPrompt(for: biometricChallenge)
+            //TODO: what to do here?
+//            biometricChallenge.sender.respondWithDefaultPrompt(for: biometricChallenge)
         }
     }
 
@@ -155,20 +149,20 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         if mobileAuthEntity.cancelled {
             customAuthChallenge.sender.cancel(customAuthChallenge, underlyingError: nil)
         } else {
-            customAuthChallenge.sender.respond(withData: mobileAuthEntity.data, challenge: customAuthChallenge)
+            customAuthChallenge.sender.respond(with: mobileAuthEntity.data, to: customAuthChallenge)
         }
     }
 
     func handlePendingMobileAuth(_ pendingTransaction: PendingMobileAuthRequest) {
-        userClient.handlePendingPushMobileAuth(request: pendingTransaction, delegate: self)
+        userClient.handlePendingMobileAuthRequest(pendingTransaction, delegate: self)
     }
 
     func handleOTPMobileAuth(_ otp: String) {
-        userClient.handleOTPMobileAuth(otp: otp, delegate: self)
+        userClient.handleOTPMobileAuthRequest(otp: otp, delegate: self)
     }
 
     fileprivate func handlePushMobileAuthenticationRequest(userInfo: Dictionary<AnyHashable, Any>) {
-        guard let pendingTransaction = userClient.pendingMobileAuthRequestFromUserInfo(userInfo) else { return }
+        guard let pendingTransaction = userClient.pendingMobileAuthRequest(from: userInfo) else { return }
         let mobileAuthRequest = MobileAuthRequest(delegate: self, pendingTransaction: pendingTransaction)
         mobileAuthQueue.enqueue(mobileAuthRequest)
     }
@@ -232,7 +226,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
             mobileAuthQueue.dequeue()
         } else {
             let mappedError = ErrorMapper().mapError(error)
-            let isUserLoggedIn = request.userProfile?.profileId == userClient.authenticatedUserProfile?.profileId //TODO: check if this is good comparison
+            let isUserLoggedIn = userClient.authenticatedUserProfile?.isEqual(to: request.userProfile) ?? false
             mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
                 self.mobileAuthQueue.dequeue()
             })

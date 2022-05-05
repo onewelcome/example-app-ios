@@ -4,7 +4,11 @@ import UIKit
 import OneginiSDKiOS
 
 class ResourceGateway {
-    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
     
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?) -> Void) {
         authenticateUserImplicitly(profile) { success in
@@ -19,15 +23,14 @@ class ResourceGateway {
     }
 
     fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (Bool) -> Void) {
-        userClient.implicitlyAuthenticateUser(userProfile: profile, scopes: nil) { success, _ in
-            completion(success)
+        userClient.implicitlyAuthenticate(user: profile, with: nil) { error in
+            completion(error == nil)
         }
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?) -> Void) {
-        let implicitRequest = ResourceRequest(path: "user-id-decorated", method: .get)
-        
-        userClient.fetchImplicitResource(request: implicitRequest) { response, error in
+        let implicitRequest = ResourceRequestFactory.makeResourceRequest(path: "user-id-decorated")
+        userClient.sendImplicitRequest(implicitRequest) { response, error in
             guard let data = response?.data,
                   let responseJsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
                   let responseData = responseJsonData else {

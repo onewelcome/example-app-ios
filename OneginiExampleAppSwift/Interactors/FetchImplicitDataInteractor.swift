@@ -14,13 +14,18 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol FetchImplicitDataInteractorProtocol: AnyObject {
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void)
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
     
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
@@ -32,8 +37,8 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
                 }
             }
         } else {
-            authenticateUserImplicitly(profile) { success, error in
-                if success {
+            authenticateUserImplicitly(profile) { error in
+                if error == nil {
                     self.implicitResourcesRequest { userIdDecorated, error in
                         if let userIdDecorated = userIdDecorated {
                             completion(userIdDecorated, nil)
@@ -54,20 +59,15 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
         userClient.implicitlyAuthenticatedUserProfile?.isEqual(to: profile) ?? false
     }
 
-    fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (Bool, AppError?) -> Void) {
-        userClient.implicitlyAuthenticateUser(userProfile: profile, scopes: nil) { success, error in
-            if !success, let error = error {
-                let mappedError = ErrorMapper().mapError(error)
-                completion(success, mappedError)
-                return
-            }
-            completion(success, nil)
+    fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (AppError?) -> Void) {
+        userClient.implicitlyAuthenticate(user: profile, with: nil) { error in
+            completion(error.flatMap { ErrorMapper().mapError($0) })
         }
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
-        let implicitRequest = ResourceRequest(path: "user-id-decorated", method: .get)
-        userClient.fetchImplicitResource(request: implicitRequest) { response, error in
+        let implicitRequest = ResourceRequestFactory.makeResourceRequest(path: "user-id-decorated", method: .get)
+        userClient.sendImplicitRequest(implicitRequest) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 completion(nil, mappedError)

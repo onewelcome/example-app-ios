@@ -53,7 +53,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
-  OneginiSDKiOS: 7a2d2da3e0a18a6ac79353f0ef4bb78b99c9118e
+  OneginiSDKiOS: 1ba0ffabd6fcad14fd85c46aa77da58e6e240b01
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   Swinject: f7f15a9672e99328c1f07f277091087917215700
   TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81

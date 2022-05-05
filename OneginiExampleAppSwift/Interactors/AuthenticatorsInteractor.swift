@@ -28,7 +28,11 @@ protocol AuthenticatorsInteractorProtocol: AnyObject {
 class AuthenticatorsInteractor: NSObject {
     var registerAuthenticatorEntity = RegisterAuthenticatorEntity()
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
-    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error {
@@ -38,7 +42,7 @@ class AuthenticatorsInteractor: NSObject {
         }
     }
 
-    fileprivate func sortAuthenticatorsList(_ authenticators: Array<Authenticator>) -> Array<Authenticator> {
+    fileprivate func sortAuthenticatorsList(_ authenticators: [Authenticator]) -> [Authenticator] {
         return authenticators.sorted {
             if $0.type.rawValue == $1.type.rawValue {
                 return $0.name < $1.name
@@ -54,15 +58,16 @@ class AuthenticatorsInteractor: NSObject {
             registerAuthenticatorEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            customAuthenticatorChallenge.sender.respond(withData: registerAuthenticatorEntity.data, challenge: customAuthenticatorChallenge)
+            customAuthenticatorChallenge.sender.respond(with: registerAuthenticatorEntity.data, to: customAuthenticatorChallenge)
         }
     }
 }
 
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
-    func authenticatorsListForAuthenticatedUserProfile() -> Array<Authenticator> {
+    func authenticatorsListForAuthenticatedUserProfile() -> [Authenticator] {
         guard let authenticatedUserProfile = userClient.authenticatedUserProfile else { return [] }
-        return sortAuthenticatorsList(userClient.allAuthenticators(userProfile: authenticatedUserProfile))
+        let authenticators = userClient.authenticators(for: .all, for: authenticatedUserProfile)
+        return sortAuthenticatorsList(authenticators)
     }
 
     func registerAuthenticator(_ authenticator: Authenticator) {
@@ -76,7 +81,7 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     func handleLogin() {
         guard let pinChallenge = registerAuthenticatorEntity.pinChallenge else { return }
         if let pin = registerAuthenticatorEntity.pin {
-            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
@@ -132,6 +137,6 @@ extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthDeregistrationChallenge) {
-        challenge.sender.continue(with: challenge)
+        challenge.sender.proceed(with: challenge)
     }
 }

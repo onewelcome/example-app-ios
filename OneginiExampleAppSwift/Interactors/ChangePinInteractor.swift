@@ -23,7 +23,11 @@ protocol ChangePinInteractorProtocol: AnyObject {
 class ChangePinInteractor: NSObject {
     weak var changePinPresenter: ChangePinInteractorToPresenterProtocol?
     var changePinEntity = ChangePinEntity()
-    private let userClient: UserClient = sharedUserClient() //TODO pass in the init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
 
     fileprivate func mapErrorFromPinChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error {
@@ -61,7 +65,7 @@ class ChangePinInteractor: NSObject {
     func handleLogin() {
         guard let pinChallenge = changePinEntity.loginPinChallenge else { return }
         if let pin = changePinEntity.pin {
-            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }

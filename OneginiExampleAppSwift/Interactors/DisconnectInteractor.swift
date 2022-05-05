@@ -21,11 +21,15 @@ protocol DisconnectInteractorProtocol: AnyObject {
 
 class DisconnectInteractor: DisconnectInteractorProtocol {
     weak var disconnectPresenter: DisconnectInteractorToPresenterProtocol?
-    private let userClient: UserClient = sharedUserClient() //TODO: pass in init
+    private let userClient: UserClient
+    
+    init(userClient: UserClient = sharedUserClient()) {
+        self.userClient = userClient
+    }
     
     func disconnect() {
         guard let profile = userClient.authenticatedUserProfile else { return }
-        userClient.deregisterUser(userProfile: profile) { _, error in
+        userClient.deregister(user: profile) { error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 self.disconnectPresenter?.disconnectActionFailed(mappedError)
@@ -33,7 +37,6 @@ class DisconnectInteractor: DisconnectInteractorProtocol {
                 self.disconnectPresenter?.popToWelcomeView()
             }
         }
-//        userClient.deregi
     }
     
 }

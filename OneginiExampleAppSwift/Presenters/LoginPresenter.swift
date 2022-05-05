@@ -69,8 +69,7 @@ class LoginPresenter: LoginPresenterProtocol {
     }
     
     func updateView() {
-        let profile = loginViewController.selectedProfile
-        if profiles.contains(where: { $0.isEqual(to: profile) }) {
+        if let profile = loginViewController.selectedProfile, profiles.contains(where: { $0.isEqual(to: profile) }) {
             loginViewController.reloadAuthenticators()
             if let index = loginViewController.profiles.firstIndex(where: { $0.isEqual(to: profile) }) {
                 loginViewController.selectProfile(index: index)
