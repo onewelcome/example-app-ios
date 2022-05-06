@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneginiSDKiOS
 
 class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet var container: UIView!
