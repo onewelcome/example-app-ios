@@ -6,10 +6,8 @@ protocol AppToWebInteractorProtocol {
 
 class AppToWebInteractor: AppToWebInteractorProtocol {
     private let targetUrl = "https://demo-cim.onegini.com/personal/dashboard"
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
 
     func appToWebSingleSignOn(completion:@escaping ((URL?, AppError?) -> ())) {

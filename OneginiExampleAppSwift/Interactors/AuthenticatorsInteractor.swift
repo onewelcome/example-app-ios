@@ -28,10 +28,8 @@ protocol AuthenticatorsInteractorProtocol: AnyObject {
 class AuthenticatorsInteractor: NSObject {
     var registerAuthenticatorEntity = RegisterAuthenticatorEntity()
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
@@ -66,7 +64,7 @@ class AuthenticatorsInteractor: NSObject {
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     func authenticatorsListForAuthenticatedUserProfile() -> [Authenticator] {
         guard let authenticatedUserProfile = userClient.authenticatedUserProfile else { return [] }
-        let authenticators = userClient.authenticators(for: .all, for: authenticatedUserProfile)
+        let authenticators = userClient.authenticators(.all, for: authenticatedUserProfile)
         return sortAuthenticatorsList(authenticators)
     }
 
@@ -81,7 +79,7 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     func handleLogin() {
         guard let pinChallenge = registerAuthenticatorEntity.pinChallenge else { return }
         if let pin = registerAuthenticatorEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
@@ -104,8 +102,8 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
         registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
         authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
-
-    func userClient(_: UserClient, didFailToRegister authenticator: Authenticator, forUser _: UserProfile, error: Error) {
+    
+    func userClient(_ userClient: UserClient, didFailToRegister authenticator: Authenticator, for userProfile: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
@@ -115,8 +113,8 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
     }
-
-    func userClient(_: UserClient, didRegister authenticator: Authenticator, forUser _: UserProfile, info _: CustomInfo?) {
+    
+    func userClient(_ userClient: UserClient, didRegister authenticator: Authenticator, for userProfile: UserProfile, info customAuthInfo: CustomInfo?) {
         authenticatorsPresenter?.backToAuthenticatorsView(authenticator: authenticator)
     }
 }

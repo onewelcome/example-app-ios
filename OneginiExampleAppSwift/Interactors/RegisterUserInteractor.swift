@@ -16,7 +16,7 @@
 import UIKit
 
 protocol RegisterUserInteractorProtocol: AnyObject {
-    func identityProviders() -> Array<IdentityProvider>
+    var identityProviders: [IdentityProvider] { get }
     func startUserRegistration(identityProvider: IdentityProvider?)
     func handleRedirectURL()
     func handleCreatedPin()
@@ -27,12 +27,10 @@ protocol RegisterUserInteractorProtocol: AnyObject {
 class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
-    
+
     fileprivate func mapErrorFromChallenge(_ challenge: CreatePinChallenge) {
         if let error = challenge.error {
             registerUserEntity.pinError = ErrorMapper().mapError(error)
@@ -43,7 +41,7 @@ class RegisterUserInteractor: NSObject {
 }
 
 extension RegisterUserInteractor: RegisterUserInteractorProtocol {
-    func identityProviders() -> Array<IdentityProvider> {
+    var identityProviders: [IdentityProvider] {
         return userClient.identityProviders
     }
 
@@ -82,9 +80,9 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     func handleCreatedPin() {
         guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
-            createPinChallenge.sender.respond(with: pin, challenge: createPinChallenge)
+            createPinChallenge.sender.respond(with: pin, to: createPinChallenge)
         } else {
-            createPinChallenge.sender.cancel(challenge: createPinChallenge)
+            createPinChallenge.sender.cancel(createPinChallenge)
         }
     }
 

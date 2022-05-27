@@ -17,10 +17,8 @@ import Foundation
 
 struct MobileAuthQueue {
     fileprivate var list = [PendingMobileAuthRequestContainter]()
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     mutating func enqueue(_ mobileAuthRequest: PendingMobileAuthRequestContainter) {

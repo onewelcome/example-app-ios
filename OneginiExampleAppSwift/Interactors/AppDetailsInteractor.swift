@@ -23,10 +23,8 @@ protocol AppDetailsInteractorProtocol: AnyObject {
 class AppDetailsInteractor: AppDetailsInteractorProtocol {
     weak var appDetailsPresenter: AppDetailsInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
-    private let deviceClient: DeviceClient
-    
-    init(deviceClient: DeviceClient = sharedDeviceClient()) {
-        self.deviceClient = deviceClient
+    private var deviceClient: DeviceClient {
+        return SharedDeviceClient.instance
     }
     
     func fetchDeviceResources() {

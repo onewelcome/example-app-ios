@@ -4,12 +4,10 @@ import UIKit
 import OneginiSDKiOS
 
 class ResourceGateway {
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
-    
+
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?) -> Void) {
         authenticateUserImplicitly(profile) { success in
             if success {

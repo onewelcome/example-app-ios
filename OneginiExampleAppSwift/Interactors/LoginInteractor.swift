@@ -35,10 +35,8 @@ protocol LoginInteractorDelegate: AnyObject {
 class LoginInteractor: NSObject, LoginInteractorProtocol {
     weak var delegate: LoginInteractorDelegate?
     var loginEntity = LoginEntity()
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
@@ -64,7 +62,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
     
     func authenticators(profile: UserProfile) -> [Authenticator] {
-        return userClient.authenticators(for: .registered, for: profile)
+        return userClient.authenticators(.registered, for: profile)
     }
     
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
@@ -74,7 +72,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     func handleLogin() {
         guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }

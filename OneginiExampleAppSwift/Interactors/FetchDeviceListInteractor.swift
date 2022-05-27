@@ -23,10 +23,8 @@ protocol FetchDeviceListInteractorProtocol: AnyObject {
 class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
     weak var fetchDeviceListPresenter: FetchDeviceListInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = sharedUserClient()) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     func fetchDeviceList() {
