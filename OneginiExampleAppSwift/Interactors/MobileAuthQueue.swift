@@ -16,14 +16,14 @@
 import Foundation
 
 struct MobileAuthQueue {
-    fileprivate var list = [MobileAuthRequest]()
+    fileprivate var list = [PendingMobileAuthRequestContainter]()
     private let userClient: UserClient
     
     init(userClient: UserClient = sharedUserClient()) {
         self.userClient = userClient
     }
     
-    mutating func enqueue(_ mobileAuthRequest: MobileAuthRequest) {
+    mutating func enqueue(_ mobileAuthRequest: PendingMobileAuthRequestContainter) {
         if list.isEmpty {
             handleMobileAuthRequest(mobileAuthRequest)
         }
@@ -39,7 +39,7 @@ struct MobileAuthQueue {
         }
     }
 
-    fileprivate func handleMobileAuthRequest(_ mobileAuthRequest: MobileAuthRequest) {
+    fileprivate func handleMobileAuthRequest(_ mobileAuthRequest: PendingMobileAuthRequestContainter) {
         if let pendingTransaction = mobileAuthRequest.pendingTransaction {
             userClient.handlePendingMobileAuthRequest(pendingTransaction, delegate: mobileAuthRequest.delegate)
         } else if let otp = mobileAuthRequest.otp {

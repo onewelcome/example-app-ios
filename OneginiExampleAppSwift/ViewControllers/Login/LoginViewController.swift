@@ -27,7 +27,6 @@ protocol LoginViewDelegate: class {
 class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
-
     @IBOutlet var implicitData: UILabel!
 
     var profiles = [UserProfile]() {
@@ -38,7 +37,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    var authenticators = [Authenticator]() {
+    private var authenticators = [Authenticator]() {
         didSet {
             if let tableView = authenticatorsTableView {
                 tableView.reloadData()
@@ -47,8 +46,8 @@ class LoginViewController: UIViewController {
     }
 
     weak var loginDelegate: LoginViewDelegate?
-    var selectedProfile: UserProfile!// = UserProfileImplementation(profileId: "FakeId") //TODO: solve somehow
-
+    var selectedProfile: UserProfile! //TODO: that will fail, solve
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true

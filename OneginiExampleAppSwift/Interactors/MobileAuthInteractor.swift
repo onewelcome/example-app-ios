@@ -130,8 +130,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         if mobileAuthEntity.cancelled {
             biometricChallenge.sender.cancel(biometricChallenge)
         } else {
-            //TODO: what to do here?
-//            biometricChallenge.sender.respondWithDefaultPrompt(for: biometricChallenge)
+            biometricChallenge.sender.respond(with: "User authentication", challenge: biometricChallenge)
         }
     }
 
@@ -163,7 +162,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     fileprivate func handlePushMobileAuthenticationRequest(userInfo: Dictionary<AnyHashable, Any>) {
         guard let pendingTransaction = userClient.pendingMobileAuthRequest(from: userInfo) else { return }
-        let mobileAuthRequest = MobileAuthRequest(delegate: self, pendingTransaction: pendingTransaction)
+        let mobileAuthRequest = PendingMobileAuthRequestContainter(delegate: self, pendingTransaction: pendingTransaction)
         mobileAuthQueue.enqueue(mobileAuthRequest)
     }
 
@@ -179,8 +178,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 }
 
 extension MobileAuthInteractor: MobileAuthRequestDelegate {
-    func userClient(_ userClient: UserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: OneginiSDKiOS.MobileAuthRequest) {
-        //TODO: solve colision with MobileAuthRequest struct from ExampleApp and OneginiSDKiOS.MobileAuthRequest
+    func userClient(_ userClient: UserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: MobileAuthRequest) {
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = request.userProfile
         mobileAuthEntity.authenticatorType = .confirmation
@@ -188,7 +186,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge, for request: OneginiSDKiOS.MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge, for request: MobileAuthRequest) {
         mobileAuthEntity.pinChallenge = challenge
         mobileAuthEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
@@ -204,7 +202,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: BiometricChallenge, for request: OneginiSDKiOS.MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceive challenge: BiometricChallenge, for request: MobileAuthRequest) {
         mobileAuthEntity.biometricChallenge = challenge
         mobileAuthEntity.authenticatorType = .biometric
         mobileAuthEntity.message = request.message
@@ -212,14 +210,14 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthFinishAuthenticationChallenge, for request: OneginiSDKiOS.MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthFinishAuthenticationChallenge, for request: MobileAuthRequest) {
         mobileAuthEntity.customAuthChallenge = challenge
         mobileAuthEntity.userProfile = challenge.userProfile
         mobileAuthEntity.message = request.message
         mobileAuthPresenter?.presentPasswordAuthenticatorView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: UserClient, didFailToHandle request: OneginiSDKiOS.MobileAuthRequest, authenticator: Authenticator?, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToHandle request: MobileAuthRequest, authenticator: Authenticator?, error: Error) {
         mobileAuthEntity = MobileAuthEntity()
         if error.code == ONGGenericError.actionCancelled.rawValue {
             mobileAuthPresenter?.dismiss()
@@ -233,7 +231,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didHandle request: OneginiSDKiOS.MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
+    func userClient(_ userClient: UserClient, didHandle request: MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
         mobileAuthEntity = MobileAuthEntity()
         mobileAuthPresenter?.dismiss()
         mobileAuthQueue.dequeue()
@@ -252,7 +250,7 @@ extension MobileAuthInteractor: UNUserNotificationCenterDelegate {
     }
 }
 
-struct MobileAuthRequest {
+struct PendingMobileAuthRequestContainter {
     let pendingTransaction: PendingMobileAuthRequest?
     let otp: String?
     let delegate: MobileAuthRequestDelegate
