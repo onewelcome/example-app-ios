@@ -6,7 +6,7 @@ import OneginiSDKiOS
 class ResourceGateway {
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
     

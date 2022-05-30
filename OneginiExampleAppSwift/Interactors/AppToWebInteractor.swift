@@ -8,7 +8,7 @@ class AppToWebInteractor: AppToWebInteractorProtocol {
     private let targetUrl = "https://demo-cim.onegini.com/personal/dashboard"
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
 

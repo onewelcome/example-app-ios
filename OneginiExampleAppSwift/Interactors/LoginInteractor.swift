@@ -37,7 +37,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     var loginEntity = LoginEntity()
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
     
@@ -64,7 +64,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
     
     func authenticators(profile: UserProfile) -> [Authenticator] {
-        return userClient.authenticators(for: .registered, for: profile)
+        return userClient.authenticators(.registered, for: profile)
     }
     
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
@@ -74,7 +74,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     func handleLogin() {
         guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }

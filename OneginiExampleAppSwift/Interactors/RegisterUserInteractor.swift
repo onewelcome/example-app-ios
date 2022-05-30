@@ -29,7 +29,7 @@ class RegisterUserInteractor: NSObject {
     var registerUserEntity = RegisterUserEntity()
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
     
@@ -82,9 +82,9 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     func handleCreatedPin() {
         guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
-            createPinChallenge.sender.respond(with: pin, challenge: createPinChallenge)
+            createPinChallenge.sender.respond(with: pin, to: createPinChallenge)
         } else {
-            createPinChallenge.sender.cancel(challenge: createPinChallenge)
+            createPinChallenge.sender.cancel(createPinChallenge)
         }
     }
 

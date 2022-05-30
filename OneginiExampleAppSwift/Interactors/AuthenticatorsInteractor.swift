@@ -30,7 +30,7 @@ class AuthenticatorsInteractor: NSObject {
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
     
@@ -66,7 +66,7 @@ class AuthenticatorsInteractor: NSObject {
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     func authenticatorsListForAuthenticatedUserProfile() -> [Authenticator] {
         guard let authenticatedUserProfile = userClient.authenticatedUserProfile else { return [] }
-        let authenticators = userClient.authenticators(for: .all, for: authenticatedUserProfile)
+        let authenticators = userClient.authenticators(.all, for: authenticatedUserProfile)
         return sortAuthenticatorsList(authenticators)
     }
 
@@ -81,7 +81,7 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     func handleLogin() {
         guard let pinChallenge = registerAuthenticatorEntity.pinChallenge else { return }
         if let pin = registerAuthenticatorEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }

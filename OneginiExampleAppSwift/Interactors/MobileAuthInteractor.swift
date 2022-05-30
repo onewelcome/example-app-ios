@@ -35,7 +35,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     var mobileAuthEntity = MobileAuthEntity()
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
         super.init()
         UNUserNotificationCenter.current().delegate = self
@@ -99,7 +99,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     func handlePinMobileAuth() {
         guard let pinChallenge = mobileAuthEntity.pinChallenge else { fatalError() }
         if let pin = mobileAuthEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
@@ -130,7 +130,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         if mobileAuthEntity.cancelled {
             biometricChallenge.sender.cancel(biometricChallenge)
         } else {
-            biometricChallenge.sender.respond(with: "User authentication", challenge: biometricChallenge)
+            biometricChallenge.sender.respond(with: "User authentication", to: biometricChallenge)
         }
     }
 

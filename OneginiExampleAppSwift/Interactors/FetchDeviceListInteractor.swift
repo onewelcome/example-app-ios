@@ -25,7 +25,7 @@ class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
     let decoder = JSONDecoder()
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
     

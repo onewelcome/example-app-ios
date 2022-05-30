@@ -25,7 +25,7 @@ class ChangePinInteractor: NSObject {
     var changePinEntity = ChangePinEntity()
     private let userClient: UserClient
     
-    init(userClient: UserClient = sharedUserClient()) {
+    init(userClient: UserClient = SharedUserClient.instance) {
         self.userClient = userClient
     }
 
@@ -56,16 +56,16 @@ class ChangePinInteractor: NSObject {
     func handleCreatePin() {
         guard let pinChallenge = changePinEntity.createPinChallenge else { return }
         if let pin = changePinEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
-            pinChallenge.sender.cancel(challenge: pinChallenge)
+            pinChallenge.sender.cancel(pinChallenge)
         }
     }
 
     func handleLogin() {
         guard let pinChallenge = changePinEntity.loginPinChallenge else { return }
         if let pin = changePinEntity.pin {
-            pinChallenge.sender.respond(with: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }

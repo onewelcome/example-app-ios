@@ -25,7 +25,7 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
     let decoder = JSONDecoder()
     private let deviceClient: DeviceClient
     
-    init(deviceClient: DeviceClient = sharedDeviceClient()) {
+    init(deviceClient: DeviceClient = SharedDeviceClient.instance) {
         self.deviceClient = deviceClient
     }
     
