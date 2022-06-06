@@ -68,7 +68,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
     
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-        userClient.authenticate(user: profile, with: authenticator, delegate: self)
+        userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
     }
     
     func handleLogin() {
@@ -82,7 +82,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
 }
 
 extension LoginInteractor: AuthenticationDelegate {
-    func userClient(_: UserClient, didReceive challenge: PinChallenge) {
+    func userClient(_: UserClient, didReceivePin challenge: PinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)

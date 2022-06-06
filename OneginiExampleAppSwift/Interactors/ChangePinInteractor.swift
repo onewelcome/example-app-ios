@@ -79,14 +79,14 @@ extension ChangePinInteractor: ChangePinInteractorProtocol {
 }
 
 extension ChangePinInteractor: ChangePinDelegate {
-    func userClient(_: UserClient, didReceive challenge: PinChallenge) {
+    func userClient(_: UserClient, didReceivePin challenge: PinChallenge) {
         changePinEntity.loginPinChallenge = challenge
         changePinEntity.pinLength = 5
         mapErrorFromPinChallenge(challenge)
         changePinPresenter?.presentLoginPinView(changePinEntity: changePinEntity)
     }
 
-    func userClient(_: UserClient, didReceive challenge: CreatePinChallenge) {
+    func userClient(_: UserClient, didReceiveCreatePin challenge: CreatePinChallenge) {
         changePinEntity.createPinChallenge = challenge
         changePinEntity.pinLength = Int(challenge.pinLength)
         mapErrorFromCreatePinChallenge(challenge)

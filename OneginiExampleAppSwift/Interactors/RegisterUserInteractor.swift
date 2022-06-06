@@ -48,7 +48,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     func startUserRegistration(identityProvider: IdentityProvider? = nil) {
-        userClient.registerUser(with: identityProvider, scopes: ["read", "openid"], delegate: self)
+        userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
     }
 
     func handleRedirectURL() {
@@ -116,7 +116,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 }
 
 extension RegisterUserInteractor: RegistrationDelegate {
-    func userClient(_ userClient: UserClient, didReceive createPinChallenge: CreatePinChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCreatePin createPinChallenge: CreatePinChallenge) {
         registerUserEntity.createPinChallenge = createPinChallenge
         registerUserEntity.pinLength = Int(createPinChallenge.pinLength)
         mapErrorFromChallenge(createPinChallenge)
@@ -148,7 +148,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
         }
     }
     
-    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, identityProvider: IdentityProvider, info: CustomInfo?) {
+    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, with identityProvider: IdentityProvider, info: CustomInfo?) {
         registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
     
