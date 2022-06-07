@@ -123,7 +123,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
     
-    func userClient(_ userClient: UserClient, didReceive browserRegistrationChallenge: BrowserRegistrationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveBrowserRegistration browserRegistrationChallenge: BrowserRegistrationChallenge) {
         registerUserEntity.browserRegistrationChallenge = browserRegistrationChallenge
         registerUserEntity.registrationUserURL = browserRegistrationChallenge.url
         registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
@@ -152,7 +152,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
         registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
     
-    func userClient(_ userClient: UserClient, didFailToRegisterWith identityProvider: IdentityProvider, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             registerUserPresenter?.registerUserActionCancelled()
         } else {
