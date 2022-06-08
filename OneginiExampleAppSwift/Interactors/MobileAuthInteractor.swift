@@ -178,7 +178,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 }
 
 extension MobileAuthInteractor: MobileAuthRequestDelegate {
-    func userClient(_ userClient: UserClient, didReceiveConfirmationChallenge confirmation: @escaping (Bool) -> Void, for request: MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceiveConfirmation confirmation: @escaping (Bool) -> Void, for request: MobileAuthRequest) {
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = request.userProfile
         mobileAuthEntity.authenticatorType = .confirmation
@@ -186,7 +186,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge, for request: MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge, for request: MobileAuthRequest) {
         mobileAuthEntity.pinChallenge = challenge
         mobileAuthEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
@@ -202,7 +202,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: BiometricChallenge, for request: MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceiveBiometricChallenge challenge: BiometricChallenge, for request: MobileAuthRequest) {
         mobileAuthEntity.biometricChallenge = challenge
         mobileAuthEntity.authenticatorType = .biometric
         mobileAuthEntity.message = request.message
@@ -210,14 +210,14 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthFinishAuthenticationChallenge, for request: MobileAuthRequest) {
+    func userClient(_ userClient: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge, for request: MobileAuthRequest) {
         mobileAuthEntity.customAuthChallenge = challenge
         mobileAuthEntity.userProfile = challenge.userProfile
         mobileAuthEntity.message = request.message
         mobileAuthPresenter?.presentPasswordAuthenticatorView(mobileAuthEntity: mobileAuthEntity)
     }
 
-    func userClient(_ userClient: UserClient, didFailToHandle request: MobileAuthRequest, authenticator: Authenticator?, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, error: Error) {
         mobileAuthEntity = MobileAuthEntity()
         if error.code == ONGGenericError.actionCancelled.rawValue {
             mobileAuthPresenter?.dismiss()
@@ -231,7 +231,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didHandle request: MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
+    func userClient(_ userClient: UserClient, didHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
         mobileAuthEntity = MobileAuthEntity()
         mobileAuthPresenter?.dismiss()
         mobileAuthQueue.dequeue()

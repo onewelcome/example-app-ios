@@ -92,20 +92,20 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     }
 }
 
-extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
-    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge) {
+extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {    
+    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         registerAuthenticatorEntity.pinChallenge = challenge
         registerAuthenticatorEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         authenticatorsPresenter?.presentPinView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
 
-    func userClient(_: UserClient, didReceive challenge: CustomAuthFinishRegistrationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomAuthFinishRegistrationChallenge challenge: CustomAuthFinishRegistrationChallenge) {
         registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
         authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
-
-    func userClient(_: UserClient, didFailToRegister authenticator: Authenticator, forUser _: UserProfile, error: Error) {
+    
+    func userClient(_: UserClient, didFailToRegister authenticator: Authenticator, for _: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
@@ -116,7 +116,7 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
         }
     }
 
-    func userClient(_: UserClient, didRegister authenticator: Authenticator, forUser _: UserProfile, info _: CustomInfo?) {
+    func userClient(_: UserClient, didRegister authenticator: Authenticator, for _: UserProfile, info _: CustomInfo?) {
         authenticatorsPresenter?.backToAuthenticatorsView(authenticator: authenticator)
     }
 }
@@ -135,7 +135,7 @@ extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthDeregistrationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCustomAuthDeregistrationChallenge challenge: CustomAuthDeregistrationChallenge) {
         challenge.sender.proceed(with: challenge)
     }
 }

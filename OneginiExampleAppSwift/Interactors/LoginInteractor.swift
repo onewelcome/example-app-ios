@@ -82,14 +82,14 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
 }
 
 extension LoginInteractor: AuthenticationDelegate {
-    func userClient(_: UserClient, didReceivePin challenge: PinChallenge) {
+    func userClient(_: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         delegate?.loginInteractor(self, didAskForPin: loginEntity)
     }
 
-    func userClient(_: UserClient, didReceive challenge: CustomAuthFinishAuthenticationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
         delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }
