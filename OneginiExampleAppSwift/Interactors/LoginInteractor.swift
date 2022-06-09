@@ -38,7 +38,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     private var userClient: UserClient {
         return SharedUserClient.instance
     }
-    
+
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
@@ -56,19 +56,19 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
             customAuthenticatorChallenge.sender.respond(with: loginEntity.data, to: customAuthenticatorChallenge)
         }
     }
-    
+
     func userProfiles() -> [UserProfile] {
         return userClient.userProfiles
     }
-    
+
     func authenticators(profile: UserProfile) -> [Authenticator] {
         return userClient.authenticators(.registered, for: profile)
     }
-    
+
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-        userClient.authenticate(user: profile, with: authenticator, delegate: self)
+        userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
     }
-    
+
     func handleLogin() {
         guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
@@ -80,7 +80,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
 }
 
 extension LoginInteractor: AuthenticationDelegate {
-    func userClient(_: UserClient, didReceive challenge: PinChallenge) {
+    func userClient(_: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)

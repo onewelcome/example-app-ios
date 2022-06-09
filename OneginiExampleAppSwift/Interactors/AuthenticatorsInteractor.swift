@@ -98,7 +98,7 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
         authenticatorsPresenter?.presentPinView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
 
-    func userClient(_: UserClient, didReceive challenge: CustomAuthFinishRegistrationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomAuthFinishRegistrationChallenge challenge: CustomAuthFinishRegistrationChallenge) {
         registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
         authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
@@ -133,7 +133,7 @@ extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didReceive challenge: CustomAuthDeregistrationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCustomAuthDeregistrationChallenge challenge: CustomAuthDeregistrationChallenge) {
         challenge.sender.proceed(with: challenge)
     }
 }

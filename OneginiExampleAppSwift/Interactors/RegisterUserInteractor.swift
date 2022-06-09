@@ -46,7 +46,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     func startUserRegistration(identityProvider: IdentityProvider? = nil) {
-        userClient.registerUser(with: identityProvider, scopes: ["read", "openid"], delegate: self)
+        userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
     }
 
     func handleRedirectURL() {
@@ -114,25 +114,25 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 }
 
 extension RegisterUserInteractor: RegistrationDelegate {
-    func userClient(_ userClient: UserClient, didReceive createPinChallenge: CreatePinChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCreatePinChallenge createPinChallenge: CreatePinChallenge) {
         registerUserEntity.createPinChallenge = createPinChallenge
         registerUserEntity.pinLength = Int(createPinChallenge.pinLength)
         mapErrorFromChallenge(createPinChallenge)
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
-    
-    func userClient(_ userClient: UserClient, didReceive browserRegistrationChallenge: BrowserRegistrationChallenge) {
+
+    func userClient(_ userClient: UserClient, didReceiveBrowserRegistrationChallenge browserRegistrationChallenge: BrowserRegistrationChallenge) {
         registerUserEntity.browserRegistrationChallenge = browserRegistrationChallenge
         registerUserEntity.registrationUserURL = browserRegistrationChallenge.url
         registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
     }
-    
-    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationInit challenge: CustomRegistrationChallenge) {
+
+    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
         if challenge.identityProvider.identifier == "2-way-otp-api" {
             challenge.sender.respond(with: nil, to: challenge)
         }
     }
-    
+
     func userClient(_ userClient: UserClient, didReceiveCustomRegistrationFinish challenge: CustomRegistrationChallenge) {
         registerUserEntity.customRegistrationChallenge = challenge
         if let info = challenge.info {
@@ -145,12 +145,12 @@ extension RegisterUserInteractor: RegistrationDelegate {
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
         }
     }
-    
-    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, identityProvider: IdentityProvider, info: CustomInfo?) {
+
+    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, with identityProvider: IdentityProvider, info: CustomInfo?) {
         registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
     }
-    
-    func userClient(_ userClient: UserClient, didFailToRegisterWith identityProvider: IdentityProvider, error: Error) {
+
+    func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             registerUserPresenter?.registerUserActionCancelled()
         } else {
