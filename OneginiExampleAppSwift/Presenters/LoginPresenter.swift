@@ -20,7 +20,7 @@ typealias LoginPresenterProtocols = LoginPresenterProtocol & LoginViewDelegate &
 protocol LoginPresenterProtocol: AnyObject {
     func update()
     func updateSelectedProfile(_ profile: UserProfile)
-    var profiles: Array<UserProfile> { get set }
+    var profiles: [UserProfile] { get set }
     func setupLoginView() -> LoginViewController
     func presentImplicitData(data: String)
     func fetchImplicitDataFailed(_ error: AppError)
@@ -34,7 +34,7 @@ protocol LoginPresenterDelegate: AnyObject {
 class LoginPresenter: LoginPresenterProtocol {
     
     var loginInteractor: LoginInteractorProtocol
-    var profiles = Array<UserProfile>()
+    var profiles = [UserProfile]()
     let navigationController: UINavigationController
     let fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol
     var loginViewController: LoginViewController
