@@ -51,7 +51,7 @@ class AppDetailsInteractor: AppDetailsInteractorProtocol {
     }
 
     fileprivate func deviceResourcesRequest(completion: @escaping (ApplicationDetails?, AppError?) -> Void) {
-        let resourceRequest = ResourceRequestFactory.makeResourceRequest(path: "application-details", method: .get)
+        let resourceRequest = ResourceRequestFactory.makeResourceRequest(path: "application-details")
         deviceClient.sendRequest(resourceRequest) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)

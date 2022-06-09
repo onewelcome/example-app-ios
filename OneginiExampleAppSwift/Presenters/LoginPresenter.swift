@@ -127,8 +127,8 @@ extension LoginPresenter: LoginInteractorDelegate {
 
 extension LoginPresenter: LoginViewDelegate {
     
-    func loginView(profilesInLoginView loginView: UIViewController) -> [UserProfile] {
-        return loginInteractor.userProfiles()
+    func loginView(_ loginView: UIViewController) -> [UserProfile] {
+        return loginInteractor.userProfiles
     }
 
     func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?) {

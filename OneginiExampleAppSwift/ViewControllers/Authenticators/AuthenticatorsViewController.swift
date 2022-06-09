@@ -21,7 +21,7 @@ class AuthenticatorsViewController: UIViewController {
     var selectedRow: Int?
 
     weak var authenticatorsViewToPresenterProtocol: AuthenticatorsViewToPresenterProtocol?
-    var authenticatorsList = Array<Authenticator>() {
+    var authenticatorsList = [Authenticator]() {
         didSet {
             authenticatorsTableView?.reloadData()
         }

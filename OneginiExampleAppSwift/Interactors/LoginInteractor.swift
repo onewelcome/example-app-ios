@@ -17,8 +17,8 @@ import UIKit
 import OneginiSDKiOS
 
 protocol LoginInteractorProtocol: AnyObject {
-    func userProfiles() -> Array<UserProfile>
-    func authenticators(profile: UserProfile) -> Array<Authenticator>
+    var userProfiles: [UserProfile] { get }
+    func authenticators(profile: UserProfile) -> [Authenticator]
     func login(profile: UserProfile, authenticator: Authenticator?)
     func handleLogin()
     func handlePasswordAuthenticatorLogin()
@@ -57,7 +57,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
         }
     }
 
-    func userProfiles() -> [UserProfile] {
+    var userProfiles: [UserProfile] {
         return userClient.userProfiles
     }
 
@@ -80,14 +80,14 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
 }
 
 extension LoginInteractor: AuthenticationDelegate {
-    func userClient(_: UserClient, didReceivePinChallenge challenge: PinChallenge) {
+    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         delegate?.loginInteractor(self, didAskForPin: loginEntity)
     }
 
-    func userClient(_: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
         delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }

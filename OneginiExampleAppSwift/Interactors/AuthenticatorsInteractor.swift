@@ -17,7 +17,7 @@ import UIKit
 import OneginiSDKiOS
 
 protocol AuthenticatorsInteractorProtocol: AnyObject {
-    func authenticatorsListForAuthenticatedUserProfile() -> Array<Authenticator>
+    var authenticatorsListForAuthenticatedUserProfile: [Authenticator] { get }
     func registerAuthenticator(_ authenticator: Authenticator)
     func deregisterAuthenticator(_ authenticator: Authenticator)
     func handleLogin()
@@ -62,7 +62,7 @@ class AuthenticatorsInteractor: NSObject {
 }
 
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
-    func authenticatorsListForAuthenticatedUserProfile() -> [Authenticator] {
+    var authenticatorsListForAuthenticatedUserProfile: [Authenticator] {
         guard let authenticatedUserProfile = userClient.authenticatedUserProfile else { return [] }
         let authenticators = userClient.authenticators(.all, for: authenticatedUserProfile)
         return sortAuthenticatorsList(authenticators)

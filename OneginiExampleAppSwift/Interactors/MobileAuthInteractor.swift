@@ -22,7 +22,7 @@ protocol MobileAuthInteractorProtocol: AnyObject {
     func isUserEnrolledForMobileAuth() -> Bool
     func isUserEnrolledForPushMobileAuth() -> Bool
     func handlePinMobileAuth()
-    func fetchPendingTransactions(completion: @escaping (Array<PendingMobileAuthRequest>?, AppError?) -> Void)
+    func fetchPendingTransactions(completion: @escaping ([PendingMobileAuthRequest]?, AppError?) -> Void)
     func handleMobileAuth()
     func handleCustomAuthenticatorMobileAuth()
     func handlePendingMobileAuth(_ pendingTransaction: PendingMobileAuthRequest)
@@ -70,7 +70,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         }
     }
 
-    func fetchPendingTransactions(completion: @escaping (Array<PendingMobileAuthRequest>?, AppError?) -> Void) {
+    func fetchPendingTransactions(completion: @escaping ([PendingMobileAuthRequest]?, AppError?) -> Void) {
         userClient.pendingPushMobileAuthRequests { requests, error in
             if let error = error {
                 let appError = ErrorMapper().mapError(error)

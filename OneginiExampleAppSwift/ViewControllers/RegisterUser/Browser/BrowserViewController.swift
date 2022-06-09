@@ -86,7 +86,7 @@ extension BrowserViewController: WKNavigationDelegate {
     func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url,
             let oneginiConfig = OneginiConfigModel.configuration() as? [String: String],
-            let redirectUrl = oneginiConfig["RedirectURL"] else {
+            let redirectUrl = oneginiConfig["ONGRedirectURL"] else {
             decisionHandler(.allow)
             return
         }

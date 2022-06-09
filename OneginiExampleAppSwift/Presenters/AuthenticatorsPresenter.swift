@@ -113,8 +113,7 @@ extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {
     }
     
     func reloadAuthenticators() {
-        let authenticators = authenticatorsInteractor.authenticatorsListForAuthenticatedUserProfile()
-        authenticatorsViewController.authenticatorsList = authenticators
+        authenticatorsViewController.authenticatorsList = authenticatorsInteractor.authenticatorsListForAuthenticatedUserProfile
     }
     
     func setPreferredAuthenticator(_ authenticator: Authenticator) {

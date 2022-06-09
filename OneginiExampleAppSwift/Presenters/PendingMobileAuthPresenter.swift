@@ -23,7 +23,7 @@ protocol PendingMobileAuthPresenterProtocol: class {
 }
 
 protocol PendingMobileAuthPresenterViewDelegate: class {
-    var pendingMobileAuths: Array<PendingMobileAuthRequest> { get set }
+    var pendingMobileAuths: [PendingMobileAuthRequest] { get set }
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol? { get set }
 }
 
