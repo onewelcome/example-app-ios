@@ -87,7 +87,7 @@ extension LoginInteractor: AuthenticationDelegate {
         delegate?.loginInteractor(self, didAskForPin: loginEntity)
     }
 
-    func userClient(_: UserClient, didReceive challenge: CustomAuthFinishAuthenticationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
         delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }
