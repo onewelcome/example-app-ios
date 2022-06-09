@@ -28,10 +28,8 @@ protocol AuthenticatorsInteractorProtocol: AnyObject {
 class AuthenticatorsInteractor: NSObject {
     var registerAuthenticatorEntity = RegisterAuthenticatorEntity()
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = SharedUserClient.instance) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
@@ -92,8 +90,8 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     }
 }
 
-extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {    
-    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge) {
+extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
+    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge) {
         registerAuthenticatorEntity.pinChallenge = challenge
         registerAuthenticatorEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
@@ -105,7 +103,7 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
         authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
     
-    func userClient(_: UserClient, didFailToRegister authenticator: Authenticator, for _: UserProfile, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToRegister authenticator: Authenticator, for userProfile: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
@@ -115,8 +113,8 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
     }
-
-    func userClient(_: UserClient, didRegister authenticator: Authenticator, for _: UserProfile, info _: CustomInfo?) {
+    
+    func userClient(_ userClient: UserClient, didRegister authenticator: Authenticator, for userProfile: UserProfile, info customAuthInfo: CustomInfo?) {
         authenticatorsPresenter?.backToAuthenticatorsView(authenticator: authenticator)
     }
 }

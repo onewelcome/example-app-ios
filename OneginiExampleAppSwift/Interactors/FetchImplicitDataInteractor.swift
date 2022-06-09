@@ -21,10 +21,8 @@ protocol FetchImplicitDataInteractorProtocol: AnyObject {
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = SharedUserClient.instance) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void) {

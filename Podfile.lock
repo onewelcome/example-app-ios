@@ -32,7 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 0.9)
-  - OneginiSDKiOS (from `/Users/szymon/Projects/onegini-msp-sdk-ios`)
+  - OneginiSDKiOS (from `~/GitHub/sdk-ios`)
   - SkyFloatingLabelTextField (~> 3.0)
   - Swinject (= 2.4.1)
   - TransitionButton (= 0.5.1)
@@ -48,17 +48,17 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   OneginiSDKiOS:
-    :path: "/Users/szymon/Projects/onegini-msp-sdk-ios"
+    :path: "~/GitHub/sdk-ios"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
-  OneginiSDKiOS: 1ba0ffabd6fcad14fd85c46aa77da58e6e240b01
+  OneginiSDKiOS: 3393db23ebaeb939afe1156aa90a1dadf384fb5c
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   Swinject: f7f15a9672e99328c1f07f277091087917215700
   TransitionButton: 20f92b3cc726b047e4df200fdab5307f33395a81
   Typhoon: f8901ef1ad0e2fa520cda0f668492dd33353f7dc
 
-PODFILE CHECKSUM: 20864207ee83d051d094588d448bed2fbbef6d88
+PODFILE CHECKSUM: 422a2a19be0f713042e9983497809687b4e300df
 
 COCOAPODS: 1.11.3

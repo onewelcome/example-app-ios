@@ -21,10 +21,8 @@ protocol DisconnectInteractorProtocol: AnyObject {
 
 class DisconnectInteractor: DisconnectInteractorProtocol {
     weak var disconnectPresenter: DisconnectInteractorToPresenterProtocol?
-    private let userClient: UserClient
-    
-    init(userClient: UserClient = SharedUserClient.instance) {
-        self.userClient = userClient
+    private var userClient: UserClient {
+        return SharedUserClient.instance
     }
     
     func disconnect() {

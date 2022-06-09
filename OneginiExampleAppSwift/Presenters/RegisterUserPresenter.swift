@@ -106,7 +106,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 
 extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     func setupRegisterUserView() -> RegisterUserViewController {
-        let identityProviders = registerUserInteractor.identityProviders()
+        let identityProviders = registerUserInteractor.identityProviders
         guard let registerUserViewController = AppAssembly.shared.resolver.resolve(RegisterUserViewController.self, argument: identityProviders) else { fatalError() }
         return registerUserViewController
     }
