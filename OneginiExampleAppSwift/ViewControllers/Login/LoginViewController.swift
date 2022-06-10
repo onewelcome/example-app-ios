@@ -45,10 +45,11 @@ class LoginViewController: UIViewController {
     }
 
     weak var loginDelegate: LoginViewDelegate?
-    var selectedProfile: UserProfile! //TODO: that will fail, solve
+    var selectedProfile: UserProfile!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.isHidden = true
         guard let profilesTableView = profilesTableView,
             let authenticatorsTableView = authenticatorsTableView,
