@@ -33,8 +33,13 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     weak var mobileAuthPresenter: MobileAuthInteractorToPresenterProtocol?
     var mobileAuthQueue = MobileAuthQueue()
     var mobileAuthEntity = MobileAuthEntity()
+    
+    override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
     private var userClient: UserClient {
-        UNUserNotificationCenter.current().delegate = self // ?
         return SharedUserClient.instance
     }
 

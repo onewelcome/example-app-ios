@@ -18,7 +18,7 @@ import OneginiSDKiOS
 
 protocol LoginViewDelegate: class {
     func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?)
-    func loginView(_ loginView: UIViewController) -> [UserProfile]
+    func profilesInLoginView(_ loginView: UIViewController) -> [UserProfile]
     func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator]
     func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void)
 }
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
     
-        profiles = loginDelegate.loginView(self)
+        profiles = loginDelegate.profilesInLoginView(self)
         profilesTableView.reloadData()
         selectProfile(index: 0)
         loginDelegate.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
