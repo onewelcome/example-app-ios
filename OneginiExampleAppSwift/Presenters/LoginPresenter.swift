@@ -59,12 +59,12 @@ class LoginPresenter: LoginPresenterProtocol {
     }
     
     func setupLoginView() -> LoginViewController {
-        loginViewController.profiles = loginInteractor.userProfiles()
+        loginViewController.profiles = loginInteractor.userProfiles
         return loginViewController
     }
 
     func reloadProfiles() {
-        profiles = loginInteractor.userProfiles()
+        profiles = loginInteractor.userProfiles
         loginViewController.profiles = profiles
     }
     
