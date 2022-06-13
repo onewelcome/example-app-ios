@@ -91,7 +91,7 @@ extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
 }
 
 extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
-    func userClient(_ userClient: UserClient, didReceive challenge: PinChallenge) {
+    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         registerAuthenticatorEntity.pinChallenge = challenge
         registerAuthenticatorEntity.pinLength = 5
         mapErrorFromChallenge(challenge)

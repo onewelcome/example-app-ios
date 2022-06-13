@@ -6,7 +6,8 @@ use_frameworks!
 plugin 'cocoapods-art', :sources => ['onegini']
 
 def oneginiSDKiOS
-    pod 'OneginiSDKiOS', '~> 12.0.0'
+#    pod 'OneginiSDKiOS', '~> 12.0.0'
+pod 'OneginiSDKiOS', :path => '/Users/szymon/Projects/onegini-msp-sdk-ios'
 end
 
 target 'WidgetExtension' do

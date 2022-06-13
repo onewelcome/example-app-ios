@@ -133,7 +133,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
         }
     }
 
-    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationFinish challenge: CustomRegistrationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationFinishChallenge challenge: CustomRegistrationChallenge) {
         registerUserEntity.customRegistrationChallenge = challenge
         if let info = challenge.info {
             registerUserEntity.challengeCode = info.data
