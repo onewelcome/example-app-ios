@@ -86,12 +86,6 @@ extension LoginInteractor: AuthenticationDelegate {
         mapErrorFromChallenge(challenge)
         delegate?.loginInteractor(self, didAskForPin: loginEntity)
     }
-    
-    //TODO: respond fot his delgate
-    //    didReceiveBiometricChallenge
-    func userClient(_ userClient: UserClient, didReceiveBiometricChallenge challenge: BiometricChallenge) {
-        //TODO: handle somehow
-    }
  
     func userClient(_ userClient: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
