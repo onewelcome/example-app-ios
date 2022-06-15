@@ -66,7 +66,11 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-        userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
+        //TODO: should I use localized strings?
+        userClient.authenticateUserWith(profile: profile,
+                                        authenticator: authenticator,
+                                        delegate: self,
+                                        fingerprintPrompt: "Please provide your fingerprint.")
     }
 
     func handleLogin() {
