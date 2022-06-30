@@ -33,6 +33,4 @@ class ProfileViewController: UIViewController {
     @IBAction func changePassword(_: Any) {
         profileViewToPresenterProtocol?.setupChangePinPresenter()
     }
-
-    @IBAction func changeProfileName(_: Any) {}
 }
