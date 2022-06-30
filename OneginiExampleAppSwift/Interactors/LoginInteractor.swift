@@ -66,10 +66,8 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-        //TODO: should I use localized strings?
-        userClient.authenticateUserWith(profile: profile,
-                                        authenticator: authenticator,
-                                        delegate: self)
+
+        userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
     }
 
     func handleLogin() {
