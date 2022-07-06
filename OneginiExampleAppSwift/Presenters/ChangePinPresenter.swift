@@ -22,6 +22,7 @@ protocol ChangePinInteractorToPresenterProtocol: AnyObject {
     func presentLoginPinView(changePinEntity: ChangePinEntity)
     func presentCreatePinView(changePinEntity: ChangePinEntity)
     func presentProfileView()
+    func presentChangePinAlert()
     func changePinActionFailed(_ error: AppError)
     func popToWelcomeViewWithError(_ error: AppError)
 }
@@ -63,6 +64,15 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
             registrationPinViewController = PinViewController(mode: .registration, entity: changePinEntity, viewToPresenterProtocol: self)
             changePinNavigationController.pushViewController(registrationPinViewController!, animated: false)
         }
+    }
+    
+    func presentChangePinAlert() {
+        let message = "Your password has been changed successfully."
+        let alert = UIAlertController(title: "Change Pin", message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defaultAction)
+
+        navigationController.present(alert, animated: true, completion: nil)
     }
 
     func presentProfileView() {

@@ -64,6 +64,8 @@ class PinViewController: UIViewController {
         backKey.isHidden = true
         setupTitleLabel()
         buildPinSlots()
+        let presentationController = navigationController?.presentationController ?? presentationController
+        presentationController?.delegate = self
     }
 
     @IBAction func keyPressed(_ key: UIButton) {
@@ -183,5 +185,11 @@ class PinViewController: UIViewController {
         }
         reset()
         errorLabel.text = errorDescription
+    }
+}
+
+extension PinViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        cancelButtonPressed(())
     }
 }

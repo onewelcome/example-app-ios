@@ -143,6 +143,9 @@ extension RegisterUserInteractor: RegistrationDelegate {
             registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
         } else if challenge.identityProvider.identifier == "qr-code-api" {
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
+        } else {
+            handleQRCode(nil)
+            registerUserPresenter?.registerUserActionFailed(AppError(errorDescription: "Identity provider \(challenge.identityProvider.identifier) is not registered."))
         }
     }
 

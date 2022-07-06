@@ -106,5 +106,6 @@ extension ChangePinInteractor: ChangePinDelegate {
     func userClient(_ userClient: UserClient, didChangePinForUser _: UserProfile) {
         changePinEntity.createPinChallenge = nil
         changePinPresenter?.presentProfileView()
+        changePinPresenter?.presentChangePinAlert()
     }
 }

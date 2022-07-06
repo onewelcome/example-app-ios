@@ -28,7 +28,9 @@ protocol MobileAuthInteractorToPresenterProtocol: AnyObject {
     func dismiss()
     func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void)
     func presentConfirmationView(mobileAuthEntity: MobileAuthEntity)
+    func presentConfirmationAlert()
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity)
+    func updateApplicationIconBadge(to number: Int)
 }
 
 protocol MobileAuthViewToPresenterProtocol: AnyObject {
@@ -85,6 +87,10 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         appRouter.setupErrorAlert(error: error)
     }
 
+    func updateApplicationIconBadge(to number: Int) {
+        UIApplication.shared.applicationIconBadgeNumber = number
+    }
+    
     func presentPinView(mobileAuthEntity: MobileAuthEntity) {
         pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
         tabBarController.present(pinViewController!, animated: true)
@@ -100,6 +106,15 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
             confirmationViewController.modalPresentationStyle = .overCurrentContext
             tabBarController.present(confirmationViewController, animated: false, completion: nil)
         }
+    }
+    
+    func presentConfirmationAlert() {
+        let message = "The transaction has been confirmed successfully."
+        let alert = UIAlertController(title: "Confirmation", message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defaultAction)
+
+        tabBarController.present(alert, animated: true, completion: nil)
     }
 
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {
