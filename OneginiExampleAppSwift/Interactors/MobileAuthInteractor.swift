@@ -76,15 +76,19 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
     }
 
     func fetchPendingTransactions(completion: @escaping ([PendingMobileAuthRequest]?, AppError?) -> Void) {
-        userClient.pendingPushMobileAuthRequests { requests, error in
+        userClient.pendingPushMobileAuthRequests { [weak self] requests, error in
+            var badgeNumber = 0
             if let error = error {
                 let appError = ErrorMapper().mapError(error)
                 completion(nil, appError)
             } else if let requests = requests {
+                badgeNumber = requests.count
                 completion(requests, nil)
             } else {
                 completion([], nil)
             }
+            
+            self?.mobileAuthPresenter?.updateApplicationIconBadge(to: badgeNumber)
         }
     }
 
@@ -237,6 +241,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthEntity = MobileAuthEntity()
         mobileAuthPresenter?.dismiss()
         mobileAuthQueue.dequeue()
+        mobileAuthPresenter?.presentConfirmationAlert()
     }
 }
 

@@ -6,5 +6,7 @@
 }
 +(bool)debugDetection{
   return NO;
++(BOOL)debugLogs{
+    return YES;
 }
 @end
