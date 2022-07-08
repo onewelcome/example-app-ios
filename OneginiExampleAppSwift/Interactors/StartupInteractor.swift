@@ -14,21 +14,16 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol StartupInteractorProtocol {
-    func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void)
+    func oneginiSDKStartup(completion: @escaping (AppError?) -> Void)
 }
 
 class StartupInteractor: StartupInteractorProtocol {
-    func oneginiSDKStartup(completion: @escaping (Bool, AppError?) -> Void) {
-        ONGClientBuilder().build()
-        ONGClient.sharedInstance().start { result, error in
-            if let error = error {
-                let mappedError = ErrorMapper().mapError(error)
-                completion(result, mappedError)
-            } else {
-                completion(result, nil)
-            }
+    func oneginiSDKStartup(completion: @escaping (AppError?) -> Void) {
+        ClientBuilder().build().start { error in
+            completion(error.flatMap { ErrorMapper().mapError($0) })
         }
     }
 }

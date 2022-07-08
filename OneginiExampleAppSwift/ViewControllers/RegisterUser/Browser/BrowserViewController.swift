@@ -17,7 +17,7 @@ import UIKit
 import WebKit
 
 protocol BrowserViewControllerEntityProtocol {
-    var browserRegistrationChallenge: ONGBrowserRegistrationChallenge? { get }
+    var browserRegistrationChallenge: BrowserRegistrationChallenge? { get }
     var registrationUserURL: URL? { get }
     var redirectURL: URL? { get set }
     var pin: String? { get set }
@@ -45,6 +45,8 @@ class BrowserViewController: UIViewController, WKUIDelegate {
         view.backgroundColor = UIColor.white
         configureCancelButton()
         configureWebView()
+        let presentationController = navigationController?.presentationController ?? presentationController
+        presentationController?.delegate = self
     }
 
     func configureWebView() {
@@ -97,5 +99,11 @@ extension BrowserViewController: WKNavigationDelegate {
         } else {
             decisionHandler(.allow)
         }
+    }
+}
+
+extension BrowserViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        cancelButtonPressed()
     }
 }

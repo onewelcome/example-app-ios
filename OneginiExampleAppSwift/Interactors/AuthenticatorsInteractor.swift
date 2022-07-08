@@ -14,21 +14,25 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol AuthenticatorsInteractorProtocol: AnyObject {
-    func authenticatorsListForAuthenticatedUserProfile() -> Array<ONGAuthenticator>
-    func registerAuthenticator(_ authenticator: ONGAuthenticator)
-    func deregisterAuthenticator(_ authenticator: ONGAuthenticator)
+    var authenticatorsListForAuthenticatedUserProfile: [Authenticator] { get }
+    func registerAuthenticator(_ authenticator: Authenticator)
+    func deregisterAuthenticator(_ authenticator: Authenticator)
     func handleLogin()
-    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator)
+    func setPreferredAuthenticator(_ authenticator: Authenticator)
     func handlePasswordAuthenticatorRegistration()
 }
 
 class AuthenticatorsInteractor: NSObject {
     var registerAuthenticatorEntity = RegisterAuthenticatorEntity()
     weak var authenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol?
-
-    fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
+    
+    fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error {
             registerAuthenticatorEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
@@ -36,7 +40,7 @@ class AuthenticatorsInteractor: NSObject {
         }
     }
 
-    fileprivate func sortAuthenticatorsList(_ authenticators: Array<ONGAuthenticator>) -> Array<ONGAuthenticator> {
+    fileprivate func sortAuthenticatorsList(_ authenticators: [Authenticator]) -> [Authenticator] {
         return authenticators.sorted {
             if $0.type.rawValue == $1.type.rawValue {
                 return $0.name < $1.name
@@ -52,55 +56,54 @@ class AuthenticatorsInteractor: NSObject {
             registerAuthenticatorEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            customAuthenticatorChallenge.sender.respond(withData: registerAuthenticatorEntity.data, challenge: customAuthenticatorChallenge)
+            customAuthenticatorChallenge.sender.respond(with: registerAuthenticatorEntity.data, to: customAuthenticatorChallenge)
         }
     }
 }
 
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
-    func authenticatorsListForAuthenticatedUserProfile() -> Array<ONGAuthenticator> {
-        let userClient = ONGUserClient.sharedInstance()
-        guard let authenticatedUserProfile = userClient.authenticatedUserProfile() else { return [] }
-        let authenticatros = userClient.allAuthenticators(forUser: authenticatedUserProfile)
-        return sortAuthenticatorsList(Array(authenticatros))
+    var authenticatorsListForAuthenticatedUserProfile: [Authenticator] {
+        guard let authenticatedUserProfile = userClient.authenticatedUserProfile else { return [] }
+        let authenticators = userClient.authenticators(.all, for: authenticatedUserProfile)
+        return sortAuthenticatorsList(authenticators)
     }
 
-    func registerAuthenticator(_ authenticator: ONGAuthenticator) {
-        ONGUserClient.sharedInstance().register(authenticator, delegate: self)
+    func registerAuthenticator(_ authenticator: Authenticator) {
+        userClient.register(authenticator: authenticator, delegate: self)
     }
 
-    func deregisterAuthenticator(_ authenticator: ONGAuthenticator) {
-        ONGUserClient.sharedInstance().deregister(authenticator, delegate: self)
+    func deregisterAuthenticator(_ authenticator: Authenticator) {
+        userClient.deregister(authenticator: authenticator, delegate: self)
     }
 
     func handleLogin() {
         guard let pinChallenge = registerAuthenticatorEntity.pinChallenge else { return }
         if let pin = registerAuthenticatorEntity.pin {
-            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
     }
 
-    func setPreferredAuthenticator(_ authenticator: ONGAuthenticator) {
-        ONGUserClient.sharedInstance().preferredAuthenticator = authenticator
+    func setPreferredAuthenticator(_ authenticator: Authenticator) {
+        userClient.setPreferredAuthenticator(authenticator)
     }
 }
 
-extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
-    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
+extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
+    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         registerAuthenticatorEntity.pinChallenge = challenge
         registerAuthenticatorEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         authenticatorsPresenter?.presentPinView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
 
-    func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishRegistrationChallenge) {
+    func userClient(_: UserClient, didReceiveCustomAuthFinishRegistrationChallenge challenge: CustomAuthFinishRegistrationChallenge) {
         registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
         authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
-
-    func userClient(_: ONGUserClient, didFailToRegister authenticator: ONGAuthenticator, forUser _: ONGUserProfile, error: Error) {
+    
+    func userClient(_ userClient: UserClient, didFailToRegister authenticator: Authenticator, for userProfile: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
@@ -110,27 +113,27 @@ extension AuthenticatorsInteractor: ONGAuthenticatorRegistrationDelegate {
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
     }
-
-    func userClient(_: ONGUserClient, didRegister authenticator: ONGAuthenticator, forUser _: ONGUserProfile, info _: ONGCustomInfo?) {
+    
+    func userClient(_ userClient: UserClient, didRegister authenticator: Authenticator, for userProfile: UserProfile, info customAuthInfo: CustomInfo?) {
         authenticatorsPresenter?.backToAuthenticatorsView(authenticator: authenticator)
     }
 }
 
-extension AuthenticatorsInteractor: ONGAuthenticatorDeregistrationDelegate {
-    func userClient(_: ONGUserClient, didDeregister _: ONGAuthenticator, forUser _: ONGUserProfile) {
+extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
+    func userClient(_ userClient: UserClient, didDeregister authenticator: Authenticator, forUser userProfile: UserProfile) {
         authenticatorsPresenter?.authenticatorDeregistrationSucced()
     }
 
-    func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthDeregistrationChallenge) {
-        challenge.sender.continue(with: challenge)
-    }
-
-    func userClient(_: ONGUserClient, didFailToDeregister authenticator: ONGAuthenticator, forUser _: ONGUserProfile, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToDeregister authenticator: Authenticator, forUser userProfile: UserProfile, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
         } else {
             let mappedError = ErrorMapper().mapError(error)
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
+    }
+
+    func userClient(_ userClient: UserClient, didReceiveCustomAuthDeregistrationChallenge challenge: CustomAuthDeregistrationChallenge) {
+        challenge.sender.proceed(with: challenge)
     }
 }

@@ -14,11 +14,12 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol LoginInteractorProtocol: AnyObject {
-    func userProfiles() -> Array<ONGUserProfile>
-    func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator>
-    func login(profile: ONGUserProfile, authenticator: ONGAuthenticator?)
+    var userProfiles: [UserProfile] { get }
+    func authenticators(profile: UserProfile) -> [Authenticator]
+    func login(profile: UserProfile, authenticator: Authenticator?)
     func handleLogin()
     func handlePasswordAuthenticatorLogin()
 }
@@ -26,16 +27,19 @@ protocol LoginInteractorProtocol: AnyObject {
 protocol LoginInteractorDelegate: AnyObject {
     func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPin loginEntity: LoginEntity)
     func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPassword loginEntity: LoginEntity)
-    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didLoginUser profile: ONGUserProfile)
-    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError)
-    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didCancelLoginUser profile: ONGUserProfile)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didLoginUser profile: UserProfile)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didFailToLoginUser profile: UserProfile, withError error: AppError)
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didCancelLoginUser profile: UserProfile)
 }
 
 class LoginInteractor: NSObject, LoginInteractorProtocol {
     weak var delegate: LoginInteractorDelegate?
     var loginEntity = LoginEntity()
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
 
-    fileprivate func mapErrorFromChallenge(_ challenge: ONGPinChallenge) {
+    fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
@@ -49,52 +53,51 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
             loginEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
         } else {
-            customAuthenticatorChallenge.sender.respond(withData: loginEntity.data, challenge: customAuthenticatorChallenge)
+            customAuthenticatorChallenge.sender.respond(with: loginEntity.data, to: customAuthenticatorChallenge)
         }
     }
-    
-    func userProfiles() -> Array<ONGUserProfile> {
-        let userProfiles = ONGUserClient.sharedInstance().userProfiles()
-        return Array(userProfiles)
+
+    var userProfiles: [UserProfile] {
+        return userClient.userProfiles
     }
-    
-    func authenticators(profile: ONGUserProfile) -> Array<ONGAuthenticator> {
-        let authenticators = ONGUserClient.sharedInstance().registeredAuthenticators(forUser: profile)
-        return Array(authenticators)
+
+    func authenticators(profile: UserProfile) -> [Authenticator] {
+        return userClient.authenticators(.registered, for: profile)
     }
-    
-    func login(profile: ONGUserProfile, authenticator: ONGAuthenticator? = nil) {
-        ONGUserClient.sharedInstance().authenticateUser(profile, authenticator: authenticator, delegate: self)
+
+    func login(profile: UserProfile, authenticator: Authenticator? = nil) {
+
+        userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
     }
-    
+
     func handleLogin() {
         guard let pinChallenge = loginEntity.pinChallenge else { return }
         if let pin = loginEntity.pin {
-            pinChallenge.sender.respond(withPin: pin, challenge: pinChallenge)
+            pinChallenge.sender.respond(with: pin, to: pinChallenge)
         } else {
             pinChallenge.sender.cancel(pinChallenge)
         }
     }
 }
 
-extension LoginInteractor: ONGAuthenticationDelegate {
-    func userClient(_: ONGUserClient, didReceive challenge: ONGPinChallenge) {
+extension LoginInteractor: AuthenticationDelegate {
+    func userClient(_ userClient: UserClient, didReceivePinChallenge challenge: PinChallenge) {
         loginEntity.pinChallenge = challenge
         loginEntity.pinLength = 5
         mapErrorFromChallenge(challenge)
         delegate?.loginInteractor(self, didAskForPin: loginEntity)
     }
-
-    func userClient(_: ONGUserClient, didReceive challenge: ONGCustomAuthFinishAuthenticationChallenge) {
+ 
+    func userClient(_ userClient: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
         loginEntity.customAuthenticatorAuthenticationChallenege = challenge
         delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }
 
-    func userClient(_ userClient: ONGUserClient, didAuthenticateUser userProfile: ONGUserProfile, authenticator: ONGAuthenticator, info customAuthInfo: ONGCustomInfo?) {
+    func userClient(_ userClient: UserClient, didAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, info customAuthInfo: CustomInfo?) {
         delegate?.loginInteractor(self, didLoginUser: userProfile)
     }
 
-    func userClient(_ userClient: ONGUserClient, didFailToAuthenticateUser userProfile: ONGUserProfile, authenticator: ONGAuthenticator, error: Error) {
+    func userClient(_ userClient: UserClient, didFailToAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, error: Error) {
         if error.code == ONGGenericError.actionCancelled.rawValue {
             delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
         } else {

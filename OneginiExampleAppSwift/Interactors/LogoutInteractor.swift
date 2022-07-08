@@ -21,9 +21,12 @@ protocol LogoutInteractorProtocol: AnyObject {
 
 class LogoutInteractor: LogoutInteractorProtocol {
     weak var dashboardPresenter: DashboardInteractorToPresenterProtocol?
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
 
     func logout() {
-        ONGUserClient.sharedInstance().logoutUser { _, error in
+        userClient.logoutUser { _, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 self.dashboardPresenter?.logoutUserActionFailed(mappedError)

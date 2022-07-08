@@ -44,9 +44,9 @@ class PinViewController: UIViewController {
     var entity: PinViewControllerEntityProtocol
     unowned let viewToPresenterProtocol: PinViewToPresenterProtocol
 
-    var pinSlots = Array<UIView>()
-    var pinEntry = Array<String>()
-    var pinEntryToVerify = Array<String>()
+    private var pinSlots = [UIView]()
+    private var pinEntry = [String]()
+    private var pinEntryToVerify = [String]()
 
     init(mode: PINEntryMode, entity: PinViewControllerEntityProtocol, viewToPresenterProtocol: PinViewToPresenterProtocol) {
         self.mode = mode
@@ -64,6 +64,8 @@ class PinViewController: UIViewController {
         backKey.isHidden = true
         setupTitleLabel()
         buildPinSlots()
+        let presentationController = navigationController?.presentationController ?? presentationController
+        presentationController?.delegate = self
     }
 
     @IBAction func keyPressed(_ key: UIButton) {
@@ -89,7 +91,7 @@ class PinViewController: UIViewController {
         let pinSlotMargin = CGFloat(integerLiteral: 40)
         let pinSlotWidth = CGFloat(integerLiteral: 15)
         let offsetX = (pinSlotsView.frame.width - ((CGFloat(integerLiteral: pinLength) * pinSlotWidth) + (CGFloat(integerLiteral: pinLength - 1) * pinSlotMargin))) / CGFloat(integerLiteral: 2)
-        var pinSlotsArray = Array<UIView>()
+        var pinSlotsArray = [UIView]()
         for index in 0 ... (pinLength - 1) {
             let indexFloat = CGFloat(integerLiteral: index)
             let pinSlotFrame = CGRect(x: offsetX + indexFloat * (pinSlotWidth + pinSlotMargin), y: 0, width: pinSlotWidth, height: CGFloat(integerLiteral: 15))
@@ -130,7 +132,7 @@ class PinViewController: UIViewController {
         for index in 0 ... (pinEntry.count - 1) {
             pinEntry[index] = "#"
         }
-        pinEntry = Array<String>()
+        pinEntry = [String]()
         setupTitleLabel()
         updatePinStateRepresentation()
     }
@@ -183,5 +185,11 @@ class PinViewController: UIViewController {
         }
         reset()
         errorLabel.text = errorDescription
+    }
+}
+
+extension PinViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        cancelButtonPressed(())
     }
 }

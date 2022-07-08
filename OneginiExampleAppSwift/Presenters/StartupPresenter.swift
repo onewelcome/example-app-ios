@@ -34,7 +34,7 @@ class StartupPresenter: StartupInteractorToPresenterProtocol {
 
     func oneigniSDKStartup() {
         startupViewController.state = .loading
-        startupInteractor.oneginiSDKStartup { _, error in
+        startupInteractor.oneginiSDKStartup { error in
             self.startupViewController.state = .loaded
             if let error = error {
                 let errorAlert = self.createErrorAlert(error: error, retryHandler: { _ in

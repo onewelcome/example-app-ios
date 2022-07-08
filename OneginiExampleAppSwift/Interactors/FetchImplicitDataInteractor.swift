@@ -14,14 +14,18 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol FetchImplicitDataInteractorProtocol: AnyObject {
-    func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?, AppError?) -> Void)
+    func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void)
 }
 
 class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
-
-    func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?, AppError?) -> Void) {
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
+    
+    func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
             implicitResourcesRequest { userIdDecorated, error in
                 if let userIdDecorated = userIdDecorated {
@@ -31,8 +35,8 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
                 }
             }
         } else {
-            authenticateUserImplicitly(profile) { success, error in
-                if success {
+            authenticateUserImplicitly(profile) { error in
+                if error == nil {
                     self.implicitResourcesRequest { userIdDecorated, error in
                         if let userIdDecorated = userIdDecorated {
                             completion(userIdDecorated, nil)
@@ -49,25 +53,19 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
         }
     }
 
-    fileprivate func isProfileImplicitlyAuthenticated(_ profile: ONGUserProfile) -> Bool {
-        let implicitlyAuthenticatedProfile = ONGUserClient.sharedInstance().implicitlyAuthenticatedUserProfile()
-        return implicitlyAuthenticatedProfile != nil && implicitlyAuthenticatedProfile == profile
+    fileprivate func isProfileImplicitlyAuthenticated(_ profile: UserProfile) -> Bool {
+        userClient.implicitlyAuthenticatedUserProfile?.isEqual(to: profile) ?? false
     }
 
-    fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion: @escaping (Bool, AppError?) -> Void) {
-        ONGUserClient.sharedInstance().implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
-            if !success, let error = error {
-                let mappedError = ErrorMapper().mapError(error)
-                completion(success, mappedError)
-                return
-            }
-            completion(success, nil)
+    fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (AppError?) -> Void) {
+        userClient.implicitlyAuthenticate(user: profile, with: nil) { error in
+            completion(error.flatMap { ErrorMapper().mapError($0) })
         }
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
-        let implicitRequest = ONGResourceRequest(path: "user-id-decorated", method: "GET")
-        ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
+        let implicitRequest = ResourceRequestFactory.makeResourceRequest(path: "user-id-decorated", method: .get)
+        userClient.sendImplicitRequest(implicitRequest) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 completion(nil, mappedError)

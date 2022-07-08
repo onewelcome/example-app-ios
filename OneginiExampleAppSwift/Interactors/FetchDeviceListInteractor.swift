@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 protocol FetchDeviceListInteractorProtocol: AnyObject {
     func fetchDeviceList()
@@ -22,16 +23,19 @@ protocol FetchDeviceListInteractorProtocol: AnyObject {
 class FetchDeviceListInteractor: FetchDeviceListInteractorProtocol {
     weak var fetchDeviceListPresenter: FetchDeviceListInteractorToPresenterProtocol?
     let decoder = JSONDecoder()
-
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
+    
     func fetchDeviceList() {
-        let request = ONGResourceRequest(path: "devices", method: "GET")
-        ONGUserClient.sharedInstance().fetchResource(request) { response, error in
+        let request = ResourceRequestFactory.makeResourceRequest(path: "devices", method: .get)
+        userClient.sendAuthenticatedRequest(request) { response, error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
                 self.fetchDeviceListPresenter?.fetchDeviceListFailed(mappedError)
             } else {
                 if let data = response?.data,
-                    let deviceList = try? self.decoder.decode(Devices.self, from: data) {
+                   let deviceList = try? self.decoder.decode(Devices.self, from: data) {
                     self.fetchDeviceListPresenter?.presentDeviceList(deviceList.devices)
                 }
             }

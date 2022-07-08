@@ -21,7 +21,7 @@ class AuthenticatorsViewController: UIViewController {
     var selectedRow: Int?
 
     weak var authenticatorsViewToPresenterProtocol: AuthenticatorsViewToPresenterProtocol?
-    var authenticatorsList = Array<ONGAuthenticator>() {
+    var authenticatorsList = [Authenticator]() {
         didSet {
             authenticatorsTableView?.reloadData()
         }
@@ -56,11 +56,11 @@ extension AuthenticatorsViewController: UITableViewDataSource {
         return cell
     }
 
-    func registerAuthenticator(_ authenticator: ONGAuthenticator) {
+    func registerAuthenticator(_ authenticator: Authenticator) {
         authenticatorsViewToPresenterProtocol?.registerAuthenticator(authenticator)
     }
 
-    func deregisterAuthenticator(_ authenticator: ONGAuthenticator) {
+    func deregisterAuthenticator(_ authenticator: Authenticator) {
         authenticatorsViewToPresenterProtocol?.deregisterAuthenticator(authenticator)
     }
 

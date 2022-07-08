@@ -19,6 +19,6 @@ class ChangePinEntity: PinViewControllerEntityProtocol {
     var pin: String?
     var pinError: AppError?
     var pinLength: Int?
-    var loginPinChallenge: ONGPinChallenge?
-    var createPinChallenge: ONGCreatePinChallenge?
+    var loginPinChallenge: PinChallenge?
+    var createPinChallenge: CreatePinChallenge?
 }

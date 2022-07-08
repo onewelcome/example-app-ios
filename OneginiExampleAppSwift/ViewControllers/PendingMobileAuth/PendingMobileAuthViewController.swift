@@ -16,7 +16,7 @@
 import UIKit
 
 class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresenterViewDelegate {
-    var pendingMobileAuths = Array<ONGPendingMobileAuthRequest>() {
+    var pendingMobileAuths = [PendingMobileAuthRequest]() {
         didSet {
             pendingMobileAuthTableView.reloadData()
         }

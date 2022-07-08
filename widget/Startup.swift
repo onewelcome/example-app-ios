@@ -5,10 +5,8 @@ import OneginiSDKiOS
 class Startup {
 
     func oneginiSDKStartup(completion: @escaping (Bool) -> Void) {
-        ONGClientBuilder().build()
-        ONGClient.sharedInstance().start { result, error in
-            completion(result)
+        ClientBuilder().build().start { error in
+            completion(error == nil)
         }
     }
-    
 }

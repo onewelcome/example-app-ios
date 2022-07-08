@@ -37,7 +37,7 @@ class AuthenticatorRegistrationErrorDomainMapping {
         }
     }
 
-    func mapErrorWithCustomInfo(_ customInfo: ONGCustomInfo) -> AppError {
+    func mapErrorWithCustomInfo(_ customInfo: CustomInfo) -> AppError {
         if customInfo.status >= 4000 && customInfo.status < 5000 {
             let message = "Authenticator registration failed"
             return AppError(title: title, errorDescription: message)
