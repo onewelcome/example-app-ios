@@ -15,14 +15,14 @@
 
 import UIKit
 
-protocol WelcomePresenterProtocol: class {
+protocol WelcomePresenterProtocol: AnyObject {
     var loginPresenter: LoginPresenterProtocols { get set }
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }
 
     func presentWelcomeView()
     func popToWelcomeViewController()
-    func update(selectedProfile: ONGUserProfile?)
+    func update(selectedProfile: UserProfile?)
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
@@ -51,7 +51,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
         tabBarController.selectedIndex = 0
     }
 
-    func update(selectedProfile: ONGUserProfile?) {
+    func update(selectedProfile: UserProfile?) {
         if let profile = selectedProfile {
             loginPresenter.updateSelectedProfile(profile)
         }

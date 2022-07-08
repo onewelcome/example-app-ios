@@ -19,22 +19,22 @@ typealias LoginPresenterProtocols = LoginPresenterProtocol & LoginViewDelegate &
 
 protocol LoginPresenterProtocol: AnyObject {
     func update()
-    func updateSelectedProfile(_ profile: ONGUserProfile)
-    var profiles: Array<ONGUserProfile> { get set }
+    func updateSelectedProfile(_ profile: UserProfile)
+    var profiles: [UserProfile] { get set }
     func setupLoginView() -> LoginViewController
     func presentImplicitData(data: String)
     func fetchImplicitDataFailed(_ error: AppError)
 }
 
 protocol LoginPresenterDelegate: AnyObject {
-    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: ONGUserProfile)
-    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError)
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didLoginUser profile: UserProfile)
+    func loginPresenter(_ loginPresenter: LoginPresenterProtocol, didFailToLoginUser profile: UserProfile, withError error: AppError)
 }
 
 class LoginPresenter: LoginPresenterProtocol {
     
     var loginInteractor: LoginInteractorProtocol
-    var profiles = Array<ONGUserProfile>()
+    var profiles = [UserProfile]()
     let navigationController: UINavigationController
     let fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol
     var loginViewController: LoginViewController
@@ -47,7 +47,7 @@ class LoginPresenter: LoginPresenterProtocol {
         self.fetchImplicitDataInteractor = fetchImplicitDataInteractor
     }
     
-    func updateSelectedProfile(_ profile: ONGUserProfile) {
+    func updateSelectedProfile(_ profile: UserProfile) {
         loginViewController.selectedProfile = profile
     }
     
@@ -59,20 +59,19 @@ class LoginPresenter: LoginPresenterProtocol {
     }
     
     func setupLoginView() -> LoginViewController {
-        loginViewController.profiles = loginInteractor.userProfiles()
+        loginViewController.profiles = loginInteractor.userProfiles
         return loginViewController
     }
 
     func reloadProfiles() {
-        profiles = loginInteractor.userProfiles()
+        profiles = loginInteractor.userProfiles
         loginViewController.profiles = profiles
     }
-
+    
     func updateView() {
-        let profile = loginViewController.selectedProfile
-        if profiles.contains(profile) {
+        if let profile = loginViewController.selectedProfile, profiles.contains(where: { $0.isEqual(to: profile) }) {
             loginViewController.reloadAuthenticators()
-            if let index = loginViewController.profiles.index(of: profile) {
+            if let index = loginViewController.profiles.firstIndex(where: { $0.isEqual(to: profile) }) {
                 loginViewController.selectProfile(index: index)
             }
         } else {
@@ -108,39 +107,38 @@ extension LoginPresenter: LoginInteractorDelegate {
         navigationController.present(passwordViewController, animated: false, completion: nil)
     }
     
-    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didLoginUser profile: ONGUserProfile) {
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didLoginUser profile: UserProfile) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         navigationController.dismiss(animated: false, completion: nil)
         appRouter.setupDashboardPresenter(authenticatedUserProfile: profile)
     }
     
-    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didFailToLoginUser profile: ONGUserProfile, withError error: AppError) {
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didFailToLoginUser profile: UserProfile, withError error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         navigationController.dismiss(animated: false, completion: nil)
         appRouter.updateWelcomeView(selectedProfile: profile)
         appRouter.setupErrorAlert(error: error)
     }
     
-    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didCancelLoginUser profile: ONGUserProfile) {
+    func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didCancelLoginUser profile: UserProfile) {
         navigationController.dismiss(animated: false, completion: nil)
     }
 }
 
 extension LoginPresenter: LoginViewDelegate {
-    
-    func loginView(profilesInLoginView loginView: UIViewController) -> [ONGUserProfile] {
-        return loginInteractor.userProfiles()
+    func profilesInLoginView(_ loginView: UIViewController) -> [UserProfile] {
+        return loginInteractor.userProfiles
     }
 
-    func loginView(_ loginView: UIViewController, didLoginProfile profile: ONGUserProfile, withAuthenticator authenticator: ONGAuthenticator?) {
+    func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?) {
         loginInteractor.login(profile: profile, authenticator: authenticator)
     }
 
-    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: ONGUserProfile) -> [ONGAuthenticator] {
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator] {
         return loginInteractor.authenticators(profile: profile)
     }
     
-    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String?) -> Void) {
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void) {
         fetchImplicitDataInteractor.fetchImplicitResources(profile: profile) { (implicitData, error) in
             guard let implicitData = implicitData else {
                 completion(nil)

@@ -20,7 +20,7 @@ class RegisterUserViewController: UIViewController {
 
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
 
-    var identityProviders = [ONGIdentityProvider]() {
+    var identityProviders = [IdentityProvider]() {
         didSet {
             if let identityProvidersTableView = identityProvidersTableView {
                 identityProvidersTableView.reloadData()
@@ -28,7 +28,7 @@ class RegisterUserViewController: UIViewController {
         }
     }
 
-    init(registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol, identityProviders: [ONGIdentityProvider]) {
+    init(registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol, identityProviders: [IdentityProvider]) {
         self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
         self.identityProviders = identityProviders
         super.init(nibName: nil, bundle: nil)

@@ -18,7 +18,7 @@ import UIKit
 typealias DashboardPresenterProtocol = DashboardInteractorToPresenterProtocol & DashboardViewToPresenterProtocol
 
 protocol DashboardInteractorToPresenterProtocol: AnyObject {
-    func presentDashboardView(authenticatedUserProfile: ONGUserProfile)
+    func presentDashboardView(authenticatedUserProfile: UserProfile)
     func presentWelcomeView()
     func logoutUserActionFailed(_ error: AppError)
 }
@@ -36,7 +36,7 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     var logoutInteractor: LogoutInteractorProtocol
     let dashboardViewController: DashboardViewController
-    var authenticatedUserProfile: ONGUserProfile?
+    var authenticatedUserProfile: UserProfile?
 
     init(_ dashboardViewController: DashboardViewController, logoutInteractor: LogoutInteractorProtocol, navigationController: UINavigationController) {
         self.logoutInteractor = logoutInteractor
@@ -44,7 +44,7 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
         self.navigationController = navigationController
     }
 
-    func presentDashboardView(authenticatedUserProfile: ONGUserProfile) {
+    func presentDashboardView(authenticatedUserProfile: UserProfile) {
         self.authenticatedUserProfile = authenticatedUserProfile
         dashboardViewController.userProfileName = authenticatedUserProfile.profileId
         if navigationController.presentedViewController != nil {

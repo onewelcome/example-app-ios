@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneginiSDKiOS
 
 class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet var container: UIView!
@@ -15,17 +16,21 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet var expireTimeLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
 
-    func setup(pendingMobileAuthEntity: ONGPendingMobileAuthRequest) {
+    func setup(pendingMobileAuthEntity: PendingMobileAuthRequest) {
         profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
         messageLabel.text = pendingMobileAuthEntity.message
-
+        
         if let date = pendingMobileAuthEntity.date {
-            timeLabel.text = DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
-            if let timeToLive = pendingMobileAuthEntity.timeToLive {
-                expireTimeLabel.text = "Expiration time: " + DateFormatter.localizedString(from: date.addingTimeInterval(timeToLive.doubleValue), dateStyle: DateFormatter.Style.none, timeStyle: DateFormatter.Style.medium)
-            } else {
-                expireTimeLabel.text = ""
-            }
+            timeLabel.text = DateFormatter.localizedString(from: date,
+                                                           dateStyle: DateFormatter.Style.none,
+                                                           timeStyle: DateFormatter.Style.medium)
+            expireTimeLabel.text = pendingMobileAuthEntity.timeToLive
+                .flatMap { TimeInterval($0) }
+                .flatMap { DateFormatter.localizedString(from: date.addingTimeInterval($0),
+                                                         dateStyle: DateFormatter.Style.none,
+                                                         timeStyle: DateFormatter.Style.medium)}
+                .flatMap { "Expiration time: " + $0 } ?? ""
+            
         } else {
             timeLabel.text = ""
             expireTimeLabel.text = ""

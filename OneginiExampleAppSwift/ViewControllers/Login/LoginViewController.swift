@@ -14,22 +14,21 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
-protocol LoginViewDelegate: class {
-    
-    func loginView(_ loginView: UIViewController, didLoginProfile profile: ONGUserProfile, withAuthenticator authenticator: ONGAuthenticator?)
-    func loginView(profilesInLoginView loginView: UIViewController) -> [ONGUserProfile]
-    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: ONGUserProfile) -> [ONGAuthenticator]
-    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: ONGUserProfile, completion: @escaping (String?) -> Void)
+protocol LoginViewDelegate: AnyObject {
+    func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?)
+    func profilesInLoginView(_ loginView: UIViewController) -> [UserProfile]
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator]
+    func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void)
 }
 
 class LoginViewController: UIViewController {
     @IBOutlet var profilesTableView: UITableView?
     @IBOutlet var authenticatorsTableView: UITableView?
-
     @IBOutlet var implicitData: UILabel!
 
-    var profiles = [ONGUserProfile]() {
+    var profiles = [UserProfile]() {
         didSet {
             if let tableView = profilesTableView {
                 tableView.reloadData()
@@ -37,19 +36,18 @@ class LoginViewController: UIViewController {
         }
     }
 
-    var authenticators = [ONGAuthenticator]() {
+    private var authenticators = [Authenticator]() {
         didSet {
-            if let tableView = authenticatorsTableView {
-                tableView.reloadData()
-            }
+            reloadAuthenticators()
         }
     }
 
     weak var loginDelegate: LoginViewDelegate?
-    var selectedProfile = ONGUserProfile()
-
+    var selectedProfile: UserProfile!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.isHidden = true
         guard let profilesTableView = profilesTableView,
             let authenticatorsTableView = authenticatorsTableView,
@@ -57,13 +55,19 @@ class LoginViewController: UIViewController {
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
     
-        profiles = loginDelegate.loginView(profilesInLoginView: self)
+        profiles = loginDelegate.profilesInLoginView(self)
         profilesTableView.reloadData()
         selectProfile(index: 0)
         loginDelegate.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
             self.implicitData.text = implicitDataString
         })
         authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        authenticators = loginDelegate?.loginView(self, authenticatorsForProfile: selectedProfile) ?? []
     }
 
     func selectProfile(index: Int) {
@@ -80,7 +84,7 @@ class LoginViewController: UIViewController {
         profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
     }
 
-    func reloadAuthenticators(){
+    func reloadAuthenticators() {
         if let tableView = authenticatorsTableView {
             tableView.reloadData()
         }
@@ -107,11 +111,9 @@ extension LoginViewController: UITableViewDataSource {
         if tableView == profilesTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileIdCell", for: indexPath) as! ProfileTableViewCell
             cell.profileIdLabel.text = profiles[indexPath.row].profileId
-            if selectedProfile == profiles[indexPath.row] {
-                cell.tickImage.image = #imageLiteral(resourceName: "tick")
-            } else {
-                cell.tickImage.image = nil
-            }
+
+            cell.tickImage.image = profiles[indexPath.row].isEqual(to: selectedProfile) ? #imageLiteral(resourceName: "tick") : nil
+            
             return cell
         }
         if tableView == authenticatorsTableView {
@@ -128,11 +130,12 @@ extension LoginViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == profilesTableView {
             let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
-            if selectedProfile != profiles[indexPath.row] {
+            if !profiles[indexPath.row].isEqual(to: selectedProfile) {
                 selectedProfile = profiles[indexPath.row]
                 guard let loginDelegate = loginDelegate else { return }
                 authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
             }
+            
             loginDelegate?.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
                 self.implicitData.text = implicitDataString
             })

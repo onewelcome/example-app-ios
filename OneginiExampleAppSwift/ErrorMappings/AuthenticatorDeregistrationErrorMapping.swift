@@ -17,7 +17,7 @@ import UIKit
 
 class AuthenticatorDeregistrationErrorMapping {
     let title = "Authenticator Deregistration error"
-
+    
     func mapError(_ error: Error) -> AppError {
         switch error.code {
         case ONGAuthenticatorDeregistrationError.deregistrationErrorUserNotAuthenticated.rawValue:

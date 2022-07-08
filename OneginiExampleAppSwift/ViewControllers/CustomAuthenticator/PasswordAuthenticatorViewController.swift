@@ -28,24 +28,29 @@ protocol PasswordAuthenticatorEntityProtocol {
     var message: String? { get set }
 }
 
-protocol PasswordAuthenticatorViewToPresenterProtocol: class {
+protocol PasswordAuthenticatorViewToPresenterProtocol: AnyObject {
     func handlePassword()
 }
 
 class PasswordAuthenticatorViewController: UIViewController {
-    @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
-    @IBOutlet var submitButton: UIButton!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var message: UILabel!
-
-    unowned let viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol
-    let mode: PasswordAuthenticatorMode
-    var entity: PasswordAuthenticatorEntityProtocol
-
-    init(mode: PasswordAuthenticatorMode, entity: PasswordAuthenticatorEntityProtocol, viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol) {
+    @IBOutlet private var passwordTextField: SkyFloatingLabelTextField!
+    @IBOutlet private var submitButton: UIButton!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var message: UILabel!
+    
+    private unowned let viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol
+    private let mode: PasswordAuthenticatorMode
+    private var entity: PasswordAuthenticatorEntityProtocol
+    private let inputValidator: StringValidator
+    
+    init(mode: PasswordAuthenticatorMode,
+         entity: PasswordAuthenticatorEntityProtocol,
+         viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol,
+         inputValidator: StringValidator = NotEmptyInputValidator()) {
         self.mode = mode
         self.entity = entity
         self.viewToPresenterProtocol = viewToPresenterProtocol
+        self.inputValidator = inputValidator
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -66,6 +71,7 @@ class PasswordAuthenticatorViewController: UIViewController {
             title = "Create password"
         }
         titleLabel.text = title
+        submitButton.isEnabled = false
     }
 
     @IBAction func cancel(_: Any) {
@@ -74,7 +80,24 @@ class PasswordAuthenticatorViewController: UIViewController {
     }
 
     @IBAction func submit(_: Any) {
-        entity.data = passwordTextField.text ?? ""
+        guard let input = passwordTextField.text, inputValidator.isValid(input) else { return }
+        entity.data = input
         viewToPresenterProtocol.handlePassword()
+    }
+    
+    @IBAction func passwordTextFieldEditingChanged(_ sender: Any) {
+        let validPassword = passwordTextField.text.flatMap { inputValidator.isValid($0) } ?? false
+        submitButton.isEnabled = validPassword
+        passwordTextField.errorMessage = validPassword ? nil : "Invalid password"
+    }
+}
+
+protocol StringValidator {
+    func isValid(_ input: String) -> Bool
+}
+
+class NotEmptyInputValidator: StringValidator {
+    func isValid(_ input: String) -> Bool {
+        return !input.isEmpty
     }
 }

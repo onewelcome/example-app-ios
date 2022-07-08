@@ -16,8 +16,8 @@
 import UIKit
 
 protocol RegisterUserInteractorProtocol: AnyObject {
-    func identityProviders() -> Array<ONGIdentityProvider>
-    func startUserRegistration(identityProvider: ONGIdentityProvider?)
+    var identityProviders: [IdentityProvider] { get }
+    func startUserRegistration(identityProvider: IdentityProvider?)
     func handleRedirectURL()
     func handleCreatedPin()
     func handleOTPCode()
@@ -27,8 +27,11 @@ protocol RegisterUserInteractorProtocol: AnyObject {
 class RegisterUserInteractor: NSObject {
     weak var registerUserPresenter: RegisterUserInteractorToPresenterProtocol?
     var registerUserEntity = RegisterUserEntity()
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
 
-    fileprivate func mapErrorFromChallenge(_ challenge: ONGCreatePinChallenge) {
+    fileprivate func mapErrorFromChallenge(_ challenge: CreatePinChallenge) {
         if let error = challenge.error {
             registerUserEntity.pinError = ErrorMapper().mapError(error)
         } else {
@@ -38,19 +41,18 @@ class RegisterUserInteractor: NSObject {
 }
 
 extension RegisterUserInteractor: RegisterUserInteractorProtocol {
-    func identityProviders() -> Array<ONGIdentityProvider> {
-        let identityProviders = ONGUserClient.sharedInstance().identityProviders()
-        return Array(identityProviders)
+    var identityProviders: [IdentityProvider] {
+        return userClient.identityProviders
     }
 
-    func startUserRegistration(identityProvider: ONGIdentityProvider? = nil) {
-        ONGUserClient.sharedInstance().registerUser(with: identityProvider, scopes: ["read", "openid"], delegate: self)
+    func startUserRegistration(identityProvider: IdentityProvider? = nil) {
+        userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
     }
 
     func handleRedirectURL() {
         guard let browserRegistrationChallenge = registerUserEntity.browserRegistrationChallenge else { return }
         if let url = registerUserEntity.redirectURL {
-            browserRegistrationChallenge.sender.respond(with: url, challenge: browserRegistrationChallenge)
+            browserRegistrationChallenge.sender.respond(with: url, to: browserRegistrationChallenge)
         } else {
             browserRegistrationChallenge.sender.cancel(browserRegistrationChallenge)
         }
@@ -62,14 +64,14 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
             registerUserEntity.cancelled = false
             customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
         } else {
-            customRegistrationChallenge.sender.respond(withData: registerUserEntity.responseCode, challenge: customRegistrationChallenge)
+            customRegistrationChallenge.sender.respond(with: registerUserEntity.responseCode, to: customRegistrationChallenge)
         }
     }
 
     func handleQRCode(_ qrCode: String?) {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
         if let qrCode = qrCode {
-            customRegistrationChallenge.sender.respond(withData: qrCode, challenge: customRegistrationChallenge)
+            customRegistrationChallenge.sender.respond(with: qrCode, to: customRegistrationChallenge)
         } else {
             customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
         }
@@ -78,7 +80,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     func handleCreatedPin() {
         guard let createPinChallenge = registerUserEntity.createPinChallenge else { return }
         if let pin = registerUserEntity.pin {
-            createPinChallenge.sender.respond(withCreatedPin: pin, challenge: createPinChallenge)
+            createPinChallenge.sender.respond(with: pin, to: createPinChallenge)
         } else {
             createPinChallenge.sender.cancel(createPinChallenge)
         }
@@ -111,41 +113,27 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 }
 
-extension RegisterUserInteractor: ONGRegistrationDelegate {
-    func userClient(_: ONGUserClient, didReceive challenge: ONGBrowserRegistrationChallenge) {
-        registerUserEntity.browserRegistrationChallenge = challenge
-        registerUserEntity.registrationUserURL = challenge.url
-        registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
-    }
-
-    func userClient(_: ONGUserClient, didReceivePinRegistrationChallenge challenge: ONGCreatePinChallenge) {
-        registerUserEntity.createPinChallenge = challenge
-        registerUserEntity.pinLength = Int(challenge.pinLength)
-        mapErrorFromChallenge(challenge)
+extension RegisterUserInteractor: RegistrationDelegate {
+    func userClient(_ userClient: UserClient, didReceiveCreatePinChallenge createPinChallenge: CreatePinChallenge) {
+        registerUserEntity.createPinChallenge = createPinChallenge
+        registerUserEntity.pinLength = Int(createPinChallenge.pinLength)
+        mapErrorFromChallenge(createPinChallenge)
         registerUserPresenter?.presentCreatePinView(registerUserEntity: registerUserEntity)
     }
 
-    func userClient(_ userClient: ONGUserClient, didRegisterUser userProfile: ONGUserProfile, identityProvider: ONGIdentityProvider, info: ONGCustomInfo?) {
-        registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
-    }
-    
-    func userClient(_ userClient: ONGUserClient, didFailToRegisterWith identityProvider: ONGIdentityProvider, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
-            registerUserPresenter?.registerUserActionCancelled()
-        } else {
-            let mappedError = ErrorMapper().mapError(error)
-            registerUserPresenter?.registerUserActionFailed(mappedError)
-        }
-        registerUserEntity.errorMessage = nil
+    func userClient(_ userClient: UserClient, didReceiveBrowserRegistrationChallenge browserRegistrationChallenge: BrowserRegistrationChallenge) {
+        registerUserEntity.browserRegistrationChallenge = browserRegistrationChallenge
+        registerUserEntity.registrationUserURL = browserRegistrationChallenge.url
+        registerUserPresenter?.presentBrowserUserRegistrationView(regiserUserEntity: registerUserEntity)
     }
 
-    func userClient(_: ONGUserClient, didReceiveCustomRegistrationInitChallenge challenge: ONGCustomRegistrationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
         if challenge.identityProvider.identifier == "2-way-otp-api" {
-            challenge.sender.respond(withData: nil, challenge: challenge)
+            challenge.sender.respond(with: nil, to: challenge)
         }
     }
 
-    func userClient(_: ONGUserClient, didReceiveCustomRegistrationFinish challenge: ONGCustomRegistrationChallenge) {
+    func userClient(_ userClient: UserClient, didReceiveCustomRegistrationFinishChallenge challenge: CustomRegistrationChallenge) {
         registerUserEntity.customRegistrationChallenge = challenge
         if let info = challenge.info {
             registerUserEntity.challengeCode = info.data
@@ -155,6 +143,23 @@ extension RegisterUserInteractor: ONGRegistrationDelegate {
             registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
         } else if challenge.identityProvider.identifier == "qr-code-api" {
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
+        } else {
+            handleQRCode(nil)
+            registerUserPresenter?.registerUserActionFailed(AppError(errorDescription: "Identity provider \(challenge.identityProvider.identifier) is not registered."))
         }
+    }
+
+    func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, with identityProvider: IdentityProvider, info: CustomInfo?) {
+        registerUserPresenter?.presentDashboardView(authenticatedUserProfile: userProfile)
+    }
+
+    func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            registerUserPresenter?.registerUserActionCancelled()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            registerUserPresenter?.registerUserActionFailed(mappedError)
+        }
+        registerUserEntity.errorMessage = nil
     }
 }

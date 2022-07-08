@@ -21,18 +21,20 @@ protocol DisconnectInteractorProtocol: AnyObject {
 
 class DisconnectInteractor: DisconnectInteractorProtocol {
     weak var disconnectPresenter: DisconnectInteractorToPresenterProtocol?
-
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
+    
     func disconnect() {
-        let userClient = ONGUserClient.sharedInstance()
-        if let profile = userClient.authenticatedUserProfile() {
-            userClient.deregisterUser(profile) { _, error in
-                if let error = error {
-                    let mappedError = ErrorMapper().mapError(error)
-                    self.disconnectPresenter?.disconnectActionFailed(mappedError)
-                } else {
-                    self.disconnectPresenter?.popToWelcomeView()
-                }
+        guard let profile = userClient.authenticatedUserProfile else { return }
+        userClient.deregister(user: profile) { error in
+            if let error = error {
+                let mappedError = ErrorMapper().mapError(error)
+                self.disconnectPresenter?.disconnectActionFailed(mappedError)
+            } else {
+                self.disconnectPresenter?.popToWelcomeView()
             }
         }
     }
+    
 }

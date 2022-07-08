@@ -14,7 +14,7 @@
 // limitations under the License.
 
 class ErrorMapper {
-    func mapError(_ error: Error, pinChallenge: ONGPinChallenge? = nil, customInfo: ONGCustomInfo? = nil) -> AppError {
+    func mapError(_ error: Error, pinChallenge: PinChallenge? = nil, customInfo: CustomInfo? = nil) -> AppError {
         switch error.domain {
         case ONGGenericErrorDomain:
             return GenericErrorDomainMapping().mapError(error)

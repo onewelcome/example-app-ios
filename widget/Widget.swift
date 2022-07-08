@@ -23,7 +23,7 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Startup().oneginiSDKStartup { success in
             if success {
-                guard let profile = ONGUserClient.sharedInstance().userProfiles().first else {
+                guard let profile = SharedUserClient.instance.userProfiles.first else {
                     let entries = [
                         SimpleEntry(date: Date(), implicitData: "User not registered")
                         ]

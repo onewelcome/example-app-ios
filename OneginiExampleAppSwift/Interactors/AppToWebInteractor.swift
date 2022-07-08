@@ -5,15 +5,18 @@ protocol AppToWebInteractorProtocol {
 }
 
 class AppToWebInteractor: AppToWebInteractorProtocol {
-    
-    let targetUrl = "https://demo-cim.onegini.com/personal/dashboard"
+    private let targetUrl = "https://demo-cim.onegini.com/personal/dashboard"
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
 
     func appToWebSingleSignOn(completion:@escaping ((URL?, AppError?) -> ())) {
         guard let url = URL(string: targetUrl) else {
             completion(nil, nil)
             return
         }
-        ONGUserClient.sharedInstance().appToWebSingleSignOn(withTargetUrl: url) { url, token, error in
+
+        userClient.appToWebSingleSignOn(with: url) { url, token, error in
             if let error = error {
                 let appError = ErrorMapper().mapError(error)
                 completion(nil, appError)

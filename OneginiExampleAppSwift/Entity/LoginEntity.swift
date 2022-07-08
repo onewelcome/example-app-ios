@@ -19,10 +19,10 @@ class LoginEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEntityP
     var pinError: AppError?
     var pinLength: Int?
     var pin: String?
-    var pinChallenge: ONGPinChallenge?
+    var pinChallenge: PinChallenge?
 
     var message: String?
-    var customAuthenticatorAuthenticationChallenege: ONGCustomAuthFinishAuthenticationChallenge?
+    var customAuthenticatorAuthenticationChallenege: CustomAuthFinishAuthenticationChallenge?
     var data: String = ""
     var cancelled: Bool = false
 }

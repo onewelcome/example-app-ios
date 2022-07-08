@@ -4,8 +4,11 @@ import UIKit
 import OneginiSDKiOS
 
 class ResourceGateway {
-    
-    func fetchImplicitResources(profile: ONGUserProfile, completion: @escaping (String?) -> Void) {
+    private var userClient: UserClient {
+        return SharedUserClient.instance
+    }
+
+    func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?) -> Void) {
         authenticateUserImplicitly(profile) { success in
             if success {
                 self.implicitResourcesRequest { userIdDecorated in
@@ -17,24 +20,22 @@ class ResourceGateway {
         }
     }
 
-    fileprivate func authenticateUserImplicitly(_ profile: ONGUserProfile, completion: @escaping (Bool) -> Void) {
-        ONGUserClient.sharedInstance().implicitlyAuthenticateUser(profile, scopes: nil) { success, error in
-            completion(success)
+    fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (Bool) -> Void) {
+        userClient.implicitlyAuthenticate(user: profile, with: nil) { error in
+            completion(error == nil)
         }
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?) -> Void) {
-        let implicitRequest = ONGResourceRequest(path: "user-id-decorated", method: "GET")
-        ONGUserClient.sharedInstance().fetchImplicitResource(implicitRequest) { response, error in
+        let implicitRequest = ResourceRequestFactory.makeResourceRequest(path: "user-id-decorated")
+        userClient.sendImplicitRequest(implicitRequest) { response, error in
             guard let data = response?.data,
-                  let responseJsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
-                  let responseData = responseJsonData else {
-                completion(nil)
-                return
-            }
-            let userIdDecorated = responseData["decorated_user_id"]
+                  let responseJsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] else {
+                      completion(nil)
+                      return
+                  }
+            let userIdDecorated = responseJsonData["decorated_user_id"]
             completion(userIdDecorated)
         }
     }
-
 }
