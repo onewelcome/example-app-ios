@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol WelcomePresenterProtocol: class {
+protocol WelcomePresenterProtocol: AnyObject {
     var loginPresenter: LoginPresenterProtocols { get set }
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }

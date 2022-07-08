@@ -71,7 +71,7 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
                 completion(nil, mappedError)
             } else {
                 if let data = response?.data {
-                    if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: String],
+                    if let responseData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
                         let userIdDecorated = responseData["decorated_user_id"] {
                         completion(userIdDecorated, nil)
                     }

@@ -16,7 +16,7 @@
 import UIKit
 import OneginiSDKiOS
 
-protocol LoginViewDelegate: class {
+protocol LoginViewDelegate: AnyObject {
     func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?)
     func profilesInLoginView(_ loginView: UIViewController) -> [UserProfile]
     func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator]

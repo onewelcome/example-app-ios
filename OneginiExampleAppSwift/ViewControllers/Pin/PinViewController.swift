@@ -21,7 +21,7 @@ protocol PinViewControllerEntityProtocol {
     var pinLength: Int? { get }
 }
 
-protocol PinViewToPresenterProtocol: class {
+protocol PinViewToPresenterProtocol: AnyObject {
     func handlePin()
 }
 

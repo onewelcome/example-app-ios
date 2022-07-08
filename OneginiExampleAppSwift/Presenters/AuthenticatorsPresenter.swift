@@ -17,7 +17,7 @@ import UIKit
 
 typealias AuthenticatorsPresenterProtocol = AuthenticatorsInteractorToPresenterProtocol & AuthenticatorsViewToPresenterProtocol
 
-protocol AuthenticatorsInteractorToPresenterProtocol: class {
+protocol AuthenticatorsInteractorToPresenterProtocol: AnyObject {
     func presentAuthenticatorsView()
     func presentPinView(registerAuthenticatorEntity: RegisterAuthenticatorEntity)
     func backToAuthenticatorsView(authenticator: Authenticator)
@@ -28,7 +28,7 @@ protocol AuthenticatorsInteractorToPresenterProtocol: class {
     func popToWelcomeView(_ error: AppError)
 }
 
-protocol AuthenticatorsViewToPresenterProtocol: class {
+protocol AuthenticatorsViewToPresenterProtocol: AnyObject {
     func registerAuthenticator(_ authenticator: Authenticator)
     func deregisterAuthenticator(_ authenticator: Authenticator)
     func popToDashboardView()

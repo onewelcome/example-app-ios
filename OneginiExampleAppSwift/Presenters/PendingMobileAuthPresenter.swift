@@ -15,14 +15,14 @@
 
 import UIKit
 
-protocol PendingMobileAuthPresenterProtocol: class {
+protocol PendingMobileAuthPresenterProtocol: AnyObject {
     var viewDelegate: UIViewController & PendingMobileAuthPresenterViewDelegate { get set }
 
     func reloadPendingMobileAuth()
     func handlePendingMobileAuth(_ pendingTransaction: PendingMobileAuthRequest)
 }
 
-protocol PendingMobileAuthPresenterViewDelegate: class {
+protocol PendingMobileAuthPresenterViewDelegate: AnyObject {
     var pendingMobileAuths: [PendingMobileAuthRequest] { get set }
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol? { get set }
 }

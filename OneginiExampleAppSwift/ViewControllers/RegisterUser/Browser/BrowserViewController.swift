@@ -60,7 +60,7 @@ class BrowserViewController: UIViewController, WKUIDelegate {
     func configureCancelButton() {
         let cancelButtonFrame = CGRect(x: view.frame.width - 70, y: 30, width: 70, height: 25)
         cancelButton = UIButton(frame: cancelButtonFrame)
-        let cancelButtonStringAttributes: [NSAttributedStringKey: Any] = [
+        let cancelButtonStringAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "Helvetica Neue", size: 17)!,
             .foregroundColor: UIColor(red: 0 / 255, green: 113 / 255, blue: 155 / 255, alpha: 1),
         ]
