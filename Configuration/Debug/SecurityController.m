@@ -5,9 +5,9 @@
   return NO;
 }
 +(bool)debugDetection{
-    return NO;
+  return NO;
 }
-+(BOOL)debugLogs{
-    return YES;
++(bool)debugLogs{
+  return YES;
 }
 @end
