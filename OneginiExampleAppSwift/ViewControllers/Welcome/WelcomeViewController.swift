@@ -62,14 +62,14 @@ class WelcomeViewController: UIViewController {
 
     func displayLognViewController() {
         guard let loginViewController = loginViewController else { return }
-        addChildViewController(loginViewController)
+        addChild(loginViewController)
         tabView.addSubview(loginViewController.view)
         loginViewController.view.frame = tabView.bounds
     }
 
     func displayRegisterUserViewController() {
         guard let registerUserViewController = registerUserViewController else { return }
-        addChildViewController(registerUserViewController)
+        addChild(registerUserViewController)
         tabView.addSubview(registerUserViewController.view)
         registerUserViewController.view.frame = tabView.bounds
     }

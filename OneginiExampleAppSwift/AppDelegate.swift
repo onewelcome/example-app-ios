@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self)
     weak var pushMobileAuthEnrollment: PushMobileAuthEntrollmentProtocol?
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         oneginiSDKStartup()
         return true

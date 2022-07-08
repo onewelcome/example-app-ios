@@ -30,12 +30,11 @@ class ResourceGateway {
         let implicitRequest = ResourceRequestFactory.makeResourceRequest(path: "user-id-decorated")
         userClient.sendImplicitRequest(implicitRequest) { response, error in
             guard let data = response?.data,
-                  let responseJsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
-                  let responseData = responseJsonData else {
+                  let responseJsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] else {
                       completion(nil)
                       return
                   }
-            let userIdDecorated = responseData["decorated_user_id"]
+            let userIdDecorated = responseJsonData["decorated_user_id"]
             completion(userIdDecorated)
         }
     }

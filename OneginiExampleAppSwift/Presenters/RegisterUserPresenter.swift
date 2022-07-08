@@ -17,7 +17,7 @@ import UIKit
 
 typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProtocol & RegisterUserViewToPresenterProtocol & PinViewToPresenterProtocol
 
-protocol RegisterUserInteractorToPresenterProtocol: class {
+protocol RegisterUserInteractorToPresenterProtocol: AnyObject {
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity)

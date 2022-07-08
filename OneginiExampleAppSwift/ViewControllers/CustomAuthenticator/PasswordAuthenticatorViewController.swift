@@ -28,7 +28,7 @@ protocol PasswordAuthenticatorEntityProtocol {
     var message: String? { get set }
 }
 
-protocol PasswordAuthenticatorViewToPresenterProtocol: class {
+protocol PasswordAuthenticatorViewToPresenterProtocol: AnyObject {
     func handlePassword()
 }
 

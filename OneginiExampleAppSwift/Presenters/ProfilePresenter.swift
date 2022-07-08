@@ -17,11 +17,11 @@ import UIKit
 
 typealias ProfilePresenterProtocol = ProfileInteractorToPresenterProtocol & ProfileViewToPresenterProtocol
 
-protocol ProfileInteractorToPresenterProtocol: class {
+protocol ProfileInteractorToPresenterProtocol: AnyObject {
     func presentProfileView()
 }
 
-protocol ProfileViewToPresenterProtocol: class {
+protocol ProfileViewToPresenterProtocol: AnyObject {
     func popToDashboardView()
     func popToProfileView()
     func setupDisconnectPresenter()

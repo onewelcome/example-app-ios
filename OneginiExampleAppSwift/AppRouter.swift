@@ -15,7 +15,7 @@
 
 import UIKit
 
-protocol AppRouterProtocol: class {
+protocol AppRouterProtocol: AnyObject {
     var window: LazyWindow { get }
     var startupPresenter: StartupPresenterProtocol { get }
     var welcomePresenter: WelcomePresenterProtocol { get }
