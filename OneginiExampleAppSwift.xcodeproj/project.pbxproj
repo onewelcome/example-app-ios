@@ -27,8 +27,6 @@
 		7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A6820D7B8E100EF1A79 /* AppDelegate.swift */; };
 		7E300A7020D7B8E200EF1A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */; };
 		7E300A7320D7B8E200EF1A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */; };
-		7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */; };
-		7E300A8920D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */; };
 		7E300ABF20D7E84300EF1A79 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E300ABE20D7E84300EF1A79 /* README.md */; };
 		7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AC920D8F8D400EF1A79 /* StartupPresenter.swift */; };
 		7E300ACE20DA498600EF1A79 /* StartupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */; };
@@ -245,20 +243,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7E300A7A20D7B8E300EF1A79 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E300A6420D7B8E100EF1A79;
-			remoteInfo = OneginiExampleAppSwift;
-		};
-		7E300A8520D7B8E300EF1A79 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E300A6420D7B8E100EF1A79;
-			remoteInfo = OneginiExampleAppSwift;
-		};
 		7E804F67258A5C6D000E110E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
@@ -325,6 +309,7 @@
 		1FFC009718702E6DDAEA8B2D /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C86694A05A0BDF3521E08C /* OneginiConfigModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
 		32C29451D7D38838E2889E33 /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		3701AB83C506600B6F76C20C /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SecurityController.m; path = Configuration/SecurityController.m; sourceTree = "<group>"; };
 		3D54F1807A4C6823BAF15F72 /* Pods-OneginiExampleAppSwiftDebug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwiftDebug.release.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwiftDebug/Pods-OneginiExampleAppSwiftDebug.release.xcconfig"; sourceTree = "<group>"; };
 		49F25275EC90B5E2D8D04FC2 /* Pods-OneginiExampleAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneginiExampleAppSwift.debug.xcconfig"; path = "Target Support Files/Pods-OneginiExampleAppSwift/Pods-OneginiExampleAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		5646145C874C47AE520E88C4 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
@@ -347,12 +332,6 @@
 		7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E300A7220D7B8E200EF1A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E300A7420D7B8E200EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneginiExampleAppSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiExampleAppSwiftTests.swift; sourceTree = "<group>"; };
-		7E300A7F20D7B8E300EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneginiExampleAppSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneginiExampleAppSwiftUITests.swift; sourceTree = "<group>"; };
-		7E300A8A20D7B8E300EF1A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E300A9D20D7DFB500EF1A79 /* OneginiExampleAppSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneginiExampleAppSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E300ABE20D7E84300EF1A79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7E300AC920D8F8D400EF1A79 /* StartupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPresenter.swift; sourceTree = "<group>"; };
@@ -461,7 +440,10 @@
 		ADE6AFA728785BE600CC3EE6 /* SecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
 		ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
 		BC98A75476EFC3CCA563300D /* Pods-WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		BFB1FD46873436AB2E799CDE /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SecurityController.h; path = Configuration/SecurityController.h; sourceTree = "<group>"; };
+		C7A7A84D30F6FE4051D1236B /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OneginiConfigModel.h; path = Configuration/OneginiConfigModel.h; sourceTree = "<group>"; };
 		E2291ED418FD123B5C9A9D77 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
+		F9EDB820454710956C3ADE1A /* OneginiConfigModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OneginiConfigModel.m; path = Configuration/OneginiConfigModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,20 +452,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7500CAE638EB373C2CE7CB9 /* Pods_OneginiExampleAppSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E300A7620D7B8E300EF1A79 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E300A8120D7B8E300EF1A79 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,8 +544,6 @@
 				7E804F71258A5C9D000E110E /* WidgetExtension.entitlements */,
 				7E300ABE20D7E84300EF1A79 /* README.md */,
 				7E300A6720D7B8E100EF1A79 /* OneginiExampleAppSwift */,
-				7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */,
-				7E300A8720D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */,
 				7E300AB720D7E5F800EF1A79 /* Configuration */,
 				7E804F61258A5C6A000E110E /* Widget */,
 				7E300A6620D7B8E100EF1A79 /* Products */,
@@ -590,8 +556,6 @@
 			isa = PBXGroup;
 			children = (
 				7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */,
-				7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */,
-				7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */,
 				7E804F5C258A5C69000E110E /* WidgetExtension.appex */,
 				AD07D45028771F4F0095571A /* OneginiExampleAppSwiftDebug.app */,
 			);
@@ -616,24 +580,6 @@
 				7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */,
 			);
 			path = OneginiExampleAppSwift;
-			sourceTree = "<group>";
-		};
-		7E300A7C20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				7E300A7D20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift */,
-				7E300A7F20D7B8E300EF1A79 /* Info.plist */,
-			);
-			path = OneginiExampleAppSwiftTests;
-			sourceTree = "<group>";
-		};
-		7E300A8720D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7E300A8820D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift */,
-				7E300A8A20D7B8E300EF1A79 /* Info.plist */,
-			);
-			path = OneginiExampleAppSwiftUITests;
 			sourceTree = "<group>";
 		};
 		7E300A9E20D7E00000EF1A79 /* ViewControllers */ = {
@@ -666,6 +612,10 @@
 			children = (
 				ADE6AFA428785BE600CC3EE6 /* Production */,
 				AD07D457287724C80095571A /* Debug */,
+				F9EDB820454710956C3ADE1A /* OneginiConfigModel.m */,
+				C7A7A84D30F6FE4051D1236B /* OneginiConfigModel.h */,
+				BFB1FD46873436AB2E799CDE /* SecurityController.h */,
+				3701AB83C506600B6F76C20C /* SecurityController.m */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -1043,42 +993,6 @@
 			productReference = 7E300A6520D7B8E100EF1A79 /* OneginiExampleAppSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7E300A7820D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7E300A9020D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftTests" */;
-			buildPhases = (
-				7E300A7520D7B8E300EF1A79 /* Sources */,
-				7E300A7620D7B8E300EF1A79 /* Frameworks */,
-				7E300A7720D7B8E300EF1A79 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7E300A7B20D7B8E300EF1A79 /* PBXTargetDependency */,
-			);
-			name = OneginiExampleAppSwiftTests;
-			productName = OneginiExampleAppSwiftTests;
-			productReference = 7E300A7920D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7E300A8320D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7E300A9320D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftUITests" */;
-			buildPhases = (
-				7E300A8020D7B8E300EF1A79 /* Sources */,
-				7E300A8120D7B8E300EF1A79 /* Frameworks */,
-				7E300A8220D7B8E300EF1A79 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7E300A8620D7B8E300EF1A79 /* PBXTargetDependency */,
-			);
-			name = OneginiExampleAppSwiftUITests;
-			productName = OneginiExampleAppSwiftUITests;
-			productReference = 7E300A8420D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		7E804F5B258A5C69000E110E /* WidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E804F6D258A5C6D000E110E /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
@@ -1139,14 +1053,6 @@
 							};
 						};
 					};
-					7E300A7820D7B8E300EF1A79 = {
-						CreatedOnToolsVersion = 9.3;
-						TestTargetID = 7E300A6420D7B8E100EF1A79;
-					};
-					7E300A8320D7B8E300EF1A79 = {
-						CreatedOnToolsVersion = 9.3;
-						TestTargetID = 7E300A6420D7B8E100EF1A79;
-					};
 					7E804F5B258A5C69000E110E = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -1167,8 +1073,6 @@
 			targets = (
 				7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */,
 				AD07D3D628771F4F0095571A /* OneginiExampleAppSwiftDebug */,
-				7E300A7820D7B8E300EF1A79 /* OneginiExampleAppSwiftTests */,
-				7E300A8320D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests */,
 				7E804F5B258A5C69000E110E /* WidgetExtension */,
 			);
 		};
@@ -1205,20 +1109,6 @@
 				86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */,
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
 				7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E300A7720D7B8E300EF1A79 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E300A8220D7B8E300EF1A79 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,22 +1345,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7E300A7520D7B8E300EF1A79 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E300A7E20D7B8E300EF1A79 /* OneginiExampleAppSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E300A8020D7B8E300EF1A79 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E300A8920D7B8E300EF1A79 /* OneginiExampleAppSwiftUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7E804F58258A5C69000E110E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1576,16 +1450,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7E300A7B20D7B8E300EF1A79 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */;
-			targetProxy = 7E300A7A20D7B8E300EF1A79 /* PBXContainerItemProxy */;
-		};
-		7E300A8620D7B8E300EF1A79 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7E300A6420D7B8E100EF1A79 /* OneginiExampleAppSwift */;
-			targetProxy = 7E300A8520D7B8E300EF1A79 /* PBXContainerItemProxy */;
-		};
 		7E804F68258A5C6D000E110E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7E804F5B258A5C69000E110E /* WidgetExtension */;
@@ -1780,80 +1644,6 @@
 			};
 			name = Release;
 		};
-		7E300A9120D7B8E300EF1A79 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
-				INFOPLIST_FILE = OneginiExampleAppSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneginiExampleAppSwift.app/OneginiExampleAppSwift";
-			};
-			name = Debug;
-		};
-		7E300A9220D7B8E300EF1A79 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
-				INFOPLIST_FILE = OneginiExampleAppSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneginiExampleAppSwift.app/OneginiExampleAppSwift";
-			};
-			name = Release;
-		};
-		7E300A9420D7B8E300EF1A79 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
-				INFOPLIST_FILE = OneginiExampleAppSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = OneginiExampleAppSwift;
-			};
-			name = Debug;
-		};
-		7E300A9520D7B8E300EF1A79 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
-				INFOPLIST_FILE = OneginiExampleAppSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = OneginiExampleAppSwift;
-			};
-			name = Release;
-		};
 		7E804F6B258A5C6D000E110E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 32C29451D7D38838E2889E33 /* Pods-WidgetExtension.debug.xcconfig */;
@@ -1917,7 +1707,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "OneginiExampleAppSwift copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "ExampleApp-Debug";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1943,7 +1733,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "OneginiExampleAppSwift copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/OneginiExampleAppSwift/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "ExampleApp-Debug";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1974,24 +1764,6 @@
 			buildConfigurations = (
 				7E300A8E20D7B8E300EF1A79 /* Debug */,
 				7E300A8F20D7B8E300EF1A79 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7E300A9020D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7E300A9120D7B8E300EF1A79 /* Debug */,
-				7E300A9220D7B8E300EF1A79 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7E300A9320D7B8E300EF1A79 /* Build configuration list for PBXNativeTarget "OneginiExampleAppSwiftUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7E300A9420D7B8E300EF1A79 /* Debug */,
-				7E300A9520D7B8E300EF1A79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

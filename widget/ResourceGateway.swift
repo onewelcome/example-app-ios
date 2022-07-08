@@ -34,7 +34,7 @@ class ResourceGateway {
                       completion(nil)
                       return
                   }
-            let userIdDecorated = responseJsonData?["decorated_user_id"]
+            let userIdDecorated = responseJsonData["decorated_user_id"]
             completion(userIdDecorated)
         }
     }
