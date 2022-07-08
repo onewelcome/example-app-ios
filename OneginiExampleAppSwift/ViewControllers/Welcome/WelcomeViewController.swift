@@ -37,17 +37,17 @@ class WelcomeViewController: UIViewController {
     }
 
     func configureSegmentView() {
-        segmentView.titles = ["Log in", "Sign Up"]
+        segmentView.segments = LabelSegment.segments(withTitles: ["Log in", "Sign Up"])
         let customSubview = UIView(frame: CGRect(x: 0, y: 40, width: 100, height: 1.0))
         customSubview.backgroundColor = UIColor.gray
         customSubview.layer.cornerRadius = 2.0
         customSubview.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin]
-        segmentView.addSubviewToIndicator(customSubview)
+        segmentView.addSubview(customSubview)
     }
 
     func setupViewWithProfiles() {
         segmentView.isHidden = false
-        try? segmentView.setIndex(0)
+        segmentView.setIndex(0)
         displayLognViewController()
     }
 
@@ -57,7 +57,7 @@ class WelcomeViewController: UIViewController {
     }
 
     func selectSignUp() {
-        try? segmentView.setIndex(1)
+        segmentView.setIndex(1)
     }
 
     func displayLognViewController() {
