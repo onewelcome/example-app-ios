@@ -15,9 +15,9 @@ end
 
 target 'OneginiExampleAppSwift' do
   oneginiSDKiOS
-  pod 'Swinject', '2.4.1'
-  pod 'BetterSegmentedControl', '~> 0.9'
-  pod 'TransitionButton', '0.5.1'
+  pod 'Swinject', '2.8.1'
+  pod 'BetterSegmentedControl', '~> 2.0.0'
+  pod 'TransitionButton', '0.5.3'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 
 	target 'OneginiExampleAppSwiftTests' do
