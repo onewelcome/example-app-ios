@@ -915,10 +915,10 @@
 		AD07D457287724C80095571A /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				21C86694A05A0BDF3521E08C /* OneginiConfigModel.m */,
-				5646145C874C47AE520E88C4 /* OneginiConfigModel.h */,
 				E2291ED418FD123B5C9A9D77 /* SecurityController.h */,
 				820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */,
+				5646145C874C47AE520E88C4 /* OneginiConfigModel.h */,
+				21C86694A05A0BDF3521E08C /* OneginiConfigModel.m */,
 			);
 			name = Debug;
 			path = Configuration/Debug;
@@ -928,8 +928,8 @@
 			isa = PBXGroup;
 			children = (
 				ADE6AFA528785BE600CC3EE6 /* SecurityController.h */,
-				ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */,
 				ADE6AFA728785BE600CC3EE6 /* SecurityController.m */,
+				ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */,
 				ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */,
 			);
 			name = Production;
