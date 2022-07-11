@@ -9,24 +9,25 @@ def oneginiSDKiOS
    pod 'OneginiSDKiOS', '~> 12.0.0'
 end
 
+def externalRegularDependencies
+  pod 'Swinject', '2.8.1'
+  pod 'BetterSegmentedControl', '~> 2.0.0'
+  pod 'TransitionButton', '0.5.3'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+end
+
 target 'WidgetExtension' do
 	oneginiSDKiOS
 end
 
 target 'OneginiExampleAppSwift' do
   oneginiSDKiOS
-  pod 'Swinject', '2.8.1'
-  pod 'BetterSegmentedControl', '~> 2.0.0'
-  pod 'TransitionButton', '0.5.3'
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
+  externalRegularDependencies
+end
 
-	target 'OneginiExampleAppSwiftTests' do
-		inherit! :search_paths
-  end
-
-  target 'OneginiExampleAppSwiftUITests' do
-    inherit! :search_paths
-  end
+target 'OneginiExampleAppSwiftDebug' do
+  oneginiSDKiOS
+  externalRegularDependencies
 end
 
 post_install do |installer|

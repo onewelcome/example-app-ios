@@ -139,9 +139,10 @@ extension RegisterUserInteractor: RegistrationDelegate {
             registerUserEntity.challengeCode = info.data
             mapErrorMessageFromStatus(info.status, identityProviderIdentifier: challenge.identityProvider.identifier)
         }
+        let qrRegistrationIdentifiers = ["qr-code-api", "qr-registration", "qr_registration"]
         if challenge.identityProvider.identifier == "2-way-otp-api" {
             registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
-        } else if challenge.identityProvider.identifier == "qr-code-api" {
+        } else if qrRegistrationIdentifiers.contains(challenge.identityProvider.identifier) {
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
         } else {
             handleQRCode(nil)
