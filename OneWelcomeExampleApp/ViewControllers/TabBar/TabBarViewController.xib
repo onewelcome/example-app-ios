@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tabBarController id="Oik-gB-ml1">
+            <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2LW-c1-37k">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" name="Main"/>
+            </tabBar>
+            <viewControllers>
+                <navigationController id="3TD-nq-2et">
+                    <tabBarItem key="tabBarItem" title="Home" id="7Hp-Zy-zCz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="j5a-bO-gWZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Main"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController id="7jU-fM-6qV">
+                            <view key="view" contentMode="scaleToFill" id="Lzs-69-Ips">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <viewLayoutGuide key="safeArea" id="6sr-TO-DX5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="Main"/>
+                            </view>
+                            <navigationItem key="navigationItem" title="Item" id="9xT-65-UWG"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
+                <viewController id="CFY-fl-Ank">
+                    <view key="view" contentMode="scaleToFill" id="sMz-b3-kJO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vZq-N1-MG1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Notifications" id="lDo-uK-6dI"/>
+                </viewController>
+            </viewControllers>
+            <point key="canvasLocation" x="-285" y="126"/>
+        </tabBarController>
+    </objects>
+    <resources>
+        <namedColor name="Main">
+            <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
