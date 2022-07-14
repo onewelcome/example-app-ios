@@ -24,7 +24,7 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left-arrow (3)" translatesAutoresizingMaskIntoConstraints="NO" id="Frw-3V-SAR">
                     <rect key="frame" x="16" y="49" width="20" height="20"/>
-                    <color key="tintColor" name="Main"/>
+                    <color key="tintColor" name="appMain"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="DhO-Iw-eRc"/>
                         <constraint firstAttribute="height" constant="20" id="tJI-Ae-Tx6"/>
@@ -35,9 +35,9 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="67" id="vjV-u3-43d"/>
                     </constraints>
-                    <color key="tintColor" name="Main"/>
+                    <color key="tintColor" name="appMain"/>
                     <state key="normal" title="Back">
-                        <color key="titleColor" name="Main"/>
+                        <color key="titleColor" name="appMain"/>
                     </state>
                     <connections>
                         <action selector="backPressed:" destination="-1" eventType="touchUpInside" id="dTC-BF-yVk"/>
@@ -88,7 +88,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLj-MH-7Ob" customClass="TransitionButton" customModule="TransitionButton">
                             <rect key="frame" x="16" y="70" width="343" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="appBackground"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="aUJ-4k-yiO"/>
                             </constraints>
@@ -103,7 +103,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntF-Kg-kRA" customClass="TransitionButton" customModule="TransitionButton">
                             <rect key="frame" x="16" y="176" width="343" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="appBackground"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="7Ac-TV-QrD"/>
                             </constraints>
@@ -144,7 +144,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAG-77-XCQ">
                             <rect key="frame" x="16" y="285" width="343" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="appBackground"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="rOk-Wk-jHR"/>
                             </constraints>
@@ -157,7 +157,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="appBackground"/>
                     <constraints>
                         <constraint firstItem="f4h-Pd-ISK" firstAttribute="leading" secondItem="G6Q-Uc-QGc" secondAttribute="trailing" constant="8" id="0f5-Ie-QxF"/>
                         <constraint firstItem="6ta-Yv-HvK" firstAttribute="top" secondItem="ntF-Kg-kRA" secondAttribute="bottom" constant="44" id="15y-QY-KMX"/>
@@ -210,14 +210,14 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Authentication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nq5-9X-f9J">
                             <rect key="frame" x="50" y="0.0" width="268.33333333333331" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                            <color key="textColor" name="Main"/>
+                            <color key="textColor" name="appMain"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="appBackground"/>
             <constraints>
                 <constraint firstItem="4mf-kP-FYA" firstAttribute="centerX" secondItem="u4i-cU-Q7K" secondAttribute="centerX" id="EfT-Ei-2Xq"/>
                 <constraint firstItem="4mf-kP-FYA" firstAttribute="top" secondItem="mKo-RZ-Qak" secondAttribute="bottom" constant="18" id="FG9-gR-VgN"/>
@@ -245,7 +245,10 @@
         <image name="Background" width="414" height="896"/>
         <image name="Key" width="26" height="26"/>
         <image name="left-arrow (3)" width="24" height="24"/>
-        <namedColor name="Main">
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
             <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">

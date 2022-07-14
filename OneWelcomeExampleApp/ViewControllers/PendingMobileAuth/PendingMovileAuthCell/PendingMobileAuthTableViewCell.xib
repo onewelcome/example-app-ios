@@ -42,7 +42,7 @@
                                 <rect key="frame" x="15" y="36" width="321" height="53"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <color key="textColor" name="Main"/>
+                                <color key="textColor" name="appMain"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expire time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWt-8w-BgU">
@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="appBackground"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="IWt-8w-BgU" secondAttribute="bottom" constant="12" id="2Hc-Ed-IR8"/>
                             <constraint firstItem="BY9-3S-1Q4" firstAttribute="firstBaseline" secondItem="fLs-kU-sSO" secondAttribute="firstBaseline" id="67L-jr-0bT"/>
@@ -95,7 +95,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="Main">
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
             <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

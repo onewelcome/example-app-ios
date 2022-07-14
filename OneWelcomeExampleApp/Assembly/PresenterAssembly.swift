@@ -95,7 +95,7 @@ class PresenterAssembly: Assembly {
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)
         container.register(UIWindow.self) { _ in
             let window = UIWindow(frame: UIScreen.main.bounds)
-            window.backgroundColor = .white
+            window.backgroundColor = .appBackground
             window.makeKeyAndVisible()
             return window
         }.inObjectScope(.container)

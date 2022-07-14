@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -29,14 +29,14 @@
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" allowsSelection="NO" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kJ-Fm-VUk">
                                     <rect key="frame" x="7" y="7" width="215" height="326"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="appBackground"/>
                                     <color key="separatorColor" red="0.0" green="0.4431372549" blue="0.60784313729999995" alpha="0.39951305650000002" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="zqW-ax-emx"/>
                                     </connections>
                                 </tableView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="appBackground"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="0kJ-Fm-VUk" secondAttribute="bottom" constant="9" id="AaA-fN-eXL"/>
                                 <constraint firstItem="0kJ-Fm-VUk" firstAttribute="top" secondItem="1gV-dG-IvU" secondAttribute="top" constant="7" id="YkI-34-5gr"/>
@@ -46,7 +46,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-SF-yCw">
                             <rect key="frame" x="6" y="359" width="231" height="30"/>
-                            <color key="backgroundColor" name="Main"/>
+                            <color key="backgroundColor" name="appMain"/>
                             <state key="normal" title="Dismiss">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -79,7 +79,10 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="Main">
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
             <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

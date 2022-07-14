@@ -35,7 +35,7 @@ class PendingMobileAuthViewController: UIViewController, PendingMobileAuthPresen
 
     func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.white
+        refreshControl.tintColor = .appBackground
         pendingMobileAuthTableView.backgroundView = refreshControl
         refreshControl.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
     }

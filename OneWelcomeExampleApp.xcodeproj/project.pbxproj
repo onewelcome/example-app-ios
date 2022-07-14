@@ -126,6 +126,9 @@
 		86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E7212C4A9A005FA824 /* TabBarController.swift */; };
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
+		8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
+		8D5B76CF2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
+		8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		A7D1D657909193C0B80F176F /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFC009718702E6DDAEA8B2D /* Pods_WidgetExtension.framework */; };
 		AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
@@ -431,6 +434,7 @@
 		86CD10E7212C4A9A005FA824 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthTableViewCell.swift; sourceTree = "<group>"; };
 		86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthTableViewCell.xib; sourceTree = "<group>"; };
+		8D5B76CD2880417900876B0C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8FF346485C61928877C8ED47 /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA528785BE600CC3EE6 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
@@ -840,6 +844,7 @@
 			children = (
 				7EB1F6162100C32700741E92 /* ErrorExtension.swift */,
 				7E8A181F211325240063BDF4 /* ButtonExtension.swift */,
+				8D5B76CD2880417900876B0C /* UIColorExtension.swift */,
 			);
 			name = Extensions;
 			path = "New Group";
@@ -1296,6 +1301,7 @@
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
+				8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
@@ -1346,6 +1352,7 @@
 				7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */,
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
+				8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
 				7E804FA4258A5D3F000E110E /* (null) in Sources */,
 				7E804FA3258A5D3F000E110E /* (null) in Sources */,
@@ -1397,6 +1404,7 @@
 				AD07D40128771F4F0095571A /* AppDelegate.swift in Sources */,
 				AD07D40228771F4F0095571A /* ProfileViewController.swift in Sources */,
 				AD07D40328771F4F0095571A /* AuthenticatorsViewController.swift in Sources */,
+				8D5B76CF2880417900876B0C /* UIColorExtension.swift in Sources */,
 				AD07D40428771F4F0095571A /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
 				AD07D40528771F4F0095571A /* FetchImplicitDataInteractor.swift in Sources */,
 				AD07D40628771F4F0095571A /* InteractorAssembly.swift in Sources */,

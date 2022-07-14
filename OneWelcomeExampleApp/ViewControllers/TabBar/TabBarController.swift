@@ -23,7 +23,7 @@ class TabBarController: UITabBarController {
         viewControllers = [navigationController, pendingMobileAuthViewController, applicationInfoViewController]
         self.delegate = delegate
         tabBar.isTranslucent = false
-        tabBar.tintColor = UIColor(named: "Main")
+        tabBar.tintColor = .appMain
 
         let tabBarHome = tabBar.items![0]
         tabBarHome.title = "User"

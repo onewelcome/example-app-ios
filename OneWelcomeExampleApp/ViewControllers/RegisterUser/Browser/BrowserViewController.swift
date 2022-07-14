@@ -42,7 +42,7 @@ class BrowserViewController: UIViewController, WKUIDelegate {
 
     override func loadView() {
         super.loadView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .appBackground
         configureCancelButton()
         configureWebView()
         let presentationController = navigationController?.presentationController ?? presentationController
@@ -54,6 +54,9 @@ class BrowserViewController: UIViewController, WKUIDelegate {
         let webViewFrame = CGRect(x: 0, y: 55, width: view.frame.width, height: view.frame.height - 55)
         webView = WKWebView(frame: webViewFrame, configuration: webConfiguration)
         webView.navigationDelegate = self
+        webView.isOpaque = false
+        webView.backgroundColor = .clear
+        webView.scrollView.backgroundColor = .clear
         view.addSubview(webView)
     }
 
@@ -62,7 +65,7 @@ class BrowserViewController: UIViewController, WKUIDelegate {
         cancelButton = UIButton(frame: cancelButtonFrame)
         let cancelButtonStringAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "Helvetica Neue", size: 17)!,
-            .foregroundColor: UIColor(named: "Main")!,
+            .foregroundColor: UIColor.appMain,
         ]
         let cancelButtonString = NSAttributedString(string: "Cancel", attributes: cancelButtonStringAttributes)
         cancelButton.setTitleColor(.label, for: .normal)

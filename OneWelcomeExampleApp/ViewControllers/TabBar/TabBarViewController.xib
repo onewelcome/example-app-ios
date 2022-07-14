@@ -15,8 +15,8 @@
             <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2LW-c1-37k">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                <color key="tintColor" name="Main"/>
+                <color key="backgroundColor" name="appBackground"/>
+                <color key="tintColor" name="appMain"/>
             </tabBar>
             <viewControllers>
                 <navigationController id="3TD-nq-2et">
@@ -24,7 +24,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="j5a-bO-gWZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="Main"/>
+                        <color key="tintColor" name="appMain"/>
                     </navigationBar>
                     <viewControllers>
                         <viewController id="7jU-fM-6qV">
@@ -32,8 +32,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <viewLayoutGuide key="safeArea" id="6sr-TO-DX5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" name="Main"/>
+                                <color key="backgroundColor" name="appBackground"/>
+                                <color key="tintColor" name="appMain"/>
                             </view>
                             <navigationItem key="navigationItem" title="Item" id="9xT-65-UWG"/>
                         </viewController>
@@ -53,7 +53,10 @@
         </tabBarController>
     </objects>
     <resources>
-        <namedColor name="Main">
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
             <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -141,7 +141,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="appBackground"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="3eH-ft-s3r" secondAttribute="trailing" constant="15" id="0Sl-h6-mPl"/>
                         <constraint firstItem="9nf-Rv-HYZ" firstAttribute="bottom" secondItem="3eH-ft-s3r" secondAttribute="bottom" id="7lm-f6-PAN"/>
@@ -159,7 +159,7 @@
                         <constraint firstAttribute="width" constant="67" id="IT7-eA-VCW"/>
                     </constraints>
                     <state key="normal" title="Back">
-                        <color key="titleColor" name="Main"/>
+                        <color key="titleColor" name="appMain"/>
                     </state>
                     <connections>
                         <action selector="backPressed:" destination="-1" eventType="touchUpInside" id="tbM-iI-4vC"/>
@@ -178,14 +178,14 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="mHc-9c-8n6">
                             <rect key="frame" x="49.999999999999979" y="0.0" width="79.666666666666686" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                            <color key="textColor" name="Main"/>
+                            <color key="textColor" name="appMain"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left-arrow (3)" translatesAutoresizingMaskIntoConstraints="NO" id="eia-S3-UJq">
                     <rect key="frame" x="16" y="49" width="20" height="20"/>
-                    <color key="tintColor" name="Main"/>
+                    <color key="tintColor" name="appMain"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="H1M-e6-SwT"/>
                         <constraint firstAttribute="height" constant="20" id="OJF-4b-7iO"/>
@@ -193,7 +193,7 @@
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="appBackground"/>
             <constraints>
                 <constraint firstItem="eia-S3-UJq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="1dC-h0-MjP"/>
                 <constraint firstItem="L8M-xf-xKf" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KbR-Zo-TPg"/>
@@ -216,7 +216,10 @@
         <image name="password" width="128" height="128"/>
         <image name="remove-user" width="128" height="128"/>
         <image name="smartphone-call" width="128" height="128"/>
-        <namedColor name="Main">
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
             <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -57,7 +57,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="appBackground"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="O61-ZM-lty" secondAttribute="trailing" constant="30" id="92B-VO-vH1"/>
                         <constraint firstItem="U79-4V-kcZ" firstAttribute="top" secondItem="CmL-04-r4U" secondAttribute="top" id="BAO-bg-9Rj"/>
@@ -86,14 +86,14 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending Transactions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="rD4-Fa-QyI">
                             <rect key="frame" x="50" y="0.0" width="263.33333333333331" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                            <color key="textColor" name="Main"/>
+                            <color key="textColor" name="appMain"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="skS-M7-NR9"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="appBackground"/>
             <constraints>
                 <constraint firstItem="bcs-At-La2" firstAttribute="top" secondItem="skS-M7-NR9" secondAttribute="top" constant="17" id="AEI-wB-5Dv"/>
                 <constraint firstItem="J1q-BP-9lx" firstAttribute="leading" secondItem="skS-M7-NR9" secondAttribute="leading" id="cDL-YO-1Xs"/>
@@ -108,7 +108,10 @@
     <resources>
         <image name="Background" width="414" height="896"/>
         <image name="Key" width="26" height="26"/>
-        <namedColor name="Main">
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
             <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
