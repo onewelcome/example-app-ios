@@ -97,6 +97,14 @@
                             <state key="normal" title="Enroll">
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                    <color key="value" name="appMain"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
+                                    <color key="value" name="appBackground"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="enrollMobileAuth:" destination="-1" eventType="touchUpInside" id="euA-7j-i3D"/>
                             </connections>
@@ -111,6 +119,14 @@
                             <state key="normal" title="Enroll">
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                    <color key="value" name="appMain"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
+                                    <color key="value" name="appBackground"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="enrollPushMobileAuth:" destination="-1" eventType="touchUpInside" id="eKL-8U-zlf"/>
                             </connections>

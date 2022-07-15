@@ -17,6 +17,13 @@ import SkyFloatingLabelTextField
 import TransitionButton
 import UIKit
 
+extension UIButton {
+    func makeDisable(_ disable: Bool) {
+        self.alpha = !disable ? 1.0 : 0.5
+        self.isEnabled = !disable
+    }
+}
+
 class MobileAuthViewController: UIViewController {
     weak var mobileAuthViewToPresenterProtocol: MobileAuthViewToPresenterProtocol?
 
@@ -32,8 +39,9 @@ class MobileAuthViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol else { return }
-        enrollMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth()
-        enrollPushMobileAuthButton.isEnabled = !mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth()
+        
+        enrollMobileAuthButton.makeDisable(mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth())
+        enrollPushMobileAuthButton.makeDisable(mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth())
     }
 
     @IBAction func enrollMobileAuth(_: Any) {
@@ -69,8 +77,9 @@ class MobileAuthViewController: UIViewController {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
                 self.view.isUserInteractionEnabled = true
+                self.enrollPushMobileAuthButton.makeDisable(false)
                 if succeed {
-                    self.enrollPushMobileAuthButton.isEnabled = false
+                    self.enrollPushMobileAuthButton.makeDisable(true)
                 }
             })
         })
@@ -80,8 +89,9 @@ class MobileAuthViewController: UIViewController {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
                 self.view.isUserInteractionEnabled = true
+                self.enrollMobileAuthButton.makeDisable(false)
                 if succeed {
-                    self.enrollMobileAuthButton.isEnabled = false
+                    self.enrollMobileAuthButton.makeDisable(true)
                 }
             })
         })
