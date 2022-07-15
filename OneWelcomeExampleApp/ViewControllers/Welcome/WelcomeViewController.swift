@@ -43,10 +43,10 @@ class WelcomeViewController: UIViewController {
                                              numberOfLines: 1,
                                              normalBackgroundColor: nil,
                                              normalFont: normalFont,
-                                             normalTextColor: .label,
-                                             selectedBackgroundColor: nil,
+                                             normalTextColor: .appBackgroundReversed,
+                                             selectedBackgroundColor: .appBackgroundReversed,
                                              selectedFont: selectedFont,
-                                             selectedTextColor: nil)
+                                             selectedTextColor: .appBackground)
         segmentView.segments = segments
     }
 
