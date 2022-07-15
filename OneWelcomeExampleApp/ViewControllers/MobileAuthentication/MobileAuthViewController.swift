@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2022 OneWelcome. All rights reserved.
+// Copyright © 2022 OneWelcome. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import TransitionButton
 import UIKit
 
 extension UIButton {
-    func makeDisable(_ disable: Bool) {
+    func makeDisabled(_ disable: Bool) {
         self.alpha = !disable ? 1.0 : 0.5
         self.isEnabled = !disable
     }
@@ -40,8 +40,8 @@ class MobileAuthViewController: UIViewController {
         super.viewWillAppear(animated)
         guard let mobileAuthViewToPresenterProtocol = mobileAuthViewToPresenterProtocol else { return }
         
-        enrollMobileAuthButton.makeDisable(mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth())
-        enrollPushMobileAuthButton.makeDisable(mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth())
+        enrollMobileAuthButton.makeDisabled(mobileAuthViewToPresenterProtocol.isUserEnrolledForMobileAuth())
+        enrollPushMobileAuthButton.makeDisabled(mobileAuthViewToPresenterProtocol.isUserEnrolledForPushMobileAuth())
     }
 
     @IBAction func enrollMobileAuth(_: Any) {
@@ -77,9 +77,9 @@ class MobileAuthViewController: UIViewController {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
                 self.view.isUserInteractionEnabled = true
-                self.enrollPushMobileAuthButton.makeDisable(false)
+                self.enrollPushMobileAuthButton.makeDisabled(false)
                 if succeed {
-                    self.enrollPushMobileAuthButton.makeDisable(true)
+                    self.enrollPushMobileAuthButton.makeDisabled(true)
                 }
             })
         })
@@ -89,9 +89,9 @@ class MobileAuthViewController: UIViewController {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {
                 self.view.isUserInteractionEnabled = true
-                self.enrollMobileAuthButton.makeDisable(false)
+                self.enrollMobileAuthButton.makeDisabled(false)
                 if succeed {
-                    self.enrollMobileAuthButton.makeDisable(true)
+                    self.enrollMobileAuthButton.makeDisabled(true)
                 }
             })
         })
