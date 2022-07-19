@@ -55,7 +55,7 @@ struct WidgetEntryView : View {
 
     var body: some View {
         ZStack {
-            Image("light-gray-wallpaper-texture")
+            Image("Background")
                 .resizable()
                 .scaledToFill()
             switch family {

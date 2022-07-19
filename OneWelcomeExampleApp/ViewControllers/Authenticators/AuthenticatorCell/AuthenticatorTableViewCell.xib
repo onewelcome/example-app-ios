@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AuthenticatorTableViewCell" rowHeight="63" id="KGk-i7-Jjw" customClass="AuthenticatorTableViewCell" customModule="OneWelcomeExampleApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="63"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="340" height="63"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcl-O0-HRk" customClass="TransitionButton" customModule="TransitionButton">
+                        <rect key="frame" x="248" y="9" width="92" height="28"/>
+                        <color key="backgroundColor" name="appBackground"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="EaP-bh-fCr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Register">
+                            <color key="titleColor" systemColor="labelColor"/>
+                        </state>
+                        <connections>
+                            <action selector="register:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S7U-pQ-dpu"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beC-wj-CgS" customClass="TransitionButton" customModule="TransitionButton">
+                        <rect key="frame" x="248" y="9" width="92" height="28"/>
+                        <color key="backgroundColor" name="appBackground"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="yhr-hL-nlN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Deregister">
+                            <color key="titleColor" systemColor="labelColor"/>
+                        </state>
+                        <connections>
+                            <action selector="deregister:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l2h-xh-qlK"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-9W-LMZ">
+                        <rect key="frame" x="0.0" y="42" width="115" height="23"/>
+                        <color key="tintColor" name="appMain"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="ak2-kO-yKF"/>
+                            <constraint firstAttribute="height" constant="23" id="pL2-O5-tXo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM4-KT-eoh">
+                        <rect key="frame" x="0.0" y="9" width="243" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="VWU-xo-uxb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P78-Vc-fro" customClass="TransitionButton" customModule="TransitionButton">
+                        <rect key="frame" x="0.0" y="42" width="115" height="24"/>
+                        <color key="backgroundColor" name="appMain"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="9sc-u2-PhL"/>
+                            <constraint firstAttribute="width" constant="115" id="QCi-xp-i4R"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="Set as preferred">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="setPreferredAuthenticator:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mYB-xc-3TY"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Tcl-O0-HRk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="6ie-e3-GnU"/>
+                    <constraint firstItem="beC-wj-CgS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="EFi-kn-2Le"/>
+                    <constraint firstItem="beC-wj-CgS" firstAttribute="leading" secondItem="eM4-KT-eoh" secondAttribute="trailing" constant="5" id="IJF-3U-MDQ"/>
+                    <constraint firstItem="eM4-KT-eoh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="J49-zJ-Otc"/>
+                    <constraint firstItem="Tcl-O0-HRk" firstAttribute="top" secondItem="beC-wj-CgS" secondAttribute="top" id="NFP-c5-Rdj"/>
+                    <constraint firstItem="Pqy-9W-LMZ" firstAttribute="top" secondItem="eM4-KT-eoh" secondAttribute="bottom" constant="5" id="OqY-l0-Q5d"/>
+                    <constraint firstAttribute="trailing" secondItem="eM4-KT-eoh" secondAttribute="trailing" constant="97" id="P2o-nB-hk1"/>
+                    <constraint firstItem="P78-Vc-fro" firstAttribute="leading" secondItem="eM4-KT-eoh" secondAttribute="leading" id="Phg-6l-70m"/>
+                    <constraint firstItem="Tcl-O0-HRk" firstAttribute="trailing" secondItem="beC-wj-CgS" secondAttribute="trailing" id="Qvg-nf-dyO"/>
+                    <constraint firstAttribute="bottom" secondItem="Pqy-9W-LMZ" secondAttribute="bottom" id="Swc-Gf-LoJ"/>
+                    <constraint firstAttribute="trailing" secondItem="Tcl-O0-HRk" secondAttribute="trailing" id="VIW-Ph-ZjX"/>
+                    <constraint firstItem="P78-Vc-fro" firstAttribute="top" secondItem="eM4-KT-eoh" secondAttribute="bottom" constant="5" id="ZBA-Tf-c6a"/>
+                    <constraint firstItem="Tcl-O0-HRk" firstAttribute="leading" secondItem="beC-wj-CgS" secondAttribute="leading" id="bL0-SR-UC0"/>
+                    <constraint firstItem="Pqy-9W-LMZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gGU-Pn-GpV"/>
+                    <constraint firstItem="eM4-KT-eoh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hfc-UQ-SrB"/>
+                    <constraint firstAttribute="trailing" secondItem="beC-wj-CgS" secondAttribute="trailing" id="hpT-xv-fa5"/>
+                    <constraint firstItem="P78-Vc-fro" firstAttribute="leading" secondItem="Pqy-9W-LMZ" secondAttribute="leading" id="lh6-5G-J9Z"/>
+                    <constraint firstItem="Tcl-O0-HRk" firstAttribute="leading" secondItem="eM4-KT-eoh" secondAttribute="trailing" constant="5" id="x3B-Kk-t1b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="authenticatorName" destination="eM4-KT-eoh" id="beJ-lT-6Mp"/>
+                <outlet property="deregisterButton" destination="beC-wj-CgS" id="Gun-Se-a7e"/>
+                <outlet property="preferredLabel" destination="Pqy-9W-LMZ" id="5VV-Ok-XOI"/>
+                <outlet property="registerButton" destination="Tcl-O0-HRk" id="ZYN-I9-mV2"/>
+                <outlet property="setPreferredButton" destination="P78-Vc-fro" id="GFe-da-YFu"/>
+            </connections>
+            <point key="canvasLocation" x="-14.4" y="30.134932533733135"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="P78-Vc-fro">
+            <size key="intrinsicContentSize" width="78" height="24"/>
+        </designable>
+        <designable name="Tcl-O0-HRk">
+            <size key="intrinsicContentSize" width="51" height="28"/>
+        </designable>
+        <designable name="beC-wj-CgS">
+            <size key="intrinsicContentSize" width="64" height="28"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="appBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appMain">
+            <color red="1" green="0.11800000071525574" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

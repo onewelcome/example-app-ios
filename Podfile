@@ -20,12 +20,12 @@ target 'WidgetExtension' do
 	oneginiSDKiOS
 end
 
-target 'OneginiExampleAppSwift' do
+target 'OneWelcomeExampleApp' do
   oneginiSDKiOS
   externalRegularDependencies
 end
 
-target 'OneginiExampleAppSwiftDebug' do
+target 'OneWelcomeExampleAppDebug' do
   oneginiSDKiOS
   externalRegularDependencies
 end

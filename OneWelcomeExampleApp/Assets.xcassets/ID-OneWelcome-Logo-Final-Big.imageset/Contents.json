@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "OneWelcome_Logo_RGB.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "OneWelcome_Logo_RGB_w.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
