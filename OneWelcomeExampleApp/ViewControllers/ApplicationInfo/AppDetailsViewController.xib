@@ -138,6 +138,7 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Key" translatesAutoresizingMaskIntoConstraints="NO" id="dW4-SZ-rws">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <color key="tintColor" name="appMain"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="8bk-Ls-gvM"/>
                                 <constraint firstAttribute="width" constant="50" id="kqi-Xe-r24"/>

@@ -170,6 +170,7 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Key" translatesAutoresizingMaskIntoConstraints="NO" id="hHf-FR-bI6">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <color key="tintColor" name="appMain"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Dnz-S2-LNH"/>
                                 <constraint firstAttribute="width" constant="50" id="U3q-ne-Mmw"/>
