@@ -18,11 +18,11 @@ be that the SDK dependency cannot be found. If that is the case be sure to execu
 
 ### Setup the Cocoapods dependencies
 1. Run `pod install` to correctly setup the Cocoapods dependencies
-2. Make sure that you open the project referring to `OneginiExampleApp.xcworkspace` in Xcode or AppCode.
+2. Make sure that you open the project referring to `OneWelcomeExampleApp.xcworkspace` in Xcode or AppCode.
 
 ## Providing token server configuration
 The example app is already configured with the token server out of the box.
 
 ### Changing the configuration
 If there is a need to change the token server configuration within the example app it is going to be best to do it using the Onegini SDK Configurator. Follow
-the steps as described in: `https://github.com/Onegini/sdk-configurator`
+the steps as described in: `https://github.com/onewelcome/sdk-configurator`
