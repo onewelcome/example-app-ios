@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Icon-App-83.5x83.5@2x 1.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

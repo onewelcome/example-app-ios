@@ -237,6 +237,8 @@
 		AD07D44828771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
 		AD07D44928771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
 		AD07D44B28771F4F0095571A /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */; };
+		AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
 		ADE6AFA928785BE600CC3EE6 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = ADE6AFA528785BE600CC3EE6 /* SecurityController.h */; };
 		ADE6AFAA28785BE600CC3EE6 /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */; };
 		ADE6AFAB28785BE600CC3EE6 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA728785BE600CC3EE6 /* SecurityController.m */; };
@@ -1352,6 +1354,8 @@
 				7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */,
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
+				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
+				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
 				8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
 				7E804FA4258A5D3F000E110E /* (null) in Sources */,

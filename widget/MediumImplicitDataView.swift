@@ -12,9 +12,9 @@ struct MediumImplicitDataView: View {
 
     var body: some View {
         HStack {
-            Image("Image 1")
+            Image("OnewelcomeLogo")
                 .resizable()
-                .frame(width: 60, height: 41, alignment: .leading)
+                .frame(width: 41, height: 41, alignment: .leading)
                 .aspectRatio(contentMode: .fit)
             VStack(alignment: .leading) {
                 Text("Implicit data")

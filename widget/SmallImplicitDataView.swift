@@ -12,9 +12,9 @@ struct SmallImplicitDataView: View {
 
     var body: some View {
         VStack {
-            Image("Image 1")
+            Image("OnewelcomeLogo")
                 .resizable()
-                .frame(width: 60, height: 41, alignment: .leading)
+                .frame(width: 41, height: 41, alignment: .leading)
                 .aspectRatio(contentMode: .fit)
             Text("Implicit data")
                 .font(.headline)
