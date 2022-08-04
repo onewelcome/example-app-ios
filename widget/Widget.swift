@@ -1,10 +1,4 @@
-//
-//  Widget.swift
-//  Widget
-//
-//  Created by Łukasz Łabuński on 16/12/2020.
-//  Copyright © 2020 Onegini. All rights reserved.
-//
+//  Copyright © 2020 OneWelcome. All rights reserved.
 
 import WidgetKit
 import SwiftUI
@@ -63,9 +57,7 @@ struct WidgetEntryView : View {
 
     var body: some View {
         ZStack {
-            Image("Background")
-                .resizable()
-                .scaledToFill()
+            Color("WidgetBackground").ignoresSafeArea()
             switch family {
             case .systemMedium:
                 MediumImplicitDataView(entry.implicitData)

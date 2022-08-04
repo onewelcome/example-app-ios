@@ -1,4 +1,4 @@
-//  Copyright © 2020 Onegini. All rights reserved.
+//  Copyright © 2020 OneWelcome. All rights reserved.
 
 import SwiftUI
 import WidgetKit
@@ -6,6 +6,8 @@ import WidgetKit
 struct SmallImplicitDataView: View {
     var implicitData: String
 
+    private let fontColor = Color(UIColor(named: "Text") ?? .black)
+    
     init(_ implicitData: String) {
         self.implicitData = implicitData
     }
@@ -16,24 +18,25 @@ struct SmallImplicitDataView: View {
                 .resizable()
                 .frame(width: 41, height: 41, alignment: .leading)
                 .aspectRatio(contentMode: .fit)
-            Text("Implicit data")
+            Text("User identifier")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(fontColor)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
             Text(implicitData)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
                 .font(.system(size: 10, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
-        }.padding()
+                .foregroundColor(fontColor)
+        }
+        .padding()
     }
 }
 
 struct SmallImplicitDataView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SmallImplicitDataView("Implicit data")
+            SmallImplicitDataView("User identifier")
                 .previewLayout(.fixed(width: 160, height: 160))
         }
     }
