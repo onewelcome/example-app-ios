@@ -24,6 +24,11 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     private var userClient: UserClient {
         return SharedUserClient.instance
     }
+    private let errorMapper: (_ error: Error) -> AppError
+    
+    init(errorMapper: @escaping (Error) -> AppError) {
+        self.errorMapper = errorMapper
+    }
     
     func fetchImplicitResources(profile: UserProfile, completion: @escaping (String?, AppError?) -> Void) {
         if isProfileImplicitlyAuthenticated(profile) {
@@ -58,16 +63,16 @@ class FetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol {
     }
 
     fileprivate func authenticateUserImplicitly(_ profile: UserProfile, completion: @escaping (AppError?) -> Void) {
-        userClient.implicitlyAuthenticate(user: profile, with: nil) { error in
-            completion(error.flatMap { ErrorMapper().mapError($0) })
+        userClient.implicitlyAuthenticate(user: profile, with: nil) { [weak self] error in
+            completion(error.flatMap { self?.errorMapper($0) })
         }
     }
 
     fileprivate func implicitResourcesRequest(completion: @escaping (String?, AppError?) -> Void) {
         let implicitRequest = ResourceRequestFactory.makeResourceRequest(path: "user-id-decorated", method: .get)
-        userClient.sendImplicitRequest(implicitRequest) { response, error in
+        userClient.sendImplicitRequest(implicitRequest) { [weak self] response, error in
             if let error = error {
-                let mappedError = ErrorMapper().mapError(error)
+                let mappedError = self?.errorMapper(error)
                 completion(nil, mappedError)
             } else {
                 if let data = response?.data {

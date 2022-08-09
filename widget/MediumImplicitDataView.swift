@@ -1,32 +1,34 @@
-//  Copyright © 2020 Onegini. All rights reserved.
+//  Copyright © 2020 OneWelcome. All rights reserved.
 
 import SwiftUI
 import WidgetKit
 
 struct MediumImplicitDataView: View {
     var implicitData: String
-
+    
+    private let fontColor = Color(UIColor(named: "Text") ?? .black)
+    
     init(_ implicitData: String) {
         self.implicitData = implicitData
     }
 
     var body: some View {
         HStack {
-            Image("Image 1")
+            Image("OnewelcomeLogo")
                 .resizable()
-                .frame(width: 60, height: 41, alignment: .leading)
+                .frame(width: 41, height: 41, alignment: .leading)
                 .aspectRatio(contentMode: .fit)
             VStack(alignment: .leading) {
-                Text("Implicit data")
+                Text("User identifier")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(fontColor)
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
                 Text(implicitData)
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
                     .font(.system(size: 14, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundColor(fontColor)
             }.padding()
         }.padding()
     }
@@ -35,7 +37,7 @@ struct MediumImplicitDataView: View {
 struct MediumImplicitDataView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MediumImplicitDataView("Implicit data")
+            MediumImplicitDataView("User identifier")
                 .previewLayout(.fixed(width: 160, height: 160))
         }
     }

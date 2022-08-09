@@ -68,7 +68,10 @@ class InteractorAssembly: Assembly {
                 appDetailsInteractor.appDetailsPresenter = resolver.resolve(AppDetailsPresenterProtocol.self)
             }
 
-        container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor() }
+        let errorMapper: (_ error: Error) -> AppError = { error in
+            ErrorMapper().mapError(error)
+        }
+        container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor(errorMapper: errorMapper) }
         
         container.register(AppToWebInteractorProtocol.self) { _ in AppToWebInteractor() }
     }
