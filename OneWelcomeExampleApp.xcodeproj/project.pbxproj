@@ -39,7 +39,6 @@
 		7E300AEF20DBE31F00EF1A79 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */; };
 		7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */; };
 		7E40D8C8258B5945005C8662 /* Startup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E40D8C7258B5945005C8662 /* Startup.swift */; };
-		7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E40D8CC258B59EE005C8662 /* ResourceGateway.swift */; };
 		7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */; };
 		7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
 		7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
@@ -349,7 +348,6 @@
 		7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
 		7E40D8C7258B5945005C8662 /* Startup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Startup.swift; path = widget/Startup.swift; sourceTree = SOURCE_ROOT; };
-		7E40D8CC258B59EE005C8662 /* ResourceGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResourceGateway.swift; path = widget/ResourceGateway.swift; sourceTree = SOURCE_ROOT; };
 		7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterUserViewController.xib; sourceTree = "<group>"; };
 		7E45477020DD422500FB620F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -799,7 +797,6 @@
 				7E804F64258A5C6D000E110E /* Assets.xcassets */,
 				7E804F66258A5C6D000E110E /* Info.plist */,
 				7E40D8C7258B5945005C8662 /* Startup.swift */,
-				7E40D8CC258B59EE005C8662 /* ResourceGateway.swift */,
 				7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */,
 				7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */,
 			);
@@ -1353,7 +1350,6 @@
 				7E804F63258A5C6A000E110E /* Widget.swift in Sources */,
 				7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */,
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
-				7E40D8CD258B59EE005C8662 /* ResourceGateway.swift in Sources */,
 				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
 				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
 				8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */,
