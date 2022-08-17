@@ -1,4 +1,4 @@
-//  Copyright © 2020 Onegini. All rights reserved.
+//  Copyright © 2020 OneWelcome. All rights reserved.
 
 import OneginiSDKiOS
 
