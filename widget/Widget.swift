@@ -1,10 +1,4 @@
-//
-//  Widget.swift
-//  Widget
-//
-//  Created by Łukasz Łabuński on 16/12/2020.
-//  Copyright © 2020 Onegini. All rights reserved.
-//
+//  Copyright © 2022 OneWelcome. All rights reserved.
 
 import WidgetKit
 import SwiftUI
@@ -22,22 +16,30 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Startup().oneginiSDKStartup { success in
-            if success {
-                guard let profile = SharedUserClient.instance.userProfiles.first else {
-                    let entries = [
-                        SimpleEntry(date: Date(), implicitData: "User not registered")
-                        ]
-                    let timeline = Timeline(entries: entries, policy: .atEnd)
-                    completion(timeline)
-                    return
+            guard success else {
+                let entries = [SimpleEntry(date: Date(), implicitData: "Error")]
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
+                return
+            }
+            guard let profile = SharedUserClient.instance.userProfiles.first else {
+                let entries = [SimpleEntry(date: Date(), implicitData: "User not registered")]
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
+                return
+            }
+            
+            let errorMapper: (_ error: Error) -> AppError = { error in
+                AppError(errorDescription: error.localizedDescription)
+            }
+            FetchImplicitDataInteractor(errorMapper: errorMapper).fetchImplicitResources(profile: profile) { userIdDecoded, error in
+                var implicitData = "Data not found"
+                if error == nil, let userIdDecoded = userIdDecoded {
+                    implicitData = userIdDecoded
                 }
-                ResourceGateway().fetchImplicitResources(profile: profile) { data in
-                    let entries = [
-                        SimpleEntry(date: Date(), implicitData: data ?? "Data not found")
-                        ]
-                    let timeline = Timeline(entries: entries, policy: .atEnd)
-                    completion(timeline)
-                }
+                let entries = [SimpleEntry(date: Date(), implicitData: implicitData)]
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
             }
         }
     }
@@ -51,27 +53,17 @@ struct SimpleEntry: TimelineEntry {
 struct WidgetEntryView : View {
     var entry: Provider.Entry
     
-    @Environment(\.widgetFamily) var family
-
     var body: some View {
         ZStack {
-            Image("Background")
-                .resizable()
-                .scaledToFill()
-            switch family {
-            case .systemMedium:
-                MediumImplicitDataView(entry.implicitData)
-                
-            default:
-                SmallImplicitDataView(entry.implicitData)
-            }
+            Color("Background").ignoresSafeArea()
+            ImplicitDataView(entry.implicitData)
         }
     }
 }
 
 @main
 struct Widget: SwiftUI.Widget {
-    let kind: String = "Widget"
+    let kind = "Widget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
@@ -79,12 +71,14 @@ struct Widget: SwiftUI.Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget with fetching implicit resources.")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetEntryView(entry: SimpleEntry(date: Date(), implicitData: "Data not found."))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        WidgetEntryView(entry: SimpleEntry(date: Date(), implicitData: "Data not found"))
+            .preferredColorScheme(.dark)
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
