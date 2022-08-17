@@ -67,8 +67,6 @@
 		7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
-		7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */; };
-		7E7CCCF2258B7E7D00FA3CD3 /* MediumImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */; };
 		7E804F5E258A5C6A000E110E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E804F5D258A5C6A000E110E /* WidgetKit.framework */; };
 		7E804F60258A5C6A000E110E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E804F5F258A5C6A000E110E /* SwiftUI.framework */; };
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
@@ -125,6 +123,7 @@
 		86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E7212C4A9A005FA824 /* TabBarController.swift */; };
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
+		8D19480E28ABD77300C66DC7 /* ImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */; };
 		8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		8D5B76CF2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
@@ -376,8 +375,6 @@
 		7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
-		7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallImplicitDataView.swift; path = widget/SmallImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
-		7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediumImplicitDataView.swift; path = widget/MediumImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
 		7E804F5C258A5C69000E110E /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E804F5D258A5C6A000E110E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7E804F5F258A5C6A000E110E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -434,6 +431,7 @@
 		86CD10E7212C4A9A005FA824 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthTableViewCell.swift; sourceTree = "<group>"; };
 		86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthTableViewCell.xib; sourceTree = "<group>"; };
+		8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImplicitDataView.swift; path = widget/ImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
 		8D5B76CD2880417900876B0C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8FF346485C61928877C8ED47 /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -797,8 +795,7 @@
 				7E804F64258A5C6D000E110E /* Assets.xcassets */,
 				7E804F66258A5C6D000E110E /* Info.plist */,
 				7E40D8C7258B5945005C8662 /* Startup.swift */,
-				7E7CCCEC258B7CE300FA3CD3 /* SmallImplicitDataView.swift */,
-				7E7CCCF1258B7E7D00FA3CD3 /* MediumImplicitDataView.swift */,
+				8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -1346,9 +1343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E7CCCF2258B7E7D00FA3CD3 /* MediumImplicitDataView.swift in Sources */,
 				7E804F63258A5C6A000E110E /* Widget.swift in Sources */,
-				7E7CCCED258B7CE300FA3CD3 /* SmallImplicitDataView.swift in Sources */,
+				8D19480E28ABD77300C66DC7 /* ImplicitDataView.swift in Sources */,
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
 				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
@@ -1649,7 +1645,6 @@
 			baseConfigurationReference = 32C29451D7D38838E2889E33 /* Pods-WidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47G5S528XM;
@@ -1675,7 +1670,6 @@
 			baseConfigurationReference = BC98A75476EFC3CCA563300D /* Pods-WidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47G5S528XM;
