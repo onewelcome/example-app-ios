@@ -150,15 +150,16 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
 
     func registerForPushMobileAuth() {
         mobileAuthInteractor.registerForPushMessages { succeed in
-            if succeed {
-                DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async { [weak self] in
+                if succeed {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.pushMobileAuthEnrollment = self
                     UIApplication.shared.registerForRemoteNotifications()
-                })
-            } else {
-                self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
-                self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed", errorDescription: "Notifications where not allowed by the user.", recoverySuggestion: "Please enable notifications for the application in Settings."))
+                } else {
+                    guard let self = self else { return }
+                    self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
+                    self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed", errorDescription: "Notifications where not allowed by the user.", recoverySuggestion: "Please enable notifications for the application in Settings."))
+                }
             }
         }
     }
