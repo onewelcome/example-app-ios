@@ -16,31 +16,31 @@
 class ErrorMapper {
     func mapError(_ error: Error, pinChallenge: PinChallenge? = nil, customInfo: CustomInfo? = nil) -> AppError {
         switch error.domain {
-        case ONGGenericErrorDomain:
+        case ErrorDomains.generic:
             return GenericErrorDomainMapping().mapError(error)
-        case ONGPinValidationErrorDomain:
+        case ErrorDomains.pinValidation:
             return PinValidationErrorDomainMapping().mapError(error)
-        case ONGAuthenticationErrorDomain:
-            if let pinChallenge = pinChallenge, error.code == ONGAuthenticationError.invalidPin.rawValue {
+        case ErrorDomains.pinAuthentication:
+            if let pinChallenge = pinChallenge, error.code == AuthenticationError.invalidPin.rawValue {
                 return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(pinChallenge: pinChallenge)
-            } else if let customInfo = customInfo, error.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+            } else if let customInfo = customInfo, error.code == AuthenticationError.customAuthenticatorFailure.rawValue {
                 return AuthenticationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
             } else {
                 return AuthenticationErrorDomainMapping().mapError(error)
             }
-        case ONGAuthenticatorRegistrationErrorDomain:
-            if let customInfo = customInfo, error.code == ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
+        case ErrorDomains.authenticatorRegistration:
+            if let customInfo = customInfo, error.code == AuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
                 return AuthenticatorRegistrationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
             } else {
                 return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
             }
-        case ONGAuthenticatorDeregistrationErrorDomain:
+        case ErrorDomains.authenticatorDeregistration:
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
-        case ONGMobileAuthEnrollmentErrorDomain:
+        case ErrorDomains.mobileAuthEnrollment:
             return MobileAuthEnrollmentErrorDomainMapping().mapError(error)
-        case ONGFetchImplicitResourceErrorDomain:
+        case ErrorDomains.fetchImplicitResource:
             return FetchImplicitResourceErrorDomainMapping().mapError(error)
-        case ONGAppToWebSingleSignOnErrorDomain:
+        case ErrorDomains.appToWebSingleSignOn:
             return AppToWebSingleSignOnErrorDomainMapping().mapError(error)
             
         default:

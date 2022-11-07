@@ -34,17 +34,17 @@ class AuthenticationErrorDomainMapping {
 
     func mapError(_ error: Error) -> AppError {
         switch error.code {
-        case ONGAuthenticationError.authenticatorDeregistered.rawValue:
+        case AuthenticationError.authenticatorDeregistered.rawValue:
             let message = "The Authenticator has been deregistered."
             let recoverySuggestion = "Please register used authenticator and try again."
             return AppError(title: title, errorDescription: message, recoverySuggestion: recoverySuggestion)
 
-        case ONGAuthenticationError.authenticatorInvalid.rawValue:
+        case AuthenticationError.authenticatorInvalid.rawValue:
             let message = "The authenticator that you provided is invalid."
             let recoverySuggestion = "It may not exist, please verify whether you have supplied the correct authenticator."
             return AppError(title: title, errorDescription: message, recoverySuggestion: recoverySuggestion)
 
-        case ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue:
+        case AuthenticationError.touchIDAuthenticatorFailure.rawValue:
             let message = "Authentication with the biometric authenticator has failed."
             return AppError(title: title, errorDescription: message)
 

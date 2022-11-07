@@ -20,15 +20,15 @@ class AuthenticatorRegistrationErrorDomainMapping {
 
     func mapError(_ error: Error) -> AppError {
         switch error.code {
-        case ONGAuthenticatorRegistrationError.userNotAuthenticated.rawValue:
+        case AuthenticatorRegistrationError.userNotAuthenticated.rawValue:
             let errorDescription = "A user must be authenticated in order to register an authenticator."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.")
 
-        case ONGAuthenticatorRegistrationError.authenticatorInvalid.rawValue:
+        case AuthenticatorRegistrationError.authenticatorInvalid.rawValue:
             let errorDescription = "The authenticator that you provided is invalid. It may not exist, please verify whether you have supplied the correct authenticator."
             return AppError(title: title, errorDescription: errorDescription)
 
-        case ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue:
+        case AuthenticatorRegistrationError.customAuthenticatorFailure.rawValue:
             let errorDescription = "Custom authenticator registration has failed."
             return AppError(title: title, errorDescription: errorDescription)
 

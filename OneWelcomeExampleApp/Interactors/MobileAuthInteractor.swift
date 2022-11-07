@@ -174,8 +174,8 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error,
-            error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue,
-            error.code != ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+           error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue,
+           error.code != AuthenticationError.customAuthenticatorFailure.rawValue {
             mobileAuthEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             mobileAuthEntity.pinError = nil
@@ -199,8 +199,8 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthEntity.authenticatorType = .pin
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
-        if challenge.error?.code == ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue
-            || challenge.error?.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+        if challenge.error?.code == AuthenticationError.touchIDAuthenticatorFailure.rawValue
+            || challenge.error?.code == AuthenticationError.customAuthenticatorFailure.rawValue {
             mobileAuthPresenter?.dismiss()
             mobileAuthPresenter?.presentPinView(mobileAuthEntity: mobileAuthEntity)
         } else {
@@ -225,7 +225,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
 
     func userClient(_ userClient: UserClient, didFailToHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, error: Error) {
         mobileAuthEntity = MobileAuthEntity()
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
         } else {

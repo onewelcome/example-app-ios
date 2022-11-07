@@ -20,7 +20,7 @@ class FetchImplicitResourceErrorDomainMapping: NSObject {
         let title = "Fetching implicit resource error"
 
         switch error.code {
-        case ONGFetchResourceImplicitlyError.implicitResourceErrorUserNotAuthenticatedImplicitly.rawValue:
+        case FetchResourceImplicitlyError.userNotAuthenticatedImplicitly.rawValue:
             let errorDescription = "A selected user isn't currently authenticated implicitly."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try select this user one more time.")
 

@@ -155,7 +155,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             registerUserPresenter?.registerUserActionCancelled()
         } else {
             let mappedError = ErrorMapper().mapError(error)

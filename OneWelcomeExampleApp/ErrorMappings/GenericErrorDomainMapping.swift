@@ -16,17 +16,17 @@
 class GenericErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         switch error.code {
-        case ONGGenericError.networkConnectivityFailure.rawValue, ONGGenericError.serverNotReachable.rawValue:
+        case GenericError.networkConnectivityFailure.rawValue, GenericError.serverNotReachable.rawValue:
             return AppError(title: "Connection error", errorDescription: "Failed to connect to the server.")
-        case ONGGenericError.userDeregistered.rawValue:
+        case GenericError.userDeregistered.rawValue:
             return AppError(title: "User error", errorDescription: "The users account was deregistered from the device.", recoverySuggestion: "Please try to register user again.")
-        case ONGGenericError.deviceDeregistered.rawValue:
+        case GenericError.deviceDeregistered.rawValue:
             return AppError(title: "Device error", errorDescription: "All users were disconnected from the device.", recoverySuggestion: "Please try to register user again.")
-        case ONGGenericError.outdatedOS.rawValue:
+        case GenericError.outdatedOS.rawValue:
             return AppError(title: "OS error", errorDescription: "Your iOS version is no longer accepted by the application.", recoverySuggestion: "Please try to update your iOS.")
-        case ONGGenericError.outdatedApplication.rawValue:
+        case GenericError.outdatedApplication.rawValue:
             return AppError(title: "Application error", errorDescription: "Your application version is outdated.", recoverySuggestion: "Please try to update your application.")
-        case ONGGenericError.unrecoverableDataState.rawValue:
+        case GenericError.unrecoverableDataState.rawValue:
             return AppError(title: "Data storage error", errorDescription: "The data storage is corrupted and cannot be recovered or cleared.", recoverySuggestion: "Please remove the application manually and reinstall.")
         default:
             return AppError(errorDescription: "Something went wrong.")
