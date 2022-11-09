@@ -15,24 +15,24 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - BetterSegmentedControl (2.0.1)
-  - OneginiSDKiOS (12.0.0-SNAPSHOT):
-    - AFNetworking (= 4.0.1)
-    - Typhoon (= 4.0.8)
+  - OneginiSDKiOS (12.1.0):
+    - AFNetworking (~> 4.0.1)
+    - Typhoon (~> 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
   - Swinject (2.8.1)
   - TransitionButton (0.5.3)
-  - Typhoon (4.0.8):
-    - Typhoon/DeallocNotifier (= 4.0.8)
-    - Typhoon/IntrospectionUtils (= 4.0.8)
-    - Typhoon/no-arc (= 4.0.8)
-  - Typhoon/DeallocNotifier (4.0.8)
-  - Typhoon/IntrospectionUtils (4.0.8)
-  - Typhoon/no-arc (4.0.8):
+  - Typhoon (4.0.9):
+    - Typhoon/DeallocNotifier (= 4.0.9)
+    - Typhoon/IntrospectionUtils (= 4.0.9)
+    - Typhoon/no-arc (= 4.0.9)
+  - Typhoon/DeallocNotifier (4.0.9)
+  - Typhoon/IntrospectionUtils (4.0.9)
+  - Typhoon/no-arc (4.0.9):
     - Typhoon/IntrospectionUtils
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0.0)
-  - OneginiSDKiOS (from `~/Projekty/sdk-ios`)
+  - OneginiSDKiOS (~> 12.1.0)
   - SkyFloatingLabelTextField (~> 3.0)
   - Swinject (= 2.8.1)
   - TransitionButton (= 0.5.3)
@@ -45,20 +45,18 @@ SPEC REPOS:
     - Swinject
     - TransitionButton
     - Typhoon
-
-EXTERNAL SOURCES:
-  OneginiSDKiOS:
-    :path: "~/Projekty/sdk-ios"
+  https://repo.onegini.com/artifactory/api/pods/cocoapods-public:
+    - OneginiSDKiOS
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: f3d08fd9d23e5a70bc66ad5b3cefc6b9ba5b95da
+  OneginiSDKiOS: 798c93fe229a121d4921dce213d73e2a8cd0567a
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
-  Typhoon: f8901ef1ad0e2fa520cda0f668492dd33353f7dc
+  Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: cf46d58f7fba219059ee7d6f91e00fae69502d33
+PODFILE CHECKSUM: 1e37e5a0d2a58fe5a51401765def8c2cd3217fbd
 
 COCOAPODS: 1.11.3

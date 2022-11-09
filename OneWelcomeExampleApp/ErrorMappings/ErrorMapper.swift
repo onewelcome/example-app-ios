@@ -20,7 +20,7 @@ class ErrorMapper {
             return GenericErrorDomainMapping().mapError(error)
         case ErrorDomains.pinValidation:
             return PinValidationErrorDomainMapping().mapError(error)
-        case ErrorDomains.pinAuthentication:
+        case ErrorDomains.authentication:
             if let pinChallenge = pinChallenge, error.code == AuthenticationError.invalidPin.rawValue {
                 return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(pinChallenge: pinChallenge)
             } else if let customInfo = customInfo, error.code == AuthenticationError.customAuthenticatorFailure.rawValue {
