@@ -34,6 +34,8 @@ class WelcomeViewController: UIViewController {
         } else {
             setupViewWithoutProfiles()
         }
+        
+        setupAppIcon()
     }
 
     func configureSegmentView() {
@@ -84,6 +86,20 @@ class WelcomeViewController: UIViewController {
             displayLognViewController()
         } else {
             displayRegisterUserViewController()
+        }
+    }
+}
+
+private extension WelcomeViewController {
+    func setupAppIcon() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            UIApplication.shared.setAlternateIconName("AppIcon-DarkMode") { (error) in
+                if let error = error {
+                    print("Failed request to update the app’s icon: \(error)")
+                }
+            }
+        } else {
+            UIApplication.shared.setAlternateIconName(nil)
         }
     }
 }
