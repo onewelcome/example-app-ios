@@ -18,7 +18,7 @@ import UIKit
 typealias ProfilePresenterProtocol = ProfileInteractorToPresenterProtocol & ProfileViewToPresenterProtocol
 
 protocol ProfileInteractorToPresenterProtocol: AnyObject {
-    func presentProfileView()
+    func presentProfileView(profileName: String?)
 }
 
 protocol ProfileViewToPresenterProtocol: AnyObject {
@@ -38,7 +38,8 @@ class ProfilePresenter: ProfileInteractorToPresenterProtocol {
         self.navigationController = navigationController
     }
 
-    func presentProfileView() {
+    func presentProfileView(profileName: String?) {
+        profileViewController.setProfileName(profileName)
         navigationController.pushViewController(profileViewController, animated: true)
     }
 }

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="OneWelcomeExampleApp" customModuleProvider="target">
             <connections>
+                <outlet property="profileNameLabel" destination="UwA-Oo-wJB" id="HL3-LQ-2af"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

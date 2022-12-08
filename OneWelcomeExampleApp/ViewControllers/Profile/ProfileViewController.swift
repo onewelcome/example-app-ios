@@ -17,7 +17,15 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     weak var profileViewToPresenterProtocol: ProfileViewToPresenterProtocol?
-
+    private var profileName: String?
+    
+    @IBOutlet private weak var profileNameLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        profileNameLabel.text = profileName
+    }
+    
     @IBAction func backPressed(_: Any) {
         profileViewToPresenterProtocol?.popToDashboardView()
     }
@@ -32,5 +40,9 @@ class ProfileViewController: UIViewController {
 
     @IBAction func changePassword(_: Any) {
         profileViewToPresenterProtocol?.setupChangePinPresenter()
+    }
+    
+    func setProfileName(_ profileName: String?) {
+        self.profileName = profileName
     }
 }

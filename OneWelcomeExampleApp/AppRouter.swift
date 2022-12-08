@@ -42,7 +42,7 @@ protocol AppRouterProtocol: AnyObject {
     func setupWelcomePresenter()
     func setupDashboardPresenter(authenticatedUserProfile: UserProfile)
     func setupAuthenticatorsPresenter()
-    func setupProfilePresenter()
+    func setupProfilePresenter(profileName: String?)
     func setupMobileAuthPresenter()
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
@@ -152,8 +152,8 @@ class AppRouter: NSObject, AppRouterProtocol {
         authenticatorsPresenter.presentAuthenticatorsView()
     }
 
-    func setupProfilePresenter() {
-        profilePresenter.presentProfileView()
+    func setupProfilePresenter(profileName: String?) {
+        profilePresenter.presentProfileView(profileName: profileName)
     }
 
     func setupMobileAuthPresenter() {

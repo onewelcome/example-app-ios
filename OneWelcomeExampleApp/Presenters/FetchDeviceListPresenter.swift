@@ -40,7 +40,6 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
         let deviceListViewController = DeviceListViewController()
         deviceListViewController.deviceList = deviceList
         deviceListViewController.delegate = self
-//        deviceListViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(deviceListViewController, animated: true, completion: nil)
     }
 
