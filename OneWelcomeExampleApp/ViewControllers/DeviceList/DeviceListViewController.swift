@@ -21,11 +21,11 @@ protocol DeviceListDelegate: AnyObject {
 
 class DeviceListViewController: UIViewController {
     private let callClassName = String(describing: DeviceTableViewCell.self)
-    private var cancelButton: UIButton!
     
     weak var delegate: DeviceListDelegate?
     
     @IBOutlet private var tableView: UITableView?
+    @IBOutlet private var cancelButton: UIButton?
     
     var deviceList: [Device] = [] {
         didSet {
@@ -36,7 +36,6 @@ class DeviceListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.register(UINib(nibName: callClassName, bundle: nil), forCellReuseIdentifier: callClassName)
-        configureCancelButton()
     }
 }
 
@@ -58,21 +57,7 @@ extension DeviceListViewController: UITableViewDataSource {
 }
 
 private extension DeviceListViewController {
-    func configureCancelButton() {
-        let cancelButtonFrame = CGRect(x: view.frame.width - 70, y: 30, width: 70, height: 25)
-        cancelButton = UIButton(frame: cancelButtonFrame)
-        let cancelButtonStringAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "Helvetica Neue", size: 17)!,
-            .foregroundColor: UIColor.appMain,
-        ]
-        let cancelButtonString = NSAttributedString(string: "Cancel", attributes: cancelButtonStringAttributes)
-        cancelButton.setTitleColor(.label, for: .normal)
-        cancelButton.setAttributedTitle(cancelButtonString, for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
-        view.addSubview(cancelButton)
-    }
-    
-    @objc func cancelButtonPressed() {
+    @IBAction func cancel(_: Any) {
         delegate?.deviceList(didCancel: self)
     }
 }
