@@ -36,10 +36,6 @@ class DeviceListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.register(UINib(nibName: callClassName, bundle: nil), forCellReuseIdentifier: callClassName)
-//    }
-//
-//    override func loadView() {
-//        super.loadView()
         configureCancelButton()
     }
 }
@@ -62,7 +58,6 @@ extension DeviceListViewController: UITableViewDataSource {
 }
 
 private extension DeviceListViewController {
-    //TODO: refactor
     func configureCancelButton() {
         let cancelButtonFrame = CGRect(x: view.frame.width - 70, y: 30, width: 70, height: 25)
         cancelButton = UIButton(frame: cancelButtonFrame)
@@ -74,20 +69,10 @@ private extension DeviceListViewController {
         cancelButton.setTitleColor(.label, for: .normal)
         cancelButton.setAttributedTitle(cancelButtonString, for: .normal)
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
-//        cancelButton.addAction(UIAction.init(handler: { <#UIAction#> in
-//            //TODO: sth like delegate?
-//            @objc func cancelButtonPressed() {
-//                dismiss(animated: false, completion: nil)
-//        }), for: <#T##UIControl.Event#>)
         view.addSubview(cancelButton)
     }
-    //TODO: sth like delegate?
-//    @objc func cancelButtonPressed() {
-//        delegate?.webView(didCancel: self)
-//    }
-//
+    
     @objc func cancelButtonPressed() {
-//        dismiss(animated: true, completion: nil)
         delegate?.deviceList(didCancel: self)
     }
 }
