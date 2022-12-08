@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,10 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8M-xf-xKf">
-                    <rect key="frame" x="0.0" y="164" width="375" height="648"/>
+                    <rect key="frame" x="0.0" y="167" width="375" height="645"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="IYV-Rq-LhZ">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="648"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="645"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eH-ft-s3r">
@@ -64,9 +64,6 @@
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="deviceList:" destination="-1" eventType="touchUpInside" id="SBD-nv-lIV"/>
-                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Device list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQP-YN-dgV">
                             <rect key="frame" x="124" y="174" width="223" height="50"/>
@@ -92,9 +89,6 @@
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="disconnectProfile:" destination="-1" eventType="touchUpInside" id="rC2-GB-i4N"/>
-                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="remove-user" translatesAutoresizingMaskIntoConstraints="NO" id="RYr-38-va5">
                             <rect key="frame" x="46" y="88" width="50" height="50"/>
@@ -135,9 +129,39 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="39"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzD-e5-lfu" userLabel="Disconnect Button">
+                            <rect key="frame" x="0.0" y="74" width="375" height="78"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
-                                <action selector="changePassword:" destination="-1" eventType="touchUpInside" id="B4i-Ag-M8F"/>
+                                <action selector="disconnectProfile:" destination="-1" eventType="touchUpInside" id="cIc-va-SbD"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuK-nU-JO8" userLabel="Device list Button">
+                            <rect key="frame" x="0.0" y="160" width="375" height="78"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="deviceList:" destination="-1" eventType="touchUpInside" id="xES-Rg-yvy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgI-QH-nkm" userLabel="Change PIN Button">
+                            <rect key="frame" x="0.0" y="246" width="375" height="78"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="changePassword:" destination="-1" eventType="touchUpInside" id="3d9-KP-lrA"/>
                             </connections>
                         </button>
                     </subviews>
@@ -154,7 +178,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2S-8H-peg">
-                    <rect key="frame" x="20" y="44" width="67" height="30"/>
+                    <rect key="frame" x="20" y="47" width="67" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="67" id="IT7-eA-VCW"/>
                     </constraints>
@@ -166,7 +190,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hr6-Gb-jxi">
-                    <rect key="frame" x="122.66666666666667" y="92" width="129.66666666666663" height="50"/>
+                    <rect key="frame" x="122.66666666666667" y="95" width="129.66666666666663" height="50"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Key" translatesAutoresizingMaskIntoConstraints="NO" id="hHf-FR-bI6">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -185,7 +209,7 @@
                     </subviews>
                 </stackView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left-arrow (3)" translatesAutoresizingMaskIntoConstraints="NO" id="eia-S3-UJq">
-                    <rect key="frame" x="16" y="49" width="20" height="20"/>
+                    <rect key="frame" x="16" y="52" width="20" height="20"/>
                     <color key="tintColor" name="appMain"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="H1M-e6-SwT"/>
@@ -207,7 +231,7 @@
                 <constraint firstItem="L2S-8H-peg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ryR-0y-1XE"/>
                 <constraint firstItem="L8M-xf-xKf" firstAttribute="top" secondItem="Hr6-Gb-jxi" secondAttribute="bottom" constant="22" id="tAk-Qm-vZg"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="54"/>
+            <point key="canvasLocation" x="32.799999999999997" y="53.940886699507388"/>
         </view>
     </objects>
     <resources>
