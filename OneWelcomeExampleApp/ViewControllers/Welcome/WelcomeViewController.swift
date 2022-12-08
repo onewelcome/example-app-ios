@@ -92,8 +92,8 @@ class WelcomeViewController: UIViewController {
 
 private extension WelcomeViewController {
     func setupAppIcon() {
-        if self.traitCollection.userInterfaceStyle == .dark {
-            UIApplication.shared.setAlternateIconName("AppIcon-DarkMode") { (error) in
+        if traitCollection.userInterfaceStyle == .dark {
+            UIApplication.shared.setAlternateIconName("AppIcon-DarkMode") { error in
                 if let error = error {
                     print("Failed request to update the app’s icon: \(error)")
                 }
