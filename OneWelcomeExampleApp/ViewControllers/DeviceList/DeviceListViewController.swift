@@ -16,7 +16,7 @@
 import UIKit
 
 protocol DeviceListDelegate: AnyObject {
-    func deviceList(didCancel deviceListViewController: DeviceListViewController)
+    func deviceListDidCancel(_ deviceListViewController: DeviceListViewController)
 }
 
 class DeviceListViewController: UIViewController {
@@ -58,6 +58,6 @@ extension DeviceListViewController: UITableViewDataSource {
 
 private extension DeviceListViewController {
     @IBAction func cancel(_: Any) {
-        delegate?.deviceList(didCancel: self)
+        delegate?.deviceListDidCancel(self)
     }
 }

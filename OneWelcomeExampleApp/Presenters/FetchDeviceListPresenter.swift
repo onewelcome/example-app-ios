@@ -50,7 +50,7 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
 }
 
 extension FetchDeviceListPresenter: DeviceListDelegate {
-    func deviceList(didCancel deviceListViewController: DeviceListViewController) {
+    func deviceListDidCancel(_ deviceListViewController: DeviceListViewController) {
         deviceListViewController.dismiss(animated: true, completion: nil)
     }
 }
