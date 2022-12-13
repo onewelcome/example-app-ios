@@ -35,7 +35,7 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func profilesPressed(_: Any) {
-        dashboardViewToPresenterProtocol?.presentProfileView(profileName: userProfileName)
+        dashboardViewToPresenterProtocol?.presentProfileView()
     }
 
     @IBAction func mobileAuthPressed(_: Any) {
@@ -45,5 +45,4 @@ class DashboardViewController: UIViewController {
     @IBAction func appToWebPressed(_ sender: Any) {
         dashboardViewToPresenterProtocol?.presetAppToWebView()
     }
-    
 }

@@ -18,7 +18,7 @@ import UIKit
 typealias ProfilePresenterProtocol = ProfileInteractorToPresenterProtocol & ProfileViewToPresenterProtocol
 
 protocol ProfileInteractorToPresenterProtocol: AnyObject {
-    func presentProfileView(profileName: String?)
+    func presentProfileView()
 }
 
 protocol ProfileViewToPresenterProtocol: AnyObject {
@@ -30,16 +30,21 @@ protocol ProfileViewToPresenterProtocol: AnyObject {
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    let navigationController: UINavigationController
-    let profileViewController: ProfileViewController
-
-    init(_ profileViewController: ProfileViewController, navigationController: UINavigationController) {
+    private let navigationController: UINavigationController
+    private let profileViewController: ProfileViewController
+    private let profileInteractor: ProfileInteractorProtocol
+    
+    init(_ profileViewController: ProfileViewController,
+         navigationController: UINavigationController,
+         profileInteractor: ProfileInteractorProtocol) {
         self.profileViewController = profileViewController
         self.navigationController = navigationController
+        self.profileInteractor = profileInteractor
     }
 
-    func presentProfileView(profileName: String?) {
-        profileViewController.setProfileName(profileName)
+    //TODO: restore presentProfileView()
+    func presentProfileView() {
+        //TODO: ustawic `profileViewController` z `profileInteractor.profileName`
         navigationController.pushViewController(profileViewController, animated: true)
     }
 }
