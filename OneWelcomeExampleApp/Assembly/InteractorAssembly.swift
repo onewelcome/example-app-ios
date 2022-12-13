@@ -17,6 +17,11 @@ import Swinject
 
 class InteractorAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(ProfileInteractorProtocol.self) { _ in ProfileInteractor() }
+//            .initCompleted { resolver, instance in
+//                let profileInteractor = instance as! ProfileInteractor
+//                profileInteractor.profileName = "dupa"// .disconnectPresenter = resolver.resolve(DisconnectPresenterProtocol.self)
+//            }
         container.register(StartupInteractorProtocol.self) { _ in StartupInteractor() }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
             .initCompleted { resolver, instance in
@@ -33,6 +38,7 @@ class InteractorAssembly: Assembly {
                 let logoutInteractor = instance as! LogoutInteractor
                 logoutInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
             }
+
         container.register(DisconnectInteractorProtocol.self) { _ in DisconnectInteractor() }
             .initCompleted { resolver, instance in
                 let disconnectInteractor = instance as! DisconnectInteractor

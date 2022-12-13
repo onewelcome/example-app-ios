@@ -20,5 +20,5 @@ protocol ProfileInteractorProtocol {
 }
 
 class ProfileInteractor: ProfileInteractorProtocol {
-    let profileName = "z dupy nejm" //TODO: <<<
+    var profileName = "JPII2137" //TODO: <<<
 }

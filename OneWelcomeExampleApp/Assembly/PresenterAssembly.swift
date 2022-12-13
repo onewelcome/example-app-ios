@@ -59,7 +59,7 @@ class PresenterAssembly: Assembly {
                                                                                                        authenticatorsViewController: resolver.resolve(AuthenticatorsViewController.self)!) }
 
         container.register(ProfilePresenterProtocol.self) { resolver in ProfilePresenter(resolver.resolve(ProfileViewController.self)!,
-                                                                                         navigationController: resolver.resolve(UINavigationController.self)!) }
+                                                                                         navigationController: resolver.resolve(UINavigationController.self)!, profileInteractor: ProfileInteractor()/*resolver.resolve(ProfileInteractor.self)!*/) }
 
         container.register(MobileAuthPresenterProtocol.self) { resolver in MobileAuthPresenter(resolver.resolve(MobileAuthViewController.self)!,
                                                                                                navigationController: resolver.resolve(UINavigationController.self)!,
