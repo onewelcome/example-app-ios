@@ -39,12 +39,6 @@
                     <rect key="frame" x="0.0" y="177" width="375" height="635"/>
                     <color key="backgroundColor" name="appBackground"/>
                 </view>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZc-ja-TcB">
-                    <rect key="frame" x="163" y="78" width="51" height="31"/>
-                    <connections>
-                        <action selector="didSwitch:" destination="-1" eventType="valueChanged" id="apX-WO-IQd"/>
-                    </connections>
-                </switch>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="appBackground"/>
@@ -56,10 +50,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Awf-uT-D1B" secondAttribute="trailing" constant="5" id="Kvs-q5-GGW"/>
                 <constraint firstItem="bJK-BR-KdB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MhD-9c-mye"/>
                 <constraint firstItem="Awf-uT-D1B" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="c4h-1p-fdt"/>
-                <constraint firstItem="TZc-ja-TcB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="31" id="eiN-Kz-PtP"/>
                 <constraint firstItem="Wg0-XL-LBn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="g9A-9U-U4q"/>
                 <constraint firstItem="bJK-BR-KdB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="heG-O7-wPR"/>
-                <constraint firstItem="TZc-ja-TcB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qvr-te-Ugy"/>
                 <constraint firstItem="bJK-BR-KdB" firstAttribute="top" secondItem="Wg0-XL-LBn" secondAttribute="bottom" constant="5" id="xPX-YJ-Udq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wg0-XL-LBn" secondAttribute="trailing" constant="16" id="yvF-VT-5dl"/>
             </constraints>
