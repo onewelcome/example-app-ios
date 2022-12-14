@@ -27,7 +27,7 @@ protocol ProfileViewToPresenterProtocol: AnyObject {
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
     func setupFetchDeviceListPresenter()
-    func update()
+    func updateView()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
@@ -73,7 +73,7 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         appRouter.setupFetchDeviceListPresenter()
     }
     
-    func update() {
+    func updateView() {
         profileViewController.setProfileName(profileInteractor.profileName)
     }
 }
