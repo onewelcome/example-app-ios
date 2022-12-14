@@ -34,8 +34,6 @@ class WelcomeViewController: UIViewController {
         } else {
             setupViewWithoutProfiles()
         }
-        
-        setupAppIcon()
     }
 
     func configureSegmentView() {
@@ -88,18 +86,50 @@ class WelcomeViewController: UIViewController {
             displayRegisterUserViewController()
         }
     }
+    @IBAction func didSwitch(_ sender: Any) {
+        guard let modeSwith = sender as? UISwitch else { return }
+        setDarkModeOn(modeSwith.isOn)
+    }
 }
+//
+//private extension WelcomeViewController {
+//    func setupAppIcon() {
+//        guard UIApplication.shared.supportsAlternateIcons else { return }
+//        if traitCollection.userInterfaceStyle == .dark {
+//            UIApplication.shared.setAlternateIconName("AppIcon-DarkMode") { error in
+//                if let error = error {
+//                    print("Failed request to update the app’s icon: \(error.localizedDescription)")
+//                }
+//            }
+//        } else {
+//            UIApplication.shared.setAlternateIconName(nil)
+//        }
+//    }
+//}
 
+
+
+//TODO: temporary
 private extension WelcomeViewController {
-    func setupAppIcon() {
-        if traitCollection.userInterfaceStyle == .dark {
-            UIApplication.shared.setAlternateIconName("AppIcon-DarkMode") { error in
+    func setDarkModeOn(_ isOn: Bool) {
+        guard UIApplication.shared.supportsAlternateIcons else { return }
+
+        print(UIApplication.shared.alternateIconName ?? "Primary")
+
+//        if UIView().traitCollection.userInterfaceStyle == .dark {
+        if isOn {
+            UIApplication.shared.setAlternateIconName("AppIconDark") { error in
                 if let error = error {
                     print("Failed request to update the app’s icon: \(error)")
                 }
             }
         } else {
-            UIApplication.shared.setAlternateIconName(nil)
+//            UIApplication.shared.setAlternateIconName(nil)
+            UIApplication.shared.setAlternateIconName("AppIcon") { error in
+                if let error = error {
+                    print("Failed request to update the app’s icon: \(error)")
+                }
+            }
         }
     }
 }
