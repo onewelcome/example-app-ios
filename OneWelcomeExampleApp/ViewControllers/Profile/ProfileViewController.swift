@@ -20,8 +20,8 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet private weak var profileNameLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         profileViewToPresenter?.update()
     }
     

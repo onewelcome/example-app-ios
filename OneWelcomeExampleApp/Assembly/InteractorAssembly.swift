@@ -17,11 +17,6 @@ import Swinject
 
 class InteractorAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(ProfileInteractorProtocol.self) { _ in ProfileInteractor() }
-            .initCompleted { resolver, instance in
-                let profileInteractor = instance as! ProfileInteractor
-                profileInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
-            }
         container.register(StartupInteractorProtocol.self) { _ in StartupInteractor() }
         container.register(LoginInteractorProtocol.self) { _ in LoginInteractor() }
             .initCompleted { resolver, instance in
@@ -48,6 +43,11 @@ class InteractorAssembly: Assembly {
             .initCompleted { resolver, instance in
                 let changePinInteractor = instance as! ChangePinInteractor
                 changePinInteractor.changePinPresenter = resolver.resolve(ChangePinPresenterProtocol.self)
+            }
+        container.register(ProfileInteractorProtocol.self) { _ in ProfileInteractor() }
+            .initCompleted { resolver, instance in
+                let profileInteractor = instance as! ProfileInteractor
+                profileInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
             }
         container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
         container.register(AuthenticatorsInteractorProtocol.self) { _ in AuthenticatorsInteractor() }
