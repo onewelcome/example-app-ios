@@ -13,12 +13,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//import UIKit
-
 protocol ProfileInteractorProtocol {
     var profileName: String { get }
 }
 
 class ProfileInteractor: ProfileInteractorProtocol {
-    var profileName = "JPII2137" //TODO: <<<
+    weak var dashboardPresenter: DashboardInteractorToPresenterProtocol?
+    var profileName: String { dashboardPresenter?.authenticatedUserProfile?.profileId ?? "" }
 }
