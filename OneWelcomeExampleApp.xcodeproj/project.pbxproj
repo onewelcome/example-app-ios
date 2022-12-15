@@ -129,6 +129,8 @@
 		8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
 		9E2988D6294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
+		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
+		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9E2988D7294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
 		9E2988D8294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
 		9E2988E2294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */; };
@@ -443,6 +445,7 @@
 		8D5B76CD2880417900876B0C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8FF346485C61928877C8ED47 /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@3x.png"; sourceTree = "<group>"; };
 		9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconDark--@3x.png"; sourceTree = "<group>"; };
 		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
@@ -674,6 +677,7 @@
 				7E241E00212C2ACB008FCD9A /* AppDetailsInteractor.swift */,
 				7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */,
 				7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */,
+				9EECB5B12948BC85006095DF /* ProfileInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1351,6 +1355,7 @@
 				7E300AEA20DBE17600EF1A79 /* WelcomeViewController.swift in Sources */,
 				7EBF8B7A211C80D300C3D94E /* RegisterAuthenticatorEntity.swift in Sources */,
 				7ED15B242114370C00133D5C /* MobileAuthViewController.swift in Sources */,
+				9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */,
 				7E45477D20E117FD00FB620F /* PresenterAssembly.swift in Sources */,
 				7E778CF121188D6B001EE257 /* DisconnectInteractor.swift in Sources */,
 				7E778CF321199D71001EE257 /* ChangePinPresenter.swift in Sources */,
@@ -1401,6 +1406,7 @@
 				AD07D3E228771F4F0095571A /* BrowserViewController.swift in Sources */,
 				AD07D3E328771F4F0095571A /* GenericErrorDomainMapping.swift in Sources */,
 				AD07D3E428771F4F0095571A /* ButtonExtension.swift in Sources */,
+				9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */,
 				AD07D3E528771F4F0095571A /* FetchDeviceListInteractor.swift in Sources */,
 				AD07D3E628771F4F0095571A /* LoginViewController.swift in Sources */,
 				AD07D3E728771F4F0095571A /* AuthenticatorsInteractor.swift in Sources */,
@@ -1639,7 +1645,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1666,7 +1672,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1689,7 +1695,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.AuthenticatorDemo.ImplicitWidget;
@@ -1714,7 +1720,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.AuthenticatorDemo.ImplicitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

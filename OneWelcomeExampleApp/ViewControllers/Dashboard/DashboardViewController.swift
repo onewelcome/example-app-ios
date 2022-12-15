@@ -45,5 +45,4 @@ class DashboardViewController: UIViewController {
     @IBAction func appToWebPressed(_ sender: Any) {
         dashboardViewToPresenterProtocol?.presetAppToWebView()
     }
-    
 }

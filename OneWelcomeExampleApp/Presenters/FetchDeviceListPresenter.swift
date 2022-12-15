@@ -39,12 +39,18 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
     func presentDeviceList(_ deviceList: [Device]) {
         let deviceListViewController = DeviceListViewController()
         deviceListViewController.deviceList = deviceList
-        deviceListViewController.modalPresentationStyle = .overCurrentContext
-        navigationController.present(deviceListViewController, animated: false, completion: nil)
+        deviceListViewController.delegate = self
+        navigationController.present(deviceListViewController, animated: true, completion: nil)
     }
 
     func fetchDeviceListFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupErrorAlert(error: error)
+    }
+}
+
+extension FetchDeviceListPresenter: DeviceListDelegate {
+    func deviceListDidCancel(_ deviceListViewController: DeviceListViewController) {
+        deviceListViewController.dismiss(animated: true, completion: nil)
     }
 }
