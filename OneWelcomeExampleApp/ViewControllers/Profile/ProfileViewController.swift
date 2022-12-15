@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        profileViewToPresenter?.update()
+        profileViewToPresenter?.updateView()
     }
     
     @IBAction func backPressed(_: Any) {
