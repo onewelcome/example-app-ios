@@ -37,7 +37,7 @@ class WelcomeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //TODO: inject this object
+        
         AppIconSwitcher()?.setMode(traitCollection.userInterfaceStyle)
     }
 
@@ -89,30 +89,6 @@ class WelcomeViewController: UIViewController {
             displayLognViewController()
         } else {
             displayRegisterUserViewController()
-        }
-    }
-}
-
-//TODO: move
-class AppIconSwitcher {
-    enum IconMode: String {
-        case light = "AppIcon"
-        case dark = "AppIconDark"
-    }
-    
-    init?() {
-        guard UIApplication.shared.supportsAlternateIcons else { return nil }
-    }
-    
-    func setMode(_ interfaceStyle: UIUserInterfaceStyle) {
-        let iconMode: IconMode = interfaceStyle == .dark ? .dark : .light
-        let currentMode = IconMode(rawValue: UIApplication.shared.alternateIconName ?? IconMode.light.rawValue)
-        guard iconMode != currentMode else { return }
-        
-        UIApplication.shared.setAlternateIconName(iconMode.rawValue) { error in
-            if let error = error {
-                print("Failed request to update the app’s icon: \(error)")
-            }
         }
     }
 }

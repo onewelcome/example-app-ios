@@ -48,38 +48,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             WidgetCenter.shared.reloadAllTimelines()
         }
     }
-    
-//    func applicationWillEnterForeground(_ application: UIApplication) {
-//        updateAppIcon()
-//    }
 }
-
-
-//TODO: temporary?
-//private extension AppDelegate {
-//    func updateAppIcon() {
-//        setDarkModeOn(UIView().traitCollection.userInterfaceStyle == .dark)
-//    }
-//
-//    func setDarkModeOn(_ isOn: Bool) {
-//        guard UIApplication.shared.supportsAlternateIcons else { return }
-//
-//        print(UIApplication.shared.alternateIconName ?? "Primary")
-//
-////        if UIView().traitCollection.userInterfaceStyle == .dark {
-//        if isOn {
-//            UIApplication.shared.setAlternateIconName("AppIconDark") { error in
-//                if let error = error {
-//                    print("Failed request to update the app’s icon: \(error)")
-//                }
-//            }
-//        } else {
-////            UIApplication.shared.setAlternateIconName(nil)
-//            UIApplication.shared.setAlternateIconName("AppIcon") { error in
-//                if let error = error {
-//                    print("Failed request to update the app’s icon: \(error)")
-//                }
-//            }
-//        }
-//    }
-//}

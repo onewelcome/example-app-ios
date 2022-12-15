@@ -129,14 +129,16 @@
 		8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
 		9E2988D6294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
-		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
-		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9E2988D7294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
 		9E2988D8294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
 		9E2988E2294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */; };
 		9E2988E3294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */; };
 		9E2988E4294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
 		9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
+		9E4A8717294B356C00A6D14D /* AppIconSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */; };
+		9E4A8718294B356C00A6D14D /* AppIconSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */; };
+		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
+		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		A7D1D657909193C0B80F176F /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFC009718702E6DDAEA8B2D /* Pods_WidgetExtension.framework */; };
 		AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
@@ -445,10 +447,11 @@
 		8D5B76CD2880417900876B0C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8FF346485C61928877C8ED47 /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
-		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@3x.png"; sourceTree = "<group>"; };
 		9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconDark--@3x.png"; sourceTree = "<group>"; };
 		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
+		9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcher.swift; sourceTree = "<group>"; };
+		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA528785BE600CC3EE6 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
@@ -591,6 +594,7 @@
 				7E7BA3E220E65338005F1FD1 /* AppRouter.swift */,
 				7E300AC320D7E8FE00EF1A79 /* SupportingFiles */,
 				7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */,
+				9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */,
 			);
 			path = OneWelcomeExampleApp;
 			sourceTree = "<group>";
@@ -1332,6 +1336,7 @@
 				7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
+				9E4A8717294B356C00A6D14D /* AppIconSwitcher.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
 				8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
@@ -1461,6 +1466,7 @@
 				AD07D41728771F4F0095571A /* PresenterAssembly.swift in Sources */,
 				AD07D41828771F4F0095571A /* DisconnectInteractor.swift in Sources */,
 				AD07D41928771F4F0095571A /* ChangePinPresenter.swift in Sources */,
+				9E4A8718294B356C00A6D14D /* AppIconSwitcher.swift in Sources */,
 				AD07D41A28771F4F0095571A /* AuthenticatorsPresenter.swift in Sources */,
 				AD07D41B28771F4F0095571A /* DeviceTableViewCell.swift in Sources */,
 				AD07D41C28771F4F0095571A /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */,
