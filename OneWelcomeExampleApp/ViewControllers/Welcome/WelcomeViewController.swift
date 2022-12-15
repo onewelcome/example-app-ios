@@ -23,7 +23,6 @@ class WelcomeViewController: UIViewController {
     var loginViewController: LoginViewController?
     var registerUserViewController: RegisterUserViewController?
     weak var welcomePresenterProtocol: WelcomePresenterProtocol?
-    weak var welcomeInteractor: WelcomeInteractorProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +38,7 @@ class WelcomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        welcomeInteractor?.handleInterfaceStyleChange(traitCollection.userInterfaceStyle)
+        welcomePresenterProtocol?.handleInterfaceStyleChange(traitCollection.userInterfaceStyle)
     }
 
     func configureSegmentView() {
