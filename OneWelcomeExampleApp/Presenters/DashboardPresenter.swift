@@ -21,6 +21,7 @@ protocol DashboardInteractorToPresenterProtocol: AnyObject {
     func presentDashboardView(authenticatedUserProfile: UserProfile)
     func presentWelcomeView()
     func logoutUserActionFailed(_ error: AppError)
+    var authenticatedUserProfile: UserProfile? { get }
 }
 
 protocol DashboardViewToPresenterProtocol: AnyObject {

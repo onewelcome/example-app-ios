@@ -18,7 +18,6 @@ import UIKit
 
 class PresenterAssembly: Assembly {
     func assemble(container: Container) {
-
         container.register(StartupPresenterProtocol.self) { resolver in
             StartupPresenter(startupInteractor: resolver.resolve(StartupInteractorProtocol.self)!)
         }
@@ -54,25 +53,31 @@ class PresenterAssembly: Assembly {
             ErrorPresenter(navigationController: resolver.resolve(UINavigationController.self)!)
         }
 
-        container.register(AuthenticatorsPresenterProtocol.self) { resolver in AuthenticatorsPresenter(resolver.resolve(AuthenticatorsInteractorProtocol.self)!,
-                                                                                                       navigationController: resolver.resolve(UINavigationController.self)!,
-                                                                                                       authenticatorsViewController: resolver.resolve(AuthenticatorsViewController.self)!) }
+        container.register(AuthenticatorsPresenterProtocol.self) { resolver in
+            AuthenticatorsPresenter(resolver.resolve(AuthenticatorsInteractorProtocol.self)!,
+                                    navigationController: resolver.resolve(UINavigationController.self)!,
+                                    authenticatorsViewController: resolver.resolve(AuthenticatorsViewController.self)!) }
+        
+        container.register(ProfilePresenterProtocol.self) { resolver in
+            ProfilePresenter(resolver.resolve(ProfileViewController.self)!,
+                             navigationController: resolver.resolve(UINavigationController.self)!,
+                             profileInteractor: resolver.resolve(ProfileInteractorProtocol.self)!) }
 
-        container.register(ProfilePresenterProtocol.self) { resolver in ProfilePresenter(resolver.resolve(ProfileViewController.self)!,
-                                                                                         navigationController: resolver.resolve(UINavigationController.self)!) }
+        container.register(MobileAuthPresenterProtocol.self) { resolver in
+            MobileAuthPresenter(resolver.resolve(MobileAuthViewController.self)!,
+                                navigationController: resolver.resolve(UINavigationController.self)!,
+                                tabBarController: resolver.resolve(TabBarController.self)!,
+                                mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
 
-        container.register(MobileAuthPresenterProtocol.self) { resolver in MobileAuthPresenter(resolver.resolve(MobileAuthViewController.self)!,
-                                                                                               navigationController: resolver.resolve(UINavigationController.self)!,
-                                                                                               tabBarController: resolver.resolve(TabBarController.self)!,
-                                                                                               mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
+        container.register(DisconnectPresenterProtocol.self) { resolver in
+            DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,
+                                navigationController: resolver.resolve(UINavigationController.self)!) }
 
-        container.register(DisconnectPresenterProtocol.self) { resolver in DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,
-                                                                                               navigationController: resolver.resolve(UINavigationController.self)!) }
-
-        container.register(ChangePinPresenterProtocol.self) { resolver in ChangePinPresenter(changePinInteractor: resolver.resolve(ChangePinInteractorProtocol.self)!,
-                                                                                             navigationController: resolver.resolve(UINavigationController.self)!,
-                                                                                             changePinNavigationController: UINavigationController()) }
-
+        container.register(ChangePinPresenterProtocol.self) { resolver in
+            ChangePinPresenter(changePinInteractor: resolver.resolve(ChangePinInteractorProtocol.self)!,
+                               navigationController: resolver.resolve(UINavigationController.self)!,
+                               changePinNavigationController: UINavigationController()) }
+        
         container.register(PendingMobileAuthPresenterProtocol.self) { resolver in
             PendingMobileAuthPresenter(pendingMobileAuthViewController: resolver.resolve((UIViewController & PendingMobileAuthPresenterViewDelegate).self)!,
                                        mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
@@ -99,6 +104,5 @@ class PresenterAssembly: Assembly {
             window.makeKeyAndVisible()
             return window
         }.inObjectScope(.container)
-
     }
 }

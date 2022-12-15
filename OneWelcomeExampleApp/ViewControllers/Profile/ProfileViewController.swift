@@ -16,21 +16,32 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    weak var profileViewToPresenterProtocol: ProfileViewToPresenterProtocol?
-
+    weak var profileViewToPresenter: ProfileViewToPresenterProtocol?
+    
+    @IBOutlet private weak var profileNameLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        profileViewToPresenter?.updateView()
+    }
+    
     @IBAction func backPressed(_: Any) {
-        profileViewToPresenterProtocol?.popToDashboardView()
+        profileViewToPresenter?.popToDashboardView()
     }
 
     @IBAction func disconnectProfile(_: Any) {
-        profileViewToPresenterProtocol?.setupDisconnectPresenter()
+        profileViewToPresenter?.setupDisconnectPresenter()
     }
 
     @IBAction func deviceList(_: Any) {
-        profileViewToPresenterProtocol?.setupFetchDeviceListPresenter()
+        profileViewToPresenter?.setupFetchDeviceListPresenter()
     }
 
     @IBAction func changePassword(_: Any) {
-        profileViewToPresenterProtocol?.setupChangePinPresenter()
+        profileViewToPresenter?.setupChangePinPresenter()
+    }
+    
+    func setProfileName(_ profileName: String?) {
+        profileNameLabel.text = profileName
     }
 }
