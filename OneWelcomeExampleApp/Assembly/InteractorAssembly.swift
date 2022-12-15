@@ -76,5 +76,6 @@ class InteractorAssembly: Assembly {
         container.register(FetchImplicitDataInteractorProtocol.self) { _ in FetchImplicitDataInteractor(errorMapper: errorMapper) }
         
         container.register(AppToWebInteractorProtocol.self) { _ in AppToWebInteractor() }
+        container.register(WelcomeInteractorProtocol.self) { _ in WelcomeInteractor() }
     }
 }

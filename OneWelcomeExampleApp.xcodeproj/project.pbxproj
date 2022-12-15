@@ -137,6 +137,8 @@
 		9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
 		9E4A8717294B356C00A6D14D /* AppIconSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */; };
 		9E4A8718294B356C00A6D14D /* AppIconSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */; };
+		9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
+		9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
 		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		A7D1D657909193C0B80F176F /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFC009718702E6DDAEA8B2D /* Pods_WidgetExtension.framework */; };
@@ -451,6 +453,7 @@
 		9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconDark--@3x.png"; sourceTree = "<group>"; };
 		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
 		9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcher.swift; sourceTree = "<group>"; };
+		9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
 		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA528785BE600CC3EE6 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
@@ -682,6 +685,7 @@
 				7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */,
 				7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */,
 				9EECB5B12948BC85006095DF /* ProfileInteractor.swift */,
+				9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1368,6 +1372,7 @@
 				7EBF8B8D21231A0600C3D94E /* DeviceTableViewCell.swift in Sources */,
 				7EDAB730213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */,
 				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
+				9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
 				86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */,
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
@@ -1410,6 +1415,7 @@
 				AD07D3E128771F4F0095571A /* ProfileTableViewCell.swift in Sources */,
 				AD07D3E228771F4F0095571A /* BrowserViewController.swift in Sources */,
 				AD07D3E328771F4F0095571A /* GenericErrorDomainMapping.swift in Sources */,
+				9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */,
 				AD07D3E428771F4F0095571A /* ButtonExtension.swift in Sources */,
 				9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */,
 				AD07D3E528771F4F0095571A /* FetchDeviceListInteractor.swift in Sources */,

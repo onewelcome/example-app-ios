@@ -30,6 +30,7 @@ class ViewControllerAssembly: Assembly {
         container.register(WelcomeViewController.self) { _ in WelcomeViewController() }
             .initCompleted { resolver, welcomeViewController in
                 welcomeViewController.welcomePresenterProtocol = resolver.resolve(WelcomePresenterProtocol.self)!
+                welcomeViewController.welcomeInteractor = resolver.resolve(WelcomeInteractorProtocol.self)!
             }
 
         container.register(DashboardViewController.self) { _ in DashboardViewController() }

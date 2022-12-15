@@ -23,8 +23,7 @@ class AppIconSwitcher {
         guard UIApplication.shared.supportsAlternateIcons else { return nil }
     }
     
-    func setMode(_ interfaceStyle: UIUserInterfaceStyle) {
-        let iconMode: IconMode = interfaceStyle == .dark ? .dark : .light
+    func setIconForMode(_ iconMode: IconMode) {
         let currentMode = IconMode(rawValue: UIApplication.shared.alternateIconName ?? IconMode.light.rawValue)
         guard iconMode != currentMode else { return }
         
