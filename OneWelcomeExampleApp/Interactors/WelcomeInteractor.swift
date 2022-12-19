@@ -14,21 +14,25 @@
 // limitations under the License.
 
 protocol WelcomeInteractorProtocol: AnyObject {
-    func handleInterfaceStyleChange(_ interfaceStyle: UIUserInterfaceStyle)
+    func setIconForMode(_ iconMode: WelcomeInteractor.IconMode)
 }
 
 class WelcomeInteractor: WelcomeInteractorProtocol {
-    func handleInterfaceStyleChange(_ interfaceStyle: UIUserInterfaceStyle) {
-        AppIconSwitcher()?.setIconForMode(interfaceStyle.appIconName)
+    enum IconMode: String {
+        case light = "AppIcon"
+        case dark = "AppIconDark"
     }
-}
 
-private extension UIUserInterfaceStyle {
-    var appIconName: AppIconSwitcher.IconMode {
-        switch self {
-        case .dark: return .dark
-        default:
-            return .light
+    func setIconForMode(_ iconMode: IconMode) {
+        guard UIApplication.shared.supportsAlternateIcons else { return }
+        
+        let currentMode = IconMode(rawValue: UIApplication.shared.alternateIconName ?? IconMode.light.rawValue)
+        guard iconMode != currentMode else { return }
+
+        UIApplication.shared.setAlternateIconName(iconMode.rawValue) { error in
+            if let error = error {
+                print("Failed request to update the app’s icon: \(error)")
+            }
         }
     }
 }

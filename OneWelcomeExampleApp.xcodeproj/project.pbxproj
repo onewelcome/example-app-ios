@@ -135,8 +135,6 @@
 		9E2988E3294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */; };
 		9E2988E4294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
 		9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
-		9E4A8717294B356C00A6D14D /* AppIconSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */; };
-		9E4A8718294B356C00A6D14D /* AppIconSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */; };
 		9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
 		9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
 		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
@@ -452,7 +450,6 @@
 		9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@3x.png"; sourceTree = "<group>"; };
 		9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconDark--@3x.png"; sourceTree = "<group>"; };
 		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
-		9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcher.swift; sourceTree = "<group>"; };
 		9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
 		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -597,7 +594,6 @@
 				7E7BA3E220E65338005F1FD1 /* AppRouter.swift */,
 				7E300AC320D7E8FE00EF1A79 /* SupportingFiles */,
 				7E300A6F20D7B8E200EF1A79 /* Assets.xcassets */,
-				9E4A8716294B356C00A6D14D /* AppIconSwitcher.swift */,
 			);
 			path = OneWelcomeExampleApp;
 			sourceTree = "<group>";
@@ -1340,7 +1336,6 @@
 				7EBF8B842122F74600C3D94E /* FetchDeviceListPresenter.swift in Sources */,
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
-				9E4A8717294B356C00A6D14D /* AppIconSwitcher.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
 				8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
@@ -1472,7 +1467,6 @@
 				AD07D41728771F4F0095571A /* PresenterAssembly.swift in Sources */,
 				AD07D41828771F4F0095571A /* DisconnectInteractor.swift in Sources */,
 				AD07D41928771F4F0095571A /* ChangePinPresenter.swift in Sources */,
-				9E4A8718294B356C00A6D14D /* AppIconSwitcher.swift in Sources */,
 				AD07D41A28771F4F0095571A /* AuthenticatorsPresenter.swift in Sources */,
 				AD07D41B28771F4F0095571A /* DeviceTableViewCell.swift in Sources */,
 				AD07D41C28771F4F0095571A /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */,
@@ -1699,7 +1693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1710,7 +1704,7 @@
 				MARKETING_VERSION = 3.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift.ImplicitWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.AuthenticatorDemo.ImplicitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1724,7 +1718,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1734,7 +1728,7 @@
 				);
 				MARKETING_VERSION = 3.0.1;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift.ImplicitWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.AuthenticatorDemo.ImplicitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1749,7 +1743,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1761,7 +1755,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.AuthenticatorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1776,7 +1770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1788,7 +1782,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.OneginiExampleAppSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onegini.AuthenticatorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";

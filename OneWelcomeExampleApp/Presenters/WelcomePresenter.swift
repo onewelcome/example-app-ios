@@ -77,6 +77,17 @@ class WelcomePresenter: WelcomePresenterProtocol {
     }
     
     func handleInterfaceStyleChange(_ style: UIUserInterfaceStyle) {
-        welcomeInteractor.handleInterfaceStyleChange(style)
+        welcomeInteractor.setIconForMode(style.appIconName)
+    }
+}
+
+private extension UIUserInterfaceStyle {
+    var appIconName: WelcomeInteractor.IconMode {
+        switch self {
+        case .dark:
+            return .dark
+        default:
+            return .light
+        }
     }
 }
