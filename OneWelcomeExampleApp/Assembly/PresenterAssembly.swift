@@ -24,6 +24,7 @@ class PresenterAssembly: Assembly {
 
         container.register(WelcomePresenterProtocol.self) { resolver in
             WelcomePresenter(resolver.resolve(WelcomeViewController.self)!,
+                             welcomeInteractor: resolver.resolve(WelcomeInteractorProtocol.self)!,
                              loginPresenter: resolver.resolve(LoginPresenterProtocols.self)!,
                              registerUserPresenter: resolver.resolve(RegisterUserPresenterProtocol.self)!,
                              navigationController: resolver.resolve(UINavigationController.self)!,

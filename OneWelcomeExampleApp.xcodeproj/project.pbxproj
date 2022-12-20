@@ -127,6 +127,16 @@
 		8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		8D5B76CF2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
+		9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
+		9E2988D6294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
+		9E2988D7294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
+		9E2988D8294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
+		9E2988E2294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */; };
+		9E2988E3294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */; };
+		9E2988E4294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
+		9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
+		9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
+		9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
 		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		A7D1D657909193C0B80F176F /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFC009718702E6DDAEA8B2D /* Pods_WidgetExtension.framework */; };
@@ -436,6 +446,11 @@
 		8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImplicitDataView.swift; path = widget/ImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
 		8D5B76CD2880417900876B0C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8FF346485C61928877C8ED47 /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@3x.png"; sourceTree = "<group>"; };
+		9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconDark--@3x.png"; sourceTree = "<group>"; };
+		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
+		9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
 		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA528785BE600CC3EE6 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
@@ -620,6 +635,7 @@
 		7E300AC320D7E8FE00EF1A79 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				9EACEB62293F5FE000E2BC69 /* AppIcons */,
 				7E300A7420D7B8E200EF1A79 /* Info.plist */,
 				7E300A9D20D7DFB500EF1A79 /* OneWelcomeExampleApp-Bridging-Header.h */,
 			);
@@ -665,6 +681,7 @@
 				7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */,
 				7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */,
 				9EECB5B12948BC85006095DF /* ProfileInteractor.swift */,
+				9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -917,6 +934,17 @@
 			path = PendingMovileAuthCell;
 			sourceTree = "<group>";
 		};
+		9EACEB62293F5FE000E2BC69 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				9E2988E1294A0D380025E1D7 /* AppIconDark.png */,
+				9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */,
+				9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */,
+				9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */,
+			);
+			path = AppIcons;
+			sourceTree = "<group>";
+		};
 		AD07D457287724C80095571A /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -1082,6 +1110,8 @@
 			files = (
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
 				7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */,
+				9E2988D7294A03C40025E1D7 /* AppIcon@3x.png in Resources */,
+				9E2988E4294A0D380025E1D7 /* AppIconDark.png in Resources */,
 				7EDAB7592146B583004918CE /* MobileAuthConfirmationViewController.xib in Resources */,
 				7E241DFD212C0BE4008FCD9A /* AppDetailsViewController.xib in Resources */,
 				7EBF8B8E21231A0600C3D94E /* DeviceTableViewCell.xib in Resources */,
@@ -1103,8 +1133,10 @@
 				7EBF8B892122FAAA00C3D94E /* DeviceListViewController.xib in Resources */,
 				7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */,
 				7E45477320DD422600FB620F /* ButtonTableViewCell.xib in Resources */,
+				9E2988E2294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */,
 				86ABF34E2126E29300C5BE60 /* TabBarViewController.xib in Resources */,
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
+				9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */,
 				7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1124,6 +1156,8 @@
 			files = (
 				AD07D42C28771F4F0095571A /* RegisterUserViewController.xib in Resources */,
 				AD07D42D28771F4F0095571A /* TwoWayOTPViewController.xib in Resources */,
+				9E2988D8294A03C40025E1D7 /* AppIcon@3x.png in Resources */,
+				9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */,
 				AD07D42E28771F4F0095571A /* MobileAuthConfirmationViewController.xib in Resources */,
 				AD07D42F28771F4F0095571A /* AppDetailsViewController.xib in Resources */,
 				AD07D43028771F4F0095571A /* DeviceTableViewCell.xib in Resources */,
@@ -1145,8 +1179,10 @@
 				AD07D44028771F4F0095571A /* DeviceListViewController.xib in Resources */,
 				AD07D44128771F4F0095571A /* AuthenticatorsViewController.xib in Resources */,
 				AD07D44228771F4F0095571A /* ButtonTableViewCell.xib in Resources */,
+				9E2988E3294A0D380025E1D7 /* AppIconDark--@3x.png in Resources */,
 				AD07D44328771F4F0095571A /* TabBarViewController.xib in Resources */,
 				AD07D44428771F4F0095571A /* DashboardViewController.xib in Resources */,
+				9E2988D6294A03C40025E1D7 /* AppIcon@2x.png in Resources */,
 				AD07D44528771F4F0095571A /* PasswordAuthenticatorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1331,6 +1367,7 @@
 				7EBF8B8D21231A0600C3D94E /* DeviceTableViewCell.swift in Sources */,
 				7EDAB730213E7D71004918CE /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */,
 				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
+				9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
 				86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */,
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
@@ -1373,6 +1410,7 @@
 				AD07D3E128771F4F0095571A /* ProfileTableViewCell.swift in Sources */,
 				AD07D3E228771F4F0095571A /* BrowserViewController.swift in Sources */,
 				AD07D3E328771F4F0095571A /* GenericErrorDomainMapping.swift in Sources */,
+				9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */,
 				AD07D3E428771F4F0095571A /* ButtonExtension.swift in Sources */,
 				9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */,
 				AD07D3E528771F4F0095571A /* FetchDeviceListInteractor.swift in Sources */,
@@ -1598,6 +1636,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8FF346485C61928877C8ED47 /* Pods-OneWelcomeExampleApp.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1624,6 +1663,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F5A75F4025689FDB72C1B2B /* Pods-OneWelcomeExampleApp.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1653,7 +1693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1678,7 +1718,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1699,10 +1739,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D5C61D071766D3EC2BEA9DC3 /* Pods-OneWelcomeExampleAppDebug.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1725,10 +1766,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43D3E3F2BFB64E97F5CD6EC0 /* Pods-OneWelcomeExampleAppDebug.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47G5S528XM;
+				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
