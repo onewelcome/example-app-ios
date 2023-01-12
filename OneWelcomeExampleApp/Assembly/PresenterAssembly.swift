@@ -101,8 +101,7 @@ class PresenterAssembly: Assembly {
 
         container.register(QRCodePresenterProtocol.self) { resolver in
             QRCodePresenter(qrCodeViewController: resolver.resolve(QRCodeViewController.self)!,
-                            navigationController: resolver.resolve(UINavigationController.self)!)
-            
+                            navigationController: resolver.resolve(UINavigationController.self)!)            
         }
         
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)

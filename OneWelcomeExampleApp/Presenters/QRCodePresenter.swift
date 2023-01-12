@@ -13,8 +13,8 @@ protocol QRCodePresenterProtocol: AnyObject {
 }
 
 class QRCodePresenter: NSObject, QRCodePresenterProtocol {
-    let qrCodeViewController: QRCodeViewController
-    let navigationController: UINavigationController
+    private let qrCodeViewController: QRCodeViewController
+    private let navigationController: UINavigationController
     private var captureSession: AVCaptureSession?
     private var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -29,10 +29,9 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
         } else {
             navigationController.viewControllers = [qrCodeViewController]
             navigationController.modalPresentationStyle = .overFullScreen
-            self.navigationController.present(navigationController, animated: false, completion: nil)
+            navigationController.present(navigationController, animated: false, completion: nil)
         }
         qrCodeViewController.delegate = delegate
-    
     }
     
     func setupCaptureSession(in qrCodeView: UIView) {
@@ -61,7 +60,7 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
         if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
 
-            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.setMetadataObjectsDelegate(self, queue: .main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
             handleSetupCaptureSessionFailure()
@@ -96,8 +95,12 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
     func setupErrorLabel(text: String) {
         qrCodeViewController.setupErrorLabel(text)
     }
+    
+    func handleSetupCaptureSessionFailure() {
+        captureSession = nil
+        qrCodeViewController.delegate?.qrCodeView(didCancelQRCodeScan: qrCodeViewController)
+    }
 }
-
 
 extension QRCodePresenter: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from _: AVCaptureConnection) {
@@ -108,13 +111,4 @@ extension QRCodePresenter: AVCaptureMetadataOutputObjectsDelegate {
               let stringValue = readableObject.stringValue else { return }
         qrCodeViewController.delegate?.qrCodeView(qrCodeViewController, didScanQRCode: stringValue)
     }
-}
-
-private extension QRCodePresenter {
-
-    func handleSetupCaptureSessionFailure() {
-        captureSession = nil
-        qrCodeViewController.delegate?.qrCodeView(didCancelQRCodeScan: qrCodeViewController)
-    }
-
 }
