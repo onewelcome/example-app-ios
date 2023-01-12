@@ -33,6 +33,7 @@ class PresenterAssembly: Assembly {
 
         container.register(RegisterUserPresenterProtocol.self) { resolver in
             RegisterUserPresenter(registerUserInteractor: resolver.resolve(RegisterUserInteractorProtocol.self)!,
+                                  qrCodePresenter: resolver.resolve(QRCodePresenterProtocol.self)!,
                                   navigationController: resolver.resolve(UINavigationController.self)!,
                                   userRegistrationNavigationController: UINavigationController())
         }
@@ -66,6 +67,7 @@ class PresenterAssembly: Assembly {
 
         container.register(MobileAuthPresenterProtocol.self) { resolver in
             MobileAuthPresenter(resolver.resolve(MobileAuthViewController.self)!,
+                                qrCodePresenter: resolver.resolve(QRCodePresenterProtocol.self)!,
                                 navigationController: resolver.resolve(UINavigationController.self)!,
                                 tabBarController: resolver.resolve(TabBarController.self)!,
                                 mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
@@ -97,6 +99,12 @@ class PresenterAssembly: Assembly {
                               navigationController: resolver.resolve(UINavigationController.self)!)
         }
 
+        container.register(QRCodePresenterProtocol.self) { resolver in
+            QRCodePresenter(qrCodeViewController: resolver.resolve(QRCodeViewController.self)!,
+                            navigationController: resolver.resolve(UINavigationController.self)!)
+            
+        }
+        
         container.register(UINavigationController.self) { _ in UINavigationController() }.inObjectScope(.container)
         container.register(TabBarController.self) { _ in TabBarController() }.inObjectScope(.container)
         container.register(UIWindow.self) { _ in

@@ -51,16 +51,18 @@ protocol PushMobileAuthEntrollmentProtocol: AnyObject {
 
 class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let navigationController: UINavigationController
+    let qrCodePresenter: QRCodePresenterProtocol
     let tabBarController: TabBarController
     let mobileAuthInteractor: MobileAuthInteractorProtocol
     let mobileAuthViewController: MobileAuthViewController
     var pinViewController: PinViewController?
 
-    init(_ mobileAuthViewController: MobileAuthViewController, navigationController: UINavigationController, tabBarController: TabBarController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
+    init(_ mobileAuthViewController: MobileAuthViewController, qrCodePresenter: QRCodePresenterProtocol, navigationController: UINavigationController, tabBarController: TabBarController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
         self.navigationController = navigationController
         self.mobileAuthInteractor = mobileAuthInteractor
         self.mobileAuthViewController = mobileAuthViewController
         self.tabBarController = tabBarController
+        self.qrCodePresenter = qrCodePresenter
     }
 
     func presentMobileAuthView() {
@@ -177,8 +179,7 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     }
     
     func presentQRCodeScanner() {
-        let qrCodeViewController = QRCodeViewController(qrCodeViewDelegate: self)
-        navigationController.present(qrCodeViewController, animated: true, completion: nil)
+        qrCodePresenter.present(with: navigationController, delegate: self)
     }
 
     func authenticateWithOTP(_ otp: String) {
