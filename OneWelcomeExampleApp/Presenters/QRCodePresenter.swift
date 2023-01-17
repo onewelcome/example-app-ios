@@ -29,7 +29,7 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
         } else {
             navigationController.viewControllers = [qrCodeViewController]
             navigationController.modalPresentationStyle = .overFullScreen
-            navigationController.present(navigationController, animated: false, completion: nil)
+            self.navigationController.present(navigationController, animated: false, completion: nil)
         }
         qrCodeViewController.delegate = delegate
     }
