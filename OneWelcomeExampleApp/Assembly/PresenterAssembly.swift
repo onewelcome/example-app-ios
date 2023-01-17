@@ -87,6 +87,7 @@ class PresenterAssembly: Assembly {
 
         container.register(FetchDeviceListPresenterProtocol.self) { resolver in
             FetchDeviceListPresenter(fetchDeviceListInteractor: resolver.resolve(FetchDeviceListInteractorProtocol.self)!,
+                                     profilePresenter: resolver.resolve(ProfilePresenterProtocol.self)!,
                                      navigationController: resolver.resolve(UINavigationController.self)!) }
 
         container.register(AppDetailsPresenterProtocol.self) { resolver in
@@ -96,6 +97,7 @@ class PresenterAssembly: Assembly {
         
         container.register(AppToWebPresenterProtocol.self) { resolver in
             AppToWebPresenter(appToWebInteractorProtocol: resolver.resolve(AppToWebInteractorProtocol.self)!,
+                              dashboardPresneter: resolver.resolve(DashboardPresenterProtocol.self)!,
                               navigationController: resolver.resolve(UINavigationController.self)!)
         }
 

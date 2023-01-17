@@ -36,6 +36,8 @@ class DeviceListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.register(UINib(nibName: callClassName, bundle: nil), forCellReuseIdentifier: callClassName)
+        let presentationController = navigationController?.presentationController ?? presentationController
+        presentationController?.delegate = self
     }
 }
 
@@ -59,5 +61,11 @@ extension DeviceListViewController: UITableViewDataSource {
 private extension DeviceListViewController {
     @IBAction func cancel(_: Any) {
         delegate?.deviceListDidCancel(self)
+    }
+}
+
+extension DeviceListViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        cancel(self)
     }
 }

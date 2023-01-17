@@ -31,6 +31,7 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
     func presentMobileAuthView()
     func popToDashboardView()
     func presetAppToWebView()
+    func updateView()
 }
 
 class DashboardPresenter: DashboardInteractorToPresenterProtocol {
@@ -69,6 +70,10 @@ class DashboardPresenter: DashboardInteractorToPresenterProtocol {
 }
 
 extension DashboardPresenter: DashboardViewToPresenterProtocol {
+    func updateView() {
+        dashboardViewController.updateView()
+    }
+    
     func logout() {
         logoutInteractor.logout()
     }

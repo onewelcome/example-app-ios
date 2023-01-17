@@ -26,10 +26,12 @@ protocol FetchDeviceListInteractorToPresenterProtocol: AnyObject {
 class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
     let navigationController: UINavigationController
     let fetchDeviceListInteractor: FetchDeviceListInteractorProtocol
+    var profilePresenter: ProfilePresenterProtocol
 
-    init(fetchDeviceListInteractor: FetchDeviceListInteractorProtocol, navigationController: UINavigationController) {
+    init(fetchDeviceListInteractor: FetchDeviceListInteractorProtocol, profilePresenter: ProfilePresenterProtocol, navigationController: UINavigationController) {
         self.fetchDeviceListInteractor = fetchDeviceListInteractor
         self.navigationController = navigationController
+        self.profilePresenter = profilePresenter
     }
 
     func setupDeviceListPresenter() {
@@ -52,5 +54,6 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
 extension FetchDeviceListPresenter: DeviceListDelegate {
     func deviceListDidCancel(_ deviceListViewController: DeviceListViewController) {
         deviceListViewController.dismiss(animated: true, completion: nil)
+        profilePresenter.updateView()
     }
 }
