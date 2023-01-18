@@ -71,7 +71,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         if let errorMessage = registerUserEntity.errorMessage {
             qrCodePresenter?.setupErrorLabel(text: errorMessage)
         } else {
-            qrCodePresenter?.present(with: userRegistrationNavigationController, delegate: self)
+            qrCodePresenter?.present(userRegistrationNavigationController, delegate: self)
         }
     }
 

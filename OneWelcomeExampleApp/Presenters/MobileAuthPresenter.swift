@@ -179,7 +179,7 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     }
     
     func presentQRCodeScanner() {
-        qrCodePresenter.present(with: navigationController, delegate: self)
+        qrCodePresenter.present(navigationController, delegate: self)
     }
 
     func authenticateWithOTP(_ otp: String) {

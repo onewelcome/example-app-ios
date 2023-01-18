@@ -5,7 +5,7 @@ import UIKit
 
 protocol QRCodePresenterProtocol: AnyObject {
     func setupErrorLabel(text: String)
-    func present(with navigationController: UINavigationController, delegate: QRCodeViewDelegate)
+    func present(_ controller: UINavigationController, delegate: QRCodeViewDelegate)
     func setupCaptureSession(in view: UIView)
     func startSession()
     func stopSession()
@@ -23,13 +23,13 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
         self.qrCodeViewController = qrCodeViewController
     }
     
-    func present(with navigationController: UINavigationController, delegate: QRCodeViewDelegate) {
-        if self.navigationController == navigationController {
+    func present(_ controller: UINavigationController, delegate: QRCodeViewDelegate) {
+        if navigationController == controller {
             navigationController.present(qrCodeViewController, animated: true, completion: nil)
         } else {
-            navigationController.viewControllers = [qrCodeViewController]
-            navigationController.modalPresentationStyle = .overFullScreen
-            self.navigationController.present(navigationController, animated: false, completion: nil)
+            controller.viewControllers = [qrCodeViewController]
+            controller.modalPresentationStyle = .overFullScreen
+            navigationController.present(controller, animated: false, completion: nil)
         }
         qrCodeViewController.delegate = delegate
     }
