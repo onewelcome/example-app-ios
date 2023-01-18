@@ -60,5 +60,10 @@ class ViewControllerAssembly: Assembly {
             .initCompleted { resolver, mobileAuthViewController in
                 mobileAuthViewController.mobileAuthViewToPresenterProtocol = resolver.resolve(MobileAuthPresenterProtocol.self)!
             }
+        
+        container.register(QRCodeViewController.self) { _ in QRCodeViewController() }
+            .initCompleted { resolver, qrCodeViewController in
+                qrCodeViewController.qrCodePresenter = resolver.resolve(QRCodePresenterProtocol.self)
+            }
     }
 }
