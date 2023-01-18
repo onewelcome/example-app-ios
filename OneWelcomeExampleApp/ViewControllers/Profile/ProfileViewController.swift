@@ -14,10 +14,11 @@
 // limitations under the License.
 
 import UIKit
+import TransitionButton
 
 class ProfileViewController: UIViewController {
     weak var profileViewToPresenter: ProfileViewToPresenterProtocol?
-    
+    @IBOutlet private weak var deviceListButton: TransitionButton!    
     @IBOutlet private weak var profileNameLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +35,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func deviceList(_: Any) {
+        deviceListButton.startAnimation()
         profileViewToPresenter?.setupFetchDeviceListPresenter()
     }
 
@@ -43,5 +45,9 @@ class ProfileViewController: UIViewController {
     
     func setProfileName(_ profileName: String?) {
         profileNameLabel.text = profileName
+    }
+    
+    func updateView() {
+        deviceListButton.stopAnimation()
     }
 }

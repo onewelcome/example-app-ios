@@ -75,5 +75,6 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     
     func updateView() {
         profileViewController.setProfileName(profileInteractor.profileName)
+        profileViewController.updateView()
     }
 }

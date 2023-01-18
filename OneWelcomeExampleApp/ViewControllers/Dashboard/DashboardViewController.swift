@@ -14,11 +14,12 @@
 // limitations under the License.
 
 import UIKit
+import TransitionButton
 
 class DashboardViewController: UIViewController {
+    @IBOutlet private weak var app2webButton: TransitionButton!
+    @IBOutlet private weak var profileNameLabel: UILabel!
     weak var dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol?
-
-    @IBOutlet var profileNameLabel: UILabel!
     var userProfileName: String?
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +44,11 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func appToWebPressed(_ sender: Any) {
+        app2webButton.startAnimation()
         dashboardViewToPresenterProtocol?.presetAppToWebView()
+    }
+    
+    func updateView() {
+        app2webButton.stopAnimation()
     }
 }
