@@ -17,11 +17,9 @@ import UIKit
 import TransitionButton
 
 class DashboardViewController: UIViewController {
+    @IBOutlet private weak var app2webButton: TransitionButton!
+    @IBOutlet private weak var profileNameLabel: UILabel!
     weak var dashboardViewToPresenterProtocol: DashboardViewToPresenterProtocol?
-    
-    @IBOutlet var app2webButton: TransitionButton!
-
-    @IBOutlet var profileNameLabel: UILabel!
     var userProfileName: String?
 
     override func viewWillAppear(_ animated: Bool) {

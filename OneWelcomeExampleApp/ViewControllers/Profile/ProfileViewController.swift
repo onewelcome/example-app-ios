@@ -18,8 +18,7 @@ import TransitionButton
 
 class ProfileViewController: UIViewController {
     weak var profileViewToPresenter: ProfileViewToPresenterProtocol?
-    @IBOutlet private weak var deviceListButton: TransitionButton!
-    
+    @IBOutlet private weak var deviceListButton: TransitionButton!    
     @IBOutlet private weak var profileNameLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
