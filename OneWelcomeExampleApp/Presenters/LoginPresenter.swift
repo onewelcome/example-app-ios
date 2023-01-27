@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import UIKit
+import OneginiSDKiOS
 
 typealias LoginPresenterProtocols = LoginPresenterProtocol & LoginViewDelegate & LoginInteractorDelegate
 
