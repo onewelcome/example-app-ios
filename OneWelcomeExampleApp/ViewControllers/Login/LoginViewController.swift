@@ -73,15 +73,11 @@ class LoginViewController: UIViewController {
     }
 
     func reloadAuthenticators() {
-        if let tableView = authenticatorsTableView {
-            tableView.reloadData()
-        }
+        authenticatorsTableView?.reloadData()
     }
     
     func reloadProfiles() {
-        if let tableView = profilesTableView {
-            tableView.reloadData()
-        }
+        profilesTableView?.reloadData()
     }
     
     @IBAction func login(_: Any) {
