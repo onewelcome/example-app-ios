@@ -30,9 +30,7 @@ class LoginViewController: UIViewController {
 
     var profiles = [UserProfile]() {
         didSet {
-            if let tableView = profilesTableView {
-                tableView.reloadData()
-            }
+            reloadProfiles()
         }
     }
 
@@ -49,26 +47,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
-        guard let profilesTableView = profilesTableView,
-            let authenticatorsTableView = authenticatorsTableView,
-            let loginDelegate = loginDelegate else { return }
+        guard let profilesTableView, let authenticatorsTableView, let loginDelegate else { return }
+        
         profilesTableView.register(UINib(nibName: "ProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIdCell")
         authenticatorsTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonCell")
-    
+        
         profiles = loginDelegate.profilesInLoginView(self)
-        profilesTableView.reloadData()
         selectProfile(index: 0)
-        loginDelegate.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
-            self.implicitData.text = implicitDataString
-        })
         authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        authenticators = loginDelegate?.loginView(self, authenticatorsForProfile: selectedProfile) ?? []
-    }
+
 
     func selectProfile(index: Int) {
         guard let profilesTableView = profilesTableView else { return }
@@ -85,9 +73,11 @@ class LoginViewController: UIViewController {
     }
 
     func reloadAuthenticators() {
-        if let tableView = authenticatorsTableView {
-            tableView.reloadData()
-        }
+        authenticatorsTableView?.reloadData()
+    }
+    
+    func reloadProfiles() {
+        profilesTableView?.reloadData()
     }
     
     @IBAction func login(_: Any) {
