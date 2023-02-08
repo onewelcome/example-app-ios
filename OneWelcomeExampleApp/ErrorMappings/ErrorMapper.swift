@@ -38,6 +38,8 @@ class ErrorMapper {
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
         case ONGMobileAuthEnrollmentErrorDomain:
             return MobileAuthEnrollmentErrorDomainMapping().mapError(error)
+        case ONGFetchResourceErrorDomain:
+            return FetchResourceErrorDomainMapping().mapError(error)
         case ONGFetchImplicitResourceErrorDomain:
             return FetchImplicitResourceErrorDomainMapping().mapError(error)
         case ONGAppToWebSingleSignOnErrorDomain:

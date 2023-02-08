@@ -6,7 +6,7 @@ use_frameworks!
 plugin 'cocoapods-art', :sources => ['onegini']
 
 def oneginiSDKiOS
-   pod 'OneginiSDKiOS', '~> 12.0.0'
+   pod 'OneginiSDKiOS', '~> 12.2.0'
 end
 
 def externalRegularDependencies

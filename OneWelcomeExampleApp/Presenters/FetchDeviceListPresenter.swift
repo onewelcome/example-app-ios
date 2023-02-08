@@ -47,7 +47,11 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
 
     func fetchDeviceListFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupErrorAlert(error: error)
+        appRouter.setupErrorAlert(error: error) { [weak self] _ in
+            self?.profilePresenter.updateView()
+            guard error.shouldLogout else { return }
+            self?.navigationController.popToRootViewController(animated: true)
+        }
     }
 }
 

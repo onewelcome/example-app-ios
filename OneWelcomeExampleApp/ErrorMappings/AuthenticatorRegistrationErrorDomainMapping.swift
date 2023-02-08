@@ -22,7 +22,7 @@ class AuthenticatorRegistrationErrorDomainMapping {
         switch error.code {
         case ONGAuthenticatorRegistrationError.userNotAuthenticated.rawValue:
             let errorDescription = "A user must be authenticated in order to register an authenticator."
-            return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.")
+            return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.", shouldLogout: true)
 
         case ONGAuthenticatorRegistrationError.authenticatorInvalid.rawValue:
             let errorDescription = "The authenticator that you provided is invalid. It may not exist, please verify whether you have supplied the correct authenticator."
