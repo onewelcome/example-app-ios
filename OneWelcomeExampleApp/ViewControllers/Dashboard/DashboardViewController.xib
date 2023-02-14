@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="167" width="375" height="645"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="og8-za-0ZT">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="651"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="645"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cO9-95-waD" customClass="TransitionButton" customModule="TransitionButton">
