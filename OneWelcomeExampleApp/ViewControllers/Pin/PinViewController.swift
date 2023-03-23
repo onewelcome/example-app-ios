@@ -121,11 +121,7 @@ class PinViewController: UIViewController {
             }
         }
 
-        if pinEntry.count == 0 {
-            backKey.isHidden = true
-        } else {
-            backKey.isHidden = false
-        }
+        backKey.isHidden = pinEntry.isEmpty
     }
 
     func reset() {
@@ -147,7 +143,6 @@ class PinViewController: UIViewController {
                 pinEntryToVerify = pinEntry
                 mode = .registrationConfirm
                 reset()
-                break
             case .registrationConfirm:
                 let pincodeConfirm = pinEntryToVerify.joined()
                 if pincode == pincodeConfirm {
@@ -158,11 +153,9 @@ class PinViewController: UIViewController {
                     reset()
                     errorLabel.text = "The confirmation PIN does not match."
                 }
-                break
             case .login:
                 entity.pin = pincode
                 viewToPresenterProtocol.handlePin()
-                break
             }
         }
     }

@@ -57,7 +57,7 @@ extension PendingMobileAuthViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if pendingMobileAuths.count > 0 {
+        if !pendingMobileAuths.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "pendingMobileAuthCell", for: indexPath) as! PendingMobileAuthTableViewCell
             cell.setup(pendingMobileAuthEntity: pendingMobileAuths[indexPath.row])
             return cell
@@ -69,7 +69,7 @@ extension PendingMobileAuthViewController: UITableViewDataSource {
 
 extension PendingMobileAuthViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if pendingMobileAuths.count > 0 {
+        if !pendingMobileAuths.isEmpty {
             let pendingTransaction = pendingMobileAuths[indexPath.row]
             pendingMobileAuthPresenter?.handlePendingMobileAuth(pendingTransaction)
             pendingMobileAuthPresenter?.reloadPendingMobileAuth()
@@ -77,10 +77,6 @@ extension PendingMobileAuthViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        if pendingMobileAuths.count > 0 {
-            return 135
-        } else {
-            return 50
-        }
+        return pendingMobileAuths.isEmpty ? 50 : 135
     }
 }

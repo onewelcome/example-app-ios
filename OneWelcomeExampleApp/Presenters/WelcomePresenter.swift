@@ -19,7 +19,7 @@ protocol WelcomePresenterProtocol: AnyObject {
     var loginPresenter: LoginPresenterProtocols { get set }
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }
-    var welcomeInteractor: WelcomeInteractorProtocol  { get set }
+    var welcomeInteractor: WelcomeInteractorProtocol { get set }
     
     func presentWelcomeView()
     func popToWelcomeViewController()
@@ -65,7 +65,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     }
 
     func setupSegmentView() {
-        if loginPresenter.profiles.count > 0 {
+        if !loginPresenter.profiles.isEmpty {
             welcomeViewController.setupViewWithProfiles()
         } else {
             welcomeViewController.setupViewWithoutProfiles()

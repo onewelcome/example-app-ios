@@ -1,7 +1,7 @@
 //  Copyright © 2022 OneWelcome. All rights reserved.
 
 protocol AppToWebInteractorProtocol {
-    func appToWebSingleSignOn(completion:@escaping ((URL?, AppError?) -> ()))
+    func appToWebSingleSignOn(completion: @escaping ((URL?, AppError?) -> Void))
 }
 
 class AppToWebInteractor: AppToWebInteractorProtocol {
@@ -10,13 +10,13 @@ class AppToWebInteractor: AppToWebInteractorProtocol {
         return SharedUserClient.instance
     }
 
-    func appToWebSingleSignOn(completion:@escaping ((URL?, AppError?) -> ())) {
+    func appToWebSingleSignOn(completion: @escaping ((URL?, AppError?) -> Void)) {
         guard let url = URL(string: targetUrl) else {
             completion(nil, nil)
             return
         }
 
-        userClient.appToWebSingleSignOn(with: url) { url, token, error in
+        userClient.appToWebSingleSignOn(with: url) { url, _, error in
             if let error = error {
                 let appError = ErrorMapper().mapError(error)
                 completion(nil, appError)
