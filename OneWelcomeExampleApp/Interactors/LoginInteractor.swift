@@ -48,7 +48,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     func handlePasswordAuthenticatorLogin() {
-        guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorAuthenticationChallenege else { fatalError() }
+        guard let customAuthenticatorChallenge = loginEntity.customAuthenticatorChallenge else { fatalError() }
         if loginEntity.cancelled {
             loginEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
@@ -89,7 +89,7 @@ extension LoginInteractor: AuthenticationDelegate {
     }
  
     func userClient(_ userClient: UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: CustomAuthFinishAuthenticationChallenge) {
-        loginEntity.customAuthenticatorAuthenticationChallenege = challenge
+        loginEntity.customAuthenticatorChallenge = challenge
         delegate?.loginInteractor(self, didAskForPassword: loginEntity)
     }
 

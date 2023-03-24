@@ -21,19 +21,9 @@ class ErrorMapper {
         case ONGPinValidationErrorDomain:
             return PinValidationErrorDomainMapping().mapError(error)
         case ONGAuthenticationErrorDomain:
-            if let pinChallenge = pinChallenge, error.code == ONGAuthenticationError.invalidPin.rawValue {
-                return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(pinChallenge: pinChallenge)
-            } else if let customInfo = customInfo, error.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
-                return AuthenticationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
-            } else {
-                return AuthenticationErrorDomainMapping().mapError(error)
-            }
+            return AuthenticationErrorDomainMapping().mapError(error, pinChallenge: pinChallenge, customInfo: customInfo)
         case ONGAuthenticatorRegistrationErrorDomain:
-            if let customInfo = customInfo, error.code == ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
-                return AuthenticatorRegistrationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
-            } else {
-                return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
-            }
+            return AuthenticatorRegistrationErrorDomainMapping().mapError(error, customInfo: customInfo)
         case ONGAuthenticatorDeregistrationErrorDomain:
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
         case ONGMobileAuthEnrollmentErrorDomain:

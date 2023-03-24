@@ -113,19 +113,17 @@ class PinViewController: UIViewController {
             pinSlot.subviews.forEach { $0.removeFromSuperview() }
         }
 
-        for index in 0 ... pinEntry.count {
-            if index < pinEntry.count {
-                let slot = pinSlots[index]
-                let selectedDot = UIImageView(image: pinDotSelected)
-                slot.addSubview(selectedDot)
-            }
+        for (index, _) in pinEntry.enumerated() {
+            let slot = pinSlots[index]
+            let selectedDot = UIImageView(image: pinDotSelected)
+            slot.addSubview(selectedDot)
         }
-
+        
         backKey.isHidden = pinEntry.isEmpty
     }
 
     func reset() {
-        for index in 0 ... (pinEntry.count - 1) {
+        for (index, _) in pinEntry.enumerated() {
             pinEntry[index] = "#"
         }
         pinEntry = [String]()

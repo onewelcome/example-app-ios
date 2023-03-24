@@ -14,7 +14,19 @@
 // limitations under the License.
 
 class AuthenticationErrorDomainMapping {
-    let title = "Authentication error"
+    func mapError(_ error: Error, pinChallenge: PinChallenge?, customInfo: CustomInfo?) -> AppError {
+        if let pinChallenge = pinChallenge, error.code == ONGAuthenticationError.invalidPin.rawValue {
+            return AuthenticationErrorDomainMapping().mapErrorWithPinChallenge(pinChallenge: pinChallenge)
+        } else if let customInfo = customInfo, error.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+            return AuthenticationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
+        } else {
+            return AuthenticationErrorDomainMapping().mapError(error)
+        }
+    }
+}
+
+private extension AuthenticationErrorDomainMapping {
+    var title: String { "Authentication error" }
 
     func mapErrorWithPinChallenge(pinChallenge: PinChallenge) -> AppError {
         let remainingFailureCount = String(describing: pinChallenge.remainingFailureCount)
