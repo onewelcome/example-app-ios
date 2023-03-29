@@ -82,7 +82,6 @@
 		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
-		7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181F211325240063BDF4 /* ButtonExtension.swift */; };
 		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
 		7E8F4723216E016900C2D8C6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */; };
 		7E8F4724216E016900C2D8C6 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */; };
@@ -93,7 +92,6 @@
 		7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */; };
 		7E999E4B22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */; };
 		7EB1F6142100BE3500741E92 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
-		7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6162100C32700741E92 /* ErrorExtension.swift */; };
 		7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
 		7EB1F61B2100CAF100741E92 /* PinValidationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */; };
 		7EB1F61D2100D73900741E92 /* ErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F61C2100D73900741E92 /* ErrorMapper.swift */; };
@@ -128,9 +126,6 @@
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
 		8D19480E28ABD77300C66DC7 /* ImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */; };
-		8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
-		8D5B76CF2880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
-		8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B76CD2880417900876B0C /* UIColorExtension.swift */; };
 		9DF55B515F5D99E6C515F5CD /* Pods_OneWelcomeExampleAppDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AE6A18AC0024E600ED231F /* Pods_OneWelcomeExampleAppDebug.framework */; };
 		9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
 		9E2988D6294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
@@ -144,6 +139,12 @@
 		9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
 		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
+		9EFDEC2329D4777600521793 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2029D4777600521793 /* ErrorExtension.swift */; };
+		9EFDEC2429D4777600521793 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2029D4777600521793 /* ErrorExtension.swift */; };
+		9EFDEC2529D4777600521793 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2129D4777600521793 /* UIColorExtension.swift */; };
+		9EFDEC2629D4777600521793 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2129D4777600521793 /* UIColorExtension.swift */; };
+		9EFDEC2729D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
+		9EFDEC2829D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
 		AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
 		AD07D3DD28771F4F0095571A /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
@@ -153,7 +154,6 @@
 		AD07D3E128771F4F0095571A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF384E320EA66F800914E96 /* ProfileTableViewCell.swift */; };
 		AD07D3E228771F4F0095571A /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478120E21E4D00FB620F /* BrowserViewController.swift */; };
 		AD07D3E328771F4F0095571A /* GenericErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */; };
-		AD07D3E428771F4F0095571A /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181F211325240063BDF4 /* ButtonExtension.swift */; };
 		AD07D3E528771F4F0095571A /* FetchDeviceListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B812122F50C00C3D94E /* FetchDeviceListInteractor.swift */; };
 		AD07D3E628771F4F0095571A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5684C320DD102E00B86628 /* LoginViewController.swift */; };
 		AD07D3E728771F4F0095571A /* AuthenticatorsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B77211C4CDB00C3D94E /* AuthenticatorsInteractor.swift */; };
@@ -162,7 +162,6 @@
 		AD07D3EA28771F4F0095571A /* RegisterUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479B20E4FEFB00FB620F /* RegisterUserEntity.swift */; };
 		AD07D3EB28771F4F0095571A /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */; };
 		AD07D3EC28771F4F0095571A /* AppDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFE212C2AA7008FCD9A /* AppDetailsPresenter.swift */; };
-		AD07D3ED28771F4F0095571A /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6162100C32700741E92 /* ErrorExtension.swift */; };
 		AD07D3EE28771F4F0095571A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1D22A1434000FEE3EC /* WebViewController.swift */; };
 		AD07D3EF28771F4F0095571A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45479E20E5198C00FB620F /* DashboardViewController.swift */; };
 		AD07D3F028771F4F0095571A /* StartupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300ACD20DA498600EF1A79 /* StartupInteractor.swift */; };
@@ -397,7 +396,6 @@
 		7E804F71258A5C9D000E110E /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		7E8A181F211325240063BDF4 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 		7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebInteractor.swift; sourceTree = "<group>"; };
 		7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebSingleSignOnErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F6132100BE3500741E92 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		7EB1F6162100C32700741E92 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F61A2100CAF100741E92 /* PinValidationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinValidationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7EB1F61C2100D73900741E92 /* ErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMapper.swift; sourceTree = "<group>"; };
@@ -446,7 +443,6 @@
 		86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthTableViewCell.swift; sourceTree = "<group>"; };
 		86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingMobileAuthTableViewCell.xib; sourceTree = "<group>"; };
 		8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImplicitDataView.swift; path = widget/ImplicitDataView.swift; sourceTree = SOURCE_ROOT; };
-		8D5B76CD2880417900876B0C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8F6F9C09086D9315043A5E56 /* Pods_OneWelcomeExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneWelcomeExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9007470D2AE76267B860AF1B /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
@@ -455,6 +451,9 @@
 		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
 		9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
 		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		9EFDEC2029D4777600521793 /* ErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
+		9EFDEC2129D4777600521793 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		9EFDEC2229D4777600521793 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA528785BE600CC3EE6 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
@@ -588,9 +587,9 @@
 			isa = PBXGroup;
 			children = (
 				7EDAB731213E9D01004918CE /* OneWelcomeExampleApp.entitlements */,
-				7EB1F6152100C2E700741E92 /* Extensions */,
 				7E7AE4252100ACB6002C49D2 /* ErrorMappings */,
 				7E45479A20E4FEFB00FB620F /* Entity */,
+				9EFDEC1F29D4775800521793 /* Extensions */,
 				7E300AD520DA8FF200EF1A79 /* Assembly */,
 				7E300AC820D8F86100EF1A79 /* Interactors */,
 				7E300AC620D8F53B00EF1A79 /* Presenters */,
@@ -864,17 +863,6 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
-		7EB1F6152100C2E700741E92 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7EB1F6162100C32700741E92 /* ErrorExtension.swift */,
-				7E8A181F211325240063BDF4 /* ButtonExtension.swift */,
-				8D5B76CD2880417900876B0C /* UIColorExtension.swift */,
-			);
-			name = Extensions;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		7EBF8B852122FA8E00C3D94E /* DeviceList */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +939,16 @@
 				9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */,
 			);
 			path = AppIcons;
+			sourceTree = "<group>";
+		};
+		9EFDEC1F29D4775800521793 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9EFDEC2229D4777600521793 /* ButtonExtension.swift */,
+				9EFDEC2029D4777600521793 /* ErrorExtension.swift */,
+				9EFDEC2129D4777600521793 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AD07D457287724C80095571A /* Debug */ = {
@@ -1354,7 +1352,6 @@
 				7EF384E520EA66F800914E96 /* ProfileTableViewCell.swift in Sources */,
 				7E45478320E21E4D00FB620F /* BrowserViewController.swift in Sources */,
 				7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */,
-				7E8A1820211325240063BDF4 /* ButtonExtension.swift in Sources */,
 				7EBF8B822122F50C00C3D94E /* FetchDeviceListInteractor.swift in Sources */,
 				7E5684C520DD102E00B86628 /* LoginViewController.swift in Sources */,
 				7EBF8B78211C4CDB00C3D94E /* AuthenticatorsInteractor.swift in Sources */,
@@ -1363,7 +1360,6 @@
 				7E45479C20E4FEFC00FB620F /* RegisterUserEntity.swift in Sources */,
 				7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */,
 				7E241DFF212C2AA7008FCD9A /* AppDetailsPresenter.swift in Sources */,
-				7EB1F6172100C32700741E92 /* ErrorExtension.swift in Sources */,
 				7E999E1E22A1434000FEE3EC /* WebViewController.swift in Sources */,
 				7E4547A020E5198C00FB620F /* DashboardViewController.swift in Sources */,
 				7E300ACE20DA498600EF1A79 /* StartupInteractor.swift in Sources */,
@@ -1372,12 +1368,14 @@
 				7E45477520E0BB5B00FB620F /* WelcomePresenter.swift in Sources */,
 				7E4547A320E51A2200FB620F /* DashboardPresenter.swift in Sources */,
 				7EBF8B882122FAAA00C3D94E /* DeviceListViewController.swift in Sources */,
+				9EFDEC2529D4777600521793 /* UIColorExtension.swift in Sources */,
 				7EB1F6142100BE3500741E92 /* AppError.swift in Sources */,
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
 				7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */,
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
 				ADE6AFAB28785BE600CC3EE6 /* SecurityController.m in Sources */,
+				9EFDEC2329D4777600521793 /* ErrorExtension.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */,
 				7E999E4B22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift in Sources */,
@@ -1385,7 +1383,6 @@
 				7E300AD420DA888100EF1A79 /* ErrorPresenter.swift in Sources */,
 				7ED15B27211438AC00133D5C /* MobileAuthPresenter.swift in Sources */,
 				7E300A6920D7B8E100EF1A79 /* AppDelegate.swift in Sources */,
-				8D5B76CE2880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
 				5731AFB5296EC93F00E6165D /* QRCodePresenter.swift in Sources */,
@@ -1398,6 +1395,7 @@
 				7E241E06212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */,
 				7EF5F39320F8BB7A004D60A3 /* LoginEntity.swift in Sources */,
 				7E45477920E0ED5300FB620F /* RegisterUserPresenter.swift in Sources */,
+				9EFDEC2729D4777600521793 /* ButtonExtension.swift in Sources */,
 				7E8F4723216E016900C2D8C6 /* QRCodeViewController.swift in Sources */,
 				7E300ACA20D8F8D400EF1A79 /* StartupPresenter.swift in Sources */,
 				7E4547A520E5220600FB620F /* LogoutInteractor.swift in Sources */,
@@ -1440,7 +1438,6 @@
 				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
 				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
 				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
-				8D5B76D02880417900876B0C /* UIColorExtension.swift in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
 				7E804FA4258A5D3F000E110E /* (null) in Sources */,
 				7E804FA3258A5D3F000E110E /* (null) in Sources */,
@@ -1452,6 +1449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */,
+				9EFDEC2429D4777600521793 /* ErrorExtension.swift in Sources */,
 				AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */,
 				AD07D3DD28771F4F0095571A /* ViewControllerAssembly.swift in Sources */,
 				AD07D3DE28771F4F0095571A /* MobileAuthEntity.swift in Sources */,
@@ -1461,7 +1459,6 @@
 				AD07D3E228771F4F0095571A /* BrowserViewController.swift in Sources */,
 				AD07D3E328771F4F0095571A /* GenericErrorDomainMapping.swift in Sources */,
 				9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */,
-				AD07D3E428771F4F0095571A /* ButtonExtension.swift in Sources */,
 				9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */,
 				AD07D3E528771F4F0095571A /* FetchDeviceListInteractor.swift in Sources */,
 				AD07D3E628771F4F0095571A /* LoginViewController.swift in Sources */,
@@ -1472,7 +1469,6 @@
 				AD07D3EA28771F4F0095571A /* RegisterUserEntity.swift in Sources */,
 				AD07D3EB28771F4F0095571A /* RegisterUserViewController.swift in Sources */,
 				AD07D3EC28771F4F0095571A /* AppDetailsPresenter.swift in Sources */,
-				AD07D3ED28771F4F0095571A /* ErrorExtension.swift in Sources */,
 				AD07D3EE28771F4F0095571A /* WebViewController.swift in Sources */,
 				AD07D3EF28771F4F0095571A /* DashboardViewController.swift in Sources */,
 				AD07D3F028771F4F0095571A /* StartupInteractor.swift in Sources */,
@@ -1484,6 +1480,7 @@
 				AD07D3F628771F4F0095571A /* AppError.swift in Sources */,
 				AD07D3F728771F4F0095571A /* LoginInteractor.swift in Sources */,
 				5731AFB6296EC93F00E6165D /* QRCodePresenter.swift in Sources */,
+				9EFDEC2829D4777600521793 /* ButtonExtension.swift in Sources */,
 				AD07D3F828771F4F0095571A /* LoginPresenter.swift in Sources */,
 				AD07D3F928771F4F0095571A /* TwoWayOTPViewController.swift in Sources */,
 				AD07D3FA28771F4F0095571A /* PasswordAuthenticatorViewController.swift in Sources */,
@@ -1496,7 +1493,6 @@
 				AD07D40128771F4F0095571A /* AppDelegate.swift in Sources */,
 				AD07D40228771F4F0095571A /* ProfileViewController.swift in Sources */,
 				AD07D40328771F4F0095571A /* AuthenticatorsViewController.swift in Sources */,
-				8D5B76CF2880417900876B0C /* UIColorExtension.swift in Sources */,
 				AD07D40428771F4F0095571A /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
 				AD07D40528771F4F0095571A /* FetchImplicitDataInteractor.swift in Sources */,
 				AD07D40628771F4F0095571A /* InteractorAssembly.swift in Sources */,
@@ -1524,6 +1520,7 @@
 				AD07D41C28771F4F0095571A /* MobileAuthEnrollmentErrorDomainMapping.swift in Sources */,
 				AD07D41D28771F4F0095571A /* PendingMobileAuthTableViewCell.swift in Sources */,
 				AD07D41E28771F4F0095571A /* AppRouter.swift in Sources */,
+				9EFDEC2629D4777600521793 /* UIColorExtension.swift in Sources */,
 				AD07D41F28771F4F0095571A /* PendingMobileAuthViewController.swift in Sources */,
 				AD07D42028771F4F0095571A /* ProfilePresenter.swift in Sources */,
 				AD07D42128771F4F0095571A /* MobileAuthInteractor.swift in Sources */,
