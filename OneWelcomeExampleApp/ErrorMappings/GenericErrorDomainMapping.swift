@@ -27,7 +27,9 @@ class GenericErrorDomainMapping {
         case ONGGenericError.outdatedApplication.rawValue:
             return AppError(title: "Application error", errorDescription: "Your application version is outdated.", recoverySuggestion: "Please try to update your application.")
         case ONGGenericError.unrecoverableDataState.rawValue:
-            return AppError(title: "Data storage error", errorDescription: "The data storage is corrupted and cannot be recovered or cleared.", recoverySuggestion: "Please remove the application manually and reinstall.")
+            return AppError(title: "Data storage error",
+                            errorDescription: "The data storage is corrupted and cannot be recovered or cleared.",
+                            recoverySuggestion: "Please remove the application manually and reinstall.")
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

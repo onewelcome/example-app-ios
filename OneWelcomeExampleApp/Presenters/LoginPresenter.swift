@@ -41,7 +41,10 @@ class LoginPresenter: LoginPresenterProtocol {
     var loginViewController: LoginViewController
     var pinViewController: PinViewController?
     
-    init(loginInteractor: LoginInteractorProtocol, fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol, navigationController: UINavigationController, loginViewController: LoginViewController) {
+    init(loginInteractor: LoginInteractorProtocol,
+         fetchImplicitDataInteractor: FetchImplicitDataInteractorProtocol,
+         navigationController: UINavigationController,
+         loginViewController: LoginViewController) {
         self.loginInteractor = loginInteractor
         self.navigationController = navigationController
         self.loginViewController = loginViewController
@@ -54,7 +57,7 @@ class LoginPresenter: LoginPresenterProtocol {
     
     func update() {
         reloadProfiles()
-        if profiles.count > 0 {
+        if !profiles.isEmpty {
             updateView()
         }
     }
@@ -140,7 +143,7 @@ extension LoginPresenter: LoginViewDelegate {
     }
     
     func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void) {
-        fetchImplicitDataInteractor.fetchImplicitResources(profile: profile) { (implicitData, error) in
+        fetchImplicitDataInteractor.fetchImplicitResources(profile: profile) { (implicitData, _) in
             guard let implicitData = implicitData else {
                 completion(nil)
                 // Commented because of Bug in Token server, sometimes is returned 401

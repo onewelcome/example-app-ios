@@ -57,7 +57,11 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let mobileAuthViewController: MobileAuthViewController
     var pinViewController: PinViewController?
 
-    init(_ mobileAuthViewController: MobileAuthViewController, qrCodePresenter: QRCodePresenterProtocol, navigationController: UINavigationController, tabBarController: TabBarController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
+    init(_ mobileAuthViewController: MobileAuthViewController,
+         qrCodePresenter: QRCodePresenterProtocol,
+         navigationController: UINavigationController,
+         tabBarController: TabBarController,
+         mobileAuthInteractor: MobileAuthInteractorProtocol) {
         self.navigationController = navigationController
         self.mobileAuthInteractor = mobileAuthInteractor
         self.mobileAuthViewController = mobileAuthViewController
@@ -160,7 +164,9 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
                 } else {
                     guard let self = self else { return }
                     self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
-                    self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed", errorDescription: "Notifications where not allowed by the user.", recoverySuggestion: "Please enable notifications for the application in Settings."))
+                    self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed",
+                                                                errorDescription: "Notifications where not allowed by the user.",
+                                                                recoverySuggestion: "Please enable notifications for the application in Settings."))
                 }
             }
         }

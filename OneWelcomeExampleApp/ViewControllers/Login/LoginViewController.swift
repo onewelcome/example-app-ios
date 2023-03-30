@@ -56,8 +56,7 @@ class LoginViewController: UIViewController {
         selectProfile(index: 0)
         authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
     }
-
-
+    
     func selectProfile(index: Int) {
         guard let profilesTableView = profilesTableView else { return }
         selectedProfile = profiles[index]

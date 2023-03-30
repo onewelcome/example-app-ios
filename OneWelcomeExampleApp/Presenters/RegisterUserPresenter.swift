@@ -42,7 +42,10 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     var twoWayOTPViewController: TwoWayOTPViewController?
     var qrCodePresenter: QRCodePresenterProtocol?
 
-    init(registerUserInteractor: RegisterUserInteractorProtocol, qrCodePresenter: QRCodePresenterProtocol, navigationController: UINavigationController, userRegistrationNavigationController: UINavigationController) {
+    init(registerUserInteractor: RegisterUserInteractorProtocol,
+         qrCodePresenter: QRCodePresenterProtocol,
+         navigationController: UINavigationController,
+         userRegistrationNavigationController: UINavigationController) {
         self.qrCodePresenter = qrCodePresenter
         self.registerUserInteractor = registerUserInteractor
         self.navigationController = navigationController
@@ -120,8 +123,6 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     func handleOTPCode() {
         registerUserInteractor.handleOTPCode()
     }
-
-    
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {

@@ -166,7 +166,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
         userClient.handleOTPMobileAuthRequest(otp: otp, delegate: self)
     }
 
-    fileprivate func handlePushMobileAuthenticationRequest(userInfo: Dictionary<AnyHashable, Any>) {
+    fileprivate func handlePushMobileAuthenticationRequest(userInfo: [AnyHashable: Any]) {
         guard let pendingTransaction = userClient.pendingMobileAuthRequest(from: userInfo) else { return }
         let mobileAuthRequest = PendingMobileAuthRequestContainter(delegate: self, pendingTransaction: pendingTransaction)
         mobileAuthQueue.enqueue(mobileAuthRequest)

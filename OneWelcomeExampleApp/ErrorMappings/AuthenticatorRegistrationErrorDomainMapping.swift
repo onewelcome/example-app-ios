@@ -16,7 +16,17 @@
 import UIKit
 
 class AuthenticatorRegistrationErrorDomainMapping {
-    let title = "Authenticator Registration error"
+    func mapError(_ error: Error, customInfo: CustomInfo?) -> AppError {
+        if let customInfo = customInfo, error.code == ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
+            return AuthenticatorRegistrationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
+        } else {
+            return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
+        }
+    }
+}
+
+private extension AuthenticatorRegistrationErrorDomainMapping {
+    var title: String { "Authenticator Registration error" }
 
     func mapError(_ error: Error) -> AppError {
         switch error.code {

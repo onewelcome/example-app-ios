@@ -65,7 +65,7 @@ class BrowserViewController: UIViewController, WKUIDelegate {
         cancelButton = UIButton(frame: cancelButtonFrame)
         let cancelButtonStringAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "Helvetica Neue", size: 17)!,
-            .foregroundColor: UIColor.appMain,
+            .foregroundColor: UIColor.appMain
         ]
         let cancelButtonString = NSAttributedString(string: "Cancel", attributes: cancelButtonStringAttributes)
         cancelButton.setTitleColor(.label, for: .normal)
