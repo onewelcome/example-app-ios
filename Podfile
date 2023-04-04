@@ -14,6 +14,7 @@ def externalRegularDependencies
   pod 'BetterSegmentedControl', '~> 2.0.0'
   pod 'TransitionButton', '0.5.3'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'SwiftLint', '~> 0.50', :inhibit_warnings => true
 end
 
 target 'WidgetExtension' do
@@ -35,6 +36,7 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
   end
 end
