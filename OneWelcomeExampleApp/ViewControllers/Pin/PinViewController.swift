@@ -112,8 +112,8 @@ class PinViewController: UIViewController {
         for pinSlot in pinSlots {
             pinSlot.subviews.forEach { $0.removeFromSuperview() }
         }
-
-        for (index, _) in pinEntry.enumerated() {
+        
+        for index in pinEntry.indices {
             let slot = pinSlots[index]
             let selectedDot = UIImageView(image: pinDotSelected)
             slot.addSubview(selectedDot)
@@ -123,9 +123,10 @@ class PinViewController: UIViewController {
     }
 
     func reset() {
-        for (index, _) in pinEntry.enumerated() {
+        for index in pinEntry.indices {
             pinEntry[index] = "#"
         }
+        
         pinEntry = [String]()
         setupTitleLabel()
         updatePinStateRepresentation()

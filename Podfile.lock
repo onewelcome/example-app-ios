@@ -19,6 +19,7 @@ PODS:
     - AFNetworking (~> 4.0.1)
     - Typhoon (~> 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
+  - SwiftLint (0.51.0)
   - Swinject (2.8.1)
   - TransitionButton (0.5.3)
   - Typhoon (4.0.9):
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0.0)
   - OneginiSDKiOS (~> 12.2.0)
   - SkyFloatingLabelTextField (~> 3.0)
+  - SwiftLint (~> 0.50)
   - Swinject (= 2.8.1)
   - TransitionButton (= 0.5.3)
 
@@ -42,6 +44,7 @@ SPEC REPOS:
     - AFNetworking
     - BetterSegmentedControl
     - SkyFloatingLabelTextField
+    - SwiftLint
     - Swinject
     - TransitionButton
     - Typhoon
@@ -53,10 +56,11 @@ SPEC CHECKSUMS:
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
   OneginiSDKiOS: 5bbc97d65252dc6a0ec431895fb4377ddea61ae1
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: 32b6f5738956156298820ace434b25937228ce4f
+PODFILE CHECKSUM: b1193dcb5c56a59000868534f34807b255503fa5
 
 COCOAPODS: 1.11.3
