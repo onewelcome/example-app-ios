@@ -14,7 +14,7 @@ def externalRegularDependencies
   pod 'BetterSegmentedControl', '~> 2.0.0'
   pod 'TransitionButton', '0.5.3'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
-  pod 'SwiftLint', '~> 0.50', :inhibit_warnings => true
+  pod 'SwiftLint', '~> 0.50'
 end
 
 target 'WidgetExtension' do
