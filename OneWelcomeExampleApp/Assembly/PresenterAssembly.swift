@@ -70,7 +70,8 @@ class PresenterAssembly: Assembly {
                                 qrCodePresenter: resolver.resolve(QRCodePresenterProtocol.self)!,
                                 navigationController: resolver.resolve(UINavigationController.self)!,
                                 tabBarController: resolver.resolve(TabBarController.self)!,
-                                mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
+                                mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!,
+                                logoutInteractor: resolver.resolve(LogoutInteractorProtocol.self)!) }
 
         container.register(DisconnectPresenterProtocol.self) { resolver in
             DisconnectPresenter(disconnectInteractor: resolver.resolve(DisconnectInteractorProtocol.self)!,

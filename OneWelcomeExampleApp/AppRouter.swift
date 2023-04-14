@@ -114,6 +114,7 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func popToWelcomeView() {
         welcomePresenter.popToWelcomeViewController()
+        welcomePresenter.presentWelcomeView()
     }
 
     func popToProfileView() {

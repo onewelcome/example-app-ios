@@ -54,6 +54,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let qrCodePresenter: QRCodePresenterProtocol
     let tabBarController: TabBarController
     let mobileAuthInteractor: MobileAuthInteractorProtocol
+    let logoutInteractor: LogoutInteractorProtocol
     let mobileAuthViewController: MobileAuthViewController
     var pinViewController: PinViewController?
 
@@ -61,9 +62,11 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
          qrCodePresenter: QRCodePresenterProtocol,
          navigationController: UINavigationController,
          tabBarController: TabBarController,
-         mobileAuthInteractor: MobileAuthInteractorProtocol) {
+         mobileAuthInteractor: MobileAuthInteractorProtocol,
+         logoutInteractor: LogoutInteractorProtocol) {
         self.navigationController = navigationController
         self.mobileAuthInteractor = mobileAuthInteractor
+        self.logoutInteractor = logoutInteractor
         self.mobileAuthViewController = mobileAuthViewController
         self.tabBarController = tabBarController
         self.qrCodePresenter = qrCodePresenter
@@ -137,7 +140,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         tabBarController.dismiss(animated: false, completion: nil)
         if !(navigationController.viewControllers.last is WelcomeViewController) && isUserLoggedIn {
-            appRouter.popToWelcomeView()
+            logoutInteractor.logout()
         }
         appRouter.updateWelcomeView(selectedProfile: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
