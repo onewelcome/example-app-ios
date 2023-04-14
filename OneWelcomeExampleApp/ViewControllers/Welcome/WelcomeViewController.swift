@@ -23,17 +23,22 @@ class WelcomeViewController: UIViewController {
     var loginViewController: LoginViewController?
     var registerUserViewController: RegisterUserViewController?
     weak var welcomePresenterProtocol: WelcomePresenterProtocol?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSegmentView()
         navigationController?.navigationBar.isHidden = true
         guard let loginViewController = loginViewController else { return }
-        if loginViewController.profiles.count > 0 {
+        if !loginViewController.profiles.isEmpty {
             setupViewWithProfiles()
         } else {
             setupViewWithoutProfiles()
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        welcomePresenterProtocol?.handleInterfaceStyleChange(traitCollection.userInterfaceStyle)
     }
 
     func configureSegmentView() {

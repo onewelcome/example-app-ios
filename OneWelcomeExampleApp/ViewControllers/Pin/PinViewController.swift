@@ -112,26 +112,21 @@ class PinViewController: UIViewController {
         for pinSlot in pinSlots {
             pinSlot.subviews.forEach { $0.removeFromSuperview() }
         }
-
-        for index in 0 ... pinEntry.count {
-            if index < pinEntry.count {
-                let slot = pinSlots[index]
-                let selectedDot = UIImageView(image: pinDotSelected)
-                slot.addSubview(selectedDot)
-            }
+        
+        for index in pinEntry.indices {
+            let slot = pinSlots[index]
+            let selectedDot = UIImageView(image: pinDotSelected)
+            slot.addSubview(selectedDot)
         }
-
-        if pinEntry.count == 0 {
-            backKey.isHidden = true
-        } else {
-            backKey.isHidden = false
-        }
+        
+        backKey.isHidden = pinEntry.isEmpty
     }
 
     func reset() {
-        for index in 0 ... (pinEntry.count - 1) {
+        for index in pinEntry.indices {
             pinEntry[index] = "#"
         }
+        
         pinEntry = [String]()
         setupTitleLabel()
         updatePinStateRepresentation()
@@ -147,7 +142,6 @@ class PinViewController: UIViewController {
                 pinEntryToVerify = pinEntry
                 mode = .registrationConfirm
                 reset()
-                break
             case .registrationConfirm:
                 let pincodeConfirm = pinEntryToVerify.joined()
                 if pincode == pincodeConfirm {
@@ -158,11 +152,9 @@ class PinViewController: UIViewController {
                     reset()
                     errorLabel.text = "The confirmation PIN does not match."
                 }
-                break
             case .login:
                 entity.pin = pincode
                 viewToPresenterProtocol.handlePin()
-                break
             }
         }
     }

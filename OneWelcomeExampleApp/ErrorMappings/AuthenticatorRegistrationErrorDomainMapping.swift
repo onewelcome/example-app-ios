@@ -16,13 +16,23 @@
 import UIKit
 
 class AuthenticatorRegistrationErrorDomainMapping {
-    let title = "Authenticator Registration error"
+    func mapError(_ error: Error, customInfo: CustomInfo?) -> AppError {
+        if let customInfo = customInfo, error.code == ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
+            return AuthenticatorRegistrationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
+        } else {
+            return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
+        }
+    }
+}
+
+private extension AuthenticatorRegistrationErrorDomainMapping {
+    var title: String { "Authenticator Registration error" }
 
     func mapError(_ error: Error) -> AppError {
         switch error.code {
         case ONGAuthenticatorRegistrationError.userNotAuthenticated.rawValue:
             let errorDescription = "A user must be authenticated in order to register an authenticator."
-            return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.")
+            return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.", shouldLogout: true)
 
         case ONGAuthenticatorRegistrationError.authenticatorInvalid.rawValue:
             let errorDescription = "The authenticator that you provided is invalid. It may not exist, please verify whether you have supplied the correct authenticator."

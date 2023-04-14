@@ -22,7 +22,7 @@ class RegisterAuthenticatorEntity: PinViewControllerEntityProtocol, PasswordAuth
     var pinChallenge: PinChallenge?
 
     var message: String?
-    var customAuthenticatorRegistrationChallenege: CustomAuthFinishRegistrationChallenge?
+    var customAuthenticatorChallenge: CustomAuthFinishRegistrationChallenge?
     var data: String = ""
     var cancelled: Bool = false
 }

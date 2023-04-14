@@ -51,7 +51,7 @@ class AuthenticatorsInteractor: NSObject {
     }
 
     func handlePasswordAuthenticatorRegistration() {
-        guard let customAuthenticatorChallenge = registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege else { fatalError() }
+        guard let customAuthenticatorChallenge = registerAuthenticatorEntity.customAuthenticatorChallenge else { fatalError() }
         if registerAuthenticatorEntity.cancelled {
             registerAuthenticatorEntity.cancelled = false
             customAuthenticatorChallenge.sender.cancel(customAuthenticatorChallenge, underlyingError: nil)
@@ -99,7 +99,7 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
     }
 
     func userClient(_: UserClient, didReceiveCustomAuthFinishRegistrationChallenge challenge: CustomAuthFinishRegistrationChallenge) {
-        registerAuthenticatorEntity.customAuthenticatorRegistrationChallenege = challenge
+        registerAuthenticatorEntity.customAuthenticatorChallenge = challenge
         authenticatorsPresenter?.presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: registerAuthenticatorEntity)
     }
     

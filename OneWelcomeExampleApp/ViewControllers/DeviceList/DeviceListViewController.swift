@@ -15,10 +15,18 @@
 
 import UIKit
 
-class DeviceListViewController: UIViewController {
-    @IBOutlet var popupContentView: UIView!
-    @IBOutlet var tableView: UITableView?
+protocol DeviceListDelegate: AnyObject {
+    func deviceListDidCancel(_ deviceListViewController: DeviceListViewController)
+}
 
+class DeviceListViewController: UIViewController {
+    private let callClassName = String(describing: DeviceTableViewCell.self)
+    
+    weak var delegate: DeviceListDelegate?
+    
+    @IBOutlet private var tableView: UITableView?
+    @IBOutlet private var cancelButton: UIButton?
+    
     var deviceList: [Device] = [] {
         didSet {
             tableView?.reloadData()
@@ -27,11 +35,9 @@ class DeviceListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView?.register(UINib(nibName: "DeviceTableViewCell", bundle: nil), forCellReuseIdentifier: "DeviceTableViewCell")
-    }
-
-    @IBAction func dismissAction(_: Any) {
-        dismiss(animated: false, completion: nil)
+        tableView?.register(UINib(nibName: callClassName, bundle: nil), forCellReuseIdentifier: callClassName)
+        let presentationController = navigationController?.presentationController ?? presentationController
+        presentationController?.delegate = self
     }
 }
 
@@ -41,12 +47,25 @@ extension DeviceListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceTableViewCell", for: indexPath) as! DeviceTableViewCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: callClassName, for: indexPath) as! DeviceTableViewCell
         let device = deviceList[indexPath.row]
 
         cell.applicationLabel.text = device.application
         cell.nameLabel.text = device.name
         cell.idLabel.text = device.id
         return cell
+    }
+}
+
+private extension DeviceListViewController {
+    @IBAction func cancel(_: Any) {
+        delegate?.deviceListDidCancel(self)
+    }
+}
+
+extension DeviceListViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        cancel(self)
     }
 }

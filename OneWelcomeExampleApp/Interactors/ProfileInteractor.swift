@@ -13,8 +13,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-extension Error {
-    var domain: String { return (self as NSError).domain }
-    var code: Int { return (self as NSError).code }
-    var userInfo: Dictionary<String, Any> { return (self as NSError).userInfo }
+protocol ProfileInteractorProtocol {
+    var profileName: String { get }
+}
+
+class ProfileInteractor: ProfileInteractorProtocol {
+    weak var dashboardPresenter: DashboardInteractorToPresenterProtocol?
+    var profileName: String { dashboardPresenter?.authenticatedUserProfile?.profileId ?? "" }
 }

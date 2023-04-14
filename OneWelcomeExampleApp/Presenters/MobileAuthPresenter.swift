@@ -51,16 +51,25 @@ protocol PushMobileAuthEntrollmentProtocol: AnyObject {
 
 class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     let navigationController: UINavigationController
+    let qrCodePresenter: QRCodePresenterProtocol
     let tabBarController: TabBarController
     let mobileAuthInteractor: MobileAuthInteractorProtocol
+    let logoutInteractor: LogoutInteractorProtocol
     let mobileAuthViewController: MobileAuthViewController
     var pinViewController: PinViewController?
 
-    init(_ mobileAuthViewController: MobileAuthViewController, navigationController: UINavigationController, tabBarController: TabBarController, mobileAuthInteractor: MobileAuthInteractorProtocol) {
+    init(_ mobileAuthViewController: MobileAuthViewController,
+         qrCodePresenter: QRCodePresenterProtocol,
+         navigationController: UINavigationController,
+         tabBarController: TabBarController,
+         mobileAuthInteractor: MobileAuthInteractorProtocol,
+         logoutInteractor: LogoutInteractorProtocol) {
         self.navigationController = navigationController
         self.mobileAuthInteractor = mobileAuthInteractor
+        self.logoutInteractor = logoutInteractor
         self.mobileAuthViewController = mobileAuthViewController
         self.tabBarController = tabBarController
+        self.qrCodePresenter = qrCodePresenter
     }
 
     func presentMobileAuthView() {
@@ -131,7 +140,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         tabBarController.dismiss(animated: false, completion: nil)
         if !(navigationController.viewControllers.last is WelcomeViewController) && isUserLoggedIn {
-            appRouter.popToWelcomeView()
+            logoutInteractor.logout()
         }
         appRouter.updateWelcomeView(selectedProfile: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
@@ -150,15 +159,18 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
 
     func registerForPushMobileAuth() {
         mobileAuthInteractor.registerForPushMessages { succeed in
-            if succeed {
-                DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async { [weak self] in
+                if succeed {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.pushMobileAuthEnrollment = self
                     UIApplication.shared.registerForRemoteNotifications()
-                })
-            } else {
-                self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
-                self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed", errorDescription: "Notifications where not allowed by the user.", recoverySuggestion: "Please enable notifications for the application in Settings."))
+                } else {
+                    guard let self = self else { return }
+                    self.mobileAuthViewController.stopEnrollPushMobileAuthAnimation(succeed: false)
+                    self.enrollForPushMobileAuthFailed(AppError(title: "Enrollment failed",
+                                                                errorDescription: "Notifications where not allowed by the user.",
+                                                                recoverySuggestion: "Please enable notifications for the application in Settings."))
+                }
             }
         }
     }
@@ -176,8 +188,7 @@ extension MobileAuthPresenter: MobileAuthViewToPresenterProtocol {
     }
     
     func presentQRCodeScanner() {
-        let qrCodeViewController = QRCodeViewController(qrCodeViewDelegate: self)
-        navigationController.present(qrCodeViewController, animated: true, completion: nil)
+        qrCodePresenter.present(navigationController, delegate: self)
     }
 
     func authenticateWithOTP(_ otp: String) {

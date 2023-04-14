@@ -23,6 +23,8 @@ class InteractorAssembly: Assembly {
                 let loginInteractor = instance as! LoginInteractor
                 loginInteractor.delegate = resolver.resolve(LoginPresenterProtocols.self)!
             }
+        container.register(WelcomeInteractorProtocol.self) { _ in WelcomeInteractor() }
+        
         container.register(RegisterUserInteractorProtocol.self) { _ in RegisterUserInteractor() }
             .initCompleted { resolver, instance in
                 let registerUserInteractor = instance as! RegisterUserInteractor
@@ -43,31 +45,33 @@ class InteractorAssembly: Assembly {
                 let changePinInteractor = instance as! ChangePinInteractor
                 changePinInteractor.changePinPresenter = resolver.resolve(ChangePinPresenterProtocol.self)
             }
+        container.register(ProfileInteractorProtocol.self) { _ in ProfileInteractor() }
+            .initCompleted { resolver, instance in
+                let profileInteractor = instance as! ProfileInteractor
+                profileInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
+            }
         container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
         container.register(AuthenticatorsInteractorProtocol.self) { _ in AuthenticatorsInteractor() }
             .initCompleted { resolver, instance in
                 let authenticatorsInteractor = instance as! AuthenticatorsInteractor
                 authenticatorsInteractor.authenticatorsPresenter = resolver.resolve(AuthenticatorsPresenterProtocol.self)
             }
-
         container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
             .initCompleted { resolver, instance in
                 let mobileAuthInteractor = instance as! MobileAuthInteractor
                 mobileAuthInteractor.mobileAuthPresenter = resolver.resolve(MobileAuthPresenterProtocol.self)
             }
-
         container.register(FetchDeviceListInteractorProtocol.self) { _ in FetchDeviceListInteractor() }
             .initCompleted { resolver, instance in
                 let fetchDeviceListInteractor = instance as! FetchDeviceListInteractor
                 fetchDeviceListInteractor.fetchDeviceListPresenter = resolver.resolve(FetchDeviceListPresenterProtocol.self)
             }
-
         container.register(AppDetailsInteractorProtocol.self) { _ in AppDetailsInteractor() }
             .initCompleted { resolver, instance in
                 let appDetailsInteractor = instance as! AppDetailsInteractor
                 appDetailsInteractor.appDetailsPresenter = resolver.resolve(AppDetailsPresenterProtocol.self)
             }
-
+        
         let errorMapper: (_ error: Error) -> AppError = { error in
             ErrorMapper().mapError(error)
         }

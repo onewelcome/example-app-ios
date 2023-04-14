@@ -27,15 +27,20 @@ protocol ProfileViewToPresenterProtocol: AnyObject {
     func setupDisconnectPresenter()
     func setupChangePinPresenter()
     func setupFetchDeviceListPresenter()
+    func updateView()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    let navigationController: UINavigationController
-    let profileViewController: ProfileViewController
-
-    init(_ profileViewController: ProfileViewController, navigationController: UINavigationController) {
+    private let navigationController: UINavigationController
+    private let profileViewController: ProfileViewController
+    private let profileInteractor: ProfileInteractorProtocol
+    
+    init(_ profileViewController: ProfileViewController,
+         navigationController: UINavigationController,
+         profileInteractor: ProfileInteractorProtocol) {
         self.profileViewController = profileViewController
         self.navigationController = navigationController
+        self.profileInteractor = profileInteractor
     }
 
     func presentProfileView() {
@@ -66,5 +71,10 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     func setupFetchDeviceListPresenter() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupFetchDeviceListPresenter()
+    }
+    
+    func updateView() {
+        profileViewController.setProfileName(profileInteractor.profileName)
+        profileViewController.updateView()
     }
 }

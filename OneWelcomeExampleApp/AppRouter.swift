@@ -70,6 +70,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     var appDetailsPresenter: AppDetailsPresenterProtocol
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
     var appToWebPresenter: AppToWebPresenterProtocol
+    var qrCodePresenter: QRCodePresenterProtocol
 
     init(window: LazyWindow,
          startupPresenter: StartupPresenterProtocol,
@@ -84,7 +85,8 @@ class AppRouter: NSObject, AppRouterProtocol {
          pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
          fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
          appDetailsPresenter: AppDetailsPresenterProtocol,
-         appToWebPresenter: AppToWebPresenterProtocol) {
+         appToWebPresenter: AppToWebPresenterProtocol,
+         qrCodePresenter: QRCodePresenterProtocol) {
         self.window = window
         self.startupPresenter = startupPresenter
         self.welcomePresenter = welcomePresenter
@@ -99,6 +101,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         self.appDetailsPresenter = appDetailsPresenter
         self.pendingMobileAuthPresenter = pendingMobileAuthPresenter
         self.appToWebPresenter = appToWebPresenter
+        self.qrCodePresenter = qrCodePresenter
     }
 
     func popToDashboardView() {
@@ -111,6 +114,7 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func popToWelcomeView() {
         welcomePresenter.popToWelcomeViewController()
+        welcomePresenter.presentWelcomeView()
     }
 
     func popToProfileView() {

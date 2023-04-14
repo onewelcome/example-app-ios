@@ -9,15 +9,20 @@ protocol AppToWebPresenterProtocol {
 class AppToWebPresenter: AppToWebPresenterProtocol {
     
     var appToWebInteractor: AppToWebInteractorProtocol
+    var dashboardPresenter: DashboardPresenterProtocol
     let navigationController: UINavigationController
 
-    init(appToWebInteractorProtocol: AppToWebInteractorProtocol, navigationController: UINavigationController) {
+    init(appToWebInteractorProtocol: AppToWebInteractorProtocol, dashboardPresneter: DashboardPresenterProtocol, navigationController: UINavigationController) {
         self.appToWebInteractor = appToWebInteractorProtocol
         self.navigationController = navigationController
+        self.dashboardPresenter = dashboardPresneter
     }
     
     func presentSingleSignOn() {
-        appToWebInteractor.appToWebSingleSignOn { (url, error) in
+        appToWebInteractor.appToWebSingleSignOn { [weak self] (url, error) in
+            guard let self else { return }
+            
+            self.dashboardPresenter.updateView()
             if let url = url {
                 let webView = WebViewController(url: url)
                 webView.delegate = self

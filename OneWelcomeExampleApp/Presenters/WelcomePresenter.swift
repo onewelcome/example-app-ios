@@ -19,10 +19,12 @@ protocol WelcomePresenterProtocol: AnyObject {
     var loginPresenter: LoginPresenterProtocols { get set }
     var registerUserPresenter: RegisterUserPresenterProtocol { get set }
     var welcomeViewController: WelcomeViewController { get set }
-
+    var welcomeInteractor: WelcomeInteractorProtocol { get set }
+    
     func presentWelcomeView()
     func popToWelcomeViewController()
     func update(selectedProfile: UserProfile?)
+    func handleInterfaceStyleChange(_ style: UIUserInterfaceStyle)
 }
 
 class WelcomePresenter: WelcomePresenterProtocol {
@@ -32,13 +34,16 @@ class WelcomePresenter: WelcomePresenterProtocol {
     var registerUserPresenter: RegisterUserPresenterProtocol
 
     var welcomeViewController: WelcomeViewController
-
+    var welcomeInteractor: WelcomeInteractorProtocol
+    
     init(_ welcomeViewController: WelcomeViewController,
+         welcomeInteractor: WelcomeInteractorProtocol,
          loginPresenter: LoginPresenterProtocols,
          registerUserPresenter: RegisterUserPresenterProtocol,
          navigationController: UINavigationController,
          tabBarController: TabBarController) {
         self.welcomeViewController = welcomeViewController
+        self.welcomeInteractor = welcomeInteractor
         self.loginPresenter = loginPresenter
         self.registerUserPresenter = registerUserPresenter
         self.navigationController = navigationController
@@ -60,7 +65,7 @@ class WelcomePresenter: WelcomePresenterProtocol {
     }
 
     func setupSegmentView() {
-        if loginPresenter.profiles.count > 0 {
+        if !loginPresenter.profiles.isEmpty {
             welcomeViewController.setupViewWithProfiles()
         } else {
             welcomeViewController.setupViewWithoutProfiles()
@@ -69,5 +74,20 @@ class WelcomePresenter: WelcomePresenterProtocol {
 
     func popToWelcomeViewController() {
         navigationController.popToViewController(welcomeViewController, animated: true)
+    }
+    
+    func handleInterfaceStyleChange(_ style: UIUserInterfaceStyle) {
+        welcomeInteractor.setIconForMode(style.appIconName)
+    }
+}
+
+private extension UIUserInterfaceStyle {
+    var appIconName: WelcomeInteractor.IconMode {
+        switch self {
+        case .dark:
+            return .dark
+        default:
+            return .light
+        }
     }
 }

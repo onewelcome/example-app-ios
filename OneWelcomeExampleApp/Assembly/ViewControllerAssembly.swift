@@ -39,7 +39,7 @@ class ViewControllerAssembly: Assembly {
 
         container.register(ProfileViewController.self) { _ in ProfileViewController() }
             .initCompleted { resolver, profileViewController in
-                profileViewController.profileViewToPresenterProtocol = resolver.resolve(ProfilePresenterProtocol.self)!
+                profileViewController.profileViewToPresenter = resolver.resolve(ProfilePresenterProtocol.self)!
             }
         container.register((UIViewController & PendingMobileAuthPresenterViewDelegate).self) { _ in PendingMobileAuthViewController() }
             .initCompleted { resolver, pendingMobileAuthViewController in
@@ -59,6 +59,11 @@ class ViewControllerAssembly: Assembly {
         container.register(MobileAuthViewController.self) { _ in MobileAuthViewController() }
             .initCompleted { resolver, mobileAuthViewController in
                 mobileAuthViewController.mobileAuthViewToPresenterProtocol = resolver.resolve(MobileAuthPresenterProtocol.self)!
+            }
+        
+        container.register(QRCodeViewController.self) { _ in QRCodeViewController() }
+            .initCompleted { resolver, qrCodeViewController in
+                qrCodeViewController.qrCodePresenter = resolver.resolve(QRCodePresenterProtocol.self)
             }
     }
 }
