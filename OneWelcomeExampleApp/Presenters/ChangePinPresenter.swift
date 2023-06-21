@@ -98,4 +98,8 @@ extension ChangePinPresenter: PinViewToPresenterProtocol {
     func handlePin() {
         changePinInteractor.handlePin()
     }
+    
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void) {
+        changePinInteractor.handlePinPolicy(pin: pin, completion: completion)
+    }
 }

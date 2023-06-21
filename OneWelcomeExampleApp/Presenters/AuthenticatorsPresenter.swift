@@ -125,6 +125,10 @@ extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {
 }
 
 extension AuthenticatorsPresenter: PinViewToPresenterProtocol {
+    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
+        // TODO: implement if needed
+    }
+    
     func handlePin() {
         authenticatorsInteractor.handleLogin()
     }
