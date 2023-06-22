@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2018 Onegini. All rights reserved.
+// Copyright © 2022 OneWelcome. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,5 +16,5 @@
 extension Error {
     var code: Int { return (self as NSError).code }
     var domain: String { return (self as NSError).domain }
-    var userInfo: Dictionary<String, Any> { return (self as NSError).userInfo }
+    var userInfo: [String: Any] { return (self as NSError).userInfo }
 }

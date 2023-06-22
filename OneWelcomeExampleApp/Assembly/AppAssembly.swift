@@ -24,7 +24,7 @@ class AppAssembly {
         ViewControllerAssembly(),
         InteractorAssembly(),
         PresenterAssembly(),
-        RouterAssembly(),
+        RouterAssembly()
     ])
 
     private init() {

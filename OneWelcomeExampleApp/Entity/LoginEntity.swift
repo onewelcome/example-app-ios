@@ -22,7 +22,7 @@ class LoginEntity: PinViewControllerEntityProtocol, PasswordAuthenticatorEntityP
     var pinChallenge: PinChallenge?
 
     var message: String?
-    var customAuthenticatorAuthenticationChallenege: CustomAuthFinishAuthenticationChallenge?
+    var customAuthenticatorChallenge: CustomAuthFinishAuthenticationChallenge?
     var data: String = ""
     var cancelled: Bool = false
 }

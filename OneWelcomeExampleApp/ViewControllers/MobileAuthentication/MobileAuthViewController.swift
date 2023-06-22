@@ -72,7 +72,6 @@ class MobileAuthViewController: UIViewController {
         mobileAuthViewToPresenterProtocol?.presentQRCodeScanner()
     }
     
-
     func stopEnrollPushMobileAuthAnimation(succeed: Bool) {
         DispatchQueue.main.async(execute: { () -> Void in
             self.enrollPushMobileAuthButton.stopAnimation(animationStyle: .normal, completion: {

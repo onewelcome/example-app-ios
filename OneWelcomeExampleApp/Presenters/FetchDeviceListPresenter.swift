@@ -26,10 +26,12 @@ protocol FetchDeviceListInteractorToPresenterProtocol: AnyObject {
 class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
     let navigationController: UINavigationController
     let fetchDeviceListInteractor: FetchDeviceListInteractorProtocol
+    var profilePresenter: ProfilePresenterProtocol
 
-    init(fetchDeviceListInteractor: FetchDeviceListInteractorProtocol, navigationController: UINavigationController) {
+    init(fetchDeviceListInteractor: FetchDeviceListInteractorProtocol, profilePresenter: ProfilePresenterProtocol, navigationController: UINavigationController) {
         self.fetchDeviceListInteractor = fetchDeviceListInteractor
         self.navigationController = navigationController
+        self.profilePresenter = profilePresenter
     }
 
     func setupDeviceListPresenter() {
@@ -39,12 +41,23 @@ class FetchDeviceListPresenter: FetchDeviceListPresenterProtocol {
     func presentDeviceList(_ deviceList: [Device]) {
         let deviceListViewController = DeviceListViewController()
         deviceListViewController.deviceList = deviceList
-        deviceListViewController.modalPresentationStyle = .overCurrentContext
-        navigationController.present(deviceListViewController, animated: false, completion: nil)
+        deviceListViewController.delegate = self
+        navigationController.present(deviceListViewController, animated: true, completion: nil)
     }
 
     func fetchDeviceListFailed(_ error: AppError) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
-        appRouter.setupErrorAlert(error: error)
+        appRouter.setupErrorAlert(error: error) { [weak self] _ in
+            self?.profilePresenter.updateView()
+            guard error.shouldLogout else { return }
+            self?.navigationController.popToRootViewController(animated: true)
+        }
+    }
+}
+
+extension FetchDeviceListPresenter: DeviceListDelegate {
+    func deviceListDidCancel(_ deviceListViewController: DeviceListViewController) {
+        deviceListViewController.dismiss(animated: true, completion: nil)
+        profilePresenter.updateView()
     }
 }

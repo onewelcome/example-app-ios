@@ -1,0 +1,57 @@
+# By default, SwiftLint uses a set of sensible default rules you can adjust:
+disabled_rules: # rule identifiers turned on by default to exclude from running
+  - control_statement
+  - trailing_whitespace # TODO: disabled for now
+opt_in_rules: # some rules are turned off by default, so you need to opt-in
+  - empty_count # Find all the available rules by running: `swiftlint rules`
+
+analyzer_rules: # Rules run by `swiftlint analyze`
+  - explicit_self
+
+included: # paths to include during linting. `--path` is ignored if present.
+  - OneWelcomeExampleApp
+  - OneWelcomeExampleAppDebug
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - .swiftlint.yml
+
+# If true, SwiftLint will not fail if no lintable files are found.
+allow_zero_lintable_files: false
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning
+force_try:
+  severity: warning # explicitly
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length: 200 # originally 110
+# they can set both implicitly with an array
+type_body_length:
+  warning: 500 # TODO: originally 400 # error
+
+# or they can set both explicitly
+file_length:
+  warning: 500
+  error: 1200
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 60 # TODO: originally 50
+  excluded: iPhone # excluded via string
+identifier_name:
+  min_length: # only min_length
+    warning: 3
+    error: 2 # originally was only error 3
+  excluded: # excluded via string array
+    - id
+    - x
+    - y
+function_body_length:
+    warning: 50
+function_parameter_count: # TODO: originally default was error: 5
+    warning: 5
+    error: 10
+reporter: "xcode" # reporter type (xcode, json, csv, markdown etc.)

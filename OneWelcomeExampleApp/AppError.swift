@@ -14,13 +14,15 @@
 // limitations under the License.
 
 class AppError {
-    var title: String
-    var errorDescription: String
-    var recoverySuggestion: String
+    let title: String
+    let errorDescription: String
+    let recoverySuggestion: String
+    var shouldLogout = false
 
-    init(title: String = "Error", errorDescription: String, recoverySuggestion: String = "Please try again.") {
+    init(title: String = "Error", errorDescription: String, recoverySuggestion: String = "Please try again.", shouldLogout: Bool = false) {
         self.title = title
         self.errorDescription = errorDescription
         self.recoverySuggestion = recoverySuggestion
+        self.shouldLogout = shouldLogout
     }
 }

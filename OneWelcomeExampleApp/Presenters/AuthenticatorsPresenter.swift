@@ -76,7 +76,10 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
     func authenticatorActionFailed(_ error: AppError, authenticator: Authenticator) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         backToAuthenticatorsView(authenticator: authenticator)
-        appRouter.setupErrorAlert(error: error)
+        appRouter.setupErrorAlert(error: error) { [weak self] _ in
+            guard error.shouldLogout else { return }
+            self?.navigationController.popToRootViewController(animated: true)
+        }
     }
 
     func authenticatorActionCancelled(authenticator: Authenticator) {

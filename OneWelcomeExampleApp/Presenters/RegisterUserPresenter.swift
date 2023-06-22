@@ -40,9 +40,13 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     let userRegistrationNavigationController: UINavigationController
     var pinViewController: PinViewController?
     var twoWayOTPViewController: TwoWayOTPViewController?
-    var qrCodeViewController: QRCodeViewController?
+    var qrCodePresenter: QRCodePresenterProtocol?
 
-    init(registerUserInteractor: RegisterUserInteractorProtocol, navigationController: UINavigationController, userRegistrationNavigationController: UINavigationController) {
+    init(registerUserInteractor: RegisterUserInteractorProtocol,
+         qrCodePresenter: QRCodePresenterProtocol,
+         navigationController: UINavigationController,
+         userRegistrationNavigationController: UINavigationController) {
+        self.qrCodePresenter = qrCodePresenter
         self.registerUserInteractor = registerUserInteractor
         self.navigationController = navigationController
         self.userRegistrationNavigationController = userRegistrationNavigationController
@@ -68,12 +72,9 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
 
     func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity) {
         if let errorMessage = registerUserEntity.errorMessage {
-            qrCodeViewController?.setupErrorLabel(errorMessage)
+            qrCodePresenter?.setupErrorLabel(text: errorMessage)
         } else {
-            qrCodeViewController = QRCodeViewController(qrCodeViewDelegate: self)
-            userRegistrationNavigationController.viewControllers = [qrCodeViewController!]
-            userRegistrationNavigationController.modalPresentationStyle = .overFullScreen
-            navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
+            qrCodePresenter?.present(userRegistrationNavigationController, delegate: self)
         }
     }
 
@@ -122,8 +123,6 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
     func handleOTPCode() {
         registerUserInteractor.handleOTPCode()
     }
-
-    
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
