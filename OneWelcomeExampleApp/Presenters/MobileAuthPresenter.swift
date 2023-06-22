@@ -208,6 +208,10 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
 }
 
 extension MobileAuthPresenter: PinViewToPresenterProtocol {
+    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
+        // TODO: implement if needed
+    }
+    
     func handlePin() {
         mobileAuthInteractor.handlePinMobileAuth()
     }
