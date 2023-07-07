@@ -126,6 +126,10 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
+    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
+        // TODO: implement if needed
+    }
+    
     func handlePin() {
         registerUserInteractor.handleCreatedPin()
     }

@@ -23,6 +23,7 @@ protocol PinViewControllerEntityProtocol {
 
 protocol PinViewToPresenterProtocol: AnyObject {
     func handlePin()
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void)
 }
 
 enum PINEntryMode {
@@ -139,9 +140,9 @@ class PinViewController: UIViewController {
             let pincode = pinEntry.joined()
             switch mode {
             case .registration:
-                pinEntryToVerify = pinEntry
-                mode = .registrationConfirm
-                reset()
+                viewToPresenterProtocol.handlePinPolicy(pin: pincode) { [weak self] error in
+                    self?.prepareView(for: error)
+                }
             case .registrationConfirm:
                 let pincodeConfirm = pinEntryToVerify.joined()
                 if pincode == pincodeConfirm {
@@ -156,6 +157,18 @@ class PinViewController: UIViewController {
                 entity.pin = pincode
                 viewToPresenterProtocol.handlePin()
             }
+        }
+    }
+    
+    func prepareView(for error: Error?) {
+        if let error {
+            mode = .registration
+            reset()
+            errorLabel.text = "The pin policy not met: \(error.localizedDescription)"
+        } else {
+            pinEntryToVerify = pinEntry
+            mode = .registrationConfirm
+            reset()
         }
     }
 

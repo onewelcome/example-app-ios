@@ -158,6 +158,10 @@ extension LoginPresenter: LoginViewDelegate {
 }
 
 extension LoginPresenter: PinViewToPresenterProtocol {
+    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
+        // TODO: implement if needed
+    }
+    
     func handlePin() {
         loginInteractor.handleLogin()
     }

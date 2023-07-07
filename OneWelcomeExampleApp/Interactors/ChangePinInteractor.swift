@@ -18,6 +18,7 @@ import UIKit
 protocol ChangePinInteractorProtocol: AnyObject {
     func changePin()
     func handlePin()
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void)
 }
 
 class ChangePinInteractor: NSObject {
@@ -48,6 +49,12 @@ class ChangePinInteractor: NSObject {
             handleCreatePin()
         } else {
             handleLogin()
+        }
+    }
+    
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void) {
+        userClient.validatePolicyCompliance(for: pin) { error in
+            completion(error)
         }
     }
 
