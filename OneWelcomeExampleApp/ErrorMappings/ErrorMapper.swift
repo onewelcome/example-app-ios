@@ -15,24 +15,34 @@
 
 class ErrorMapper {
     func mapError(_ error: Error, pinChallenge: PinChallenge? = nil, customInfo: CustomInfo? = nil) -> AppError {
+        //TODO: double checks if commented domains equals the one replaced
         switch error.domain {
-        case ONGGenericErrorDomain:
+//        case ONGGenericErrorDomain:
+        case ErrorDomains.generic:
             return GenericErrorDomainMapping().mapError(error)
-        case ONGPinValidationErrorDomain:
+//        case ONGPinValidationErrorDomain:
+        case ErrorDomains.pinValidation:
             return PinValidationErrorDomainMapping().mapError(error)
-        case ONGAuthenticationErrorDomain:
+//        case ONGAuthenticationErrorDomain:
+        case ErrorDomains.authentication:
             return AuthenticationErrorDomainMapping().mapError(error, pinChallenge: pinChallenge, customInfo: customInfo)
-        case ONGAuthenticatorRegistrationErrorDomain:
+//        case ONGAuthenticatorRegistrationErrorDomain:
+        case ErrorDomains.authenticatorRegistration:
             return AuthenticatorRegistrationErrorDomainMapping().mapError(error, customInfo: customInfo)
-        case ONGAuthenticatorDeregistrationErrorDomain:
+//        case AuthenticatorDeregistrationErrorDomain:
+        case ErrorDomains.authenticatorDeregistration:
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
-        case ONGMobileAuthEnrollmentErrorDomain:
+//        case MobileAuthEnrollmentErrorDomain:
+        case ErrorDomains.mobileAuthEnrollment:
             return MobileAuthEnrollmentErrorDomainMapping().mapError(error)
-        case ONGFetchResourceErrorDomain:
+//        case ONGFetchResourceErrorDomain:
+        case ErrorDomains.fetchResource:
             return FetchResourceErrorDomainMapping().mapError(error)
-        case ONGFetchImplicitResourceErrorDomain:
+//        case ONGFetchImplicitResourceErrorDomain:
+        case ErrorDomains.fetchImplicitResource:
             return FetchImplicitResourceErrorDomainMapping().mapError(error)
-        case ONGAppToWebSingleSignOnErrorDomain:
+//        case ONGAppToWebSingleSignOnErrorDomain:
+        case ErrorDomains.appToWebSingleSignOn:
             return AppToWebSingleSignOnErrorDomainMapping().mapError(error)
             
         default:

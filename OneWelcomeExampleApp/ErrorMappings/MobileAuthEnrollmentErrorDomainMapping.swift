@@ -18,27 +18,27 @@ class MobileAuthEnrollmentErrorDomainMapping {
         let title = "Mobile auth enrollment error"
 
         switch error.code {
-        case ONGMobileAuthEnrollmentError.userNotAuthenticated.rawValue:
+        case MobileAuthEnrollmentError.userNotAuthenticated.rawValue:
             let errorDescription = "No user is currently authenticated."
             let recoverySuggestion = "Please authenticate user and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGMobileAuthEnrollmentError.deviceAlreadyEnrolled.rawValue:
+        case MobileAuthEnrollmentError.deviceAlreadyEnrolled.rawValue:
             let errorDescription = "The device is already enrolled for mobile authentication."
             let recoverySuggestion = "Please authenticate user and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGMobileAuthEnrollmentError.enrollmentNotAvailable.rawValue:
+        case MobileAuthEnrollmentError.enrollmentNotAvailable.rawValue:
             let errorDescription = "Mobile authentication enrollment is not available."
             let recoverySuggestion = ""
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGMobileAuthEnrollmentError.userAlreadyEnrolled.rawValue:
+        case MobileAuthEnrollmentError.userAlreadyEnrolled.rawValue:
             let errorDescription = "The user is already enrolled for mobile authentication on another device."
             let recoverySuggestion = "Please disable mobile authentication on the other device and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGMobileAuthEnrollmentError.notEnrolled.rawValue:
+        case MobileAuthEnrollmentError.notEnrolled.rawValue:
             let errorDescription = "The user is not enrolled for mobile authentication."
             let recoverySuggestion = "Enroll for mobile authentication."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)

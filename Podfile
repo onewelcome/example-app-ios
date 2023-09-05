@@ -6,7 +6,10 @@ use_frameworks!
 plugin 'cocoapods-art', :sources => ['onegini']
 
 def oneginiSDKiOS
-   pod 'OneginiSDKiOS', '~> 12.2.0'
+#   pod 'OneginiSDKiOS', '~> 12.2.0'
+#   pod 'OneginiSDKiOS', :path => '/Users/Szymon.Wawszczak/Projekty/sdk-ios/output/OneginiSDKiOS/OneginiSDKiOS.podspec'
+pod 'OneginiSDKiOS', :path => '/Users/Szymon.Wawszczak/Projekty/sdk-ios-develop'
+#   pod 'OneginiSDKiOS', '~> 11.0.0'
 end
 
 def externalRegularDependencies
@@ -37,6 +40,12 @@ post_install do |installer|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+      if target.name == 'OneginiSDKiOS'
+          target.resources_build_phase.files_references.each do |file|
+              target.frameworks_build_phase.add_file_reference(file)
+              target.resources_build_phase.remove_file_reference(file)
+          end
+      end
     end
   end
 end

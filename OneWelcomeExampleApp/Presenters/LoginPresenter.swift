@@ -138,7 +138,7 @@ extension LoginPresenter: LoginViewDelegate {
         loginInteractor.login(profile: profile, authenticator: authenticator)
     }
 
-    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator] {
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> Set<Authenticator> {
         return loginInteractor.authenticators(profile: profile)
     }
     

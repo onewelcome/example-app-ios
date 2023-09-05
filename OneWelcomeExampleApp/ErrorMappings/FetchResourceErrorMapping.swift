@@ -3,7 +3,7 @@
 class FetchResourceErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         switch error.code {
-        case ONGFetchResourceError.userNotAuthenticated.rawValue:
+        case FetchResourceError.userNotAuthenticated.rawValue:
             return AppError(errorDescription: "No user is currently authenticated, possibly due to the fact that the access token has expired.",
                             recoverySuggestion: "Please login again.",
                             shouldLogout: true)

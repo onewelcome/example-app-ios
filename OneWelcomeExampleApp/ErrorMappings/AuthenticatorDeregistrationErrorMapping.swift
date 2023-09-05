@@ -20,11 +20,11 @@ class AuthenticatorDeregistrationErrorMapping {
     
     func mapError(_ error: Error) -> AppError {
         switch error.code {
-        case ONGAuthenticatorDeregistrationError.deregistrationErrorUserNotAuthenticated.rawValue:
+        case AuthenticatorDeregistrationError.userNotAuthenticated.rawValue:
             let errorDescription = "A user must be authenticated in order to deregister an authenticator."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.")
 
-        case ONGAuthenticatorDeregistrationError.deregistrationErrorDeregisteredLocally.rawValue:
+        case AuthenticatorDeregistrationError.deregisteredLocally.rawValue:
             let errorDescription = "Authenticator was deregister only locally."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "")
 

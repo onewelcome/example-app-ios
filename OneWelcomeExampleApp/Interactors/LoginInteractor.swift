@@ -18,7 +18,7 @@ import OneginiSDKiOS
 
 protocol LoginInteractorProtocol: AnyObject {
     var userProfiles: [UserProfile] { get }
-    func authenticators(profile: UserProfile) -> [Authenticator]
+    func authenticators(profile: UserProfile) -> Set<Authenticator>
     func login(profile: UserProfile, authenticator: Authenticator?)
     func handleLogin()
     func handlePasswordAuthenticatorLogin()
@@ -40,7 +40,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
+        if let error = challenge.error, error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             loginEntity.pinError = nil
@@ -61,7 +61,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
         return userClient.userProfiles
     }
 
-    func authenticators(profile: UserProfile) -> [Authenticator] {
+    func authenticators(profile: UserProfile) -> Set<Authenticator> {
         return userClient.authenticators(.registered, for: profile)
     }
 
@@ -98,7 +98,7 @@ extension LoginInteractor: AuthenticationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
         } else {
             let mappedError = ErrorMapper().mapError(error)
