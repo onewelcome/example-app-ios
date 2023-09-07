@@ -53,7 +53,7 @@ class ViewControllerAssembly: Assembly {
 
         container.register(AppDetailsViewController.self) { _ in AppDetailsViewController() }
             .initCompleted { resolver, appDetailsViewController in
-                appDetailsViewController.viewToPresenterProtocol = resolver.resolve(AppDetailsPresenterProtocol.self)!
+                appDetailsViewController.viewToPresenter = resolver.resolve(AppDetailsPresenterProtocol.self)!
             }
 
         container.register(MobileAuthViewController.self) { _ in MobileAuthViewController() }

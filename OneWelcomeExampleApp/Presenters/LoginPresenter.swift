@@ -100,13 +100,13 @@ extension LoginPresenter: LoginInteractorDelegate {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenter: self)
             navigationController.present(pinViewController!, animated: true, completion: nil)
         }
     }
     
     func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPassword loginEntity: LoginEntity) {
-        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEntity, viewToPresenter: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(passwordViewController, animated: false, completion: nil)
     }

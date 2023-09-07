@@ -62,7 +62,7 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
+            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenter: self)
             navigationController.present(pinViewController!, animated: true)
         }
     }
@@ -95,7 +95,7 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
     }
 
     func presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: RegisterAuthenticatorEntity) {
-        let passwordViewController = PasswordAuthenticatorViewController(mode: .register, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .register, entity: registerAuthenticatorEntity, viewToPresenter: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(passwordViewController, animated: false, completion: nil)
     }

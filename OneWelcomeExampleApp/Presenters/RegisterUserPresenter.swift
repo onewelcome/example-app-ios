@@ -83,7 +83,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
+            pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenter: self)
             userRegistrationNavigationController.pushViewController(pinViewController!, animated: true)
         }
     }
