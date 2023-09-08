@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
             }
         }
         let indexPath = IndexPath(row: index, section: 0)
-        profilesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+        profilesTableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
         profilesTableView.delegate?.tableView?(profilesTableView, didSelectRowAt: indexPath)
     }
 

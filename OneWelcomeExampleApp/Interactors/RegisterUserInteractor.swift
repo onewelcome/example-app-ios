@@ -45,8 +45,19 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         return userClient.identityProviders
     }
 
-    func startUserRegistration(identityProvider: IdentityProvider? = nil) {
-        userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+    func startUserRegistration(identityProvider: IdentityProvider?) {
+        guard let identityProvider else {
+            let error = AppError(errorDescription: "No identity provider chosen.")
+            registerUserPresenter?.registerUserActionFailed(error)
+            return
+        }
+        
+        switch AllowedIdentityProviders(rawValue: identityProvider.identifier) {
+        case .stateless, .twoWayStateless:
+            userClient.registerStatelessUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+        default:
+            userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+        }
     }
 
     func handleRedirectURL() {
@@ -62,7 +73,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
         if registerUserEntity.cancelled {
             registerUserEntity.cancelled = false
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge, withUnderlyingError: nil)
         } else {
             customRegistrationChallenge.sender.respond(with: registerUserEntity.responseCode, to: customRegistrationChallenge)
         }
@@ -70,11 +81,21 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 
     func handleQRCode(_ qrCode: String?) {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
-        if let qrCode = qrCode {
+        if let qrCode {
             customRegistrationChallenge.sender.respond(with: qrCode, to: customRegistrationChallenge)
         } else {
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge, withUnderlyingError: nil)
         }
+    }
+    
+    func handleStatelessRegistration(_ challenge: CustomRegistrationChallenge) {
+        challenge.sender.respond(with: nil, to: challenge)
+    }
+    
+    func registrationNotHandled(_ challenge: CustomRegistrationChallenge) {
+        let error = AppError(errorDescription: "Identity provider \(challenge.identityProvider.identifier) is not handled in the example app.")
+        challenge.sender.cancel(challenge, withUnderlyingError: error)
+        registerUserPresenter?.registerUserActionFailed(error)
     }
 
     func handleCreatedPin() {
@@ -105,9 +126,10 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     fileprivate func mapErrorMessageFromStatus(_ status: Int, identityProviderIdentifier: String) {
-        if identityProviderIdentifier == "2-way-otp-api" {
+        switch AllowedIdentityProviders(rawValue: identityProviderIdentifier) {
+        case .twoWayOTP:
             mapErrorMessageFromTwoWayOTPStatus(status)
-        } else if identityProviderIdentifier == "qr-code-api" {
+        default:
             mapErrorMessageFromQRCodeStatus(status)
         }
     }
@@ -128,8 +150,11 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
-        if challenge.identityProvider.identifier == "2-way-otp-api" {
-            challenge.sender.respond(with: nil, to: challenge)
+        switch AllowedIdentityProviders(rawValue: challenge.identityProvider.identifier) {
+        case .twoWayStateless:
+            handleStatelessRegistration(challenge)
+        default:
+            registrationNotHandled(challenge)
         }
     }
 
@@ -139,15 +164,18 @@ extension RegisterUserInteractor: RegistrationDelegate {
             registerUserEntity.challengeCode = info.data
             mapErrorMessageFromStatus(info.status, identityProviderIdentifier: challenge.identityProvider.identifier)
         }
-        let qrRegistrationIdentifiers = ["qr-code-api", "qr-registration", "qr_registration"]
-        if challenge.identityProvider.identifier == "2-way-otp-api" {
+        
+        switch AllowedIdentityProviders(rawValue: challenge.identityProvider.identifier) {
+        case .twoWayOTP:
             registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
-        } else if qrRegistrationIdentifiers.contains(challenge.identityProvider.identifier) {
+        case .qrCode:
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
-        } else {
-            handleQRCode(nil)
-            registerUserPresenter?.registerUserActionFailed(AppError(errorDescription: "Identity provider \(challenge.identityProvider.identifier) is not registered."))
+        case .stateless, .twoWayStateless:
+            handleStatelessRegistration(challenge)
+        default:
+            registrationNotHandled(challenge)
         }
+
     }
 
     func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, with identityProvider: IdentityProvider, info: CustomInfo?) {
@@ -155,9 +183,10 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch ONGGenericError(rawValue: error.code) {
+        case .actionCancelled:
             registerUserPresenter?.registerUserActionCancelled()
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }
