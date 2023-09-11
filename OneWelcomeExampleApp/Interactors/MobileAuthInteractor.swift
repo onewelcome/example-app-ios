@@ -224,17 +224,11 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, error: Error) {
-        mobileAuthEntity = MobileAuthEntity()
-        if error.code == GenericError.actionCancelled.rawValue {
-            mobileAuthPresenter?.dismiss()
-            mobileAuthQueue.dequeue()
-        } else {
-            let mappedError = ErrorMapper().mapError(error)
-            let isUserLoggedIn = userClient.authenticatedUserProfile?.isEqual(to: request.userProfile) ?? false
-            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
-                self.mobileAuthQueue.dequeue()
-            })
-        }
+        handleFailure(error, isUserLoggedIn: userClient.authenticatedUserProfile?.isEqual(to: request.userProfile) ?? false)
+    }
+    
+    func userClient(_ userClient: UserClient, didFailToHandleOTPMobileAuthRequest otp: String, error: Error) {
+        handleFailure(error, isUserLoggedIn: false)
     }
 
     func userClient(_ userClient: UserClient, didHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
@@ -242,6 +236,19 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthPresenter?.dismiss()
         mobileAuthQueue.dequeue()
         mobileAuthPresenter?.presentConfirmationAlert()
+    }
+    
+    private func handleFailure(_ error: Error, isUserLoggedIn: Bool) {
+        mobileAuthEntity = MobileAuthEntity()
+        if error.code == GenericError.actionCancelled.rawValue {
+            mobileAuthPresenter?.dismiss()
+            mobileAuthQueue.dequeue()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn) { _ in
+                self.mobileAuthQueue.dequeue()
+            }
+        }
     }
 }
 
