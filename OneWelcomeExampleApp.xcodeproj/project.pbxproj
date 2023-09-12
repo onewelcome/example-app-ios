@@ -1080,7 +1080,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = Onegini;
+				ORGANIZATIONNAME = OneWelcome;
 				TargetAttributes = {
 					7E300A6420D7B8E100EF1A79 = {
 						CreatedOnToolsVersion = 9.3;
