@@ -66,7 +66,6 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-
         userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
     }
 
