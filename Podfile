@@ -6,10 +6,7 @@ use_frameworks!
 plugin 'cocoapods-art', :sources => ['onegini']
 
 def oneginiSDKiOS
-#   pod 'OneginiSDKiOS', '~> 12.2.0'
-#   pod 'OneginiSDKiOS', :path => '/Users/Szymon.Wawszczak/Projekty/sdk-ios/output/OneginiSDKiOS/OneginiSDKiOS.podspec'
-pod 'OneginiSDKiOS', :path => '/Users/Szymon.Wawszczak/Projekty/sdk-ios-develop'
-#   pod 'OneginiSDKiOS', '~> 11.0.0'
+    pod 'OneginiSDKiOS', :git => 'git@github.com:onewelcome/sdk-ios.git', :branch => 'develop'
 end
 
 def externalRegularDependencies

@@ -14,12 +14,14 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.7.1)
   - BetterSegmentedControl (2.0.1)
   - OneginiSDKiOS (12.2.2-SNAPSHOT):
     - AFNetworking (= 4.0.1)
+    - Alamofire (~> 5.7.0)
     - Typhoon (= 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
-  - SwiftLint (0.52.4)
+  - SwiftLint (0.53.0)
   - Swinject (2.8.1)
   - TransitionButton (0.5.3)
   - Typhoon (4.0.8):
@@ -42,6 +44,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - Alamofire
     - BetterSegmentedControl
     - SkyFloatingLabelTextField
     - SwiftLint
@@ -55,10 +58,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: f36e72bcbfdce689ff40d1929438b111fdcf93a5
+  OneginiSDKiOS: d608464083e7dfed3ff2d9f7800357c4684858a5
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
+  SwiftLint: 5ce4d6a8ff83f1b5fd5ad5dbf30965d35af65e44
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   Typhoon: f8901ef1ad0e2fa520cda0f668492dd33353f7dc
