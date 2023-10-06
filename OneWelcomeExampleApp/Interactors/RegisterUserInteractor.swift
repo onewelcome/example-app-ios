@@ -20,7 +20,7 @@ protocol RegisterUserInteractorProtocol: AnyObject {
     func startUserRegistration(identityProvider: IdentityProvider?)
     func handleRedirectURL()
     func handleCreatedPin()
-    func handleOTPCode()
+    func handleTwoStepCode()
     func handleQRCode(_ qrCode: String?)
 }
 
@@ -69,7 +69,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    func handleOTPCode() {
+    func handleTwoStepCode() {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
         if registerUserEntity.cancelled {
             registerUserEntity.cancelled = false
@@ -86,6 +86,17 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         } else {
             customRegistrationChallenge.sender.cancel(customRegistrationChallenge, withUnderlyingError: nil)
         }
+    }
+    
+    func handleFirstStepOfTwoStepRegistration(_ challenge: CustomRegistrationChallenge) {
+        // Handle the initial challenge: send the initial challenge response.
+        // For the test purposes the value "OneWelcome" is hardcoded, you can prompt for anything.
+        challenge.sender.respond(with: "OneWelcome", to: challenge)
+    }
+    
+    func handleSecondStepOfTwoStepRegistration() {
+        // Handle the final challenge: prompt for the final challenge response
+        registerUserPresenter?.presentTwoStepRegistrationView(regiserUserEntity: registerUserEntity)
     }
     
     func handleStatelessRegistration(_ challenge: CustomRegistrationChallenge) {
@@ -107,7 +118,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    fileprivate func mapErrorMessageFromTwoWayOTPStatus(_ status: Int) {
+    fileprivate func mapErrorMessageFromTwoStepStatus(_ status: Int) {
         if status == 2000 {
             registerUserEntity.errorMessage = nil
         } else if status == 4002 {
@@ -127,8 +138,8 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 
     fileprivate func mapErrorMessageFromStatus(_ status: Int, identityProviderIdentifier: String) {
         switch AllowedIdentityProviders(rawValue: identityProviderIdentifier) {
-        case .twoWayOTP:
-            mapErrorMessageFromTwoWayOTPStatus(status)
+        case .twoStep:
+            mapErrorMessageFromTwoStepStatus(status)
         default:
             mapErrorMessageFromQRCodeStatus(status)
         }
@@ -153,6 +164,8 @@ extension RegisterUserInteractor: RegistrationDelegate {
         switch AllowedIdentityProviders(rawValue: challenge.identityProvider.identifier) {
         case .twoWayStateless:
             handleStatelessRegistration(challenge)
+        case .twoStep:
+            handleFirstStepOfTwoStepRegistration(challenge)
         default:
             registrationNotHandled(challenge)
         }
@@ -166,8 +179,8 @@ extension RegisterUserInteractor: RegistrationDelegate {
         }
         
         switch AllowedIdentityProviders(rawValue: challenge.identityProvider.identifier) {
-        case .twoWayOTP:
-            registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
+        case .twoStep:
+            handleSecondStepOfTwoStepRegistration()
         case .qrCode:
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
         case .stateless, .twoWayStateless:

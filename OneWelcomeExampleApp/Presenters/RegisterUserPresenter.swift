@@ -19,7 +19,7 @@ typealias RegisterUserPresenterProtocol = RegisterUserInteractorToPresenterProto
 
 protocol RegisterUserInteractorToPresenterProtocol: AnyObject {
     func presentBrowserUserRegistrationView(regiserUserEntity: RegisterUserEntity)
-    func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity)
+    func presentTwoStepRegistrationView(regiserUserEntity: RegisterUserEntity)
     func presentQRCodeRegistrationView(registerUserEntity: RegisterUserEntity)
     func presentCreatePinView(registerUserEntity: RegisterUserEntity)
     func presentDashboardView(authenticatedUserProfile: UserProfile)
@@ -31,7 +31,7 @@ protocol RegisterUserViewToPresenterProtocol {
     func signUp(_ identityProvider: IdentityProvider?)
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL()
-    func handleOTPCode()
+    func handleTwoStepCode()
 }
 
 class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
@@ -39,7 +39,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
     let navigationController: UINavigationController
     let userRegistrationNavigationController: UINavigationController
     var pinViewController: PinViewController?
-    var twoWayOTPViewController: TwoWayOTPViewController?
+    var twoStepViewController: TwoStepViewController?
     var qrCodePresenter: QRCodePresenterProtocol?
 
     init(registerUserInteractor: RegisterUserInteractorProtocol,
@@ -59,12 +59,13 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
         navigationController.present(userRegistrationNavigationController, animated: true)
     }
 
-    func presentTwoWayOTPRegistrationView(regiserUserEntity: RegisterUserEntity) {
+    func presentTwoStepRegistrationView(regiserUserEntity: RegisterUserEntity) {
         if regiserUserEntity.errorMessage != nil {
-            twoWayOTPViewController?.reset()
+            twoStepViewController?.reset()
         } else {
-            twoWayOTPViewController = TwoWayOTPViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
-            userRegistrationNavigationController.viewControllers = [twoWayOTPViewController!]
+            let twoStepViewController = TwoStepViewController(registerUserEntity: regiserUserEntity, registerUserViewToPresenterProtocol: self)
+            self.twoStepViewController = twoStepViewController
+            userRegistrationNavigationController.viewControllers = [twoStepViewController]
             userRegistrationNavigationController.modalPresentationStyle = .overFullScreen
             navigationController.present(userRegistrationNavigationController, animated: false, completion: nil)
         }
@@ -120,8 +121,8 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
         registerUserInteractor.handleRedirectURL()
     }
 
-    func handleOTPCode() {
-        registerUserInteractor.handleOTPCode()
+    func handleTwoStepCode() {
+        registerUserInteractor.handleTwoStepCode()
     }
 }
 
