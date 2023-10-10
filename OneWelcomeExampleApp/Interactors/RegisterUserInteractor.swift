@@ -131,9 +131,6 @@ extension RegisterUserInteractor: RegistrationDelegate {
         if challenge.identityProvider.identifier == "2-way-otp-api" {
             challenge.sender.respond(with: nil, to: challenge)
         }
-        if challenge.identityProvider.identifier == "jp_na100procent" {
-            challenge.sender.respond(with: nil, to: challenge)
-        }
     }
 
     func userClient(_ userClient: UserClient, didReceiveCustomRegistrationFinishChallenge challenge: CustomRegistrationChallenge) {

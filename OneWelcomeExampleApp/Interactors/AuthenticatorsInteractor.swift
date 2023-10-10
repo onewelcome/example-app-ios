@@ -105,11 +105,13 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
     
     func userClient(_ userClient: UserClient, didFailToRegister authenticator: Authenticator, for userProfile: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
-        if error.code == GenericError.actionCancelled.rawValue {
+        
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-        } else if error.code == GenericError.userDeregistered.rawValue {
+        case .userDeregistered:
             authenticatorsPresenter?.popToWelcomeView(mappedError)
-        } else {
+        default:
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
     }
@@ -125,9 +127,10 @@ extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToDeregister authenticator: Authenticator, forUser userProfile: UserProfile, error: Error) {
-        if error.code == GenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
