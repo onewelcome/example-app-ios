@@ -16,22 +16,22 @@
 import SkyFloatingLabelTextField
 import UIKit
 
-protocol TwoWayOTPEntityProtocol {
+protocol TwoStepEntityProtocol {
     var responseCode: String? { get set }
     var challengeCode: String? { get set }
     var cancelled: Bool { get set }
     var errorMessage: String? { get set }
 }
 
-class TwoWayOTPViewController: UIViewController {
+class TwoStepViewController: UIViewController {
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var challengeCode: UILabel!
     @IBOutlet var responseCode: SkyFloatingLabelTextField!
 
-    var registerUserEntity: TwoWayOTPEntityProtocol
+    var registerUserEntity: TwoStepEntityProtocol
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
 
-    init(registerUserEntity: TwoWayOTPEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
+    init(registerUserEntity: TwoStepEntityProtocol, registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol) {
         self.registerUserEntity = registerUserEntity
         self.registerUserViewToPresenterProtocol = registerUserViewToPresenterProtocol
         super.init(nibName: nil, bundle: nil)
@@ -56,11 +56,11 @@ class TwoWayOTPViewController: UIViewController {
 
     @IBAction func submit(_: Any) {
         registerUserEntity.responseCode = responseCode.text
-        registerUserViewToPresenterProtocol.handleOTPCode()
+        registerUserViewToPresenterProtocol.handleTwoStepCode()
     }
 
     @IBAction func cancel(_: Any) {
         registerUserEntity.cancelled = true
-        registerUserViewToPresenterProtocol.handleOTPCode()
+        registerUserViewToPresenterProtocol.handleTwoStepCode()
     }
 }
