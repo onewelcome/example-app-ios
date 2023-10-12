@@ -29,19 +29,11 @@ class ChangePinInteractor: NSObject {
     }
 
     fileprivate func mapErrorFromPinChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error {
-            changePinEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
-        } else {
-            changePinEntity.pinError = nil
-        }
+        changePinEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0, pinChallenge: challenge) }
     }
 
     fileprivate func mapErrorFromCreatePinChallenge(_ challenge: CreatePinChallenge) {
-        if let error = challenge.error {
-            changePinEntity.pinError = ErrorMapper().mapError(error)
-        } else {
-            changePinEntity.pinError = nil
-        }
+        changePinEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0) }
     }
 
     func handlePin() {

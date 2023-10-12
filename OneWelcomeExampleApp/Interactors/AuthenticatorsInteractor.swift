@@ -33,11 +33,7 @@ class AuthenticatorsInteractor: NSObject {
     }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error {
-            registerAuthenticatorEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
-        } else {
-            registerAuthenticatorEntity.pinError = nil
-        }
+        registerAuthenticatorEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0, pinChallenge: challenge)}
     }
 
     fileprivate func sortAuthenticatorsList(_ authenticators: Set<Authenticator>) -> [Authenticator] {

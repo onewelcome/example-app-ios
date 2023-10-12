@@ -40,11 +40,13 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error, error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue {
-            loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
-        } else {
+        let ignoredErrorCodes = [AuthenticationError.touchIDAuthenticatorFailure].map { $0.rawValue }
+        
+        guard let error = challenge.error, !ignoredErrorCodes.contains(error.code) else {
             loginEntity.pinError = nil
+            return
         }
+        loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
     }
 
     func handlePasswordAuthenticatorLogin() {
@@ -97,9 +99,10 @@ extension LoginInteractor: AuthenticationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, error: Error) {
-        if error.code == GenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             delegate?.loginInteractor(self, didFailToLoginUser: userProfile, withError: mappedError)
         }
