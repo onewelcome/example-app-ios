@@ -46,13 +46,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     func startUserRegistration(identityProvider: IdentityProvider?) {
-        guard let identityProvider else {
-            let error = AppError(errorDescription: "No identity provider chosen.")
-            registerUserPresenter?.registerUserActionFailed(error)
-            return
-        }
-        
-        switch AllowedIdentityProviders(rawValue: identityProvider.identifier) {
+        switch AllowedIdentityProviders(rawValue: identityProvider?.identifier ?? "") {
         case .stateless, .twoWayStateless:
             userClient.registerStatelessUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
         default:

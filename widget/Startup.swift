@@ -5,8 +5,10 @@ import OneginiSDKiOS
 class Startup {
 
     func oneginiSDKStartup(completion: @escaping (Bool) -> Void) {
-        ClientBuilder().build().start { error in
-            completion(error == nil)
+        ClientBuilder().buildAndWaitForProtectedData { client in
+            client.start { error in
+                completion(error == nil)
+            }
         }
     }
 }
