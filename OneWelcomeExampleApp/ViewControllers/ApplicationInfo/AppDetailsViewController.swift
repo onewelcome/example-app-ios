@@ -21,7 +21,7 @@ class AppDetailsViewController: UIViewController {
     @IBOutlet var appVersion: UILabel!
     @IBOutlet var appPlatform: UILabel!
 
-    weak var viewToPresenterProtocol: AppDetailsViewToPresenterProtocol?
+    weak var viewToPresenter: AppDetailsViewToPresenterProtocol?
 
     var applicationDetails: ApplicationDetails? {
         didSet {
@@ -33,6 +33,6 @@ class AppDetailsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewToPresenterProtocol?.reloadAppDetails()
+        viewToPresenter?.reloadAppDetails()
     }
 }

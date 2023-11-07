@@ -18,7 +18,7 @@ import OneginiSDKiOS
 
 protocol LoginInteractorProtocol: AnyObject {
     var userProfiles: [UserProfile] { get }
-    func authenticators(profile: UserProfile) -> [Authenticator]
+    func authenticators(profile: UserProfile) -> Set<Authenticator>
     func login(profile: UserProfile, authenticator: Authenticator?)
     func handleLogin()
     func handlePasswordAuthenticatorLogin()
@@ -40,11 +40,13 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
-            loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
-        } else {
+        let ignoredErrorCodes = [AuthenticationError.touchIDAuthenticatorFailure].map { $0.rawValue }
+        
+        guard let error = challenge.error, !ignoredErrorCodes.contains(error.code) else {
             loginEntity.pinError = nil
+            return
         }
+        loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
     }
 
     func handlePasswordAuthenticatorLogin() {
@@ -61,12 +63,11 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
         return userClient.userProfiles
     }
 
-    func authenticators(profile: UserProfile) -> [Authenticator] {
+    func authenticators(profile: UserProfile) -> Set<Authenticator> {
         return userClient.authenticators(.registered, for: profile)
     }
 
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
-
         userClient.authenticateUserWith(profile: profile, authenticator: authenticator, delegate: self)
     }
 
@@ -98,9 +99,10 @@ extension LoginInteractor: AuthenticationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             delegate?.loginInteractor(self, didFailToLoginUser: userProfile, withError: mappedError)
         }

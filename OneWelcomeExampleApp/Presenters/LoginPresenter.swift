@@ -100,13 +100,13 @@ extension LoginPresenter: LoginInteractorDelegate {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+            pinViewController = PinViewController(mode: .login, entity: loginEntity, viewToPresenter: self)
             navigationController.present(pinViewController!, animated: true, completion: nil)
         }
     }
     
     func loginInteractor(_ loginInteractor: LoginInteractorProtocol, didAskForPassword loginEntity: LoginEntity) {
-        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEntity, viewToPresenterProtocol: self)
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .login, entity: loginEntity, viewToPresenter: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(passwordViewController, animated: false, completion: nil)
     }
@@ -138,7 +138,7 @@ extension LoginPresenter: LoginViewDelegate {
         loginInteractor.login(profile: profile, authenticator: authenticator)
     }
 
-    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator] {
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> Set<Authenticator> {
         return loginInteractor.authenticators(profile: profile)
     }
     
@@ -158,8 +158,11 @@ extension LoginPresenter: LoginViewDelegate {
 }
 
 extension LoginPresenter: PinViewToPresenterProtocol {
-    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
-        // TODO: implement if needed
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void) {
+        let userClient = SharedUserClient.instance
+        userClient.validatePolicyCompliance(for: pin) { error in
+            completion(error)
+        }
     }
     
     func handlePin() {

@@ -19,7 +19,7 @@ import OneginiSDKiOS
 protocol LoginViewDelegate: AnyObject {
     func loginView(_ loginView: UIViewController, didLoginProfile profile: UserProfile, withAuthenticator authenticator: Authenticator?)
     func profilesInLoginView(_ loginView: UIViewController) -> [UserProfile]
-    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator]
+    func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> Set<Authenticator>
     func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void)
 }
 
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
         
         profiles = loginDelegate.profilesInLoginView(self)
         selectProfile(index: 0)
-        authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
+        authenticators = Array(loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile))
     }
     
     func selectProfile(index: Int) {
@@ -122,7 +122,7 @@ extension LoginViewController: UITableViewDelegate {
             if !profiles[indexPath.row].isEqual(to: selectedProfile) {
                 selectedProfile = profiles[indexPath.row]
                 guard let loginDelegate = loginDelegate else { return }
-                authenticators = loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile)
+                authenticators = Array(loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile))
             }
             
             loginDelegate?.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in

@@ -101,7 +101,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     }
     
     func presentPinView(mobileAuthEntity: MobileAuthEntity) {
-        pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+        pinViewController = PinViewController(mode: .login, entity: mobileAuthEntity, viewToPresenter: self)
         tabBarController.present(pinViewController!, animated: true)
     }
 
@@ -127,7 +127,7 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     }
 
     func presentPasswordAuthenticatorView(mobileAuthEntity: MobileAuthEntity) {
-        let passwordViewController = PasswordAuthenticatorViewController(mode: .mobileAuth, entity: mobileAuthEntity, viewToPresenterProtocol: self)
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .mobileAuth, entity: mobileAuthEntity, viewToPresenter: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
         tabBarController.present(passwordViewController, animated: false, completion: nil)
     }
@@ -208,8 +208,11 @@ extension MobileAuthPresenter: PushMobileAuthEntrollmentProtocol {
 }
 
 extension MobileAuthPresenter: PinViewToPresenterProtocol {
-    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
-        // TODO: implement if needed
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void) {
+        let userClient = SharedUserClient.instance
+        userClient.validatePolicyCompliance(for: pin) { error in
+            completion(error)
+        }
     }
     
     func handlePin() {

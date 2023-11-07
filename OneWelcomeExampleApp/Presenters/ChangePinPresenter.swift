@@ -50,7 +50,7 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             authenticationPinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            authenticationPinViewController = PinViewController(mode: .login, entity: changePinEntity, viewToPresenterProtocol: self)
+            authenticationPinViewController = PinViewController(mode: .login, entity: changePinEntity, viewToPresenter: self)
             changePinNavigationController.viewControllers = [authenticationPinViewController!]
             navigationController.present(changePinNavigationController, animated: true)
         }
@@ -61,7 +61,7 @@ class ChangePinPresenter: ChangePinInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             registrationPinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            registrationPinViewController = PinViewController(mode: .registration, entity: changePinEntity, viewToPresenterProtocol: self)
+            registrationPinViewController = PinViewController(mode: .registration, entity: changePinEntity, viewToPresenter: self)
             changePinNavigationController.pushViewController(registrationPinViewController!, animated: false)
         }
     }

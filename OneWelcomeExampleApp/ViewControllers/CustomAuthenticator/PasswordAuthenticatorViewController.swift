@@ -38,18 +38,18 @@ class PasswordAuthenticatorViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var message: UILabel!
     
-    private unowned let viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol
+    private unowned let viewToPresenter: PasswordAuthenticatorViewToPresenterProtocol
     private let mode: PasswordAuthenticatorMode
     private var entity: PasswordAuthenticatorEntityProtocol
     private let inputValidator: StringValidator
     
     init(mode: PasswordAuthenticatorMode,
          entity: PasswordAuthenticatorEntityProtocol,
-         viewToPresenterProtocol: PasswordAuthenticatorViewToPresenterProtocol,
+         viewToPresenter: PasswordAuthenticatorViewToPresenterProtocol,
          inputValidator: StringValidator = NotEmptyInputValidator()) {
         self.mode = mode
         self.entity = entity
-        self.viewToPresenterProtocol = viewToPresenterProtocol
+        self.viewToPresenter = viewToPresenter
         self.inputValidator = inputValidator
         super.init(nibName: nil, bundle: nil)
     }
@@ -76,13 +76,13 @@ class PasswordAuthenticatorViewController: UIViewController {
 
     @IBAction func cancel(_: Any) {
         entity.cancelled = true
-        viewToPresenterProtocol.handlePassword()
+        viewToPresenter.handlePassword()
     }
 
     @IBAction func submit(_: Any) {
         guard let input = passwordTextField.text, inputValidator.isValid(input) else { return }
         entity.data = input
-        viewToPresenterProtocol.handlePassword()
+        viewToPresenter.handlePassword()
     }
     
     @IBAction func passwordTextFieldEditingChanged(_ sender: Any) {

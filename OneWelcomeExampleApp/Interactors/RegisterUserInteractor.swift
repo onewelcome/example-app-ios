@@ -32,11 +32,7 @@ class RegisterUserInteractor: NSObject {
     }
 
     fileprivate func mapErrorFromChallenge(_ challenge: CreatePinChallenge) {
-        if let error = challenge.error {
-            registerUserEntity.pinError = ErrorMapper().mapError(error)
-        } else {
-            registerUserEntity.pinError = nil
-        }
+        registerUserEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0) }
     }
 }
 
@@ -155,9 +151,10 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             registerUserPresenter?.registerUserActionCancelled()
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }

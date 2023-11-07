@@ -62,7 +62,7 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
+            pinViewController = PinViewController(mode: .login, entity: registerAuthenticatorEntity, viewToPresenter: self)
             navigationController.present(pinViewController!, animated: true)
         }
     }
@@ -95,7 +95,7 @@ class AuthenticatorsPresenter: AuthenticatorsInteractorToPresenterProtocol {
     }
 
     func presentCustomAuthenticatorRegistrationView(registerAuthenticatorEntity: RegisterAuthenticatorEntity) {
-        let passwordViewController = PasswordAuthenticatorViewController(mode: .register, entity: registerAuthenticatorEntity, viewToPresenterProtocol: self)
+        let passwordViewController = PasswordAuthenticatorViewController(mode: .register, entity: registerAuthenticatorEntity, viewToPresenter: self)
         passwordViewController.modalPresentationStyle = .overCurrentContext
         navigationController.present(passwordViewController, animated: false, completion: nil)
     }
@@ -125,8 +125,11 @@ extension AuthenticatorsPresenter: AuthenticatorsViewToPresenterProtocol {
 }
 
 extension AuthenticatorsPresenter: PinViewToPresenterProtocol {
-    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
-        // TODO: implement if needed
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void) {
+        let userClient = SharedUserClient.instance
+        userClient.validatePolicyCompliance(for: pin) { error in
+            completion(error)
+        }
     }
     
     func handlePin() {

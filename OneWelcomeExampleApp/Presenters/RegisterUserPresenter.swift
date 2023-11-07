@@ -83,7 +83,7 @@ class RegisterUserPresenter: RegisterUserInteractorToPresenterProtocol {
             let errorDescription = "\(error.errorDescription) \(error.recoverySuggestion)"
             pinViewController?.setupErrorLabel(errorDescription: errorDescription)
         } else {
-            pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenterProtocol: self)
+            pinViewController = PinViewController(mode: .registration, entity: registerUserEntity, viewToPresenter: self)
             userRegistrationNavigationController.pushViewController(pinViewController!, animated: true)
         }
     }
@@ -126,8 +126,11 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
 }
 
 extension RegisterUserPresenter: PinViewToPresenterProtocol {
-    func handlePinPolicy(pin: String, completion: (Error?) -> Void) {
-        // TODO: implement if needed
+    func handlePinPolicy(pin: String, completion: @escaping (Error?) -> Void) {
+        let userClient = SharedUserClient.instance
+        userClient.validatePolicyCompliance(for: pin) { error in
+            completion(error)
+        }
     }
     
     func handlePin() {

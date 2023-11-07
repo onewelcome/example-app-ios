@@ -33,14 +33,10 @@ class AuthenticatorsInteractor: NSObject {
     }
     
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error {
-            registerAuthenticatorEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
-        } else {
-            registerAuthenticatorEntity.pinError = nil
-        }
+        registerAuthenticatorEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0, pinChallenge: challenge)}
     }
 
-    fileprivate func sortAuthenticatorsList(_ authenticators: [Authenticator]) -> [Authenticator] {
+    fileprivate func sortAuthenticatorsList(_ authenticators: Set<Authenticator>) -> [Authenticator] {
         return authenticators.sorted {
             if $0.type.rawValue == $1.type.rawValue {
                 return $0.name < $1.name
@@ -105,11 +101,13 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
     
     func userClient(_ userClient: UserClient, didFailToRegister authenticator: Authenticator, for userProfile: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-        } else if error.code == ONGGenericError.userDeregistered.rawValue {
+        case .userDeregistered:
             authenticatorsPresenter?.popToWelcomeView(mappedError)
-        } else {
+        default:
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }
     }
@@ -125,9 +123,10 @@ extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToDeregister authenticator: Authenticator, forUser userProfile: UserProfile, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
         }

@@ -43,16 +43,16 @@ class PinViewController: UIViewController {
 
     var mode: PINEntryMode
     var entity: PinViewControllerEntityProtocol
-    unowned let viewToPresenterProtocol: PinViewToPresenterProtocol
+    unowned let viewToPresenter: PinViewToPresenterProtocol
 
     private var pinSlots = [UIView]()
     private var pinEntry = [String]()
     private var pinEntryToVerify = [String]()
 
-    init(mode: PINEntryMode, entity: PinViewControllerEntityProtocol, viewToPresenterProtocol: PinViewToPresenterProtocol) {
+    init(mode: PINEntryMode, entity: PinViewControllerEntityProtocol, viewToPresenter: PinViewToPresenterProtocol) {
         self.mode = mode
         self.entity = entity
-        self.viewToPresenterProtocol = viewToPresenterProtocol
+        self.viewToPresenter = viewToPresenter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -79,7 +79,7 @@ class PinViewController: UIViewController {
 
     @IBAction func cancelButtonPressed(_: Any) {
         entity.pin = nil
-        viewToPresenterProtocol.handlePin()
+        viewToPresenter.handlePin()
     }
 
     @IBAction func backKeyPressed(_: Any) {
@@ -140,14 +140,14 @@ class PinViewController: UIViewController {
             let pincode = pinEntry.joined()
             switch mode {
             case .registration:
-                viewToPresenterProtocol.handlePinPolicy(pin: pincode) { [weak self] error in
+                viewToPresenter.handlePinPolicy(pin: pincode) { [weak self] error in
                     self?.prepareView(for: error)
                 }
             case .registrationConfirm:
                 let pincodeConfirm = pinEntryToVerify.joined()
                 if pincode == pincodeConfirm {
                     entity.pin = pincode
-                    viewToPresenterProtocol.handlePin()
+                    viewToPresenter.handlePin()
                 } else {
                     mode = .registration
                     reset()
@@ -155,7 +155,7 @@ class PinViewController: UIViewController {
                 }
             case .login:
                 entity.pin = pincode
-                viewToPresenterProtocol.handlePin()
+                viewToPresenter.handlePin()
             }
         }
     }

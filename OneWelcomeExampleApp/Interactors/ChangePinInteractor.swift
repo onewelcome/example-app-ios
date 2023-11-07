@@ -29,19 +29,11 @@ class ChangePinInteractor: NSObject {
     }
 
     fileprivate func mapErrorFromPinChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error {
-            changePinEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
-        } else {
-            changePinEntity.pinError = nil
-        }
+        changePinEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0, pinChallenge: challenge) }
     }
 
     fileprivate func mapErrorFromCreatePinChallenge(_ challenge: CreatePinChallenge) {
-        if let error = challenge.error {
-            changePinEntity.pinError = ErrorMapper().mapError(error)
-        } else {
-            changePinEntity.pinError = nil
-        }
+        changePinEntity.pinError = challenge.error.flatMap { ErrorMapper().mapError($0) }
     }
 
     func handlePin() {
@@ -101,11 +93,12 @@ extension ChangePinInteractor: ChangePinDelegate {
     func userClient(_ userClient: UserClient, didFailToChangePinForUser _: UserProfile, error: Error) {
         changePinEntity.createPinChallenge = nil
         let mappedError = ErrorMapper().mapError(error)
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             changePinPresenter?.presentProfileView()
-        } else if error.code == ONGGenericError.userDeregistered.rawValue {
+        case .userDeregistered:
             changePinPresenter?.popToWelcomeViewWithError(mappedError)
-        } else {
+        default:
             changePinPresenter?.changePinActionFailed(mappedError)
         }
     }

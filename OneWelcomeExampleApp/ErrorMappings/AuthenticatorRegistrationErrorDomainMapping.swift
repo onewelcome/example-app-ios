@@ -17,10 +17,12 @@ import UIKit
 
 class AuthenticatorRegistrationErrorDomainMapping {
     func mapError(_ error: Error, customInfo: CustomInfo?) -> AppError {
-        if let customInfo = customInfo, error.code == ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue {
-            return AuthenticatorRegistrationErrorDomainMapping().mapErrorWithCustomInfo(customInfo)
-        } else {
-            return AuthenticatorRegistrationErrorDomainMapping().mapError(error)
+        let defaultError = mapError(error)
+        switch AuthenticatorRegistrationError(rawValue: error.code) {
+        case .customAuthenticatorFailure:
+            return customInfo.flatMap(mapErrorWithCustomInfo) ?? defaultError
+        default:
+            return defaultError
         }
     }
 }
@@ -29,16 +31,16 @@ private extension AuthenticatorRegistrationErrorDomainMapping {
     var title: String { "Authenticator Registration error" }
 
     func mapError(_ error: Error) -> AppError {
-        switch error.code {
-        case ONGAuthenticatorRegistrationError.userNotAuthenticated.rawValue:
+        switch AuthenticatorRegistrationError(rawValue: error.code) {
+        case .userNotAuthenticated:
             let errorDescription = "A user must be authenticated in order to register an authenticator."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: "Try authenticate user.", shouldLogout: true)
 
-        case ONGAuthenticatorRegistrationError.authenticatorInvalid.rawValue:
+        case .authenticatorInvalid:
             let errorDescription = "The authenticator that you provided is invalid. It may not exist, please verify whether you have supplied the correct authenticator."
             return AppError(title: title, errorDescription: errorDescription)
 
-        case ONGAuthenticatorRegistrationError.customAuthenticatorFailure.rawValue:
+        case .customAuthenticatorFailure:
             let errorDescription = "Custom authenticator registration has failed."
             return AppError(title: title, errorDescription: errorDescription)
 
