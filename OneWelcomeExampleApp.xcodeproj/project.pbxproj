@@ -14,6 +14,8 @@
 		38E927FC6600A5F3A51076AE /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5646145C874C47AE520E88C4 /* OneginiConfigModel.h */; };
 		5731AFB5296EC93F00E6165D /* QRCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */; };
 		5731AFB6296EC93F00E6165D /* QRCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */; };
+		573335CE2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */; };
+		573335CF2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */; };
 		575ED880298BF2A10094CBFD /* FetchResourceErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */; };
 		575ED881298BF2A10094CBFD /* FetchResourceErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */; };
 		57B353312AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
@@ -330,6 +332,7 @@
 		4428036A333E01E95F1F1B6F /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5646145C874C47AE520E88C4 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
 		5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePresenter.swift; sourceTree = "<group>"; };
+		573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinErrorDomainMapping.swift; sourceTree = "<group>"; };
 		575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResourceErrorMapping.swift; sourceTree = "<group>"; };
 		57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowedIdentityProviders.swift; sourceTree = "<group>"; };
 		777B3B7E33B15B327C42F241 /* Pods_OneWelcomeExampleAppDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneWelcomeExampleAppDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -817,6 +820,7 @@
 				7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */,
 				7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */,
 				575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */,
+				573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -1349,6 +1353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
+				573335CE2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
 				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
 				7EDAB751214149D8004918CE /* MobileAuthEntity.swift in Sources */,
@@ -1538,6 +1543,7 @@
 				AD07D42528771F4F0095571A /* AppAssembly.swift in Sources */,
 				AD07D42628771F4F0095571A /* AuthenticationErrorDomainMapping.swift in Sources */,
 				AD07D42728771F4F0095571A /* (null) in Sources */,
+				573335CF2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */,
 				AD07D42828771F4F0095571A /* (null) in Sources */,
 				C2C18885E04EEA0E7E56F1AD /* OneginiConfigModel.m in Sources */,
 				1B144B4DEBB87640E1DBB786 /* SecurityController.m in Sources */,

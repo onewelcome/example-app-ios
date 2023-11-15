@@ -34,7 +34,8 @@ class ErrorMapper {
             return FetchImplicitResourceErrorDomainMapping().mapError(error)
         case ONGAppToWebSingleSignOnErrorDomain:
             return AppToWebSingleSignOnErrorDomainMapping().mapError(error)
-            
+        case ONGChangePinErrorDomain:
+            return ChangePinErrorDomainMapping().mapError(error)
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

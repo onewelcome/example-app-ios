@@ -26,7 +26,11 @@ class DisconnectInteractor: DisconnectInteractorProtocol {
     }
     
     func disconnect() {
-        guard let profile = userClient.authenticatedUserProfile else { return }
+        guard let profile = userClient.authenticatedUserProfile else {
+            let mappedError = AppError(title: "Disconnect", errorDescription: "Disconnect is not allowed for stateless user.", recoverySuggestion: "Please logout.")
+            self.disconnectPresenter?.disconnectActionFailed(mappedError)
+            return
+        }
         userClient.deregister(user: profile) { error in
             if let error = error {
                 let mappedError = ErrorMapper().mapError(error)
