@@ -37,12 +37,6 @@ post_install do |installer|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-      if target.name == 'OneginiSDKiOS'
-          target.resources_build_phase.files_references.each do |file|
-              target.frameworks_build_phase.add_file_reference(file)
-              target.resources_build_phase.remove_file_reference(file)
-          end
-      end
     end
   end
 end
