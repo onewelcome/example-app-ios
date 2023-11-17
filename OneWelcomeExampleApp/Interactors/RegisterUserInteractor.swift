@@ -20,7 +20,7 @@ protocol RegisterUserInteractorProtocol: AnyObject {
     func startUserRegistration(identityProvider: IdentityProvider?)
     func handleRedirectURL()
     func handleCreatedPin()
-    func handleOTPCode()
+    func handleTwoStepCode()
     func handleQRCode(_ qrCode: String?)
 }
 
@@ -45,8 +45,13 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         return userClient.identityProviders
     }
 
-    func startUserRegistration(identityProvider: IdentityProvider? = nil) {
-        userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+    func startUserRegistration(identityProvider: IdentityProvider?) {
+        switch AllowedIdentityProviders(rawValue: identityProvider?.identifier ?? "") {
+        case .stateless, .twoWayStateless:
+            userClient.registerStatelessUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+        default:
+            userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+        }
     }
 
     func handleRedirectURL() {
@@ -58,11 +63,11 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    func handleOTPCode() {
+    func handleTwoStepCode() {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
         if registerUserEntity.cancelled {
             registerUserEntity.cancelled = false
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge, withUnderlyingError: nil)
         } else {
             customRegistrationChallenge.sender.respond(with: registerUserEntity.responseCode, to: customRegistrationChallenge)
         }
@@ -70,11 +75,32 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
 
     func handleQRCode(_ qrCode: String?) {
         guard let customRegistrationChallenge = registerUserEntity.customRegistrationChallenge else { return }
-        if let qrCode = qrCode {
+        if let qrCode {
             customRegistrationChallenge.sender.respond(with: qrCode, to: customRegistrationChallenge)
         } else {
-            customRegistrationChallenge.sender.cancel(customRegistrationChallenge)
+            customRegistrationChallenge.sender.cancel(customRegistrationChallenge, withUnderlyingError: nil)
         }
+    }
+    
+    func handleFirstStepOfTwoStepRegistration(_ challenge: CustomRegistrationChallenge) {
+        // Handle the initial challenge: send the initial challenge response.
+        // For the test purposes the value "OneWelcome" is hardcoded, you can prompt for anything.
+        challenge.sender.respond(with: "OneWelcome", to: challenge)
+    }
+    
+    func handleSecondStepOfTwoStepRegistration() {
+        // Handle the final challenge: prompt for the final challenge response
+        registerUserPresenter?.presentTwoStepRegistrationView(regiserUserEntity: registerUserEntity)
+    }
+    
+    func handleStatelessRegistration(_ challenge: CustomRegistrationChallenge) {
+        challenge.sender.respond(with: nil, to: challenge)
+    }
+    
+    func registrationNotHandled(_ challenge: CustomRegistrationChallenge) {
+        let error = AppError(errorDescription: "Identity provider \(challenge.identityProvider.identifier) is not handled in the example app.")
+        challenge.sender.cancel(challenge, withUnderlyingError: error)
+        registerUserPresenter?.registerUserActionFailed(error)
     }
 
     func handleCreatedPin() {
@@ -86,7 +112,7 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         }
     }
 
-    fileprivate func mapErrorMessageFromTwoWayOTPStatus(_ status: Int) {
+    fileprivate func mapErrorMessageFromTwoStepStatus(_ status: Int) {
         if status == 2000 {
             registerUserEntity.errorMessage = nil
         } else if status == 4002 {
@@ -105,9 +131,10 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     }
 
     fileprivate func mapErrorMessageFromStatus(_ status: Int, identityProviderIdentifier: String) {
-        if identityProviderIdentifier == "2-way-otp-api" {
-            mapErrorMessageFromTwoWayOTPStatus(status)
-        } else if identityProviderIdentifier == "qr-code-api" {
+        switch AllowedIdentityProviders(rawValue: identityProviderIdentifier) {
+        case .twoStep:
+            mapErrorMessageFromTwoStepStatus(status)
+        default:
             mapErrorMessageFromQRCodeStatus(status)
         }
     }
@@ -128,8 +155,13 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didReceiveCustomRegistrationInitChallenge challenge: CustomRegistrationChallenge) {
-        if challenge.identityProvider.identifier == "2-way-otp-api" {
-            challenge.sender.respond(with: nil, to: challenge)
+        switch AllowedIdentityProviders(rawValue: challenge.identityProvider.identifier) {
+        case .twoWayStateless:
+            handleStatelessRegistration(challenge)
+        case .twoStep:
+            handleFirstStepOfTwoStepRegistration(challenge)
+        default:
+            registrationNotHandled(challenge)
         }
     }
 
@@ -139,15 +171,18 @@ extension RegisterUserInteractor: RegistrationDelegate {
             registerUserEntity.challengeCode = info.data
             mapErrorMessageFromStatus(info.status, identityProviderIdentifier: challenge.identityProvider.identifier)
         }
-        let qrRegistrationIdentifiers = ["qr-code-api", "qr-registration", "qr_registration"]
-        if challenge.identityProvider.identifier == "2-way-otp-api" {
-            registerUserPresenter?.presentTwoWayOTPRegistrationView(regiserUserEntity: registerUserEntity)
-        } else if qrRegistrationIdentifiers.contains(challenge.identityProvider.identifier) {
+        
+        switch AllowedIdentityProviders(rawValue: challenge.identityProvider.identifier) {
+        case .twoStep:
+            handleSecondStepOfTwoStepRegistration()
+        case .qrCode:
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
-        } else {
-            handleQRCode(nil)
-            registerUserPresenter?.registerUserActionFailed(AppError(errorDescription: "Identity provider \(challenge.identityProvider.identifier) is not registered."))
+        case .stateless, .twoWayStateless:
+            handleStatelessRegistration(challenge)
+        default:
+            registrationNotHandled(challenge)
         }
+
     }
 
     func userClient(_ userClient: UserClient, didRegisterUser userProfile: UserProfile, with identityProvider: IdentityProvider, info: CustomInfo?) {
@@ -155,9 +190,10 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch ONGGenericError(rawValue: error.code) {
+        case .actionCancelled:
             registerUserPresenter?.registerUserActionCancelled()
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
         }

@@ -22,8 +22,10 @@ protocol StartupInteractorProtocol {
 
 class StartupInteractor: StartupInteractorProtocol {
     func oneginiSDKStartup(completion: @escaping (AppError?) -> Void) {
-        ClientBuilder().build().start { error in
-            completion(error.flatMap { ErrorMapper().mapError($0) })
+        ClientBuilder().buildAndWaitForProtectedData { client in
+            client.start { error in
+                completion(error.flatMap { ErrorMapper().mapError($0) })
+            }
         }
     }
 }

@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01FA8E66A96F00066807475F /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D139E411D4D61825311B06B0 /* SecurityController.m */; };
 		0468462B987E1A074EE48445 /* Pods_OneWelcomeExampleAppDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777B3B7E33B15B327C42F241 /* Pods_OneWelcomeExampleAppDebug.framework */; };
 		17D52468E68847BCC0A409C1 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = E2291ED418FD123B5C9A9D77 /* SecurityController.h */; };
 		1B144B4DEBB87640E1DBB786 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */; };
 		38E927FC6600A5F3A51076AE /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5646145C874C47AE520E88C4 /* OneginiConfigModel.h */; };
 		5731AFB5296EC93F00E6165D /* QRCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */; };
 		5731AFB6296EC93F00E6165D /* QRCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */; };
+		573335CE2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */; };
+		573335CF2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */; };
 		575ED880298BF2A10094CBFD /* FetchResourceErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */; };
 		575ED881298BF2A10094CBFD /* FetchResourceErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */; };
+		57B353312AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
+		57B353322AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
+		57B353332AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
 		7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */; };
 		7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */; };
 		7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */; };
@@ -76,17 +82,17 @@
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
 		7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E804F64258A5C6D000E110E /* Assets.xcassets */; };
 		7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7E804FA2258A5D3F000E110E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		7E804FA3258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		7E804FA4258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7E804FA2258A5D3F000E110E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		7E804FA3258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7E804FA4258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
 		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
 		7E8F4723216E016900C2D8C6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */; };
 		7E8F4724216E016900C2D8C6 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */; };
-		7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */; };
-		7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */; };
+		7E990DE72153DBBC007F63EE /* TwoStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoStepViewController.swift */; };
+		7E990DE82153DBBC007F63EE /* TwoStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoStepViewController.xib */; };
 		7E999E1B22A1421700FEE3EC /* AppToWebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1A22A1421700FEE3EC /* AppToWebPresenter.swift */; };
 		7E999E1E22A1434000FEE3EC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1D22A1434000FEE3EC /* WebViewController.swift */; };
 		7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */; };
@@ -145,6 +151,7 @@
 		9EFDEC2629D4777600521793 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2129D4777600521793 /* UIColorExtension.swift */; };
 		9EFDEC2729D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
 		9EFDEC2829D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
+		A65CC031E4F03ECA66EDCED3 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 86119764362F2A4EA3A55E58 /* SecurityController.h */; };
 		AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
 		AD07D3DD28771F4F0095571A /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
@@ -173,7 +180,7 @@
 		AD07D3F628771F4F0095571A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		AD07D3F728771F4F0095571A /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AE020DBDA5F00EF1A79 /* LoginInteractor.swift */; };
 		AD07D3F828771F4F0095571A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A820E62D8B00FB620F /* LoginPresenter.swift */; };
-		AD07D3F928771F4F0095571A /* TwoWayOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */; };
+		AD07D3F928771F4F0095571A /* TwoStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E990DE52153DBBC007F63EE /* TwoStepViewController.swift */; };
 		AD07D3FA28771F4F0095571A /* PasswordAuthenticatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E122138098D008FCD9A /* PasswordAuthenticatorViewController.swift */; };
 		AD07D3FB28771F4F0095571A /* AuthenticatorDeregistrationErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF8B7F2121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift */; };
 		AD07D3FC28771F4F0095571A /* AppToWebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */; };
@@ -219,10 +226,10 @@
 		AD07D42428771F4F0095571A /* AppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFA212C0BE4008FCD9A /* AppDetailsViewController.swift */; };
 		AD07D42528771F4F0095571A /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AD120DA7C7700EF1A79 /* AppAssembly.swift */; };
 		AD07D42628771F4F0095571A /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
-		AD07D42728771F4F0095571A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		AD07D42828771F4F0095571A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		AD07D42728771F4F0095571A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		AD07D42828771F4F0095571A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		AD07D42C28771F4F0095571A /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
-		AD07D42D28771F4F0095571A /* TwoWayOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */; };
+		AD07D42D28771F4F0095571A /* TwoStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoStepViewController.xib */; };
 		AD07D42E28771F4F0095571A /* MobileAuthConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EDAB7572146B583004918CE /* MobileAuthConfirmationViewController.xib */; };
 		AD07D42F28771F4F0095571A /* AppDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241DFB212C0BE4008FCD9A /* AppDetailsViewController.xib */; };
 		AD07D43028771F4F0095571A /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EBF8B8C21231A0600C3D94E /* DeviceTableViewCell.xib */; };
@@ -247,14 +254,12 @@
 		AD07D44328771F4F0095571A /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */; };
 		AD07D44428771F4F0095571A /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45479F20E5198C00FB620F /* DashboardViewController.xib */; };
 		AD07D44528771F4F0095571A /* PasswordAuthenticatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */; };
-		AD07D44828771F4F0095571A /* BuildFile in Headers */ = {isa = PBXBuildFile; };
-		AD07D44928771F4F0095571A /* BuildFile in Headers */ = {isa = PBXBuildFile; };
+		AD07D44828771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
+		AD07D44928771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
 		AD07D44B28771F4F0095571A /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */; };
 		AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
-		ADE6AFA928785BE600CC3EE6 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = ADE6AFA528785BE600CC3EE6 /* SecurityController.h */; };
 		ADE6AFAA28785BE600CC3EE6 /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */; };
-		ADE6AFAB28785BE600CC3EE6 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA728785BE600CC3EE6 /* SecurityController.m */; };
 		ADE6AFAC28785BE600CC3EE6 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */; };
 		C2C18885E04EEA0E7E56F1AD /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C86694A05A0BDF3521E08C /* OneginiConfigModel.m */; };
 		E9E9319E78E7FDB2EA9CBF01 /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD151D493CDA85ECAA14244 /* Pods_WidgetExtension.framework */; };
@@ -327,7 +332,9 @@
 		4428036A333E01E95F1F1B6F /* Pods-OneWelcomeExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5646145C874C47AE520E88C4 /* OneginiConfigModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
 		5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePresenter.swift; sourceTree = "<group>"; };
+		573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinErrorDomainMapping.swift; sourceTree = "<group>"; };
 		575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResourceErrorMapping.swift; sourceTree = "<group>"; };
+		57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowedIdentityProviders.swift; sourceTree = "<group>"; };
 		777B3B7E33B15B327C42F241 /* Pods_OneWelcomeExampleAppDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneWelcomeExampleAppDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsViewController.swift; sourceTree = "<group>"; };
 		7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticatorsViewController.xib; sourceTree = "<group>"; };
@@ -400,8 +407,8 @@
 		7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		7E8F4721216E016900C2D8C6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		7E8F4722216E016900C2D8C6 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
-		7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayOTPViewController.swift; sourceTree = "<group>"; };
-		7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayOTPViewController.xib; sourceTree = "<group>"; };
+		7E990DE52153DBBC007F63EE /* TwoStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoStepViewController.swift; sourceTree = "<group>"; };
+		7E990DE62153DBBC007F63EE /* TwoStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoStepViewController.xib; sourceTree = "<group>"; };
 		7E999E1A22A1421700FEE3EC /* AppToWebPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebPresenter.swift; sourceTree = "<group>"; };
 		7E999E1D22A1434000FEE3EC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToWebInteractor.swift; sourceTree = "<group>"; };
@@ -434,6 +441,7 @@
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
+		86119764362F2A4EA3A55E58 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullToRefreshTableViewCell.xib; sourceTree = "<group>"; };
 		86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthViewController.swift; sourceTree = "<group>"; };
@@ -455,13 +463,12 @@
 		9EFDEC2229D4777600521793 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		A50E74BE8654D50E32F60372 /* Pods_OneWelcomeExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneWelcomeExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADE6AFA528785BE600CC3EE6 /* SecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
-		ADE6AFA728785BE600CC3EE6 /* SecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
 		ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
 		BDACBE5153130A724333BC0E /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		C45A495FB7FE840688B2E3E9 /* Pods-OneWelcomeExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleApp.release.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleApp/Pods-OneWelcomeExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		CB513E5C9C181A4CB70FF2ED /* Pods-OneWelcomeExampleAppDebug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleAppDebug.release.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleAppDebug/Pods-OneWelcomeExampleAppDebug.release.xcconfig"; sourceTree = "<group>"; };
+		D139E411D4D61825311B06B0 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
 		DFD151D493CDA85ECAA14244 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2291ED418FD123B5C9A9D77 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		F56C3B004B2CB206E93FE38A /* Pods-OneWelcomeExampleAppDebug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneWelcomeExampleAppDebug.debug.xcconfig"; path = "Target Support Files/Pods-OneWelcomeExampleAppDebug/Pods-OneWelcomeExampleAppDebug.debug.xcconfig"; sourceTree = "<group>"; };
@@ -688,6 +695,7 @@
 				7E999E1F22A15D7000FEE3EC /* AppToWebInteractor.swift */,
 				9EECB5B12948BC85006095DF /* ProfileInteractor.swift */,
 				9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */,
+				57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -725,7 +733,7 @@
 		7E45476A20DD199E00FB620F /* RegisterUser */ = {
 			isa = PBXGroup;
 			children = (
-				7E990DE42153DB9C007F63EE /* 2-way-otp */,
+				7E990DE42153DB9C007F63EE /* TwoStep */,
 				7E45478020E21DFE00FB620F /* Browser */,
 				7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */,
 				7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */,
@@ -812,6 +820,7 @@
 				7E241E05212D9ABC008FCD9A /* FetchImplicitResourceErrorDomainMapping.swift */,
 				7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */,
 				575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */,
+				573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -846,13 +855,13 @@
 			path = "QR-code";
 			sourceTree = "<group>";
 		};
-		7E990DE42153DB9C007F63EE /* 2-way-otp */ = {
+		7E990DE42153DB9C007F63EE /* TwoStep */ = {
 			isa = PBXGroup;
 			children = (
-				7E990DE52153DBBC007F63EE /* TwoWayOTPViewController.swift */,
-				7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */,
+				7E990DE52153DBBC007F63EE /* TwoStepViewController.swift */,
+				7E990DE62153DBBC007F63EE /* TwoStepViewController.xib */,
 			);
-			path = "2-way-otp";
+			path = TwoStep;
 			sourceTree = "<group>";
 		};
 		7E999E1C22A1431E00FEE3EC /* WebView */ = {
@@ -966,10 +975,10 @@
 		ADE6AFA428785BE600CC3EE6 /* Production */ = {
 			isa = PBXGroup;
 			children = (
-				ADE6AFA528785BE600CC3EE6 /* SecurityController.h */,
-				ADE6AFA728785BE600CC3EE6 /* SecurityController.m */,
 				ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */,
 				ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */,
+				86119764362F2A4EA3A55E58 /* SecurityController.h */,
+				D139E411D4D61825311B06B0 /* SecurityController.m */,
 			);
 			name = Production;
 			path = Configuration/Production;
@@ -983,7 +992,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE6AFAA28785BE600CC3EE6 /* OneginiConfigModel.h in Headers */,
-				ADE6AFA928785BE600CC3EE6 /* SecurityController.h in Headers */,
+				A65CC031E4F03ECA66EDCED3 /* SecurityController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,8 +1000,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD07D44828771F4F0095571A /* BuildFile in Headers */,
-				AD07D44928771F4F0095571A /* BuildFile in Headers */,
+				AD07D44828771F4F0095571A /* (null) in Headers */,
+				AD07D44928771F4F0095571A /* (null) in Headers */,
 				38E927FC6600A5F3A51076AE /* OneginiConfigModel.h in Headers */,
 				17D52468E68847BCC0A409C1 /* SecurityController.h in Headers */,
 			);
@@ -1075,7 +1084,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = Onegini;
+				ORGANIZATIONNAME = OneWelcome;
 				TargetAttributes = {
 					7E300A6420D7B8E100EF1A79 = {
 						CreatedOnToolsVersion = 9.3;
@@ -1117,7 +1126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */,
-				7E990DE82153DBBC007F63EE /* TwoWayOTPViewController.xib in Resources */,
+				7E990DE82153DBBC007F63EE /* TwoStepViewController.xib in Resources */,
 				9E2988D7294A03C40025E1D7 /* AppIcon@3x.png in Resources */,
 				9E2988E4294A0D380025E1D7 /* AppIconDark.png in Resources */,
 				7EDAB7592146B583004918CE /* MobileAuthConfirmationViewController.xib in Resources */,
@@ -1153,7 +1162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E804FA2258A5D3F000E110E /* BuildFile in Resources */,
+				7E804FA2258A5D3F000E110E /* (null) in Resources */,
 				7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1163,7 +1172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD07D42C28771F4F0095571A /* RegisterUserViewController.xib in Resources */,
-				AD07D42D28771F4F0095571A /* TwoWayOTPViewController.xib in Resources */,
+				AD07D42D28771F4F0095571A /* TwoStepViewController.xib in Resources */,
 				9E2988D8294A03C40025E1D7 /* AppIcon@3x.png in Resources */,
 				9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */,
 				AD07D42E28771F4F0095571A /* MobileAuthConfirmationViewController.xib in Resources */,
@@ -1344,6 +1353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
+				573335CE2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
 				7E4547A720E61DA200FB620F /* ViewControllerAssembly.swift in Sources */,
 				7EDAB751214149D8004918CE /* MobileAuthEntity.swift in Sources */,
@@ -1372,9 +1382,8 @@
 				7EB1F6142100BE3500741E92 /* AppError.swift in Sources */,
 				7E300AE120DBDA5F00EF1A79 /* LoginInteractor.swift in Sources */,
 				7E4547A920E62D8B00FB620F /* LoginPresenter.swift in Sources */,
-				7E990DE72153DBBC007F63EE /* TwoWayOTPViewController.swift in Sources */,
+				7E990DE72153DBBC007F63EE /* TwoStepViewController.swift in Sources */,
 				7E241E142138098D008FCD9A /* PasswordAuthenticatorViewController.swift in Sources */,
-				ADE6AFAB28785BE600CC3EE6 /* SecurityController.m in Sources */,
 				9EFDEC2329D4777600521793 /* ErrorExtension.swift in Sources */,
 				7EBF8B802121CC4E00C3D94E /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				7E999E2022A15D7000FEE3EC /* AppToWebInteractor.swift in Sources */,
@@ -1417,6 +1426,7 @@
 				86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */,
 				9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */,
 				7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */,
+				57B353312AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */,
 				86ABF3522126FE8600C5BE60 /* PendingMobileAuthViewController.swift in Sources */,
 				7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */,
 				7EDAB7532146958E004918CE /* MobileAuthInteractor.swift in Sources */,
@@ -1426,6 +1436,7 @@
 				7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,
+				01FA8E66A96F00066807475F /* SecurityController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1439,8 +1450,9 @@
 				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
 				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
-				7E804FA4258A5D3F000E110E /* BuildFile in Sources */,
-				7E804FA3258A5D3F000E110E /* BuildFile in Sources */,
+				7E804FA4258A5D3F000E110E /* (null) in Sources */,
+				57B353332AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */,
+				7E804FA3258A5D3F000E110E /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1457,6 +1469,7 @@
 				AD07D3E028771F4F0095571A /* TabBarController.swift in Sources */,
 				AD07D3E128771F4F0095571A /* ProfileTableViewCell.swift in Sources */,
 				AD07D3E228771F4F0095571A /* BrowserViewController.swift in Sources */,
+				57B353322AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */,
 				AD07D3E328771F4F0095571A /* GenericErrorDomainMapping.swift in Sources */,
 				9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */,
 				9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */,
@@ -1482,7 +1495,7 @@
 				5731AFB6296EC93F00E6165D /* QRCodePresenter.swift in Sources */,
 				9EFDEC2829D4777600521793 /* ButtonExtension.swift in Sources */,
 				AD07D3F828771F4F0095571A /* LoginPresenter.swift in Sources */,
-				AD07D3F928771F4F0095571A /* TwoWayOTPViewController.swift in Sources */,
+				AD07D3F928771F4F0095571A /* TwoStepViewController.swift in Sources */,
 				AD07D3FA28771F4F0095571A /* PasswordAuthenticatorViewController.swift in Sources */,
 				AD07D3FB28771F4F0095571A /* AuthenticatorDeregistrationErrorMapping.swift in Sources */,
 				AD07D3FC28771F4F0095571A /* AppToWebInteractor.swift in Sources */,
@@ -1529,8 +1542,9 @@
 				AD07D42428771F4F0095571A /* AppDetailsViewController.swift in Sources */,
 				AD07D42528771F4F0095571A /* AppAssembly.swift in Sources */,
 				AD07D42628771F4F0095571A /* AuthenticationErrorDomainMapping.swift in Sources */,
-				AD07D42728771F4F0095571A /* BuildFile in Sources */,
-				AD07D42828771F4F0095571A /* BuildFile in Sources */,
+				AD07D42728771F4F0095571A /* (null) in Sources */,
+				573335CF2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */,
+				AD07D42828771F4F0095571A /* (null) in Sources */,
 				C2C18885E04EEA0E7E56F1AD /* OneginiConfigModel.m in Sources */,
 				1B144B4DEBB87640E1DBB786 /* SecurityController.m in Sources */,
 			);
@@ -1700,7 +1714,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.1;
+				MARKETING_VERSION = 6.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1727,7 +1741,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.1;
+				MARKETING_VERSION = 6.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";

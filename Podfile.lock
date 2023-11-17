@@ -15,11 +15,11 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - BetterSegmentedControl (2.0.1)
-  - OneginiSDKiOS (12.2.4):
+  - OneginiSDKiOS (12.3.2):
     - AFNetworking (~> 4.0.1)
     - Typhoon (~> 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
-  - SwiftLint (0.52.4)
+  - SwiftLint (0.54.0)
   - Swinject (2.8.1)
   - TransitionButton (0.5.3)
   - Typhoon (4.0.9):
@@ -33,7 +33,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0.0)
-  - OneginiSDKiOS (~> 12.2.4)
+  - OneginiSDKiOS (~> 12.3.2)
   - SkyFloatingLabelTextField (~> 3.0)
   - SwiftLint (~> 0.50)
   - Swinject (= 2.8.1)
@@ -54,13 +54,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: 9e1be9b504c3fbbf0c85b54b279e5f4d6adc8645
+  OneginiSDKiOS: ad2bd5bf971c65e313477b09ffa7370256f69bff
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
+  SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: 884db8d6b3b9ba64866b5edf79f1dbc1268de29e
+PODFILE CHECKSUM: fc3985c8e123495707fc72d60291ca3c6e5dd672
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
