@@ -18,7 +18,7 @@
              @"ONGAppPlatform" : @"ios",
              @"ONGAppVersion" : @"6.2.0",
              @"ONGAppBaseURL" : @"https://mobile-security-proxy.onegini.com",
-             @"ONGResourceBaseURL" : @"https://mobile-security-proxy.onegini.com",
+             @"ONGResourceBaseURL" : @"https://mobile-security-proxy.onegini.com/resources",
              @"ONGRedirectURL" : @"oneginiexample://loginsuccess",
              };
 }
