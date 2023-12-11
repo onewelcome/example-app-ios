@@ -76,9 +76,9 @@
 		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
 		7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E804F64258A5C6D000E110E /* Assets.xcassets */; };
 		7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7E804FA2258A5D3F000E110E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		7E804FA3258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		7E804FA4258A5D3F000E110E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7E804FA2258A5D3F000E110E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		7E804FA3258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7E804FA4258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
@@ -218,8 +218,8 @@
 		AD07D42428771F4F0095571A /* AppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241DFA212C0BE4008FCD9A /* AppDetailsViewController.swift */; };
 		AD07D42528771F4F0095571A /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AD120DA7C7700EF1A79 /* AppAssembly.swift */; };
 		AD07D42628771F4F0095571A /* AuthenticationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6182100C41D00741E92 /* AuthenticationErrorDomainMapping.swift */; };
-		AD07D42728771F4F0095571A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		AD07D42828771F4F0095571A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		AD07D42728771F4F0095571A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		AD07D42828771F4F0095571A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		AD07D42C28771F4F0095571A /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
 		AD07D42D28771F4F0095571A /* TwoWayOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E990DE62153DBBC007F63EE /* TwoWayOTPViewController.xib */; };
 		AD07D42E28771F4F0095571A /* MobileAuthConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EDAB7572146B583004918CE /* MobileAuthConfirmationViewController.xib */; };
@@ -246,8 +246,8 @@
 		AD07D44328771F4F0095571A /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */; };
 		AD07D44428771F4F0095571A /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45479F20E5198C00FB620F /* DashboardViewController.xib */; };
 		AD07D44528771F4F0095571A /* PasswordAuthenticatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */; };
-		AD07D44828771F4F0095571A /* BuildFile in Headers */ = {isa = PBXBuildFile; };
-		AD07D44928771F4F0095571A /* BuildFile in Headers */ = {isa = PBXBuildFile; };
+		AD07D44828771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
+		AD07D44928771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
 		AD07D44B28771F4F0095571A /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */; };
 		AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
@@ -991,8 +991,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD07D44828771F4F0095571A /* BuildFile in Headers */,
-				AD07D44928771F4F0095571A /* BuildFile in Headers */,
+				AD07D44828771F4F0095571A /* (null) in Headers */,
+				AD07D44928771F4F0095571A /* (null) in Headers */,
 				38E927FC6600A5F3A51076AE /* OneginiConfigModel.h in Headers */,
 				17D52468E68847BCC0A409C1 /* SecurityController.h in Headers */,
 			);
@@ -1153,7 +1153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E804FA2258A5D3F000E110E /* BuildFile in Resources */,
+				7E804FA2258A5D3F000E110E /* (null) in Resources */,
 				7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1439,8 +1439,8 @@
 				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
 				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
 				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
-				7E804FA4258A5D3F000E110E /* BuildFile in Sources */,
-				7E804FA3258A5D3F000E110E /* BuildFile in Sources */,
+				7E804FA4258A5D3F000E110E /* (null) in Sources */,
+				7E804FA3258A5D3F000E110E /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1529,8 +1529,8 @@
 				AD07D42428771F4F0095571A /* AppDetailsViewController.swift in Sources */,
 				AD07D42528771F4F0095571A /* AppAssembly.swift in Sources */,
 				AD07D42628771F4F0095571A /* AuthenticationErrorDomainMapping.swift in Sources */,
-				AD07D42728771F4F0095571A /* BuildFile in Sources */,
-				AD07D42828771F4F0095571A /* BuildFile in Sources */,
+				AD07D42728771F4F0095571A /* (null) in Sources */,
+				AD07D42828771F4F0095571A /* (null) in Sources */,
 				C2C18885E04EEA0E7E56F1AD /* OneginiConfigModel.m in Sources */,
 				1B144B4DEBB87640E1DBB786 /* SecurityController.m in Sources */,
 			);
@@ -1700,7 +1700,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.1;
+				MARKETING_VERSION = 6.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1727,7 +1727,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.1;
+				MARKETING_VERSION = 6.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
