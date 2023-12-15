@@ -18,6 +18,8 @@
 		573335CF2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */; };
 		575ED880298BF2A10094CBFD /* FetchResourceErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */; };
 		575ED881298BF2A10094CBFD /* FetchResourceErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */; };
+		57A343722B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A343712B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift */; };
+		57A343732B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A343712B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift */; };
 		57B353312AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
 		57B353322AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
 		57B353332AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
@@ -334,6 +336,7 @@
 		5731AFB4296EC93F00E6165D /* QRCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePresenter.swift; sourceTree = "<group>"; };
 		573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinErrorDomainMapping.swift; sourceTree = "<group>"; };
 		575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResourceErrorMapping.swift; sourceTree = "<group>"; };
+		57A343712B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationErrorDomainMapping.swift; sourceTree = "<group>"; };
 		57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowedIdentityProviders.swift; sourceTree = "<group>"; };
 		777B3B7E33B15B327C42F241 /* Pods_OneWelcomeExampleAppDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneWelcomeExampleAppDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorsViewController.swift; sourceTree = "<group>"; };
@@ -821,6 +824,7 @@
 				7E999E4A22A6B6E500FEE3EC /* AppToWebSingleSignOnErrorDomainMapping.swift */,
 				575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */,
 				573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */,
+				57A343712B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -1352,6 +1356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A343722B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift in Sources */,
 				7E45478F20E24DEE00FB620F /* PinViewController.swift in Sources */,
 				573335CE2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift in Sources */,
 				7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */,
@@ -1460,6 +1465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A343732B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift in Sources */,
 				AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */,
 				9EFDEC2429D4777600521793 /* ErrorExtension.swift in Sources */,
 				AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */,
@@ -1714,7 +1720,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.2.1;
+				MARKETING_VERSION = 6.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1741,7 +1747,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.2.1;
+				MARKETING_VERSION = 6.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
