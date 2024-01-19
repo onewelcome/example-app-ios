@@ -36,6 +36,8 @@ class ErrorMapper {
             return AppToWebSingleSignOnErrorDomainMapping().mapError(error)
         case ONGChangePinErrorDomain:
             return ChangePinErrorDomainMapping().mapError(error)
+        case ONGRegistrationErrorDomain:
+            return RegistrationErrorDomainMapping().mapError(error)
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
