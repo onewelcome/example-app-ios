@@ -47,6 +47,12 @@ class QRCodeViewController: UIViewController {
 
         qrCodePresenter?.stopSession()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        qrCodePresenter?.setupCaptureSession(in: qrCodeView)
+    }
 
     func setupErrorLabel(_ errorMessage: String?) {
         qrCodePresenter?.startSession()
