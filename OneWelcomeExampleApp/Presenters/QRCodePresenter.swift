@@ -35,6 +35,8 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
     }
     
     func setupCaptureSession(in qrCodeView: UIView) {
+        previewLayer?.frame = qrCodeView.bounds
+        
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         
         let captureSession = AVCaptureSession()
@@ -68,7 +70,6 @@ class QRCodePresenter: NSObject, QRCodePresenterProtocol {
         }
 
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = qrCodeView.bounds
         previewLayer.videoGravity = .resizeAspectFill
         qrCodeView.layer.addSublayer(previewLayer)
     }

@@ -20,20 +20,21 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
         profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
         messageLabel.text = pendingMobileAuthEntity.message
         
-        if let date = pendingMobileAuthEntity.date {
-            timeLabel.text = DateFormatter.localizedString(from: date,
-                                                           dateStyle: DateFormatter.Style.none,
-                                                           timeStyle: DateFormatter.Style.medium)
-            expireTimeLabel.text = pendingMobileAuthEntity.timeToLive
-                .flatMap { TimeInterval($0) }
-                .flatMap { DateFormatter.localizedString(from: date.addingTimeInterval($0),
-                                                         dateStyle: DateFormatter.Style.none,
-                                                         timeStyle: DateFormatter.Style.medium)}
-                .flatMap { "Expiration time: " + $0 } ?? ""
-            
-        } else {
+        guard let date = pendingMobileAuthEntity.date else {
+
             timeLabel.text = ""
             expireTimeLabel.text = ""
+            return
         }
+        
+        timeLabel.text = DateFormatter.localizedString(from: date,
+                                                       dateStyle: DateFormatter.Style.none,
+                                                       timeStyle: DateFormatter.Style.medium)
+        
+        let expireTime = date.addingTimeInterval(TimeInterval(pendingMobileAuthEntity.timeToLive))
+        expireTimeLabel.text = "Expiration time: " + DateFormatter.localizedString(from: expireTime,
+                                                                                   dateStyle: DateFormatter.Style.none,
+                                                                                   timeStyle: DateFormatter.Style.medium)
+
     }
 }
