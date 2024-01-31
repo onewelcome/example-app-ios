@@ -34,11 +34,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    private var authenticators = [Authenticator]() {
-        didSet {
-            reloadAuthenticators()
-        }
-    }
+    private var authenticators = [Authenticator]()
 
     weak var loginDelegate: LoginViewDelegate?
     var selectedProfile: UserProfile!
@@ -54,7 +50,7 @@ class LoginViewController: UIViewController {
         
         profiles = loginDelegate.profilesInLoginView(self)
         selectProfile(index: 0)
-        authenticators = Array(loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile))
+        reloadAuthenticators()
     }
     
     func selectProfile(index: Int) {
@@ -72,6 +68,8 @@ class LoginViewController: UIViewController {
     }
 
     func reloadAuthenticators() {
+        guard let loginDelegate else { return }
+        authenticators = Array(loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile))
         authenticatorsTableView?.reloadData()
     }
     
