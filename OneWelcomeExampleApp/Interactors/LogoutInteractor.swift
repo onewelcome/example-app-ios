@@ -17,6 +17,7 @@ import UIKit
 
 protocol LogoutInteractorProtocol: AnyObject {
     func logout()
+    func dashboard()
 }
 
 class LogoutInteractor: LogoutInteractorProtocol {
@@ -25,6 +26,10 @@ class LogoutInteractor: LogoutInteractorProtocol {
         return SharedUserClient.instance
     }
 
+    func dashboard() {
+        self.dashboardPresenter?.presentWelcomeView()
+    }
+    
     func logout() {
         userClient.logoutUser { _, error in
             if let error = error {
