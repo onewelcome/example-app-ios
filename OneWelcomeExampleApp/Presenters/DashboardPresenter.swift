@@ -32,6 +32,7 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
     func popToDashboardView()
     func presetAppToWebView()
     func updateView()
+    func dashboard()
 }
 
 class DashboardPresenter: DashboardInteractorToPresenterProtocol {
@@ -77,7 +78,25 @@ extension DashboardPresenter: DashboardViewToPresenterProtocol {
     func logout() {
         logoutInteractor.logout()
     }
+    
+    func presentLogoutAlert() {
+        let message = "Are you sure you want to login other profile?"
+        let alert = UIAlertController(title: "Login other profile", message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
 
+        let disconnectAction = UIAlertAction(title: "Select a new profile", style: .default) { _ in
+            self.logoutInteractor.dashboard()
+        }
+        alert.addAction(disconnectAction)
+
+        navigationController.present(alert, animated: true, completion: nil)
+    }
+
+    func dashboard() {
+        presentLogoutAlert()
+    }
+    
     func popToDashboardView() {
         navigationController.popToViewController(dashboardViewController, animated: true)
     }

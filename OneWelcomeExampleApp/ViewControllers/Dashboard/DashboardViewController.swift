@@ -25,6 +25,7 @@ class DashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileNameLabel.text = userProfileName
+        makeProfileNameLabelTappable()
     }
 
     @IBAction func logoutPressed(_: Any) {
@@ -50,5 +51,15 @@ class DashboardViewController: UIViewController {
     
     func updateView() {
         app2webButton.stopAnimation()
+    }
+    
+    @objc func profileNameTapped() {
+        dashboardViewToPresenterProtocol?.dashboard()
+    }
+    
+    func makeProfileNameLabelTappable() {
+        let gest = UITapGestureRecognizer(target: self, action: #selector(profileNameTapped))
+        profileNameLabel.addGestureRecognizer(gest)
+        profileNameLabel.isUserInteractionEnabled = true
     }
 }
