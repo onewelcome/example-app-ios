@@ -48,9 +48,9 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
     func startUserRegistration(identityProvider: IdentityProvider?) {
         switch AllowedIdentityProviders(rawValue: identityProvider?.identifier ?? "") {
         case .stateless, .twoWayStateless:
-            userClient.registerStatelessUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+            userClient.registerStatelessUserWith(identityProvider: identityProvider, scopes: ["read", "openid", "email"], delegate: self)
         default:
-            userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid"], delegate: self)
+            userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid", "email"], delegate: self)
         }
     }
 

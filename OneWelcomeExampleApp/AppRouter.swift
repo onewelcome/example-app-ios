@@ -45,6 +45,7 @@ protocol AppRouterProtocol: AnyObject {
     func setupProfilePresenter()
     func setupMobileAuthPresenter()
     func setupDisconnectPresenter()
+    func setupIdTokenPresenter()
     func setupChangePinPresenter()
     func setupFetchDeviceListPresenter()
     func setupTabBar()
@@ -67,6 +68,7 @@ class AppRouter: NSObject, AppRouterProtocol {
     var disconnectPresenter: DisconnectPresenterProtocol
     var changePinPresenter: ChangePinPresenterProtocol
     var fetchDeviceListPresenter: FetchDeviceListPresenterProtocol
+    var idTokenPresenter: IdTokenPresenterProtocol
     var appDetailsPresenter: AppDetailsPresenterProtocol
     var pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol
     var appToWebPresenter: AppToWebPresenterProtocol
@@ -82,6 +84,7 @@ class AppRouter: NSObject, AppRouterProtocol {
          mobileAuthPresenter: MobileAuthPresenterProtocol,
          disconnectPresenter: DisconnectPresenterProtocol,
          changePinPresenter: ChangePinPresenterProtocol,
+         idTokenPresenter: IdTokenPresenterProtocol,
          pendingMobileAuthPresenter: PendingMobileAuthPresenterProtocol,
          fetchDeviceListPresenter: FetchDeviceListPresenterProtocol,
          appDetailsPresenter: AppDetailsPresenterProtocol,
@@ -96,6 +99,7 @@ class AppRouter: NSObject, AppRouterProtocol {
         self.profilePresenter = profilePresenter
         self.mobileAuthPresenter = mobileAuthPresenter
         self.disconnectPresenter = disconnectPresenter
+        self.idTokenPresenter = idTokenPresenter
         self.changePinPresenter = changePinPresenter
         self.fetchDeviceListPresenter = fetchDeviceListPresenter
         self.appDetailsPresenter = appDetailsPresenter
@@ -170,6 +174,10 @@ class AppRouter: NSObject, AppRouterProtocol {
 
     func setupChangePinPresenter() {
         changePinPresenter.startChangePinFlow()
+    }
+    
+    func setupIdTokenPresenter() {
+        idTokenPresenter.presentIdTokenView()
     }
 
     func setupFetchDeviceListPresenter() {

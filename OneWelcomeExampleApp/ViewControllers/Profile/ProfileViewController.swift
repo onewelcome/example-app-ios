@@ -38,6 +38,10 @@ class ProfileViewController: UIViewController {
         deviceListButton.startAnimation()
         profileViewToPresenter?.setupFetchDeviceListPresenter()
     }
+    
+    @IBAction func idToken() {
+        profileViewToPresenter?.setupIdToken()
+    }
 
     @IBAction func changePassword(_: Any) {
         profileViewToPresenter?.setupChangePinPresenter()

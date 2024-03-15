@@ -81,7 +81,10 @@ class PresenterAssembly: Assembly {
             ChangePinPresenter(changePinInteractor: resolver.resolve(ChangePinInteractorProtocol.self)!,
                                navigationController: resolver.resolve(UINavigationController.self)!,
                                changePinNavigationController: UINavigationController()) }
-        
+        container.register(IdTokenPresenterProtocol.self) { resolver in
+            IdTokenPresenter(idTokenInteractor: resolver.resolve(IdTokenInteractorProtocol.self)!, 
+                             navigationController: resolver.resolve(UINavigationController.self)!)
+        }
         container.register(PendingMobileAuthPresenterProtocol.self) { resolver in
             PendingMobileAuthPresenter(pendingMobileAuthViewController: resolver.resolve((UIViewController & PendingMobileAuthPresenterViewDelegate).self)!,
                                        mobileAuthInteractor: resolver.resolve(MobileAuthInteractorProtocol.self)!) }
