@@ -50,6 +50,11 @@ class InteractorAssembly: Assembly {
                 let profileInteractor = instance as! ProfileInteractor
                 profileInteractor.dashboardPresenter = resolver.resolve(DashboardPresenterProtocol.self)
             }
+        container.register(IdTokenInteractorProtocol.self) { _ in IdTokenInteractor() }
+            .initCompleted { resolver, instance in
+                let idTokenInteractor = instance as! IdTokenInteractor
+                idTokenInteractor.idTokenPresenter = resolver.resolve(IdTokenPresenterProtocol.self)
+            }
         container.register(MobileAuthInteractorProtocol.self) { _ in MobileAuthInteractor() }
         container.register(AuthenticatorsInteractorProtocol.self) { _ in AuthenticatorsInteractor() }
             .initCompleted { resolver, instance in

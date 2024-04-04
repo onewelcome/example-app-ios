@@ -26,20 +26,24 @@ class ProfileViewController: UIViewController {
         profileViewToPresenter?.updateView()
     }
     
-    @IBAction func backPressed(_: Any) {
+    @IBAction private func backPressed(_: Any) {
         profileViewToPresenter?.popToDashboardView()
     }
 
-    @IBAction func disconnectProfile(_: Any) {
+    @IBAction private func disconnectProfile(_: Any) {
         profileViewToPresenter?.setupDisconnectPresenter()
     }
 
-    @IBAction func deviceList(_: Any) {
+    @IBAction private func deviceList(_: Any) {
         deviceListButton.startAnimation()
         profileViewToPresenter?.setupFetchDeviceListPresenter()
     }
+    
+    @IBAction private func idToken() {
+        profileViewToPresenter?.setupIdToken()
+    }
 
-    @IBAction func changePassword(_: Any) {
+    @IBAction private func changePassword(_: Any) {
         profileViewToPresenter?.setupChangePinPresenter()
     }
     
