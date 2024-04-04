@@ -3,7 +3,7 @@ platform :ios, '13.0'
 inhibit_all_warnings!
 use_frameworks!
 
-plugin 'cocoapods-art', :sources => ['onegini-dev']
+plugin 'cocoapods-art', :sources => ['onegini']
 
 def oneginiSDKiOS
    pod 'OneginiSDKiOS', '~> 12.3.6'

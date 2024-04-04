@@ -48,19 +48,19 @@ SPEC REPOS:
     - Swinject
     - TransitionButton
     - Typhoon
-  https://repo.onewelcome.com/artifactory/api/pods/cocoapods-release-local:
+  https://repo.onewelcome.com/artifactory/api/pods/cocoapods-public:
     - OneginiSDKiOS
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: e4ad7776c548d4e96433dbad3e2efcb825cea2d6
+  OneginiSDKiOS: ab93e41d8818cc12dc5488c09e759aa0ca1626c8
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: 98cd89989db3af7965af943383d2b89369e36f24
+PODFILE CHECKSUM: 751fbbdc1d42988f9e2734d02c56d4af2d224619
 
 COCOAPODS: 1.15.2
