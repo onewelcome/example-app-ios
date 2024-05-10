@@ -1,0 +1,670 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OneginiSDKiOS
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AuthenticationServices
+import CryptoKit
+import Foundation
+@_exported import OneginiSDKiOS
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers public class RevokeTokenNetworkService : ObjectiveC.NSObject, OneginiSDKiOS.RevokeTokenNetworkServiceProtocol {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var clientAssertionService: (any OneginiSDKiOS.ClientAssertionServiceProtocol)?
+  @objc public func revokeToken(_ token: Swift.String?, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, completion: @escaping ((Swift.Bool, (any Swift.Error)?) -> Swift.Void))
+  @objc public func revokeProfile(_ profileId: Swift.String?, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, token: Swift.String?, tokenType: Swift.String?, completion: @escaping ((Swift.Bool, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum ParametersEncoding {
+  case formURL
+  case JSON
+  public static func == (a: OneginiSDKiOS.ParametersEncoding, b: OneginiSDKiOS.ParametersEncoding) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum HTTPMethod : Swift.String {
+  case get
+  case post
+  case put
+  case delete
+  case patch
+  case head
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol ResourceRequest {
+  var path: Swift.String { get }
+  var method: OneginiSDKiOS.HTTPMethod { get }
+  var headers: [Swift.String : Swift.String]? { get }
+  var parameters: [Swift.String : Any]? { get }
+  var parametersEncoding: OneginiSDKiOS.ParametersEncoding? { get }
+  var body: Foundation.Data? { get }
+  var multipartData: [any OneginiSDKiOS.MultipartData]? { get }
+}
+public protocol CustomInfo {
+  var status: Swift.Int { get }
+  var data: Swift.String { get }
+}
+public protocol ExternalIdentityProvider {
+  var name: Swift.String { get }
+  var type: Swift.String { get }
+}
+public protocol Client {
+  var configModel: OneginiSDKiOS.ConfigModel { get }
+  var userClient: any OneginiSDKiOS.UserClient { get }
+  var deviceClient: any OneginiSDKiOS.DeviceClient { get }
+  func start(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  func reset(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+}
+public struct SharedClient {
+  public static var instance: any OneginiSDKiOS.Client {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class CompatibilityMap : ObjectiveC.NSObject {
+  @objc public init(ongConfigModel: OneginiSDKiOS.ONGConfigModel)
+  @objc public func isServerCompatibile(with function: OneginiSDKiOS.ServerFunction) -> Swift.Bool
+  @objc deinit
+}
+public protocol CustomRegistrationChallenge {
+  var userProfile: (any OneginiSDKiOS.UserProfile)? { get }
+  var identityProvider: any OneginiSDKiOS.IdentityProvider { get }
+  var info: (any OneginiSDKiOS.CustomInfo)? { get }
+  var error: (any Swift.Error)? { get }
+  var sender: any OneginiSDKiOS.CustomRegistrationChallengeSender { get }
+}
+public protocol CustomRegistrationChallengeSender {
+  func respond(with data: Swift.String?, to challenge: any OneginiSDKiOS.CustomRegistrationChallenge)
+  @available(*, deprecated, message: "use cancel(challenge:underlyingError) instead.")
+  func cancel(_ challenge: any OneginiSDKiOS.CustomRegistrationChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.CustomRegistrationChallenge, withUnderlyingError underlyingError: (any Swift.Error)?)
+}
+@objc @_inheritsConvenienceInitializers public class PushEnrollmentNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func enrollForPush(accessToken: Swift.String, deviceToken: Swift.String, completion: @escaping ((Swift.Bool, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum ServerFunction : Swift.Int {
+  case stateless
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers final public class PushUserInfoDecoder : ObjectiveC.NSObject {
+  @objc public static func decodeUserProfile(fromUserInfo userInfo: [Swift.String : Swift.AnyObject]) -> OneginiSDKiOS.ONGUserProfile?
+  @objc public static func decodeTransactionID(fromUserInfo userInfo: [Swift.String : Swift.AnyObject]) -> Swift.String?
+  @objc public static func decodeMessage(fromUserInfo userInfo: [Swift.String : Swift.AnyObject]) -> Swift.String?
+  @objc public static func isUserInfoValid(_ userInfo: [Swift.String : Swift.AnyObject]) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class ClientAssertionService : ObjectiveC.NSObject, OneginiSDKiOS.ClientAssertionServiceProtocol {
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var jsonWebTokenService: (any OneginiSDKiOS.JSONWebTokenServiceProtocol)?
+  @objc public func generateClientAssertionJWT(withClientId clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String) throws -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol AuthenticatorRegistrationDelegate : AnyObject {
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceivePinChallenge challenge: any OneginiSDKiOS.PinChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthFinishRegistrationChallenge challenge: any OneginiSDKiOS.CustomAuthFinishRegistrationChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartRegistering authenticator: any OneginiSDKiOS.Authenticator, for userProfile: any OneginiSDKiOS.UserProfile)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToRegister authenticator: any OneginiSDKiOS.Authenticator, for userProfile: any OneginiSDKiOS.UserProfile, error: any Swift.Error)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didRegister authenticator: any OneginiSDKiOS.Authenticator, for userProfile: any OneginiSDKiOS.UserProfile, info customAuthInfo: (any OneginiSDKiOS.CustomInfo)?)
+}
+extension OneginiSDKiOS.AuthenticatorRegistrationDelegate {
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceivePinChallenge challenge: any OneginiSDKiOS.PinChallenge)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthFinishRegistrationChallenge challenge: any OneginiSDKiOS.CustomAuthFinishRegistrationChallenge)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartRegistering authenticator: any OneginiSDKiOS.Authenticator, for userProfile: any OneginiSDKiOS.UserProfile)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToRegister authenticator: any OneginiSDKiOS.Authenticator, for userProfile: any OneginiSDKiOS.UserProfile, error: any Swift.Error)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didRegister authenticator: any OneginiSDKiOS.Authenticator, for userProfile: any OneginiSDKiOS.UserProfile, info customAuthInfo: (any OneginiSDKiOS.CustomInfo)?)
+}
+@objc @_inheritsConvenienceInitializers public class AnswerMobileAuthNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func answerMobileAuthenticationAction(_ mobileAuthenticationAction: OneginiSDKiOS.ONGMobileAuthenticationActionDTO, answer: Swift.String, completion: @escaping ((Swift.Bool, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol MobileAuthRequest {
+  var type: Swift.String { get }
+  var userProfile: any OneginiSDKiOS.UserProfile { get }
+  var userInfo: [Swift.AnyHashable : Any]? { get }
+  var message: Swift.String? { get }
+  var transactionId: Swift.String { get }
+  var signingData: Swift.String? { get }
+}
+@objc @_inheritsConvenienceInitializers public class CustomAuthDeregistrationNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func deregisterCustomAuthenticator(_ authenticator: OneginiSDKiOS.ONGAuthenticator, accessToken: Swift.String, completion: @escaping ((Swift.Bool, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers final public class StoreKeyValueNetworkService : ObjectiveC.NSObject, OneginiSDKiOS.StoreKeyValueNetworkServiceProtocol {
+  @objc final public func storePayload(_ payload: Swift.String, identityProviderId: Swift.String, completion: @escaping ((Swift.String?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum NetworkTaskState : Swift.Int {
+  case running
+  case suspended
+  case cancelled
+  case completed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol NetworkTask {
+  var identifier: Swift.String { get }
+  var state: OneginiSDKiOS.NetworkTaskState { get }
+  var request: any OneginiSDKiOS.ResourceRequest { get }
+  var response: (any OneginiSDKiOS.ResourceResponse)? { get }
+  var error: (any Swift.Error)? { get }
+}
+@objc @_inheritsConvenienceInitializers public class DeveloperCertificateService : ObjectiveC.NSObject {
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public func developerCertificate(for integrityType: OneginiSDKiOS.ONGIntegrityType) throws -> Foundation.Data
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class CustomAuthFinishRegistrationNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func registerCustomAuthenticator(_ authenticator: OneginiSDKiOS.ONGAuthenticator, data: Swift.String?, accessToken: Swift.String, completion: @escaping ((OneginiSDKiOS.ONGCustomInfo?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class ErrorResponse : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let error: Swift.String?
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers public class PayloadEncryptionNetworkServiceV2 : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var clientAssertionService: (any OneginiSDKiOS.ClientAssertionServiceProtocol)?
+  @objc public func performHandshake(publicKey: Swift.String, signature: Swift.String, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, completion: @escaping ((Swift.String?, OneginiSDKiOS.ONGHandshakeResponse?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ProtectedDataHelper : ObjectiveC.NSObject {
+  @available(iOSApplicationExtension, unavailable)
+  @objc public static var isProtectedDataAvailable: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol CustomAuthFinishRegistrationChallenge {
+  var userProfile: any OneginiSDKiOS.UserProfile { get }
+  var authenticator: any OneginiSDKiOS.Authenticator { get }
+  var sender: any OneginiSDKiOS.CustomAuthFinishRegistrationChallengeSender { get }
+}
+public protocol CustomAuthFinishRegistrationChallengeSender : AnyObject {
+  func respond(with data: Swift.String, to challenge: any OneginiSDKiOS.CustomAuthFinishRegistrationChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.CustomAuthFinishRegistrationChallenge, underlyingError: (any Swift.Error)?)
+}
+public protocol UserProfile {
+  var profileId: Swift.String { get }
+}
+extension OneginiSDKiOS.UserProfile {
+  public func isEqual(to userProfile: any OneginiSDKiOS.UserProfile) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class RequestTokenNetworkService : ObjectiveC.NSObject, OneginiSDKiOS.RequestTokenNetworkServiceProtocol {
+  @objc public func requestClientAccessToken(withScopes scopes: [Swift.String]?, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, completion: @escaping ((OneginiSDKiOS.ONGSessionTokens?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol DeviceClient {
+  func authenticateDevice(with scopes: [Swift.String]?, completion: @escaping (((any Swift.Error)?) -> Swift.Void))
+  @discardableResult
+  func sendRequest(_ resourceRequest: any OneginiSDKiOS.ResourceRequest, completion: @escaping ((_ response: (any OneginiSDKiOS.ResourceResponse)?, _ error: (any Swift.Error)?) -> Swift.Void)) -> (any OneginiSDKiOS.NetworkTask)?
+  @discardableResult
+  func sendUnauthenticatedRequest(_ resourceRequest: any OneginiSDKiOS.ResourceRequest, completion: @escaping ((_ response: (any OneginiSDKiOS.ResourceResponse)?, _ error: (any Swift.Error)?) -> Swift.Void)) -> (any OneginiSDKiOS.NetworkTask)?
+}
+public struct SharedDeviceClient {
+  public static var instance: any OneginiSDKiOS.DeviceClient {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class SubmitSignatureNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var rsaCryptor: OneginiSDKiOS.ONGRSACryptor?
+  @objc public var mobileAuthenticationCryptor: OneginiSDKiOS.ONGMobileAuthenticationCryptor?
+  @objc public var mobileAuthModel: OneginiSDKiOS.ONGMobileAuthModel?
+  @objc public var clientIdModel: OneginiSDKiOS.ONGClientIdModel?
+  @objc public func submitSignature(mobileAuthenticationAction: OneginiSDKiOS.ONGMobileAuthenticationActionDTO, completion: @escaping ((Swift.Bool, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol ResourceResponse {
+  var response: Foundation.HTTPURLResponse { get }
+  var allHeaderFields: [Swift.AnyHashable : Any] { get }
+  var statusCode: Swift.Int { get }
+  var data: Foundation.Data? { get }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers final public class AppleIdService : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@available(iOS 13.0, *)
+extension OneginiSDKiOS.AppleIdService : AuthenticationServices.ASAuthorizationControllerDelegate {
+  @objc final public func authorizationController(controller: AuthenticationServices.ASAuthorizationController, didCompleteWithAuthorization authorization: AuthenticationServices.ASAuthorization)
+  @objc final public func authorizationController(controller: AuthenticationServices.ASAuthorizationController, didCompleteWithError error: any Swift.Error)
+}
+@objc @_inheritsConvenienceInitializers public class ClientMigrationNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var jsonWebKeySetService: (any OneginiSDKiOS.JSONWebKeySetServiceProtocol)?
+  @objc public var jsonWebTokenService: (any OneginiSDKiOS.JSONWebTokenServiceProtocol)?
+  @objc public var networkParamsHelper: (any OneginiSDKiOS.NetworkParamsHelperProtocol)?
+  @objc public func requestMigrationChallenge(clientCredentials: OneginiSDKiOS.ONGClientCredentials, completion: @escaping ((OneginiSDKiOS.ONGClientChallengeResponse?, (any Swift.Error)?) -> Swift.Void))
+  @objc public func requestMigrationResponse(clientCredentials: OneginiSDKiOS.ONGClientCredentials, publicKey: Security.SecKey, privateKey: Security.SecKey, challengeSignature: Swift.String, completion: @escaping ((Swift.String?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum AuthenticatorType : Swift.UInt8 {
+  case pin
+  case biometric
+  case custom
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+public protocol Authenticator {
+  var identifier: Swift.String { get }
+  var name: Swift.String { get }
+  var type: OneginiSDKiOS.AuthenticatorType { get }
+  var isRegistered: Swift.Bool { get }
+  var isPreferred: Swift.Bool { get }
+}
+@objc @_inheritsConvenienceInitializers public class CustomAuthFinishAuthenticationNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var clientAssertionService: (any OneginiSDKiOS.ClientAssertionServiceProtocol)?
+  @objc public func authenticateUser(_ userProfile: OneginiSDKiOS.ONGUserProfile, authenticator: OneginiSDKiOS.ONGAuthenticator, data: Swift.String, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, transactionId: Swift.String?, completion: @escaping ((Swift.String?, OneginiSDKiOS.ONGCustomInfo?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ValidateClientNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var clientAssertionService: (any OneginiSDKiOS.ClientAssertionServiceProtocol)?
+  @objc public var jsonWebTokenService: (any OneginiSDKiOS.JSONWebTokenServiceProtocol)?
+  @objc public func validateClientRequest(with clientID: Swift.String, uuid: Swift.String, deviceIntegrityReport: Swift.Dictionary<Swift.String, Any>, privateKey: Security.SecKey, completion: @escaping ((OneginiSDKiOS.ONGClientValidationResponse?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ResourceRequestFactory {
+  public static func makeResourceRequest(path: Swift.String, method: OneginiSDKiOS.HTTPMethod = .get, parameters: [Swift.String : Any]? = nil, body: Foundation.Data? = nil, headers: [Swift.String : Swift.String]? = nil, parametersEncoding: OneginiSDKiOS.ParametersEncoding = .JSON) -> any OneginiSDKiOS.ResourceRequest
+  public static func makeMultipartResourceRequest(path: Swift.String, method: OneginiSDKiOS.HTTPMethod, parameters: [Swift.String : Any]?, multipartData: [any OneginiSDKiOS.MultipartData]) -> any OneginiSDKiOS.ResourceRequest
+  @objc deinit
+}
+public protocol CreatePinChallenge {
+  var userProfile: (any OneginiSDKiOS.UserProfile)? { get }
+  var pinLength: Swift.UInt { get }
+  var error: (any Swift.Error)? { get }
+  var sender: any OneginiSDKiOS.CreatePinChallengeSender { get }
+}
+public protocol CreatePinChallengeSender {
+  func respond(with pin: Swift.String, to challenge: any OneginiSDKiOS.CreatePinChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.CreatePinChallenge)
+}
+@objc @_inheritsConvenienceInitializers public class PGPKeyExchangeNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func requestServerPublicKey(accessToken: Swift.String, clientPublicKey: Swift.String, completion: @escaping ((OneginiSDKiOS.ONGPublicKey?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol CustomAuthFinishAuthenticationChallenge {
+  var userProfile: (any OneginiSDKiOS.UserProfile)? { get }
+  var authenticator: (any OneginiSDKiOS.Authenticator)? { get }
+  var challengeData: Foundation.Data? { get }
+  var error: (any Swift.Error)? { get }
+  var sender: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallengeSender { get }
+}
+public protocol CustomAuthFinishAuthenticationChallengeSender {
+  func respond(with data: Swift.String, to challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge)
+  func respondWithPinFallback(to challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge, underlyingError: (any Swift.Error)?)
+}
+@objc @_inheritsConvenienceInitializers public class FetchDataNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func fetchMobileAuthPayload(transactionId: Swift.String, clientId: Swift.String, profileId: Swift.String?, completion: @escaping ((Swift.String?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class JSONWebKeySetService : ObjectiveC.NSObject, OneginiSDKiOS.JSONWebKeySetServiceProtocol {
+  @objc public func generateJWKS(withEcPublicKey publicKey: Security.SecKey?) throws -> [Swift.AnyHashable : Any]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class JSONWebTokenService : ObjectiveC.NSObject, OneginiSDKiOS.JSONWebTokenServiceProtocol {
+  @objc public func generateJWT(withPayload payload: [Swift.String : Any], privateKey: Security.SecKey) throws -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol BrowserRegistrationChallenge {
+  var identityProvider: any OneginiSDKiOS.IdentityProvider { get }
+  var url: Foundation.URL { get }
+  var error: (any Swift.Error)? { get }
+  var sender: any OneginiSDKiOS.BrowserRegistrationChallengeSender { get }
+}
+public protocol BrowserRegistrationChallengeSender {
+  func respond(with url: Foundation.URL, to challenge: any OneginiSDKiOS.BrowserRegistrationChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.BrowserRegistrationChallenge)
+}
+public protocol PinChallenge {
+  var userProfile: any OneginiSDKiOS.UserProfile { get }
+  var authenticator: any OneginiSDKiOS.Authenticator { get }
+  var maxFailureCount: Swift.UInt { get }
+  var previousFailureCount: Swift.UInt { get }
+  var remainingFailureCount: Swift.UInt { get }
+  var error: (any Swift.Error)? { get }
+  var sender: any OneginiSDKiOS.PinChallengeSender { get }
+}
+public protocol PinChallengeSender {
+  func respond(with pin: Swift.String, to challenge: any OneginiSDKiOS.PinChallenge)
+  func cancel(_ challege: any OneginiSDKiOS.PinChallenge)
+}
+@_hasMissingDesignatedInitializers public class ConfigModel {
+  final public let dictionary: Swift.Dictionary<Swift.String, Swift.String>
+  final public let appIdentifier: Swift.String
+  final public let appPlatform: Swift.String
+  final public let appVersion: Swift.String
+  final public let serverType: Swift.String
+  final public let serverVersion: Swift.String
+  final public let baseURL: Swift.String
+  final public let resourceBaseURL: Swift.String
+  final public let redirectURL: Swift.String
+  convenience public init(filePath: Swift.String)
+  convenience public init(dictionary: Swift.Dictionary<Swift.String, Any>)
+  @objc deinit
+}
+public protocol MultipartData {
+  var data: Foundation.Data { get }
+  var name: Swift.String { get }
+  var fileName: Swift.String { get }
+  var mimeType: Swift.String { get }
+}
+public protocol CustomAuthDeregistrationChallenge {
+  var userProfile: any OneginiSDKiOS.UserProfile { get }
+  var authenticator: any OneginiSDKiOS.Authenticator { get }
+  var sender: any OneginiSDKiOS.CustomAuthDeregistrationChallengeSender { get }
+}
+public protocol CustomAuthDeregistrationChallengeSender : AnyObject {
+  func proceed(with challenge: any OneginiSDKiOS.CustomAuthDeregistrationChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.CustomAuthDeregistrationChallenge, withUnderlyingError underlyingError: (any Swift.Error)?)
+}
+@objc @_inheritsConvenienceInitializers public class GenerateRandomService : ObjectiveC.NSObject {
+  @objc public static func generateRandomNumber(in range: Swift.Int, offset: Swift.Int) -> Swift.Int
+  @objc public static func generateRandomLowercaseString(length: Swift.Int) -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol AuthenticatorDeregistrationDelegate : AnyObject {
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartDeregistering authenticator: any OneginiSDKiOS.Authenticator, forUser userProfile: any OneginiSDKiOS.UserProfile)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didDeregister authenticator: any OneginiSDKiOS.Authenticator, forUser userProfile: any OneginiSDKiOS.UserProfile)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToDeregister authenticator: any OneginiSDKiOS.Authenticator, forUser userProfile: any OneginiSDKiOS.UserProfile, error: any Swift.Error)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthDeregistrationChallenge challenge: any OneginiSDKiOS.CustomAuthDeregistrationChallenge)
+}
+extension OneginiSDKiOS.AuthenticatorDeregistrationDelegate {
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartDeregistering authenticator: any OneginiSDKiOS.Authenticator, forUser userProfile: any OneginiSDKiOS.UserProfile)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didDeregister authenticator: any OneginiSDKiOS.Authenticator, forUser userProfile: any OneginiSDKiOS.UserProfile)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToDeregister authenticator: any OneginiSDKiOS.Authenticator, forUser userProfile: any OneginiSDKiOS.UserProfile, error: any Swift.Error)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthDeregistrationChallenge challenge: any OneginiSDKiOS.CustomAuthDeregistrationChallenge)
+}
+public enum AuthenticatorsType {
+  case nonRegistered
+  case registered
+  case all
+  public static func == (a: OneginiSDKiOS.AuthenticatorsType, b: OneginiSDKiOS.AuthenticatorsType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol UserClient {
+  var preferredAuthenticator: (any OneginiSDKiOS.Authenticator)? { get }
+  var accessToken: Swift.String? { get }
+  var idToken: Swift.String? { get }
+  func setPreferredAuthenticator(_ authenticator: any OneginiSDKiOS.Authenticator)
+  func registerUserWith(identityProvider: (any OneginiSDKiOS.IdentityProvider)?, scopes: [Swift.String]?, delegate: any OneginiSDKiOS.RegistrationDelegate)
+  func registerStatelessUserWith(identityProvider: (any OneginiSDKiOS.IdentityProvider)?, scopes: [Swift.String]?, delegate: any OneginiSDKiOS.RegistrationDelegate)
+  var identityProviders: [any OneginiSDKiOS.IdentityProvider] { get }
+  func changePin(delegate: any OneginiSDKiOS.ChangePinDelegate)
+  func authenticateUserWith(profile: any OneginiSDKiOS.UserProfile, authenticator: (any OneginiSDKiOS.Authenticator)?, delegate: any OneginiSDKiOS.AuthenticationDelegate)
+  var userProfiles: [any OneginiSDKiOS.UserProfile] { get }
+  func authenticators(_ type: OneginiSDKiOS.AuthenticatorsType, for userProfile: any OneginiSDKiOS.UserProfile) -> [any OneginiSDKiOS.Authenticator]
+  func enrollMobileAuth(_ completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  func isMobileAuthEnrolled(for user: any OneginiSDKiOS.UserProfile) -> Swift.Bool
+  func enrollPushMobileAuth(with deviceToken: Foundation.Data, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  func isPushMobileAuthEnrolled(for user: any OneginiSDKiOS.UserProfile) -> Swift.Bool
+  var authenticatedUserProfile: (any OneginiSDKiOS.UserProfile)? { get }
+  @discardableResult
+  func sendAuthenticatedRequest(_ resourceRequest: any OneginiSDKiOS.ResourceRequest, completion: @escaping (((any OneginiSDKiOS.ResourceResponse)?, (any Swift.Error)?) -> Swift.Void)) -> (any OneginiSDKiOS.NetworkTask)?
+  func canHandleOTPMobileAuthRequest(otp: Swift.String) -> Swift.Bool
+  func handleOTPMobileAuthRequest(otp: Swift.String, delegate: any OneginiSDKiOS.MobileAuthRequestDelegate)
+  func pendingPushMobileAuthRequests(completion: @escaping ((_ requests: [any OneginiSDKiOS.PendingMobileAuthRequest]?, _ error: (any Swift.Error)?) -> Swift.Void))
+  func pendingMobileAuthRequest(from userInfo: [Swift.AnyHashable : Any]) -> (any OneginiSDKiOS.PendingMobileAuthRequest)?
+  func handlePendingMobileAuthRequest(_ pendingMobileAuthRequest: any OneginiSDKiOS.PendingMobileAuthRequest, delegate: any OneginiSDKiOS.MobileAuthRequestDelegate)
+  func logoutUser(_ completion: @escaping (((any OneginiSDKiOS.UserProfile)?, (any Swift.Error)?) -> Swift.Void))
+  func implicitlyAuthenticate(user: any OneginiSDKiOS.UserProfile, with scopes: [Swift.String]?, completion: @escaping (((any Swift.Error)?) -> Swift.Void))
+  var implicitlyAuthenticatedUserProfile: (any OneginiSDKiOS.UserProfile)? { get }
+  @discardableResult
+  func sendImplicitRequest(_ resourceRequest: any OneginiSDKiOS.ResourceRequest, completion: @escaping (((any OneginiSDKiOS.ResourceResponse)?, (any Swift.Error)?) -> Swift.Void)) -> (any OneginiSDKiOS.NetworkTask)?
+  func register(authenticator: any OneginiSDKiOS.Authenticator, delegate: any OneginiSDKiOS.AuthenticatorRegistrationDelegate)
+  func deregister(authenticator: any OneginiSDKiOS.Authenticator, delegate: any OneginiSDKiOS.AuthenticatorDeregistrationDelegate)
+  func validatePolicyCompliance(for pin: Swift.String, completion: @escaping (((any Swift.Error)?) -> Swift.Void))
+  func deregister(user: any OneginiSDKiOS.UserProfile, completion: @escaping (((any Swift.Error)?) -> Swift.Void))
+  func appToWebSingleSignOn(with targetURL: Foundation.URL, completion: @escaping ((Foundation.URL?, _ token: Swift.String?, (any Swift.Error)?) -> Swift.Void))
+}
+public struct SharedUserClient {
+  public static var instance: any OneginiSDKiOS.UserClient {
+    get
+  }
+}
+public protocol PendingMobileAuthRequest {
+  var transactionId: Swift.String { get }
+  var userProfile: any OneginiSDKiOS.UserProfile { get }
+  var date: Foundation.Date? { get }
+  var timeToLive: Swift.Int? { get }
+  var message: Swift.String? { get }
+  var userInfo: [Swift.AnyHashable : Any]? { get }
+}
+public class ClientBuilder {
+  public init()
+  public func setConfigModel(_ configModel: OneginiSDKiOS.ConfigModel) -> OneginiSDKiOS.ClientBuilder
+  public func setAdditionalResourceUrls(_ url: [Swift.String]) -> OneginiSDKiOS.ClientBuilder
+  public func setStoreCookies(_ storeCookies: Swift.Bool) -> OneginiSDKiOS.ClientBuilder
+  public func setX509PEMCertificates(_ certificates: [Swift.String]) -> OneginiSDKiOS.ClientBuilder
+  public func setDeviceConfigCacheDuration(_ cacheDuration: Foundation.TimeInterval) -> OneginiSDKiOS.ClientBuilder
+  public func setHttpRequestTimeout(_ requestTimeout: Foundation.TimeInterval) -> OneginiSDKiOS.ClientBuilder
+  public func setServerPublicKey(_ serverPublicKey: Swift.String)
+  @available(*, deprecated, message: "Use buildAndWaitForProtectedData instead.")
+  public func build() -> any OneginiSDKiOS.Client
+  public func buildAndWaitForProtectedData(completion: @escaping (any OneginiSDKiOS.Client) -> Swift.Void)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers final public class AppleIdAuthorizationControllerFactory : ObjectiveC.NSObject, OneginiSDKiOS.AppleIdAuthorizationControllerFactoryProtocol {
+  @available(iOS 13.0, *)
+  @objc final public func authorizationController(with delegate: any AuthenticationServices.ASAuthorizationControllerDelegate) -> AuthenticationServices.ASAuthorizationController
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol IdentityProvider {
+  var identifier: Swift.String { get }
+  var name: Swift.String { get }
+  var externalIdentityProvider: (any OneginiSDKiOS.ExternalIdentityProvider)? { get }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers final public class RevokeTokenService : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ClientRegistrationNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var jsonWebKeySetService: (any OneginiSDKiOS.JSONWebKeySetServiceProtocol)?
+  @objc public var jsonWebTokenService: (any OneginiSDKiOS.JSONWebTokenServiceProtocol)?
+  @objc public var networkParamsHelper: (any OneginiSDKiOS.NetworkParamsHelperProtocol)?
+  @objc public func requestClientChallenge(with uuid: Swift.String, completion: @escaping ((OneginiSDKiOS.ONGClientChallengeResponse?, (any Swift.Error)?) -> Swift.Void))
+  @objc public func requestRegistrationResponse(with uuid: Swift.String, publicKey: Security.SecKey, privateKey: Security.SecKey, challengeSignature: Swift.String, completion: @escaping ((Swift.String?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class NetworkParamsHelper : ObjectiveC.NSObject, OneginiSDKiOS.NetworkParamsHelperProtocol {
+  @objc public var configModel: OneginiSDKiOS.ONGConfigModel?
+  @objc public func params(with redirectURL: Swift.String, jwks: [Swift.AnyHashable : Any], softwareStatementJWT: Swift.String) -> [Swift.AnyHashable : Any]
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol MobileAuthRequestDelegate : AnyObject {
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveConfirmation confirmation: @escaping (Swift.Bool) -> Swift.Void, for request: any OneginiSDKiOS.MobileAuthRequest)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceivePinChallenge challenge: any OneginiSDKiOS.PinChallenge, for request: any OneginiSDKiOS.MobileAuthRequest)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveBiometricChallenge challenge: any OneginiSDKiOS.BiometricChallenge, for request: any OneginiSDKiOS.MobileAuthRequest)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge, for request: any OneginiSDKiOS.MobileAuthRequest)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToHandleRequest request: any OneginiSDKiOS.MobileAuthRequest, authenticator: (any OneginiSDKiOS.Authenticator)?, error: any Swift.Error)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToHandleOTPMobileAuthRequest otp: Swift.String, error: any Swift.Error)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didHandleRequest request: any OneginiSDKiOS.MobileAuthRequest, authenticator: (any OneginiSDKiOS.Authenticator)?, info customAuthenticatorInfo: (any OneginiSDKiOS.CustomInfo)?)
+}
+extension OneginiSDKiOS.MobileAuthRequestDelegate {
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveConfirmation confirmation: @escaping (Swift.Bool) -> Swift.Void, for request: any OneginiSDKiOS.MobileAuthRequest)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceivePinChallenge challenge: any OneginiSDKiOS.PinChallenge, for request: any OneginiSDKiOS.MobileAuthRequest)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveBiometricChallenge challenge: any OneginiSDKiOS.BiometricChallenge, for request: any OneginiSDKiOS.MobileAuthRequest)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge, for request: any OneginiSDKiOS.MobileAuthRequest)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToHandleRequest request: any OneginiSDKiOS.MobileAuthRequest, authenticator: (any OneginiSDKiOS.Authenticator)?, error: any Swift.Error)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToHandleOTPMobileAuthRequest otp: Swift.String, error: any Swift.Error)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didHandleRequest request: any OneginiSDKiOS.MobileAuthRequest, authenticator: (any OneginiSDKiOS.Authenticator)?, info customAuthenticatorInfo: (any OneginiSDKiOS.CustomInfo)?)
+}
+public protocol BiometricChallenge {
+  var userProfile: any OneginiSDKiOS.UserProfile { get }
+  var authenticator: any OneginiSDKiOS.Authenticator { get }
+  var sender: any OneginiSDKiOS.BiometricChallengeSender { get }
+}
+public protocol BiometricChallengeSender {
+  func respond(with prompt: Swift.String, to challenge: any OneginiSDKiOS.BiometricChallenge)
+  func respondWithPinFallback(to challenge: any OneginiSDKiOS.BiometricChallenge)
+  func cancel(_ challenge: any OneginiSDKiOS.BiometricChallenge)
+}
+@objc @_inheritsConvenienceInitializers public class CustomRegistrationNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var clientAssertionService: (any OneginiSDKiOS.ClientAssertionServiceProtocol)?
+  @objc public func sendCustomRegistrationInitRequest(identityProvider: OneginiSDKiOS.ONGIdentityProvider, data: Swift.String?, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, completion: @escaping ((Swift.String?, OneginiSDKiOS.ONGCustomInfo?, (any Swift.Error)?) -> Swift.Void))
+  @objc public func sendCustomRegistrationFinishRequest(identityProvider: OneginiSDKiOS.ONGIdentityProvider, scopes: [Swift.String]?, profileId: Swift.String, isStatelessUser: Swift.Bool, data: Swift.String?, transactionId: Swift.String?, clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, completion: @escaping ((OneginiSDKiOS.ONGSessionTokens?, OneginiSDKiOS.ONGCustomInfo?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol AuthenticationDelegate : AnyObject {
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceivePinChallenge challenge: any OneginiSDKiOS.PinChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveBiometricChallenge challenge: any OneginiSDKiOS.BiometricChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartAuthenticationForUser profile: any OneginiSDKiOS.UserProfile, authenticator: any OneginiSDKiOS.Authenticator)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didAuthenticateUser profile: any OneginiSDKiOS.UserProfile, authenticator: any OneginiSDKiOS.Authenticator, info customAuthInfo: (any OneginiSDKiOS.CustomInfo)?)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToAuthenticateUser profile: any OneginiSDKiOS.UserProfile, authenticator: any OneginiSDKiOS.Authenticator, error: any Swift.Error)
+}
+extension OneginiSDKiOS.AuthenticationDelegate {
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartAuthenticationForUser userProfile: any OneginiSDKiOS.UserProfile, authenticator: any OneginiSDKiOS.Authenticator)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomAuthFinishAuthenticationChallenge challenge: any OneginiSDKiOS.CustomAuthFinishAuthenticationChallenge)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didAuthenticateUser profile: any OneginiSDKiOS.UserProfile, authenticator: any OneginiSDKiOS.Authenticator, info customAuthInfo: (any OneginiSDKiOS.CustomInfo)?)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToAuthenticateUser profile: any OneginiSDKiOS.UserProfile, authenticator: any OneginiSDKiOS.Authenticator, error: any Swift.Error)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveBiometricChallenge challenge: any OneginiSDKiOS.BiometricChallenge)
+}
+@objc @_inheritsConvenienceInitializers public class PendingMobileAuthRequestsNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public var clientAssertionService: (any OneginiSDKiOS.ClientAssertionServiceProtocol)?
+  @objc public func fetchPendingPushMobileAuthRequests(clientId: Swift.String, privateKey: Security.SecKey, uuid: Swift.String, completion: @escaping ((Swift.Array<OneginiSDKiOS.ONGPendingMobileAuthRequest>?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AppToWebSingleSignOnNetworkService : ObjectiveC.NSObject {
+  @objc public var urlSessionModel: OneginiSDKiOS.ONGURLSessionModel?
+  @objc public var oAuthSessionModel: OneginiSDKiOS.ONGOAuthSessionModel?
+  @objc public var requestSerializerModel: OneginiSDKiOS.ONGRequestSerializerModel?
+  @objc public func sendCreateLoginTokenRequest(targetURL: Foundation.URL, completion: @escaping ((Foundation.URL?, Swift.String?, (any Swift.Error)?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol ChangePinDelegate {
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceivePinChallenge challenge: any OneginiSDKiOS.PinChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCreatePinChallenge challenge: any OneginiSDKiOS.CreatePinChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartPinChangeForUser profile: any OneginiSDKiOS.UserProfile)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didChangePinForUser profile: any OneginiSDKiOS.UserProfile)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToChangePinForUser profile: any OneginiSDKiOS.UserProfile, error: any Swift.Error)
+}
+extension OneginiSDKiOS.ChangePinDelegate {
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didStartPinChangeForUser profile: any OneginiSDKiOS.UserProfile)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didChangePinForUser profile: any OneginiSDKiOS.UserProfile)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToChangePinForUser profile: any OneginiSDKiOS.UserProfile, error: any Swift.Error)
+}
+public protocol RegistrationDelegate : AnyObject {
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCreatePinChallenge challenge: any OneginiSDKiOS.CreatePinChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveBrowserRegistrationChallenge challenge: any OneginiSDKiOS.BrowserRegistrationChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomRegistrationInitChallenge challenge: any OneginiSDKiOS.CustomRegistrationChallenge)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomRegistrationFinishChallenge challenge: any OneginiSDKiOS.CustomRegistrationChallenge)
+  func userClientDidStartRegistration(_ userClient: any OneginiSDKiOS.UserClient)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didRegisterUser profile: any OneginiSDKiOS.UserProfile, with identityProvider: any OneginiSDKiOS.IdentityProvider, info: (any OneginiSDKiOS.CustomInfo)?)
+  func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToRegisterUserWith identityProvider: any OneginiSDKiOS.IdentityProvider, error: any Swift.Error)
+}
+extension OneginiSDKiOS.RegistrationDelegate {
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveBrowserRegistrationChallenge challenge: any OneginiSDKiOS.BrowserRegistrationChallenge)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomRegistrationInitChallenge challenge: any OneginiSDKiOS.CustomRegistrationChallenge)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didReceiveCustomRegistrationFinishChallenge challenge: any OneginiSDKiOS.CustomRegistrationChallenge)
+  public func userClientDidStartRegistration(_ userClient: any OneginiSDKiOS.UserClient)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didRegisterUser profile: any OneginiSDKiOS.UserProfile, with: any OneginiSDKiOS.IdentityProvider, info: (any OneginiSDKiOS.CustomInfo)?)
+  public func userClient(_ userClient: any OneginiSDKiOS.UserClient, didFailToRegisterUserWith identityProvider: any OneginiSDKiOS.IdentityProvider, error: any Swift.Error)
+}
+extension OneginiSDKiOS.ParametersEncoding : Swift.Equatable {}
+extension OneginiSDKiOS.ParametersEncoding : Swift.Hashable {}
+extension OneginiSDKiOS.HTTPMethod : Swift.Equatable {}
+extension OneginiSDKiOS.HTTPMethod : Swift.Hashable {}
+extension OneginiSDKiOS.HTTPMethod : Swift.RawRepresentable {}
+extension OneginiSDKiOS.ServerFunction : Swift.Equatable {}
+extension OneginiSDKiOS.ServerFunction : Swift.Hashable {}
+extension OneginiSDKiOS.ServerFunction : Swift.RawRepresentable {}
+extension OneginiSDKiOS.NetworkTaskState : Swift.Equatable {}
+extension OneginiSDKiOS.NetworkTaskState : Swift.Hashable {}
+extension OneginiSDKiOS.NetworkTaskState : Swift.RawRepresentable {}
+extension OneginiSDKiOS.AuthenticatorType : Swift.Equatable {}
+extension OneginiSDKiOS.AuthenticatorType : Swift.Hashable {}
+extension OneginiSDKiOS.AuthenticatorType : Swift.RawRepresentable {}
+extension OneginiSDKiOS.AuthenticatorsType : Swift.Equatable {}
+extension OneginiSDKiOS.AuthenticatorsType : Swift.Hashable {}

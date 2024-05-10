@@ -1,0 +1,11 @@
+framework module OneginiSDKiOS {
+  umbrella header "OneginiSDKiOS.h"
+  export *
+
+  module * { export * }
+}
+
+module OneginiSDKiOS.Swift {
+  header "OneginiSDKiOS-Swift.h"
+  requires objc
+}
