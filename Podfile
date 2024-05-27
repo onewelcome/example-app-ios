@@ -3,10 +3,10 @@ platform :ios, '13.0'
 inhibit_all_warnings!
 use_frameworks!
 
-plugin 'cocoapods-art', :sources => ['onegini']
+plugin 'cocoapods-art', :sources => ['cocoapods-release-local']
 
 def oneginiSDKiOS
-    pod 'OneginiSDKiOS', :git => 'git@github.com:onewelcome/sdk-ios.git', :branch => 'develop'
+  pod 'OneginiSDKiOS', '~> 13.0.0-BETA'
 end
 
 def externalRegularDependencies
@@ -40,3 +40,4 @@ post_install do |installer|
     end
   end
 end
+
