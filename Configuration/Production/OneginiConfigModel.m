@@ -13,10 +13,10 @@
 {
     return @{
              @"ONGServerType" : @"access",
-             @"ONGServerVersion" : @"1.39.0",
+             @"ONGServerVersion" : @"1.46.1",
              @"ONGAppIdentifier" : @"ExampleApp",
              @"ONGAppPlatform" : @"ios",
-             @"ONGAppVersion" : @"6.2.3",
+             @"ONGAppVersion" : @"6.2.5",
              @"ONGAppBaseURL" : @"https://mobile-security-proxy.onegini.com",
              @"ONGResourceBaseURL" : @"https://mobile-security-proxy.onegini.com/resources/",
              @"ONGRedirectURL" : @"oneginiexample://loginsuccess",
@@ -25,7 +25,7 @@
 
 + (NSString *)serverPublicKey
 {
-    return @"050EE6EA2545EB29F817C43D88D34256B363ADBB10B60B05163A1863E244B43F";
+    return @"626B83902AAD922CFD5D4E37010171B1B707224628B54079657FCD3147A34322";
 }
 
 @end
