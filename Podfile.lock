@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (5.7.1)
   - BetterSegmentedControl (2.0.1)
-  - OneginiSDKiOS (13.0.0-BETA):
+  - OneginiSDKiOS (13.0.0-BETA-dev):
     - Alamofire (~> 5.7.0)
     - Typhoon (~> 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
@@ -19,7 +19,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0.0)
-  - OneginiSDKiOS (~> 13.0.0-BETA)
+  - OneginiSDKiOS (~> 13.0.0-BETA-dev)
   - SkyFloatingLabelTextField (~> 3.0)
   - SwiftLint (~> 0.50)
   - Swinject (= 2.8.1)
@@ -40,13 +40,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: 53a99bf8944fead53e4bd97a4b4b583d539631df
+  OneginiSDKiOS: d5398e998d32ece8295a4b8d807204c0dca535ed
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftLint: 3fe909719babe5537c552ee8181c0031392be933
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: b0f85f48894a7a4256c5c1439e4785a69ab1e5e6
+PODFILE CHECKSUM: bc3edc95f05448754940109155f0b1ff1e9abac3
 
 COCOAPODS: 1.15.2

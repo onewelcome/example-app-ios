@@ -13,7 +13,7 @@
 {
     return @{
              @"ONGServerType" : @"access",
-             @"ONGServerVersion" : @"1.46.1",
+             @"ONGServerVersion" : @"1.47.0",
              @"ONGAppIdentifier" : @"ExampleApp",
              @"ONGAppPlatform" : @"ios",
              @"ONGAppVersion" : @"6.2.5",
