@@ -121,12 +121,14 @@ extension LoginViewController: UITableViewDelegate {
                 selectedProfile = profiles[indexPath.row]
                 guard let loginDelegate = loginDelegate else { return }
                 authenticators = Array(loginDelegate.loginView(self, authenticatorsForProfile: selectedProfile))
+                
+                cell.tickImage.image = #imageLiteral(resourceName: "tick")
+                reloadAuthenticators()
             }
-            
-            loginDelegate?.loginView(self, implicitDataForProfile: selectedProfile, completion: { (implicitDataString) in
+            self.implicitData.text = "Loading..."
+            loginDelegate?.loginView(self, implicitDataForProfile: selectedProfile) { implicitDataString in
                 self.implicitData.text = implicitDataString
-            })
-            cell.tickImage.image = #imageLiteral(resourceName: "tick")
+            }
         } else if tableView == authenticatorsTableView {
             let authenticator = authenticators[indexPath.row]
             loginDelegate?.loginView(self, didLoginProfile: selectedProfile, withAuthenticator: authenticator)
