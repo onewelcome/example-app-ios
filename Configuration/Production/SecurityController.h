@@ -3,5 +3,4 @@
 @interface SecurityController : NSObject
 + (bool)rootDetection;
 + (bool)debugDetection;
-+ (bool)debugLogs;
 @end
