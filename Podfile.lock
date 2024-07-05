@@ -1,41 +1,25 @@
 PODS:
-  - AFNetworking (4.0.1):
-    - AFNetworking/NSURLSession (= 4.0.1)
-    - AFNetworking/Reachability (= 4.0.1)
-    - AFNetworking/Security (= 4.0.1)
-    - AFNetworking/Serialization (= 4.0.1)
-    - AFNetworking/UIKit (= 4.0.1)
-  - AFNetworking/NSURLSession (4.0.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (4.0.1)
-  - AFNetworking/Security (4.0.1)
-  - AFNetworking/Serialization (4.0.1)
-  - AFNetworking/UIKit (4.0.1):
-    - AFNetworking/NSURLSession
   - Alamofire (5.7.1)
   - BetterSegmentedControl (2.0.1)
-  - OneginiSDKiOS (12.2.2-SNAPSHOT):
-    - AFNetworking (= 4.0.1)
+  - OneginiSDKiOS (13.0.0-BETA-dev):
     - Alamofire (~> 5.7.0)
-    - Typhoon (= 4.0.8)
+    - Typhoon (~> 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
-  - SwiftLint (0.53.0)
+  - SwiftLint (0.55.1)
   - Swinject (2.8.1)
   - TransitionButton (0.5.3)
-  - Typhoon (4.0.8):
-    - Typhoon/DeallocNotifier (= 4.0.8)
-    - Typhoon/IntrospectionUtils (= 4.0.8)
-    - Typhoon/no-arc (= 4.0.8)
-  - Typhoon/DeallocNotifier (4.0.8)
-  - Typhoon/IntrospectionUtils (4.0.8)
-  - Typhoon/no-arc (4.0.8):
+  - Typhoon (4.0.9):
+    - Typhoon/DeallocNotifier (= 4.0.9)
+    - Typhoon/IntrospectionUtils (= 4.0.9)
+    - Typhoon/no-arc (= 4.0.9)
+  - Typhoon/DeallocNotifier (4.0.9)
+  - Typhoon/IntrospectionUtils (4.0.9)
+  - Typhoon/no-arc (4.0.9):
     - Typhoon/IntrospectionUtils
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0.0)
-  - OneginiSDKiOS (from `/Users/Szymon.Wawszczak/Projekty/sdk-ios-develop`)
+  - OneginiSDKiOS (~> 13.0.0-BETA)
   - SkyFloatingLabelTextField (~> 3.0)
   - SwiftLint (~> 0.50)
   - Swinject (= 2.8.1)
@@ -43,7 +27,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
     - Alamofire
     - BetterSegmentedControl
     - SkyFloatingLabelTextField
@@ -51,22 +34,19 @@ SPEC REPOS:
     - Swinject
     - TransitionButton
     - Typhoon
-
-EXTERNAL SOURCES:
-  OneginiSDKiOS:
-    :path: "/Users/Szymon.Wawszczak/Projekty/sdk-ios-develop"
+  https://repo.onewelcome.com/artifactory/api/pods/cocoapods-beta:
+    - OneginiSDKiOS
 
 SPEC CHECKSUMS:
-  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: d608464083e7dfed3ff2d9f7800357c4684858a5
+  OneginiSDKiOS: d5398e998d32ece8295a4b8d807204c0dca535ed
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SwiftLint: 5ce4d6a8ff83f1b5fd5ad5dbf30965d35af65e44
+  SwiftLint: 3fe909719babe5537c552ee8181c0031392be933
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
-  Typhoon: f8901ef1ad0e2fa520cda0f668492dd33353f7dc
+  Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: a304e2dbf90298bcfe27b4e6022d196cd9ced8d8
+PODFILE CHECKSUM: adfd116756f90672de4823c75e2487678070ee1a
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2
