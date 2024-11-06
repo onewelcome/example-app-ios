@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         // Private repositories
-        .package(id: "OneWelcome.SDKSPM-dev", exact: "0.9.0"),
+        .package(id: "OneWelcome.SDKSPM", from: "12.4.0"),
         
         // Local repositories for 3rd party libs
         .package(path: "./Sources/Swinject.xcframework.zip"),
@@ -29,7 +29,7 @@ let package = Package(
             name: "SPM",
             dependencies: [
                 "Swinject", "SkyFloatingLabelTextField", "BetterSegmentedControl", "TransitionButton",
-                .product(name: "SDKSPM", package: "OneWelcome.SDKSPM-dev"),
+                .product(name: "SDKSPM", package: "OneWelcome.SDKSPM"),
             ]
         )
     ]

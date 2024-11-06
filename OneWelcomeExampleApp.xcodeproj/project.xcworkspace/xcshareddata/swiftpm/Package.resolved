@@ -6,15 +6,15 @@
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "0.9.1"
+        "version" : "0.9.2"
       }
     },
     {
-      "identity" : "OneWelcome.SDKSPM-dev",
+      "identity" : "OneWelcome.SDKSPM",
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "0.9.0"
+        "version" : "12.4.0"
       }
     }
   ],

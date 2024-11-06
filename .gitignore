@@ -37,3 +37,4 @@ Carthage/Build
 .idea
 
 Dependencies/
+SPM/Sources/OneginiSDKiOS.xcframework

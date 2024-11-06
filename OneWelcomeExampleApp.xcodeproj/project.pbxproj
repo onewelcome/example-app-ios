@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01FA8E66A96F00066807475F /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D139E411D4D61825311B06B0 /* SecurityController.m */; };
 		17D52468E68847BCC0A409C1 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = E2291ED418FD123B5C9A9D77 /* SecurityController.h */; };
 		1B144B4DEBB87640E1DBB786 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */; };
 		38E927FC6600A5F3A51076AE /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5646145C874C47AE520E88C4 /* OneginiConfigModel.h */; };
@@ -31,7 +30,6 @@
 		57A343732B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A343712B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift */; };
 		57B353312AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
 		57B353322AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
-		57B353332AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B353302AAAFF710049516E /* AllowedIdentityProviders.swift */; };
 		7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDE72110AF7800DF0043 /* AuthenticatorsViewController.swift */; };
 		7E01FDEA2110AF7800DF0043 /* AuthenticatorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E01FDE82110AF7800DF0043 /* AuthenticatorsViewController.xib */; };
 		7E01FDEC2110B06600DF0043 /* AuthenticatorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E01FDEB2110B06600DF0043 /* AuthenticatorsPresenter.swift */; };
@@ -59,7 +57,6 @@
 		7E300AEB20DBE17600EF1A79 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AE920DBE17600EF1A79 /* WelcomeViewController.xib */; };
 		7E300AEF20DBE31F00EF1A79 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E300AED20DBE31F00EF1A79 /* StartupViewController.swift */; };
 		7E300AF020DBE31F00EF1A79 /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E300AEE20DBE31F00EF1A79 /* StartupViewController.xib */; };
-		7E40D8C8258B5945005C8662 /* Startup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E40D8C7258B5945005C8662 /* Startup.swift */; };
 		7E45476D20DD19BC00FB620F /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45476B20DD19BC00FB620F /* RegisterUserViewController.swift */; };
 		7E45476E20DD19BC00FB620F /* RegisterUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E45476C20DD19BC00FB620F /* RegisterUserViewController.xib */; };
 		7E45477220DD422600FB620F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
@@ -88,15 +85,6 @@
 		7E7AE4272100B26F002C49D2 /* GenericErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */; };
 		7E7BA3E320E65338005F1FD1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E220E65338005F1FD1 /* AppRouter.swift */; };
 		7E7BA3E520E65431005F1FD1 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */; };
-		7E804F5E258A5C6A000E110E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E804F5D258A5C6A000E110E /* WidgetKit.framework */; };
-		7E804F60258A5C6A000E110E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E804F5F258A5C6A000E110E /* SwiftUI.framework */; };
-		7E804F63258A5C6A000E110E /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E804F62258A5C6A000E110E /* Widget.swift */; };
-		7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E804F64258A5C6D000E110E /* Assets.xcassets */; };
-		7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7E804FA2258A5D3F000E110E /* (null) in Resources */ = {isa = PBXBuildFile; };
-		7E804FA3258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7E804FA4258A5D3F000E110E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7E804FAC258A5D72000E110E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1F6132100BE3500741E92 /* AppError.swift */; };
 		7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A181B2113141C0063BDF4 /* ProfileViewController.swift */; };
 		7E8A181E2113141C0063BDF4 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A181C2113141C0063BDF4 /* ProfileViewController.xib */; };
 		7E8A1822211326D00063BDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1821211326D00063BDF4 /* ProfilePresenter.swift */; };
@@ -142,7 +130,6 @@
 		86CD10E8212C4A9A005FA824 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10E7212C4A9A005FA824 /* TabBarController.swift */; };
 		86CD10EC212C527F005FA824 /* PendingMobileAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD10EA212C527F005FA824 /* PendingMobileAuthTableViewCell.swift */; };
 		86CD10ED212C527F005FA824 /* PendingMobileAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD10EB212C527F005FA824 /* PendingMobileAuthTableViewCell.xib */; };
-		8D19480E28ABD77300C66DC7 /* ImplicitDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D19480D28ABD77300C66DC7 /* ImplicitDataView.swift */; };
 		9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
 		9E2988D6294A03C40025E1D7 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D3294A03C40025E1D7 /* AppIcon@2x.png */; };
 		9E2988D7294A03C40025E1D7 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988D4294A03C40025E1D7 /* AppIcon@3x.png */; };
@@ -161,7 +148,6 @@
 		9EFDEC2629D4777600521793 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2129D4777600521793 /* UIColorExtension.swift */; };
 		9EFDEC2729D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
 		9EFDEC2829D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
-		A65CC031E4F03ECA66EDCED3 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 86119764362F2A4EA3A55E58 /* SecurityController.h */; };
 		AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
 		AD07D3DD28771F4F0095571A /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
@@ -266,30 +252,10 @@
 		AD07D44528771F4F0095571A /* PasswordAuthenticatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E241E132138098D008FCD9A /* PasswordAuthenticatorViewController.xib */; };
 		AD07D44828771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
 		AD07D44928771F4F0095571A /* (null) in Headers */ = {isa = PBXBuildFile; };
-		AD07D44B28771F4F0095571A /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */; };
-		AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E241E03212D54C8008FCD9A /* FetchImplicitDataInteractor.swift */; };
 		ADE6AFAA28785BE600CC3EE6 /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */; };
 		ADE6AFAC28785BE600CC3EE6 /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */; };
 		C2C18885E04EEA0E7E56F1AD /* OneginiConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C86694A05A0BDF3521E08C /* OneginiConfigModel.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7E804F67258A5C6D000E110E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E804F5B258A5C69000E110E;
-			remoteInfo = WidgetExtension;
-		};
-		AD07D3D828771F4F0095571A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E300A5D20D7B8E100EF1A79 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E804F5B258A5C69000E110E;
-			remoteInfo = WidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7E804F6A258A5C6D000E110E /* Embed App Extensions */ = {
@@ -298,7 +264,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7E804F69258A5C6D000E110E /* WidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,7 +294,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AD07D44B28771F4F0095571A /* WidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,7 +371,6 @@
 		7E7AE4262100B26F002C49D2 /* GenericErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorDomainMapping.swift; sourceTree = "<group>"; };
 		7E7BA3E220E65338005F1FD1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		7E7BA3E420E65431005F1FD1 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
-		7E804F5C258A5C69000E110E /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E804F5D258A5C6A000E110E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7E804F5F258A5C6A000E110E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		7E804F62258A5C6A000E110E /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
@@ -453,7 +416,6 @@
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
-		86119764362F2A4EA3A55E58 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullToRefreshTableViewCell.xib; sourceTree = "<group>"; };
 		86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthViewController.swift; sourceTree = "<group>"; };
@@ -475,7 +437,6 @@
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
 		ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
-		D139E411D4D61825311B06B0 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
 		E2291ED418FD123B5C9A9D77 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -486,15 +447,6 @@
 			files = (
 				5797C64E2C91CCBA000A1E0F /* SPM in Frameworks */,
 				5797C6512C91CDAC000A1E0F /* SPM in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E804F59258A5C69000E110E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E804F60258A5C6A000E110E /* SwiftUI.framework in Frameworks */,
-				7E804F5E258A5C6A000E110E /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +532,6 @@
 			isa = PBXGroup;
 			children = (
 				7E300A6520D7B8E100EF1A79 /* OneWelcomeExampleApp.app */,
-				7E804F5C258A5C69000E110E /* WidgetExtension.appex */,
 				AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */,
 			);
 			name = Products;
@@ -977,8 +928,6 @@
 			children = (
 				ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */,
 				ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */,
-				86119764362F2A4EA3A55E58 /* SecurityController.h */,
-				D139E411D4D61825311B06B0 /* SecurityController.m */,
 			);
 			name = Production;
 			path = Configuration/Production;
@@ -992,7 +941,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE6AFAA28785BE600CC3EE6 /* OneginiConfigModel.h in Headers */,
-				A65CC031E4F03ECA66EDCED3 /* SecurityController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,7 +972,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7E804F68258A5C6D000E110E /* PBXTargetDependency */,
 			);
 			name = OneWelcomeExampleApp;
 			packageProductDependencies = (
@@ -1034,23 +981,6 @@
 			productName = OneginiExampleAppSwift;
 			productReference = 7E300A6520D7B8E100EF1A79 /* OneWelcomeExampleApp.app */;
 			productType = "com.apple.product-type.application";
-		};
-		7E804F5B258A5C69000E110E /* WidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7E804F6D258A5C6D000E110E /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
-			buildPhases = (
-				7E804F58258A5C69000E110E /* Sources */,
-				7E804F59258A5C69000E110E /* Frameworks */,
-				7E804F5A258A5C69000E110E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WidgetExtension;
-			productName = WidgetExtension;
-			productReference = 7E804F5C258A5C69000E110E /* WidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		AD07D3D628771F4F0095571A /* OneWelcomeExampleAppDebug */ = {
 			isa = PBXNativeTarget;
@@ -1066,7 +996,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AD07D3D728771F4F0095571A /* PBXTargetDependency */,
 			);
 			name = OneWelcomeExampleAppDebug;
 			productName = OneginiExampleAppSwift;
@@ -1092,9 +1021,6 @@
 							};
 						};
 					};
-					7E804F5B258A5C69000E110E = {
-						CreatedOnToolsVersion = 12.2;
-					};
 				};
 			};
 			buildConfigurationList = 7E300A6020D7B8E100EF1A79 /* Build configuration list for PBXProject "OneWelcomeExampleApp" */;
@@ -1115,7 +1041,6 @@
 			targets = (
 				7E300A6420D7B8E100EF1A79 /* OneWelcomeExampleApp */,
 				AD07D3D628771F4F0095571A /* OneWelcomeExampleAppDebug */,
-				7E804F5B258A5C69000E110E /* WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1156,15 +1081,6 @@
 				7E4547A120E5198C00FB620F /* DashboardViewController.xib in Resources */,
 				9E2988D5294A03C40025E1D7 /* AppIcon@2x.png in Resources */,
 				7E241E152138098D008FCD9A /* PasswordAuthenticatorViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E804F5A258A5C69000E110E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E804FA2258A5D3F000E110E /* (null) in Resources */,
-				7E804F65258A5C6D000E110E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,23 +1217,6 @@
 				7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,
-				01FA8E66A96F00066807475F /* SecurityController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E804F58258A5C69000E110E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E804F63258A5C6A000E110E /* Widget.swift in Sources */,
-				8D19480E28ABD77300C66DC7 /* ImplicitDataView.swift in Sources */,
-				7E40D8C8258B5945005C8662 /* Startup.swift in Sources */,
-				AD7476FF289A81300013DD99 /* FetchImplicitDataInteractor.swift in Sources */,
-				AD7476FC289A735F0013DD99 /* OneginiConfigModel.m in Sources */,
-				7E804FAC258A5D72000E110E /* AppError.swift in Sources */,
-				7E804FA4258A5D3F000E110E /* (null) in Sources */,
-				57B353332AAAFF710049516E /* AllowedIdentityProviders.swift in Sources */,
-				7E804FA3258A5D3F000E110E /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1420,19 +1319,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7E804F68258A5C6D000E110E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7E804F5B258A5C69000E110E /* WidgetExtension */;
-			targetProxy = 7E804F67258A5C6D000E110E /* PBXContainerItemProxy */;
-		};
-		AD07D3D728771F4F0095571A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7E804F5B258A5C69000E110E /* WidgetExtension */;
-			targetProxy = AD07D3D828771F4F0095571A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7E300A7120D7B8E200EF1A79 /* LaunchScreen.storyboard */ = {
@@ -1584,7 +1470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.2.4;
+				MARKETING_VERSION = 6.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1598,9 +1484,11 @@
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIconDark";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution: OneWelcome B.V. (FSS5X3XZNY)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FSS5X3XZNY;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1610,57 +1498,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
+				MARKETING_VERSION = 6.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.authenticator.prod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "OW Authenticator Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		7E804F6B258A5C6D000E110E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FSS5X3XZNY;
-				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.0.1;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift.ImplicitWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		7E804F6C258A5C6D000E110E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FSS5X3XZNY;
-				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 3.0.1;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift.ImplicitWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1738,15 +1581,6 @@
 			buildConfigurations = (
 				7E300A8E20D7B8E300EF1A79 /* Debug */,
 				7E300A8F20D7B8E300EF1A79 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7E804F6D258A5C6D000E110E /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7E804F6B258A5C6D000E110E /* Debug */,
-				7E804F6C258A5C6D000E110E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
