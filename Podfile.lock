@@ -15,7 +15,7 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - BetterSegmentedControl (2.0.1)
-  - OneginiSDKiOS (12.3.6):
+  - OneginiSDKiOS (12.4.0):
     - AFNetworking (~> 4.0.1)
     - Typhoon (~> 4.0.8)
   - SkyFloatingLabelTextField (3.8.0)
@@ -33,7 +33,7 @@ PODS:
 
 DEPENDENCIES:
   - BetterSegmentedControl (~> 2.0.0)
-  - OneginiSDKiOS (~> 12.3.6)
+  - OneginiSDKiOS (~> 12.4.0)
   - SkyFloatingLabelTextField (~> 3.0)
   - SwiftLint (~> 0.50)
   - Swinject (= 2.8.1)
@@ -48,19 +48,19 @@ SPEC REPOS:
     - Swinject
     - TransitionButton
     - Typhoon
-  https://repo.onewelcome.com/artifactory/api/pods/cocoapods-public:
+  https://repo.onewelcome.com/artifactory/api/pods/cocoapods-release-local:
     - OneginiSDKiOS
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
-  OneginiSDKiOS: ab93e41d8818cc12dc5488c09e759aa0ca1626c8
+  OneginiSDKiOS: 6eacd54e7b4e4626cb9fcb6c83053f48967449ff
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
   Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
   Typhoon: 1973c93ecfb3edb963d78b10e715bc2911475bd2
 
-PODFILE CHECKSUM: 751fbbdc1d42988f9e2734d02c56d4af2d224619
+PODFILE CHECKSUM: 37f3c3f041d7500d3fa1ad92d561cd15480caf68
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

@@ -1,12 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '13.0'
+platform :ios, '15.0'
 inhibit_all_warnings!
 use_frameworks!
 
-plugin 'cocoapods-art', :sources => ['onegini']
+plugin 'cocoapods-art', :sources => ['cocoapods-release-local']
 
 def oneginiSDKiOS
-   pod 'OneginiSDKiOS', '~> 12.3.6'
+  pod 'OneginiSDKiOS', '~> 12.4.0'
 end
 
 def externalRegularDependencies
@@ -34,7 +34,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
