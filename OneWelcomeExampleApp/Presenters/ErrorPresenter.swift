@@ -16,8 +16,15 @@
 import UIKit
 
 protocol ErrorPresenterProtocol {
+    func showErrorAlert(error: AppError)
     func showErrorAlert(error: AppError, okButtonHandler: ((UIAlertAction) -> Void)?)
     func showErrorAlertWithRetryAction(error: AppError, retryHandler: @escaping ((UIAlertAction) -> Void))
+}
+
+extension ErrorPresenterProtocol {
+    func showErrorAlert(error: AppError) {
+        showErrorAlert(error: error, okButtonHandler: nil)
+    }
 }
 
 class ErrorPresenter: ErrorPresenterProtocol {
