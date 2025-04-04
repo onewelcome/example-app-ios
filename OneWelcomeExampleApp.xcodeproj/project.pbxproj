@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01FA8E66A96F00066807475F /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D139E411D4D61825311B06B0 /* SecurityController.m */; };
 		17D52468E68847BCC0A409C1 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = E2291ED418FD123B5C9A9D77 /* SecurityController.h */; };
 		1B144B4DEBB87640E1DBB786 /* SecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */; };
 		38E927FC6600A5F3A51076AE /* OneginiConfigModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5646145C874C47AE520E88C4 /* OneginiConfigModel.h */; };
@@ -161,7 +160,6 @@
 		9EFDEC2629D4777600521793 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2129D4777600521793 /* UIColorExtension.swift */; };
 		9EFDEC2729D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
 		9EFDEC2829D4777600521793 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2229D4777600521793 /* ButtonExtension.swift */; };
-		A65CC031E4F03ECA66EDCED3 /* SecurityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 86119764362F2A4EA3A55E58 /* SecurityController.h */; };
 		AD07D3DB28771F4F0095571A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45478D20E24DEE00FB620F /* PinViewController.swift */; };
 		AD07D3DC28771F4F0095571A /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45477020DD422500FB620F /* ButtonTableViewCell.swift */; };
 		AD07D3DD28771F4F0095571A /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4547A620E61DA200FB620F /* ViewControllerAssembly.swift */; };
@@ -453,7 +451,6 @@
 		7EF384E420EA66F800914E96 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		7EF5F39220F8BB7A004D60A3 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		820FC6E4C154F3FEF8A4C4B3 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
-		86119764362F2A4EA3A55E58 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 		866384D4212EF48900DD112D /* PullToRefreshTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullToRefreshTableViewCell.xib; sourceTree = "<group>"; };
 		86ABF34D2126E29300C5BE60 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		86ABF3502126FE8600C5BE60 /* PendingMobileAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMobileAuthViewController.swift; sourceTree = "<group>"; };
@@ -475,7 +472,6 @@
 		AD07D45028771F4F0095571A /* OneWelcomeExampleAppDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneWelcomeExampleAppDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneginiConfigModel.h; sourceTree = "<group>"; };
 		ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneginiConfigModel.m; sourceTree = "<group>"; };
-		D139E411D4D61825311B06B0 /* SecurityController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecurityController.m; sourceTree = "<group>"; };
 		E2291ED418FD123B5C9A9D77 /* SecurityController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecurityController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -977,8 +973,6 @@
 			children = (
 				ADE6AFA628785BE600CC3EE6 /* OneginiConfigModel.h */,
 				ADE6AFA828785BE600CC3EE6 /* OneginiConfigModel.m */,
-				86119764362F2A4EA3A55E58 /* SecurityController.h */,
-				D139E411D4D61825311B06B0 /* SecurityController.m */,
 			);
 			name = Production;
 			path = Configuration/Production;
@@ -992,7 +986,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE6AFAA28785BE600CC3EE6 /* OneginiConfigModel.h in Headers */,
-				A65CC031E4F03ECA66EDCED3 /* SecurityController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,7 +1294,6 @@
 				7E241DFC212C0BE4008FCD9A /* AppDetailsViewController.swift in Sources */,
 				7E300AD220DA7C7700EF1A79 /* AppAssembly.swift in Sources */,
 				7EB1F6192100C41D00741E92 /* AuthenticationErrorDomainMapping.swift in Sources */,
-				01FA8E66A96F00066807475F /* SecurityController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1584,8 +1576,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
+				MARKETING_VERSION = 6.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.authenticator.prod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1610,8 +1602,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
+				MARKETING_VERSION = 6.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.authenticator.prod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1635,7 +1627,7 @@
 				MARKETING_VERSION = 3.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift.ImplicitWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.authenticator.prod.ImplicitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1658,7 +1650,7 @@
 				);
 				MARKETING_VERSION = 3.0.1;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift.ImplicitWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.authenticator.prod.ImplicitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
