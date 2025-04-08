@@ -152,6 +152,8 @@
 		9E2988E5294A0D380025E1D7 /* AppIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2988E1294A0D380025E1D7 /* AppIconDark.png */; };
 		9E4A871A294B48D600A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
 		9E4A871B294B4A0300A6D14D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */; };
+		9E5D36432DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D36422DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift */; };
+		9E5D36442DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D36422DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift */; };
 		9EECB5B22948BC85006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9EECB5B32948BCB9006095DF /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECB5B12948BC85006095DF /* ProfileInteractor.swift */; };
 		9EFDEC2329D4777600521793 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFDEC2029D4777600521793 /* ErrorExtension.swift */; };
@@ -465,6 +467,7 @@
 		9E2988E0294A0D380025E1D7 /* AppIconDark--@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconDark--@3x.png"; sourceTree = "<group>"; };
 		9E2988E1294A0D380025E1D7 /* AppIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconDark.png; sourceTree = "<group>"; };
 		9E4A8719294B48D600A6D14D /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
+		9E5D36422DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAuthRequestErrorDomainMapping.swift; sourceTree = "<group>"; };
 		9EECB5B12948BC85006095DF /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		9EFDEC2029D4777600521793 /* ErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		9EFDEC2129D4777600521793 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -817,6 +820,7 @@
 				575ED87F298BF2A10094CBFD /* FetchResourceErrorMapping.swift */,
 				573335CD2B03C06E001B3B3C /* ChangePinErrorDomainMapping.swift */,
 				57A343712B2C3C78001B47BE /* RegistrationErrorDomainMapping.swift */,
+				9E5D36422DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift */,
 			);
 			path = ErrorMappings;
 			sourceTree = "<group>";
@@ -1250,6 +1254,7 @@
 				7E8A181D2113141C0063BDF4 /* ProfileViewController.swift in Sources */,
 				57850DA82BA307A2008622BA /* IdTokenPresenter.swift in Sources */,
 				7E01FDE92110AF7800DF0043 /* AuthenticatorsViewController.swift in Sources */,
+				9E5D36442DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift in Sources */,
 				5731AFB5296EC93F00E6165D /* QRCodePresenter.swift in Sources */,
 				7EBF8B7E2121BBFC00C3D94E /* AuthenticatorRegistrationErrorDomainMapping.swift in Sources */,
 				7E241E04212D54C8008FCD9A /* FetchImplicitDataInteractor.swift in Sources */,
@@ -1370,6 +1375,7 @@
 				AD07D40528771F4F0095571A /* FetchImplicitDataInteractor.swift in Sources */,
 				AD07D40628771F4F0095571A /* InteractorAssembly.swift in Sources */,
 				AD07D40728771F4F0095571A /* ErrorMapper.swift in Sources */,
+				9E5D36432DA4553800781BFB /* MobileAuthRequestErrorDomainMapping.swift in Sources */,
 				AD07D40828771F4F0095571A /* PendingMobileAuthPresenter.swift in Sources */,
 				AD07D40928771F4F0095571A /* ChangePinEntity.swift in Sources */,
 				AD07D40A28771F4F0095571A /* FetchImplicitResourceErrorDomainMapping.swift in Sources */,
