@@ -6,19 +6,15 @@ example app.
 
 ## Installation
 
-### Setup access to the Onegini Cocoapods repository
-The Example app includes the Onegini SDK as a Cocoapod. In order to let Cocoapods download it you need to setup your account details so the SDK can be
+### Setup access to the OneWelcome SPM repository
+The Example app includes the SDK as SPM private repository. In order to let SPM download it you need to setup your account details so the SDK can be
 automatically downloaded:
 1. Make sure that you have access to the OneWelcome Artifactory repository (https://repo.onewelcome.com). If not please follow first step of [App developer quickstart](https://docs.onegini.com/app-developer-quickstart.html).
-2. Follow [Setting up the project guide](https://developer.onewelcome.com/ios/sdk/setting-up-the-project) in the Onegini SDK documentation for
+2. Follow [Setting up the project guide](https://developer.onewelcome.com/ios/sdk/setting-up-the-project) in the SDK documentation for
 instructions on configuring access to the OneWelcome Cocoapods repository.
+3. Set SPM registry with a following command:
 
->**Note** Don't forget to update the OneWelcome Cocoapods repository with the following command: `pod repo-art update onegini`. If you don't update the repo it may
-be that the SDK dependency cannot be found. If that is the case be sure to execute the command above.
-
-### Setup the Cocoapods dependencies
-1. Run `pod install` to correctly setup the Cocoapods dependencies
-2. Make sure that you open the project referring to `OneWelcomeExampleApp.xcworkspace` in Xcode or AppCode.
+`swift package-registry set --global https://repo.onewelcome.com/artifactory/api/swift/swift-snapshot-local --netrc`
 
 ## Providing token server configuration
 The example app is already configured with the token server out of the box.

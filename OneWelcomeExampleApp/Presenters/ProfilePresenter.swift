@@ -29,6 +29,7 @@ protocol ProfileViewToPresenterProtocol: AnyObject {
     func setupFetchDeviceListPresenter()
     func setupIdToken()
     func updateView()
+    func setupRefreshStatelessSessionWebPresenter()
 }
 
 class ProfilePresenter: ProfileInteractorToPresenterProtocol {
@@ -77,6 +78,22 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     func setupFetchDeviceListPresenter() {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         appRouter.setupFetchDeviceListPresenter()
+    }
+    
+    func setupRefreshStatelessSessionWebPresenter() {
+        SharedUserClient.instance.refreshStatelessSession { error in
+            guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
+            
+            if let error {
+                let message = AppError(errorDescription: error.localizedDescription)
+                appRouter.errorPresenter.showErrorAlert(error: message)
+            } else {
+                let message = AppError(title: "Success",
+                                       errorDescription: "Stateless session refreshed.",
+                                       recoverySuggestion: "")
+                appRouter.errorPresenter.showErrorAlert(error: message)
+            }
+        }
     }
     
     func updateView() {

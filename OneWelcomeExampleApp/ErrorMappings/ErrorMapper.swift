@@ -38,6 +38,8 @@ class ErrorMapper {
             return ChangePinErrorDomainMapping().mapError(error)
         case ONGRegistrationErrorDomain:
             return RegistrationErrorDomainMapping().mapError(error)
+        case ONGMobileAuthRequestErrorDomain:
+            return MobileAuthRequestErrorDomainMapping().mapError(error)
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

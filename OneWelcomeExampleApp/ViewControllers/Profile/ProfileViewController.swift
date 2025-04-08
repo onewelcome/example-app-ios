@@ -42,6 +42,10 @@ class ProfileViewController: UIViewController {
     @IBAction private func idToken() {
         profileViewToPresenter?.setupIdToken()
     }
+    
+    @IBAction private func refreshStateless() {
+        profileViewToPresenter?.setupRefreshStatelessSessionWebPresenter()
+    }
 
     @IBAction private func changePassword(_: Any) {
         profileViewToPresenter?.setupChangePinPresenter()
