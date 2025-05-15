@@ -1104,7 +1104,7 @@
 			);
 			mainGroup = 7E300A5C20D7B8E100EF1A79;
 			packageReferences = (
-				5797C64F2C91CDAC000A1E0F /* XCLocalSwiftPackageReference "SPM" */,
+				9EC9123D2DBBE01600477BE8 /* XCLocalSwiftPackageReference "SPM" */,
 			);
 			productRefGroup = 7E300A6620D7B8E100EF1A79 /* Products */;
 			projectDirPath = "";
@@ -1761,7 +1761,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5797C64F2C91CDAC000A1E0F /* XCLocalSwiftPackageReference "SPM" */ = {
+		9EC9123D2DBBE01600477BE8 /* XCLocalSwiftPackageReference "SPM" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = SPM;
 		};
