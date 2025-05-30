@@ -236,6 +236,20 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
             })
         }
     }
+    
+    func userClient(_ userClient: any UserClient, didFailToHandleOTPMobileAuthRequest otp: String, error: any Error) {
+        mobileAuthEntity = MobileAuthEntity()
+        if error.code == ONGGenericError.actionCancelled.rawValue {
+            mobileAuthPresenter?.dismiss()
+            mobileAuthQueue.dequeue()
+        } else {
+            let mappedError = ErrorMapper().mapError(error)
+            let isUserLoggedIn = false
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
+                self.mobileAuthQueue.dequeue()
+            })
+        }
+    }
 
     func userClient(_ userClient: UserClient, didHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, info customAuthenticatorInfo: CustomInfo?) {
         mobileAuthEntity = MobileAuthEntity()

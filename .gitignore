@@ -26,9 +26,6 @@ xcuserdata/
 timeline.xctimeline
 playground.xcworkspace
 
-# CocoaPods
-Pods/
-
 # Carthage
 Carthage/Checkouts
 Carthage/Build
