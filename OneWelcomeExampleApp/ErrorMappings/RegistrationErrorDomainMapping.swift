@@ -7,10 +7,6 @@ class RegistrationErrorDomainMapping {
         let title = "Registration error"
 
         switch ONGRegistrationError(rawValue: error.code) {
-        case .stateless:
-            let errorDescription = "Stateless registration not available for browser based providers."
-            let recoverySuggestion = ""
-            return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
         default:
             return AppError(errorDescription: "Something went wrong.")
         }
