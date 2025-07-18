@@ -17,7 +17,7 @@ import UIKit
 
 protocol RegisterUserInteractorProtocol: AnyObject {
     var identityProviders: [IdentityProvider] { get }
-    func startUserRegistration(identityProvider: IdentityProvider?)
+    func startUserRegistration(identityProvider: IdentityProvider?, stateless: Bool)
     func handleRedirectURL()
     func handleCreatedPin()
     func handleTwoStepCode()
@@ -45,11 +45,10 @@ extension RegisterUserInteractor: RegisterUserInteractorProtocol {
         return userClient.identityProviders
     }
 
-    func startUserRegistration(identityProvider: IdentityProvider?) {
-        switch AllowedIdentityProviders(rawValue: identityProvider?.identifier ?? "") {
-        case .stateless, .twoWayStateless:
+    func startUserRegistration(identityProvider: IdentityProvider?, stateless: Bool) {
+        if stateless {
             userClient.registerStatelessUserWith(identityProvider: identityProvider, scopes: ["read", "openid", "email"], delegate: self)
-        default:
+        } else {
             userClient.registerUserWith(identityProvider: identityProvider, scopes: ["read", "openid", "email"], delegate: self)
         }
     }
@@ -177,10 +176,12 @@ extension RegisterUserInteractor: RegistrationDelegate {
             handleSecondStepOfTwoStepRegistration()
         case .qrCode:
             registerUserPresenter?.presentQRCodeRegistrationView(registerUserEntity: registerUserEntity)
-        case .stateless, .twoWayStateless:
-            handleStatelessRegistration(challenge)
         default:
-            registrationNotHandled(challenge)
+            if userClient.isStateless {
+                handleStatelessRegistration(challenge)
+            } else {
+                registrationNotHandled(challenge)
+            }
         }
 
     }

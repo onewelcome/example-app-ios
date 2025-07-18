@@ -17,7 +17,8 @@ import UIKit
 
 class RegisterUserViewController: UIViewController {
     @IBOutlet var identityProvidersTableView: UITableView?
-
+    @IBOutlet weak var statelessSwitch: UISwitch!
+    
     let registerUserViewToPresenterProtocol: RegisterUserViewToPresenterProtocol
 
     var identityProviders = [IdentityProvider]() {
@@ -47,7 +48,7 @@ class RegisterUserViewController: UIViewController {
     }
 
     @IBAction func signUp(_: Any) {
-        registerUserViewToPresenterProtocol.signUp(nil)
+        registerUserViewToPresenterProtocol.signUp(nil, stateless: statelessSwitch.isOn)
     }
 }
 
@@ -67,6 +68,6 @@ extension RegisterUserViewController: UITableViewDataSource {
 extension RegisterUserViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let identityProvider = identityProviders[indexPath.row]
-        registerUserViewToPresenterProtocol.signUp(identityProvider)
+        registerUserViewToPresenterProtocol.signUp(identityProvider, stateless: statelessSwitch.isOn)
     }
 }

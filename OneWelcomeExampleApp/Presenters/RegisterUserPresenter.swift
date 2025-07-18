@@ -28,7 +28,7 @@ protocol RegisterUserInteractorToPresenterProtocol: AnyObject {
 }
 
 protocol RegisterUserViewToPresenterProtocol {
-    func signUp(_ identityProvider: IdentityProvider?)
+    func signUp(_ identityProvider: IdentityProvider?, stateless: Bool)
     func setupRegisterUserView() -> RegisterUserViewController
     func handleRedirectURL()
     func handleTwoStepCode()
@@ -113,8 +113,8 @@ extension RegisterUserPresenter: RegisterUserViewToPresenterProtocol {
         return registerUserViewController
     }
 
-    func signUp(_ identityProvider: IdentityProvider? = nil) {
-        registerUserInteractor.startUserRegistration(identityProvider: identityProvider)
+    func signUp(_ identityProvider: IdentityProvider? = nil, stateless: Bool) {
+        registerUserInteractor.startUserRegistration(identityProvider: identityProvider, stateless: stateless)
     }
 
     func handleRedirectURL() {
