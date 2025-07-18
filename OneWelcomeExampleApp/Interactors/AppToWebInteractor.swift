@@ -5,7 +5,7 @@ protocol AppToWebInteractorProtocol {
 }
 
 class AppToWebInteractor: AppToWebInteractorProtocol {
-    private let targetUrl = "https://login-mobile.in.test.onewelcome.net/personal/dashboard/"
+    private let targetUrl = "https://login-mobile.in.prod.onewelcome.net/personal/dashboard/"
     private var userClient: UserClient {
         return SharedUserClient.instance
     }
