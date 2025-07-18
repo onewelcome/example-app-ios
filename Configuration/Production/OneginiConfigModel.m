@@ -13,19 +13,19 @@
 {
     return @{
              @"ONGServerType" : @"access",
-             @"ONGServerVersion" : @"258eb06",
+             @"ONGServerVersion" : @"1.66.2",
              @"ONGAppIdentifier" : @"ExampleApp",
              @"ONGAppPlatform" : @"ios",
-             @"ONGAppVersion" : @"6.3.4",
-             @"ONGAppBaseURL" : @"https://mobile-security-proxy.in.test.onewelcome.net",
-             @"ONGResourceBaseURL" : @"https://mobile-security-proxy.in.test.onewelcome.net/resources/",
+             @"ONGAppVersion" : @"6.3.5",
+             @"ONGAppBaseURL" : @"https://mobile-security-proxy.in.prod.onewelcome.net",
+             @"ONGResourceBaseURL" : @"https://mobile-security-proxy.in.prod.onewelcome.net/resources/",
              @"ONGRedirectURL" : @"oneginiexample://loginsuccess",
              };
 }
 
 + (NSString *)serverPublicKey
 {
-	return @"C8D5F89F5816A8AC05A25463AFC50E7B6E5DC652316D82DEFD4F3F4C3F4294C3";
+	return @"4D5583DF13080C275380281FCF9061D7C49507CB6D334067D995C93F2530B2F8";
 }
 
 @end
