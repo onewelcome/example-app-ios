@@ -1573,7 +1573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1584,7 +1584,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.4;
+				MARKETING_VERSION = 6.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
@@ -1599,7 +1599,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneWelcomeExampleApp/OneWelcomeExampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FSS5X3XZNY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1610,7 +1610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.4;
+				MARKETING_VERSION = 6.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onewelcome.OneginiExampleAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneWelcomeExampleApp/SupportingFiles/OneWelcomeExampleApp-Bridging-Header.h";
