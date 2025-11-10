@@ -64,7 +64,7 @@ class AuthenticatorsInteractor: NSObject {
 extension AuthenticatorsInteractor: AuthenticatorsInteractorProtocol {
     var authenticatorsListForAuthenticatedUserProfile: [Authenticator] {
         guard let authenticatedUserProfile = userClient.authenticatedUserProfile else { return [] }
-        let authenticators = userClient.authenticators(.all, for: authenticatedUserProfile)
+        let authenticators = Array(userClient.authenticators(.all, for: authenticatedUserProfile))
         return sortAuthenticatorsList(authenticators)
     }
 
@@ -105,9 +105,9 @@ extension AuthenticatorsInteractor: AuthenticatorRegistrationDelegate {
     
     func userClient(_ userClient: UserClient, didFailToRegister authenticator: Authenticator, for userProfile: UserProfile, error: Error) {
         let mappedError = ErrorMapper().mapError(error)
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
-        } else if error.code == ONGGenericError.userDeregistered.rawValue {
+        } else if error.code == GenericError.userDeregistered.rawValue {
             authenticatorsPresenter?.popToWelcomeView(mappedError)
         } else {
             authenticatorsPresenter?.authenticatorActionFailed(mappedError, authenticator: authenticator)
@@ -125,7 +125,7 @@ extension AuthenticatorsInteractor: AuthenticatorDeregistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToDeregister authenticator: Authenticator, forUser userProfile: UserProfile, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             authenticatorsPresenter?.authenticatorActionCancelled(authenticator: authenticator)
         } else {
             let mappedError = ErrorMapper().mapError(error)

@@ -19,21 +19,21 @@ class PinValidationErrorDomainMapping {
         let recoverySuggestion = "Try a different one"
 
         switch error.code {
-        case ONGPinValidationError.pinBlackListed.rawValue:
+        case PinValidationError.pinBlackListed.rawValue:
             let errorDescription = "PIN you've entered is blacklisted."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGPinValidationError.pinShouldNotBeASequence.rawValue:
+        case PinValidationError.pinShouldNotBeASequence.rawValue:
             let errorDescription = "PIN you've entered appears to be a sequence."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGPinValidationError.wrongPinLength.rawValue:
-            let requiredLength = String(describing: error.userInfo[ONGPinValidationErrorRequiredLengthKey]!)
+        case PinValidationError.wrongPinLength.rawValue:
+            let requiredLength = String(describing: error.userInfo[ErrorDomains.pinValidationErrorRequiredLengthKey]!)
             let errorDescription = "PIN has to be of \(requiredLength) characters length."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case ONGPinValidationError.pinShouldNotUseSimilarDigits.rawValue:
-            let maxSimilarDigits = String(describing: error.userInfo[ONGPinValidationErrorMaxSimilarDigitsKey]!)
+        case PinValidationError.pinShouldNotUseSimilarDigits.rawValue:
+            let maxSimilarDigits = String(describing: error.userInfo[ErrorDomains.pinValidationErrorMaxSimilarDigitsKey]!)
             let errorDescription = "PIN should not use more that \(maxSimilarDigits) similar digits."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 

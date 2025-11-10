@@ -17,7 +17,7 @@ class MobileAuthEnrollmentErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         let title = "Mobile auth enrollment error"
 
-        switch ONGMobileAuthEnrollmentError(rawValue: error.code) {
+        switch MobileAuthEnrollmentError(rawValue: error.code) {
         case .userNotAuthenticated:
             let errorDescription = "No user is currently authenticated."
             let recoverySuggestion = "Please authenticate user and try again."

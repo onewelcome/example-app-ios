@@ -101,9 +101,9 @@ extension ChangePinInteractor: ChangePinDelegate {
     func userClient(_ userClient: UserClient, didFailToChangePinForUser _: UserProfile, error: Error) {
         changePinEntity.createPinChallenge = nil
         let mappedError = ErrorMapper().mapError(error)
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             changePinPresenter?.presentProfileView()
-        } else if error.code == ONGGenericError.userDeregistered.rawValue {
+        } else if error.code == GenericError.userDeregistered.rawValue {
             changePinPresenter?.popToWelcomeViewWithError(mappedError)
         } else {
             changePinPresenter?.changePinActionFailed(mappedError)

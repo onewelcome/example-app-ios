@@ -16,29 +16,29 @@
 class ErrorMapper {
     func mapError(_ error: Error, pinChallenge: PinChallenge? = nil, customInfo: CustomInfo? = nil) -> AppError {
         switch error.domain {
-        case ONGGenericErrorDomain:
+        case ErrorDomains.generic:
             return GenericErrorDomainMapping().mapError(error)
-        case ONGPinValidationErrorDomain:
+        case ErrorDomains.pinValidation:
             return PinValidationErrorDomainMapping().mapError(error)
-        case ONGAuthenticationErrorDomain:
+        case ErrorDomains.authentication:
             return AuthenticationErrorDomainMapping().mapError(error, pinChallenge: pinChallenge, customInfo: customInfo)
-        case ONGAuthenticatorRegistrationErrorDomain:
+        case ErrorDomains.authenticatorRegistration:
             return AuthenticatorRegistrationErrorDomainMapping().mapError(error, customInfo: customInfo)
-        case ONGAuthenticatorDeregistrationErrorDomain:
+        case ErrorDomains.authenticatorDeregistration:
             return AuthenticatorDeregistrationErrorMapping().mapError(error)
-        case ONGMobileAuthEnrollmentErrorDomain:
+        case ErrorDomains.mobileAuthEnrollment:
             return MobileAuthEnrollmentErrorDomainMapping().mapError(error)
-        case ONGFetchResourceErrorDomain:
+        case ErrorDomains.fetchResource:
             return FetchResourceErrorDomainMapping().mapError(error)
-        case ONGFetchImplicitResourceErrorDomain:
+        case ErrorDomains.fetchImplicitResource:
             return FetchImplicitResourceErrorDomainMapping().mapError(error)
-        case ONGAppToWebSingleSignOnErrorDomain:
+        case ErrorDomains.appToWebSingleSignOn:
             return AppToWebSingleSignOnErrorDomainMapping().mapError(error)
-        case ONGChangePinErrorDomain:
+        case ErrorDomains.changePin:
             return ChangePinErrorDomainMapping().mapError(error)
-        case ONGRegistrationErrorDomain:
+        case ErrorDomains.registration:
             return RegistrationErrorDomainMapping().mapError(error)
-        case ONGMobileAuthRequestErrorDomain:
+        case ErrorDomains.mobileAuthRequest:
             return MobileAuthRequestErrorDomainMapping().mapError(error)
         default:
             return AppError(errorDescription: "Something went wrong.")

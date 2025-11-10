@@ -191,7 +191,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToRegisterUserWith identityProvider: IdentityProvider, error: Error) {
-        switch ONGRegistrationError(rawValue: error.code) {
+        switch RegistrationError(rawValue: error.code) {
         case .stateless:
             let mappedError = ErrorMapper().mapError(error)
             registerUserPresenter?.registerUserActionFailed(mappedError)
@@ -200,7 +200,7 @@ extension RegisterUserInteractor: RegistrationDelegate {
             break
         }
         
-        switch ONGGenericError(rawValue: error.code) {
+        switch GenericError(rawValue: error.code) {
         case .actionCancelled:
             registerUserPresenter?.registerUserActionCancelled()
         default:

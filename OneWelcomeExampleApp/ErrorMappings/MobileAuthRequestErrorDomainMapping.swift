@@ -6,7 +6,7 @@ class MobileAuthRequestErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         let title = "Mobile auth request error"
         
-        switch ONGMobileAuthRequestError(rawValue: error.code) {
+        switch MobileAuthRequestError(rawValue: error.code) {
         case .notFound:
             let errorDescription = "The user not found for mobile authentication."
             let recoverySuggestion = "Enroll for mobile authentication."

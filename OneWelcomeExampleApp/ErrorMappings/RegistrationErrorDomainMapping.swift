@@ -6,7 +6,7 @@ class RegistrationErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         let title = "Registration error"
 
-        switch ONGRegistrationError(rawValue: error.code) {
+        switch RegistrationError(rawValue: error.code) {
         default:
             return AppError(errorDescription: "Something went wrong.")
         }

@@ -6,8 +6,8 @@ class ChangePinErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         let title = "Change PIN error"
 
-        switch ONGChangePinError(rawValue: error.code) {
-        case .pinChangeErrorStatelessUser:
+        switch ChangePinError(rawValue: error.code) {
+        case .statelessUser:
             let errorDescription = "Changing PIN is not allowed for stateless user."
             let recoverySuggestion = ""
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)

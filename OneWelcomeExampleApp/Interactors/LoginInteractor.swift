@@ -40,7 +40,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error, error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue {
+        if let error = challenge.error, error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             loginEntity.pinError = nil
@@ -62,7 +62,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     func authenticators(profile: UserProfile) -> [Authenticator] {
-        return userClient.authenticators(.registered, for: profile)
+        return Array(userClient.authenticators(.registered, for: profile))
     }
 
     func login(profile: UserProfile, authenticator: Authenticator? = nil) {
@@ -98,7 +98,7 @@ extension LoginInteractor: AuthenticationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, error: Error) {
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        if error.code == GenericError.actionCancelled.rawValue {
             delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
         } else {
             let mappedError = ErrorMapper().mapError(error)
