@@ -1,0 +1,154 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name BetterSegmentedControl
+@_exported import BetterSegmentedControl
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class BetterSegmentedControl : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) public static let noSegment: Swift.Int
+  @_Concurrency.MainActor(unsafe) public var index: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var segments: [any BetterSegmentedControl.BetterSegmentedControlSegment] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public let indicatorView: BetterSegmentedControl.BetterSegmentedControl.IndicatorView
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var alwaysAnnouncesValue: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var announcesValueImmediately: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var panningDisabled: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var indicatorViewBackgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var indicatorViewInset: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var indicatorViewBorderWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var indicatorViewBorderColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var animationDuration: Swift.Double
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var animationSpringDamping: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var segmentPadding: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, segments: [any BetterSegmentedControl.BetterSegmentedControlSegment], index: Swift.Int = 0, options: [BetterSegmentedControl.BetterSegmentedControl.Option]? = nil)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc convenience override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func setIndex(_ index: Swift.Int, animated: Swift.Bool = true, shouldSendValueChangedEvent: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setOptions(_ options: [BetterSegmentedControl.BetterSegmentedControl.Option])
+  @objc deinit
+}
+extension BetterSegmentedControl.BetterSegmentedControl : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+}
+extension BetterSegmentedControl.BetterSegmentedControl {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+}
+extension BetterSegmentedControl.BetterSegmentedControl {
+  @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class IndicatorView : UIKit.UIView {
+    @_Concurrency.MainActor(unsafe) @objc override dynamic open var frame: CoreFoundation.CGRect {
+      @objc get
+      @objc set
+    }
+    @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+    @objc deinit
+  }
+}
+extension BetterSegmentedControl.BetterSegmentedControl {
+  public enum Option {
+    case indicatorViewBackgroundColor(UIKit.UIColor)
+    case indicatorViewInset(CoreFoundation.CGFloat)
+    case indicatorViewBorderWidth(CoreFoundation.CGFloat)
+    case indicatorViewBorderColor(UIKit.UIColor)
+    case alwaysAnnouncesValue(Swift.Bool)
+    case announcesValueImmediately(Swift.Bool)
+    case panningDisabled(Swift.Bool)
+    case animationDuration(Foundation.TimeInterval)
+    case animationSpringDamping(CoreFoundation.CGFloat)
+    case backgroundColor(UIKit.UIColor)
+    case cornerRadius(CoreFoundation.CGFloat)
+  }
+}
+extension BetterSegmentedControl.BetterSegmentedControl {
+  @_Concurrency.MainActor(unsafe) public class func appleStyled(frame: CoreFoundation.CGRect, titles: [Swift.String]) -> BetterSegmentedControl.BetterSegmentedControl
+}
+@available(iOS 13.4, *)
+extension BetterSegmentedControl.BetterSegmentedControl : UIKit.UIPointerInteractionDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pointerInteraction(_ interaction: UIKit.UIPointerInteraction, regionFor request: UIKit.UIPointerRegionRequest, defaultRegion: UIKit.UIPointerRegion) -> UIKit.UIPointerRegion?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pointerInteraction(_ interaction: UIKit.UIPointerInteraction, styleFor region: UIKit.UIPointerRegion) -> UIKit.UIPointerStyle?
+}
+public protocol BetterSegmentedControlSegment {
+  var intrinsicContentSize: CoreFoundation.CGSize? { get }
+  var normalView: UIKit.UIView { get }
+  var selectedView: UIKit.UIView { get }
+}
+open class IconSegment : BetterSegmentedControl.BetterSegmentedControlSegment {
+  public var icon: UIKit.UIImage
+  public var iconSize: CoreFoundation.CGSize
+  public var normalIconTintColor: UIKit.UIColor
+  public var normalBackgroundColor: UIKit.UIColor
+  public var selectedIconTintColor: UIKit.UIColor
+  public var selectedBackgroundColor: UIKit.UIColor
+  public init(icon: UIKit.UIImage, iconSize: CoreFoundation.CGSize, normalBackgroundColor: UIKit.UIColor? = nil, normalIconTintColor: UIKit.UIColor, selectedBackgroundColor: UIKit.UIColor? = nil, selectedIconTintColor: UIKit.UIColor)
+  public var intrinsicContentSize: CoreFoundation.CGSize? {
+    get
+  }
+  public var normalView: UIKit.UIView {
+    get
+    set
+  }
+  public var selectedView: UIKit.UIView {
+    get
+    set
+  }
+  @objc deinit
+}
+extension BetterSegmentedControl.IconSegment {
+  public class func segments(withIcons icons: [UIKit.UIImage], iconSize: CoreFoundation.CGSize, normalBackgroundColor: UIKit.UIColor? = nil, normalIconTintColor: UIKit.UIColor, selectedBackgroundColor: UIKit.UIColor? = nil, selectedIconTintColor: UIKit.UIColor) -> [any BetterSegmentedControl.BetterSegmentedControlSegment]
+}
+open class LabelSegment : BetterSegmentedControl.BetterSegmentedControlSegment {
+  final public let text: Swift.String?
+  final public let normalFont: UIKit.UIFont
+  final public let normalTextColor: UIKit.UIColor
+  final public let normalBackgroundColor: UIKit.UIColor
+  final public let selectedFont: UIKit.UIFont
+  final public let selectedTextColor: UIKit.UIColor
+  final public let selectedBackgroundColor: UIKit.UIColor
+  public init(text: Swift.String? = nil, numberOfLines: Swift.Int = 1, normalBackgroundColor: UIKit.UIColor? = nil, normalFont: UIKit.UIFont? = nil, normalTextColor: UIKit.UIColor? = nil, selectedBackgroundColor: UIKit.UIColor? = nil, selectedFont: UIKit.UIFont? = nil, selectedTextColor: UIKit.UIColor? = nil, accessibilityIdentifier: Swift.String? = nil)
+  public var intrinsicContentSize: CoreFoundation.CGSize? {
+    get
+  }
+  public var normalView: UIKit.UIView {
+    get
+    set
+  }
+  public var selectedView: UIKit.UIView {
+    get
+    set
+  }
+  open func createLabel(withText text: Swift.String?, backgroundColor: UIKit.UIColor, font: UIKit.UIFont, textColor: UIKit.UIColor, accessibilityIdentifier: Swift.String?) -> UIKit.UILabel
+  @objc deinit
+}
+extension BetterSegmentedControl.LabelSegment {
+  public class func segments(withTitles titles: [Swift.String], numberOfLines: Swift.Int = 1, normalBackgroundColor: UIKit.UIColor? = nil, normalFont: UIKit.UIFont? = nil, normalTextColor: UIKit.UIColor? = nil, selectedBackgroundColor: UIKit.UIColor? = nil, selectedFont: UIKit.UIFont? = nil, selectedTextColor: UIKit.UIColor? = nil) -> [any BetterSegmentedControl.BetterSegmentedControlSegment]
+}

@@ -1,0 +1,22 @@
+{
+  "originHash" : "1c9fa55da4af2933fc7adc5cca09b1cd68779f4af4f60bfa12d193033d7c6ab4",
+  "pins" : [
+    {
+      "identity" : "OneWelcome.SDKDependencies",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.10.4"
+      }
+    },
+    {
+      "identity" : "OneWelcome.SDKSPM-dev",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "13.0.6"
+      }
+    }
+  ],
+  "version" : 3
+}

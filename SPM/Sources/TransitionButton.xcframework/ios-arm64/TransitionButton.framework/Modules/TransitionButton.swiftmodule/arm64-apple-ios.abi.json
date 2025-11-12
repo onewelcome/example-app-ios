@@ -1,0 +1,3291 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TransitionButton",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TransitionButton"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "StopAnimationStyle",
+        "printedName": "StopAnimationStyle",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "normal",
+            "printedName": "normal",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TransitionButton.StopAnimationStyle.Type) -> TransitionButton.StopAnimationStyle",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StopAnimationStyle",
+                    "printedName": "TransitionButton.StopAnimationStyle",
+                    "usr": "s:16TransitionButton18StopAnimationStyleO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TransitionButton.StopAnimationStyle.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StopAnimationStyle",
+                        "printedName": "TransitionButton.StopAnimationStyle",
+                        "usr": "s:16TransitionButton18StopAnimationStyleO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16TransitionButton18StopAnimationStyleO6normalyA2CmF",
+            "mangledName": "$s16TransitionButton18StopAnimationStyleO6normalyA2CmF",
+            "moduleName": "TransitionButton"
+          },
+          {
+            "kind": "Var",
+            "name": "expand",
+            "printedName": "expand",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TransitionButton.StopAnimationStyle.Type) -> TransitionButton.StopAnimationStyle",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StopAnimationStyle",
+                    "printedName": "TransitionButton.StopAnimationStyle",
+                    "usr": "s:16TransitionButton18StopAnimationStyleO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TransitionButton.StopAnimationStyle.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StopAnimationStyle",
+                        "printedName": "TransitionButton.StopAnimationStyle",
+                        "usr": "s:16TransitionButton18StopAnimationStyleO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16TransitionButton18StopAnimationStyleO6expandyA2CmF",
+            "mangledName": "$s16TransitionButton18StopAnimationStyleO6expandyA2CmF",
+            "moduleName": "TransitionButton"
+          },
+          {
+            "kind": "Var",
+            "name": "shake",
+            "printedName": "shake",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TransitionButton.StopAnimationStyle.Type) -> TransitionButton.StopAnimationStyle",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StopAnimationStyle",
+                    "printedName": "TransitionButton.StopAnimationStyle",
+                    "usr": "s:16TransitionButton18StopAnimationStyleO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TransitionButton.StopAnimationStyle.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StopAnimationStyle",
+                        "printedName": "TransitionButton.StopAnimationStyle",
+                        "usr": "s:16TransitionButton18StopAnimationStyleO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16TransitionButton18StopAnimationStyleO5shakeyA2CmF",
+            "mangledName": "$s16TransitionButton18StopAnimationStyleO5shakeyA2CmF",
+            "moduleName": "TransitionButton"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StopAnimationStyle",
+                "printedName": "TransitionButton.StopAnimationStyle",
+                "usr": "s:16TransitionButton18StopAnimationStyleO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StopAnimationStyle",
+                "printedName": "TransitionButton.StopAnimationStyle",
+                "usr": "s:16TransitionButton18StopAnimationStyleO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButton18StopAnimationStyleO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s16TransitionButton18StopAnimationStyleO2eeoiySbAC_ACtFZ",
+            "moduleName": "TransitionButton",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16TransitionButton18StopAnimationStyleO9hashValueSivp",
+            "mangledName": "$s16TransitionButton18StopAnimationStyleO9hashValueSivp",
+            "moduleName": "TransitionButton",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton18StopAnimationStyleO9hashValueSivg",
+                "mangledName": "$s16TransitionButton18StopAnimationStyleO9hashValueSivg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButton18StopAnimationStyleO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s16TransitionButton18StopAnimationStyleO4hash4intoys6HasherVz_tF",
+            "moduleName": "TransitionButton",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:16TransitionButton18StopAnimationStyleO",
+        "mangledName": "$s16TransitionButton18StopAnimationStyleO",
+        "moduleName": "TransitionButton",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TransitionButton",
+        "printedName": "TransitionButton",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "spinnerColor",
+            "printedName": "spinnerColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(py)spinnerColor",
+            "mangledName": "$s16TransitionButtonAAC12spinnerColorSo7UIColorCvp",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Custom",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)spinnerColor",
+                "mangledName": "$s16TransitionButtonAAC12spinnerColorSo7UIColorCvg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)setSpinnerColor:",
+                "mangledName": "$s16TransitionButtonAAC12spinnerColorSo7UIColorCvs",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButtonAAC12spinnerColorSo7UIColorCvM",
+                "mangledName": "$s16TransitionButtonAAC12spinnerColorSo7UIColorCvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "disabledBackgroundColor",
+            "printedName": "disabledBackgroundColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(py)disabledBackgroundColor",
+            "mangledName": "$s16TransitionButtonAAC23disabledBackgroundColorSo7UIColorCvp",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Custom",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)disabledBackgroundColor",
+                "mangledName": "$s16TransitionButtonAAC23disabledBackgroundColorSo7UIColorCvg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)setDisabledBackgroundColor:",
+                "mangledName": "$s16TransitionButtonAAC23disabledBackgroundColorSo7UIColorCvs",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButtonAAC23disabledBackgroundColorSo7UIColorCvM",
+                "mangledName": "$s16TransitionButtonAAC23disabledBackgroundColorSo7UIColorCvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "cornerRadius",
+            "printedName": "cornerRadius",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(py)cornerRadius",
+            "mangledName": "$s16TransitionButtonAAC12cornerRadius12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Custom",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)cornerRadius",
+                "mangledName": "$s16TransitionButtonAAC12cornerRadius12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)setCornerRadius:",
+                "mangledName": "$s16TransitionButtonAAC12cornerRadius12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButtonAAC12cornerRadius14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s16TransitionButtonAAC12cornerRadius12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TransitionButton",
+                "printedName": "TransitionButton.TransitionButton",
+                "usr": "c:@M@TransitionButton@objc(cs)TransitionButton"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)initWithFrame:",
+            "mangledName": "$s16TransitionButtonAAC5frameABSo6CGRectV_tcfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TransitionButton.TransitionButton?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TransitionButton",
+                    "printedName": "TransitionButton.TransitionButton",
+                    "usr": "c:@M@TransitionButton@objc(cs)TransitionButton"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)initWithCoder:",
+            "mangledName": "$s16TransitionButtonAAC5coderABSgSo7NSCoderC_tcfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "prepareForInterfaceBuilder",
+            "printedName": "prepareForInterfaceBuilder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)prepareForInterfaceBuilder",
+            "mangledName": "$s16TransitionButtonAAC26prepareForInterfaceBuilderyyF",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "prepareForInterfaceBuilder",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "layoutSubviews",
+            "printedName": "layoutSubviews()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)TransitionButton(im)layoutSubviews",
+            "mangledName": "$s16TransitionButtonAAC14layoutSubviewsyyF",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "layoutSubviews",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "startAnimation",
+            "printedName": "startAnimation()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButtonAAC14startAnimationyyF",
+            "mangledName": "$s16TransitionButtonAAC14startAnimationyyF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stopAnimation",
+            "printedName": "stopAnimation(animationStyle:revertAfterDelay:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StopAnimationStyle",
+                "printedName": "TransitionButton.StopAnimationStyle",
+                "hasDefaultArg": true,
+                "usr": "s:16TransitionButton18StopAnimationStyleO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "hasDefaultArg": true,
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButtonAAC13stopAnimation14animationStyle16revertAfterDelay10completionyAA04StopdF0O_SdyycSgtF",
+            "mangledName": "$s16TransitionButtonAAC13stopAnimation14animationStyle16revertAfterDelay10completionyAA04StopdF0O_SdyycSgtF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TransitionButton@objc(cs)TransitionButton",
+        "mangledName": "$s16TransitionButtonAAC",
+        "moduleName": "TransitionButton",
+        "isOpen": true,
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "IBDesignable",
+          "RawDocComment",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIButton",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIButton",
+          "UIKit.UIControl",
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TransitionButton",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CustomTransitionViewController",
+        "printedName": "CustomTransitionViewController",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "modalPresentationStyle",
+            "printedName": "modalPresentationStyle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIModalPresentationStyle",
+                "printedName": "UIKit.UIModalPresentationStyle",
+                "usr": "c:@E@UIModalPresentationStyle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(py)modalPresentationStyle",
+            "mangledName": "$s16TransitionButton06CustomA14ViewControllerC22modalPresentationStyleSo07UIModalgH0Vvp",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "modalPresentationStyle",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIModalPresentationStyle",
+                    "printedName": "UIKit.UIModalPresentationStyle",
+                    "usr": "c:@E@UIModalPresentationStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)modalPresentationStyle",
+                "mangledName": "$s16TransitionButton06CustomA14ViewControllerC22modalPresentationStyleSo07UIModalgH0Vvg",
+                "moduleName": "TransitionButton",
+                "overriding": true,
+                "isOpen": true,
+                "objc_name": "modalPresentationStyle",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIModalPresentationStyle",
+                    "printedName": "UIKit.UIModalPresentationStyle",
+                    "usr": "c:@E@UIModalPresentationStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)setModalPresentationStyle:",
+                "mangledName": "$s16TransitionButton06CustomA14ViewControllerC22modalPresentationStyleSo07UIModalgH0Vvs",
+                "moduleName": "TransitionButton",
+                "overriding": true,
+                "isOpen": true,
+                "objc_name": "setModalPresentationStyle:",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "viewDidLoad",
+            "printedName": "viewDidLoad()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)viewDidLoad",
+            "mangledName": "$s16TransitionButton06CustomA14ViewControllerC11viewDidLoadyyF",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "viewDidLoad",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "animationController",
+            "printedName": "animationController(forPresented:presenting:source:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any UIKit.UIViewControllerAnimatedTransitioning)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewControllerAnimatedTransitioning",
+                    "printedName": "any UIKit.UIViewControllerAnimatedTransitioning",
+                    "usr": "c:objc(pl)UIViewControllerAnimatedTransitioning"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)animationControllerForPresentedController:presentingController:sourceController:",
+            "mangledName": "$s16TransitionButton06CustomA14ViewControllerC09animationE012forPresented10presenting6sourceSo06UIViewE21AnimatedTransitioning_pSgSo0kE0C_A2KtF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "objc_name": "animationControllerForPresentedController:presentingController:sourceController:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "animationController",
+            "printedName": "animationController(forDismissed:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any UIKit.UIViewControllerAnimatedTransitioning)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewControllerAnimatedTransitioning",
+                    "printedName": "any UIKit.UIViewControllerAnimatedTransitioning",
+                    "usr": "c:objc(pl)UIViewControllerAnimatedTransitioning"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)animationControllerForDismissedController:",
+            "mangledName": "$s16TransitionButton06CustomA14ViewControllerC09animationE012forDismissedSo06UIViewE21AnimatedTransitioning_pSgSo0iE0C_tF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "objc_name": "animationControllerForDismissedController:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(nibName:bundle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CustomTransitionViewController",
+                "printedName": "TransitionButton.CustomTransitionViewController",
+                "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Bundle?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)initWithNibName:bundle:",
+            "mangledName": "$s16TransitionButton06CustomA14ViewControllerC7nibName6bundleACSSSg_So8NSBundleCSgtcfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithNibName:bundle:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TransitionButton.CustomTransitionViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CustomTransitionViewController",
+                    "printedName": "TransitionButton.CustomTransitionViewController",
+                    "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController(im)initWithCoder:",
+            "mangledName": "$s16TransitionButton06CustomA14ViewControllerC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TransitionButton@objc(cs)CustomTransitionViewController",
+        "mangledName": "$s16TransitionButton06CustomA14ViewControllerC",
+        "moduleName": "TransitionButton",
+        "isOpen": true,
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIViewController",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIViewController",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TransitionButton",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FadeTransition",
+        "printedName": "FadeTransition",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "transitionDuration",
+            "printedName": "transitionDuration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16TransitionButton04FadeA0C18transitionDurationSdvp",
+            "mangledName": "$s16TransitionButton04FadeA0C18transitionDurationSdvp",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Custom"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton04FadeA0C18transitionDurationSdvg",
+                "mangledName": "$s16TransitionButton04FadeA0C18transitionDurationSdvg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton04FadeA0C18transitionDurationSdvs",
+                "mangledName": "$s16TransitionButton04FadeA0C18transitionDurationSdvs",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton04FadeA0C18transitionDurationSdvM",
+                "mangledName": "$s16TransitionButton04FadeA0C18transitionDurationSdvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "startingAlpha",
+            "printedName": "startingAlpha",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16TransitionButton04FadeA0C13startingAlpha14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s16TransitionButton04FadeA0C13startingAlpha12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Custom"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton04FadeA0C13startingAlpha14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s16TransitionButton04FadeA0C13startingAlpha12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton04FadeA0C13startingAlpha14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s16TransitionButton04FadeA0C13startingAlpha12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton04FadeA0C13startingAlpha14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s16TransitionButton04FadeA0C13startingAlpha12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(transitionDuration:startingAlpha:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FadeTransition",
+                "printedName": "TransitionButton.FadeTransition",
+                "usr": "c:@M@TransitionButton@objc(cs)FadeTransition"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16TransitionButton04FadeA0C18transitionDuration13startingAlphaACSd_14CoreFoundation7CGFloatVtcfc",
+            "mangledName": "$s16TransitionButton04FadeA0C18transitionDuration13startingAlphaACSd_12CoreGraphics7CGFloatVtcfc",
+            "moduleName": "TransitionButton",
+            "declAttributes": [
+              "Custom",
+              "Convenience",
+              "AccessControl"
+            ],
+            "init_kind": "Convenience"
+          },
+          {
+            "kind": "Function",
+            "name": "transitionDuration",
+            "printedName": "transitionDuration(using:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any UIKit.UIViewControllerContextTransitioning)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewControllerContextTransitioning",
+                    "printedName": "any UIKit.UIViewControllerContextTransitioning",
+                    "usr": "c:objc(pl)UIViewControllerContextTransitioning"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)FadeTransition(im)transitionDuration:",
+            "mangledName": "$s16TransitionButton04FadeA0C18transitionDuration5usingSdSo36UIViewControllerContextTransitioning_pSg_tF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "objc_name": "transitionDuration:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "animateTransition",
+            "printedName": "animateTransition(using:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewControllerContextTransitioning",
+                "printedName": "any UIKit.UIViewControllerContextTransitioning",
+                "usr": "c:objc(pl)UIViewControllerContextTransitioning"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TransitionButton@objc(cs)FadeTransition(im)animateTransition:",
+            "mangledName": "$s16TransitionButton04FadeA0C07animateA05usingySo36UIViewControllerContextTransitioning_p_tF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "objc_name": "animateTransition:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FadeTransition",
+                "printedName": "TransitionButton.FadeTransition",
+                "usr": "c:@M@TransitionButton@objc(cs)FadeTransition"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)FadeTransition(im)init",
+            "mangledName": "$s16TransitionButton04FadeA0CACycfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TransitionButton@objc(cs)FadeTransition",
+        "mangledName": "$s16TransitionButton04FadeA0C",
+        "moduleName": "TransitionButton",
+        "isOpen": true,
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TransitionButton",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SpinerLayer",
+        "printedName": "SpinerLayer",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "spinnerColor",
+            "printedName": "spinnerColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvp",
+            "mangledName": "$s16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvp",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "fixedbinaryorder": 0,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvg",
+                "mangledName": "$s16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvg",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvs",
+                "mangledName": "$s16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvs",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvM",
+                "mangledName": "$s16TransitionButton11SpinerLayerC12spinnerColorSo7UIColorCvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SpinerLayer",
+                "printedName": "TransitionButton.SpinerLayer",
+                "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16TransitionButton11SpinerLayerC5frameACSo6CGRectV_tcfc",
+            "mangledName": "$s16TransitionButton11SpinerLayerC5frameACSo6CGRectV_tcfc",
+            "moduleName": "TransitionButton",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TransitionButton.SpinerLayer?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SpinerLayer",
+                    "printedName": "TransitionButton.SpinerLayer",
+                    "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer(im)initWithCoder:",
+            "mangledName": "$s16TransitionButton11SpinerLayerC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(layer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SpinerLayer",
+                "printedName": "TransitionButton.SpinerLayer",
+                "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ProtocolComposition",
+                "printedName": "Any"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer(im)initWithLayer:",
+            "mangledName": "$s16TransitionButton11SpinerLayerC5layerACyp_tcfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "objc_name": "initWithLayer:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "animation",
+            "printedName": "animation()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButton11SpinerLayerC9animationyyF",
+            "mangledName": "$s16TransitionButton11SpinerLayerC9animationyyF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setToFrame",
+            "printedName": "setToFrame(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButton11SpinerLayerC10setToFrameyySo6CGRectVF",
+            "mangledName": "$s16TransitionButton11SpinerLayerC10setToFrameyySo6CGRectVF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stopAnimation",
+            "printedName": "stopAnimation()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16TransitionButton11SpinerLayerC13stopAnimationyyF",
+            "mangledName": "$s16TransitionButton11SpinerLayerC13stopAnimationyyF",
+            "moduleName": "TransitionButton",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SpinerLayer",
+                "printedName": "TransitionButton.SpinerLayer",
+                "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer(im)init",
+            "mangledName": "$s16TransitionButton11SpinerLayerCACycfc",
+            "moduleName": "TransitionButton",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TransitionButton@objc(cs)SpinerLayer",
+        "mangledName": "$s16TransitionButton11SpinerLayerC",
+        "moduleName": "TransitionButton",
+        "isOpen": true,
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)CAShapeLayer",
+        "superclassNames": [
+          "QuartzCore.CAShapeLayer",
+          "QuartzCore.CALayer",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TransitionButton",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UIImage",
+        "printedName": "UIImage",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(color:size:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "hasDefaultArg": true,
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:So7UIImageC16TransitionButtonE5color4sizeABSgSo7UIColorC_So6CGSizeVtcfc",
+            "mangledName": "$sSo7UIImageC16TransitionButtonE5color4sizeABSgSo7UIColorC_So6CGSizeVtcfc",
+            "moduleName": "TransitionButton",
+            "declAttributes": [
+              "Convenience"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)UIImage",
+        "moduleName": "UIKit",
+        "isOpen": true,
+        "intro_iOS": "2.0",
+        "objc_name": "UIImage",
+        "declAttributes": [
+          "Available",
+          "ObjC",
+          "SynthesizedProtocol",
+          "NonSendable",
+          "Sendable",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByImageLiteral",
+            "printedName": "_ExpressibleByImageLiteral",
+            "usr": "s:s26_ExpressibleByImageLiteralP",
+            "mangledName": "$ss26_ExpressibleByImageLiteralP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CGRect",
+        "printedName": "CGRect",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "x",
+            "printedName": "x",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE1x14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE1x12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE1x14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE1x12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE1x14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE1x12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE1x14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE1x12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "y",
+            "printedName": "y",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE1y14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE1y12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE1y14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE1y12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE1y14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE1y12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE1y14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE1y12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "width",
+            "printedName": "width",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE5width14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE5width12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE5width14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE5width12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE5width14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE5width12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE5width14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE5width12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "height",
+            "printedName": "height",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE6height14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE6height12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6height14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6height12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6height14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6height12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6height14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6height12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "top",
+            "printedName": "top",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE3top14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE3top12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE3top14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE3top12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE3top14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE3top12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE3top14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE3top12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bottom",
+            "printedName": "bottom",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE6bottom14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE6bottom12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6bottom14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6bottom12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6bottom14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6bottom12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6bottom14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6bottom12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "left",
+            "printedName": "left",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE4left14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE4left12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4left14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4left12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4left14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4left12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4left14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4left12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "right",
+            "printedName": "right",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE5right14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE5right12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE5right14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE5right12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE5right14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE5right12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE5right14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE5right12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "midX",
+            "printedName": "midX",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE4midX14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE4midX12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4midX14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4midX12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4midX14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4midX12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4midX14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4midX12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "midY",
+            "printedName": "midY",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE4midY14CoreFoundation7CGFloatVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE4midY12CoreGraphics7CGFloatVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4midY14CoreFoundation7CGFloatVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4midY12CoreGraphics7CGFloatVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4midY14CoreFoundation7CGFloatVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4midY12CoreGraphics7CGFloatVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE4midY14CoreFoundation7CGFloatVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE4midY12CoreGraphics7CGFloatVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "center",
+            "printedName": "center",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So6CGRectV16TransitionButtonE6centerSo7CGPointVvp",
+            "mangledName": "$sSo6CGRectV16TransitionButtonE6centerSo7CGPointVvp",
+            "moduleName": "TransitionButton",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6centerSo7CGPointVvg",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6centerSo7CGPointVvg",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6centerSo7CGPointVvs",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6centerSo7CGPointVvs",
+                "moduleName": "TransitionButton",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So6CGRectV16TransitionButtonE6centerSo7CGPointVvM",
+                "mangledName": "$sSo6CGRectV16TransitionButtonE6centerSo7CGPointVvM",
+                "moduleName": "TransitionButton",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "c:@S@CGRect",
+        "moduleName": "CoreFoundation",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSValue",
+                    "printedName": "Foundation.NSValue",
+                    "usr": "c:objc(cs)NSValue"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomReflectable",
+            "printedName": "CustomReflectable",
+            "usr": "s:s17CustomReflectableP",
+            "mangledName": "$ss17CustomReflectableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_CustomPlaygroundQuickLookable",
+            "printedName": "_CustomPlaygroundQuickLookable",
+            "usr": "s:s30_CustomPlaygroundQuickLookableP",
+            "mangledName": "$ss30_CustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1608,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1492,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 1973,
+      "length": 4,
+      "value": "0.45"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 1979,
+      "length": 5,
+      "value": "-0.36"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 1986,
+      "length": 4,
+      "value": "0.44"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 1992,
+      "length": 4,
+      "value": "0.92"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 2180,
+      "length": 4,
+      "value": "0.95"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 2186,
+      "length": 4,
+      "value": "0.02"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2192,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 2195,
+      "length": 4,
+      "value": "0.05"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 2255,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "FloatLiteral",
+      "offset": 4535,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9493,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/TransitionButton.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9504,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/FadeTransition.swift",
+      "kind": "FloatLiteral",
+      "offset": 288,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/FadeTransition.swift",
+      "kind": "FloatLiteral",
+      "offset": 325,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/Konrad.Falkowski\/Downloads\/TransitionButton-0.5.3\/Source\/SpinerLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 171,
+      "length": 11,
+      "value": "\"TransitionButton.SpinerLayer\""
+    }
+  ]
+}

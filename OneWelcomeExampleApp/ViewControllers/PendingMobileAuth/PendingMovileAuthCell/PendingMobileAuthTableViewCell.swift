@@ -24,12 +24,10 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
             timeLabel.text = DateFormatter.localizedString(from: date,
                                                            dateStyle: DateFormatter.Style.none,
                                                            timeStyle: DateFormatter.Style.medium)
-            expireTimeLabel.text = pendingMobileAuthEntity.timeToLive
-                .flatMap { TimeInterval(truncating: $0) }
-                .flatMap { DateFormatter.localizedString(from: date.addingTimeInterval($0),
+            let formattedTimeToLive = DateFormatter.localizedString(from: date.addingTimeInterval(pendingMobileAuthEntity.timeToLive),
                                                          dateStyle: DateFormatter.Style.none,
-                                                         timeStyle: DateFormatter.Style.medium)}
-                .flatMap { "Expiration time: " + $0 } ?? ""
+                                                         timeStyle: DateFormatter.Style.medium)
+            expireTimeLabel.text = "Expiration time: "+formattedTimeToLive
             
         } else {
             timeLabel.text = ""

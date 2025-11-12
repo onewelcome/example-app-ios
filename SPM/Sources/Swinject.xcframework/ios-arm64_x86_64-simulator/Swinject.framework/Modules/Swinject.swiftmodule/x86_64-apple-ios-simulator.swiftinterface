@@ -1,0 +1,275 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name Swinject
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+final public class Assembler {
+  final public var resolver: any Swinject.Resolver {
+    get
+  }
+  public init(container: Swinject.Container? = Container())
+  public init(parentAssembler: Swinject.Assembler?, defaultObjectScope: Swinject.ObjectScope = .graph, behaviors: [any Swinject.Behavior] = [])
+  @available(*, deprecated, message: "Use not throwing alternative: init(_:, container:)")
+  convenience public init(assemblies: [any Swinject.Assembly], container: Swinject.Container? = Container()) throws
+  public init(_ assemblies: [any Swinject.Assembly], container: Swinject.Container = Container())
+  @available(*, deprecated, message: "Use not throwing alternative: init(_:, parent:)")
+  convenience public init(assemblies: [any Swinject.Assembly], parentAssembler: Swinject.Assembler?) throws
+  public init(_ assemblies: [any Swinject.Assembly], parent: Swinject.Assembler?, defaultObjectScope: Swinject.ObjectScope = .graph, behaviors: [any Swinject.Behavior] = [])
+  final public func apply(assembly: any Swinject.Assembly)
+  final public func apply(assemblies: [any Swinject.Assembly])
+  @objc deinit
+}
+public protocol Assembly {
+  func assemble(container: Swinject.Container)
+  func loaded(resolver: any Swinject.Resolver)
+}
+extension Swinject.Assembly {
+  public func loaded(resolver _: any Swinject.Resolver)
+}
+public protocol Behavior {
+  func container<Type, Service>(_ container: Swinject.Container, didRegisterType type: Type.Type, toService entry: Swinject.ServiceEntry<Service>, withName name: Swift.String?)
+}
+extension Swinject.Container {
+  @discardableResult
+  final public func register<Service, Arg1>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3, Arg4>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3, Arg4) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3, Arg4, Arg5) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func register<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9) -> Service) -> Swinject.ServiceEntry<Service>
+}
+extension Swinject.Container {
+  final public func resolve<Service, Arg1>(_ serviceType: Service.Type, argument: Arg1) -> Service?
+  final public func resolve<Service, Arg1>(_: Service.Type, name: Swift.String?, argument: Arg1) -> Service?
+  final public func resolve<Service, Arg1, Arg2>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2) -> Service?
+  final public func resolve<Service, Arg1, Arg2>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8, _ arg9: Arg9) -> Service?
+  final public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(_: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8, _ arg9: Arg9) -> Service?
+}
+public typealias LoggingFunctionType = (Swift.String) -> Swift.Void
+extension Swinject.Container {
+  public static var loggingFunction: Swinject.LoggingFunctionType? {
+    get
+    set
+  }
+}
+extension Swinject.Container {
+  final public func forward<T, S>(_ type: T.Type, name: Swift.String? = nil, to service: Swinject.ServiceEntry<S>)
+}
+@_hasMissingDesignatedInitializers final public class Container {
+  convenience public init(parent: Swinject.Container? = nil, defaultObjectScope: Swinject.ObjectScope = .graph, behaviors: [any Swinject.Behavior] = [], registeringClosure: (Swinject.Container) -> Swift.Void = { _ in })
+  final public func removeAll()
+  final public func resetObjectScope(_ objectScope: any Swinject.ObjectScopeProtocol)
+  final public func resetObjectScope(_ objectScope: Swinject.ObjectScope)
+  @discardableResult
+  final public func register<Service>(_ serviceType: Service.Type, name: Swift.String? = nil, factory: @escaping (any Swinject.Resolver) -> Service) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func _register<Service, Arguments>(_ serviceType: Service.Type, factory: @escaping (Arguments) -> Any, name: Swift.String? = nil, option: (any Swinject.ServiceKeyOption)? = nil) -> Swinject.ServiceEntry<Service>
+  final public func synchronize() -> any Swinject.Resolver
+  final public func addBehavior(_ behavior: any Swinject.Behavior)
+  final public func hasAnyRegistration<Service>(of serviceType: Service.Type, name: Swift.String? = nil) -> Swift.Bool
+  final public func withObjectGraph<T>(_ identifier: Swinject.GraphIdentifier, closure: (Swinject.Container) throws -> T) rethrows -> T
+  @objc deinit
+}
+extension Swinject.Container : Swinject._Resolver {
+  final public func _resolve<Service, Arguments>(name: Swift.String?, option: (any Swinject.ServiceKeyOption)? = nil, invoker: @escaping ((Arguments) -> Any) -> Any) -> Service?
+}
+extension Swinject.Container : Swinject.Resolver {
+  final public func resolve<Service>(_ serviceType: Service.Type) -> Service?
+  final public func resolve<Service>(_: Service.Type, name: Swift.String?) -> Service?
+}
+extension Swinject.Container : Swift.CustomStringConvertible {
+  final public var description: Swift.String {
+    get
+  }
+}
+public struct GraphIdentifier : Swift.Identifiable {
+  public let id: Foundation.UUID
+  public typealias ID = Foundation.UUID
+}
+extension Swinject.GraphIdentifier : Swift.Equatable, Swift.Hashable {
+  public static func == (a: Swinject.GraphIdentifier, b: Swinject.GraphIdentifier) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol InstanceStorage : AnyObject {
+  var instance: Any? { get set }
+  func graphResolutionCompleted()
+  func instance(inGraph graph: Swinject.GraphIdentifier) -> Any?
+  func setInstance(_ instance: Any?, inGraph graph: Swinject.GraphIdentifier)
+}
+extension Swinject.InstanceStorage {
+  public func graphResolutionCompleted()
+  public func instance(inGraph _: Swinject.GraphIdentifier) -> Any?
+  public func setInstance(_ instance: Any?, inGraph _: Swinject.GraphIdentifier)
+}
+final public class GraphStorage : Swinject.InstanceStorage {
+  final public var instance: Any?
+  public init()
+  final public func graphResolutionCompleted()
+  final public func instance(inGraph graph: Swinject.GraphIdentifier) -> Any?
+  final public func setInstance(_ instance: Any?, inGraph graph: Swinject.GraphIdentifier)
+  @objc deinit
+}
+final public class PermanentStorage : Swinject.InstanceStorage {
+  final public var instance: Any?
+  public init()
+  @objc deinit
+}
+final public class TransientStorage : Swinject.InstanceStorage {
+  final public var instance: Any? {
+    get
+    set
+  }
+  public init()
+  @objc deinit
+}
+final public class WeakStorage : Swinject.InstanceStorage {
+  final public var instance: Any? {
+    get
+    set
+  }
+  public init()
+  @objc deinit
+}
+final public class CompositeStorage : Swinject.InstanceStorage {
+  final public var instance: Any? {
+    get
+    set
+  }
+  public init(_ components: [any Swinject.InstanceStorage])
+  final public func graphResolutionCompleted()
+  final public func setInstance(_ instance: Any?, inGraph graph: Swinject.GraphIdentifier)
+  final public func instance(inGraph graph: Swinject.GraphIdentifier) -> Any?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class Lazy<Service> {
+  final public var instance: Service {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class Provider<Service> {
+  final public var instance: Service {
+    get
+  }
+  @objc deinit
+}
+extension Swinject.ObjectScope {
+  public static let transient: Swinject.ObjectScope
+  public static let graph: Swinject.ObjectScope
+  public static let container: Swinject.ObjectScope
+  public static let weak: Swinject.ObjectScope
+}
+public protocol ObjectScopeProtocol : AnyObject {
+  func makeStorage() -> any Swinject.InstanceStorage
+}
+public class ObjectScope : Swinject.ObjectScopeProtocol, Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public init(storageFactory: @escaping () -> any Swinject.InstanceStorage, description: Swift.String = "", parent: (any Swinject.ObjectScopeProtocol)? = nil)
+  public func makeStorage() -> any Swinject.InstanceStorage
+  @objc deinit
+}
+public protocol Resolver {
+  func resolve<Service>(_ serviceType: Service.Type) -> Service?
+  func resolve<Service>(_ serviceType: Service.Type, name: Swift.String?) -> Service?
+  func resolve<Service, Arg1>(_ serviceType: Service.Type, argument: Arg1) -> Service?
+  func resolve<Service, Arg1>(_ serviceType: Service.Type, name: Swift.String?, argument: Arg1) -> Service?
+  func resolve<Service, Arg1, Arg2>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2) -> Service?
+  func resolve<Service, Arg1, Arg2>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(_ serviceType: Service.Type, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8, _ arg9: Arg9) -> Service?
+  func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(_ serviceType: Service.Type, name: Swift.String?, arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8, _ arg9: Arg9) -> Service?
+}
+extension Swinject.ServiceEntry {
+  @discardableResult
+  final public func implements<T>(_ type: T.Type, name: Swift.String? = nil) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2>(_ type1: T1.Type, _ type2: T2.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3, T4>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type, _ type4: T4.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3, T4, T5>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type, _ type4: T4.Type, _ type5: T5.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3, T4, T5, T6>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type, _ type4: T4.Type, _ type5: T5.Type, _ type6: T6.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3, T4, T5, T6, T7>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type, _ type4: T4.Type, _ type5: T5.Type, _ type6: T6.Type, _ type7: T7.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3, T4, T5, T6, T7, T8>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type, _ type4: T4.Type, _ type5: T5.Type, _ type6: T6.Type, _ type7: T7.Type, _ type8: T8.Type) -> Swinject.ServiceEntry<Service>
+  @discardableResult
+  final public func implements<T1, T2, T3, T4, T5, T6, T7, T8, T9>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type, _ type4: T4.Type, _ type5: T5.Type, _ type6: T6.Type, _ type7: T7.Type, _ type8: T8.Type, _ type9: T9.Type) -> Swinject.ServiceEntry<Service>
+}
+@_hasMissingDesignatedInitializers final public class ServiceEntry<Service> {
+  @discardableResult
+  final public func inObjectScope(_ objectScope: any Swinject.ObjectScopeProtocol) -> Self
+  @discardableResult
+  final public func inObjectScope(_ objectScope: Swinject.ObjectScope) -> Self
+  @discardableResult
+  final public func initCompleted(_ completed: @escaping (any Swinject.Resolver, Service) -> Swift.Void) -> Self
+  @objc deinit
+}
+public protocol ServiceKeyOption : Swift.CustomStringConvertible {
+  func isEqualTo(_ another: any Swinject.ServiceKeyOption) -> Swift.Bool
+  func hash(into: inout Swift.Hasher)
+}
+extension Swinject.ObjectScope {
+  @available(*, unavailable, renamed: "transient")
+  public static let none: Swinject.ObjectScope
+  @available(*, unavailable, renamed: "container")
+  public static let hierarchy: Swinject.ObjectScope
+}
+@available(*, unavailable, renamed: "Resolver")
+public protocol ResolverType {
+}
+@available(*, unavailable, renamed: "Assembly")
+public protocol AssemblyType {
+}
+@available(*, unavailable, renamed: "ServiceKeyOption")
+public protocol ServiceKeyOptionType {
+}
+public protocol _Resolver {
+  func _resolve<Service, Arguments>(name: Swift.String?, option: (any Swinject.ServiceKeyOption)?, invoker: @escaping ((Arguments) -> Any) -> Any) -> Service?
+}
