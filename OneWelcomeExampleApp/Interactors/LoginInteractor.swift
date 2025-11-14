@@ -98,9 +98,10 @@ extension LoginInteractor: AuthenticationDelegate {
     }
 
     func userClient(_ userClient: UserClient, didFailToAuthenticateUser userProfile: UserProfile, authenticator: Authenticator, error: Error) {
-        if error.code == GenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             delegate?.loginInteractor(self, didCancelLoginUser: userProfile)
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             delegate?.loginInteractor(self, didFailToLoginUser: userProfile, withError: mappedError)
         }

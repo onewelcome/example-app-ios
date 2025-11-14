@@ -1,5 +1,5 @@
 {
-  "originHash" : "1c9fa55da4af2933fc7adc5cca09b1cd68779f4af4f60bfa12d193033d7c6ab4",
+  "originHash" : "db3fdfb52921ae2c058fe7286dc8366cca6a7543fee447acfc2e8e5d5b4b51ea",
   "pins" : [
     {
       "identity" : "OneWelcome.SDKDependencies",
@@ -14,7 +14,7 @@
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "13.0.6"
+        "version" : "13.0.7"
       }
     }
   ],

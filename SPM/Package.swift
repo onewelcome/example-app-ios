@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version:5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -12,8 +12,7 @@ let package = Package(
     ],
     dependencies: [
         // Private repositories
-//        .package(id: "OneWelcome.SDKSPM-dev", "13.0.0"..<"13.1.0"),
-        .package(id: "OneWelcome.SDKSPM-dev", exact: "13.0.7"),
+        .package(id: "OneWelcome.SDKSPM-dev", "13.0.0"..<"13.1.0"),
 
         // Local repositories for 3rd party libs
     ],

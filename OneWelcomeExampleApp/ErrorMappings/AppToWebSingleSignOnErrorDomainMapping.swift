@@ -4,8 +4,8 @@ class AppToWebSingleSignOnErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
         let title = "App to web error"
         
-        switch error.code {
-        case AppToWebSingleSignOnError.userNotAuthenticated.rawValue:
+        switch AppToWebSingleSignOnError(rawValue: error.code) {
+        case .userNotAuthenticated:
             let errorDescription = "No user is currently authenticated."
             let recoverySuggestion = "Please authenticate user and try again."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)

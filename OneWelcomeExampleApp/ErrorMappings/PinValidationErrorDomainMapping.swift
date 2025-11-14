@@ -18,21 +18,21 @@ class PinValidationErrorDomainMapping {
         let title = "Pin validation error"
         let recoverySuggestion = "Try a different one"
 
-        switch error.code {
-        case PinValidationError.pinBlackListed.rawValue:
+        switch PinValidationError(rawValue: error.code) {
+        case .pinBlackListed:
             let errorDescription = "PIN you've entered is blacklisted."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case PinValidationError.pinShouldNotBeASequence.rawValue:
+        case .pinShouldNotBeASequence:
             let errorDescription = "PIN you've entered appears to be a sequence."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case PinValidationError.wrongPinLength.rawValue:
+        case .wrongPinLength:
             let requiredLength = String(describing: error.userInfo[ErrorDomains.pinValidationErrorRequiredLengthKey]!)
             let errorDescription = "PIN has to be of \(requiredLength) characters length."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)
 
-        case PinValidationError.pinShouldNotUseSimilarDigits.rawValue:
+        case .pinShouldNotUseSimilarDigits:
             let maxSimilarDigits = String(describing: error.userInfo[ErrorDomains.pinValidationErrorMaxSimilarDigitsKey]!)
             let errorDescription = "PIN should not use more that \(maxSimilarDigits) similar digits."
             return AppError(title: title, errorDescription: errorDescription, recoverySuggestion: recoverySuggestion)

@@ -15,18 +15,18 @@
 
 class GenericErrorDomainMapping {
     func mapError(_ error: Error) -> AppError {
-        switch error.code {
-        case GenericError.networkConnectivityFailure.rawValue, GenericError.serverNotReachable.rawValue:
+        switch GenericError(rawValue: error.code) {
+        case .networkConnectivityFailure, .serverNotReachable:
             return AppError(title: "Connection error", errorDescription: "Failed to connect to the server.")
-        case GenericError.userDeregistered.rawValue:
+        case .userDeregistered:
             return AppError(title: "User error", errorDescription: "The users account was deregistered from the device.", recoverySuggestion: "Please try to register user again.")
-        case GenericError.deviceDeregistered.rawValue:
+        case .deviceDeregistered:
             return AppError(title: "Device error", errorDescription: "All users were disconnected from the device.", recoverySuggestion: "Please try to register user again.")
-        case GenericError.outdatedOS.rawValue:
+        case .outdatedOS:
             return AppError(title: "OS error", errorDescription: "Your iOS version is no longer accepted by the application.", recoverySuggestion: "Please try to update your iOS.")
-        case GenericError.outdatedApplication.rawValue:
+        case .outdatedApplication:
             return AppError(title: "Application error", errorDescription: "Your application version is outdated.", recoverySuggestion: "Please try to update your application.")
-        case GenericError.unrecoverableDataState.rawValue:
+        case .unrecoverableDataState:
             return AppError(title: "Data storage error",
                             errorDescription: "The data storage is corrupted and cannot be recovered or cleared.",
                             recoverySuggestion: "Please remove the application manually and reinstall.")
