@@ -1,12 +1,12 @@
 {
-  "originHash" : "8d0835f02b8b398acc9ad0fc012fa26aef0864b00ee3a8c66b3ac14d3a612222",
+  "originHash" : "794041f92f4d3c81a1b8400482807ca4563e7864cbbef4ec9e131bd13da47b68",
   "pins" : [
     {
       "identity" : "OneWelcome.SDKDependencies",
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "1.0.0"
+        "version" : "0.10.4"
       }
     },
     {
@@ -14,7 +14,7 @@
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "12.6.0"
+        "version" : "13.0.7"
       }
     }
   ],

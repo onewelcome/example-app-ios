@@ -17,19 +17,17 @@ class PendingMobileAuthTableViewCell: UITableViewCell {
     @IBOutlet var timeLabel: UILabel!
 
     func setup(pendingMobileAuthEntity: PendingMobileAuthRequest) {
-        profileLabel.text = pendingMobileAuthEntity.userProfile.profileId
+        profileLabel.text = pendingMobileAuthEntity.userProfile?.profileId
         messageLabel.text = pendingMobileAuthEntity.message
         
         if let date = pendingMobileAuthEntity.date {
             timeLabel.text = DateFormatter.localizedString(from: date,
                                                            dateStyle: DateFormatter.Style.none,
                                                            timeStyle: DateFormatter.Style.medium)
-            expireTimeLabel.text = pendingMobileAuthEntity.timeToLive
-                .flatMap { TimeInterval($0) }
-                .flatMap { DateFormatter.localizedString(from: date.addingTimeInterval($0),
+            let formattedTimeToLive = DateFormatter.localizedString(from: date.addingTimeInterval(pendingMobileAuthEntity.timeToLive),
                                                          dateStyle: DateFormatter.Style.none,
-                                                         timeStyle: DateFormatter.Style.medium)}
-                .flatMap { "Expiration time: " + $0 } ?? ""
+                                                         timeStyle: DateFormatter.Style.medium)
+            expireTimeLabel.text = "Expiration time: "+formattedTimeToLive
             
         } else {
             timeLabel.text = ""

@@ -174,8 +174,8 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error,
-            error.code != ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue,
-            error.code != ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+            error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue,
+            error.code != AuthenticationError.customAuthenticatorFailure.rawValue {
             mobileAuthEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             mobileAuthEntity.pinError = nil
@@ -199,11 +199,11 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthEntity.authenticatorType = .pin
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
-        if challenge.error?.code == ONGAuthenticationError.touchIDAuthenticatorFailure.rawValue
-            || challenge.error?.code == ONGAuthenticationError.customAuthenticatorFailure.rawValue {
+        switch challenge.error.flatMap({ AuthenticationError(rawValue: $0.code) }) {
+        case .touchIDAuthenticatorFailure, .customAuthenticatorFailure:
             mobileAuthPresenter?.dismiss()
             mobileAuthPresenter?.presentPinView(mobileAuthEntity: mobileAuthEntity)
-        } else {
+        default:
             mobileAuthPresenter?.presentConfirmationView(mobileAuthEntity: mobileAuthEntity)
         }
     }
@@ -225,29 +225,31 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
 
     func userClient(_ userClient: UserClient, didFailToHandleRequest request: MobileAuthRequest, authenticator: Authenticator?, error: Error) {
         mobileAuthEntity = MobileAuthEntity()
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             let isUserLoggedIn = userClient.authenticatedUserProfile?.isEqual(to: request.userProfile) ?? false
-            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn) { _ in
                 self.mobileAuthQueue.dequeue()
-            })
+            }
         }
     }
     
     func userClient(_ userClient: any UserClient, didFailToHandleOTPMobileAuthRequest otp: String, error: any Error) {
         mobileAuthEntity = MobileAuthEntity()
-        if error.code == ONGGenericError.actionCancelled.rawValue {
+        switch GenericError(rawValue: error.code) {
+        case .actionCancelled:
             mobileAuthPresenter?.dismiss()
             mobileAuthQueue.dequeue()
-        } else {
+        default:
             let mappedError = ErrorMapper().mapError(error)
             let isUserLoggedIn = false
-            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn, completion: { _ in
+            mobileAuthPresenter?.mobileAuthenticationFailed(mappedError, isUserLoggedIn: isUserLoggedIn) { _ in
                 self.mobileAuthQueue.dequeue()
-            })
+            }
         }
     }
 

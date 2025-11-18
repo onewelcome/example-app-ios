@@ -139,7 +139,7 @@ extension LoginPresenter: LoginViewDelegate {
     }
 
     func loginView(_ loginView: UIViewController, authenticatorsForProfile profile: UserProfile) -> [Authenticator] {
-        return loginInteractor.authenticators(profile: profile)
+        return Array(loginInteractor.authenticators(profile: profile))
     }
     
     func loginView(_ loginView: UIViewController, implicitDataForProfile profile: UserProfile, completion: @escaping (String?) -> Void) {
