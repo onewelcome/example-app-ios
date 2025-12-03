@@ -174,7 +174,7 @@ class MobileAuthInteractor: NSObject, MobileAuthInteractorProtocol {
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
         if let error = challenge.error,
-            error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue,
+            error.code != AuthenticationError.biometricAuthenticatorFailure.rawValue,
             error.code != AuthenticationError.customAuthenticatorFailure.rawValue {
             mobileAuthEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
@@ -200,7 +200,7 @@ extension MobileAuthInteractor: MobileAuthRequestDelegate {
         mobileAuthEntity.message = request.message
         mobileAuthEntity.userProfile = challenge.userProfile
         switch challenge.error.flatMap({ AuthenticationError(rawValue: $0.code) }) {
-        case .touchIDAuthenticatorFailure, .customAuthenticatorFailure:
+        case .biometricAuthenticatorFailure, .customAuthenticatorFailure:
             mobileAuthPresenter?.dismiss()
             mobileAuthPresenter?.presentPinView(mobileAuthEntity: mobileAuthEntity)
         default:

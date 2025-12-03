@@ -3,7 +3,7 @@
 import Foundation
 
 enum AllowedIdentityProviders: String {
-    case qrCode = "qr-code-api"
+    case qrCode = "qr_registration"
     case stateless = "stateless-test"
     case twoWayStateless = "stateless"
     case twoStep = "New2step"

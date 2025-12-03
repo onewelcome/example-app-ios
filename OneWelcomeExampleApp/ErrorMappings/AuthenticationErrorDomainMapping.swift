@@ -56,7 +56,7 @@ private extension AuthenticationErrorDomainMapping {
             let recoverySuggestion = "It may not exist, please verify whether you have supplied the correct authenticator."
             return AppError(title: title, errorDescription: message, recoverySuggestion: recoverySuggestion)
 
-        case .touchIDAuthenticatorFailure:
+        case .biometricAuthenticatorFailure:
             let message = "Authentication with the biometric authenticator has failed."
             return AppError(title: title, errorDescription: message)
 
