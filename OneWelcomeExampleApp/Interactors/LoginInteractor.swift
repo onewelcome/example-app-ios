@@ -40,7 +40,7 @@ class LoginInteractor: NSObject, LoginInteractorProtocol {
     }
 
     fileprivate func mapErrorFromChallenge(_ challenge: PinChallenge) {
-        if let error = challenge.error, error.code != AuthenticationError.touchIDAuthenticatorFailure.rawValue {
+        if let error = challenge.error, error.code != AuthenticationError.biometricAuthenticatorFailure.rawValue {
             loginEntity.pinError = ErrorMapper().mapError(error, pinChallenge: challenge)
         } else {
             loginEntity.pinError = nil
