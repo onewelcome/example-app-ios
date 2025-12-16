@@ -139,8 +139,10 @@ class MobileAuthPresenter: MobileAuthInteractorToPresenterProtocol {
     func mobileAuthenticationFailed(_ error: AppError, isUserLoggedIn: Bool, completion: @escaping (UIAlertAction) -> Void) {
         guard let appRouter = AppAssembly.shared.resolver.resolve(AppRouterProtocol.self) else { fatalError() }
         tabBarController.dismiss(animated: false, completion: nil)
-        if !(navigationController.viewControllers.last is WelcomeViewController) && isUserLoggedIn {
+        if isUserLoggedIn {
             logoutInteractor.logout()
+        } else if !(navigationController.viewControllers.last is WelcomeViewController) {
+            appRouter.popToWelcomeView()
         }
         appRouter.updateWelcomeView(selectedProfile: nil)
         appRouter.setupErrorAlert(error: error, okButtonHandler: completion)
