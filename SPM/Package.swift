@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         // Private repositories
-        .package(id: "OneWelcome.SDKSPM-dev", "13.0.0"..<"13.1.0"),
+        .package(id: "OneWelcome.SDKSPM", "13.0.0"..<"13.1.0"),
 
         // Local repositories for 3rd party libs
     ],
@@ -21,7 +21,7 @@ let package = Package(
             name: "SPM",
             dependencies: [
                 "Swinject", "SkyFloatingLabelTextField", "BetterSegmentedControl", "TransitionButton",
-                .product(name: "SDKSPM", package: "OneWelcome.SDKSPM-dev"),
+                .product(name: "SDKSPM", package: "OneWelcome.SDKSPM"),
             ]
         ),
         .binaryTarget(name: "Swinject",

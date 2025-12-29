@@ -10,7 +10,7 @@
       }
     },
     {
-      "identity" : "OneWelcome.SDKSPM-dev",
+      "identity" : "OneWelcome.SDKSPM",
       "kind" : "registry",
       "location" : "",
       "state" : {
